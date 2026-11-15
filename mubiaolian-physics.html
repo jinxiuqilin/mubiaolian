@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 初高中物理知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）物理知识目标站 —— 初中到高中物理主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#6d4a9c" />
+<meta property="og:title" content="目标链 · 初高中物理知识目标站" />
+<meta property="og:description" content="初中到高中物理主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-physics.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><circle cx='12' cy='12' r='1.7' fill='%23f6f7f4'/><ellipse cx='12' cy='12' rx='8' ry='3.1' fill='none' stroke='%23f6f7f4' stroke-width='1.3' transform='rotate(30 12 12)'/><ellipse cx='12' cy='12' rx='8' ry='3.1' fill='none' stroke='%23f6f7f4' stroke-width='1.3' transform='rotate(-30 12 12)'/></svg>" />
+<style>
+  :root {
+    --bg: #f5f3f8;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #6d4a9c;
+    --accent-deep: #54387a;
+    --accent-soft: #efe9f7;
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(109,74,156,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(109,74,156,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #9a7bc8); box-shadow: 0 3px 10px -2px rgba(109,74,156,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #8f6cc9 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(84,56,122,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(109,74,156,.06); border: 1px dashed rgba(109,74,156,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(109,74,156,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(109,74,156,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #8f6cc9); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(109,74,156,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #9a7bc8);
+    box-shadow: 0 8px 18px -8px rgba(109,74,156,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(109,74,156,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(109,74,156,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(109,74,156,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f5f2fa; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fbf9fd, #f2eef8);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链物理站"><i class="subj-ico">P</i>物理</span>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">57 个主干环 · 228 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>初高中物理知识<span class="accent">目标链</span></h1>
+  <p>物理从初二起始、两段贯通：初中到高中主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/57</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：欧姆定律" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链物理站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">省自主命题卷（2021/2022广东卷 · 2023湖南卷）· 人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链物理站 · 知识点数据（57 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：57 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 228 个 ============ */
+/* ============ 历年高考考情（省自主命题卷：2021/2022广东卷 · 2023湖南卷）：环id → {年份:[T题号·考点]} ============
+ * 选考科目无全国卷（官方试题评析仅覆盖全国甲/乙卷；湖南省教育厅明确选考科目省统一命题；
+ * 2022 广东卷单选7题 ≠ 湖南卷单选6题，两省确不同卷）。故按真实卷别收录：2021/2022 广东卷、2023 湖南卷。
+ * 数据源：各年真题原文 PDF + 机构逐题解析交叉核对。人工整理，或有遗漏；
+ * 已知缺口：2022 广东 T16 第 1 问原文未获取未标注；2023 湖南 T15 仅据题干前半可靠推出。 */
+const EXAM = {
+  'interaction': {
+    2022: ['T1·共点力平衡几何关系'],
+    2021: ['T11·逐差法测弹簧劲度系数'],
+  },
+  'motion-graph': {
+    2022: ['T3·多过程运动图像分析'],
+    2021: ['T8·运动图像与追及相遇'],
+  },
+  'newton-laws': {
+    2021: ['T3·力的分解与牛顿第三定律'],
+  },
+  'newton-apply': {
+    2023: ['T10·连接体临界受力分析'],
+  },
+  'work-energy': {
+    2022: ['T9·恒定功率行驶功能关系'],
+    2021: ['T9·平抛运动与重力功率'],
+  },
+  'energy-conserve': {
+    2023: ['T15·系统动量守恒与机械能守恒'],
+  },
+  'curve-motion': {
+    2023: ['T2·平抛与斜抛运动比较', 'T8·竖直圆轨道临界与脱离'],
+    2022: ['T6·平抛与自由落体等时性'],
+    2021: ['T4·匀速转动的运动合成分解', 'T9·平抛运动与重力功率'],
+  },
+  'gravitation': {
+    2023: ['T4·万有引力与第一宇宙速度'],
+    2022: ['T2·行星公转参量比较'],
+    2021: ['T2·万有引力估算天体质量'],
+  },
+  'momentum': {
+    2023: ['T14·双棒电磁感应与动量定理', 'T15·系统动量守恒与机械能守恒'],
+    2022: ['T11·光电门测碰撞能量损失', 'T13·滑块滑杆碰撞与竖直上抛'],
+    2021: ['T13·摩擦碰撞与动量守恒'],
+  },
+  'mechanical-wave': {
+    2023: ['T3·机械波传播与叠加', 'T11·弹簧振子周期探究实验'],
+    2021: ['T16·简谐运动与光的折射全反射'],
+  },
+  'refraction': {
+    2023: ['T7·光的全反射临界角计算'],
+    2022: ['T16·光的全反射临界角求折射率'],
+    2021: ['T16·简谐运动与光的折射全反射'],
+  },
+  'thermodynamics': {
+    2023: ['T13·等温变化多步抽气计算'],
+    2022: ['T15·热力学定律与等温变化'],
+    2021: ['T15·气体分子动能与等温变化'],
+  },
+  'charge-field': {
+    2023: ['T5·点电荷场强矢量合成'],
+    2022: ['T14·密立根油滴受力与电场'],
+  },
+  'potential-diff': {
+    2022: ['T8·等势面电势与洛伦兹力'],
+    2021: ['T6·等势面场强与电势能'],
+  },
+  'dc-circuit': {
+    2023: ['T12·压力传感器电桥平衡实验'],
+    2022: ['T12·导电绳电阻测量与作图'],
+    2021: ['T12·热敏电阻与替代法测阻'],
+  },
+  'ampere-lorentz': {
+    2022: ['T7·立体磁场轨迹投影分析'],
+    2021: ['T5·平行电流相互作用判断'],
+  },
+  'compound-field': {
+    2023: ['T6·速度选择器与磁场偏转'],
+    2021: ['T14·电场加速磁场偏转加速器'],
+  },
+  'induction-law': {
+    2022: ['T10·直线电流磁场磁通量变化'],
+  },
+  'faraday-apply': {
+    2023: ['T14·双棒电磁感应与动量定理'],
+    2021: ['T10·转动切割与双杆感应'],
+  },
+  'ac-circuit': {
+    2023: ['T9·交流发电机与有效值计算'],
+    2022: ['T4·交变电流产生与描述'],
+    2021: ['T7·交流电与理想变压器'],
+  },
+  'atom-nucleus': {
+    2023: ['T1·轻核聚变与核反应方程'],
+    2022: ['T5·氢原子能级与电磁波谱'],
+    2021: ['T1·原子核衰变与半衰期'],
+  },
+};
+/* 2021/2022 广东卷、2023 湖南卷真题原文 PDF（均已探活；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=physics&y=2021',
+  2022: 'gaokao.html?s=physics&y=2022',
+  2023: 'gaokao.html?s=physics&y=2023',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 初中 · 声、光、热 ---- */
+  'motion-speed': [
+    { t: '刻度尺使用', d: '选、观、放、看、读、记六步：估测量程选量程，刻度线紧贴被测物。易错：读数漏掉分度值的下一位估计值，2.5 cm 写成 2.5 cm 而非 2.50 cm。' },
+    { t: '单位换算', d: '1 m=100 cm=1000 mm，1 m/s=3.6 km/h。易错：km/h 与 m/s 换算乘除搞反，72 km/h 误成 7.2 m/s。' },
+    { t: '参照物选取', d: '运动和静止是相对的，参照物选取不同结论不同。易错：说「太阳东升西落」时误以太阳自己为参照物。' },
+    { t: '速度计算', d: 'v=s/t 及变形，平均速度必须用总路程除以总时间。易错：把前半程、后半程速度直接平均当平均速度。' },
+  ],
+  'sound-origin': [
+    { t: '振动发声', d: '一切发声体都在振动，振动停止发声也停止。易错：把「振动停止」说成「声音消失」——余音是原声的传播延续。' },
+    { t: '介质传播', d: '固体液体气体都能传声，真空不能传声。易错：月球上宇航员不对话靠无线电，误答靠喊话。' },
+    { t: '声速比较', d: '15℃空气约 340 m/s，一般固体中最快、气体中最慢。易错：回声测距忘记除以 2，算出的距离是双倍。' },
+    { t: '回声利用', d: '声呐测海深、B 超查体都是回声定位的应用。易错：人耳分辨原声与回声需时间差 0.1 s，距离至少 17 m。' },
+  ],
+  'sound-character': [
+    { t: '音调与频率', d: '频率越高音调越高，弦的粗细松紧长短影响频率。易错：把「引吭高歌」的高当成音调高——那是响度大。' },
+    { t: '响度与振幅', d: '振幅越大响度越大，还与距离声源远近有关。易错：用力敲鼓说成「音调变高」，实为响度变大。' },
+    { t: '音色辨音', d: '音色由发声体材料结构决定，「闻其声知其人」。易错：模仿秀模仿的是音色，误答成音调。' },
+    { t: '噪声控制', d: '防止产生、阻断传播、防止入耳三途径。易错：摩托装消声器是在声源处减弱，误答成传播过程。' },
+  ],
+  /* ---- 初中 · 光 ---- */
+  'light-linear': [
+    { t: '直线传播条件', d: '同种、均匀介质中光才沿直线传播。易错：光从空气斜射入水仍说成直线传播，忽略「均匀」前提。' },
+    { t: '光速数值', d: '真空光速 c=3×10⁸ m/s，光年是天体间距离单位。易错：把光年当成时间单位。' },
+    { t: '影子形成', d: '光遇不透明物体形成影子，日食月食都是影的现象。易错：皮影与平面镜成像混为一谈，前者是直线传播。' },
+    { t: '小孔成像', d: '小孔成倒立实像，像形状与孔形状无关、与光源形状有关。易错：孔太大认为成像更清晰，实则变模糊。' },
+  ],
+  'reflection': [
+    { t: '三线共面', d: '反射光线、入射光线、法线在同一平面内，反射角等于入射角。易错：把反射角说成反射光线与镜面的夹角。' },
+    { t: '光路可逆', d: '光路可逆，你能看见别人眼睛，别人也能看见你。易错：垂直入射认为入射角是 90°，实为 0°。' },
+    { t: '镜面与漫反射', d: '镜面反射单向强，漫反射向四面八方但每条光线仍遵守定律。易错：认为漫反射不遵守反射定律。' },
+    { t: '平面镜成像特点', d: '等大、等距、正立、虚像，像物连线垂直镜面。易错：人远离镜子认为像变小——像大小始终与人相等。' },
+  ],
+  'refraction': [
+    { t: '折射规律', d: '空气斜入水或玻璃，折射角小于入射角；垂直入射方向不变。易错：光从水斜入空气误画成折射角小于入射角。' },
+    { t: '池水变浅', d: '水底反射光折射进入空气，人眼逆着折射光看，像在实物上方。易错：叉鱼要瞄准看到的鱼的下方，误叉上方。' },
+    { t: '色散', d: '白光经棱镜分解为红橙黄绿蓝靛紫，说明白光是复色光。易错：红光之外才是红外线，误把红光本身当红外线。' },
+    { t: '看不见的光', d: '红外线热效应强用于遥控夜视，紫外线使荧光物质发光用于验钞。易错：紫外线杀菌防伪与红外线遥控的应用对调。' },
+  ],
+  'lens': [
+    { t: '凸透镜会聚', d: '凸透镜对光线会聚，平行主光轴的光会聚于焦点，焦距是焦点到光心距离。易错：会聚作用理解为光线一定相交于一点。' },
+    { t: '成像规律', d: 'u>2f 缩小实像、f<u<2f 放大实像、u<f 放大虚像。易错：一倍焦距与二倍焦距两个分界点记混。' },
+    { t: '动态成像', d: '成实像时物近像远像变大，「物远像近像变小」。易错：照相机拉近镜头方向记反。' },
+    { t: '眼睛与眼镜', d: '近视眼晶状体太厚配凹透镜，远视眼配凸透镜。易错：近视远视的矫正镜片类型对调。' },
+  ],
+  /* ---- 初中 · 热 ---- */
+  'temperature': [
+    { t: '温度计原理', d: '常用温度计根据液体热胀冷缩工作，摄氏度规定 0℃ 与 100℃ 两个定标点。易错：体温计之外的温度计可以离开被测物读数——错。' },
+    { t: '温度计使用', d: '玻璃泡完全浸入、示数稳定后读数、视线与液柱上表面相平。易错：读数时把温度计拿出来，示数已变。' },
+    { t: '体温计特点', d: '量程 35-42℃，缩口使水银不自动退回，用前需甩。易错：体温计不甩直接测低温病人，示数不变。' },
+    { t: '温度与热量区分', d: '温度表示冷热程度，热量是热传递过程中转移的能量。易错：说「物体含有多少热量」——热量不能含。' },
+  ],
+  'phase-change': [
+    { t: '熔化与凝固', d: '晶体有固定熔点且熔化温度不变，非晶体渐变软化。易错：冰水混合物吸热后温度不变说成会升高。' },
+    { t: '汽化两形式', d: '蒸发任何温度下缓慢发生且致冷，沸腾只在沸点剧烈进行。易错：认为水只在 100℃ 才能蒸发。' },
+    { t: '液化两途径', d: '降低温度或压缩体积都能使气体液化，「白气」是小水滴。易错：把「白气」当成水蒸气——水蒸气看不见。' },
+    { t: '升华与凝华', d: '固态直接变气态是升华吸热，气态直接变固态是凝华放热。易错：冬天窗上冰花是内侧凝华，误答外侧。' },
+  ],
+  'internal-energy': [
+    { t: '分子动理论', d: '物质由分子组成、分子永不停息地无规则运动、分子间有引力和斥力。易错：闻到花香说成分子静止气味飘来。' },
+    { t: '内能概念', d: '内能是所有分子动能与势能总和，一切物体任何温度都有内能。易错：0℃ 的冰没有内能——错。' },
+    { t: '热传递方向', d: '热量从高温物体传向低温物体，温度相同热传递停止。易错：认为热量从内能大的传向内能小的。' },
+    { t: '做功改变内能', d: '对物体做功内能增大，物体对外做功内能减小。易错：搓手取暖说成热传递，实为做功。' },
+  ],
+  'heat-engine': [
+    { t: '比热容', d: '比热容是物质特性，水的比热容大用于冷却与取暖。易错：同质量水与油吸热相同温升相同——水升温更小。' },
+    { t: '热量计算', d: 'Q=cmΔt，吸放热看温度变化方向。易错：Δt 与摄氏温度值混淆，把 25℃ 当成 Δt。' },
+    { t: '热值', d: '热值是燃料完全燃烧的特性，Q=mq 与质量无关。易错：燃料越高质量越大误推热值越大。' },
+    { t: '热机效率', d: '四冲程内燃机一个工作循环曲轴转两圈做功一次，热机效率恒小于 100%。易错：汽油机压缩冲程末由火花塞点火。' },
+  ],
+  /* ---- 初中 · 力学 ---- */
+  'mass-density': [
+    { t: '质量及其属性', d: '质量是物体所含物质多少，不随形状、状态、位置改变。易错：宇航员到月球质量减小——质量不变变的是重力。' },
+    { t: '天平使用', d: '水平台上游码归零、左物右码、砝码由大到小。易错：游码未归零就调平衡螺母，读数偏大。' },
+    { t: '密度公式', d: 'ρ=m/V 是物质特性，与 m、V 大小无关。易错：一杯水倒掉一半说密度减半。' },
+    { t: '密度测量', d: '量筒读数视线平凹液面底部，排水法测不规则体积。易错：先测体积再测质量，物体带水使质量偏大。' },
+  ],
+  'force-concept': [
+    { t: '力的概念', d: '力是物体对物体的作用，物体间力的作用是相互的。易错：认为只有接触才有力——磁铁隔空吸引。' },
+    { t: '力的作用效果', d: '力改变物体的运动状态或形状，三要素影响效果。易错：推门推在门轴附近费劲，说明作用点影响效果。' },
+    { t: '弹力与测力计', d: '发生弹性形变产生弹力，弹簧测力计在弹性限度内刻度均匀。易错：超过弹性限度后读数不准仍继续用。' },
+    { t: '重力', d: 'G=mg，g=9.8 N/kg，方向竖直向下，作用点在重心。易错：把「垂直向下」当重力方向，斜面题必错。' },
+  ],
+  'inertia': [
+    { t: '伽利略斜面推理', d: '阻力越小滑得越远，推理出无阻力将永远运动——实验加推理的典范。易错：认为这是可以直接验证的实验。' },
+    { t: '牛顿第一定律', d: '不受力时静止的保持静止、运动的保持匀速直线运动。易错：把定律当成「不受任何力」的实际情形——它无法用实验直接验证。' },
+    { t: '惯性是属性', d: '一切物体任何时候都有惯性，只与质量有关。易错：刹车时说「受到惯性力」——惯性不是力。' },
+    { t: '惯性现象解释', d: '拍衣服灰尘、跳远助跑都是惯性利用，系安全带是防惯性危害。易错：物体运动状态改变时惯性消失的说法。' },
+  ],
+  'balance-force': [
+    { t: '二力平衡条件', d: '作用同一物体、大小相等、方向相反、同一直线，四条件缺一不可。易错：忽略「同一物体」，与相互作用力混淆。' },
+    { t: '平衡与相互作用', d: '平衡力同体、相互作用力异体。易错：桌面对书的支持力与书对桌面的压力说成平衡力。' },
+    { t: '合力计算', d: '同向相加、反向相减取大减小，方向与大力同。易错：两个力方向垂直时误用代数加减。' },
+    { t: '平衡状态', d: '静止或匀速直线运动都是平衡状态，受力必平衡。易错：认为只有静止才是平衡。' },
+  ],
+  'pressure': [
+    { t: '压强概念', d: 'p=F/S 表示压力的作用效果，单位帕斯卡。易错：把压力当压强，把重力直接当压力——水平面上才相等。' },
+    { t: '增大减小压强', d: '增大压力或减小受力面积可增大压强，书包宽带、铁轨枕木都是应用。易错：切去一半后压强变化分析，需分竖切横切。' },
+    { t: '液体压强', d: 'p=ρgh 只与深度密度有关，u 形管压强计探究。易错：h 是到液面的竖直深度，误用离底距离。' },
+    { t: '连通器与大气压', d: '连通器同种液体静止液面相平，托里拆利测出大气压约 760 mm 汞柱。易错：大气压随高度升高而减小记反。' },
+  ],
+  'buoyancy': [
+    { t: '浮力产生原因', d: '物体上下表面液体压力差产生浮力，方向竖直向上。易错：桥墩底部与河床紧密接触不受浮力仍硬套公式。' },
+    { t: '阿基米德原理', d: 'F浮=G排=ρ液gV排，只与液体密度和排开体积有关。易错：物体浸没越深浮力越大——浸没后 V排 不变。' },
+    { t: '称重法测浮力', d: 'F浮=G−F示，弹簧测力计两次读数之差。易错：物体触底后仍用此式，示数已不反映浮力。' },
+    { t: '浮沉条件', d: '比较重力与浮力或物体与液体密度，漂浮悬浮浮沉各有序。易错：密度计原理是漂浮时 F浮=G，刻度上小下大。' },
+  ],
+  'work-power': [
+    { t: '做功两要素', d: '有力、沿力的方向移动距离，W=Fs。易错：提水桶水平走不做功——力竖直位移水平，二者垂直。' },
+    { t: '功的单位与估算', d: '1 J=1 N·m，爬楼做功约等于体重乘楼层高。易错：忽略自身重力的估算题失分。' },
+    { t: '功率概念', d: 'P=W/t 表示做功快慢，1 kW=1000 W。易错：做功多就是功率大——还要比时间。' },
+    { t: 'P=Fv 推导', d: '匀速直线运动中 P=Fv，机车速度越大牵引力越小。易错：汽车上坡换低速挡增大牵引力的原理不会用此式解释。' },
+  ],
+  'mech-energy': [
+    { t: '动能因素', d: '质量、速度越大动能越大，控制变量法探究。易错：同速大卡车与小汽车比动能，忽略质量差异。' },
+    { t: '重力势能因素', d: '质量、高度越大重力势能越大。易错：物体的重力势能是相对量，需先定零势能面。' },
+    { t: '弹性势能', d: '弹性形变越大弹性势能越大，拉弓射箭是转化实例。易错：超过弹性限度后不能恢复仍按弹性分析。' },
+    { t: '机械能转化', d: '动能与势能相互转化，只有重力弹力做功时总量守恒。易错：单摆最高点认为速度为零动能最大——最高点动能最小。' },
+  ],
+  'simple-machine': [
+    { t: '杠杆五要素', d: '支点、动力、阻力、动力臂、阻力臂，力臂是支点到力作用线的垂线段。易错：把力臂画成支点到作用点连线。' },
+    { t: '杠杆平衡条件', d: 'F₁L₁=F₂L₂，省力杠杆费力杠杆等臂杠杆各有用途。易错：认为省力杠杆一定省功——功不能省。' },
+    { t: '滑轮与滑轮组', d: '定滑轮变向不省力，动滑轮省一半力费距离，滑轮组 F=G/n。易错：n 数错——数与动滑轮相连的绳子段数。' },
+    { t: '机械效率', d: 'η=W有/W总 恒小于 1，额外功主要来自动滑轮重与摩擦。易错：认为机械效率与省力程度成正比。' },
+  ],
+  /* ---- 初中 · 电学 ---- */
+  'circuit-basic': [
+    { t: '两种电荷', d: '同斥异吸，摩擦起电不是创造电荷而是转移。易错：带电体吸引轻小物体误判为异种电荷吸引。' },
+    { t: '电流方向', d: '正电荷定向移动方向规定为电流方向，与电子移动方向相反。易错：金属中电流方向与自由电子移动方向混为一谈。' },
+    { t: '电路三状态', d: '通路、断路、短路，短路电流过大会烧坏电源。易错：电流表直接接电源两端造成短路。' },
+    { t: '电路图规范', d: '元件符号横平竖直、导线拐直角弯，先串后并布线。易错：开关闭合前电路已通，画图顺序不严谨。' },
+  ],
+  'series-parallel': [
+    { t: '串联特点', d: '电流处处相等 I=I₁=I₂，总电压等于各部分之和。易错：认为离电源正极近的灯更亮——串联电流相同。' },
+    { t: '并联特点', d: '各支路电压相等，干路电流等于支路之和。易错：拆除一条支路认为另一条也熄灭——互不影响。' },
+    { t: '电流表使用', d: '串联接入、正进负出、不超量程、绝不直连电源。易错：选 0-3 A 量程指针偏转过小仍不换小量程。' },
+    { t: '电压表使用', d: '并联在被测两端，内阻很大可视为断路。易错：电压表串联进电路后用电器不工作，误判为电源故障。' },
+  ],
+  'resistance-ohm': [
+    { t: '电阻概念', d: '导体对电流的阻碍作用，由材料长度横截面积温度决定。易错：由 R=U/I 认为电阻与电压成正比。' },
+    { t: '滑动变阻器', d: '靠改变接入电路的电阻丝长度调阻，「一上一下」接法。易错：同下或同上接法失效，滑片移动阻值不辨。' },
+    { t: '欧姆定律', d: 'I=U/R，导体电流与电压成正比与电阻成反比。易错：不同导体用同一 U 比较时公式套乱对象。' },
+    { t: '伏安法测电阻', d: '多次测量取平均值减小偶然误差，滑动变阻器保护电路。易错：测小灯泡电阻取平均——灯丝电阻随温度变，不可平均。' },
+  ],
+  'dynamic-circuit': [
+    { t: '识别结构', d: '电压表当断路摘除、电流表当导线短接，先还原本质电路。易错：不会摘表，一眼看不出串并联关系。' },
+    { t: '抓不变量', d: '电源电压与定值电阻阻值不变，滑片移动引发连锁变化。易错：把变的量当锚点，越推越乱。' },
+    { t: '极值与范围', d: '滑片两端对应电流电压最大最小值，注意电表量程限制。易错：忽略电流表量程约束，算出超量程答案。' },
+    { t: '故障分析', d: '断路处电压表有示数且等于电源电压，短路处电压表无示数。易错：两灯都不亮直接判电源坏，应先看电压表示数。' },
+  ],
+  'electric-power': [
+    { t: '电功与电能表', d: 'W=UIt，电能表计数器末位是小数，3000 r/kW·h 转盘参数会算功。易错：读数丢末位小数。' },
+    { t: '电功率公式', d: 'P=UI 普适，P=U²/R、P=I²R 用于纯电阻。易错：电动机等非纯电阻电路硬套 U²/R。' },
+    { t: '额定与实际', d: '额定电压下的功率是额定功率，实际电压变化时 P 实=U实²/U额²×P额。易错：灯泡两端电压减半认为功率减半——实为四分之一。' },
+    { t: '测小灯泡功率', d: '调节滑动变阻器使 U=U额，读电流算 P额。易错：把三次功率取平均值——额定功率只有一个。' },
+  ],
+  'joule-life': [
+    { t: '焦耳定律', d: 'Q=I²Rt 电流通过导体生热，纯电阻电路 Q=W。易错：非纯电阻电路用 W=UIt 算热量。' },
+    { t: '家庭电路组成', d: '火线零线 220 V，测电笔氖管发光判火线。易错：手不接触笔尾金属体测电笔不亮，误判零线带电。' },
+    { t: '保险与空开', d: '保险丝电阻率大熔点低串联在火线上，空气开关跳闸保护。易错：用铜丝替代保险丝——电流过大不熔断。' },
+    { t: '安全用电原则', d: '不接触低压带电体、不靠近高压带电体，三孔插座接地保护。易错：金属外壳电器不接地，漏电时外壳带电伤人。' },
+  ],
+  /* ---- 初中 · 磁与电磁 ---- */
+  'magnet-field': [
+    { t: '磁体性质', d: '磁体两端磁极磁性最强，N 极指向地理北极附近。易错：磁体中间部位磁性最强——中间几乎无磁性。' },
+    { t: '磁化', d: '铁棒被磁化后磁性易消失是软磁材料，钢是硬磁。易错：被磁化的铁钉能长期保持磁性。' },
+    { t: '磁感线', d: '体外 N 出 S 入，疏密表强弱，永不相交。易错：磁感线当成真实存在的线，实际是假想曲线。' },
+    { t: '地磁场', d: '地磁 N 极在地理南极附近，磁偏角由沈括最早记载。易错：小磁针静止时 N 极指地磁北极——指地理北极。' },
+  ],
+  'electromagnet': [
+    { t: '奥斯特实验', d: '通电导线周围存在磁场，首次揭示电与磁的联系。易错：导线南北放置小磁针偏转明显，东西放置不明显的原因不清。' },
+    { t: '安培定则', d: '右手握螺线管四指沿电流方向拇指指 N 极。易错：看图视角绕向判反，线圈正面电流向下却画 N 极在上。' },
+    { t: '电磁铁优点', d: '磁性有无由电流通断控制、强弱由电流大小控制、极性由电流方向控制。易错：改变匝数说成改变极性。' },
+    { t: '电磁继电器', d: '低压控制电路控制高压工作电路，本质是电磁铁控制的开关。易错：分不清控制电路与工作电路的回路。' },
+  ],
+  'motor-force': [
+    { t: '磁场对电流有力的作用', d: '通电导体在磁场中受力，方向与电流方向、磁场方向都有关。易错：同时改变电流与磁场方向认为受力方向不变——不变的条件是只换其一。' },
+    { t: '电动机原理', d: '通电线圈在磁场中受力转动，换向器每半周改变电流方向。易错：没有换向器线圈转到平衡位置会停住。' },
+    { t: '能量转化', d: '电动机消耗电能转化为机械能，与发电机互为逆过程。易错：把电动机模型当成发电机模型判断。' },
+    { t: '扬声器的原理', d: '通入交变电流的线圈在磁场中受力振动带动纸盆发声。易错：把扬声器原理与动圈式话筒混淆。' },
+  ],
+  'induction': [
+    { t: '电磁感应条件', d: '闭合电路的一部分导体在磁场中做切割磁感线运动。易错：导体平行于磁感线移动认为也产生感应电流。' },
+    { t: '感应电流方向', d: '与导体切割方向、磁场方向有关，右手定则判断。易错：左右手定则用混——电动机用左手、发电机用右手。' },
+    { t: '发电机原理', d: '电磁感应把机械能转化为电能，交流发电机输出交变电流。易错：能量方向记反。' },
+    { t: '电磁波常识', d: '电磁波传播不需要介质，真空中波速 3×10⁸ m/s，波长频率波速关系 c=λf。易错：声波与电磁波传播条件混淆。' },
+  ],
+  /* ---- 高中 · 力学 ---- */
+  'vectors': [
+    { t: '质点模型', d: '忽略大小形状、有质量的点，能否看成质点取决于研究问题的性质。易错：地球很大所以不能看成质点——研究公转时可以。' },
+    { t: '位移与路程', d: '位移是初末位置有向线段，路程是轨迹长度。易错：绕操场一周位移为零却答成 400 m。' },
+    { t: '平均与瞬时速度', d: '平均速度对应一段时间或位移，瞬时速度对应某时刻。易错：平均速度误用算术平均。' },
+    { t: '加速度', d: 'a=Δv/Δt 描述速度变化快慢，方向与 Δv 相同。易错：加速度减小认为速度减小——只要 a 与 v 同向仍加速。' },
+  ],
+  'interaction': [
+    { t: '重力与重心', d: 'G=mg，重心是重力的等效作用点，可在物体外。易错：重心一定在物体上——圆环重心在圆心。' },
+    { t: '胡克定律', d: 'F=kx 中 x 是形变量不是弹簧长度，k 由弹簧本身决定。易错：两弹簧串联并联后劲度系数不会求。' },
+    { t: '静摩擦与滑动摩擦', d: 'f=μF_N 只算滑动摩擦，静摩擦在 0 到最大值间随外力变化。易错：认为静摩擦力恒等于 μF_N。' },
+    { t: '受力分析顺序', d: '先重力再弹力后摩擦力，每画一个力都要找施力物体。易错：无中生力——画出找不到施力物体的力。' },
+  ],
+  'uniform-accel': [
+    { t: '三公式', d: 'v=v₀+at、x=v₀t+½at²、v²−v₀²=2ax 知三求二。易错：刹车类问题不看停车时间硬代公式，出现负速度。' },
+    { t: '比例结论', d: '初速为零的匀加速：连续相等时间位移比 1:3:5，1T、2T、3T 内位移比 1:4:9。易错：结论适用条件是初速为零，硬套到有初速问题。' },
+    { t: '中间时刻速度', d: '匀变速中 v_t/2=(v₀+v)/2 等于平均速度。易错：与位移中点速度 v_x/2 混淆，二者大小不同。' },
+    { t: '自由落体', d: '初速为零、加速度 g 的匀加速运动，h=½gt²。易错：轻重大小影响下落快慢的错误前概念。' },
+  ],
+  'motion-graph': [
+    { t: 'x-t 图', d: '斜率表示速度，交点表示相遇。易错：把 x-t 图的折点当成曲线运动——直线运动图像不是轨迹。' },
+    { t: 'v-t 图', d: '斜率表示加速度，面积表示位移，交点是速度相等。易错：v-t 图面积误当加速度。' },
+    { t: '图像转换', d: '同一运动可在不同图像间转换，先写出解析式再画图。易错：不写解析式凭感觉描点。' },
+    { t: '追及相遇临界', d: '速度相等时距离极值：追上前最远、能否追上的判据。易错：不比较初速方向就套「速度相等最远」。' },
+  ],
+  'newton-laws': [
+    { t: '第一定律', d: '力不是维持运动的原因而是改变运动状态的原因。易错：亚里士多德前概念「不推就停」卷土重来。' },
+    { t: '第二定律', d: 'F=ma 中 F 是合外力，各物理量同单位制。易错：把某个分力当合力代入，或漏掉摩擦力。' },
+    { t: '第三定律', d: '作用力与反作用力等大反向共线、分别作用在两个物体上。易错：认为大力压小力——相互作用力永远等大。' },
+    { t: '两类基本问题', d: '已知力求运动用运动学公式，已知运动反求力先求加速度。易错：不画受力图直接列式。' },
+  ],
+  'newton-apply': [
+    { t: '超重失重', d: '视重大小看加速度方向，与速度方向无关。易错：上升过程全超重——减速上升是失重。' },
+    { t: '完全失重', d: 'a=g 竖直向下时内部无弹力，水杯倒置水不流出。易错：完全失重时认为重力消失——重力仍存在。' },
+    { t: '连接体处理', d: '整体法求加速度（外力）、隔离法求内力，两法交替。易错：整体法时把内力也画进去。' },
+    { t: '板块模型', d: '先判断相对滑动趋势，摩擦力方向突变是分段关键。易错：全程用同一摩擦力方向分析。' },
+  ],
+  'work-energy': [
+    { t: '恒力做功', d: 'W=Flcosα，α 是力与位移夹角。易错：把位移与力垂直方向上的分力也计功。' },
+    { t: '正负功与摩擦力', d: '摩擦力可做正功、负功或不做功，看它与位移方向夹角。易错：认为摩擦力一定做负功。' },
+    { t: '动能定理', d: 'W合=ΔEk 对任何路径成立，曲线运动首选。易错：分段列式忘记合并所有力做功。' },
+    { t: '机车启动', d: '恒定功率阶段 P=Fv 牵引力渐减、加速度渐减直至匀速。易错：匀速时 F=f 但误用 P=fv²。' },
+  ],
+  'energy-conserve': [
+    { t: '机械能守恒条件', d: '只有重力或弹力做功，其他力不做功或做功代数和为零。易错：有其他力存在就断定不守恒——看它是否做功。' },
+    { t: '功能关系', d: '重力做功改重力势能、合外力做功改动能、除重力外做功改机械能。易错：三种功能关系张冠李戴。' },
+    { t: '能量守恒', d: '能量不会凭空消灭与创生，转化与转移守恒。易错：认为能量守恒所以永动机可行。' },
+    { t: '链条滑轨模型', d: '链条过桌边、滑块沿曲面下滑用守恒列式，注意重心变化。易错：链条重心位置算错一半长度。' },
+  ],
+  'curve-motion': [
+    { t: '曲线运动条件', d: '合力与速度不在同一直线，指向轨迹凹侧。易错：受恒力必做直线运动——平抛就是反例。' },
+    { t: '平抛运动', d: '水平匀速 x=v₀t、竖直自由落体 y=½gt²，t 由高度决定。易错：飞行时间误认为与初速有关。' },
+    { t: '圆周运动描述', d: '线速度角速度周期 v=ωr，同轴转动角速度相同。易错：皮带传动认为角速度相同——线速度相同。' },
+    { t: '向心力来源', d: '向心力是效果力，由某个力或其分力提供，F=mv²/r。易错：受力分析时额外画一个「向心力」。' },
+  ],
+  'gravitation': [
+    { t: '开普勒三定律', d: '椭圆轨道、面积定律、周期定律，第三定律 r³/T²=定值。易错：把椭圆轨道全按圆轨道处理而不作说明。' },
+    { t: '万有引力定律', d: 'F=GMm/r² 适用于两质点，g=GM/r² 随高度变化。易错：地表附近 g 与轨道处 g 不分。' },
+    { t: '天体质量计算', d: '环绕天体 GMm/r²=mv²/r 得 M=4π²r³/GT²。易错：中心天体质量与环绕天体速度混求。' },
+    { t: '宇宙速度', d: '第一 7.9 km/s、第二 11.2 km/s、第三 16.7 km/s。易错：发射速度与环绕速度概念混淆。' },
+  ],
+  'momentum': [
+    { t: '动量与冲量', d: 'p=mv 是矢量，I=Ft 是过程量，方向看力方向。易错：动量大小相同就认为动量相同——还有方向。' },
+    { t: '动量定理', d: 'I合=Δp，缓冲问题用延长作用时间减小冲击力。易错：忽略重力等恒力的冲量。' },
+    { t: '动量守恒条件', d: '系统合外力为零或内力远大于外力（碰撞爆炸）。易错：粗糙地面滑块碰撞瞬间忽略摩擦近似仍硬说守恒不指明条件。' },
+    { t: '三类碰撞', d: '弹性碰撞动量动能双守恒，非弹性有损失，完全非弹性共速损失最大。易错：能量损失上限不会推算。' },
+  ],
+  'mechanical-wave': [
+    { t: '简谐运动', d: 'F=−kx 回复力与位移成正比反向，单摆小角度近似简谐 T=2π√(L/g)。易错：摆角大时仍套单摆周期公式。' },
+    { t: '振动图像', d: 'x-t 图读振幅周期某时刻位移与速度方向。易错：把振动图像的横轴当成空间坐标。' },
+    { t: '波动图像', d: 'y-x 图是某时刻波形，「上下坡法」判质点振动方向。易错：波动与振动图像混读，周期与波长张冠李戴。' },
+    { t: '波的传播', d: '质点不随波迁移只在其平衡位置附近振动，v=λf。易错：认为质点随波「跑」到远处。' },
+  ],
+  'wave-optics': [
+    { t: '双缝干涉', d: '相干光源叠加，等间距明暗条纹 Δx=λL/d。易错：用两个独立灯泡做不出干涉——不满足相干条件。' },
+    { t: '薄膜干涉', d: '前后表面反射光叠加，检查平面平整度与增透膜原理。易错：增透膜厚度误取波长本身——取四分之一。' },
+    { t: '衍射', d: '孔或障碍物尺寸与波长相当才明显，「泊松亮斑」证明波动性。易错：认为衍射与直线传播绝对矛盾——条件不同。' },
+    { t: '偏振', d: '偏振证明光是横波，立体电影与偏光太阳镜应用。易错：认为纵波也能偏振。' },
+  ],
+  'thermodynamics': [
+    { t: '气体压强微观解释', d: '大量分子频繁碰撞器壁产生压强，与平均动能和密集程度有关。易错：单个分子碰撞说成产生压强。' },
+    { t: '理想气体方程', d: 'pV/T=恒量，等温等容等压三条等值线图像会辨析。易错：p-V 图上温度高低比较不会用双曲线判断。' },
+    { t: '第一定律', d: 'ΔU=W+Q，符号法则：W 正为外界做功 Q 正为吸热。易错：符号约定记反导致全盘错。' },
+    { t: '第二定律', d: '热量不能自发从低温到高温，第二类永动机不可行。易错：认为违背能量守恒才是永动机的唯一特征。' },
+  ],
+  /* ---- 高中 · 电场与电路 ---- */
+  'charge-field': [
+    { t: '库仑定律', d: 'F=kQ₁Q₂/r² 只适用于真空中两点电荷，与万有引力同构。易错：带电体不可视为点电荷时仍硬套。' },
+    { t: '电场强度', d: 'E=F/q 定义式普适，点电荷场 E=kQ/r²，方向看正电荷受力。易错：由定义式说 E 与 F 成正比。' },
+    { t: '电场线', d: '从正电荷出发到负电荷终止，疏密表强弱、切向表方向。易错：认为电场线是真实曲线或可以相交。' },
+    { t: '电场叠加', d: '矢量合成遵循平行四边形法则，对称处场可抵消。易错：只代大小不做矢量合成。' },
+  ],
+  'potential-diff': [
+    { t: '电势能', d: '电场力做正功电势能减少 W=−ΔEp，与重力势能类比。易错：正电荷在电势高处电势能大套用到负电荷。' },
+    { t: '电势', d: 'φ=Ep/q 相对零势点而言，沿电场线方向降低。易错：电势是矢量——电势是标量。' },
+    { t: '等势面', d: '等势面与电场线垂直，同一等势面移动电荷不做功。易错：等势面疏密与场强关系不会判断。' },
+    { t: '匀强电场', d: 'U=Ed 中 d 是沿场强方向距离，示波管与平行板问题基础。易错：把板间距离直接当 d——需投影到场强方向。' },
+  ],
+  'capacitor': [
+    { t: '电容器充放电', d: '充电储能不能充满瞬间完成，电容 C=Q/U 与 Q、U 无关。易错：由 C=Q/U 认为 C 与 Q 成正比。' },
+    { t: '平行板电容器', d: '决定式 C=εS/4πkd，改变 S、d、ε 的动态分析。易错：充电后断开电源与不断开两种情形混淆。' },
+    { t: '加速偏转', d: 'qU=½mv² 加速，偏转做类平抛 y=qUL²/2mdv₀²。易错：不同比荷粒子出射偏移量比较时公式代错。' },
+    { t: '示波管', d: '电子枪加速、竖直水平两对偏转板控制轨迹。易错：只加水平偏转电压误以为屏上出现水平线段。' },
+  ],
+  'dc-circuit': [
+    { t: '电动势', d: '电动势表征电源把其他能转为电能的本领，等于开路电压。易错：电动势与路端电压画等号——内阻分压。' },
+    { t: '闭合电路欧姆定律', d: 'I=E/(R+r)，路端电压 U=E−Ir 随 R 增大而增大。易错：外电路断路认为路端电压为零——等于 E。' },
+    { t: '电表改装', d: '小量程电流表串大电阻改电压表、并小电阻改电流表。易错：改装后量程计算漏掉原表内阻。' },
+    { t: '伏安法误差', d: '电流表内接测大电阻偏大、外接测小电阻偏小。易错：内外接判据 R临界 不会用试探法确定。' },
+  ],
+  /* ---- 高中 · 磁场与电磁感应 ---- */
+  'ampere-lorentz': [
+    { t: '安培力', d: 'F=BIL 适用垂直情形，左手定则判方向。易错：B 与导线不垂直时直接用 BIL 全值。' },
+    { t: '磁感应强度', d: 'B=F/IL 定义式反映磁场强弱，磁感线疏密表大小。易错：说 B 与 F 成正比。' },
+    { t: '洛伦兹力', d: 'F=qvB 方向用左手定则，永不做功只改方向。易错：粒子在磁场中速率变化——速率不变。' },
+    { t: '回旋半径', d: 'r=mv/qB、T=2πm/qB 与速度无关。易错：加速后认为周期变长。' },
+  ],
+  'compound-field': [
+    { t: '速度选择器', d: 'qE=qvB 时匀速直线通过，与电性无关。易错：粒子电性反了认为选择器失效——两力同时反向仍平衡。' },
+    { t: '质谱仪', d: '电场加速加磁场偏转测比荷与质量，r=mv/qB。易错：先加速公式与偏转半径公式串联时漏项。' },
+    { t: '回旋加速器', d: '交变电压周期等于回旋周期，最大动能由 D 形盒半径决定。易错：认为增大电压可提高最大动能。' },
+    { t: '叠加场分析', d: '复合场中先受力分析找平衡或圆心，等效重力场化繁为简。易错：三力并存时漏重力。' },
+  ],
+  'induction-law': [
+    { t: '磁通量', d: 'Φ=BS 有效面积投影，磁通量变化是感应条件。易错：线圈转 180° 磁通量变化算成零。' },
+    { t: '楞次定律', d: '感应电流的磁场总要阻碍磁通量变化——「增反减同」。易错：把「阻碍」理解成「阻止」。' },
+    { t: '来拒去留', d: '相对运动被阻碍是楞次定律的力学表现。易错：磁铁插入线圈时受引力方向判反。' },
+    { t: '等效电路', d: '产生感应电动势的导体相当于电源，内电路电流从负到正。易错：电源内部电流方向画成从正到负。' },
+  ],
+  'faraday-apply': [
+    { t: '法拉第定律', d: 'E=nΔΦ/Δt 求平均感应电动势，n 是匝数。易错：ΔΦ 与 Φ 混用，匝数 n 丢失。' },
+    { t: '切割公式', d: 'E=BLv 要求 B、L、v 两两垂直，有效长度找垂直分量。易错：导线与速度不垂直时硬代全长。' },
+    { t: '导线框进出磁场', d: '安培力做功全部转化为焦耳热，q=ΔΦ/R 求电量。易错：电量用瞬时电流积分的复杂思路而不知 q=ΔΦ/R。' },
+    { t: '双杆问题', d: '动量守恒与能量转化结合，最终状态共速或匀速。易错：无外力双杆最终状态判断错。' },
+  ],
+  'ac-circuit': [
+    { t: '正弦交流产生', d: '线圈匀速转动切割磁感线产生 e=Eₘsinωt，中性面磁通最大电动势为零。易错：认为中性面电动势最大。' },
+    { t: '四值区分', d: '峰值 Eₘ=nBSω，有效值按热效应定义，平均值用 ΔΦ/Δt。易错：保险丝熔断与电容耐压用错值——前者有效值后者峰值。' },
+    { t: '变压器', d: 'U₁/U₂=n₁/n₂ 电流反比，只变交流不变直流。易错：原线圈空载时仍按负载电流比计算。' },
+    { t: '远距离输电', d: '提高电压减小电流降低线路损耗 P损=I²R。易错：输电线损耗用输送功率算成 P损=P²R/U² 时 U 取输送电压。' },
+  ],
+  /* ---- 高中 · 近代物理 ---- */
+  'relativity': [
+    { t: '两条基本假设', d: '狭义相对性原理与光速不变原理是推理起点。易错：认为光速不变指相对光源速度不变。' },
+    { t: '时间膨胀', d: '运动的时钟变慢 Δt=Δτ/√(1−v²/c²)，高速旅行者更年轻。易错：把「看起来」与「实际发生」混淆。' },
+    { t: '长度收缩', d: '沿运动方向长度缩短 L=L₀√(1−v²/c²)。易错：垂直运动方向也收缩——不变。' },
+    { t: '质能方程', d: 'E=mc²，质速关系 m=m₀/√(1−v²/c²)。易错：质量随速度增大说成物质增多。' },
+  ],
+  'quantum-photo': [
+    { t: '光电效应规律', d: '存在截止频率、光电流与光强相关、响应瞬时。易错：用波动说解释瞬时性与截止频率。' },
+    { t: '爱因斯坦光电方程', d: 'Ekm=hν−W₀，遏止电压 eUc=Ekm。易错：增大光强认为最大初动能增大。' },
+    { t: '康普顿效应', d: '光子散射波长变长，进一步证实光的粒子性。易错：认为光子碰撞不遵守动量守恒。' },
+    { t: '物质波', d: 'λ=h/p 德布罗意波，宏观物体波长极短难观测。易错：电子干涉条纹说明电子是波而非粒子——是波粒二象。' },
+  ],
+  'atom-nucleus': [
+    { t: 'α 粒子散射', d: '绝大多数穿过、少数大角度偏转，否定了枣糕模型。易错：大角度偏转的原因说成电子吸引。' },
+    { t: '玻尔模型', d: '定态与能级、跃迁 hν=Em−En 只对光子吸收发射成立。易错：认为任意能量光子都能被吸收——须恰好等于能级差（电离除外）。' },
+    { t: '天然放射', d: 'α 粒子氦核、β 电子、γ 光子，三种射线穿透力与电离能力各异。易错：β 衰变电子说成核外电子逸出——来自核内中子转化。' },
+    { t: '半衰期', d: '统计概念由核自身决定，与温度压强化学状态无关。易错：用升温加速衰变。' },
+  ],
+  'nuclear-energy': [
+    { t: '核反应方程', d: '质量数与电荷数守恒配平，α 衰变 β 衰变方程会写。易错：β 衰变质量数不变但方程配错电子序数。' },
+    { t: '质量亏损', d: 'ΔE=Δmc²，质量亏损不违反质量守恒——总能量守恒。易错：认为质量亏损就是质量消失。' },
+    { t: '裂变与聚变', d: '重核裂变链式反应需临界体积，轻核聚变放能更多但需超高温。易错：太阳产能误答裂变——是聚变。' },
+    { t: '核能利用与防护', d: '反应堆控制棒吸收中子控速，放射性防护与半衰期管理。易错：控制棒作用说成吸收辐射。' },
+  ],
+};
+const CAT_LABEL = { sound: '声与波', optics: '光与透镜', heat: '热与能', mech: '力与运动', elec: '电学', magnet: '磁与电磁', modern: '近代物理' };
+
+
+/* 课标溯源：每环对应《义务教育物理课程标准（2022年版）》（义教2022，课程内容含物质、运动与相互作用、能量、实验探究等主题）与《普通高中物理课程标准（2017年版2020年修订）》（高中2017，必修 第一册/第二册/第三册，选择性必修1-3）。
+   v1 为结构级对照：page 仅标注模块或主题，不编页码。 */
+const CURRICULUM = {
+  /* ---- 初中 · 声与光 ---- */
+  'motion-speed':      { doc: '义教2022·运动和相互作用（机械运动：长度与时间的测量、速度）', page: '运动和相互作用', tag: 'std' },
+  'sound-origin':      { doc: '义教2022·能量（声：声音的产生与传播条件）', page: '能量·声', tag: 'std' },
+  'sound-character':   { doc: '义教2022·能量（声：声音的特性、噪声的危害与控制）', page: '能量·声', tag: 'std' },
+  'light-linear':      { doc: '义教2022·运动和相互作用（光：光的直线传播与光速）', page: '运动和相互作用', tag: 'std' },
+  'temperature':       { doc: '义教2022·能量（内能：温度、温度计的使用）', page: '能量·内能', tag: 'std' },
+  'phase-change':      { doc: '义教2022·能量（内能：六种物态变化及吸放热）', page: '能量·内能', tag: 'std' },
+  'reflection':        { doc: '义教2022·运动和相互作用（光：光的反射定律、平面镜成像）', page: '运动和相互作用', tag: 'std' },
+  'refraction':        { doc: '义教2022·运动和相互作用（光：光的折射、色散与看不见的光）', page: '运动和相互作用', tag: 'std' },
+  'lens':              { doc: '义教2022·运动和相互作用（光：透镜成像规律及眼睛与眼镜）', page: '运动和相互作用', tag: 'std' },
+  'mass-density':      { doc: '义教2022·物质（密度：质量、密度及其测量）', page: '物质·密度', tag: 'std' },
+  'circuit-basic':     { doc: '义教2022·能量（电：电荷、电路的构成与三种状态）', page: '能量·电', tag: 'std' },
+  'force-concept':     { doc: '义教2022·运动和相互作用（力：力的概念、弹力与重力）', page: '运动和相互作用', tag: 'std' },
+  'inertia':           { doc: '义教2022·运动和相互作用（力与运动：牛顿第一定律、惯性）', page: '运动和相互作用', tag: 'std' },
+  'balance-force':     { doc: '义教2022·运动和相互作用（力与运动：二力平衡与力的合成）', page: '运动和相互作用', tag: 'std' },
+  'pressure':          { doc: '义教2022·运动和相互作用（压强：固体压强、液体压强与大气压）', page: '运动和相互作用', tag: 'std' },
+  'buoyancy':          { doc: '义教2022·运动和相互作用（浮力：阿基米德原理与浮沉条件）', page: '运动和相互作用', tag: 'std' },
+  'work-power':        { doc: '义教2022·能量（功和能：功、功率）', page: '能量·功和能', tag: 'std' },
+  'mech-energy':       { doc: '义教2022·能量（功和能：动能、势能与机械能及其转化）', page: '能量·功和能', tag: 'std' },
+  'simple-machine':    { doc: '义教2022·能量（功和能：杠杆、滑轮与机械效率）', page: '能量·功和能', tag: 'std' },
+  'internal-energy':   { doc: '义教2022·能量（内能：分子动理论、内能与热传递）', page: '能量·内能', tag: 'std' },
+  'heat-engine':       { doc: '义教2022·能量（内能：比热容、热值与热机）', page: '能量·内能', tag: 'std' },
+  'series-parallel':   { doc: '义教2022·能量（电：电流、电压与串并联电路）', page: '能量·电', tag: 'std' },
+  'resistance-ohm':    { doc: '义教2022·能量（电：电阻、滑动变阻器与欧姆定律）', page: '能量·电', tag: 'std' },
+  'dynamic-circuit':   { doc: '义教2022·能量（电：欧姆定律在电路分析中的综合应用）', page: '能量·电', tag: 'std' },
+  'electric-power':    { doc: '义教2022·能量（电能：电功、电功率与额定实际功率）', page: '能量·电能', tag: 'std' },
+  'joule-life':        { doc: '义教2022·能量（电能：焦耳定律、家庭电路与安全用电）', page: '能量·电能', tag: 'std' },
+  'magnet-field':      { doc: '义教2022·运动和相互作用（电和磁：磁现象、磁场与地磁场）', page: '运动和相互作用', tag: 'std' },
+  'electromagnet':     { doc: '义教2022·运动和相互作用（电和磁：电流的磁场与电磁铁）', page: '运动和相互作用', tag: 'std' },
+  'motor-force':       { doc: '义教2022·运动和相互作用（电和磁：磁场对通电导体的作用、电动机）', page: '运动和相互作用', tag: 'std' },
+  'induction':         { doc: '义教2022·运动和相互作用（电和磁：电磁感应、发电机与电磁波）', page: '运动和相互作用', tag: 'std' },
+  /* ---- 高中 ---- */
+  'vectors':           { doc: '高中2017·必修1（运动的描述：质点、参考系、位移速度加速度）', page: '必修1', tag: 'std' },
+  'interaction':       { doc: '高中2017·必修1（相互作用：重力弹力摩擦力、力的合成与分解）', page: '必修1', tag: 'std' },
+  'uniform-accel':     { doc: '高中2017·必修1（匀变速直线运动的研究：规律与自由落体）', page: '必修1', tag: 'std' },
+  'motion-graph':      { doc: '高中2017·必修1（运动的描述与规律：x-t 与 v-t 图像、追及相遇）', page: '必修1', tag: 'std' },
+  'newton-laws':       { doc: '高中2017·必修1（运动和力的关系：牛顿三定律及应用）', page: '必修1', tag: 'std' },
+  'newton-apply':      { doc: '高中2017·必修1（运动和力的关系：超重失重、连接体与实验验证）', page: '必修1', tag: 'std' },
+  'work-energy':       { doc: '高中2017·必修2（机械能守恒定律：功、功率与动能定理）', page: '必修2', tag: 'std' },
+  'energy-conserve':   { doc: '高中2017·必修2（机械能守恒定律：机械能守恒与能量守恒）', page: '必修2', tag: 'std' },
+  'curve-motion':      { doc: '高中2017·必修2（抛体运动与圆周运动：平抛、圆周与向心力）', page: '必修2', tag: 'std' },
+  'gravitation':       { doc: '高中2017·必修2（万有引力与航天：定律、宇宙速度与卫星）', page: '必修2', tag: 'std' },
+  'momentum':          { doc: '高中2017·选择性必修1（动量守恒定律：动量、冲量与碰撞）', page: '选择性必修1', tag: 'std' },
+  'mechanical-wave':   { doc: '高中2017·选择性必修1（机械振动与机械波：简谐运动、波动图像）', page: '选择性必修1', tag: 'std' },
+  'wave-optics':       { doc: '高中2017·选择性必修1（光：干涉、衍射与偏振）', page: '选择性必修1', tag: 'std' },
+  'thermodynamics':    { doc: '高中2017·选择性必修3（热学：固体液体气体、热力学定律）', page: '选择性必修3', tag: 'std' },
+  'charge-field':      { doc: '高中2017·必修3（静电场：库仑定律、电场强度与电场线）', page: '必修3', tag: 'std' },
+  'potential-diff':    { doc: '高中2017·必修3（静电场：电势能、电势、电势差与等势面）', page: '必修3', tag: 'std' },
+  'capacitor':         { doc: '高中2017·必修3（静电场：电容器）与选择性必修1（带电粒子在电场中的运动）', page: '必修3', tag: 'std' },
+  'dc-circuit':        { doc: '高中2017·必修3（电路及其应用：闭合电路欧姆定律、电学实验）', page: '必修3', tag: 'std' },
+  'ampere-lorentz':    { doc: '高中2017·选择性必修2（磁场：安培力、洛伦兹力与带电粒子圆周运动）', page: '选择性必修2', tag: 'std' },
+  'compound-field':    { doc: '高中2017·选择性必修2（磁场：带电粒子在复合场中的运动）', page: '选择性必修2', tag: 'std' },
+  'induction-law':     { doc: '高中2017·选择性必修2（电磁感应：楞次定律与磁通量变化）', page: '选择性必修2', tag: 'std' },
+  'faraday-apply':     { doc: '高中2017·选择性必修2（电磁感应：法拉第定律与导体棒模型）', page: '选择性必修2', tag: 'std' },
+  'ac-circuit':        { doc: '高中2017·选择性必修2（交变电流：正弦交流、变压器与远距离输电）', page: '选择性必修2', tag: 'std' },
+  'relativity':        { doc: '高中2017·选择性必修2（电磁振荡与电磁波）与必修3（相对论初步）', page: '必修3', tag: 'std' },
+  'quantum-photo':     { doc: '高中2017·选择性必修3（原子与原子核：光电效应、波粒二象性）', page: '选择性必修3', tag: 'std' },
+  'atom-nucleus':      { doc: '高中2017·选择性必修3（原子与原子核：玻尔模型、放射性与核反应）', page: '选择性必修3', tag: 'std' },
+  'nuclear-energy':    { doc: '高中2017·选择性必修3（原子与原子核：核能与粒子物理常识）', page: '选择性必修3', tag: 'std' },
+};
+
+/* 过关判据：一句话可检验「学会了」，写动作与量化标准 */
+const PASS = {
+  'motion-speed':      '能用刻度尺停表完成一次测量并正确估读，会用 v=s/t 算平均速度且单位换算零错',
+  'sound-origin':      '能独立解释 3 个声现象（振动发声、真空不传声、回声测距），声速与光速大小分清',
+  'sound-character':   '听到一段声音能同时说出音调、响度、音色由什么决定，并能指出噪声控制的具体环节',
+  'light-linear':      '能用光的直线传播解释影子、日食、小孔成像，小孔成像像的性质判断零错',
+  'temperature':       '会规范使用实验室温度计与体温计，能指出两者读数规则的差异',
+  'phase-change':      '给出任意生活场景（雾、霜、白气、冰花）能在 30 秒内说全物态变化名称与吸放热',
+  'reflection':        '会按定律完成反射作图与平面镜像点作图，镜面反射与漫反射辨析零错',
+  'refraction':        '会画空气与水之间斜射的折射光路，能解释池水变浅并判断叉鱼方向',
+  'lens':              '能背出成像规律口诀并对 u、f 变化快速判断像的性质，近视远视矫正镜片不混',
+  'mass-density':      '会用天平量筒测小石块密度并写出表达式，密度是物质特性的辨析题零错',
+  'circuit-basic':     '能识别通路断路短路，会画规范电路图并判断串联并联',
+  'force-concept':     '会对静止物体画完整受力图，重力方向、重心位置、力的示意图三项全对',
+  'inertia':           '能用「实验+推理」结构复述牛顿第一定律来历，惯性现象解释不出现「惯性力」说法',
+  'balance-force':     '能区分平衡力与相互作用力（同体异体），二力平衡四条件默写零错',
+  'pressure':          '会用 p=F/S 与 p=ρgh 各算 3 题，h 的含义与增大减小压强实例归类全对',
+  'buoyancy':          '会用四种方法求浮力并在具体题中选对，浸没后深度增加浮力不变判断零错',
+  'work-power':        '能判断三种「不做功」情形，会用 W=Fs、P=W/t、P=Fv 各完成一道综合题',
+  'mech-energy':       '能对滚摆、单摆、蹦床逐段写出能量转化路径，并指出机械能不守恒的条件',
+  'simple-machine':    '会画力臂并用杠杆平衡条件计算，会数滑轮组绳段数 n 并测机械效率',
+  'internal-energy':   '能区分温度、热量、内能三个概念，举出做功与热传递各两例',
+  'heat-engine':       '会用 Q=cmΔt、Q=mq 计算，说出内燃机四冲程与能量转化方向',
+  'series-parallel':   '能快速判断串并联并预测摘掉一灯另一灯的亮暗，电流表电压表接法零错',
+  'resistance-ohm':    '会用伏安法测电阻并说明滑动变阻器作用，欧姆定律「同一导体同一时刻」原则不破',
+  'dynamic-circuit':   '滑片移动或开关切换的动态电路，能按「摘表—抓不变量—逐级推」三步在 3 分钟内得出结论',
+  'electric-power':    '会区分额定与实际功率，能读电能表算电费与实际功率',
+  'joule-life':        '会用焦耳定律算热，家庭电路故障（跳闸、测电笔）排查思路完整，安全原则默写零错',
+  'magnet-field':      '会画条形磁铁与蹄形磁铁磁感线，地磁场与地理两极关系表述零错',
+  'electromagnet':     '会用安培定则判螺线管 N/S 极，电磁铁三控（有无、强弱、极性）各举一例',
+  'motor-force':       '能说清电动机能量转化与换向器作用，通电导体受力方向判断零错',
+  'induction':         '能完整说出产生感应电流的条件（闭合、部分、切割），发电机能量方向与电动机不混',
+  'vectors':           '位移与路程、平均与瞬时速度四组概念各举一例，会算加速度并判断加速减速',
+  'interaction':       '会对斜面上物体画三力受力图，静摩擦大小方向会随外力分析',
+  'uniform-accel':     '三大公式各写一遍并完成「知三求二」典型题，刹车问题不出现负速度解',
+  'motion-graph':      '给出 v-t 图能读出加速度、位移并写出运动故事线，追及问题抓住速度相等时刻',
+  'newton-laws':       '会用整体法与隔离法各解一道连接体题，作用力反作用力与平衡力辨析零错',
+  'newton-apply':      '会判断超失重并计算视重，板块模型能分段分析摩擦力方向突变',
+  'work-energy':       '动能定理能处理直线与曲线两类问题，机车恒功率启动两阶段过程说清',
+  'energy-conserve':   '能准确说出机械能守恒条件并用功能关系解释三种「力做功改三种能」',
+  'curve-motion':      '平抛会分解求时间与射程，圆周问题能指出向心力由谁提供（绳、轨、重力分量）',
+  'gravitation':       '会用「万有引力=向心力」求天体质量与轨道速度，三个宇宙速度数值零错',
+  'momentum':          '会判定动量守恒条件并用其解碰撞题，弹性与非弹性碰撞的能量账算清',
+  'mechanical-wave':   '单摆周期公式使用条件明确，会从波动图读波长并配合 v=λf 求周期',
+  'wave-optics':       '能区分干涉与衍射的条件与条纹特征，说出偏振说明光是横波的推理',
+  'thermodynamics':    '会用 ΔU=W+Q 做符号判断，p-V 图等温线温度高低比较零错',
+  'charge-field':      '会用库仑定律与点电荷场强公式，两条电场线不会相交的推理说得清',
+  'potential-diff':    '会判断电势高低与电势能变化，匀强电场 U=Ed 中 d 取投影方向',
+  'capacitor':         '会分析「断电不断电」两类平行板动态问题，类平抛偏移量公式独立推导',
+  'dc-circuit':        '会用闭合电路欧姆定律分析路端电压，伏安法内外接选择依据说得清',
+  'ampere-lorentz':    '左手定则应用零错，会推 r=mv/qB 并说明周期与速度无关',
+  'compound-field':    '速度选择器、质谱仪、回旋加速器三模型的受力与工作流程能各画一张简图',
+  'induction-law':     '会用楞次定律四步法判感应电流方向，「阻碍变化」与「阻止变化」辨析零错',
+  'faraday-apply':     '会分别用 nΔΦ/Δt 与 BLv 求平均与瞬时电动势，会用 q=ΔΦ/R 求电量',
+  'ac-circuit':        '峰值、有效值、平均值、瞬时值四种值的应用场景归类全对，变压器电流比不倒',
+  'relativity':        '能说出两条基本假设并用它们解释时间膨胀，质能方程各字母含义零错',
+  'quantum-photo':     '会用光电方程求最大初动能与截止频率，增大光强不改最大初动能判断零错',
+  'atom-nucleus':      '能复述散射实验结论与玻尔跃迁公式，三种射线的本质与贯穿力排序零错',
+  'nuclear-energy':    '会配平核反应方程，能算质量亏损对应的释放能量并说明裂变聚变区别',
+};
+
+/* 典型案例：链上最有代表性的「从现象到方法」样本 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'dynamic-circuit': { title: '滑动变阻器一拉到底：动态电路的三步分析法',
+    text: '滑动变阻器滑片向右移动，电压表电流表示数如何变？死记「反着变」必翻车。三步走：第一步摘表还原——电压表当断路摘掉、电流表当导线短接，看清 R₁ 与滑动变阻器是串联；第二步抓不变量——电源电压 U、定值电阻 R₁ 不变；第三步逐级推——滑片右移 R↑ → 总电阻↑ → 电流 I=U/R总↓ → U₁=IR₁↓ → 滑动变阻器分压 U滑=U−U₁↑。每一步只有一个量在变，链条不会断。学生最常见的错是拿变的量当锚点越推越乱：记住「不变的才是抓手」，动态电路就成了送分题。' },
+  'compound-field': { title: '示波管里的三重奏：加速、偏转与复合场等效',
+    text: '带电粒子从静止出发：先经电压 U₁ 加速，qU₁=½mv² 求出进入偏转电场的速度；再进长 L、电压 U₂ 的平行板做类平抛，竖直方向 y=qU₂L²/2mdv₀²——联立后比荷 q/m 被约掉，所有粒子出射方向相同，这就是示波管不去管电子电量的原因。若再加垂直磁场，qE=qvB 二力平衡处粒子直线穿过（速度选择器），不平衡处偏转（质谱仪），圆心与半径由 B 决定（r=mv/qB）。复合场题千变万化，但入口永远是同一句：先受力，再定运动——平衡、圆周还是类平抛，由合力的性质决定，而不是由场的名字决定。' },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口；学段深链 v1 先用总入口，抓取验证后回填） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_jun: { name: '智慧教育·初中物理', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bec67a-54e6-11ed-9c34-850ba61fa9f4%2Fe7bbcfee-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·高中物理', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2Fe7bbcfee-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2F5036342972', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部教育考试院', url: 'https://www.neea.edu.cn', note: '官方考试信息' },
+};
+/* ============ 主干环 NODES：57 环（初中 30 + 高中 27），prev/next 双向依赖 ============ */
+const NODES = {
+/* ================= 初中 · 声与光 ================= */
+'motion-speed': { title: '长度时间测量与机械运动', stage: 'junior', cat: 'mech', diff: 1.1, hot: false,
+  fact: '刻度尺测长度、停表测时间，物体位置随时间变化叫机械运动——一切物理量的测量从这里起步。',
+  prev: [], next: ['sound-origin', 'light-linear', 'mass-density'],
+  lecture: [ {name:'长度与时间测量·机械运动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'测量与运动练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'sound-origin': { title: '声音的产生与传播', stage: 'junior', cat: 'sound', diff: 1.0, hot: false,
+  fact: '声由物体振动产生，靠介质传播，真空不能传声；15℃空气中声速约 340 m/s。',
+  prev: ['motion-speed'], next: ['sound-character', 'temperature'],
+  lecture: [ {name:'声音的产生与传播', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'声现象基础练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'sound-character': { title: '声音的特性、噪声与超声次声', stage: 'junior', cat: 'sound', diff: 1.7, hot: false,
+  fact: '音调由频率决定、响度由振幅决定、音色由发声体本身决定；从物理、环保、接收三个角度控制噪声。',
+  prev: ['sound-origin'], next: [],
+  lecture: [ {name:'声音的特性与噪声控制', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'声特性辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'light-linear': { title: '光的直线传播', stage: 'junior', cat: 'optics', diff: 1.3, hot: false,
+  fact: '光在同种均匀介质中沿直线传播，光速在真空中约 3×10⁸ m/s；影子、日食、小孔成像皆由此而来。',
+  prev: ['motion-speed'], next: ['reflection'],
+  lecture: [ {name:'光的直线传播', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'光直线传播练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'temperature': { title: '温度与温度计', stage: 'junior', cat: 'heat', diff: 1.2, hot: false,
+  fact: '温度表示物体冷热程度，摄氏温度以标准大气压下冰水混合物 0℃、沸水 100℃ 定标，温度计使用先估后测。',
+  prev: ['sound-origin'], next: ['phase-change'],
+  lecture: [ {name:'温度与温度计', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'温度计读数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'phase-change': { title: '物态变化', stage: 'junior', cat: 'heat', diff: 2.6, hot: true,
+  fact: '熔化凝固、汽化液化、升华凝华六种物态变化，吸放热方向与晶体非晶体熔点辨析是中考实验高频点。',
+  prev: ['temperature'], next: ['internal-energy'],
+  lecture: [ {name:'物态变化全景', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'物态变化辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'reflection': { title: '光的反射与平面镜成像', stage: 'junior', cat: 'optics', diff: 1.9, hot: false,
+  fact: '反射角等于入射角，法线是角平分线；平面镜成等大正立的虚像，像物关于镜面对称。',
+  prev: ['light-linear'], next: ['refraction'],
+  lecture: [ {name:'光的反射与平面镜', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'反射定律作图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'refraction': { title: '光的折射与色散', stage: 'junior', cat: 'optics', diff: 2.4, hot: false,
+  fact: '光从空气斜入水中折射角小于入射角；白光经三棱镜分解为七色光，红外线紫外线是不可见光。',
+  prev: ['reflection'], next: ['lens'],
+  lecture: [ {name:'光的折射与色散', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'折射作图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'lens': { title: '透镜成像及其应用', stage: 'junior', cat: 'optics', diff: 3.0, hot: true,
+  fact: '凸透镜成像规律「一倍焦距分虚实、二倍焦距分大小」，照相机、投影仪、放大镜三种应用对应三种像。',
+  prev: ['refraction'], next: [],
+  lecture: [ {name:'透镜成像规律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'成像规律判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 力学主线 ================= */
+'mass-density': { title: '质量与密度', stage: 'junior', cat: 'mech', diff: 2.5, hot: true,
+  fact: '质量是物体所含物质的多少，密度 ρ=m/V 是物质特性；天平与量筒配合测密度是必考实验。',
+  prev: ['motion-speed'], next: ['circuit-basic', 'force-concept', 'buoyancy'],
+  lecture: [ {name:'质量与密度', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'密度测量实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'circuit-basic': { title: '电荷与电路', stage: 'junior', cat: 'elec', diff: 2.7, hot: false,
+  fact: '同种电荷相斥、异种电荷相吸；电路四要素电源、用电器、开关、导线，通路断路短路三种状态。',
+  prev: ['mass-density'], next: ['series-parallel', 'electromagnet', 'charge-field'],
+  lecture: [ {name:'电荷与电路', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'电路识别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'force-concept': { title: '力、弹力与重力', stage: 'junior', cat: 'mech', diff: 2.8, hot: false,
+  fact: '力是物体对物体的作用，力的三要素大小方向作用点；重力 G=mg 方向竖直向下，弹簧测力计测力。',
+  prev: ['mass-density'], next: ['inertia', 'magnet-field', 'interaction'],
+  lecture: [ {name:'力、弹力与重力', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'力的示意作图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'inertia': { title: '牛顿第一定律与惯性', stage: 'junior', cat: 'mech', diff: 3.1, hot: false,
+  fact: '一切物体在不受力时保持静止或匀速直线运动状态；惯性是物体固有属性，只与质量有关。',
+  prev: ['force-concept'], next: ['balance-force', 'newton-laws', 'mechanical-wave'],
+  lecture: [ {name:'牛顿第一定律与惯性', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'惯性现象解释练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'balance-force': { title: '二力平衡与合力', stage: 'junior', cat: 'mech', diff: 3.4, hot: false,
+  fact: '同体、等大、反向、共线的两个力彼此平衡；同一直线上二力合成同向相加、反向相减。',
+  prev: ['inertia'], next: ['pressure', 'vectors', 'newton-apply', 'curve-motion'],
+  lecture: [ {name:'二力平衡条件', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'平衡受力分析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pressure': { title: '压强', stage: 'junior', cat: 'mech', diff: 3.7, hot: true,
+  fact: 'p=F/S 表示压力作用效果，液体压强 p=ρgh 随深度增加，大气压强托里拆利实验约 1.013×10⁵ Pa。',
+  prev: ['balance-force'], next: ['buoyancy'],
+  lecture: [ {name:'固体液体与大气压强', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'压强计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'buoyancy': { title: '浮力与浮沉条件', stage: 'junior', cat: 'mech', diff: 3.9, hot: true,
+  fact: '阿基米德原理 F浮=ρ液gV排；物体浮沉取决于重力与浮力的比较，漂浮悬浮时二力平衡。',
+  prev: ['pressure', 'mass-density'], next: ['work-power'],
+  lecture: [ {name:'浮力与阿基米德原理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'浮力综合计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'work-power': { title: '功与功率', stage: 'junior', cat: 'mech', diff: 4.0, hot: false,
+  fact: '做功两要素有力且沿力方向移动距离，W=Fs、P=W/t；有力无距离、力与距离垂直都不做功。',
+  prev: ['buoyancy'], next: ['mech-energy', 'work-energy'],
+  lecture: [ {name:'功与功率', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'功功率计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'mech-energy': { title: '动能、势能与机械能转化', stage: 'junior', cat: 'mech', diff: 4.1, hot: false,
+  fact: '动能看质量与速度，重力势能看质量与高度，弹性势能看形变；滚摆与单摆展示动能势能相互转化。',
+  prev: ['work-power'], next: ['simple-machine', 'energy-conserve', 'gravitation', 'momentum'],
+  lecture: [ {name:'动能势能与机械能', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'能量转化分析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'simple-machine': { title: '杠杆、滑轮与机械效率', stage: 'junior', cat: 'mech', diff: 4.2, hot: true,
+  fact: '杠杆平衡条件 F₁L₁=F₂L₂，定滑轮变向省力滑轮组省力费距离；机械效率 η=W有/W总 恒小于 1。',
+  prev: ['mech-energy'], next: [],
+  lecture: [ {name:'杠杆滑轮与机械效率', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'杠杆作图与效率测算', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'internal-energy': { title: '内能与热传递', stage: 'junior', cat: 'heat', diff: 3.3, hot: false,
+  fact: '物体内所有分子动能与分子势能总和为内能，改变内能两条路：热传递与做功，一切物体都有内能。',
+  prev: ['phase-change'], next: ['heat-engine'],
+  lecture: [ {name:'内能与热传递', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'内能概念辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'heat-engine': { title: '比热容、热值与热机', stage: 'junior', cat: 'heat', diff: 3.6, hot: false,
+  fact: '比热容 c 反映吸放热能力，Q=cmΔt；燃料热值算放热，四冲程内燃机做功冲程将内能转为机械能。',
+  prev: ['internal-energy'], next: ['thermodynamics'],
+  lecture: [ {name:'比热容与热机', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'热量计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 电学主线 ================= */
+'series-parallel': { title: '电流、电压与串并联电路', stage: 'junior', cat: 'elec', diff: 3.9, hot: false,
+  fact: '串联电路电流处处相等、电压按电阻分配；并联电压相等、电流按支路分配；电流表串联电压表并联。',
+  prev: ['circuit-basic'], next: ['resistance-ohm', 'potential-diff'],
+  lecture: [ {name:'电流电压与串并联', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'串并联识别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'resistance-ohm': { title: '电阻与欧姆定律', stage: 'junior', cat: 'elec', diff: 4.4, hot: true,
+  fact: '电阻由材料长度横截面积决定，滑动变阻器靠改变接入长度调阻；欧姆定律 I=U/R 是电学核心。',
+  prev: ['series-parallel'], next: ['dynamic-circuit', 'capacitor', 'atom-nucleus'],
+  lecture: [ {name:'电阻与欧姆定律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'欧姆定律计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'dynamic-circuit': { title: '动态电路分析与电学测算', stage: 'junior', cat: 'elec', diff: 4.6, hot: true,
+  fact: '滑片移动或开关通断引起电路结构变化：先判串并联、再抓不变量（电源电压、定值电阻），逐级推出各表读数。',
+  prev: ['resistance-ohm'], next: ['electric-power', 'dc-circuit'],
+  lecture: [ {name:'动态电路分析', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'动态电路专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'electric-power': { title: '电功率与电能', stage: 'junior', cat: 'elec', diff: 4.7, hot: true,
+  fact: 'P=UI 是定义式，P=U²/R、P=I²R 用于纯电阻电路；额定功率与实际功率区分，电能表测家庭耗电。',
+  prev: ['dynamic-circuit'], next: ['joule-life'],
+  lecture: [ {name:'电功率与电能测量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'电功率综合练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'joule-life': { title: '焦耳定律与安全用电', stage: 'junior', cat: 'elec', diff: 4.8, hot: false,
+  fact: 'Q=I²Rt 说明电流热效应与电阻正比；家庭电路 220V，保险丝串联在火线上，不接触低压带电体。',
+  prev: ['electric-power'], next: ['dc-circuit', 'nuclear-energy'],
+  lecture: [ {name:'焦耳定律与家庭电路', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'家庭电路分析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 磁与电磁 ================= */
+'magnet-field': { title: '磁现象与磁场', stage: 'junior', cat: 'magnet', diff: 3.5, hot: false,
+  fact: '磁体两端磁性最强，磁感线从 N 极出 S 极入；地磁场使小磁针指南北，磁极间同名相斥异名相吸。',
+  prev: ['force-concept'], next: ['electromagnet'],
+  lecture: [ {name:'磁现象与磁场', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'磁感线作图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'electromagnet': { title: '电生磁与电磁铁', stage: 'junior', cat: 'magnet', diff: 4.5, hot: false,
+  fact: '奥斯特实验证明电流周围存在磁场，通电螺线管外磁场与条形磁铁相似，安培定则判磁极方向。',
+  prev: ['magnet-field', 'circuit-basic'], next: ['motor-force', 'ampere-lorentz'],
+  lecture: [ {name:'电生磁与电磁铁应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'安培定则判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'motor-force': { title: '磁场对电流的作用与电动机', stage: 'junior', cat: 'magnet', diff: 4.9, hot: false,
+  fact: '通电导体在磁场中受力运动，受力方向与电流方向、磁场方向有关；电动机把电能转化为机械能。',
+  prev: ['electromagnet'], next: ['induction', 'compound-field', 'induction-law'],
+  lecture: [ {name:'电动机原理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'电动机原理判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'induction': { title: '电磁感应与发电机', stage: 'junior', cat: 'magnet', diff: 5.0, hot: false,
+  fact: '闭合电路部分导体切割磁感线产生感应电流，发电机把机械能转化为电能，法拉第开启电气时代。',
+  prev: ['motor-force'], next: ['faraday-apply', 'ac-circuit', 'relativity', 'quantum-photo'],
+  lecture: [ {name:'电磁感应与发电机', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'感应电流判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+/* ================= 高中 · 力学体系 ================= */
+'vectors': { title: '质点、参考系与位移速度', stage: 'senior', cat: 'mech', diff: 4.0, hot: false,
+  fact: '质点是理想化模型，位移是矢量路程是标量；速度 v=Δx/Δt 区分平均与瞬时，加速度描述速度变化快慢。',
+  prev: ['balance-force'], next: ['interaction', 'uniform-accel', 'mechanical-wave', 'charge-field', 'ampere-lorentz'],
+  lecture: [ {name:'质点参考系与矢量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'矢量标量辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'interaction': { title: '重力、弹力、摩擦力与受力分析', stage: 'senior', cat: 'mech', diff: 4.2, hot: false,
+  fact: '胡克定律 F=kx 算弹力，静摩擦随外力变化有最大值；按重力弹力摩擦力顺序画受力图是解题基本功。',
+  prev: ['vectors', 'force-concept'], next: ['newton-laws'],
+  lecture: [ {name:'常见三种力与受力分析', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'受力分析作图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'uniform-accel': { title: '匀变速直线运动', stage: 'senior', cat: 'mech', diff: 4.4, hot: false,
+  fact: 'v=v₀+at、x=v₀t+½at²、v²−v₀²=2ax 三公式知三求二；中间时刻速度等于平均速度是常用巧解。',
+  prev: ['vectors'], next: ['motion-graph', 'capacitor'],
+  lecture: [ {name:'匀变速直线运动规律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'运动学公式计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'motion-graph': { title: '运动图像与追及相遇', stage: 'senior', cat: 'mech', diff: 4.5, hot: false,
+  fact: 'x-t 图斜率是速度、v-t 图斜率是加速度且面积是位移；追及相遇抓住速度相等这一临界时刻。',
+  prev: ['uniform-accel'], next: [],
+  lecture: [ {name:'运动图像与追及问题', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'图像信息提取练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'newton-laws': { title: '牛顿运动定律及其应用', stage: 'senior', cat: 'mech', diff: 4.8, hot: true,
+  fact: 'F=ma 连接受力与运动两条线索：已知力求运动、已知运动反求力；整体法与隔离法交替使用。',
+  prev: ['interaction', 'inertia'], next: ['newton-apply', 'work-energy', 'mechanical-wave'],
+  lecture: [ {name:'牛顿第二定律及应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'动力学综合练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'newton-apply': { title: '超重失重与连接体模型', stage: 'senior', cat: 'mech', diff: 5.1, hot: false,
+  fact: '加速度向上超重、向下失重、完全失重时视重为零；连接体问题用整体求加速度、隔离求内力。',
+  prev: ['newton-laws', 'balance-force'], next: ['curve-motion', 'momentum'],
+  lecture: [ {name:'超重失重与连接体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'板块与传送带模型练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'work-energy': { title: '功、功率与动能定理', stage: 'senior', cat: 'mech', diff: 5.0, hot: false,
+  fact: 'W=Flcosα 恒力做功，合力做功等于动能变化 W合=ΔEk；机车启动分恒定功率与恒定加速度两阶段。',
+  prev: ['newton-laws', 'work-power'], next: ['energy-conserve'],
+  lecture: [ {name:'功功率与动能定理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'动能定理应用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'energy-conserve': { title: '机械能守恒与能量守恒', stage: 'senior', cat: 'mech', diff: 5.3, hot: false,
+  fact: '只有重力弹力做功时机械能守恒；功能关系看「谁做功转化谁的能」，能量守恒是自然界普遍规律。',
+  prev: ['work-energy', 'mech-energy'], next: ['momentum'],
+  lecture: [ {name:'机械能守恒定律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'能量守恒综合练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'curve-motion': { title: '曲线运动、平抛与圆周运动', stage: 'senior', cat: 'mech', diff: 5.2, hot: false,
+  fact: '曲线运动速度沿切线方向必受合力；平抛分解为水平匀速与竖直自由落体，圆周运动 F=mv²/r 找向心力来源。',
+  prev: ['newton-apply', 'balance-force'], next: ['gravitation'],
+  lecture: [ {name:'平抛与圆周运动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'圆周临界问题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gravitation': { title: '万有引力与航天', stage: 'senior', cat: 'mech', diff: 5.5, hot: false,
+  fact: 'F=GMm/r² 与圆周运动结合得天体质量与密度，GM=gR² 黄金代换；第一宇宙速度 7.9 km/s。',
+  prev: ['curve-motion', 'mech-energy'], next: [],
+  lecture: [ {name:'万有引力与航天', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'天体运动计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'momentum': { title: '动量定理与动量守恒', stage: 'senior', cat: 'mech', diff: 5.9, hot: false,
+  fact: 'I=Ft=Δp 动量定理处理碰撞冲击问题，系统不受外力或外力矢量和为零时动量守恒，分一维对心三类碰撞。',
+  prev: ['energy-conserve', 'newton-apply', 'mech-energy'], next: [],
+  lecture: [ {name:'动量与动量守恒', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'碰撞模型计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'mechanical-wave': { title: '简谐运动与机械波', stage: 'senior', cat: 'sound', diff: 4.9, hot: false,
+  fact: '回复力 F=−kx 描述简谐运动，波动图像与振动图像互辨；波速波长频率关系 v=λf 不因介质改变频率。',
+  prev: ['newton-laws', 'vectors', 'inertia'], next: ['wave-optics', 'relativity'],
+  lecture: [ {name:'简谐运动与机械波', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'振动波动图像练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'wave-optics': { title: '光的干涉、衍射与偏振', stage: 'senior', cat: 'optics', diff: 5.0, hot: false,
+  fact: '双缝干涉等间距条纹证明光是波，薄膜干涉应用于检查平面；偏振说明光是横波，折射率测波长。',
+  prev: ['mechanical-wave'], next: ['quantum-photo'],
+  lecture: [ {name:'光的干涉与衍射', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'光学现象判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'thermodynamics': { title: '热力学定律与理想气体', stage: 'senior', cat: 'heat', diff: 4.8, hot: false,
+  fact: 'ΔU=W+Q 第一定律统一做功与热传递，第二定律指明方向性；理想气体状态方程 pV/T=恒量配套图像分析。',
+  prev: ['heat-engine'], next: [],
+  lecture: [ {name:'热力学定律与气体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'气体状态方程练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 电场与电路 ================= */
+'charge-field': { title: '库仑定律与电场强度', stage: 'senior', cat: 'elec', diff: 4.5, hot: false,
+  fact: 'F=kQ₁Q₂/r² 与万有引力形式同构；电场强度 E=F/q 描述场的力的性质，点电荷电场与电场线叠加。',
+  prev: ['vectors', 'circuit-basic'], next: ['potential-diff', 'atom-nucleus'],
+  lecture: [ {name:'库仑定律与电场', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电场强度计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'potential-diff': { title: '电势能、电势与电势差', stage: 'senior', cat: 'elec', diff: 4.9, hot: false,
+  fact: '电场力做功 W=−ΔEp，沿电场线电势降低；等势面与电场线垂直，U=Ed 适用于匀强电场。',
+  prev: ['charge-field', 'series-parallel'], next: ['capacitor'],
+  lecture: [ {name:'电势与电势差', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电势高低判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'capacitor': { title: '电容器与带电粒子在电场中的运动', stage: 'senior', cat: 'elec', diff: 5.2, hot: false,
+  fact: 'C=Q/U 决定式 εS/4πkd；带电粒子先加速后偏转类平抛，示波管是电场加速与偏转的经典组合。',
+  prev: ['potential-diff', 'uniform-accel', 'resistance-ohm'], next: ['compound-field'],
+  lecture: [ {name:'电容器与粒子偏转', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'示波管模型练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'dc-circuit': { title: '闭合电路欧姆定律与电学实验', stage: 'senior', cat: 'elec', diff: 5.1, hot: false,
+  fact: 'I=E/(R+r)，路端电压随外电阻增大而增大；伏安法测电阻内外接选择、滑动变阻器分压限流接法。',
+  prev: ['dynamic-circuit', 'joule-life'], next: [],
+  lecture: [ {name:'闭合电路与电学实验', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'测电源电动势实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 磁场与电磁感应 ================= */
+'ampere-lorentz': { title: '磁场、安培力与洛伦兹力', stage: 'senior', cat: 'magnet', diff: 4.7, hot: false,
+  fact: '左手定则判安培力 F=BIL 与洛伦兹力 F=qvB；洛伦兹力永不做功，带电圆周运动半径 r=mv/qB。',
+  prev: ['electromagnet', 'vectors'], next: ['compound-field'],
+  lecture: [ {name:'安培力与洛伦兹力', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'左手定则与圆周半径练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'compound-field': { title: '带电粒子在复合场中的运动', stage: 'senior', cat: 'magnet', diff: 5.6, hot: true,
+  fact: '电场磁场重力场叠加：速度选择器二力平衡、质谱仪测比荷、回旋加速器交变电压加速，先受力再定轨迹。',
+  prev: ['ampere-lorentz', 'capacitor', 'motor-force'], next: ['faraday-apply', 'relativity'],
+  lecture: [ {name:'复合场组合模型', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'质谱仪回旋加速器练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'induction-law': { title: '电磁感应与楞次定律', stage: 'senior', cat: 'magnet', diff: 5.4, hot: false,
+  fact: '「增反减同、来拒去留」判断感应电流方向，磁通量变化是感应产生的充要条件，等效电路先画出来。',
+  prev: ['motor-force'], next: ['faraday-apply', 'ac-circuit'],
+  lecture: [ {name:'楞次定律与感应电流', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'楞次定律方向判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'faraday-apply': { title: '法拉第电磁感应定律及应用', stage: 'senior', cat: 'magnet', diff: 5.7, hot: false,
+  fact: 'E=nΔΦ/Δt 求平均、E=BLv 求瞬时；导体棒切割的动力学与能量综合是高考压轴常客，安培力做功生热。',
+  prev: ['induction-law', 'compound-field', 'induction'], next: [],
+  lecture: [ {name:'法拉第定律与导体棒模型', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'导体棒能量综合练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ac-circuit': { title: '交变电流与变压器', stage: 'senior', cat: 'magnet', diff: 5.5, hot: false,
+  fact: '正弦交流峰值与有效值差 √2 倍，四值（峰、有、平、瞬）各有所用；理想变压器变压变流不变功率。',
+  prev: ['induction-law', 'induction'], next: [],
+  lecture: [ {name:'交流电与变压器', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'交流四值与远距离输电练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 近代物理 ================= */
+'relativity': { title: '狭义相对论初步', stage: 'senior', cat: 'magnet', diff: 6.1, hot: false,
+  fact: '光速不变与相对性两条原理推出时间膨胀长度收缩，质速关系与质能方程 E=mc² 改写质量能量观。',
+  prev: ['mechanical-wave', 'compound-field', 'induction'], next: ['quantum-photo'],
+  lecture: [ {name:'狭义相对论初步', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'时空相对性判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'quantum-photo': { title: '光电效应与波粒二象性', stage: 'senior', cat: 'modern', diff: 6.2, hot: false,
+  fact: '光电效应存在截止频率与瞬时性，爱因斯坦光子说 E=hν 一举解释；物质波让粒子也带波动性。',
+  prev: ['wave-optics', 'relativity', 'induction'], next: [],
+  lecture: [ {name:'光电效应与光子说', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'光电方程计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'atom-nucleus': { title: '原子结构与原子核', stage: 'senior', cat: 'modern', diff: 5.8, hot: false,
+  fact: 'α 粒子散射否定了枣糕模型，玻尔能级跃迁 hν=Em−En；天然放射现象 α β γ 三种射线贯穿性各异。',
+  prev: ['charge-field', 'resistance-ohm'], next: ['nuclear-energy'],
+  lecture: [ {name:'原子结构与核反应', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'能级跃迁计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'nuclear-energy': { title: '核能与粒子物理初步', stage: 'senior', cat: 'modern', diff: 6.3, hot: false,
+  fact: '质量亏损对应释放能量 ΔE=Δmc²，重核裂变与轻核聚变是两条产能路径，核反应方程守恒电荷数与质量数。',
+  prev: ['atom-nucleus', 'joule-life'], next: [],
+  lecture: [ {name:'核能与核反应方程', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'核反应配平练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

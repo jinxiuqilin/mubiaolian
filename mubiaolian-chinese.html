@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 全学段语文知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）语文知识目标站 —— 小学到高中语文主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#8c3a2f" />
+<meta property="og:title" content="目标链 · 全学段语文知识目标站" />
+<meta property="og:description" content="小学到高中语文主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-chinese.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M4.5 7c2.5-1.6 5-1.6 7.5 0v10.5C9.5 15.9 7 15.9 4.5 17.5zM19.5 7c-2.5-1.6-5-1.6-7.5 0v10.5c2.5-1.6 5-1.6 7.5 0z' fill='none' stroke='%23f6f7f4' stroke-width='1.4' stroke-linejoin='round'/></svg>" />
+<style>
+  :root {
+    --bg: #f4f6f2;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #8c3a2f;
+    --accent-deep: #6e2b22;
+    --accent-soft: #f6e8e4;
+    --pri: #3579c6;   /* 小学 */
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(140,58,47,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(53,121,198,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #a8544a); box-shadow: 0 3px 10px -2px rgba(140,58,47,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #4ea283 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.primary { border-top-color: var(--pri); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.primary .badge { color: var(--pri); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.primary:hover { border-color: var(--pri); border-top-color: var(--pri); box-shadow: 0 10px 26px -8px rgba(53,121,198,.45); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.primary { background: linear-gradient(150deg, #4b8cd4, var(--pri)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(53,121,198,.65); }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(36,79,65,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.primary { color: var(--pri); background: #e8f0fb; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(53,121,198,.06); border: 1px dashed rgba(53,121,198,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(140,58,47,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(140,58,47,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #4ea283); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(140,58,47,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #a8544a);
+    box-shadow: 0 8px 18px -8px rgba(140,58,47,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(140,58,47,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(140,58,47,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(140,58,47,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f2f7f4; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.primary .stage-tag { background: var(--pri); }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fafdfb, #f1f6f3);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-primary { --sub-c: var(--pri); --ring: rgba(52,120,196,.38); }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链语文站"><i class="subj-ico">文</i>语文</span>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">88 个主干环 · 352 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>全学段语文知识<span class="accent">目标链</span></h1>
+  <p>小学到高中语文主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/88</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：文言文翻译" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--pri)"></span>小学</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链语文站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">新课标Ⅰ卷 · 按板块人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链语文站 · 知识点数据（88 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：88 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { primary: '小学', junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 352 个 ============ */
+/* ============ 历年高考考情（新课标Ⅰ卷语文）：环id → {年份:[板块·考点]} ============
+ * 板块粒度（非逐题）。数据源：各年真题原文（eol/掌上高考，已探活）+ 教育部考试院官方评析
+ * （eol/chsi/人民网/浙江考试院转载）。人工整理，或有遗漏。 */
+const EXAM = {
+  'discourse-reading': {
+    2025: ['现代文Ⅰ·种植问答体科普（呼应教材《种树郭橐驼传》）'],
+    2024: ['现代文Ⅰ·毛泽东《论持久战》节选·「以一当十/以十当一」'],
+    2023: ['现代文Ⅰ·《后真相时代》·藜麦传闻与「竞争性真相」'],
+    2022: ['现代文Ⅰ·构建中国哲学社会科学+新诗旧诗之辨'],
+    2021: ['现代文Ⅰ·朱光潜《诗论》与钱锺书《读〈拉奥孔〉》对读·诗画异质'],
+  },
+  'practical-mixed': {
+    2025: ['现代文Ⅰ·实用问答体语料的提取与推断'],
+  },
+  'literary-fiction': {
+    2025: ['现代文Ⅱ·老舍《鼓书艺人》+《我为什么离开武汉》双文本'],
+    2022: ['现代文Ⅱ·冯至《江上》·伍子胥渡江、渔夫拒酬'],
+    2021: ['现代文Ⅱ·卞之琳《石门阵》·根据地军民故事'],
+  },
+  'literary-prose': {
+    2024: ['现代文Ⅱ·徐则臣《放牛记》·少年放牛往事与成长'],
+    2023: ['现代文Ⅱ·陈村《给儿子》·乡下记忆与代际对话'],
+  },
+  'classical-hard': {
+    2025: ['文言文·《左传》《列女传》《韩诗外传》《考信录》四则对读'],
+    2024: ['文言文·《资治通鉴》李陵事+王夫之《读通鉴论》史评对读'],
+    2023: ['文言文·《韩非子·难一》与《孔丛子·答问》双文本对读'],
+    2022: ['文言文·《战国策》·孟尝君为魏邀赵燕合纵救魏'],
+    2021: ['文言文·《通鉴纪事本末》·贞观君臣论治'],
+  },
+  'poem-g-image': {
+    2025: ['诗歌·王安石《元珍以诗送绿石砚》·酬赠唱和'],
+    2022: ['诗歌·魏了翁《醉落魄》·人日南山踏春祈愿'],
+    2021: ['诗歌·杨巨源《寄江州白司马》·劝勉友人'],
+  },
+  'poem-technique': {
+    2023: ['诗歌·林希逸《答友人论学》·说理诗的论学之趣'],
+  },
+  'poem-language': {
+    2024: ['诗歌·刘克庄《宿千岁庵听泉》·听泉之趣'],
+  },
+  'recitation-g': {
+    2025: ['默写·《师说》《鹊桥仙》+看图画补写诗句（情境式）'],
+    2024: ['默写·《屈原列传》《归园田居》《燕歌行》'],
+    2023: ['默写·《报任安书》《李凭箜篌引》《蜀相》'],
+    2022: ['默写·《拟行路难》《短歌行》《梦游天姥吟留别》'],
+    2021: ['默写·《逍遥游》《邹忌讽齐王纳谏》+含「三秦」诗句'],
+  },
+  'language-use': {
+    2025: ['语用·谐音双关民俗图案寓意+图画说明'],
+    2024: ['语用·睡眠健康科普语段（成语/病句）'],
+    2023: ['语用·「超强记忆力」演讲语段+叠词表达效果'],
+    2022: ['语用·栾恩杰谈探月工程+「体质指数」图表补写'],
+    2021: ['语用·民间艺术民俗语段+「西瓜雪」雪衣藻科普补写'],
+  },
+  'logic-thinking': {
+    2024: ['语用·「恢复疲劳」是否符合逻辑的思辨题'],
+  },
+  'argumentative-writing': {
+    2024: ['作文·「答案与问题」：互联网/人工智能时代问题会变少吗'],
+    2023: ['作文·「故事的力量」：好故事改变命运、展现民族形象'],
+    2022: ['作文·「本手、妙手、俗手」：围棋三手与基础创造'],
+    2021: ['作文·「体育之效」：强弱之辨（毛泽东《体育之研究》）'],
+  },
+  'time-essay': {
+    2025: ['作文·「民族魂」：鼓书艺人/艾青/穆旦，抗战胜利80周年语境'],
+  },
+};
+/* 各年新课标Ⅰ卷语文真题卷公开页（eol/掌上高考，均已探活；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=chinese&y=2021',
+  2022: 'gaokao.html?s=chinese&y=2022',
+  2023: 'gaokao.html?s=chinese&y=2023',
+  2024: 'gaokao.html?s=chinese&y=2024',
+  2025: 'gaokao.html?s=chinese&y=2025',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  'pinyin': [
+    { t: '声母与韵母', d: '23 个声母、24 个韵母的发音与书写。易错：b/d、p/q 镜像混淆，n/l 不分是方言区重灾区。' },
+    { t: '四声与标调', d: '一声平二声扬三声拐弯四声降。易错：标调跟最大声母走（iu、ui 标在后），轻声不标调。' },
+    { t: '整体认读音节', d: 'zhi chi shi ri zi ci si ye yue yuan 等 16 个直接整体认读。易错：把 yuan 拆成 y-u-a-n 拼读。' },
+    { t: '拼读规则', d: '两拼音节、三拼音节（声母+介母+韵母）。易错：j q x 与 ü 相遇 ü 上两点省略，读时仍读 ü。' },
+  ],
+  'stroke': [
+    { t: '基本笔画', d: '横、竖、撇、点、折等 8 类基本笔画与变形。易错：把「横折钩」一笔写成两笔。' },
+    { t: '笔顺基本规则', d: '先横后竖、先撇后捺、从上到下、从左到右、先外后内再封口。易错：「火」的笔顺（点、撇、撇、捺）。' },
+    { t: '易错笔顺字', d: '出、凶、方、母、区等特殊笔顺字。易错：「方」先写点还是先写横——先点后横是错的，应先横。' },
+    { t: '田字格定位', d: '横中线、竖中线把字格分成四区，起笔收笔有位置。易错：字顶格写、贴着横中线挤成一团。' },
+  ],
+  'radical': [
+    { t: '形旁表义', d: '氵与水有关、木与树有关、讠与说话有关。易错：把「请」的部首说成「青」。' },
+    { t: '声旁表音', d: '「青」作声旁派生清、请、晴、情。易错：声旁读音不完全可靠（「猜」不读 qīng）。' },
+    { t: '部首查字定部', d: '会判断合体字的部首（「想」查心部不查木部）。易错：左右结构字取右半边当部首。' },
+    { t: '偏旁归类识字', d: '同偏旁字串起来记（妈奶姐妹都是女旁）。易错：只记形不记义，形声字理解成死记符号。' },
+  ],
+  'hanzi-g1': [
+    { t: '结构归类', d: '独体、上下、左右、半包围、全包围五种结构。易错：「园」是全包围，「区」是半包围分不清。' },
+    { t: '写字姿势与握笔', d: '一尺一拳一寸，拇指食指捏笔。易错：趴着写、笔杆内倒，字越写越歪。' },
+    { t: '会认与会写的分工', d: '会认 1600 指能读能懂，会写 800 指能默能造句。易错：混淆两者标准，要求每个认读字都会默写。' },
+    { t: '同音字辨析', d: '在、再；坐、座；做、作——音同字不同。易错：「再见」写成「在见」，靠语境记字。' },
+  ],
+  'dictionary': [
+    { t: '音序查字法', d: '知道读音查意义：先查大写音序再查音节。易错：音序写成小写字母（音序必须大写）。' },
+    { t: '部首查字法', d: '知道字形查读音和意义：先数部首笔画。易错：不会拆「疑」这类难定部首的字。' },
+    { t: '数笔画查字法', d: '笔画少或难定部首的字按起笔部首目录找。易错：笔画数多数一位，从头翻到尾。' },
+    { t: '选择义项', d: '字典一个字多个义项，要结合词语选解释。易错：「疾」在「疾驰」里选「病」，闹笑话。' },
+  ],
+  'word-type': [
+    { t: '名词辨认', d: '表示人或事物名称的词。易错：「红色」是名词，但「红脸」里的红是形容词——看语境不看字面。' },
+    { t: '动词辨认', d: '表示动作、行为、心理活动的词。易错：「是」「有」「想」这类看不见动作的动词被漏掉。' },
+    { t: '形容词辨认', d: '表示性质状态的词，可加「很」修饰。易错：把「很跑」判为形容词能用「很」修饰（动词不行）。' },
+    { t: '词语搭配', d: '形容词+名词、动词+名词的主谓宾搭配框架。易错：「提高水平」写成「增加水平」，搭配不当埋下病句病根。' },
+  ],
+  'quantifier': [
+    { t: '形数量词', d: '只、条、头、棵、座按形状选。易错：一条狗、一匹马混用，量词背后是形状与习惯。' },
+    { t: '动量词', d: '一趟、一次、一顿、一遍计量动作。易错：「看一遍」写成「看一趟」。' },
+    { t: '借用量词', d: '一杯水、一身汗借用名词。易错：不明白「身」在这里量什么。' },
+    { t: '不定量词', d: '一些、一点、一片的使用。易错：「一片好心」用「一片」不用于可数个体。' },
+  ],
+  'antonym-synonym': [
+    { t: '近义词辨析-语义', d: '程度轻重（批评<批判）、范围大小（战争>战斗）。易错：把程度轻的词用在重的场合。' },
+    { t: '近义词辨析-色彩', d: '感情色彩褒中贬（果断/武断/顽固）、语体色彩口语书面语。易错：夸人用「无微不至」写成「无所不至」（贬义）。' },
+    { t: '反义词对应', d: '一词多义有多个反义词（老-少/新/嫩）。易错：机械背「老=少」，不知语境可反「新」。' },
+    { t: '语境选词', d: '结合上下文选择最贴切的词。易错：凭「感觉差不多」随意替换，词义侧重丢失。' },
+  ],
+  'polyphonic': [
+    { t: '据词定音', d: '长 cháng（长度）/zhǎng（长大）；好 hǎo/hào——记词不记字。易错：「长度」读成 zhǎngdù。' },
+    { t: '形近字辨形', d: '已/己/巳、戊/戌/戍——口诀辨形（横成戌点戍戊中空）。易错：戌时与戍边混写。' },
+    { t: '错别字来源', d: '音同致误（在/再）、形近致误（辨/辩）、义近致误（做/作）。易错：不分类记忆，见一个错一个。' },
+    { t: '语境检验法', d: '把字义放回句中检验是否通顺。易错：只凭读音惯性写，不回头检查。' },
+  ],
+  'sentence-complete': [
+    { t: '连词成句', d: '按「谁+在哪里+怎样+做什么」排序，注意标点大小写。易错：漏掉时间地点状语位置，语序颠倒。' },
+    { t: '基本句型', d: '陈述、疑问、感叹、祈使四种句子的用途与语气。易错：感叹句末用句号。' },
+    { t: '造句训练', d: '用指定词造完整通顺的句子，词义用对。易错：造句与词义脱节，「仿佛」造出「我仿佛去吃饭」这种无比较句。' },
+    { t: '句子的完整', d: '主语谓语齐全才成句。易错：「通过这次活动，使我明白了道理」——主语被介词结构吞掉。' },
+  ],
+  'punctuation-g1': [
+    { t: '句末点号', d: '句号陈述、问号提问、叹号强烈语气。易错：把「难道不是吗。」的语气句仍用句号。' },
+    { t: '逗号与顿号', d: '逗号停顿句子内部，顿号并列词语之间。易错：「苹果、梨、和香蕉」顿号后加和字多余。' },
+    { t: '引号与提示语', d: '提示语在前用冒号引号，在中在后用逗号。易错：提示语在后仍用冒号。' },
+    { t: '省略号与破折号', d: '省略号表列举未尽或话没说完，破折号表解释转折。易错：省略号后再加句号。' },
+  ],
+  'expand-shrink': [
+    { t: '缩句留主干', d: '去掉定状补，保留主谓宾核心。易错：把「的」后内容删一半留一半，或把补语（得…）当修饰全删。' },
+    { t: '缩句保原意', d: '缩完句子仍通顺、意思不反向。易错：「我差点没摔倒」缩成「我摔倒」——差点两字不能删。' },
+    { t: '扩句加枝叶', d: '加什么样（定语）、怎样地（状语）使句子具体。易错：加的修饰与原意矛盾（「热烈的掌声」改成「冷清的掌声」）。' },
+    { t: '两法连用', d: '缩句检验句子成分，扩句丰富表达。易错：扩句堆形容词不加信息量，为扩而扩。' },
+  ],
+  'rhetoric-basic': [
+    { t: '比喻三要素', d: '本体、喻体、相似点缺一不可。易错：「他长得像他爸爸」是同类比较不是比喻。' },
+    { t: '明喻暗喻借喻', d: '像、似的（明）；是、成了（暗）；只出现喻体（借喻）。易错：暗喻当陈述句，「他是一个铁人」。' },
+    { t: '拟人化', d: '赋予物人的动作情感。易错：把拟人当事实描述，「花儿在向我微笑」写成观察报告。' },
+    { t: '仿写运用', d: '照例句结构仿写比喻拟人句。易错：仿了结构丢了相似点，比喻不贴切。' },
+  ],
+  'poetry-recite-g1': [
+    { t: '节奏与韵律', d: '五言二三停、七言四三停，读出平仄起伏。易错：一字一顿破坏诗意（床前/明月/光）。' },
+    { t: '诗中有画', d: '把「白毛浮绿水」读成画面，先入景再入境。易错：死背字句不想象画面。' },
+    { t: '情境运用', d: '看见月亮想到「低头思故乡」。易错：只会默写不会用，运用题得分低。' },
+    { t: '诗人生平小档案', d: '李白豪放、杜甫沉郁，知人论世的启蒙。易错：把所有诗人都当「古人」一体看待。' },
+  ],
+  'reading-extract': [
+    { t: '找关键信息', d: '带着问题回原文，圈出时间地点人物事件。易错：凭记忆答题不回原文核对。' },
+    { t: '信息不遗漏', d: '按顺序逐段找全要点（他做了哪三件事）。易错：只答出两件事，漏一个要点。' },
+    { t: '信息的转述', d: '找到后用自己的话完整说出。易错：整句照抄原文，题问人物却抄环境。' },
+    { t: '依据意识', d: '答案在文中要有出处。易错：加入自己想象，「我觉得他大概是这样」。' },
+  ],
+  'reading-main': [
+    { t: '段意概括', d: '用谁+干什么+结果怎样概括一段话。易错：概括成流水账，「他先…然后…最后…」没抓主干。' },
+    { t: '主要内容串联', d: '把各段段意连起来成全文主要内容。易错：段意叠加太啰嗦，不会合并同类事件。' },
+    { t: '人物心情体会', d: '从动作语言神态推测人物情感。易错：脱离文本硬套「开心/难过」两极标签。' },
+    { t: '中心思想提炼', d: '作者借这件事想说明什么。易错：中心思想写成内容复述，缺「精神提炼」层。' },
+  ],
+  'fairytale': [
+    { t: '想象的合理性', d: '童话世界也有自己的规则（会飞的仍是那个角色）。易错：把童话逻辑当现实逻辑批「不合理」。' },
+    { t: '寓言的结构', d: '小故事+大道理两段式结构。易错：只复述故事不点寓意。' },
+    { t: '寓意提炼', d: '从角色遭遇提炼普遍道理（自相矛盾）。易错：寓意说成情节，「卖矛又卖盾的人很傻」。' },
+    { t: '角色评价', d: '结合行为评价角色品质。易错：非黑即白，看不到角色的转变与复杂。' },
+  ],
+  'reading-method': [
+    { t: '精读', d: '逐句细读、圈画批注、咬文嚼字。易错：精读变成慢读，没有问题导向。' },
+    { t: '略读与跳读', d: '先看标题开头结尾段首句抓大意。易错：略读后误以为自己「读懂了」。' },
+    { t: '读法选择', d: '查阅信息用跳读，欣赏美文用精读。易错：读小说找信息也逐字精读，效率低。' },
+    { t: '速度与理解平衡', d: '默读速度逐步到每分钟 300 字。易错：追求速度丢理解，或抠字眼拖速度。' },
+  ],
+  'picture-writing': [
+    { t: '看图四问', d: '时间、地点、人物、干什么逐一定位。易错：漏看角落细节（天上的乌云暗示下雨）。' },
+    { t: '展开合理想象', d: '图外的事（人物会说什么想什么）合理补白。易错：想象脱离画面，写成了另一个故事。' },
+    { t: '按顺序写', d: '单幅图按先来后到，多幅图按图序。易错：想到哪写到哪，事件顺序乱。' },
+    { t: '写完整写具体', d: '开头交代背景，中间具体动作对话，结尾点感受。易错：三句话写完，只有梗概没有细节。' },
+  ],
+  'diary-writing': [
+    { t: '日记格式', d: '首行写日期星期天气，正文另起。易错：格式忘写或写在文末。' },
+    { t: '选材真事真情', d: '写自己真实经历与感受，不编不抄。易错：编「扶老奶奶过马路」套路化素材。' },
+    { t: '观察五法', d: '看、听、闻、触、想多感官观察。易错：只用眼睛看，「闻」不到花香，「触」不到质感。' },
+    { t: '一天一得', d: '日记贵在坚持，每天记录一个有价值的瞬间。易错：流水账「今天我起床吃饭睡觉」。' },
+  ],
+  'person-writing': [
+    { t: '以事写人', d: '选一两件最能体现人物品质的事。易错：罗列三件事每件都蜻蜓点水。' },
+    { t: '外貌抓特点', d: '写与众不同的特征，不是证件照。易错：千人一面「大大的眼睛圆圆的脸」。' },
+    { t: '语言动作显性格', d: '人物怎么说怎么做，比直接夸他好有力。易错：通篇「他真好」，没有一处具体言行。' },
+    { t: '事例详略', d: '最典型的事详写，其余略写。易错：平均用力，重点不突出。' },
+  ],
+  'scene-writing': [
+    { t: '观察顺序', d: '时间顺序（四季）或空间顺序（远-近、上-下）。易错：顺序混乱，东一笔西一笔。' },
+    { t: '抓住特点', d: '写这处景「独有的」美，不是通用模板。易错：写哪里都是「绿树成荫鲜花盛开」。' },
+    { t: '静态与动态', d: '静景写出形态，动景写出变化。易错：只写静态，景「不动」。' },
+    { t: '景中含情', d: '借景抒情，结尾由景入情。易错：景情两张皮，硬加一句「我爱这美景」。' },
+  ],
+  'rhetoric-deep': [
+    { t: '排比', d: '三个及以上结构相似语气一致的句子。易错：两句就当排比，或结构不一致硬凑。' },
+    { t: '夸张', d: '夸大或缩小（飞流直下三千尺）。易错：把科学数据当夸张纠错。' },
+    { t: '设问与反问', d: '设问自问自答引起注意，反问只问不答加强语气。易错：两者混为一谈，答「反问」实为设问。' },
+    { t: '效果分析', d: '说出修辞「写出了什么、表达了什么」。易错：只答「生动形象」套话，不结合内容。' },
+  ],
+  'sentence-transform': [
+    { t: '把字句被字句', d: '主动者被动者交换位置。易错：换位置后动作对象弄反（我把门关上→门把我关上）。' },
+    { t: '陈述句改反问句', d: '加难道…吗+肯定否定互换+句号改问号。易错：三步只做两步，忘了否定词互换。' },
+    { t: '双重否定', d: '双重否定表肯定（不得不=必须）。易错：三个否定当双重，意思恰好相反。' },
+    { t: '转述句', d: '改人称（我→他）、改标点（冒号引号→逗号）、语气调整。易错：人称改了标点忘了改。' },
+  ],
+  'compress-g-pri': [
+    { t: '一句话概括', d: '用一句话说出这段话讲了谁做什么。易错：字数超限，把细节全塞进去。' },
+    { t: '合并自然段', d: '找有共同内容的段落合并成意义段。易错：按自然段机械分段，不顾内容联系。' },
+    { t: '借助中心句', d: '总起句总结句常是段意现成答案。易错：中心句在段中或需改造，直接照抄不完整。' },
+    { t: '连段成篇', d: '把段意串成全文主要内容，加连接词。易错：段意之间没有过渡，像断珠。' },
+  ],
+  'idiom': [
+    { t: '望文生义坑', d: '「明日黄花」不是未来的东西。易错：按字面理解成语含义。' },
+    { t: '对象限定', d: '「豆蔻年华」专指十三四岁少女。易错：用于男青年或其他年龄段。' },
+    { t: '感情色彩', d: '「处心积虑」是贬义，「殚精竭虑」是褒义。易错：褒贬误用是最常见扣分点。' },
+    { t: '语境矛盾', d: '「忍俊不禁地笑了」语义重复。易错：成语义与句中词撞车不察觉。' },
+  ],
+  'oral-communicate': [
+    { t: '听清再答', d: '听懂对方的问题与语气再回应。易错：没听完就抢答，答非所问。' },
+    { t: '礼貌用语', d: '请、您好、谢谢、对不起的场合化使用。易错：对长辈同辈语气无差别。' },
+    { t: '转述要点', d: '转述他人话要保信息完整（人名时间事项）。易错：转述丢关键信息，「老师说让明天带」。' },
+    { t: '劝说的技巧', d: '先肯定再建议、语气委婉、有理有据。易错：劝变成命令，「你不许…」。' },
+  ],
+  'book-note': [
+    { t: '摘抄有标准', d: '摘修辞精妙、哲理深刻、描写生动处，注明出处。易错：整段大段抄，无选择无出处。' },
+    { t: '概括内容', d: '用三五句话写清这本书讲了什么。易错：复述情节到一半，主干不清。' },
+    { t: '记录感受', d: '联系自身写出真实的想法与疑问。易错：感受写成「这本书很好看，我学到了很多」。' },
+    { t: '积累的复用', d: '定期翻看笔记，写作时调用。易错：抄完就束之高阁，积累与运用断链。' },
+  ],
+  'applied-writing': [
+    { t: '留言条格式', d: '称呼顶格、正文空两格、署名日期右下。易错：日期漏写或位置放错。' },
+    { t: '请假条要素', d: '写清请假人、原因、时长、起止时间。易错：原因含糊「有事」，时长不明。' },
+    { t: '通知的规范', d: '标题、时间地点事项、落款与日期齐全。易错：通知对象不明，「全体同学」漏写。' },
+    { t: '书信格式', d: '称呼、问候、正文、祝语、署名、日期六部分。易错：祝语「此致敬礼」的格式错位。' },
+  ],
+  'imagination-writing': [
+    { t: '大胆假设', d: '假如我是…、二十年后的…开头敢于突破现实。易错：想象平淡，只比现实多一点点。' },
+    { t: '合乎情理', d: '想象世界也要有自己的逻辑规则并自洽。易错：前文会飞后文坐车，自相矛盾。' },
+    { t: '故事三要素', d: '想象文也是故事：有起因经过结果。易错：只有场景没有事件，像说明文。' },
+    { t: '落回真情', d: '想象背后有真实的愿望与情感。易错：纯炫技想象，不知道为什么写。' },
+  ],
+  'festival-culture': [
+    { t: '节日时序', d: '春节正月初一、元宵正月十五、端午五月初五、中秋八月十五。易错：端午写成八月十五的日期。' },
+    { t: '节日习俗', d: '贴春联、扫墓祭祖、赛龙舟、赏月与对应节日一一匹配。易错：习俗张冠李戴。' },
+    { t: '诗中节日', d: '「每逢佳节倍思亲」是重阳、「爆竹声中一岁除」是春节。易错：诗句与节日错配。' },
+    { t: '文化含义', d: '节日的文化内涵（团圆、纪念、感恩）。易错：只知吃喝不知内涵。' },
+  ],
+  'calligraphy': [
+    { t: '坐姿执笔', d: '头正身直臂开足安，三指执笔。易错：趴桌斜肩，手腕内勾。' },
+    { t: '笔画质量', d: '起笔收笔有顿挫，线条有粗细变化。易错：火柴棒式笔画，无提按。' },
+    { t: '结构布白', d: '左右避让、上下呼应、重心平稳。易错：左右部件大小失衡，「明」字写成左胖右瘦。' },
+    { t: '章法与卷面', d: '字距行距匀称、大小一致、卷面整洁。易错：字忽大忽小，涂改成团。' },
+  ],
+  /* ---- 初中 · 文言与古诗文 ---- */
+  'classical-words': [
+    { t: '古今异义', d: '走（跑）、汤（热水）、去（离开）、妻子（妻与子）。易错：按今义直译，「走」译成步行。' },
+    { t: '一词多义', d: '绝（断绝/极点/绝妙）按语境取义。易错：背单义表，遇新义项卡壳。' },
+    { t: '通假字', d: '便要还家（邀）、属予作文以记之（嘱）。易错：把通假当错别字「订正」。' },
+    { t: '词类活用', d: '名词作动词（鞭数十）、使动意动（形容词意动，渔人甚异之）。易错：活用字按原词性硬译。' },
+  ],
+  'classical-function': [
+    { t: '之的用法', d: '代词、助词（的）、主谓之间取消独立性、音节助词。易错：四用法全答「的」。' },
+    { t: '其与而', d: '其：代词/语气副词；而：并列/转折/承接/修饰。易错：「而」的转折承接不分辨。' },
+    { t: '以与于', d: '以：用/凭/因为/按照；于：在/到/对/比。易错：「于」表比较（贤于弟子）漏译「比」。' },
+    { t: '虚词判断法', d: '看位置（前中后）、看搭配、代入检验。易错：脱离语境死背用法口诀。' },
+  ],
+  'classical-sentence': [
+    { t: '断句标志', d: '虚词（夫/盖/也/矣）、对话标志（曰/云）、固定结构。易错：见「曰」不知前停还是后停。' },
+    { t: '判断句', d: '…者…也、乃/则/即表判断。易错：有「是」字的现代思维干扰，不识古文判断句无「是」。' },
+    { t: '省略句', d: '省主语、省宾语、省介词（问〔其〕所之）。易错：翻译不补全省略成分，句意断裂。' },
+    { t: '倒装句', d: '宾语前置（何陋之有）、状语后置（负箧曳屣行深山巨谷中）。易错：倒装不还原，翻译语序混乱。' },
+  ],
+  'classical-translate': [
+    { t: '留', d: '人名、地名、年号、官名保留不译。易错：把「庆历四年」硬译成现代说法。' },
+    { t: '替与调', d: '单音节换双音节词、倒装语序调回现代语序。易错：直译痕重，「以其境过清」译成「以它境过清冷」。' },
+    { t: '补', d: '补出省略的主语宾语与介词。易错：不补主语，译文一句一换人称不知所云。' },
+    { t: '删', d: '删去无实义的音节助词（之、乎、者、也）。易错：音节助词强行翻译，「之」全译成「的」。' },
+  ],
+  'poem-image': [
+    { t: '常见意象谱系', d: '月（思乡）、柳（惜别）、雁（音信）、酒（离愁）、菊（隐逸）。易错：意象情感贴错（柳当离别写成喜庆）。' },
+    { t: '意象组合成意境', d: '枯藤老树昏鸦——意象叠加营造萧瑟氛围。易错：逐个解释意象，不会合并概括意境。' },
+    { t: '意境概括词', d: '孤寂、雄浑、清幽、苍凉、闲适的准确选用。易错：意境词与情感词混淆。' },
+    { t: '由境入情', d: '从画面氛围推导诗人情感。易错：跳过意境直接背「表达了思乡之情」。' },
+  ],
+  'poem-appreciate': [
+    { t: '炼字四步答', d: '释字义→描景象→析手法→点情感。易错：只答「用得好」不说好在哪。' },
+    { t: '词性的表现力', d: '动词（红杏枝头春意「闹」）、形容词、数量词的锤炼。易错：找不准诗眼，抓虚词作答。' },
+    { t: '修辞入诗', d: '比喻、拟人、夸张在诗句中的效果。易错：答出手法不结合诗句内容。' },
+    { t: '知人论世', d: '联系诗人遭际与时代背景理解情感。易错：背景喧宾夺主，脱离文本空谈生平。' },
+  ],
+  'recitation-g7': [
+    { t: '理解性默写', d: '由情境线索定位名句（写春景的句子）。易错：背串篇目，张冠李戴。' },
+    { t: '高频易错字', d: '直挂云帆济沧海（济）、病树前头万木春。易错：济写成剂，提笔忘字。' },
+    { t: '主题归类记忆', d: '思乡、送别、爱国、哲理四类分类背诵。易错：按课本顺序死记，检索慢。' },
+    { t: '书写规范', d: '默写中不写错别字、不漏字添字。易错：会背不会写的「白字」扣光分。' },
+  ],
+  'narrative-reading': [
+    { t: '六要素梳理', d: '时间地点人物起因经过结果，一句话概括事件。易错：经过说不清，只有起因结果。' },
+    { t: '线索识别', d: '物线（项链）、情线（背影）、事线。易错：把主要人物当线索。' },
+    { t: '记叙顺序', d: '顺叙、倒叙（开头设悬念）、插叙（补充交代）。易错：插叙与倒叙混淆。' },
+    { t: '人称与视角', d: '第一人称亲历感、第三人称全知视角。易错：认为「我」就是作者本人。' },
+  ],
+  'narrative-device': [
+    { t: '悬念与铺垫', d: '悬念勾起期待，铺垫为下文蓄势。易错：把伏笔当「无用闲笔」。' },
+    { t: '照应', d: '开头结尾、前后情节的呼应。易错：说不清照应对结构的作用（严谨、突出主题）。' },
+    { t: '抑扬', d: '先抑后扬使人物更立体（阿长与山海经）。易错：抑的部分被忽略，人物形象扁平化。' },
+    { t: '正面与侧面', d: '直接描写与借他人他物衬托。易错：侧面描写被当成与人物无关的废话。' },
+  ],
+  'lyric-essay': [
+    { t: '形散神聚', d: '材料看似零散，情感或哲理是「神」。易错：被材料牵着走，找不到神。' },
+    { t: '线索与脉络', d: '时间线、物线、情感线串起材料。易错：只梳理「写了什么」，不问「为什么写」。' },
+    { t: '情感基调把握', d: '从字里行间体察作者的温度。易错：把散文读成说明文，只摘信息不动情。' },
+    { t: '关键句理解', d: '文中反复出现的句子往往承载主旨。易错：反复句当啰嗦句。' },
+  ],
+  'fiction-reading': [
+    { t: '人物描写四法', d: '外貌、语言、动作、心理描写及其对性格的揭示。易错：抄描写原文不析性格。' },
+    { t: '情节四阶段', d: '开端发展高潮结局，序幕尾声。易错：高潮找错位置，把结局当高潮。' },
+    { t: '环境描写作用', d: '自然环境渲染气氛推动情节，社会环境交代背景。易错：环境描写作用背空话（交代背景）不结合文本。' },
+    { t: '主题多义性', d: '小说主题常有多重理解，言之成理即可。易错：认定唯一「标准答案」。' },
+  ],
+  'expository-reading': [
+    { t: '说明对象与特征', d: '说明「什么」+「怎么样/有哪些特点」。易错：把说明文当记叙文找「人物」。' },
+    { t: '说明顺序', d: '时间、空间、逻辑（主次/总分/现象本质）。易错：逻辑顺序说成「从上到下」。' },
+    { t: '说明方法及作用', d: '举例子（具体）、列数字（准确）、作比较（突出）、打比方（生动）。易错：作用答成「使文章更生动」万能套话。' },
+    { t: '语言准确性', d: '「大约」「可能」体现语言的严谨。易错：把限制词当废话删掉。' },
+  ],
+  'argument-reading': [
+    { t: '找论点', d: '论点常在标题、开头、结尾，是完整判断句。易错：把论题（谈读书）当论点（读书要精）。' },
+    { t: '论据类型', d: '事实论据（事例数据）与道理论据（名言原理）。易错：名人名言全判为道理论据，不看是叙事还是说理。' },
+    { t: '论证方法', d: '举例、道理、对比、比喻论证及作用。易错：方法与论据概念混用。' },
+    { t: '论证思路', d: '先用…引出…再论证…最后总结。易错：思路题答成内容概括，没有「先…再…最后…」的过程性。' },
+  ],
+  'practical-reading': [
+    { t: '消息结构', d: '标题、导语（第一句概括核心）、主体、背景、结语。易错：导语找错位置。' },
+    { t: '图表信息转化', d: '读数据、比大小、看趋势、下结论。易错：只描述数据不分析规律。' },
+    { t: '多文本关联', d: '材料之间的互补与印证关系。易错：各则材料孤立作答，不找关联。' },
+    { t: '信息的筛选', d: '按题干要求精确提取（不超过15字）。易错：超出字数限制，要点冗余。' },
+  ],
+  'famous-books': [
+    { t: '情节主干', d: '每部名著的主要情节线（三打白骨精、祥子三起三落）。易错：只知书名不知情节。' },
+    { t: '人物形象', d: '人物的主要性格与代表事件一一对应。易错：性格标签与情节脱节。' },
+    { t: '主题理解', d: '名著的核心主题（祥子的堕落控诉旧社会）。易错：主题答成情节简介。' },
+    { t: '阅读策略', d: '精读与跳读结合（西游记），做人物档案。易错：全书精读，读不完就弃读。' },
+  ],
+  'ill-sentence': [
+    { t: '语序不当', d: '定语状语位置错、逻辑顺序错。易错：多重定语顺序凭语感不按规则。' },
+    { t: '搭配不当', d: '主谓、动宾、修饰语搭配。易错：「提高认识水平」改「增加认识水平」仍错。' },
+    { t: '成分残缺', d: '缺主语（通过…使…）、缺宾语中心语。易错：介词开头句主语被吞，读起来却顺口。' },
+    { t: '句式杂糅与矛盾', d: '两种句式混在一起、前后自相矛盾。易错：「原因是…造成的」杂糅句习以为常。' },
+  ],
+  'sentence-cohere': [
+    { t: '话题一致', d: '句子围绕同一陈述对象展开。易错：只看字面衔接词，忽略话题跳转。' },
+    { t: '逻辑顺序', d: '时间、空间、认知（由浅入深）顺序排句。易错：时间顺序与逻辑顺序打架时不会取舍。' },
+    { t: '代词与关联词', d: '「这、他们」的指代对象在前，关联词成对出现。易错：把代词句排在首句。' },
+    { t: '首句判断', d: '首句通常不含指代、能统领话题。易错：入手就逐句试，耗时且易错。' },
+  ],
+  'compress-summarize': [
+    { t: '拟新闻标题', d: '主体事件+结果，简洁醒目。易错：标题写成一句话新闻，字数超限。' },
+    { t: '一句话新闻', d: '时间+地点+人物+事件+意义的完整压缩。易错：漏掉关键要素。' },
+    { t: '要点概括', d: '分层次提取并列要点，去例证留观点。易错：例子当要点抄进去。' },
+    { t: '下定义', d: '属概念+种差（…是…的…）格式。易错：定义句不是单句，用复句下定义。' },
+  ],
+  'imitate-writing': [
+    { t: '仿句式', d: '保持原句的结构框架与关联词。易错：结构走样，句式不一致。' },
+    { t: '仿修辞', d: '按原修辞手法造新内容。易错：原句比喻仿成了拟人。' },
+    { t: '仿风格', d: '贴近原文语言风格（优美/幽默/犀利）。易错：风格突变，文白夹杂。' },
+    { t: '续写逻辑', d: '顺着人物性格与情节走向写。易错：人物突然「变脸」，与原著性格冲突。' },
+  ],
+  'language-appreciate': [
+    { t: '赏析四步框架', d: '判断手法→释内容→析效果→点情感。易错：缺「结合内容」一步，空谈手法。' },
+    { t: '动词形容词品析', d: '比较替换法：换一个词试试效果。易错：替换后不说原词妙处何在。' },
+    { t: '句式与语体', d: '长短句交错、整散结合的节奏感。易错：赏析只盯修辞，忽略句式。' },
+    { t: '表达效果术语', d: '生动形象、准确传神、含蓄隽永的准确使用。易错：万能术语滥用，句句「生动形象」。' },
+  ],
+  'comprehensive-learning': [
+    { t: '活动设计', d: '围绕主题设计活动形式与步骤（主题班会/调查/展览）。易错：活动与主题脱节。' },
+    { t: '标语广告词', d: '简洁、押韵、有号召力。易错：标语写成句子，冗长无号召。' },
+    { t: '建议与邀请', d: '建议具体可行、邀请要素齐全且得体。易错：建议空泛「我们要多读书」。' },
+    { t: '观点表达', d: '观点明确+理由充分+语气得体。易错：只有观点无论证。' },
+  ],
+  'couplet': [
+    { t: '字数相等', d: '上下联字数完全相同。易错：为凑字数硬加虚词。' },
+    { t: '词性相对', d: '名对名、动对动、形对形（天对地，雨对风）。易错：名词对动词。' },
+    { t: '结构相应', d: '主谓对主谓、动宾对动宾。易错：结构错位，读着别扭。' },
+    { t: '仄起平收', d: '上联末字仄声，下联末字平声。易错：上下联贴反位置。' },
+  ],
+  'culture-knowledge': [
+    { t: '称谓谦敬', d: '谦称自己（愚、鄙、家父）、敬称他人（令、贵、贤）。易错：谦敬词反用，夸自己「令尊」。' },
+    { t: '科举制度', d: '乡试会试殿试与解元会元状元的递进。易错：殿试第一名说成「会元」。' },
+    { t: '纪年与历法', d: '干支纪年、年号纪年，十天干十二地支。易错：干支顺序排错。' },
+    { t: '礼仪地名', d: '拜与访、山东（崤山以东）、江表（长江以南）的古今差异。易错：山东当山东省。' },
+  ],
+  'narrative-writing': [
+    { t: '选材典型', d: '选最能突出中心、自己最有体验的事。易错：选材撞车（雨中送伞、深夜背我上医院）。' },
+    { t: '叙事波澜', d: '设置悬念、一波三折、欲扬先抑。易错：平铺直叙，一眼望到底。' },
+    { t: '详略与中心', d: '围绕中心详写关键处。易错：开头结尾长，正文事件一笔带过。' },
+    { t: '以小见大', d: '从小事写出真情与感悟。易错：立意拔高过猛，小事硬贴大主题。' },
+  ],
+  'expository-writing': [
+    { t: '抓住特征', d: '写清事物区别于他物的本质特点。易错：特征泛泛，写谁都能用的话。' },
+    { t: '合理安排顺序', d: '按时间/空间/逻辑顺序组织内容。易错：逻辑文写成时间线。' },
+    { t: '用准说明方法', d: '列数字、举例子、作比较配合使用。易错：数据来源随意编造。' },
+    { t: '语言的准确', d: '用「约、大约、左右」留有余地。易错：绝对化表述（一定、全部）。' },
+  ],
+  'argument-writing': [
+    { t: '论点明确', d: '开头亮出中心论点，一句完整判断。易错：论点藏在文中找不到。' },
+    { t: '论据充分', d: '事实+道理两类论据配合，论据支撑论点。易错：论据与论点貌合神离。' },
+    { t: '论证有层次', d: '为什么→怎么办，分论点递进并列。易错：分论点之间交叉重复。' },
+    { t: '分析论证', d: '事例后要有分析，把例子和观点焊起来。易错：堆例子不分析，成为「观点+例子」拼盘。' },
+  ],
+  'exam-topic': [
+    { t: '抓关键词', d: '圈出题目中的核心词与限制词。易错：只看核心词无视限制（「那一刻」写成一段时期）。' },
+    { t: '明写作范围', d: '辨清题目要求写人、写事还是说理。易错：写人题写成事，文体跑偏。' },
+    { t: '立意求深', d: '由事及理、由己及人，主题有层次。易错：立意停留在事件表面。' },
+    { t: '角度求新', d: '换一个少有人写的切入角度。易错：为求新而跑题，新角度失守题意。' },
+  ],
+  'detail-description': [
+    { t: '动作分解', d: '把一个动作拆成连续小动作（爬、探、缩、蹬）。易错：动作一笔带过，「他跳了过去」。' },
+    { t: '神态与心理', d: '眉头、嘴角、心跳的细腻捕捉。易错：心理描写变成直接宣布「我很紧张」。' },
+    { t: '细节为中心服务', d: '每个细节都指向人物性格或情感。易错：细节堆砌，与主题无关。' },
+    { t: '五感联动', d: '视、听、嗅、触、味多感官描写。易错：只有视觉单声道。' },
+  ],
+  'essay-structure': [
+    { t: '凤头', d: '开头简短入题：开门见山、设置悬念、引用开路。易错：绕三圈才入题，铺垫过长。' },
+    { t: '分段艺术', d: '一段一意，长文短段。易错：全文三大段，阅卷疲劳。' },
+    { t: '过渡衔接', d: '过渡句、过渡段承上启下。易错：段落之间「硬切」，无过渡。' },
+    { t: '豹尾', d: '结尾扣题、升华、有力量（点题+呼应+余韵）。易错：结尾喊口号，空洞拔高。' },
+  ],
+  'revision-writing': [
+    { t: '改切题', d: '检查每段是否扣住中心，删游离段。易错：舍不得删，离题段落保留到底。' },
+    { t: '改结构', d: '调整段落顺序，补过渡。易错：只在字句层面修改，结构问题不动。' },
+    { t: '改语言', d: '删口头语、换准确词、化长句。易错：把「然后」「很」当连接词反复用。' },
+    { t: '朗读检验', d: '读出声，拗口处必有语病。易错：默读难发现节奏问题。' },
+  ],
+  'annotation-method': [
+    { t: '圈点符号系统', d: '圈关键词、点疑难、线主旨、框妙句。易错：符号乱用，圈了全篇等于没圈。' },
+    { t: '批注的类型', d: '解释式、质疑式、感想式、联想式。易错：批注全是「写得好」三种字。' },
+    { t: '批注的深度', d: '由句到篇，由内容到写法。易错：只在内容层打转，不评写法。' },
+    { t: '批注促阅读', d: '带着任务读，读后整理批注成笔记。易错：批注完不再回看，作用归零。' },
+  ],
+  /* ---- 高中 · 文言与古诗文 ---- */
+  'classical-infer': [
+    { t: '字形分析法', d: '据形声字形旁推义（「檄」与木/文书有关实为军中文书）。易错：形旁判断想当然。' },
+    { t: '语法位置法', d: '看该词在句中的成分定词性词义（名前动后）。易错：不析语法直接凭记忆取义。' },
+    { t: '互文对举法', d: '对偶句中对应位置词义相近相反（奉宣室以何年对贾谊）。易错：对举关系看不出来。' },
+    { t: '代入检验法', d: '把推断义代回原句验证通顺。易错：推完不检验，义错全句崩。' },
+  ],
+  'classical-pattern': [
+    { t: '被动句式', d: '于、见…于、为…所、被表被动。易错：「见」字句当主动句翻译。' },
+    { t: '宾语前置', d: '疑问代词作宾语前置（沛公安在）、之/是为标志（何陋之有）。易错：不还原语序，翻译生硬。' },
+    { t: '状语后置', d: '介宾短语后置（青取之于蓝）。易错：「于蓝」该提到「取之」前却漏调。' },
+    { t: '定语后置', d: '者、之…者标志（石之铿然有声者）。易错：中心词与定语关系颠倒。' },
+  ],
+  'classical-hard': [
+    { t: '先题后文', d: '先读最后一题（概括题）了解大意方向。易错：上来就读原文，读完全文无重点。' },
+    { t: '人物事件梳理', d: '圈出人名、官职、事件动词，理清「谁做了什么」。易错：多个人物换用时张冠李戴。' },
+    { t: '官职变动词', d: '拜、除、迁、谪、罢、致仕的含义。易错：谪升贬不分。' },
+    { t: '断句综合题', d: '结合实词、语法、事理三重验证。易错：只凭语感断句。' },
+  ],
+  'poem-g-image': [
+    { t: '意象的情感定势', d: '鸿雁传书、梧桐悲秋、梅菊言志的稳定联想。易错：反用意象（乐景写哀）识别不出。' },
+    { t: '意境概括规范', d: '用双音节词准确命名（雄浑壮阔、清幽寂静）。易错：意境描述成长句子。' },
+    { t: '景情关系推导', d: '由意象色调推氛围、由氛围推情感。易错：景与情强行分开作答。' },
+    { t: '多情感并存', d: '一首诗可兼有壮志未酬与豁达超脱。易错：单一情感标签覆盖全诗。' },
+  ],
+  'poem-technique': [
+    { t: '借景抒情与托物言志', d: '前者重情后者重志，物象有人格化过程。易错：两种手法混称。' },
+    { t: '虚实结合', d: '眼前实景+回忆想象梦境之虚。易错：把想象场景当眼前实景分析。' },
+    { t: '动静与点面', d: '以动衬静（蝉噪林逾静）、由面到点。易错：手法命名不准。' },
+    { t: '用典', d: '据典故本义推诗人用意（正面/反用）。易错：不知典故只能望文生义。' },
+  ],
+  'poem-language': [
+    { t: '诗眼定位', d: '全诗最传神的关键字，常是动词或形容词。易错：把非关键字当诗眼展开分析。' },
+    { t: '风格辨识', d: '沉郁顿挫、豪放飘逸、清新自然、婉约细腻。易错：风格词与诗人错配。' },
+    { t: '风格论证', d: '用具体诗句印证风格判断。易错：贴标签无论证。' },
+    { t: '语言变形', d: '语序倒装、成分省略造成的诗家语。易错：按散文语法读诗。' },
+  ],
+  'recitation-g': [
+    { t: '篇目全覆盖', d: '必修+选择性必修 60 余篇逐一过关。易错：只背高频篇目，冷篇漏网。' },
+    { t: '长文分段记', d: '赤壁赋、离骚按意群分段滚动记忆。易错：整篇硬背，背后忘前。' },
+    { t: '理解性默写应对', d: '由意境句、主旨句、修辞句的题干定位。易错：情境句与默写句对应错位。' },
+    { t: '易错字专项', d: '羽化而登仙（登）、山川之精英（精）。易错：同音别字，笔误扣分。' },
+  ],
+  /* ---- 高中 · 现代文阅读 ---- */
+  'discourse-reading': [
+    { t: '概念界定题', d: '抓定义句的限制条件与适用范围。易错：忽略「在某些条件下」等限定。' },
+    { t: '筛选与整合', d: '定位区间→提取要点→合并同类。易错：跨段信息漏筛。' },
+    { t: '推断题', d: '有据推断，选项必须能在文中找到依据。易错：把无中生有当合理推断。' },
+    { t: '论证分析', d: '识别立论驳论、层进并列结构。易错：把驳论当立论读。' },
+  ],
+  'literary-fiction': [
+    { t: '形象分析题', d: '性格+身份+典型情节佐证。易错：只有形容词无情节支撑。' },
+    { t: '叙事特征题', d: '视角（全知/限知）、节奏、线索、腔调。易错：叙事特征与描写手法混淆。' },
+    { t: '物象作用题', d: '物象对情节、人物、主题、结构的多重作用。易错：作用答单一。' },
+    { t: '探究题', d: '从文本出发谈启示，观点+分析+结论。易错：脱离文本自由发挥。' },
+  ],
+  'literary-prose': [
+    { t: '语句含义题', d: '表层义+深层义+情感义三层作答。易错：只答字面义。' },
+    { t: '结构作用题', d: '某段在全文中的承转、伏笔、对比作用。易错：孤立分析该段内容。' },
+    { t: '手法效果题', d: '修辞、描写、叙事手法与情感表达的关联。易错：手法罗列不析效果。' },
+    { t: '情志把握', d: '由物象、意象、直抒句综合把握主旨。易错：主旨归纳浅表化。' },
+  ],
+  'practical-mixed': [
+    { t: '材料定位', d: '按题干关键词回指定材料检索。易错：材料多时来回乱翻。' },
+    { t: '图表解读', d: '标题、坐标轴、数据趋势、异常点。易错：读数不读轴。' },
+    { t: '材料比较', d: '异质材料找互补、同质材料找差异。易错：比较题答成各自概括。' },
+    { t: '综合结论', d: '多材料交叉得出有依据的判断。易错：结论超出材料范围。' },
+  ],
+  /* ---- 高中 · 整本书与文化 ---- */
+  'whole-book': [
+    { t: '核心概念', d: '差序格局、礼治、无讼、长老统治的内涵。易错：概念理解模糊，只会背名词。' },
+    { t: '概念间关系', d: '概念如何构成解释中国社会的理论框架。易错：孤立记忆不建体系。' },
+    { t: '学术阅读法', d: '抓章节问题-论证-结论三要素。易错：当散文读，抓不住论证。' },
+    { t: '概念活用', d: '用概念分析现实生活现象。易错：只会复述原文例证。' },
+  ],
+  'whole-book-hlm': [
+    { t: '人物关系图谱', d: '贾史王薛四大家族与主副人物群像。易错：人物辈分理不清。' },
+    { t: '重要情节', d: '黛玉进府、宝玉挨打、抄检大观园等关键回目。易错：情节与回目对不上。' },
+    { t: '人物复杂性', d: '王熙凤能干与狠辣并存，避免脸谱化。易错：单一标签评价人物。' },
+    { t: '章回体阅读法', d: '借回目知梗概、判词谶语的作用。易错：忽略回目信息。' },
+  ],
+  'culture-classic': [
+    { t: '核心思想', d: '仁、礼、义、中庸、民本的关键阐释。易错：概念现代化曲解。' },
+    { t: '语录语境', d: '语录体脱语境，需还原对话情境理解。易错：断章取义。' },
+    { t: '孔孟之别', d: '孟子性善、民贵君轻与孔子仁礼的差异。易错：两人思想混为一谈。' },
+    { t: '现代意义思辨', d: '结合当下讨论经典的适用与局限。易错：全盘肯定或全盘否定。' },
+  ],
+  /* ---- 高中 · 语言运用与思维 ---- */
+  'language-use': [
+    { t: '成语语境运用', d: '近义成语辨析+语境契合度判断。易错：望文生义与褒贬误用。' },
+    { t: '病句快速诊断', d: '抓标志词（能否、通过使、多个否定）。易错：长句成分理不清。' },
+    { t: '得体表达', d: '谦敬、场合、对象、语体的分寸。易错：请柬用语的谦敬颠倒。' },
+    { t: '下定义与转述', d: '单句下定义、长句变短句、语段压缩。易错：定义格式不规范。' },
+  ],
+  'logic-thinking': [
+    { t: '隐含前提', d: '论证成立必须预设但未言明的条件。易错：把理由当前提。' },
+    { t: '削弱与加强', d: '针对论证链条而非结论本身。易错：削弱了结论却没削弱论证。' },
+    { t: '充分必要条件', d: '有之必然/无之必不然的逻辑关系。易错：条件关系读反。' },
+    { t: '谬误识别', d: '偷换概念、以偏概全、循环论证。易错：对日常语言中的谬误钝感。' },
+  ],
+  /* ---- 高中 · 写作 ---- */
+  'argumentative-writing': [
+    { t: '概念界定', d: '开头对核心概念给出自己的界定与辨析。易错：概念不界定，论证飘移。' },
+    { t: '层进式结构', d: '是什么→为什么→怎么办层层推进。易错：分论点平行罗列无递进。' },
+    { t: '思辨说理', d: '承认合理性再指出局限性，让论证有弹性。易错：一边倒，思维绝对化。' },
+    { t: '例证分析', d: '例后扣题分析，事例为论证服务。易错：贴例子不分析，观点例子两张皮。' },
+  ],
+  'time-essay': [
+    { t: '情境任务审读', d: '身份、场合、对象、文体四要素逐一定位。易错：漏掉身份设定，语体错位。' },
+    { t: '意见的表达', d: '观点鲜明+论证展开+回应他见。易错：骑墙观点，不敢下判断。' },
+    { t: '交际语体', d: '发言稿有称呼互动，书信有格式语域。易错：写发言稿无听众意识。' },
+    { t: '分寸与温度', d: '说理有锋芒也有同理心。易错：批判过激，缺乏建设性。' },
+  ],
+  'literary-writing': [
+    { t: '构思立意', d: '找独特的切入角度与象征载体。易错：构思平庸，选材常见。' },
+    { t: '叙事视角选择', d: '第一人称限知视角的代入感、第三人称的调度力。易错：视角混乱切换。' },
+    { t: '意境营造', d: '借环境、意象、节奏塑造氛围。易错：直接抒情替代意境。' },
+    { t: '语言的文学性', d: '炼字炼句，形成个人语言风格。易错：语言平庸，全无个人印记。' },
+  ],
+  'academic-writing': [
+    { t: '问题意识', d: '从真问题出发，不写伪命题。易错：选题大而空。' },
+    { t: '文献检索', d: '知网等平台查文献，做文献综述。易错：只凭二手印象立论。' },
+    { t: '论证规范', d: '论点-论据-论证完整，引用注明出处。易错：引用不标注，学术不规范。' },
+    { t: '格式与摘要', d: '标题、摘要、关键词、参考文献的规范。易错：格式随意，摘要写成引言。' },
+  ],
+  'applied-high': [
+    { t: '书信与邀请函', d: '称谓、正文、祝颂语、落款的规范与得体。易错：对长者用「你好」欠妥。' },
+    { t: '演讲稿', d: '开场抓人、观点清晰、结尾有号召。易错：无称呼无互动，书面语过重。' },
+    { t: '倡议书', d: '标题、倡议背景、具体倡议、呼吁、落款。易错：倡议措施不可操作。' },
+    { t: '观后感与评论', d: '述评结合，感从文中来。易错：大段复述内容，感想过少。' },
+  ],
+  /* ---- 高中 · 阅读方法与文化视野 ---- */
+  'group-reading': [
+    { t: '议题确立', d: '围绕核心议题组合文本（同题异构）。易错：议题太大无法聚焦。' },
+    { t: '文本互证', d: '多文本比较中找印证、补充与矛盾。易错：只读第一篇，其余略过。' },
+    { t: '整合输出', d: '形成带比较维度的综合理解。易错：读后无法形成整体判断。' },
+    { t: '专题研读', d: '一个作家/母题的系列深读。易错：选篇杂乱，无主线。' },
+  ],
+  'cross-media': [
+    { t: '媒介差异', d: '文字的抽象、图像的直观、视频的流动性。易错：只看内容不看媒介形式。' },
+    { t: '改编比较', d: '原著与影视改编的得失分析。易错：以影视情节代替原著文本。' },
+    { t: '信息甄别', d: '辨识信源、立场与事实核查。易错：转述信息当一手信息。' },
+    { t: '多媒介表达', d: '为不同媒介写适配的文案。易错：一种文体通吃所有媒介。' },
+  ],
+  'speech-debate': [
+    { t: '演讲结构', d: '开场吸引、主体三段论、结尾号召。易错：全文平铺，无高潮。' },
+    { t: '感染力技巧', d: '排比、设问、故事化、金句收束。易错：技巧堆砌反而空洞。' },
+    { t: '立论与驳论', d: '先立己方标准，再攻对方逻辑。易错：只驳观点不驳论证。' },
+    { t: '临场应对', d: '听清对方论点，即时组织反驳。易错：答非所问，重复己方陈词。' },
+  ],
+  'aesthetic-appreciate': [
+    { t: '文学史脉络', d: '诗经楚辞汉赋唐诗宋词元曲明清小说的演进。易错：朝代与文体错配。' },
+    { t: '流派与风格', d: '豪放婉约、朦胧诗、新月派等流派特征。易错：诗人流派归属错乱。' },
+    { t: '审美判断', d: '从语言、意境、思想三个维度评价作品。易错：以个人好恶代替审美分析。' },
+    { t: '跨文化视野', d: '中外文学比较中的文化差异意识。易错：硬套西方概念解读中国文学。' },
+  ],
+};
+const CAT_LABEL = { base: '字词句基础', read: '阅读理解', write: '写作表达', classic: '文言与古诗文', lang: '语言运用', culture: '名著与文化' };
+
+/* 课标溯源：每环对应《义务教育语文课程标准（2022年版）》（义教2022，按学段+学习任务群）与
+   《普通高中语文课程标准（2017年版2020年修订）》（高中2017，按必修任务群/选择性必修研习任务群）。
+   v1 为结构级对照（学段/任务群定位），页码级对照待课标原文 OCR 后补充。
+   doc = 出处（任务群·学段定位），page = 学段/任务群标识（页码待 OCR 后补），tag = std(课标条目) / ext(拓展) */
+const CURRICULUM = {
+  /* ---- 小学 ---- */
+  'pinyin':            { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一学段：拼音与常用字音）', page: '第一学段', tag: 'std' },
+  'stroke':            { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一学段：基本笔画与笔顺）', page: '第一学段', tag: 'std' },
+  'radical':           { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一、二学段：按偏旁结构归类识字）', page: '第一、二学段', tag: 'std' },
+  'hanzi-g1':          { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一、二学段：认识常用汉字，感受汉字的构字规律）', page: '第一、二学段', tag: 'std' },
+  'dictionary':        { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第二学段：会用音序、部首查字典词典）', page: '第二学段', tag: 'std' },
+  'word-type':         { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第二学段：分类整理学过的词语，辨析词义）', page: '第二学段', tag: 'std' },
+  'quantifier':        { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一、二学段：词语的积累与正确运用）', page: '第一、二学段', tag: 'std' },
+  'antonym-synonym':   { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第二、三学段：辨析近义词，积累反义词）', page: '第二、三学段', tag: 'std' },
+  'polyphonic':        { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第二、三学段：多音字辨音，减少错别字）', page: '第二、三学段', tag: 'std' },
+  'sentence-complete': { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第一、二学段：词句的积累与运用，连词成句）', page: '第一、二学段', tag: 'std' },
+  'punctuation-g1':    { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第二学段：认识常用标点，体会其用法）', page: '第二学段', tag: 'std' },
+  'expand-shrink':     { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第三学段：体会句子表达效果，修改病句）', page: '第三学段', tag: 'std' },
+  'rhetoric-basic':    { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第二学段：感受并尝试运用比喻、拟人等修辞）', page: '第二学段', tag: 'std' },
+  'poetry-recite-g1':  { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第一至三学段：诵读优秀诗文，背诵优秀诗文 75 篇）', page: '第一至三学段', tag: 'std' },
+  'reading-extract':   { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第一、二学段：获取文本中的主要信息）', page: '第一、二学段', tag: 'std' },
+  'reading-main':      { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第三学段：把握主要内容，体会思想感情）', page: '第三学段', tag: 'std' },
+  'fairytale':         { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第一、二学段：阅读富有想象力的童话、寓言）', page: '第一、二学段', tag: 'std' },
+  'reading-method':    { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第三学段：学习精读、略读、浏览等阅读方法）', page: '第三学段', tag: 'std' },
+  'picture-writing':   { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第一、二学段：观察图画，写自己想说的话）', page: '第一、二学段', tag: 'std' },
+  'diary-writing':     { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第二、三学段：观察周围世界，能不拘形式地写下见闻、感受和想象）', page: '第二、三学段', tag: 'std' },
+  'person-writing':    { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第三学段：养成留心观察的习惯，能写纪实作文，内容具体、感情真实）', page: '第三学段', tag: 'std' },
+  'scene-writing':     { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第三学段：写出景物的特点，融入自己的情感）', page: '第三学段', tag: 'std' },
+  'rhetoric-deep':     { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第三学段：辨别词语的感情色彩，体会其表达效果）', page: '第三学段', tag: 'std' },
+  'sentence-transform':{ doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第三学段：句式变换与表达效果的比较）', page: '第三学段', tag: 'std' },
+  'compress-g-pri':    { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第三学段：初步把握文章的主要内容，概括段落大意）', page: '第三学段', tag: 'std' },
+  'idiom':             { doc: '义教2022·拓展型学习任务群·跨学科学习+语言文字积累与梳理（第三学段：积累成语等有意义的语言材料）', page: '第三学段', tag: 'std' },
+  'oral-communicate':  { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第一至三学段：口语交际，认真听、能讲述、会交流）', page: '第一至三学段', tag: 'std' },
+  'book-note':         { doc: '义教2022·拓展型学习任务群·整本书阅读（第三学段：学习做读书笔记，交流阅读感受）', page: '第三学段', tag: 'std' },
+  'applied-writing':   { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第三学段：学写读书笔记、书信、通知等常见应用文）', page: '第三学段', tag: 'std' },
+  'imagination-writing': { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第三学段：能写想象作文，内容具体、想象丰富）', page: '第三学段', tag: 'std' },
+  'festival-culture':  { doc: '义教2022·拓展型学习任务群·跨学科学习（第二、三学段：了解传统节日等中华优秀传统文化）', page: '第二、三学段', tag: 'std' },
+  'calligraphy':       { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第三学段：硬笔书写规范，感受汉字的书写美）', page: '第三学段', tag: 'std' },
+  /* ---- 初中 ---- */
+  'classical-words':   { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第四学段：积累文言常用实词，理解其古今意义）', page: '第四学段', tag: 'std' },
+  'classical-function':{ doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第四学段：体会文言虚词在表达上的作用）', page: '第四学段', tag: 'std' },
+  'classical-sentence':{ doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：阅读浅易文言文，能借助注释和工具书理解基本内容）', page: '第四学段', tag: 'std' },
+  'classical-translate':{ doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：阅读浅易文言文，注重积累、感悟和运用）', page: '第四学段', tag: 'std' },
+  'poem-image':        { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：诵读古代诗词，注重通过意象体会作品情感）', page: '第四学段', tag: 'std' },
+  'poem-appreciate':   { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：品味作品中富于表现力的语言）', page: '第四学段', tag: 'std' },
+  'recitation-g7':     { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：背诵优秀诗文 80 篇，注重理解性积累）', page: '第四学段', tag: 'std' },
+  'narrative-reading': { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：理清思路，概括要点，理解主要内容）', page: '第四学段', tag: 'std' },
+  'narrative-device':  { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：了解叙述、描写等表达方式，体会其作用）', page: '第四学段', tag: 'std' },
+  'lyric-essay':       { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：欣赏文学作品，有自己的情感体验，领悟作品内涵）', page: '第四学段', tag: 'std' },
+  'fiction-reading':   { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：欣赏文学作品，能对作品的思想倾向作出评价）', page: '第四学段', tag: 'std' },
+  'expository-reading':{ doc: '义教2022·发展型学习任务群·思辨性阅读与表达（第四学段：阅读科技类作品，把握说明对象的特征与说明方法）', page: '第四学段', tag: 'std' },
+  'argument-reading':  { doc: '义教2022·发展型学习任务群·思辨性阅读与表达（第四学段：阅读简单议论文，区分观点与材料，发现观点与材料之间的联系）', page: '第四学段', tag: 'std' },
+  'practical-reading': { doc: '义教2022·发展型学习任务群·实用性阅读与交流（第四学段：阅读新闻、通讯等实用性文本，获取并整合信息）', page: '第四学段', tag: 'std' },
+  'famous-books':      { doc: '义教2022·拓展型学习任务群·整本书阅读（第四学段：指定必读名著的整本书阅读与研讨）', page: '第四学段', tag: 'std' },
+  'ill-sentence':      { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第四学段：依据语感和语法常识，辨析并修改常见病句）', page: '第四学段', tag: 'std' },
+  'sentence-cohere':   { doc: '义教2022·基础型学习任务群·语言文字积累与梳理（第四学段：语言表达的连贯与逻辑梳理）', page: '第四学段', tag: 'std' },
+  'compress-summarize':{ doc: '义教2022·发展型学习任务群·实用性阅读与交流（第四学段：提取、概括关键信息，进行压缩表达）', page: '第四学段', tag: 'std' },
+  'imitate-writing':   { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：借鉴写作手法，进行仿写、续写等创意表达）', page: '第四学段', tag: 'std' },
+  'language-appreciate':{ doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：品味语言，感受其表现力）', page: '第四学段', tag: 'std' },
+  'comprehensive-learning': { doc: '义教2022·拓展型学习任务群·跨学科学习（第四学段：围绕主题开展综合性学习活动，运用语文解决实际问题）', page: '第四学段', tag: 'std' },
+  'couplet':           { doc: '义教2022·拓展型学习任务群·跨学科学习（第四学段：了解并运用对联等中华优秀传统文化形式）', page: '第四学段', tag: 'std' },
+  'culture-knowledge': { doc: '义教2022·拓展型学习任务群·跨学科学习（第四学段：了解古代文化常识，助力文言阅读）', page: '第四学段', tag: 'std' },
+  'narrative-writing': { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：写作要有真情实感，力求表达自己对自然、社会、人生的感受和思考）', page: '第四学段', tag: 'std' },
+  'expository-writing':{ doc: '义教2022·发展型学习任务群·思辨性阅读与表达（第四学段：写简单的说明性文章，做到明白清楚）', page: '第四学段', tag: 'std' },
+  'argument-writing':  { doc: '义教2022·发展型学习任务群·思辨性阅读与表达（第四学段：写简单的议论性文章，做到观点明确、有理有据）', page: '第四学段', tag: 'std' },
+  'exam-topic':        { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：写作时考虑不同的目的和对象，根据表达需要确定立意）', page: '第四学段', tag: 'std' },
+  'detail-description':{ doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：多角度观察生活，抓住事物特征进行描写）', page: '第四学段', tag: 'std' },
+  'essay-structure':   { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：合理安排内容的先后和详略，条理清楚地表达自己的意思）', page: '第四学段', tag: 'std' },
+  'revision-writing':  { doc: '义教2022·发展型学习任务群·文学阅读与创意表达（第四学段：养成修改作文的习惯，能与他人交流写作心得）', page: '第四学段', tag: 'std' },
+  'annotation-method': { doc: '义教2022·拓展型学习任务群·整本书阅读（第四学段：综合运用精读、略读与批注等方法阅读整本书）', page: '第四学段', tag: 'std' },
+  /* ---- 高中 ---- */
+  'classical-infer':   { doc: '高中2017·必修·语言积累、梳理与探究+中华传统文化经典研习（文言实词在语境中的意义推断）', page: '必修任务群', tag: 'std' },
+  'classical-pattern': { doc: '高中2017·必修·语言积累、梳理与探究（梳理文言特殊句式，归纳语言规律）', page: '必修任务群', tag: 'std' },
+  'classical-hard':    { doc: '高中2017·选择性必修·中华传统文化经典研习（阅读文言作品，提高整体阅读与理解能力）', page: '选择性必修', tag: 'std' },
+  'poem-g-image':      { doc: '高中2017·必修·文学阅读与写作（感受意象，品味语言，体验情感）', page: '必修任务群', tag: 'std' },
+  'poem-technique':    { doc: '高中2017·必修·文学阅读与写作（赏析文学作品的表达技巧与艺术魅力）', page: '必修任务群', tag: 'std' },
+  'poem-language':     { doc: '高中2017·必修·文学阅读与写作（品味诗歌语言，感受不同作家的语言风格）', page: '必修任务群', tag: 'std' },
+  'recitation-g':      { doc: '高中2017·必修·语言积累、梳理与探究（积累古代诗文名篇，丰富语言积累）', page: '必修任务群', tag: 'std' },
+  'discourse-reading': { doc: '高中2017·必修·思辨性阅读与表达（阅读论述类文本，把握概念、观点与论证方法）', page: '必修任务群', tag: 'std' },
+  'literary-fiction':  { doc: '高中2017·必修·文学阅读与写作（欣赏小说，分析人物形象与叙事艺术）', page: '必修任务群', tag: 'std' },
+  'literary-prose':    { doc: '高中2017·必修·文学阅读与写作（欣赏散文，体会情志与语言表达）', page: '必修任务群', tag: 'std' },
+  'practical-mixed':   { doc: '高中2017·必修·实用性阅读与交流（阅读实用性文本与非连续性文本，整合信息形成判断）', page: '必修任务群', tag: 'std' },
+  'whole-book':        { doc: '高中2017·必修·整本书阅读与研讨（《乡土中国》学术著作阅读）', page: '必修任务群', tag: 'std' },
+  'whole-book-hlm':    { doc: '高中2017·必修·整本书阅读与研讨（《红楼梦》长篇小说阅读）', page: '必修任务群', tag: 'std' },
+  'culture-classic':   { doc: '高中2017·选择性必修·中华传统文化经典研习（研读先秦诸子散文等文化经典）', page: '选择性必修', tag: 'std' },
+  'language-use':      { doc: '高中2017·必修·语言积累、梳理与探究（在具体语境中正确有效地运用语言文字）', page: '必修任务群', tag: 'std' },
+  'logic-thinking':    { doc: '高中2017·必修·思辨性阅读与表达（学习基本的逻辑知识，发展逻辑思维与批判性思维）', page: '必修任务群', tag: 'std' },
+  'argumentative-writing': { doc: '高中2017·必修·思辨性阅读与表达（写论述类文章，做到观点鲜明、论证有理有据）', page: '必修任务群', tag: 'std' },
+  'time-essay':        { doc: '高中2017·必修·当代文化参与+思辨性阅读与表达（关注现实，撰写时评，表达自己的意见）', page: '必修任务群', tag: 'std' },
+  'literary-writing':  { doc: '高中2017·必修·文学阅读与写作（进行文学写作尝试，表达对生活的观察与思考）', page: '必修任务群', tag: 'std' },
+  'academic-writing':  { doc: '高中2017·选择性必修·科学与文化论著研习（学习学术性写作的基本规范）', page: '选择性必修', tag: 'std' },
+  'applied-high':      { doc: '高中2017·必修·实用性阅读与交流（学写常见实用文体，注意语体与得体）', page: '必修任务群', tag: 'std' },
+  'group-reading':     { doc: '高中2017·必修·整本书阅读与研讨+跨媒介阅读与交流（多文本比较阅读与专题研读）', page: '必修任务群', tag: 'std' },
+  'cross-media':       { doc: '高中2017·必修·跨媒介阅读与交流（辨识媒介信息，比较不同媒介的表达特点）', page: '必修任务群', tag: 'std' },
+  'speech-debate':     { doc: '高中2017·必修·思辨性阅读与表达（演讲、辩论等口头表达活动，发展理性思维）', page: '必修任务群', tag: 'std' },
+  'aesthetic-appreciate': { doc: '高中2017·必修·文学阅读与写作+当代文化参与（形成正确的审美观念与健康的审美情趣，了解文学常识）', page: '必修任务群', tag: 'std' },
+};
+
+/* 过关判据：每环一条可自测的行为判据——做到即过关，不靠「感觉学会了」 */
+const PASS = {
+  /* ---- 小学 ---- */
+  'pinyin':            '能正确拼读常用音节，给词语标注声调，区分平翘舌与前后鼻音',
+  'stroke':            '能说出 8 种基本笔画，正确写出 20 个常用字的笔顺',
+  'radical':           '能给合体字找出正确的部首，借形旁推测生字的意思',
+  'hanzi-g1':          '能认读一二级字表的常用字，按结构归类记忆新字，在田字格中端正书写',
+  'dictionary':        '能用音序法和部首法在 30 秒内查到一个字，并结合语境选出正确义项',
+  'word-type':         '能把词语按名、动、形归类，说出一个词在句子中充当的成分',
+  'quantifier':        '能正确搭配 30 个常用量词，说出常见误用（一条狗→一只狗）的原因',
+  'antonym-synonym':   '能写出 10 组近义词并说出其差别（程度/色彩/范围），据语境选词填空全对',
+  'polyphonic':        '能据词定音读准 30 个多音字，辨别 20 组形近字并用口诀记忆',
+  'sentence-complete': '能把打乱的词语连成通顺句，用指定词语造出内容具体、用词准确的句子',
+  'punctuation-g1':    '能在一段话中正确使用句问叹逗四种标点，提示语在前在中在后都写对',
+  'expand-shrink':     '能把长句缩成主干且意思不变，把简单句扩出有价值的修饰',
+  'rhetoric-basic':    '能判断一个句子是否比喻并说出相似点，仿写比喻拟人句各 3 个',
+  'poetry-recite-g1':  '能熟练背诵 20 首小学必背古诗，并在合适的情境中说出来',
+  'reading-extract':   '能带着问题回短文中圈出人物、时间、事件信息，不凭想象作答',
+  'reading-main':      '能用一两句话概括一段话和一篇短文的主要内容，说出人物的心情和理由',
+  'fairytale':         '能用自己的话说出寓言的寓意，并联系生活举一个例子',
+  'reading-method':    '能区分精读与略读的适用场合，用略读法 3 分钟内抓住一篇文章大意',
+  'picture-writing':   '能把一幅图写成 100 字左右的话，四要素齐全并有合理想象',
+  'diary-writing':     '能按日记格式记录真实生活，写出细节和感受，不写成流水账',
+  'person-writing':    '能选一件具体的事写出一个人物的特点，有语言动作描写',
+  'scene-writing':     '能按一定顺序写一处景物，抓住特点并融入自己的感受',
+  'rhetoric-deep':     '能辨认排比、夸张、设问、反问并说出各自的表达效果',
+  'sentence-transform': '能完成把字被字、陈述反问、直接转述三类句式变换且句意不变',
+  'compress-g-pri':    '能用一句话概括任意自然段，借助中心句快速概括全文',
+  'idiom':             '能正确使用 50 个常用成语，说出 10 个易错成语的对象与褒贬',
+  'oral-communicate':  '能完整转述一段话的关键信息，在情境中礼貌得体地劝说他人',
+  'book-note':         '能完成一篇「摘抄+概括+感受」三段式读书笔记，感受联系自身',
+  'applied-writing':   '能按格式写出留言条、请假条、通知和一封完整的书信',
+  'imagination-writing': '能写一篇 400 字想象作文，想象大胆又合乎情理，故事完整',
+  'festival-culture':  '能按时间顺序说出 8 个传统节日及习俗，配出对应的诗句',
+  'calligraphy':       '能用硬笔书写 100 字短文，坐姿执笔正确、结构匀称、卷面整洁',
+  /* ---- 初中 ---- */
+  'classical-words':   '能说出 50 个高频实词的古今异义，正确解释一段课外文言中的实词',
+  'classical-function': '能辨析之、其、而、以、于在句子中的意义与用法并说出判断依据',
+  'classical-sentence': '能凭虚词与语法标志给白文正确断句，识别判断句与倒装句',
+  'classical-translate': '能用留替调补删的方法翻译课外文言文段落，直译为主且语句通顺',
+  'poem-image':        '能说出 15 个常见意象的情感含义，根据意象组合概括诗歌意境',
+  'poem-appreciate':   '能用四步法完成一首古诗的炼字赏析题，不空套术语',
+  'recitation-g7':     '能完成理解性默写 20 题，篇目定位准确、无错别字',
+  'narrative-reading': '能概括记叙文的主要事件，说出线索、记叙顺序及其作用',
+  'narrative-device':  '能在文中找出悬念、铺垫、照应并分析其对情节人物的作用',
+  'lyric-essay':       '能理清散文的形与神，说出材料的组织线索和作者的情感走向',
+  'fiction-reading':   '能结合描写分析小说人物形象，说出环境描写对情节的作用',
+  'expository-reading': '能说出说明对象的特征、顺序，答对说明方法的作用',
+  'argument-reading':  '能准确提取议论文的论点，区分论据类型并理出论证思路',
+  'practical-reading': '能从新闻中提取六要素，把图表信息转化为文字结论',
+  'famous-books':      '能讲述 6 部必读名著的主要情节，人物与事件对应准确',
+  'ill-sentence':      '能在 1 分钟内判断病句类型并修改，六大类病句各举一例',
+  'sentence-cohere':   '能完成 5 句以上的排序题，说出排序依据（话题/代词/逻辑）',
+  'compress-summarize': '能给新闻拟标题、在限定字数内概括语段要点、写出规范的定义',
+  'imitate-writing':   '能按原句的句式、修辞、风格完成仿写，续写不改变人物性格',
+  'language-appreciate': '能用「手法+内容+效果+情感」完成词句赏析题，结合文本不套话',
+  'comprehensive-learning': '能围绕主题设计活动方案，写出合格的标语、建议与邀请词',
+  'couplet':           '能判断一副对联的上下联，按对仗规则拟出简单的对联',
+  'culture-knowledge': '能正确使用常见谦敬称谓，说出科举、纪年的基本常识',
+  'narrative-writing': '能写一篇 600 字记叙文，选材真实、叙事有波澜、细节具体',
+  'expository-writing': '能抓住特征写一篇说明文，顺序合理、方法得当、语言准确',
+  'argument-writing':  '能写一篇 600 字议论文，论点明确、论据充分、有层进结构',
+  'exam-topic':        '能从作文题中圈出关键词与限制词，确定切题且有新意的立意',
+  'detail-description': '能把一个动作分解成连续细节，用五感描写代替空泛的形容词',
+  'essay-structure':   '能设计「凤头猪肚豹尾」的结构，段落安排合理、过渡自然',
+  'revision-writing':  '能按切题→结构→语言的顺序修改自己的作文，删改有依据',
+  'annotation-method': '能用规范的圈点符号批注一篇文章，批注兼有内容与写法两层面',
+  /* ---- 高中 ---- */
+  'classical-infer':   '能用四法推断课外文言中陌生实词的含义，推断过程说得清',
+  'classical-pattern': '能识别六类特殊句式并在翻译中正确还原语序',
+  'classical-hard':    '能独立完成高考文言文整套题，人物事件梳理无张冠李戴',
+  'poem-g-image':      '能准确概括一首古诗的意境，由景入情推导诗人的情感',
+  'poem-technique':    '能精准命名诗歌的表达技巧并结合诗句分析其效果',
+  'poem-language':     '能找准诗眼并论证其表现力，辨析常见的诗歌语言风格',
+  'recitation-g':      '能完成高中篇目理解性默写 20 题，易错字零失误',
+  'discourse-reading': '能读懂学术性论述文，完成概念辨析、信息推断题，说出论证结构',
+  'literary-fiction':  '能规范作答小说的形象题、叙事特征题与探究题，观点有文本依据',
+  'literary-prose':    '能从三层含义解读散文的关键语句，梳理结构与情志',
+  'practical-mixed':   '能比较多则非连续性材料，得出有依据的综合结论',
+  'whole-book':        '能用自己的话解释差序格局等核心概念，并用于分析现实现象',
+  'whole-book-hlm':    '能画出主要人物关系图，评析一个人物的复杂性',
+  'culture-classic':   '能阐释论语孟子的核心观点，并结合当下作思辨评价',
+  'language-use':      '能在语段综合题中全对完成成语、病句、衔接、得体四类考查',
+  'logic-thinking':    '能识别论证的隐含前提，完成削弱加强类逻辑题，说出谬误类型',
+  'argumentative-writing': '能写一篇 800 字议论文，有概念界定、层进结构与思辨说理',
+  'time-essay':        '能根据情境任务写出合身份、有观点、有分寸的时评或发言稿',
+  'literary-writing':  '能写一篇有个人风格与意境的记叙类文章，视角选择恰当',
+  'academic-writing':  '能完成一篇带文献引用的小论文，问题明确、论证规范、格式完整',
+  'applied-high':      '能按规范写出书信、演讲稿、倡议书，语体与场合匹配',
+  'group-reading':     '能围绕议题整合三篇以上文本，输出带比较维度的研读结论',
+  'cross-media':       '能分析同一内容在文字与影像中的表达差异，核查网络信息信源',
+  'speech-debate':     '能完成 3 分钟有结构的演讲，在辩论中立论清晰、反驳有力',
+  'aesthetic-appreciate': '能按文学史脉络梳理文体演进，从三个维度评价一部作品',
+};
+
+/* 典型教学案例：为关键环配备一道贯穿式案例（可按环扩展） */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'classical-translate': {
+    title: '「走」为什么是跑？——一篇课外文言的翻译实战',
+    text: '课外文言语段：「虎求百兽而食之，得狐。狐曰：『子无敢食我也！……吾以告子，子随我后，观百兽之见我而敢不走乎？』」<br>'
+        + '<b>留</b>：虎、狐是动物名，直接保留。<b>替</b>：「求」译「寻找」、「子」译「您」、「走」译「逃跑」（古今异义！「走」古义是跑）。<br>'
+        + '<b>调</b>：「观百兽之见我而敢不走乎」无需调序；「见…而敢不走」注意「见」是被动（被我）。<br>'
+        + '<b>补</b>：「子随我后」补成「您跟随在我的后面」。<b>删</b>：「而」表承接，虚化不译。<br>'
+        + '<b>易错点</b>：把「敢不走」译成「不敢跑」就反了——双重否定仍是反问语气「难道敢不逃跑吗」。',
+  },
+  'argumentative-writing': {
+    title: '从「观点+例子」到真正的论证——一篇 800 字议论文的骨架',
+    text: '题目：谈「自律与自由」。<br>'
+        + '<b>第一步（概念界定）</b>：开篇不说理先定义——「自由不是想做什么就做什么，而是不想做什么就能不做什么；自律，正是通往这种自由的能力。」<br>'
+        + '<b>第二步（为什么：层进论证）</b>：分论点①自律给身体自由（运动员例+分析）；分论点②自律给精神自由（学者的专注+分析）；分论点③自律不是压抑欲望而是管理欲望（回应质疑）。<br>'
+        + '<b>第三步（怎么办）</b>：从目标拆解与环境设计两个层面给路径。<br>'
+        + '<b>易错点</b>：例后必须扣题分析——例子与观点之间要有一句「焊死」的话，否则就是观点+例子的拼盘。',
+  },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_pri: { name: '智慧教育·小学语文', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbb2de-0590-11ed-9c79-92fc3b3249d5%2Fe7bbd296-0590-11ed-9c79-92fc3b3249d5%2F6a749654-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_jun: { name: '智慧教育·初中语文', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2F6a749654-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·高中语文', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2F6a749654-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2Feae5dc6a-147b-11ed-ab76-54d6327ace99', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部考试中心', url: 'https://www.neea.edu.cn', note: '官方真题索引' },
+};
+/* ============ 主干环 NODES：88 环（小学 32 + 初中 31 + 高中 25），prev/next 双向依赖 ============ */
+const NODES = {
+  /* ================= 小学 · 字词句基础 ================= */
+  'pinyin': { title: '拼音与声调', stage: 'primary', cat: 'base', diff: 1.0, hot: true,
+    fact: '声母、韵母、整体认读音节与四声调，拼读规则（两拼、三拼、标调位置），是识字与自学读音的起点。',
+    prev: [], next: ['stroke', 'hanzi-g1', 'dictionary'],
+    lecture: [ {name:'汉语拼音', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'拼音练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'stroke': { title: '笔画与笔顺', stage: 'primary', cat: 'base', diff: 1.2, hot: true,
+    fact: '横竖撇点折等基本笔画、先横后竖先撇后捺等笔顺规则，写对字、写快字的地基。',
+    prev: ['pinyin'], next: ['hanzi-g1', 'radical'],
+    lecture: [ {name:'笔画笔顺', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'笔顺练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'radical': { title: '偏旁部首', stage: 'primary', cat: 'base', diff: 1.8, hot: false,
+    fact: '形声字形旁表义声旁表音的规律，借助偏旁部首归类识字、猜测字义。',
+    prev: ['stroke'], next: ['dictionary'],
+    lecture: [ {name:'偏旁部首', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'部首归类练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'hanzi-g1': { title: '低段识字与写字', stage: 'primary', cat: 'base', diff: 1.6, hot: true,
+    fact: '一二年级认识常用汉字 1600 左右、会写 800 左右，按结构归类记忆，田字格里把字写端正。',
+    prev: ['pinyin', 'stroke'], next: ['quantifier', 'poetry-recite-g1', 'word-type', 'reading-extract', 'polyphonic'],
+    lecture: [ {name:'识字写字', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'识字练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'dictionary': { title: '查字典', stage: 'primary', cat: 'base', diff: 2.0, hot: false,
+    fact: '音序查字法与部首查字法，遇到不会读、不会写的字能自己解决，是终身自学能力的第一步。',
+    prev: ['pinyin', 'radical'], next: ['polyphonic'],
+    lecture: [ {name:'查字典方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'查字典练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'word-type': { title: '词性初步', stage: 'primary', cat: 'base', diff: 2.2, hot: false,
+    fact: '名词、动词、形容词与数量词的直观辨认，为造句、扩缩句和病句修改打底。',
+    prev: ['hanzi-g1'], next: ['sentence-complete', 'antonym-synonym'],
+    lecture: [ {name:'词性认识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'词性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'quantifier': { title: '量词与搭配', stage: 'primary', cat: 'base', diff: 2.0, hot: false,
+    fact: '一（只/条/头/棵/座）的准确搭配，量词背后是事物的形状与习惯用法。',
+    prev: ['hanzi-g1'], next: ['sentence-complete'],
+    lecture: [ {name:'量词搭配', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'量词练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'antonym-synonym': { title: '近义词与反义词', stage: 'primary', cat: 'base', diff: 2.4, hot: true,
+    fact: '辨析近义词的细微差别（严肃/严格/严厉），积累反义词，让用词更准确、更有层次。',
+    prev: ['word-type'], next: ['idiom', 'reading-main'],
+    lecture: [ {name:'近反义词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'近反义词练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'polyphonic': { title: '多音字与形近字', stage: 'primary', cat: 'base', diff: 2.6, hot: false,
+    fact: '据词定音（ lengthy 长 cháng/zhǎng）、据义辨形（已/己/巳），高年级错别字的主要来源地。',
+    prev: ['dictionary', 'hanzi-g1'], next: ['calligraphy'],
+    lecture: [ {name:'多音字形近字', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'多音字练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'sentence-complete': { title: '连词成句与造句', stage: 'primary', cat: 'base', diff: 2.3, hot: true,
+    fact: '把词语排列成通顺句子、用指定词语造句，建立「谁+做什么+怎么样」的基本句感。',
+    prev: ['word-type', 'quantifier'], next: ['oral-communicate', 'punctuation-g1', 'picture-writing', 'rhetoric-basic', 'expand-shrink'],
+    lecture: [ {name:'连词成句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'造句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'punctuation-g1': { title: '常用标点', stage: 'primary', cat: 'base', diff: 2.1, hot: false,
+    fact: '句号、问号、叹号、逗号的基本用法，提示语在前在中在后的引号用法。',
+    prev: ['sentence-complete'], next: ['reading-extract', 'sentence-transform'],
+    lecture: [ {name:'标点符号', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'标点练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'expand-shrink': { title: '扩句与缩句', stage: 'primary', cat: 'base', diff: 3.0, hot: true,
+    fact: '给句子添枝加叶（什么样的谁+怎样地做什么）、去掉修饰留主干，是修改病句和概括段意的底功。',
+    prev: ['sentence-complete'], next: ['sentence-transform', 'compress-g-pri', 'person-writing'],
+    lecture: [ {name:'扩句缩句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'扩缩句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'rhetoric-basic': { title: '比喻与拟人', stage: 'primary', cat: 'lang', diff: 2.8, hot: true,
+    fact: '认识比喻（本体喻体相似点）和拟人（把物当人写），会仿写，让句子立刻生动起来。',
+    prev: ['sentence-complete'], next: ['scene-writing', 'rhetoric-deep'],
+    lecture: [ {name:'比喻拟人', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'修辞仿写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'poetry-recite-g1': { title: '古诗诵读与积累', stage: 'primary', cat: 'culture', diff: 2.2, hot: true,
+    fact: '小学 75+ 首必背古诗的诵读、大致理解与情境运用（看见瀑布想起「飞流直下三千尺」）。',
+    prev: ['hanzi-g1'], next: ['festival-culture'],
+    lecture: [ {name:'小学必背古诗', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'古诗诵读打卡', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 小学 · 阅读理解 ================= */
+  'reading-extract': { title: '阅读提取信息', stage: 'primary', cat: 'read', diff: 2.5, hot: true,
+    fact: '从短文中找出「谁、在什么时候、做了什么、结果怎样」，学会回原文找依据。',
+    prev: ['hanzi-g1', 'punctuation-g1'], next: ['fairytale', 'reading-main'],
+    lecture: [ {name:'阅读理解入门', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'信息提取练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'reading-main': { title: '主旨与细节理解', stage: 'primary', cat: 'read', diff: 3.2, hot: true,
+    fact: '概括段意、把握主要内容、体会人物心情与文章表达的情感，读「懂」而不只是读「完」。',
+    prev: ['reading-extract', 'antonym-synonym'], next: ['reading-method', 'narrative-reading', 'expository-reading', 'compress-summarize'],
+    lecture: [ {name:'阅读主旨概括', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'概括练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'fairytale': { title: '童话与寓言阅读', stage: 'primary', cat: 'read', diff: 2.6, hot: false,
+    fact: '读懂童话的想象世界与寓言的小故事大道理，能用自己的话说出寓意。',
+    prev: ['reading-extract'], next: ['narrative-reading'],
+    lecture: [ {name:'童话寓言阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'寓言阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'reading-method': { title: '精读与略读', stage: 'primary', cat: 'read', diff: 3.0, hot: false,
+    fact: '根据目的选读法：细嚼慢咽求甚解，一目十行取要点，两类读法都要练。',
+    prev: ['reading-main'], next: ['book-note', 'annotation-method'],
+    lecture: [ {name:'阅读方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'略读训练', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 小学 · 写作表达 ================= */
+  'picture-writing': { title: '看图写话', stage: 'primary', cat: 'write', diff: 2.4, hot: true,
+    fact: '看清图上时间地点人物事件，按顺序写完整、写具体，是作文的第一次起飞。',
+    prev: ['sentence-complete'], next: ['diary-writing'],
+    lecture: [ {name:'看图写话', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'看图写话练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'diary-writing': { title: '日记与观察作文', stage: 'primary', cat: 'write', diff: 3.0, hot: false,
+    fact: '写身边的真事真感受，学会观察（看听闻触想），养成「我手写我心」的习惯。',
+    prev: ['picture-writing'], next: ['scene-writing', 'person-writing'],
+    lecture: [ {name:'日记与观察', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'观察作文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'person-writing': { title: '写人记事作文', stage: 'primary', cat: 'write', diff: 3.4, hot: true,
+    fact: '通过一两件具体的事写出一个真实的人，把「他真关心我」写成看得见的动作和话语。',
+    prev: ['diary-writing', 'expand-shrink'], next: ['applied-writing', 'narrative-reading', 'narrative-writing'],
+    lecture: [ {name:'写人记事作文', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'写人作文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'scene-writing': { title: '写景作文', stage: 'primary', cat: 'write', diff: 3.3, hot: false,
+    fact: '按顺序（时间/方位）抓住景物特点，用上比喻拟人，写出「眼中的景」和「心中的情」。',
+    prev: ['rhetoric-basic', 'diary-writing'], next: ['imagination-writing'],
+    lecture: [ {name:'写景作文', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'写景作文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'rhetoric-deep': { title: '修辞进阶', stage: 'primary', cat: 'lang', diff: 3.5, hot: false,
+    fact: '排比、夸张、设问、反问的辨认与运用，体会不同修辞的表达效果而不只是贴标签。',
+    prev: ['rhetoric-basic'], next: ['imitate-writing', 'language-appreciate', 'lyric-essay', 'poem-appreciate'],
+    lecture: [ {name:'修辞手法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'修辞运用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'sentence-transform': { title: '句式变换', stage: 'primary', cat: 'lang', diff: 3.2, hot: true,
+    fact: '把字句被字句、陈述句反问句、直接引语间接引语的转换，改完句意不变。',
+    prev: ['punctuation-g1', 'expand-shrink'], next: ['ill-sentence'],
+    lecture: [ {name:'句式变换', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'句式转换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'compress-g-pri': { title: '概括段意与主要内容', stage: 'primary', cat: 'lang', diff: 3.3, hot: false,
+    fact: '用「谁+干什么+结果怎样」把一段话、一篇文说短，连接词连段成篇。',
+    prev: ['expand-shrink'], next: ['compress-summarize'],
+    lecture: [ {name:'概括方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'概括练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 小学 · 积累与文化 ================= */
+  'idiom': { title: '成语积累与运用', stage: 'primary', cat: 'culture', diff: 3.1, hot: true,
+    fact: '成语的本义与引申义、感情色彩与适用对象，会积累更会「用对地方」。',
+    prev: ['antonym-synonym'], next: ['festival-culture', 'classical-words'],
+    lecture: [ {name:'成语故事', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'成语运用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'oral-communicate': { title: '口语交际', stage: 'primary', cat: 'lang', diff: 2.0, hot: false,
+    fact: '认真听、大方说、有礼貌地问与答，学会转述和商量，语文首先是开口的功夫。',
+    prev: ['sentence-complete'], next: ['applied-writing'],
+    lecture: [ {name:'口语交际', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'口语交际情境练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'book-note': { title: '读书笔记与摘抄', stage: 'primary', cat: 'write', diff: 3.4, hot: false,
+    fact: '好词好句摘抄、内容概括与感受记录三件套，让读过的书留下痕迹。',
+    prev: ['reading-method'], next: ['classical-words', 'famous-books'],
+    lecture: [ {name:'读书笔记方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'读书笔记模板练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'applied-writing': { title: '应用文写作', stage: 'primary', cat: 'write', diff: 3.6, hot: false,
+    fact: '留言条、请假条、通知与书信的格式（称呼、正文、署名、日期），生活里马上用得上。',
+    prev: ['person-writing', 'oral-communicate'], next: ['applied-high'],
+    lecture: [ {name:'应用文格式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'应用文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'imagination-writing': { title: '想象作文', stage: 'primary', cat: 'write', diff: 3.5, hot: false,
+    fact: '大胆想象也要合乎情理，编故事有开头有结尾有波折，让想象「飞得起来、落得下去」。',
+    prev: ['scene-writing'], next: [],
+    lecture: [ {name:'想象作文', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'想象作文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'festival-culture': { title: '传统节日与文化常识', stage: 'primary', cat: 'culture', diff: 2.8, hot: false,
+    fact: '春节、清明、端午、中秋的来历与习俗，古诗里的节日（每逢佳节倍思亲），文化自信从「过明白节」开始。',
+    prev: ['poetry-recite-g1', 'idiom'], next: ['poem-image', 'culture-knowledge'],
+    lecture: [ {name:'传统节日', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'文化常识练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'calligraphy': { title: '书法与规范书写', stage: 'primary', cat: 'base', diff: 3.4, hot: false,
+    fact: '坐姿执笔、笔画到位、结构匀称，从「写对」走向「写好」，卷面即修养。',
+    prev: ['polyphonic'], next: [],
+    lecture: [ {name:'书法基础', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'书写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+  /* ================= 初中 · 文言与古诗文 ================= */
+  'classical-words': { title: '文言实词积累', stage: 'junior', cat: 'classic', diff: 4.0, hot: true,
+    fact: '初中 120+ 高频实词（走、汤、去、妻、绝…）的古今异义、一词多义与通假，文言的地基。',
+    prev: ['idiom', 'book-note'], next: ['recitation-g7', 'classical-function'],
+    lecture: [ {name:'文言实词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'实词练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'classical-function': { title: '文言虚词', stage: 'junior', cat: 'classic', diff: 4.4, hot: true,
+    fact: '之、其、而、以、于、为等虚词在不同语境中的意义与用法，读懂文言语法的「关节」。',
+    prev: ['classical-words'], next: ['classical-sentence', 'culture-knowledge'],
+    lecture: [ {name:'文言虚词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'虚词辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'classical-sentence': { title: '文言句式与断句', stage: 'junior', cat: 'classic', diff: 4.6, hot: false,
+    fact: '判断句、省略句、倒装句的识别，凭语感和虚词标志给白文断句。',
+    prev: ['classical-function'], next: ['classical-translate', 'classical-pattern'],
+    lecture: [ {name:'文言句式断句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'断句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'classical-translate': { title: '文言文翻译', stage: 'junior', cat: 'classic', diff: 4.8, hot: true,
+    fact: '留、替、调、补、删五字诀，直译为主意译为辅，把「信达雅」落到得分点。',
+    prev: ['classical-sentence'], next: ['classical-infer'],
+    lecture: [ {name:'文言翻译方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'翻译练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'poem-image': { title: '古诗词意象与意境', stage: 'junior', cat: 'classic', diff: 4.5, hot: true,
+    fact: '月、柳、雁、酒等意象的固定情感联想，由意象组合还原画面、概括意境（孤寂/雄浑/闲适）。',
+    prev: ['festival-culture'], next: ['recitation-g7', 'couplet', 'poem-appreciate'],
+    lecture: [ {name:'诗词意象', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'意象练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'poem-appreciate': { title: '古诗词炼字与赏析', stage: 'junior', cat: 'classic', diff: 5.0, hot: true,
+    fact: '「绿」「闹」「空」为何精妙——从词性、手法、意境、情感四步答赏析题。',
+    prev: ['poem-image', 'rhetoric-deep'], next: ['poem-g-image', 'poem-language'],
+    lecture: [ {name:'炼字赏析', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'诗词赏析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'recitation-g7': { title: '名句默写', stage: 'junior', cat: 'classic', diff: 3.8, hot: true,
+    fact: '理解性默写的应对：由情境线索反推名句，杜绝会背不会写的「白字失分」。',
+    prev: ['classical-words', 'poem-image'], next: ['recitation-g', 'poem-g-image'],
+    lecture: [ {name:'名句默写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'默写自测', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 现代文阅读 ================= */
+  'narrative-reading': { title: '记叙文阅读', stage: 'junior', cat: 'read', diff: 4.0, hot: true,
+    fact: '六要素、线索、记叙顺序（顺叙倒叙插叙）与概括主要事件，初中阅读的第一主战场。',
+    prev: ['reading-main', 'person-writing', 'fairytale'], next: ['narrative-device', 'lyric-essay', 'fiction-reading'],
+    lecture: [ {name:'记叙文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'记叙文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'narrative-device': { title: '记叙文表现手法', stage: 'junior', cat: 'read', diff: 4.5, hot: false,
+    fact: '悬念、铺垫、照应、抑扬、对比、侧面描写——识别手法并说出其对人物情节的作用。',
+    prev: ['narrative-reading'], next: ['language-appreciate', 'narrative-writing'],
+    lecture: [ {name:'表现手法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'手法辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'lyric-essay': { title: '散文阅读', stage: 'junior', cat: 'read', diff: 4.6, hot: true,
+    fact: '形散神聚：理清「写了什么」的材料线，抓住「为什么写」的情感线，读出散文的「我」。',
+    prev: ['narrative-reading', 'rhetoric-deep'], next: ['literary-prose'],
+    lecture: [ {name:'散文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'散文阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'fiction-reading': { title: '小说阅读三要素', stage: 'junior', cat: 'read', diff: 4.7, hot: true,
+    fact: '人物（语言动作心理）、情节（开端发展高潮结局）、环境（自然与社会）及其作用。',
+    prev: ['narrative-reading'], next: ['famous-books', 'whole-book-hlm', 'literary-fiction'],
+    lecture: [ {name:'小说阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'小说阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'expository-reading': { title: '说明文阅读', stage: 'junior', cat: 'read', diff: 4.3, hot: true,
+    fact: '说明对象与特征、说明顺序（时间空间逻辑）、十大说明方法及其作用、说明语言的准确性。',
+    prev: ['reading-main'], next: ['practical-reading', 'expository-writing', 'argument-reading'],
+    lecture: [ {name:'说明文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'说明文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'argument-reading': { title: '议论文阅读', stage: 'junior', cat: 'read', diff: 4.8, hot: true,
+    fact: '找论点、辨论据（事实/道理）、理清论证思路（提出问题-分析问题-解决问题）。',
+    prev: ['expository-reading'], next: ['argument-writing', 'discourse-reading', 'logic-thinking'],
+    lecture: [ {name:'议论文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'议论文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'practical-reading': { title: '新闻与实用性文本', stage: 'junior', cat: 'read', diff: 4.2, hot: false,
+    fact: '消息的标题导语主体结构、图表信息转文字、说明书与倡议书的快速阅读。',
+    prev: ['expository-reading'], next: ['comprehensive-learning', 'cross-media', 'practical-mixed'],
+    lecture: [ {name:'新闻阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'实用文本练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'famous-books': { title: '名著导读', stage: 'junior', cat: 'culture', diff: 4.4, hot: true,
+    fact: '朝花夕拾、西游记、骆驼祥子、红星照耀中国、水浒等必读名著的主要情节、人物与主题。',
+    prev: ['fiction-reading', 'book-note'], next: ['whole-book-hlm'],
+    lecture: [ {name:'名著导读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'名著练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 语言运用 ================= */
+  'ill-sentence': { title: '病句辨析与修改', stage: 'junior', cat: 'lang', diff: 4.3, hot: true,
+    fact: '语序不当、搭配不当、成分残缺、重复啰嗦、前后矛盾等六大类病句的识别与修改。',
+    prev: ['sentence-transform'], next: ['sentence-cohere', 'language-use'],
+    lecture: [ {name:'病句修改', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'病句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'sentence-cohere': { title: '句子衔接与排序', stage: 'junior', cat: 'lang', diff: 4.4, hot: false,
+    fact: '凭话题一致、逻辑顺序、代词指代、关联词给打乱的句子排序，让表达连贯有序。',
+    prev: ['ill-sentence'], next: ['imitate-writing', 'language-use'],
+    lecture: [ {name:'句子衔接', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'排序练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'compress-summarize': { title: '压缩与概括', stage: 'junior', cat: 'lang', diff: 4.5, hot: false,
+    fact: '给新闻拟标题、概括语段要点、下定义——在限定字数内保留核心信息。',
+    prev: ['compress-g-pri', 'reading-main'], next: ['practical-mixed', 'discourse-reading'],
+    lecture: [ {name:'压缩概括', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'压缩练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'imitate-writing': { title: '仿写与续写', stage: 'junior', cat: 'write', diff: 4.2, hot: false,
+    fact: '仿句式、仿修辞、仿风格，续写要顺着原文人物性格与叙事逻辑走。',
+    prev: ['rhetoric-deep', 'sentence-cohere'], next: ['couplet'],
+    lecture: [ {name:'仿写续写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'仿写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'language-appreciate': { title: '语言赏析题', stage: 'junior', cat: 'read', diff: 4.6, hot: true,
+    fact: '赏析词句的万能框架：手法+内容+效果+情感，从「好不好」说到「为什么好」。',
+    prev: ['rhetoric-deep', 'narrative-device'], next: ['language-use', 'literary-prose', 'literary-fiction'],
+    lecture: [ {name:'语言赏析', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'赏析题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'comprehensive-learning': { title: '综合性学习', stage: 'junior', cat: 'lang', diff: 4.0, hot: false,
+    fact: '围绕主题设计活动、拟写标语广告词、提建议、发邀请——语文综合运用能力考场化。',
+    prev: ['practical-reading'], next: ['speech-debate'],
+    lecture: [ {name:'综合性学习', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'综合学习练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'couplet': { title: '对偶与对联', stage: 'junior', cat: 'culture', diff: 4.3, hot: false,
+    fact: '字数相等、词性相对、结构相应、平仄相谐，会赏对联更会拟对联。',
+    prev: ['poem-image', 'imitate-writing'], next: [],
+    lecture: [ {name:'对联文化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'对联练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'culture-knowledge': { title: '古代文化常识', stage: 'junior', cat: 'culture', diff: 4.6, hot: false,
+    fact: '称谓、官职、科举、纪年、地理、礼仪——读懂文言文的背景知识库。',
+    prev: ['classical-function', 'festival-culture'], next: ['classical-infer', 'culture-classic'],
+    lecture: [ {name:'文化常识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'文化常识练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 写作 ================= */
+  'narrative-writing': { title: '记叙文写作（初中）', stage: 'junior', cat: 'write', diff: 4.6, hot: true,
+    fact: '从写清楚一件事到写好一件事：选材真实典型、叙事有波澜、细节打动人。',
+    prev: ['person-writing', 'narrative-device'], next: ['detail-description', 'exam-topic'],
+    lecture: [ {name:'记叙文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'记叙文升格练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'expository-writing': { title: '说明文写作', stage: 'junior', cat: 'write', diff: 4.5, hot: false,
+    fact: '抓住特征、安排顺序、选准方法、注意分寸，把一个事物或事理说明白。',
+    prev: ['expository-reading'], next: [],
+    lecture: [ {name:'说明文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'说明文写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'argument-writing': { title: '议论文写作（初中）', stage: 'junior', cat: 'write', diff: 4.9, hot: true,
+    fact: '亮观点、摆事实讲道理、有层次地论证——观点明确、论据充分、逻辑清楚。',
+    prev: ['argument-reading'], next: ['exam-topic', 'argumentative-writing'],
+    lecture: [ {name:'议论文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'议论文写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'exam-topic': { title: '审题与立意', stage: 'junior', cat: 'write', diff: 4.7, hot: true,
+    fact: '全命题、半命题、材料作文的审题路径：抓关键词、明限制、定角度、立意求深求新。',
+    prev: ['narrative-writing', 'argument-writing'], next: ['essay-structure', 'time-essay'],
+    lecture: [ {name:'审题立意', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'审题训练', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'detail-description': { title: '细节描写', stage: 'junior', cat: 'write', diff: 4.6, hot: false,
+    fact: '动作分解、神态捕捉、心理白描——用镜头感的细节代替「很感动」「很开心」的空话。',
+    prev: ['narrative-writing'], next: ['revision-writing', 'literary-writing'],
+    lecture: [ {name:'细节描写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'细节描写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'essay-structure': { title: '结构布局', stage: 'junior', cat: 'write', diff: 4.8, hot: false,
+    fact: '凤头猪肚豹尾：开头入题快、中间分段清、过渡有桥梁、结尾扣题有升华。',
+    prev: ['exam-topic'], next: ['revision-writing'],
+    lecture: [ {name:'作文结构', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'结构训练', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'revision-writing': { title: '作文修改与润色', stage: 'junior', cat: 'write', diff: 4.7, hot: false,
+    fact: '好作文是改出来的：先查切题再调结构后磨语言，学会自己给自己的作文做「手术」。',
+    prev: ['essay-structure', 'detail-description'], next: [],
+    lecture: [ {name:'作文升格', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'修改练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'annotation-method': { title: '圈点批注读书法', stage: 'junior', cat: 'read', diff: 4.1, hot: false,
+    fact: '在书页上圈关键、点疑难、批感想——把被动阅读变成与作者的对话。',
+    prev: ['reading-method'], next: ['group-reading', 'whole-book'],
+    lecture: [ {name:'批注式阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'批注练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+  /* ================= 高中 · 文言与古诗文 ================= */
+  'classical-infer': { title: '文言实词语境推断', stage: 'senior', cat: 'classic', diff: 5.2, hot: true,
+    fact: '不靠背注释，用字形分析、语法位置、互文对举、语境代入四法推断陌生实词含义。',
+    prev: ['classical-translate', 'culture-knowledge'], next: ['culture-classic', 'classical-hard'],
+    lecture: [ {name:'实词推断', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'推断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'classical-pattern': { title: '文言特殊句式系统', stage: 'senior', cat: 'classic', diff: 5.5, hot: true,
+    fact: '判断句、被动句、宾语前置、状语后置、定语后置、省略句的系统梳理与翻译落实。',
+    prev: ['classical-sentence'], next: ['classical-hard'],
+    lecture: [ {name:'特殊句式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'句式练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'classical-hard': { title: '高考文言文整体阅读', stage: 'senior', cat: 'classic', diff: 5.8, hot: true,
+    fact: '人物传记、纪事本末类文本的整篇阅读：先读题干带问题、再理人物关系与事件脉络、最后逐题回归原文。',
+    prev: ['classical-infer', 'classical-pattern'], next: [],
+    lecture: [ {name:'文言整体阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'高考文言套题', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'poem-g-image': { title: '意象意境与情感', stage: 'senior', cat: 'classic', diff: 5.5, hot: true,
+    fact: '高中诗词的意象系统与意境概括，把握「景—境—情」的推导链，读懂含蓄的抒情。',
+    prev: ['poem-appreciate', 'recitation-g7'], next: ['recitation-g', 'poem-technique'],
+    lecture: [ {name:'意象意境', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'意境练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'poem-technique': { title: '诗歌表达技巧', stage: 'senior', cat: 'classic', diff: 5.9, hot: true,
+    fact: '借景抒情、托物言志、虚实结合、动静相衬、用典对比——精准命名并分析其效果。',
+    prev: ['poem-g-image'], next: ['aesthetic-appreciate'],
+    lecture: [ {name:'表达技巧', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'技巧辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'poem-language': { title: '炼字与语言风格', stage: 'senior', cat: 'classic', diff: 5.8, hot: false,
+    fact: '诗眼的开掘与语言风格（沉郁顿挫/清新自然/雄浑豪放）的辨识与论证。',
+    prev: ['poem-appreciate'], next: ['aesthetic-appreciate'],
+    lecture: [ {name:'炼字风格', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'炼字练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'recitation-g': { title: '名篇名句默写（高中）', stage: 'senior', cat: 'classic', diff: 5.2, hot: true,
+    fact: '高中 60+ 篇目（离骚、赤壁赋、登泰山记…）的理解性默写，易错字逐个过关。',
+    prev: ['recitation-g7', 'poem-g-image'], next: [],
+    lecture: [ {name:'高中默写篇目', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'默写自测', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 现代文阅读 ================= */
+  'discourse-reading': { title: '论述类文本阅读', stage: 'senior', cat: 'read', diff: 5.6, hot: true,
+    fact: '学术性论述文的概念界定、筛选整合、内容推断——高考现代文阅读的第一道坎。',
+    prev: ['argument-reading', 'compress-summarize'], next: ['whole-book', 'logic-thinking'],
+    lecture: [ {name:'论述类阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'论述类练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'literary-fiction': { title: '文学类文本·小说', stage: 'senior', cat: 'read', diff: 5.9, hot: true,
+    fact: '高考小说题的四大文本要素+叙事特征（视角节奏）、人物形象题与探究题的规范作答。',
+    prev: ['fiction-reading', 'language-appreciate'], next: [],
+    lecture: [ {name:'高考小说阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'小说套题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'literary-prose': { title: '文学类文本·散文', stage: 'senior', cat: 'read', diff: 5.8, hot: true,
+    fact: '线索结构、语句含义、艺术手法与探究题——散文读的是「情志」的曲折表达。',
+    prev: ['lyric-essay', 'language-appreciate'], next: ['aesthetic-appreciate', 'literary-writing'],
+    lecture: [ {name:'高考散文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'散文套题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'practical-mixed': { title: '实用类与非连续性文本', stage: 'senior', cat: 'read', diff: 5.5, hot: false,
+    fact: '多则材料（新闻+图表+访谈）的比较阅读：找共性、辨差异、综合得出结论。',
+    prev: ['practical-reading', 'compress-summarize'], next: ['cross-media'],
+    lecture: [ {name:'非连续性文本', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'材料比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 整本书与文化 ================= */
+  'whole-book': { title: '乡土中国（学术著作）', stage: 'senior', cat: 'culture', diff: 5.6, hot: true,
+    fact: '差序格局、礼治秩序等核心概念的理解与运用，学会读「讲道理的书」。',
+    prev: ['annotation-method', 'discourse-reading'], next: ['academic-writing'],
+    lecture: [ {name:'乡土中国导读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'概念运用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'whole-book-hlm': { title: '红楼梦（整本书阅读）', stage: 'senior', cat: 'culture', diff: 5.8, hot: true,
+    fact: '主要人物的复杂性、家族叙事与诗意美学，掌握长篇章回小说的阅读策略。',
+    prev: ['famous-books', 'fiction-reading'], next: [],
+    lecture: [ {name:'红楼梦导读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'整本书任务单', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'culture-classic': { title: '文化经典研读', stage: 'senior', cat: 'culture', diff: 5.7, hot: false,
+    fact: '论语、孟子等先秦经典的选篇研读：理解儒家核心思想，思辨其现代意义。',
+    prev: ['classical-infer', 'culture-knowledge'], next: [],
+    lecture: [ {name:'论语孟子选读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'经典阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 语言运用与思维 ================= */
+  'language-use': { title: '语段综合运用', stage: 'senior', cat: 'lang', diff: 5.4, hot: true,
+    fact: '成语、病句、衔接、得体在一篇语段里的综合考查——高考语言文字运用板块的全真训练。',
+    prev: ['ill-sentence', 'sentence-cohere', 'language-appreciate'], next: [],
+    lecture: [ {name:'语言文字运用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'语用题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'logic-thinking': { title: '逻辑与推理', stage: 'senior', cat: 'lang', diff: 5.8, hot: true,
+    fact: '隐含前提、削弱加强、充分必要条件——新课标逻辑板块，让说理有骨架。',
+    prev: ['argument-reading', 'discourse-reading'], next: ['speech-debate', 'argumentative-writing'],
+    lecture: [ {name:'逻辑推理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'逻辑题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 写作 ================= */
+  'argumentative-writing': { title: '高考议论文写作', stage: 'senior', cat: 'write', diff: 5.8, hot: true,
+    fact: '核心概念界定、层进式结构、思辨说理与例证分析——从「观点+例子」升级为真正的论证。',
+    prev: ['argument-writing', 'logic-thinking'], next: ['time-essay', 'academic-writing'],
+    lecture: [ {name:'议论文进阶', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'议论文升格', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'time-essay': { title: '时评与任务驱动写作', stage: 'senior', cat: 'write', diff: 6.0, hot: true,
+    fact: '面对真实情境与交际任务（发言稿、书信体作文）的意见表达：入情入境、有理有据有分寸。',
+    prev: ['exam-topic', 'argumentative-writing'], next: [],
+    lecture: [ {name:'时评写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'情境写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'literary-writing': { title: '文学写作', stage: 'senior', cat: 'write', diff: 6.2, hot: false,
+    fact: '记叙文的艺术化：构思立意的巧、叙事视角的选、语言风格的立，写出有文学味的文章。',
+    prev: ['literary-prose', 'detail-description'], next: [],
+    lecture: [ {name:'文学写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'文学写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'academic-writing': { title: '学术性写作', stage: 'senior', cat: 'write', diff: 6.3, hot: false,
+    fact: '文献检索、问题意识、论证规范与格式——小论文写作，为大学研究性学习铺路。',
+    prev: ['whole-book', 'argumentative-writing'], next: [],
+    lecture: [ {name:'小论文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'论文框架练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'applied-high': { title: '应用文与实用写作', stage: 'senior', cat: 'write', diff: 5.3, hot: false,
+    fact: '书信、演讲稿、倡议书、观后感的格式规范与语体得体，任务驱动写作的基本功。',
+    prev: ['applied-writing'], next: [],
+    lecture: [ {name:'应用文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'应用文练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 阅读方法与文化视野 ================= */
+  'group-reading': { title: '群文阅读与专题研读', stage: 'senior', cat: 'read', diff: 5.5, hot: false,
+    fact: '围绕一个议题组合多篇文本比较互证，从「教读一篇」走向「自主研读一组」。',
+    prev: ['annotation-method'], next: [],
+    lecture: [ {name:'群文阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'专题研读任务', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'cross-media': { title: '跨媒介阅读与交流', stage: 'senior', cat: 'read', diff: 5.2, hot: false,
+    fact: '辨识媒介信息立场、比较图文影像的表达差异，在信息时代做一个清醒的读者。',
+    prev: ['practical-reading', 'practical-mixed'], next: [],
+    lecture: [ {name:'跨媒介阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'媒介素养练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'speech-debate': { title: '演讲与辩论', stage: 'senior', cat: 'lang', diff: 5.6, hot: false,
+    fact: '有立场的表达：演讲的结构与感染力、辩论的立论驳论与临场应对。',
+    prev: ['comprehensive-learning', 'logic-thinking'], next: [],
+    lecture: [ {name:'演讲与辩论', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'辩论实战练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'aesthetic-appreciate': { title: '审美鉴赏与文学常识', stage: 'senior', cat: 'culture', diff: 5.9, hot: false,
+    fact: '文学史脉络（诗经楚辞—唐诗宋词—明清小说—现当代文学）与审美判断力，让阅读有纵深。',
+    prev: ['poem-technique', 'poem-language', 'literary-prose'], next: [],
+    lecture: [ {name:'文学常识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'文学常识练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--pri)"></span>小学 <b>${stCnt('primary')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

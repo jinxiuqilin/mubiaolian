@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 初高中历史知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）历史知识目标站 —— 初中到高中历史主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#9a6215" />
+<meta property="og:title" content="目标链 · 初高中历史知识目标站" />
+<meta property="og:description" content="初中到高中历史主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-hist.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M7.2 4.6v14.8M16.8 4.6v14.8M7.2 4.6a1.9 1.9 0 1 0 .01 0M16.8 4.6a1.9 1.9 0 1 0 .01 0M10 8.8h4M10 12h4M10 15.2h2.4' fill='none' stroke='%23f6f7f4' stroke-width='1.5' stroke-linecap='round'/></svg>" />
+<style>
+  :root {
+    --bg: #faf6ed;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #9a6215;
+    --accent-deep: #7a4c0e;
+    --accent-soft: #f7efe0;
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(154,98,21,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(154,98,21,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #c1934e); box-shadow: 0 3px 10px -2px rgba(154,98,21,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #d4ad6e 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(122,76,14,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(154,98,21,.06); border: 1px dashed rgba(154,98,21,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(154,98,21,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(154,98,21,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #d4ad6e); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(154,98,21,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #c1934e);
+    box-shadow: 0 8px 18px -8px rgba(154,98,21,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(154,98,21,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(154,98,21,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(154,98,21,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f7f2e6; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fbf8f0, #f3ecd9);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链历史站"><i class="subj-ico">史</i>历史</span>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">56 个主干环 · 224 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>初高中历史知识<span class="accent">目标链</span></h1>
+  <p>历史从七年级起始、两段贯通：初中到高中主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/56</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：丝绸之路" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链历史站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">湖南卷 · 省自主命题 · 2021-2023 · 人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链历史站 · 知识点数据（56 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：56 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 224 个 ============ */
+/* ============ 历年高考考情（湖南卷历史·省自主命题）：环id → {年份:[T题号·考点]} ============
+ * 2021-2023 三年（2024/2025 暂未收录）。
+ * 数据源：学科网《2022年高考历史真题完全解读（湖南卷）》双向细目表（m.zxxk.com/soft/33855107）；
+ * 2021/2023 据已验证真题原文归纳（21cnjy 2023 全卷解析、组卷网知识点标注）。人工整理，或有遗漏；
+ * 少数艺术类/跨代综合题无对应环未收录。 */
+const EXAM = {
+  'hist-gz-civ': {
+    2023: ['T1·长江流域文明起源', 'T2·战国秦国官僚政治'],
+    2022: ['T1·诸子百家起源'],
+    2021: ['T1·《诗经》与天道观·人文意识'],
+  },
+  'hist-gz-tang': {
+    2023: ['T3·南北朝民族文化认同', 'T17·唐代均田制与两税法'],
+    2021: ['T3·占田制至均田制演变', 'T4·唐代官俸与地方财政'],
+  },
+  'hist-gz-song': {
+    2023: ['T4·宋代台谏合一'],
+    2022: ['T4·宋代绘画艺术'],
+    2021: ['T5·宋代赈灾核查'],
+  },
+  'hist-gz-mingqing': {
+    2023: ['T5·明与朝日宗藩赐书'],
+    2022: ['T5·南书房与君主专制'],
+    2021: ['T6·八旗滑冰图与民族交融'],
+  },
+  'hist-gz-lateqing': {
+    2023: ['T6·晚清国际公法认知', 'T7·辛丑条约与停科举'],
+    2022: ['T6·墨学复兴与西学东渐', 'T7·大生纱厂与民族资本主义'],
+    2021: ['T7·近代进口商品结构', 'T8·清末武汉三镇商贸'],
+  },
+  'hist-gz-republic': {
+    2023: ['T18·民国劳工权益争议评析'],
+    2021: ['T9·五四后思想界求索'],
+  },
+  'hist-gz-cpc': {
+    2023: ['T8·根据地统一累进税'],
+    2022: ['T8·陕甘宁边区扫盲建设'],
+    2021: ['T10·抗战两次战役形势', 'T22·中共一大代表群体（选做）'],
+  },
+  'hist-gz-socialism': {
+    2023: ['T9·新民主主义经济政策', 'T10·家庭联产承包责任制'],
+    2022: ['T9·新民主主义经济政策', 'T10·经济体制改革与社保', 'T18·新中国初期政策与城乡关系'],
+    2021: ['T11·双百方针与文艺创作', 'T17·城市基层管理体制变迁'],
+  },
+  'hist-gx-ancient': {
+    2023: ['T11·屋大维与元首顾问会议'],
+    2022: ['T11·伯利克里改革与雅典民主'],
+    2021: ['T12·罗马法债务转移'],
+  },
+  'hist-gx-medieval': {
+    2023: ['T12·日本古代垦田与庄园'],
+  },
+  'hist-gx-modern': {
+    2023: ['T14·近代国家主权意识'],
+  },
+  'hist-gx-capital': {
+    2023: ['T13·文艺复兴人文主义', 'T15·英国内阁集权化'],
+    2022: ['T13·1787宪法与德意志联邦制比较'],
+    2021: ['T13·伏尔泰的历史分期观', 'T15·美国《法官法》与分权调整'],
+  },
+  'hist-gx-industrial': {
+    2023: ['T16·美国农业技术变迁'],
+    2022: ['T12·马克思主义思想渊源'],
+    2021: ['T14·近代科学期刊兴起'],
+  },
+  'hist-gx-worldwar': {
+    2022: ['T14·苏俄战时共产主义政策'],
+  },
+  'hist-gx-coldwar': {
+    2022: ['T15·莫内与欧洲统一启动', 'T19·20世纪世界格局演变'],
+    2021: ['T16·战后日本宪法共识变化', 'T21·中东六日战争（选做）'],
+  },
+  'hist-gx-contemp': {
+    2021: ['T18·经济全球化基本历程'],
+  },
+  'hist-xb1-pol': {
+    2022: ['T2·汉武帝理财措施'],
+    2021: ['T2·汉初帝位选择与仁孝', 'T19·中国古代「变与不变」', 'T20·汉景帝削藩（选做）'],
+  },
+  'hist-xb1-official': {
+    2022: ['T3·隋唐选官制度变动'],
+  },
+  'hist-xb3-exchange': {
+    2023: ['T19·葡萄酒传播与史料实证'],
+  },
+};
+/* 2021-2023 湖南历史真题卷公开页（eol / 高考升学网，均探活；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=hist&y=2021',
+  2022: 'gaokao.html?s=hist&y=2022',
+  2023: 'gaokao.html?s=hist&y=2023',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 初中 · 中国古代史 ---- */
+  'hist-origin': [
+    { t: '我国境内的早期人类', d: '元谋人（约170万年前）是我国境内目前已确认的最早的古人类，北京人使用打制石器、天然火并过群居生活。易错：北京人已经会用火＝会人工取火——北京人只会使用天然火，人工取火是山顶洞人已掌握的能力。' },
+    { t: '原始农业与农耕生活', d: '河姆渡人种植水稻、住干栏式房屋，半坡人种植粟、住半地穴式房屋，农作物种植标志原始农业产生。易错：南北农耕类型可以互换——河姆渡在长江流域种稻、半坡在黄河流域种粟，由自然环境决定，不能张冠李戴。' },
+    { t: '炎黄传说与中华文明起源', d: '炎帝、黄帝的传说与考古发现相互印证，后人尊崇炎黄为中华民族的人文初祖。易错：传说＝毫无价值的历史——传说包含真实历史信息，需要与考古发现相互印证后才可采用。' },
+    { t: '良渚与陶寺：早期文明曙光', d: '良渚古城、陶寺都城等遗址显示当时已出现阶级分化与早期国家雏形。易错：中华文明只起源于中原——考古证明中华文明起源是多元一体的，各地文化共同汇聚成中华文明。' },
+  ],
+  'hist-warring': [
+    { t: '铁器牛耕与社会变革', d: '春秋铁制农具与牛耕出现，战国进一步推广，荒地开垦、井田制瓦解，新兴地主阶层崛起。易错：社会变革的根源是变法家个人努力——根本动力是生产工具进步带来的生产力发展，个人只是推动者。' },
+    { t: '商鞅变法的内容与影响', d: '商鞅变法确立县制、废除井田、奖励耕战，使秦国的国力大为增强，为秦统一奠定基础。易错：奖励军功利于贵族——恰恰相反，废除了贵族世袭特权，按军功授爵触动的是旧贵族利益。' },
+    { t: '孔子与老子', d: '孔子核心思想是仁，提出以德治国、有教无类；老子认为万物运行有其自然法则，主张无为而治。易错：孔子主张「无为」——无为而治是老子的道家思想，孔家儒家主张积极入世。' },
+    { t: '百家争鸣', d: '墨家兼爱非攻、儒家仁政、道家无为、法家以法治国集权于君，各家相互辩驳又彼此影响。易错：百家争鸣只是学术讨论——它是中国古代第一次思想文化发展的高峰，为中国古代文化发展奠定基础。' },
+  ],
+  'hist-qinhan': [
+    { t: '秦统一的条件与意义', d: '商鞅变法后秦国实力超群，秦王嬴政先后灭六国，建立起我国历史上第一个统一的多民族封建国家。易错：秦统一只靠武力——还有长期战乱人民渴望安定、经济发展需要统一市场等历史大势。' },
+    { t: '郡县制与中央集权', d: '秦确立皇帝制、三公制，地方推行郡县制，郡县长官由朝廷直接任免。易错：郡县制与分封制只是名称不同——分封诸侯世袭有独立性，郡县长官由中央任免不得世袭，这是官僚政治的开端。' },
+    { t: '汉武帝巩固大一统', d: '汉武帝实施推恩令、罢黜百家尊崇儒术、统一铸造五铢钱、盐铁官营、北击匈奴，从政治思想经济军事巩固大一统。易错：尊崇儒术＝禁绝百家——是把儒学确立为正统思想，法术势等统治手段仍在并用，外儒内法。' },
+    { t: '张骞通西域与丝绸之路', d: '张骞两次出使西域促成丝绸之路开通，丝路是古代东西方往来的大动脉，促进贸易与文化交流。易错：丝绸之路上只运丝绸——瓷器、香料、宗教、技术都在交流，西汉还设西域都护管理西域。' },
+  ],
+  'hist-wei-jin': [
+    { t: '官渡之战与赤壁之战', d: '官渡之战曹操以少胜多奠定统一北方基础，赤壁之战孙刘联军以少胜多奠定三国鼎立基础。易错：两战作用混淆——官渡定北方归属，赤壁阻止曹操南下、促成鼎立格局，考试常互设陷阱。' },
+    { t: '西晋的短暂统一', d: '西晋灭吴完成统一，但八王之乱耗竭国力，北方游牧民族内迁，西晋迅速灭亡。易错：西晋亡于农民起义——主要亡于统治集团内乱（八王之乱）与民族矛盾激化，与东汉末年黄巾起义性质不同。' },
+    { t: '北魏孝文帝改革', d: '迁都洛阳、说汉话、穿汉服、改汉姓、通婚姻，促进民族交融。易错：汉化改革削弱北魏——改革顺应了民族交融趋势，增强了北魏实力；其后期危机主要源于制度执行与边镇矛盾。' },
+    { t: '江南地区的开发', d: '北方人口南迁带来劳动力和先进技术，加上江南自然条件优越，江南得到开发。易错：江南开发＝经济重心已南移——此时只是开发奠基，经济重心南移最终完成在南宋。' },
+  ],
+  'hist-suitang': [
+    { t: '隋朝的创建与大运河', d: '隋文帝统一南北，隋炀帝开凿贯通南北的大运河，促进南北经济交流。易错：大运河是暴政无需肯定——开河劳民但功在千秋，评价历史事件要区分当时代价与长远作用。' },
+    { t: '科举制的创立', d: '隋炀帝创立进士科标志科举制确立，通过分科考试选拔官员。易错：科举制创立于唐——创立于隋，唐朝是完善（殿试、武举），两者常被故意混淆。' },
+    { t: '贞观之治与开元盛世', d: '唐太宗轻徭薄赋、知人善任出现贞观之治，唐玄宗前期励精图治出现开元盛世。易错：开元盛世贯穿玄宗一朝——后期玄宗怠政、安史之乱使唐朝由盛转衰，盛世只在前期。' },
+    { t: '民族交往与对外交流', d: '文成公主入藏促进吐蕃经济文化发展，鉴真东渡传播唐朝文化，玄奘西行带回佛经。易错：玄奘与鉴真方向记反——玄奘是西行天竺求法，鉴真是东渡日本传法。' },
+  ],
+  'hist-song': [
+    { t: '重文轻武的政策', d: '宋朝实行重文轻武政策，文臣统兵，武将受到多方面牵制。易错：重文轻武只有弊端——它扭转了武将专权的局面、利于政权稳定，但也导致军队战斗力减弱，要辩证评价。' },
+    { t: '经济重心南移', d: '从唐朝中期开始的经济重心南移至南宋最终完成，太湖流域成为粮仓，「苏湖熟，天下足」。易错：南移开始于南宋——开始于唐朝中期，南宋完成，过程与节点要分清。' },
+    { t: '商业繁荣与市舶司', d: '宋代城市打破坊市界限、出现早市夜市，广州泉州设市舶司管理海外贸易，四川出现世界上最早的纸币交子。易错：交子出现于北宋的汴京——交子最早出现于四川地区，考点常偷换地点。' },
+    { t: '宋元科技成熟与外传', d: '毕昇发明活字印刷术，指南针用于航海，火药广泛用于军事，三大发明经阿拉伯人传入欧洲。易错：三大发明都是宋代发明——造纸术发明于西汉、改进于东汉，宋元是「成熟与外传」期，表述要准确。' },
+  ],
+  'hist-ming': [
+    { t: '朱元璋强化皇权', d: '明朝废丞相、撤中书省，六部直接向皇帝负责，设锦衣卫、东厂等特务机构。易错：锦衣卫与东厂职能完全相同——锦衣卫是皇帝亲军兼特务，东厂由宦官统领，二者并立互制，都是君主专制的工具。' },
+    { t: '郑和下西洋', d: '1405—1433年郑和七次下西洋，到达亚非三十多个国家，是世界航海史上的壮举。易错：郑和下西洋以殖民掠夺为目的——其目的是提高明朝地位、加强友好往来，与后来欧洲航海的殖民性质根本不同。' },
+    { t: '戚继光抗倭', d: '戚继光组建戚家军，在台州九战九捷，平定东南沿海倭患，是民族英雄。易错：倭患只指日本人——明中期倭患泛滥与海禁政策、中外海盗勾结有关，戚继光抗倭是反侵略的正义战争。' },
+    { t: '八股取士', d: '明朝科举只许在四书五经范围内命题，答卷格式定为八股文。易错：八股取士有利于思想解放——恰恰相反，它禁锢思想、扼杀创造力，应试者成为皇帝旨意的顺从者。' },
+  ],
+  'hist-qing': [
+    { t: '郑成功收复台湾', d: '1662年郑成功从荷兰殖民者手中收复台湾，1684年清朝设台湾府隶属福建省。易错：郑成功是「闭关」人物——他是收复国土的民族英雄，与清朝闭关锁国政策无关，考点常张冠李戴。' },
+    { t: '清朝的边疆治理', d: '平定准噶尔与大小和卓叛乱、设驻藏大臣并实行金瓶掣签、多伦会盟管辖漠北，奠定现代中国版图。易错：金瓶掣签由驻藏大臣决定——金瓶掣签须经驻藏大臣监督、报朝廷批准，体现中央对西藏的有效管辖。' },
+    { t: '军机处与君主专制顶峰', d: '雍正设军机处，军国大事由皇帝裁决，军机大臣跪受笔录。易错：军机处是中央决策机构——它只是皇帝的秘书班子，标志君主专制达到顶峰，不是增强相权。' },
+    { t: '闭关锁国', d: '清朝严格限制对外贸易，只留广州一口通商（十三行统一经营）。易错：闭关＝绝对禁绝外贸——是严格限制而非完全断绝，其后果是使中国错失工业革命机遇、逐渐落伍于世界。' },
+  ],
+  'hist-opium': [
+    { t: '鸦片战争的背景', d: '英国为打开中国市场、扭转贸易逆差，借口林则徐虎门销烟发动侵略战争。易错：虎门销烟是战争根本原因——根本原因是英国要打开中国市场，销烟只是直接借口（导火索）。' },
+    { t: '《南京条约》的内容', d: '割香港岛、赔款2100万银元、开放广州厦门福州宁波上海五口通商、协定关税。易错：割让「香港」＝割让整个香港地区——条约割的是香港岛，1997年回归才包括九龙、新界，表述要精确。' },
+    { t: '半殖民地半封建社会的开端', d: '鸦片战争改变中国历史进程，中国开始从封建社会沦为半殖民地半封建社会，是中国近代史的开端。易错：半殖民地＝一半殖民地——「半殖民地」指丧失部分而非全部主权，仍保有名义上的政府；「半封建」指自然经济解体但资本主义有所发展。' },
+    { t: '第二次鸦片战争', d: '英法联军攻占北京、火烧圆明园，签订《天津条约》《北京条约》，中国半殖民地化程度进一步加深。易错：火烧圆明园发生在第一次鸦片战争——发生在第二次鸦片战争期间（1860年），时间常被混淆。' },
+  ],
+  'hist-yangwu': [
+    { t: '太平天国运动的兴起与失败', d: '洪秀全领导金田起义，定都天京，《天朝田亩制度》想建立绝对平均的理想社会。易错：《天朝田亩制度》真正实行过——其绝对平均方案脱离实际、并未真正实行；天京事变的领导集团内讧是运动由盛转衰的转折。' },
+    { t: '洋务运动的口号与内容', d: '洋务派主张自强、求富，创办军事工业、民用工业，兴办新式学堂、建立新式海陆军。易错：洋务运动是改革政治制度——只学技术不改变制度，「中体西用」，这是它失败的根本原因。' },
+    { t: '洋务运动的评价', d: '洋务运动是中国历史上第一次近代化运动，客观上促进了中国民族资本主义的产生，但没有使中国走上富强道路。易错：评价洋务运动只说失败——要两面兼顾：客观进步性（近代化开端）与局限性（未触动封建制度），漏一方面就丢分。' },
+    { t: '左宗棠收复新疆', d: '左宗棠率军收复新疆，1884年清政府在新疆建省，加强西北边疆管理。易错：收复新疆与甲午战争先后颠倒——收复新疆在1875—1878年，早于甲午战争（1894年），时间轴要理顺。' },
+  ],
+  'hist-wuxu': [
+    { t: '《马关条约》的危害', d: '割辽东半岛、台湾及澎湖列岛，赔款白银二亿两，允许日本在通商口岸开设工厂。易错：允许设厂与开埠通商等同——允许设厂标志列强侵略由商品输出升级为资本输出，是比开埠更深一步的侵略。' },
+    { t: '公车上书', d: '1895年康有为、梁启超联合举人上书，请求变法，拉开维新变法运动的序幕。易错：公车上书＝戊戌变法开始——它是序幕（思想动员），百日维新（1898年6月）才是变法高潮。' },
+    { t: '戊戌变法的内容', d: '裁撤冗官、任用维新人士，鼓励私人兴办工矿企业，创办京师大学堂、改革科举。易错：变法触动的只是农民利益——主要触犯的是顽固派官僚与旧式士人的既得利益，慈禧发动政变、变法失败。' },
+    { t: '戊戌变法的意义', d: '戊戌变法在思想文化方面产生了广泛而持久的影响。易错：变法失败＝毫无意义——它是一次爱国救亡与思想启蒙运动，为思想文化领域留下深远影响，评价要分政治失败与思想贡献两个层面。' },
+  ],
+  'hist-xinhai': [
+    { t: '同盟会与三民主义', d: '1905年中国同盟会在东京成立，是第一个全国规模的资产阶级革命政党；孙中山将纲领阐发为民族、民权、民生三民主义。易错：三民主义＝同盟会纲领原文——三民主义是孙中山对纲领「驱除鞑虏，恢复中华，创立民国，平均地权」的理论阐发，不是原文。' },
+    { t: '武昌起义与民国建立', d: '1911年10月10日武昌起义胜利，1912年1月1日中华民国临时政府在南京成立。易错：辛亥革命＝武昌起义——武昌起义是辛亥革命的高潮标志，辛亥革命是包括思想动员、各地响应在内的完整进程。' },
+    { t: '《中华民国临时约法》', d: '规定中华民国主权属于全体国民，是中国历史上第一部具有资产阶级共和国宪法性质的重要文件。易错：《临时约法》确立君主立宪——它确立的是民主共和与三权分立原则，还特别改总统制为责任内阁制以限制袁世凯。' },
+    { t: '辛亥革命的评价', d: '推翻了清王朝统治，宣告两千多年君主专制制度的终结，但没有改变半殖民地半封建社会的性质，革命果实被袁世凯窃取。易错：辛亥革命推翻了「封建制度」——推翻的是君主专制制度（帝制），封建土地制度并未触动，表述必须精确。' },
+  ],
+  'hist-newculture': [
+    { t: '新文化运动的旗帜与阵地', d: '陈独秀创办《新青年》，高举民主与科学两面大旗，北京大学与《新青年》成为主要阵地。易错：新文化运动反对一切传统文化——运动猛烈抨击旧道德旧文化，存在对传统文化绝对否定的偏向，但不是「反对一切」。' },
+    { t: '文学革命', d: '胡适发表《文学改良刍议》提倡白话文，陈独秀主张推倒旧文学、建设新文学。易错：文学革命只是文体改革——它同时承载着思想启蒙，白话文让新思想更容易走向大众。' },
+    { t: '五四运动的导火线与经过', d: '巴黎和会上中国外交的失败是五四运动爆发的导火线，学生罢课、工人罢工、商人罢市，运动中心由北京转到上海。易错：五四运动的性质是反帝反封建的爱国运动——前期主力是学生、中心在北京，后期主力转为工人、中心在上海，两阶段常设考点。' },
+    { t: '五四运动的历史意义', d: '五四运动是一场彻底反帝反封建的伟大爱国革命运动，是中国旧民主主义革命走向新民主主义革命的转折点。易错：「彻底」指已彻底完成反帝反封建任务——「彻底」指斗争的不妥协精神，不是任务已完成。' },
+  ],
+  'hist-cpc': [
+    { t: '马克思主义的传播', d: '李大钊发表《我的马克思主义观》，系统介绍马克思主义，为建党奠定思想基础。易错：最早在中国宣传马克思主义的是李大钊——更早的新文化运动前期主将们宣传的是民主科学，李大钊是举旗人，注意「最早系统宣传」的表述。' },
+    { t: '中共一大', d: '1921年7月中共一大在上海召开，确定党的名称、奋斗目标是推翻资产阶级政权、建立无产阶级专政，宣告中国共产党成立。易错：一大就确立了民主革命纲领——民主革命纲领（打倒军阀、推翻国际帝国主义压迫）是中共二大制定的，一大的目标更「远」，考点常互换。' },
+    { t: '中共成立的意义', d: '中国共产党的成立是开天辟地的大事变，中国革命的面貌从此焕然一新。易错：「焕然一新」只是换了政党——「新」在新的领导阶级（无产阶级）、新的指导思想（马克思主义）、新的奋斗目标，答题要展开。' },
+    { t: '国共合作与北伐', d: '1924年国民党一大召开标志国共第一次合作实现，北伐战争胜利进军，基本推翻北洋军阀统治。易错：北伐消灭了全部军阀——北伐基本推翻吴佩孚、孙传芳势力，张作霖退守东北后其势力仍存，表述是「基本推翻」。' },
+  ],
+  'hist-antiwar': [
+    { t: '九一八事变与局部抗战', d: '1931年九一八事变后日军占领东北三省，中国人民的局部抗战开始。易错：九一八事变＝全民族抗战开始——全民族抗战开始于1937年七七事变，九一八只是局部抗战（东北抗日联军等），两个「开始」要分清。' },
+    { t: '西安事变和平解决', d: '1936年12月张学良、杨虎城发动西安事变，中共从全民族利益出发促成和平解决，十年内战基本结束、抗日民族统一战线初步形成。易错：西安事变的目的是投靠蒋介石——张杨是「兵谏」逼蒋抗日，和平解决标志着国共第二次合作初步形成。' },
+    { t: '七七事变与正面战场', d: '1937年7月7日卢沟桥事变标志全民族抗战开始，淞沪会战打破日本「三个月灭亡中国」的迷梦，台儿庄战役是正面战场的重大胜利。易错：台儿庄战役是共产党领导的——它是李宗仁指挥的国民党正面战场战役，平型关大捷、百团大战才是八路军战绩，归属常被混淆。' },
+    { t: '敌后战场与中流砥柱', d: '八路军新四军深入敌后建立抗日根据地，百团大战振奋全国军民抗战信心。易错：正面战场与敌后战场对立——两个战场相互配合、协同作战，共同构成全民族抗战的整体。' },
+  ],
+  'hist-liberation': [
+    { t: '重庆谈判', d: '1945年8月毛泽东赴重庆谈判，双方签订《双十协定》。易错：重庆谈判达成了和平建国的最终实现——协定签订后国民党很快撕毁、发动内战，谈判只是揭露了其假和平面目、赢得政治主动。' },
+    { t: '战略进攻的序幕', d: '1947年夏刘伯承、邓小平率晋冀鲁豫解放军主力千里跃进大别山，揭开战略进攻的序幕。易错：三大战役是进攻序幕——三大战役是战略决战，跃进大别山才是由防御转入进攻的标志，先后顺序不能颠倒。' },
+    { t: '三大战役', d: '辽沈、淮海、平津三大战役共歼灭和改编国民党军队150多万人，国民党军队的主力基本被消灭。易错：平津战役先于辽沈——时间顺序是辽沈（1948.9）→淮海、平津（1948.11起），北平是和平解放方式。' },
+    { t: '渡江战役与南京解放', d: '1949年4月人民解放军渡江战役占领南京，宣告国民党反动统治的覆灭。易错：南京解放＝全国解放——渡江战役后国民党残余势力仍在西南等地顽抗，全国大陆解放要到1951年西藏和平解放。' },
+  ],
+  'hist-prc': [
+    { t: '开国大典与成立意义', d: '1949年10月1日开国大典宣告中华人民共和国成立，开辟了中国历史新纪元。易错：新中国成立＝社会主义制度建立——1949年建立的是新民主主义社会（人民民主专政），社会主义基本制度确立于1956年三大改造完成。' },
+    { t: '西藏和平解放', d: '1951年西藏和平解放，祖国大陆获得统一。易错：西藏是武力「解放」——是协议和平解放，十世班禅与阿沛·阿旺晋美发挥重要作用，「大陆统一」不包括台港澳。' },
+    { t: '抗美援朝', d: '1950年彭德怀率中国人民志愿军入朝作战，黄继光、邱少云是英雄代表，1953年美国被迫在停战协定上签字。易错：抗美援朝战争是「朝鲜战争」本身——中国人民志愿军是保家卫国、正义的反侵略战争，胜利捍卫了新中国安全、大大提高了国际地位。' },
+    { t: '土地改革', d: '1950年《中华人民共和国土地改革法》颁布，废除地主阶级封建剥削的土地所有制，实行农民的土地所有制。易错：土改建立了土地公有制——土改确立的是农民私有制，农业合作化（社会主义改造）才把私有变集体公有，两个阶段常混。' },
+  ],
+  'hist-explore': [
+    { t: '一五计划', d: '1953—1957年实施第一个五年计划，集中力量发展重工业，鞍钢、长春一汽、武汉长江大桥等建成。易错：一五计划以农业为中心——基本任务是集中主要力量发展重工业，建立国家工业化和国防现代化的初步基础。' },
+    { t: '三大改造', d: '对农业、手工业、资本主义工商业的社会主义改造，1956年完成，标志生产资料私有制转变为公有制、社会主义基本制度建立。易错：资本主义工商业改造方式是没收——实行的是公私合营与赎买政策，这是中国社会主义改造的创举。' },
+    { t: '中共八大', d: '1956年中共八大指出国内主要矛盾已经是先进的社会制度同落后的社会生产力之间的矛盾，是探索社会主义道路的良好开端。易错：八大路线后来坚持了——八大正确分析未能在实践中坚持下去，之后出现「大跃进」等失误，表述注意「开端」。' },
+    { t: '探索中的失误与成就', d: '「大跃进」与人民公社化运动违背客观经济规律，是探索中的严重失误；同时大庆油田、两弹一星等成就振奋人心。易错：失误期无任何成就——探索时期既有机遇与成就也有曲折失误，王进喜、焦裕禄、雷锋体现的时代精神同样是重要考点。' },
+  ],
+  'hist-reform': [
+    { t: '十一届三中全会', d: '1978年12月十一届三中全会确立解放思想、实事求是的思想路线，作出把工作中心转移到经济建设上来、实行改革开放的历史性决策。易错：真理标准问题大讨论是改革开放的起点——它是思想先导，全会才是伟大转折的标志。' },
+    { t: '家庭联产承包责任制', d: '安徽凤阳小岗村率先实行分田包产到户，家庭联产承包责任制在全国逐步推广。易错：包产到户＝土地私有化——土地所有权仍归集体，农民获得的是生产经营自主权，性质表述要准确。' },
+    { t: '经济特区', d: '1980年设立深圳、珠海、汕头、厦门四个经济特区，深圳成为经济特区的代表和对外开放的「窗口」。易错：经济特区＝特别行政区——特区是实行特殊经济政策的区域，社会制度不变；特别行政区（港澳门）是一国两制下享有高度自治权，两者本质不同。' },
+    { t: '社会主义市场经济体制', d: '1992年中共十四大明确提出建立社会主义市场经济体制，改革开放向纵深推进。易错：市场经济＝资本主义——市场经济只是资源配置手段，社会主义市场经济把市场决定性作用与更好发挥政府作用结合，制度属性要看所有制基础。' },
+  ],
+  'hist-newera': [
+    { t: '新时代与社会主要矛盾', d: '中共十九大宣布中国特色社会主义进入新时代，社会主要矛盾转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。易错：主要矛盾变化＝基本国情改变——我国仍处于并将长期处于社会主义初级阶段的基本国情没有变，两个论断要成对记忆。' },
+    { t: '「一国两制」与港澳回归', d: '1997年香港回归、1999年澳门回归，「一国两制」是完成祖国统一大业的基本方针。易错：「一国两制」下港澳「完全自治」——港澳享有高度自治权，但中央保有全面管治权，不是无限自治。' },
+    { t: '脱贫攻坚与全面小康', d: '2021年我国宣告脱贫攻坚战取得全面胜利，全面建成小康社会，第一个百年奋斗目标实现。易错：全面小康＝实现共同富裕——全面小康是共同富裕的阶段性成果，共同富裕仍是长期目标，表述不要拔高。' },
+    { t: '新时代的外交', d: '新时代中国倡导构建人类命运共同体，推进「一带一路」高质量共建，中国特色大国外交全面推进。易错：一带一路是地缘政治工具——它是开放包容的经济合作倡议，秉持共商共建共享原则。' },
+  ],
+  'hist-orient': [
+    { t: '古代亚非文明的共同特征', d: '古埃及、古巴比伦、古印度与中国多发源于大河流域，以农业为经济基础，形成中央集权与灿烂文化。易错：亚非文明都是「海洋文明」——亚非属大河文明，古希腊罗马才是海洋文明，两大类型的地理与经济基础对比是经典考点。' },
+    { t: '《汉谟拉比法典》', d: '《汉谟拉比法典》是迄今已知世界上第一部较为完整的成文法典，维护奴隶主阶级利益。易错：法典是「第一部法律」——表述是「第一部较为完整的成文法典」，严密性限定词不可省略。' },
+    { t: '种姓制度与佛教', d: '古印度种姓制度分为婆罗门、刹帝利、吠舍、首陀罗四个等级，佛教主张众生平等反对第一等级的特权。易错：佛教反对一切等级制度——佛教反对的是种姓特权，并不主张废除阶级，且早期并不反对奴隶制。' },
+    { t: '希腊民主与罗马法治', d: '雅典伯里克利时代奴隶制民主政治发展到高峰，罗马法制从《十二铜表法》到罗马法体系影响深远。易错：雅典民主是「全民民主」——雅典民主仅限成年男性公民，妇女、外邦人与奴隶被排除在外。' },
+  ],
+  'hist-medieval': [
+    { t: '大化改新', d: '646年日本仿效唐朝典章制度进行大化改新，使日本发展成为一个中央集权制的封建国家。易错：大化改新使日本走上资本主义道路——它使日本从奴隶社会过渡到封建社会，明治维新才走上资本主义道路，两次变革常混。' },
+    { t: '阿拉伯帝国与文化', d: '穆罕默德创立伊斯兰教并统一阿拉伯半岛，阿拉伯帝国沟通东西方文化，「阿拉伯数字」经其改造传播世界。易错：阿拉伯数字是阿拉伯人发明的——阿拉伯数字原是印度人发明，阿拉伯人改造并传播，考点常偷换发明者。' },
+    { t: '西欧庄园与城市自治', d: '庄园是西欧中世纪社会的基本经济单位，自给自足；城市通过金钱赎买与武力斗争获得自治权。易错：庄园农奴可自由离开——农奴被固着于土地、有人身依附关系，但「城市的空气使人自由」，逃亡农奴住满一年零一天可获自由。' },
+    { t: '拜占庭帝国与《查士丁尼法典》', d: '东罗马帝国（拜占庭）编成《查士丁尼法典》等「罗马民法大全」，奠定欧洲民法基础，1453年被奥斯曼帝国攻灭。易错：罗马民法大全只是一部法典——它由《查士丁尼法典》《法学汇纂》《法理概要》《新法典》四部构成，还包括「敕令」。' },
+  ],
+  'hist-newroute': [
+    { t: '文艺复兴的实质', d: '文艺复兴以复兴古希腊罗马文化为名，实质是新兴资产阶级的思想解放运动，核心思潮是人文主义。易错：文艺复兴是复古运动——「复兴」是旗帜，宣传的是资产阶级新文化，不是简单的复古。' },
+    { t: '新航路开辟的过程', d: '迪亚士到达好望角、达·伽马到达印度、哥伦布「发现」美洲、麦哲伦船队完成环球航行。易错：哥伦布到达的是印度——哥伦布到的是美洲（他误以为是印度），发现新大陆的是哥伦布，首次环球航行是麦哲伦船队。' },
+    { t: '新航路开辟的影响', d: '欧洲大西洋沿岸经济繁荣，世界开始连为一个整体，世界观念逐步确立。易错：新航路开辟只有积极影响——它同时开启殖民掠夺与三角贸易，给亚非拉人民带来深重灾难，评价要两面。' },
+    { t: '三角贸易', d: '欧洲殖民者从欧洲出发运商品到非洲换取奴隶，运奴隶到美洲卖掉，再运美洲金银与原料回欧洲。易错：三角贸易的三段顺序可颠倒——出程（欧→非）、中程（非→美）、归程（美→欧）顺序固定，中程是最残忍的一段。' },
+  ],
+  'hist-revolution': [
+    { t: '英国资产阶级革命', d: '光荣革命后1689年颁布《权利法案》，以法律形式限制王权，确立君主立宪制。易错：《权利法案》确立了「民主共和」——它确立的是君主立宪制，保留国王但「统而不治」，政体表述要准确。' },
+    { t: '美国独立战争与1787年宪法', d: '《独立宣言》宣告北美十三个殖民地独立，1787年宪法依据分权制衡原则设计联邦制共和国。易错：独立战争解决了美国所有矛盾——它赢得独立但未废除奴隶制，南北矛盾最终靠南北战争解决。' },
+    { t: '法国大革命', d: '1789年攻占巴士底狱，颁布《人权宣言》，大革命摧毁了法国的封建统治。易错：《人权宣言》是宪法——它是纲领性文件，宣告人权、法治、自由、分权等基本原则，法国第一部宪法在其后制定。' },
+    { t: '拿破仑帝国', d: '拿破仑颁布《拿破仑法典》（《法国民法典》），其对外战争把自由民主思想传播到欧洲各地，也侵犯了许多国家主权。易错：拿破仑战争只有侵略性——要辩证：对外战争打击欧洲封建势力、传播革命思想，同时具有侵略扩张的一面。' },
+  ],
+  'hist-industry': [
+    { t: '第一次工业革命', d: '18世纪60年代起于英国，哈格里夫斯发明珍妮机揭开序幕，瓦特改良蒸汽机使人类进入「蒸汽时代」。易错：蒸汽机是瓦特发明的——瓦特是「改良」蒸汽机，原始蒸汽机此前已存在，表述要精确。' },
+    { t: '火车的发明', d: '斯蒂芬森设计的蒸汽机车试车成功，铁路时代开始，为社会提供了更快捷、廉价、便利的交通。易错：火车发明于第二次工业革命——火车与轮船属第一次工业革命成果，汽车、飞机、电灯属第二次，分期考点必考。' },
+    { t: '第二次工业革命', d: '19世纪六七十年代起，电力成为新的能源进入生产生活领域，人类进入「电气时代」，内燃机、汽车、飞机相继问世。易错：第二次工业革命起源于英国——其中心在美国和德国，英国相对滞后，这是英国衰落的重要原因之一。' },
+    { t: '工业化与社会问题', d: '工业化推动城市化，也带来贫富分化加剧、环境污染等社会问题。易错：评价工业革命只谈生产力——必须两面：生产力飞跃、社会结构变化是进步，环境污染与阶级矛盾是社会代价，答题才能完整。' },
+  ],
+  'hist-worldwar': [
+    { t: '一战的原因与导火索', d: '帝国主义国家政治经济发展不平衡是一战的根本原因，三国同盟与三国协约对峙，萨拉热窝事件是导火索。易错：萨拉热窝事件是大战根本原因——它是借口（导火索），根本原因始终是政治经济发展不平衡。' },
+    { t: '凡尔赛—华盛顿体系', d: '巴黎和会与华盛顿会议分别确立帝国主义在欧洲西太平洋—东亚的统治秩序，构成凡尔赛—华盛顿体系。易错：该体系带来长久和平——它暂时缓和列强矛盾但埋下新仇（对德严惩）与排日暗流，是「暂时」的秩序。' },
+    { t: '1929年经济大危机与法西斯上台', d: '大危机波及整个资本主义世界，德国与日本为摆脱危机走上法西斯道路，欧亚战争策源地形成。易错：罗斯福新政摆脱危机＝德国同样靠新政——美国靠国家干预的新政渡过危机，德日靠对外扩张与法西斯专政，两条出路对比必考。' },
+    { t: '二战的转折与胜利', d: '斯大林格勒保卫战是二战的重要转折点，《联合国家宣言》签署标志世界反法西斯同盟正式形成。易错：二战转折是诺曼底登陆——诺曼底是开辟欧洲第二战场，斯大林格勒才是苏德战场也是整个二战的重要转折点。' },
+  ],
+  'hist-coldwar': [
+    { t: '冷战开始的标志', d: '1947年杜鲁门主义出台，标志美苏战时同盟关系破裂、冷战开始。易错：丘吉尔铁幕演说是冷战开始标志——铁幕演说只是冷战序幕，杜鲁门主义才是政治上开始的标志，马歇尔计划是其经济运用。' },
+    { t: '两极格局的形成', d: '北约（1949）与华约（1955）两大军事集团先后成立，两极格局最终形成。易错：北约成立＝两极格局形成——北约成立只是冷战军事表现，华约成立才标志对峙集团化完成、两极格局正式定型。' },
+    { t: '冷战的高潮与危机', d: '古巴导弹危机使世界接近核战争边缘，柏林墙成为冷战象征；美苏对抗但避免直接热战。易错：冷战＝没有任何战争——「冷」指美苏之间未直接开战，但朝鲜战争、越南战争等局部热战不断。' },
+    { t: '苏联解体与多极化', d: '1991年苏联解体标志两极格局终结，世界朝多极化方向发展，「一超多强」局面出现。易错：苏联解体＝社会主义失败——苏联解体是苏联模式僵化等多因素所致，中国社会主义的蓬勃发展证明失败的是特定模式而非社会主义本身。' },
+  ],
+  'hist-globalization': [
+    { t: '联合国的作用', d: '1945年联合国成立，在维护国际和平与安全、推动全球发展上发挥重要作用，安理会常任理事国拥有否决权。易错：联合国是「世界政府」——它是主权国家间组织，不能凌驾于成员国之上，决议靠成员配合执行。' },
+    { t: '经济全球化', d: '生产分工、国际贸易与跨国公司在全球范围配置资源，世界贸易组织是经济全球化的重要表现。易错：全球化人人平等受益——发达国家占主导、规则由其主导制定，发展中国家机遇与风险并存，必须辩证看。' },
+    { t: '信息时代', d: '计算机网络把世界各地联结为一个整体，人类进入信息时代。易错：信息社会没有负面影响——网络安全、信息茧房、数字鸿沟都是新课题，技术是双刃剑。' },
+    { t: '人类命运共同体', d: '气候变化、公共卫生、恐怖主义等全球性挑战需要全球治理，中国提出构建人类命运共同体。易错：全球性问题可以一国独善——全球性问题没有国家能独善其身，只有合作共治才是出路。' },
+  ],
+  /* ---- 高中 · 中外历史纲要（上） ---- */
+  'hist-gz-civ': [
+    { t: '中华文明起源的多元一体', d: '新石器时代文化遗址遍布南北，中原核心区与周边区域文化交融，呈现「多元一体、中原核心」格局。易错：中华文明只源于黄河流域——长江流域（河姆渡、良渚）、辽河流域（红山）都是源头，「多元一体」是标准表述。' },
+    { t: '夏商西周的政治制度', d: '夏是国家形态起点，商实行内外服制，西周分封制「封邦建国」、宗法制以血缘维系政治等级。易错：分封制与宗法制互不相干——两者互为表里：宗法制是原则（血缘），分封制是运用（政治），「家国同构」。' },
+    { t: '早期国家的特征', d: '早期国家血缘与政治结合、神权与王权结合、尚未实现权力高度集中。易错：夏商周已是中央集权国家——中央集权确立于秦，早期国家是松散的部落联盟式贵族政治，两者性质不同。' },
+    { t: '青铜文明与甲骨文', d: '商周青铜铸造技艺高超，青铜礼器体现等级秩序；甲骨文是成熟的文字，证实商朝信史地位。易错：甲骨文是最早的汉字雏形——甲骨文已是体系成熟的文字，此前还有更早的刻画符号（如贾湖刻符），注意「成熟」限定。' },
+  ],
+  'hist-gz-tang': [
+    { t: '从三公九卿到三省六部', d: '秦汉三公九卿到隋唐三省六部，相权被分割、皇权加强，决策程序趋于规范。易错：三省六部削弱了中央行政效率——三省分工制衡减少决策失误，是「程序分权」而非低效，答制度创新要看治理理性。' },
+    { t: '选官制度的演进', d: '从察举制（以德行）到九品中正制（以门第）再到科举制（以考试），选官标准走向公平开放。易错：九品中正制创立之初就是士族工具——它初创时重家世也重才行，西晋后门第才垄断评品，演变过程要分段说。' },
+    { t: '赋税制度的变化', d: '从租庸调制到两税法「惟以资产为宗」，人身依附关系逐渐松弛。易错：两税法按人头征税——两税法按资产征税，改变了以人丁为主的赋税传统，这是其历史进步性的核心。' },
+    { t: '民族交融与盛世气象', d: '北魏孝文帝改革与隋唐开明民族政策推动民族大交融，唐朝羁縻府州、和亲会盟各具形态。易错：唐朝对边疆只靠武力——唐太宗「自古皆贵中华贱夷狄，朕独爱之如一」，开明怀柔与军事威慑并用，趋势是交融而非征服。' },
+  ],
+  'hist-gz-song': [
+    { t: '宋代经济的繁荣', d: '两宋农业推广占城稻、手工业制瓷兴盛、商业突破坊市界限并出现交子，海外贸易税收成为财政重要来源。易错：宋代「积贫积弱」＝经济落后——「积贫」指财政困难、「积弱」指军事效率，民间经济与城市商业恰恰空前繁荣，不可混谈。' },
+    { t: '经济重心南移的完成', d: '南宋经济重心南移完成，南方成为全国经济重心，苏湖熟天下足。易错：经济重心＝政治重心——南宋政治中心在临安但重心南移指的是经济地位，北方仍有政治影响，两概念要分清。' },
+    { t: '程朱理学', d: '朱熹集大成，主张存天理灭人欲、格物致知，南宋后成为官方哲学并影响东亚。易错：理学完全禁锢人性——理学强调道德自律与社会责任（「为天地立心」），其僵化是明清以后的趋势，评价要历史化。' },
+    { t: '元朝的行省制度', d: '元朝首创行省制度，中央中书省直辖腹里，地方设行中书省，奠定后世省制基础。易错：行省长官世袭——行省长官由朝廷任命、受中央节制，是中央集权加强的表现，与分封世袭性质相反。' },
+  ],
+  'hist-gz-mingqing': [
+    { t: '内阁与军机处', d: '明成祖设内阁，雍正设军机处，君主专制达到顶峰。易错：内阁是中央一级行政机构——内阁始终不是法定中央机构（六部之上无统属关系），军机处更只是皇帝秘书班子，两者都不握法定决策权。' },
+    { t: '明清经济的新现象', d: '明中后期江南出现手工工场与「机户出资、机工出力」的雇佣关系，学界视为资本主义萌芽。易错：资本主义萌芽＝资本主义经济确立——萌芽仅出现在局部行业且发展缓慢，小农经济仍占绝对主导，不能拔高。' },
+    { t: '海禁与闭关自守', d: '明朝海禁与清朝闭关政策虽有防务考量，但使中国错失走向世界与工业革命的机遇。易错：闭关自守完全隔绝对外贸易——是严格限制（广州一口）而非绝对禁绝，表述的精确性常是给分点。' },
+    { t: '清朝版图的奠定', d: '清朝通过设立驻藏大臣、平定准噶尔、盟旗制度等经略边疆，现代中国的版图在这一时期逐步奠定。易错：清朝版图＝现代中国版图全等同——清朝奠定的是基本框架，表述用「奠定基础/版图基本定型」，不可绝对化。' },
+  ],
+  'hist-gz-lateqing': [
+    { t: '两次鸦片战争与主权沦丧', d: '《南京条约》《天津条约》《北京条约》层层加码，中国半殖民地半封建化程度不断加深。易错：半殖民地化是直线下降——它是一个逐步加深的过程，「开始沦为」（鸦片战争）与「完全陷入」（八国联军侵华后）节点要分开。' },
+    { t: '太平天国与义和团的定位', d: '太平天国是旧式农民战争的最高峰，义和团运动体现反帝爱国但带有蒙昧排外色彩。易错：义和团运动是反帝反封建运动——它反帝鲜明、不反封建（扶清灭洋），且排外具有盲目性，定性要准。' },
+    { t: '洋务运动与维新变法的局限', d: '洋务运动「中体西用」不触动制度，戊戌变法寄望无实权皇帝，旧式救国方案走不通。易错：洋务失败仅因顽固派阻挠——根本原因是只学技术不改制度的内在局限，顽固派阻挠是外因，主次原因要分清。' },
+    { t: '甲午战争与民族意识觉醒', d: '甲午战败与瓜分狂潮刺激民族意识普遍觉醒，救亡图存成为时代最强音。易错：民族觉醒始于鸦片战争——鸦片战争后仅少数先觉者（林则徐、魏源）睁眼看世界，全民族层面觉醒在甲午之后，层次要分明。' },
+  ],
+  'hist-gz-republic': [
+    { t: '辛亥革命的成败之辨', d: '推翻帝制、建立共和是伟大胜利；未改变社会性质、未完成反帝反封建任务是局限。易错：辛亥革命失败＝一无是处——「胜利」与「失败」各指不同层面（政体变革/社会改造），答题必须两面并论。' },
+    { t: '《临时约法》与责任内阁', d: '《临时约法》确立主权在民，并特设责任内阁制限制袁世凯。易错：《临时约法》实行总统制——它把临时政府组织大纲的总统制改为责任内阁制，为的是束缚袁世凯，这一「因人设法」是常考点。' },
+    { t: '民初政局与军阀混战', d: '袁世凯复辟帝制失败后，军阀割据混战，政局动荡，民族危机加深。易错：袁世凯败于军事——护国运动等武力反对是直接因素，而复辟逆历史潮流而动、共和观念深入人心才是根本原因。' },
+    { t: '旧民主主义革命的终结', d: '五四运动前夜，旧民主主义革命各种方案均告失败，呼唤新的领导阶级与新的思想武器。易错：旧民主主义革命无任何遗产——它传播的共和观念、发展的民族资本主义、壮大的工人阶级，都为新民主主义革命准备了条件。' },
+  ],
+  'hist-gz-cpc': [
+    { t: '五四与建党', d: '五四运动促进马克思主义与工人运动结合，为中共成立作了思想上干部上的准备。易错：中共成立是偶然事件——它是近代救亡探索、思想传播与阶级基础成熟的必然产物，「开天辟地」有深刻历史逻辑。' },
+    { t: '工农武装割据', d: '井冈山革命根据地开辟农村包围城市、武装夺取政权的道路，土地革命发动农民。易错：这条道路照搬苏联模式——恰恰相反，它是对苏联「城市中心」道路的突破，是把马克思主义与中国实际结合的创新。' },
+    { t: '遵义会议', d: '1935年遵义会议纠正「左」倾军事错误，确立毛泽东在党中央的领导地位，是生死攸关的转折点。易错：遵义会议确立「思想」领导地位——会议主要解决军事与组织问题，思想路线的系统确立在延安整风，表述要分层。' },
+    { t: '抗战中流砥柱与解放战争胜利', d: '中国共产党坚持全面抗战路线、开辟敌后战场，成为全民族抗战的中流砥柱；解放战争的胜利实现民族独立、人民解放。易错：中流砥柱＝只打游击战——敌后战场牵制大量日军、配合正面战场，且提出持久战战略指导，贡献是多维的。' },
+  ],
+  'hist-gz-socialism': [
+    { t: '过渡时期总路线与三大改造', d: '「一化三改」过渡时期总路线指引下，1956年三大改造完成，社会主义基本制度确立。易错：社会主义制度确立于一五计划完成——一五完成工业化「初步基础」，制度确立标志是生产资料公有制的建立（三大改造完成），两个节点分开。' },
+    { t: '独立工业体系的奠基', d: '一五计划与全面建设时期，钢铁、机械、能源等基础工业布局展开，两弹一星突破。易错：全面建设时期只有失误——曲折探索的同时建立了独立的工业体系与国民经济体系，成就与失误并存是教材定论。' },
+    { t: '十一届三中全会的历史性转折', d: '重新确立实事求是思想路线，把工作中心转移到经济建设上来，开启改革开放新时期。易错：全会直接提出「市场经济」——当时的决策是改革开放的总方向，市场经济目标要到1992年十四大确立，阶段表述要准。' },
+    { t: '中国特色社会主义道路的开辟', d: '从农村改革到城市改革、从经济特区到全方位开放，道路在探索中越走越宽。易错：改革是一步到位的设计——「摸着石头过河」渐进推进，试点—推广是基本方法论，理解这一点才能读懂改革开放史。' },
+  ],
+  /* ---- 高中 · 中外历史纲要（下） ---- */
+  'hist-gx-ancient': [
+    { t: '文明产生的前提', d: '农业和畜牧业的产生是人类迈向文明的前提，剩余产品出现促进阶级分化与国家形成。易错：文明产生的标志只有国家——文字、城市、阶级、国家、青铜器（部分区域）等是多维标志，答题要全。' },
+    { t: '多元文明各具特色', d: '两河流域法制、古埃及法老专制、古印度种姓与佛教、希腊城邦民主，不同文明没有高下之分。易错：大河文明必然专制、海洋文明必然民主——地理决定论过于绝对，希腊有僭主、波斯帝国也有宽松治理，比较要留余地。' },
+    { t: '古代帝国的扩张与影响', d: '波斯帝国、亚历山大帝国、罗马帝国以武力扩张，客观上促进文明交流与传播。易错：帝国扩张只有破坏性——主观是征服掠夺，客观上打破隔绝、促进技术与宗教传播（如希腊化时代），双面评价。' },
+    { t: '文明的交流方式', d: '和平往来（贸易、使节、僧侣）与暴力冲突（战争、殖民）都是文明交流的形式。易错：文明交流=和平交流——丝绸之路与亚历山大东征都是交流载体，区别在于代价与效果，考试材料题常两者并考。' },
+  ],
+  'hist-gx-medieval': [
+    { t: '西欧封建社会的结构', d: '封君封臣制度以土地为纽带形成契约关系，庄园与农奴制构成经济基础，基督教会神权笼罩。易错：封君封臣＝中央集权——「我的附庸的附庸不是我的附庸」，它是分权型契约关系，与东方中央集权相反。' },
+    { t: '城市自治与大学的兴起', d: '10—11世纪西欧城市复兴，通过赎买或斗争获得自治，大学兴起为文艺复兴储备人才。易错：城市兴起瓦解封建制度立竿见影——市民阶层成长为后来的资产阶级雏形，但当时仍在封建框架内，作用是「孕育」。' },
+    { t: '阿拉伯帝国与奥斯曼帝国', d: '阿拉伯帝国8世纪鼎盛、沟通东西方，奥斯曼帝国1453年灭拜占庭、控制商路刺激新航路开辟。易错：奥斯曼控制商路是「唯一」原因——它是新航路开辟的重要背景之一，另有金贵银贱、传播宗教、造船技术等动因，答全面。' },
+    { t: '中古亚洲与非洲文明', d: '日本大化改新建立律令制国家，印度笈多帝国与德里苏丹国先后兴替，东非西非文明各放异彩。易错：中古世界＝黑暗的欧洲——「黑暗中世纪」的说法过于笼统，亚非文明此时高度繁荣，世界史不是欧洲史。' },
+  ],
+  'hist-gx-modern': [
+    { t: '新航路开辟的动因与条件', d: '经济根源是商品经济发展与金本位渴求，社会动因是寻金热与传播宗教，条件是造船罗盘等技术进步与西班牙葡萄牙王室支持。易错：动因只答「东方黄金」——黄金渴求是社会动因，经济根源（资本主义萌芽对市场货币的需求）才是根本，层次分明才得分。' },
+    { t: '哥伦布大交换', d: '物种（玉米、马铃薯、马、牛）、疾病、人口在新旧大陆间流动，改变全球饮食结构与人口格局。易错：物种交换只有益处——玉米番薯促进人口增长，但旧大陆疾病（天花）使美洲原住民锐减，双刃性质要并写。' },
+    { t: '早期殖民扩张', d: '葡萄牙西班牙率先，荷兰「海上马车夫」随后，英国后来居上，殖民掠夺积累资本原始积累。易错：殖民扩张＝纯罪恶——其罪恶必须揭露（灭绝奴隶贸易屠杀），但客观上推动世界市场形成，材料题常要求双重评价。' },
+    { t: '由分散走向整体', d: '新航路开辟后各大洲相对孤立状态被打破，世界市场雏形出现，全球联系初步建立。易错：新航路开辟＝世界市场基本形成——雏形在16世纪，基本形成在第一次工业革命后（19世纪中后期），成熟于第二次工业革命，阶段不能乱。' },
+  ],
+  'hist-gx-capital': [
+    { t: '文艺复兴与宗教改革', d: '文艺复兴弘扬人文主义，宗教改革打破罗马教会精神垄断，共同解放思想。易错：宗教改革反对一切宗教——改革反对的是教会腐败与中介特权，建立的仍是新教各派，「因信称义」不是无信仰。' },
+    { t: '启蒙运动', d: '启蒙运动以理性为旗帜，伏尔泰批判天主教会、孟德斯鸠三权分立、卢梭社会契约与人民主权。易错：启蒙思想=文艺复兴翻版——文艺复兴聚焦人性解放（文学艺术），启蒙运动上升到政治制度设计（宪法与政体），层次升级。' },
+    { t: '代议制的确立与扩展', d: '英国君主立宪、美国联邦共和、法国民主共和各有形态，代议制成为近代资本主义政治的基本形式。易错：代议制=全民直选——代议制是公民选举代表行使权力，且有财产、性别等限制的渐进扩展过程，早期远不「民主」。' },
+    { t: '资本主义制度的本质', d: '资本主义制度取代封建制度是历史进步，但其本质是维护资产阶级利益。易错：写「本质」只答进步——定性与评价要并置：进步性（相对封建）与局限性（阶级本质）成对出现，否则失分。' },
+  ],
+  'hist-gx-industrial': [
+    { t: '两次工业革命的比较', d: '第一次源于英国、以蒸汽为动力、科学与技术尚未紧密结合；第二次多中心并进、电气化、科学与技术紧密结合。易错：两次革命只是动力不同——生产组织（工厂→垄断组织）、科学角色、扩展范围都变了，比较要多维。' },
+    { t: '世界市场的形成', d: '工业革命后世界市场基本形成，第二次工业革命后最终形成，国际贸易与国际分工深化。易错：世界市场形成=贸易自由化——其形成过程伴随殖民体系与不平等分工，「基本形成」「最终形成」的阶段术语是给分点。' },
+    { t: '马克思主义的诞生', d: '工业革命催生社会矛盾，1848年《共产党宣言》发表标志科学社会主义诞生，工人运动有了科学理论指导。易错：马克思主义否定资本主义一切成果——它在继承人类文明成果（德国古典哲学、英国古典政治经济学、空想社会主义）基础上科学批判，不是全盘否定。' },
+    { t: '巴黎公社', d: '1871年巴黎公社是无产阶级建立政权的第一次伟大尝试，其原则永存、精神不朽。易错：巴黎公社建立了巩固的政权——它仅存72天即失败，历史意义在于「尝试」与原则启示，不是成功范例。' },
+  ],
+  'hist-gx-worldwar': [
+    { t: '两次大战的根源', d: '帝国主义政治经济发展不平衡是两次世界大战的深层根源，争夺霸权与殖民地使矛盾不可调和。易错：大战根源＝萨拉热窝事件——刺杀事件只是导火索，根源性分析（发展不平衡＋军事集团对峙）才是得分核心。' },
+    { t: '十月革命的世界意义', d: '十月革命建立第一个社会主义国家，开辟人类历史新纪元，给殖民地半殖民地人民指明新道路。易错：十月革命违背生产力规律——它是在帝国主义链条薄弱环节率先突破，开启了不同于资本主义现代化的新道路，评价要放在20世纪大背景下。' },
+    { t: '凡尔赛—华盛顿体系与雅尔塔体系比较', d: '前者以惩罚战败国维持旧格局，后者以大国安排战后秩序、创设联合国维护和平机制。易错：两体系本质完全相同——都体现大国强权，但雅尔塔体系增设集体安全机制与对殖民地解放的呼应，进步性明显，比较题重点。' },
+    { t: '世界反法西斯同盟', d: '1942年《联合国家宣言》签署，同盟以合作为基础最终赢得胜利，奠定战后国际秩序基础。易错：同盟内部没有分歧——美苏英社会制度与利益诉求不同，胜利靠求同存异的大国协调，也为日后冷战埋下伏笔，答题注意。' },
+  ],
+  'hist-gx-coldwar': [
+    { t: '冷战的起源', d: '国家利益与社会制度冲突、雅尔塔体系遗留问题、核武器威慑下的新对抗形式共同催生冷战。易错：冷战责任全在美方或全在苏方——学界主流认为是美苏双方互动的结果，单一归因的表述在材料题中要警惕。' },
+    { t: '两极格局下的多极力量成长', d: '欧共体联合自强、日本经济崛起、不结盟运动兴起、中国振兴，多极趋势在两极格局中孕育。易错：多极化已实现——「多极化」是趋势，「一超多强」是现实，术语的「化」字反映的是过程而非完成，必须准确。' },
+    { t: '冷战的影响', d: '美苏对峙造成世界动荡与军备竞赛，但核威慑下未爆发大国直接战争，客观上推动科技竞争。易错：冷战只有破坏性——以冷战形式避免热战、促成联合国框架外的危机管控机制，历史作用要两面看。' },
+    { t: '苏联解体与两极格局瓦解', d: '1991年苏联解体标志两极格局瓦解，世界向「一超多强」演进。易错：苏联解体的原因是戈尔巴乔夫改革——改革失当是直接原因，根本原因是苏联模式僵化、体制活力衰竭，直接与根本要分层作答。' },
+  ],
+  'hist-gx-contemp': [
+    { t: '经济全球化的深入发展', d: '科技进步、跨国公司与国际组织推动全球化深入，资本、商品、人才全球流动加速。易错：全球化不可逆转=一路坦途——贸易保护主义、地缘冲突会使全球化遭遇逆流（曲折中发展），教材表述是「曲折中深入」。' },
+    { t: '社会信息化与文化多样化', d: '互联网重塑生产生活方式，各国文化在交流中保持多样性，文明交流互鉴成为共识。易错：信息化必然消除文化差异——技术联接世界但也可能强化「信息茧房」，文化多样性需要主动保护，不是自动结果。' },
+    { t: '人类面临共同挑战', d: '气候变化、公共卫生、恐怖主义、粮食安全等全球性问题需要全球治理体系改革。易错：全球治理=大国说了算——现行治理体系代表性不足，提升发展中国家话语权（如中国方案）是改革方向，答题有立场。' },
+    { t: '人类命运共同体', d: '构建人类命运共同体是中国的外交理念与世界担当，主张共商共建共享的全球治理观。易错：命运共同体=国际组织扩容——它是关于全球治理的价值主张与实践方案（一带一路、全球发展倡议），不只是机构建设。' },
+  ],
+  /* ---- 高中 · 选择性必修1 国家制度与社会治理 ---- */
+  'hist-xb1-pol': [
+    { t: '贵族政治到官僚政治', d: '秦废除分封行郡县，官员由中央任免、不得世袭，官僚政治取代贵族政治。易错：分封制到郡县制只是地方行政调整——它是政治形态的根本转型：由血缘世袭到职业文官，是中国政治制度史的分水岭。' },
+    { t: '君主专制的强化轨迹', d: '秦三公九卿、隋唐三省六部、宋二府三司、明废丞相设内阁、清军机处，皇权步步集中。易错：强化轨迹是直线匀速——其间有反复（如宋相权仍有分割制衡的精密设计），总体趋势强化但过程曲折，答题用「总趋势」。' },
+    { t: '中央与地方关系', d: '从郡县两级到行省制度，中央集权与地方活力的平衡是历代治理难题。易错：集权越强越好——过度集权抑制地方积极性（宋之积弱、明清僵化），历代在收权与放权间反复调适，理解治理张力才深刻。' },
+    { t: '中国古代政治制度的特点', d: '皇权至上、中央集权、官僚政治、伦理入法是中国古代政治制度的基本特征。易错：只答「专制黑暗」——要用「特点」而非「评判」作答：既有维持大一统的治理效能，也有后期僵化的弊病，特点描述要中性准确。' },
+  ],
+  'hist-xb1-official': [
+    { t: '选官标准的演变', d: '世官（血缘）→军功（功绩）→察举（品行）→九品中正（门第）→科举（考试成绩）。易错：察举制完全公平——察举依靠长官举荐，易生请托与门第化，东汉后期「举秀才不知书」，最终被考试制度取代。' },
+    { t: '科举制的发展与影响', d: '隋创立、唐完善、宋改革（糊名誊录）、明清八股，科举扩大统治基础、促进社会流动与文化普及。易错：科举制=促进教育普及——它促进的是「读书应试」风气，教育资源仍向有产阶层倾斜，「社会流动扩大」是相对表述。' },
+    { t: '官员的考核与监察', d: '秦上计、汉刺史、唐道监察、宋台谏合一、明清都察院，考核与监察体系日趋细密。易错：监察制度独立于皇权——监察官员代表皇帝监察百官，本身受皇权控制，对皇权无约束力，这是其结构性局限。' },
+    { t: '对现代的启示', d: '考试选才的公平理念、考核问责的制度设计为现代文官制度与公务员制度提供借鉴。易错：科举只对中国有影响——科举制度经传教士介绍影响近代英国文官考试制度，世界性影响常被忽略，答题要放眼。' },
+  ],
+  'hist-xb1-law': [
+    { t: '德治与法治的结合', d: '中国古代礼法结合、德主刑辅，教化与刑罚相辅相成构成治理传统。易错：中国古代只有人治无法治——有成文法与司法体系（如《唐律疏议》），但法自君出、权大于法，是「法制」而非「法治」，概念区分是考点。' },
+    { t: '《唐律疏议》与中华法系', d: '《唐律疏议》礼法合一、科条简要，是中华法系的代表性法典，影响东亚各国立法。易错：中华法系=诸法合体无价值——其「礼法结合」的治理智慧影响日本、朝鲜、越南立法，中华法系是世界五大法系之一，评价要客观。' },
+    { t: '近代法律转型', d: '清末修律引进西方法律体系，《大清新刑律》等开启中国法律近代化。易错：修律成功实现法治转型——修律因清亡而多未实施，且保留大量礼教纲常（「礼法之争」），转型是不彻底的开端。' },
+    { t: '新中国的法治建设', d: '从五四宪法到改革开放后的法律体系重建，再到全面依法治国，「法治国家、法治政府、法治社会」一体建设。易错：法治建设一帆风顺——「文革」期间法制遭严重破坏，1978年后重建、2014年四中全会全面部署，历程有曲折，认识要历史。' },
+  ],
+  'hist-xb1-frontier': [
+    { t: '民族交融的总体趋势', d: '中国历史上民族交往交流交融，形成多元一体的中华民族格局。易错：民族交融=民族同化——交融是各民族相互学习、共同发展，同化是单向消灭差异，历史主流是「交融」而非「同化」，术语必须精确。' },
+    { t: '边疆治理的制度创新', d: '汉西域都护、唐羁縻府州、元宣政院、明清土司与改土归流、盟旗制度，治理因地制宜。易错：边疆治理模式全国划一——历代采取「因俗而治」的差异化制度，灵活性正是大一统得以维系的关键，答题要体现多样性。' },
+    { t: '从朝贡体系到现代外交', d: '古代东亚朝贡体系以礼仪维系，近代被迫纳入条约体系，新中国确立独立自主的和平外交政策。易错：朝贡体系=不平等条约体系——朝贡体系名义上厚往薄来、政治象征为主，近代条约体系才是主权受损的不平等体系，性质相反。' },
+    { t: '新时代的民族与外交政策', d: '新时代坚持铸牢中华民族共同体意识，推动构建新型国际关系与人类命运共同体。易错：铸牢共同体=消除民族差异——其要义是增进共同性、尊重差异性，不是抹平民族文化，政策表述要精准。' },
+  ],
+  /* ---- 高中 · 选择性必修2 经济与社会生活 ---- */
+  'hist-xb2-food': [
+    { t: '农业革命的意义', d: '从采集渔猎到种植养殖，人类由食物采集者变为食物生产者，定居、村落与文明由此展开。易错：农业起源是顿悟式发明——驯化动植物是长期渐进的选育过程（小麦、水稻、玉米各有驯化中心），理解其漫长性才能读懂考古分期。' },
+    { t: '世界主要作物与物种交流', d: '小麦水稻玉米各自起源，新航路开辟后「哥伦布交换」使作物全球传播，玉米番薯传入中国影响人口增长。易错：作物传播只靠自然扩散——大航海与商路是传播主通道，明清人口突破与美洲作物相关联是经典因果链。' },
+    { t: '粮食安全', d: '粮食安全关系国计民生，中国以占世界较少的耕地养活世界较多人口，端牢饭碗靠科技与政策。易错：粮食安全=产量问题——它包括数量、质量、供应稳定与获取能力多维内涵，概念外延要完整。' },
+    { t: '食物与社会生活', d: '食物结构塑造饮食习惯与礼仪文化，「民以食为天」反映食物在中华文化的核心地位。易错：饮食文化=食谱汇编——材料题关注食物背后的经济结构、阶层差异与文化交流（如茶马古道），要透过食物看社会。' },
+  ],
+  'hist-xb2-trade': [
+    { t: '货币的演进', d: '从贝壳到铜钱、从交子到白银货币化，货币形态见证商业信用与国家治理的演进。易错：纸币出现=商业信用成熟——交子初为民间信用凭证、后收归官方发行，其波动也反映信用制度的脆弱性，演进是双向的。' },
+    { t: '古代商路与贸易网络', d: '丝绸之路、大运河、海上商路构成欧亚贸易网络，香料、丝绸、瓷器大宗贸易联通东西。易错：丝路是一条固定道路——它是网络状通道，陆海并举、线路随政治形势变化，「路」是概念化的网络。' },
+    { t: '市镇、市舶司与商帮', d: '宋以后市镇经济兴起，市舶司管理海外贸易，明清晋商徽商等商帮依托会馆网络经营全国。易错：商帮=民间自发组织——商帮与官府关系密切（盐引、捐纳），具有官商结合色彩，理解其双重性才能读懂明清商业。' },
+    { t: '商贸与文化交流', d: '商业贸易带动技术传播（造纸印刷西传）、宗教流动（佛教东传）与艺术交融（胡乐胡舞）。易错：商贸只交流商品——商路同时是文化与技术的传输带，材料题的「贸易影响」必须写文化维度。' },
+  ],
+  'hist-xb2-industrial': [
+    { t: '工厂制度的确立', d: '工业革命确立工厂制度，集中生产、流水工序、纪律管理取代手工分散劳作。易错：工厂制度=简单集中工人——它改变的是生产组织方式（时间纪律、工序分工、成本核算），是资本主义生产关系的成熟形态。' },
+    { t: '城市化与社会生活变迁', d: '工业化推动城市化，交通通信革命缩短时空距离，人们的时间观念、消费方式随之改变。易错：城市化=人口进城那么简单——住房拥挤、卫生恶化、阶层分居（贫民窟）相伴而生，城市化的「代价面」是材料题常项。' },
+    { t: '近现代中国的工业化', d: '洋务企业开近代工业先河，民族工业在夹缝中成长，新中国建立独立工业体系，改革开放后成为世界工厂。易错：民族工业=官办工业——民族资本主义是民间私人资本，与洋务官办、官僚资本（南京国民政府时期）性质不同，三类企业要辨析。' },
+    { t: '劳作方式的变革', d: '从农业劳作到工业流水线再到智能生产，劳作方式变革重塑职业结构与生活方式。易错：技术进步必然减少劳动强度——机器替代体力但带来节奏化、异化感（卓别林《摩登时代》），对劳作变革要有批判视角。' },
+  ],
+  'hist-xb2-modern': [
+    { t: '经济大危机与国家干预', d: '1929年大危机暴露自由放任的缺陷，罗斯福新政开创国家大规模干预经济的新模式。易错：新政放弃市场经济——新政是在维护市场经济制度前提下的调节与救济，不是计划经济，定性要准。' },
+    { t: '战后资本主义新变化', d: '福利国家、混合经济、第三产业与「新经济」，战后资本主义出现自我调节的新形态。易错：福利国家=消除贫富差距——福利制度缓解矛盾但加重财政负担、20世纪70年代后面临「福利病」质疑，其调整（减少干预、privatization）是新的周期。' },
+    { t: '苏联社会主义建设的探索', d: '战时共产主义到新经济政策再到斯大林模式，计划经济体制成就与僵化并存。易错：新经济政策=放弃社会主义——它是利用商品货币关系间接过渡到社会主义的探索，与斯大林模式的高度计划不同，比较是高频考点。' },
+    { t: '改革开放与生活变迁', d: '中国经济腾飞创造发展奇迹，数字技术重塑消费、出行与交往方式。易错：生活变迁=消费升级单线——变迁包括物质消费、闲暇方式、价值观念多维变化（从「三大件」迭代可见），材料题要立体呈现。' },
+  ],
+  /* ---- 高中 · 选择性必修3 文化交流与传播 ---- */
+  'hist-xb3-exchange': [
+    { t: '文化交流的主要载体', d: '商路、战争、移民、宗教传播与使节往来都是文化交流的载体与途径。易错：文化交流只有和平途径——亚历山大东征等暴力冲突客观上促进文化交融（希腊化时代），途径的两面性是材料题重点。' },
+    { t: '希腊化时代的文化交融', d: '亚历山大东征后希腊文化与东方文化交融，亚历山大城成为文化中心，欧几里得、阿基米德成就斐然。易错：希腊化=希腊同化东方——「化」是双向交融（希腊吸收东方天文数学），不是单向输出，概念方向常被设错。' },
+    { t: '宗教的传播', d: '佛教东传中国并本土化，基督教成为罗马国教后传遍欧洲，伊斯兰教随阿拉伯扩张传播。易错：宗教传播=原教旨平移——佛教入华融合儒道形成禅宗，宗教在传播中本土化是普遍规律，案例要具体。' },
+    { t: '文明互鉴的当代启示', d: '文明因多样而交流、因交流而互鉴、因互鉴而丰富，孤立与傲慢导致落后。易错：文明优越论——各文明各有价值，「文明冲突」论与「文明优越」论都违背互鉴逻辑，历史经验是开放包容者兴。' },
+  ],
+  'hist-xb3-war': [
+    { t: '战争与文化传播的两重性', d: '战争带来浩劫，也打破隔绝、加速文化碰撞与融合。易错：肯定文化交流=美化战争——战争的文化交流是客观副作用，不能因此正当化侵略，评价必须先定性罪恶再谈客观影响。' },
+    { t: '蒙古西征的影响', d: '蒙古西征造成巨大破坏，但打通欧亚驿路，促进东西方人员、技术、宗教往来。易错：蒙古西征只有破坏——驿站制度、人员东来（马可·波罗）、火药西传都与之相关，破坏与联通并存，两面作答。' },
+    { t: '两次世界大战中的文化劫难', d: '大量图书馆、博物馆、古迹被毁，文物被掠夺，文化财产成为战争目标。易错：战争摧毁的只是物质遗产——同时被摧毁的还有知识传承网络与社区记忆，且战时对文化财产的掠夺是有组织的，性质是有意识的劫掠。' },
+    { t: '文化保护的国际制度', d: '《海牙公约》《世界遗产公约》等构筑战时与平时的文化遗产保护制度。易错：公约签署=文化安全——公约依赖缔约国执行意愿与能力，战乱中执行乏力（如伊拉克文物劫掠），制度与现实的差距要指出。' },
+  ],
+  'hist-xb3-heritage': [
+    { t: '文化遗产的价值', d: '文化遗产是人类历史与文化记忆的载体，具有历史、艺术、科学等多重价值，不可再生。易错：文化遗产=古老的东西——价值不在「老」而在承载的独特历史信息，20世纪遗产、工业遗产同样受保护，概念要更新。' },
+    { t: '《世界遗产公约》', d: '1972年公约确立文化遗产与自然遗产的保护框架，设立世界遗产名录与保护基金。易错：世界遗产=旅游金牌——列入名录是保护义务而非商业招牌，过度旅游开发反而损害遗产，认识要纠正。' },
+    { t: '中国的世界遗产', d: '长城、故宫、莫高窟、泰山（文化与自然双重遗产）等见证中华文明，保护责任重大。易错：文化遗产=古建筑——中国遗产涵盖古建筑、遗址、石窟、村落与文化景观（如杭州西湖），类型多样，答题视野要宽。' },
+    { t: '保护的原则与实践', d: '真实性（原真信息）与完整性（整体格局）是保护核心原则，要「在保护中利用、在利用中传承」。易错：修复=越新越好——欧洲旧宅修旧如旧、我国强调最小干预，过度翻新恰恰破坏真实性，原则是考点。' },
+  ],
+  'hist-xb3-china': [
+    { t: '中华文化吸纳外来文明', d: '佛教传入后的本土化、西域乐器乐舞的融入、明末以来的西学东渐，中华文化在吸纳中丰富。易错：吸纳外来=失去本位——中华文化的连续性恰在于「以我为主、为我所用」的转化能力（佛教变禅宗），包容不等于失去主体性。' },
+    { t: '中华文化的世界贡献', d: '造纸术、印刷术、指南针、火药改变世界进程，儒家经典、瓷器、园林艺术西传影响欧洲。易错：四大发明=中华文明唯一贡献——天文历法、医药（人痘接种）、农学、典章制度同样输出，贡献清单要立体。' },
+    { t: '文化自信的根基', d: '文化自信源于五千多年文明积淀、革命文化传统与社会主义先进文化的发展创新。易错：文化自信=文化自大——自信以开放为前提，承认差距、学习世界先进文化正是自信的表现，与排外自大相反。' },
+    { t: '创造性转化与创新性发展', d: '对传统文化要取其精华、赋予时代内涵，「双创」方针让中华文化为世界贡献中国智慧。易错：传承=原样保存——「双创」强调转化发展（如故宫文创、敦煌数字化），活的传承才有生命力，这是当代文化建设的核心方法论。' },
+  ],
+};
+const CAT_LABEL = { ancient: '中国古代史', cnmod: '中国近现代史', world: '世界史', govern: '国家制度与社会治理', econ: '经济与社会生活', cult: '文化交流与传播' };
+
+
+
+
+
+
+/* 课标溯源：每环对应《义务教育历史课程标准（2022年版）》（义教2022，课程内容按「中国古代史」「中国近代史」「中国现代史」「世界古代史」「世界近代史」「世界现代史」六大板块组织，另设跨学科主题学习）与《普通高中历史课程标准（2017年版2020年修订）》（高中2017，必修 中外历史纲要（上）/（下），选择性必修1 国家制度与社会治理 / 2 经济与社会生活 / 3 文化交流与传播）。
+   v1 为结构级对照：page 仅标注板块或模块，不编页码。 */
+const CURRICULUM = {
+  /* ---- 初中 · 中国古代史 ---- */
+  'hist-origin':       { doc: '义教2022·中国古代史（史前时期：早期人类、原始农业与文明起源）', page: '中国古代史', tag: 'std' },
+  'hist-warring':      { doc: '义教2022·中国古代史（春秋战国：社会变革与百家争鸣）', page: '中国古代史', tag: 'std' },
+  'hist-qinhan':       { doc: '义教2022·中国古代史（秦汉：统一多民族国家的建立与巩固）', page: '中国古代史', tag: 'std' },
+  'hist-wei-jin':      { doc: '义教2022·中国古代史（三国两晋南北朝：政权分立与民族交融）', page: '中国古代史', tag: 'std' },
+  'hist-suitang':      { doc: '义教2022·中国古代史（隋唐：繁荣与开放的时代）', page: '中国古代史', tag: 'std' },
+  'hist-song':         { doc: '义教2022·中国古代史（辽宋夏金元：民族关系发展和社会变化）', page: '中国古代史', tag: 'std' },
+  'hist-ming':         { doc: '义教2022·中国古代史（明清：统一多民族国家的巩固与发展·明朝）', page: '中国古代史', tag: 'std' },
+  'hist-qing':         { doc: '义教2022·中国古代史（明清：统一多民族国家的巩固与发展·清朝）', page: '中国古代史', tag: 'std' },
+  /* ---- 初中 · 中国近代史 ---- */
+  'hist-opium':        { doc: '义教2022·中国近代史（列强侵略与不平等条约：两次鸦片战争）', page: '中国近代史', tag: 'std' },
+  'hist-yangwu':       { doc: '义教2022·中国近代史（中国人民的抗争：太平天国与洋务运动）', page: '中国近代史', tag: 'std' },
+  'hist-wuxu':         { doc: '义教2022·中国近代史（民族危机加深与维新变法）', page: '中国近代史', tag: 'std' },
+  'hist-xinhai':       { doc: '义教2022·中国近代史（辛亥革命与中华民国的建立）', page: '中国近代史', tag: 'std' },
+  'hist-newculture':   { doc: '义教2022·中国近代史（新文化运动与五四运动）', page: '中国近代史', tag: 'std' },
+  'hist-cpc':          { doc: '义教2022·中国近代史（中国共产党的诞生与国民革命）', page: '中国近代史', tag: 'std' },
+  'hist-antiwar':      { doc: '义教2022·中国近代史（中华民族的抗日战争）', page: '中国近代史', tag: 'std' },
+  'hist-liberation':   { doc: '义教2022·中国近代史（人民解放战争）', page: '中国近代史', tag: 'std' },
+  /* ---- 初中 · 中国现代史 ---- */
+  'hist-prc':          { doc: '义教2022·中国现代史（中华人民共和国的成立和巩固）', page: '中国现代史', tag: 'std' },
+  'hist-explore':      { doc: '义教2022·中国现代史（社会主义制度的建立与建设的探索）', page: '中国现代史', tag: 'std' },
+  'hist-reform':       { doc: '义教2022·中国现代史（中国特色社会主义道路的开创与发展）', page: '中国现代史', tag: 'std' },
+  'hist-newera':       { doc: '义教2022·中国现代史（中国特色社会主义进入新时代）', page: '中国现代史', tag: 'std' },
+  /* ---- 初中 · 世界史 ---- */
+  'hist-orient':       { doc: '义教2022·世界古代史（古代亚非欧文明）', page: '世界古代史', tag: 'std' },
+  'hist-medieval':     { doc: '义教2022·世界古代史（封建时代的欧洲与亚洲）', page: '世界古代史', tag: 'std' },
+  'hist-newroute':     { doc: '义教2022·世界近代史（走向近代：文艺复兴与新航路开辟）', page: '世界近代史', tag: 'std' },
+  'hist-revolution':   { doc: '义教2022·世界近代史（资本主义制度的初步确立）', page: '世界近代史', tag: 'std' },
+  'hist-industry':     { doc: '义教2022·世界近代史（工业革命与国际共产主义运动兴起）', page: '世界近代史', tag: 'std' },
+  'hist-worldwar':     { doc: '义教2022·世界现代史（两次世界大战与世界格局演变）', page: '世界现代史', tag: 'std' },
+  'hist-coldwar':      { doc: '义教2022·世界现代史（二战后的世界变化：冷战与格局）', page: '世界现代史', tag: 'std' },
+  'hist-globalization':{ doc: '义教2022·世界现代史（走向和平发展的世界：联合国与全球化）', page: '世界现代史', tag: 'std' },
+  /* ---- 高中 ---- */
+  'hist-gz-civ':       { doc: '高中2017·必修 中外历史纲要（上）（中华文明的起源与早期国家）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-tang':      { doc: '高中2017·必修 中外历史纲要（上）（三国两晋南北朝的民族交融与隋唐统一多民族封建国家）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-song':      { doc: '高中2017·必修 中外历史纲要（上）（辽宋夏金多民族政权的并立与元朝的统一）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-mingqing':  { doc: '高中2017·必修 中外历史纲要（上）（明清中国版图的奠定与面临的挑战）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-lateqing':  { doc: '高中2017·必修 中外历史纲要（上）（晚清时期的内忧外患与救亡图存）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-republic':  { doc: '高中2017·必修 中外历史纲要（上）（辛亥革命与中华民国的建立）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-cpc':       { doc: '高中2017·必修 中外历史纲要（上）（中国共产党与新民主主义革命）', page: '纲要（上）', tag: 'std' },
+  'hist-gz-socialism': { doc: '高中2017·必修 中外历史纲要（上）（中华人民共和国成立和社会主义革命与建设、改革开放）', page: '纲要（上）', tag: 'std' },
+  'hist-gx-ancient':   { doc: '高中2017·必修 中外历史纲要（下）（古代文明的产生与发展）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-medieval':  { doc: '高中2017·必修 中外历史纲要（下）（中古时期的世界）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-modern':    { doc: '高中2017·必修 中外历史纲要（下）（走向整体的世界）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-capital':   { doc: '高中2017·必修 中外历史纲要（下）（资本主义制度的确立）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-industrial':{ doc: '高中2017·必修 中外历史纲要（下）（工业革命与马克思主义的诞生）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-worldwar':  { doc: '高中2017·必修 中外历史纲要（下）（世界大战、十月革命与国际秩序的演变）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-coldwar':   { doc: '高中2017·必修 中外历史纲要（下）（20世纪下半叶世界的新变化）', page: '纲要（下）', tag: 'std' },
+  'hist-gx-contemp':   { doc: '高中2017·必修 中外历史纲要（下）（当代世界发展的特点与主要趋势）', page: '纲要（下）', tag: 'std' },
+  'hist-xb1-pol':      { doc: '高中2017·选择性必修1 国家制度与社会治理（历代政治体制的演进）', page: '选择性必修1', tag: 'std' },
+  'hist-xb1-official': { doc: '高中2017·选择性必修1 国家制度与社会治理（官员的选拔与管理）', page: '选择性必修1', tag: 'std' },
+  'hist-xb1-law':      { doc: '高中2017·选择性必修1 国家制度与社会治理（法律与教化）', page: '选择性必修1', tag: 'std' },
+  'hist-xb1-frontier': { doc: '高中2017·选择性必修1 国家制度与社会治理（民族关系、边疆治理与对外交往）', page: '选择性必修1', tag: 'std' },
+  'hist-xb2-food':     { doc: '高中2017·选择性必修2 经济与社会生活（食物生产与社会生活）', page: '选择性必修2', tag: 'std' },
+  'hist-xb2-trade':    { doc: '高中2017·选择性必修2 经济与社会生活（古代的商业贸易与交通）', page: '选择性必修2', tag: 'std' },
+  'hist-xb2-industrial':{ doc: '高中2017·选择性必修2 经济与社会生活（工业革命与现代社会生活）', page: '选择性必修2', tag: 'std' },
+  'hist-xb2-modern':   { doc: '高中2017·选择性必修2 经济与社会生活（现代经济的发展与生活变迁）', page: '选择性必修2', tag: 'std' },
+  'hist-xb3-exchange': { doc: '高中2017·选择性必修3 文化交流与传播（多元文明的交流互鉴）', page: '选择性必修3', tag: 'std' },
+  'hist-xb3-war':      { doc: '高中2017·选择性必修3 文化交流与传播（战争与文化交锋）', page: '选择性必修3', tag: 'std' },
+  'hist-xb3-heritage': { doc: '高中2017·选择性必修3 文化交流与传播（文化遗产：全人类的共同财富）', page: '选择性必修3', tag: 'std' },
+  'hist-xb3-china':    { doc: '高中2017·选择性必修3 文化交流与传播（中华文化的传承创新与世界意义）', page: '选择性必修3', tag: 'std' },
+};
+
+/* 过关判据：做到这条才算学会（可验证的行为化标准） */
+const PASS = {
+  'hist-origin':       '能按时间顺序说出元谋人、北京人、河姆渡与半坡的关键特征，并解释「多元一体」的含义。',
+  'hist-warring':      '能列出商鞅变法三条措施并解释生产力变革与社会变革的因果关系。',
+  'hist-qinhan':       '能对比郡县制与分封制的本质差异，并完整说出汉武帝巩固大一统的四类措施。',
+  'hist-wei-jin':      '能说出孝文帝改革三项汉化措施，并用一句话概括江南开发与经济重心南移的关系。',
+  'hist-suitang':      '能画出隋唐「制度创新—盛世局面—由盛转衰」的时间轴，并各配一个史实说明。',
+  'hist-song':         '能用三个史实证明宋代商业繁荣，并解释重文轻武政策的双重影响。',
+  'hist-ming':         '能说出明太祖强化皇权的三项措施，并比较郑和下西洋与欧洲航海目的的差异。',
+  'hist-qing':         '能列举清朝经略边疆的三项措施，并分析军机处为什么标志君主专制顶峰。',
+  'hist-opium':        '能默写《南京条约》四项核心内容，并解释「半殖民地半封建」两个「半」各自指什么。',
+  'hist-yangwu':       '能从口号、内容、评价三方面完整介绍洋务运动，并指出其失败的根源。',
+  'hist-wuxu':         '能说出《马关条约》三危害，并区分公车上书与百日维新在变法进程中的位置。',
+  'hist-xinhai':       '能从胜利与局限两面评价辛亥革命，并解释《临时约法》为什么改行责任内阁制。',
+  'hist-newculture':   '能说出新文化运动两面大旗，并解释五四运动为什么是新民主主义革命的开端。',
+  'hist-cpc':          '能完整复述中共一大内容并区分中共一大与二大纲领的差异。',
+  'hist-antiwar':      '能按时间轴说出局部抗战到全民族抗战的三个标志事件，并区分正面战场与敌后战场战役归属。',
+  'hist-liberation':   '能按顺序说出重庆谈判、战略进攻、三大战役、渡江战役的历史定位。',
+  'hist-prc':          '能从国内国际两个维度阐述新中国成立的意义，并区分土地改革与农业合作化的所有制性质。',
+  'hist-explore':      '能说出一五计划与三大改造各自的历史标志意义，并辩证分析探索时期的成就与失误。',
+  'hist-reform':       '能完整表述十一届三中全会的内容与意义，并区分经济特区与特别行政区的本质。',
+  'hist-newera':       '能准确表述新时代社会主要矛盾并解释基本国情为何没有变。',
+  'hist-orient':       '能比较四大古文明的自然地理与文明特征，并解释雅典民主的阶级局限。',
+  'hist-medieval':     '能说明大化改新与明治维新的社会转型差异，并概括西欧庄园的经济特征。',
+  'hist-newroute':     '能按人物排序说出四位航海家的成就，并从正反两面评价新航路开辟。',
+  'hist-revolution':   '能比较英法美三国革命的成果文件，并指出各自确立的政体类型。',
+  'hist-industry':     '能把主要发明正确归入两次工业革命，并多维比较两次革命的差异。',
+  'hist-worldwar':     '能区分一战的根本原因与导火索，并说出二战转折点与反法西斯同盟形成的标志。',
+  'hist-coldwar':      '能按顺序说出冷战从序幕到格局形成的四个标志，并举例说明「冷战不冷」。',
+  'hist-globalization':'能说明联合国与世贸组织的职能，并辩证分析经济全球化对发展中国家的双重影响。',
+  'hist-gz-civ':       '能描述早期国家「血缘与政治结合」的特征，并解释分封制与宗法制的表里关系。',
+  'hist-gz-tang':      '能梳理选官制度从察举到科举的演进逻辑，并解释两税法「以资产为宗」的进步性。',
+  'hist-gz-song':      '能用交子、市舶司、占城稻三个史实论证宋代经济繁荣，并概括理学的核心主张。',
+  'hist-gz-mingqing':  '能解释内阁与军机处的非法定机构属性，并用史实说明清朝版图奠定。',
+  'hist-gz-lateqing':  '能按阶级分别归纳近代前期各救亡探索及其局限，并论证旧式方案走不通的结论。',
+  'hist-gz-republic':  '能从政体变革与社会改造两个层面评价辛亥革命，并说明民初政局动荡的表现。',
+  'hist-gz-cpc':       '能阐述工农武装割据道路对苏联模式的突破意义，并完整说出遵义会议的历史定位。',
+  'hist-gz-socialism': '能区分一五计划与三大改造的历史任务，并说明十一届三中全会开启的新时期内涵。',
+  'hist-gx-ancient':   '能列举文明产生的多维标志，并对两大文明类型做地理与经济基础的比较。',
+  'hist-gx-medieval':  '能解释封君封臣的契约分权特征，并说明城市自治对封建制度的孕育作用。',
+  'hist-gx-modern':    '能分层表述新航路开辟的根本动因、社会动因与客观条件，并用哥伦布交换说明全球联系。',
+  'hist-gx-capital':   '能比较文艺复兴与启蒙运动的思想层次差异，并说出英美法三种代议制形态。',
+  'hist-gx-industrial':'能多维比较两次工业革命，并说明《共产党宣言》诞生的时代条件。',
+  'hist-gx-worldwar':  '能比较凡尔赛—华盛顿体系与雅尔塔体系的异同，并阐述十月革命的世界意义。',
+  'hist-gx-coldwar':   '能分析冷战起源的多因素，并用史实说明两极格局中多极力量的成长。',
+  'hist-gx-contemp':   '能准确使用「曲折中发展」等术语描述全球化，并举例说明全球治理的改革方向。',
+  'hist-xb1-pol':      '能绘制君主专制强化脉络图，并解释官僚政治取代贵族政治的历史意义。',
+  'hist-xb1-official': '能按标准演变串起五种选官制度，并说出科举制的世界影响。',
+  'hist-xb1-law':      '能区分「法制」与「法治」概念，并梳理从《唐律疏议》到全面依法治国的演进。',
+  'hist-xb1-frontier': '能列举三个朝代的边疆治理创新，并比较朝贡体系与条约体系的性质差异。',
+  'hist-xb2-food':     '能解释农业起源对文明形成的意义，并用玉米传播说明物种交流的影响。',
+  'hist-xb2-trade':    '能梳理货币演进脉络，并说明商路如何同时传输商品与文化。',
+  'hist-xb2-industrial':'能解释工厂制度对生产组织的改造，并辨析洋务企业、民族工业与官僚资本。',
+  'hist-xb2-modern':   '能说明罗斯福新政「干预而不放弃市场」的定性，并比较苏联模式的成就与僵化。',
+  'hist-xb3-exchange': '能列举文化交流的多种载体，并用希腊化时代说明交融的双向性。',
+  'hist-xb3-war':      '能辩证分析战争对文化传播的两重性，并说出两项文化遗产保护国际制度。',
+  'hist-xb3-heritage': '能解释文化遗产的真实性与完整性原则，并纠正「遗产=旅游招牌」的误区。',
+  'hist-xb3-china':    '能用佛教中国化说明中华文化的吸纳转化能力，并阐述「双创」方针的内涵。',
+};
+
+/* 真实案例：来自公开教学与真题的典型场景拆解 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'hist-xinhai': { title: '辛亥革命是成功还是失败：一道评价题的三层拆法',
+    text: '材料：有学者说「辛亥革命胜利了」，也有学者说「辛亥革命失败了」。请结合史实加以评述。<br><br><b>第一层：确立评价标准。</b>「成功」看是否完成反帝反封建任务、是否推动社会进步；「失败」看是否改变社会性质。标准先行，评价才不空转。<br><b>第二层：摆两面史实。</b>成功面：推翻清王朝、结束两千多年君主专制、建立亚洲第一个共和国、《临时约法》确立主权在民。失败面：革命果实被袁世凯窃取、没有改变半殖民地半封建社会性质、反帝反封建任务未完成。<br><b>第三层：下分层结论。</b>它推翻帝制是成功的，完成民主革命任务是失败的——所以教材说它「既成功又失败」，结论必须与层面一一对应。<br><br><b>迁移要诀</b>：凡「评价类」设问，先立标准、再两面摆史实、最后分层下结论。只答单面或把不同层面的结论搅在一起，是最常见的丢分点。' },
+  'hist-gx-modern': { title: '新航路开辟：一张「物种交换表」里的全球史',
+    text: '材料：15世纪末以后，玉米、马铃薯由美洲传向欧亚非；小麦、马、牛由欧亚传向美洲；天花等传染病使美洲原住民人口锐减。<br><br><b>第一步：归类。</b>把材料信息分为「物种」「疾病」「人口」三类——哥伦布交换不是单一事件，而是多要素的全球流动。<br><b>第二步：找因果。</b>玉米马铃薯传入旧大陆→粮食增产→人口增长；旧大陆疾病传入美洲→原住民锐减→殖民者引进非洲奴隶——一张表串起明清人口增长与三角贸易两个考点。<br><b>第三步：点本质。</b>物种交换反映的是世界从分散走向整体、全球联系的初步建立——材料题的落点永远是「整体世界」这个核心概念。<br><br><b>易错提醒</b>：只写「物种交换促进人口增长」只得一半——必须把疾病与奴隶贸易的暗线写出来，全球史的双向性与残酷性都到了，才是完整答案。' },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口；学段深链抓取后回填） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_jun: { name: '智慧教育·中国历史·七年级上册', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2F6a7481aa-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·中外历史纲要（上）', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2F6a7481aa-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2F5036342990', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部教育考试院', url: 'https://www.neea.edu.cn', note: '官方考试信息' },
+};
+/* ============ 主干环 NODES：56 环（初中 28 + 高中 28），prev/next 双向依赖 ============ */
+const NODES = {
+  /* ================= 初中 · 中国古代史（七年级上下册） ================= */
+'hist-origin': { title: '史前时期与中华文明起源', stage: 'junior', cat: 'ancient', diff: 1.0, hot: false,
+  fact: '我国已确认的最早人类是元谋人（约170万年前），北京人使用打制石器与天然火、过群居生活；河姆渡人种植水稻、半坡人种植粟，标志原始农业产生；炎黄传说与考古发现相互印证，中华文明起源呈现多元一体的特征。',
+  prev: [], next: ['hist-warring'],
+  lecture: [ {name:'史前时期：中国境内早期人类与文明的起源', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'原始农耕与远古传说练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-warring': { title: '春秋战国与社会大变革', stage: 'junior', cat: 'ancient', diff: 1.6, hot: false,
+  fact: '春秋时期铁制农具和牛耕出现、战国进一步推广，生产力发展引发社会大变革；商鞅变法奖励耕战、确立县制，使秦国富强为统一奠基；老子、孔子与百家争鸣是中国学术思想史上的第一座高峰。',
+  prev: ['hist-origin'], next: ['hist-qinhan'],
+  lecture: [ {name:'春秋战国时期的社会变革与百家争鸣', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'商鞅变法与百家争鸣练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-qinhan': { title: '秦汉大一统与丝绸之路', stage: 'junior', cat: 'ancient', diff: 2.2, hot: false,
+  fact: '秦统一开创此后我国历代疆域的基本版图，郡县制开创此后地方行政的基本模式；汉武帝从政治、思想、经济、军事等方面巩固大一统；张骞通西域后丝绸之路成为古代东西方往来的大动脉。',
+  prev: ['hist-warring'], next: ['hist-wei-jin', 'hist-orient'],
+  lecture: [ {name:'秦汉统一多民族封建国家的建立与巩固', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'秦统一与汉武帝巩固大一统练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-wei-jin': { title: '三国两晋南北朝的民族交融', stage: 'junior', cat: 'ancient', diff: 2.8, hot: false,
+  fact: '官渡之战、赤壁之战为三国鼎立奠定基础；西晋短暂统一后北方游牧民族内迁，北魏孝文帝改革迁都洛阳、说汉话改汉姓，促进民族交融；江南地区的开发为经济重心南移奠定基础。',
+  prev: ['hist-qinhan'], next: ['hist-suitang'],
+  lecture: [ {name:'三国两晋南北朝的政权更迭与民族交融', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'北魏孝文帝改革与江南开发练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-suitang': { title: '隋唐盛世与开放局面', stage: 'junior', cat: 'ancient', diff: 3.2, hot: true,
+  fact: '隋朝开创科举取士制度、开凿贯通南北的大运河；唐朝先后出现贞观之治与开元盛世，文成公主入藏促进民族交往，鉴真东渡、玄奘西行见证对外开放；安史之乱后唐朝由盛转衰。',
+  prev: ['hist-wei-jin'], next: ['hist-song'],
+  lecture: [ {name:'隋唐时期：繁荣与开放的时代', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'科举制与盛唐气象练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-song': { title: '宋元经济文化重心南移', stage: 'junior', cat: 'ancient', diff: 3.8, hot: false,
+  fact: '北宋重文轻武导致文臣统兵、武将地位下降；经济重心南移至南宋完成，市镇与海外贸易兴盛，市舶司管理海外贸易；活字印刷术、指南针、火药在宋元走向成熟并外传，都市文化与宋词元曲繁荣。',
+  prev: ['hist-suitang'], next: ['hist-ming', 'hist-gz-civ', 'hist-gz-song'],
+  lecture: [ {name:'辽宋夏金元时期：民族关系发展和社会变化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'经济重心南移与宋元科技练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-ming': { title: '明朝统治与中外交流', stage: 'junior', cat: 'ancient', diff: 4.2, hot: false,
+  fact: '朱元璋强化皇权、废丞相，设锦衣卫等特务机构；郑和七下西洋是世界航海史上的壮举，戚继光抗倭平定东南倭患；科举实行八股取士，思想日趋僵化。',
+  prev: ['hist-song'], next: ['hist-qing', 'hist-newroute', 'hist-gz-mingqing'],
+  lecture: [ {name:'明朝的统治与中外交往', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'明朝君权强化与郑和下西洋练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-qing': { title: '清朝统一多民族国家的巩固', stage: 'junior', cat: 'ancient', diff: 4.6, hot: false,
+  fact: '清朝设台湾府、平定准噶尔、派驻藏大臣并实行金瓶掣签，加强对边疆管辖，奠定现代中国版图基础；军机处使君主专制达到顶峰；闭关锁国政策使中国逐渐落后于世界潮流。',
+  prev: ['hist-ming'], next: ['hist-opium', 'hist-gz-civ', 'hist-gz-tang', 'hist-xb2-food'],
+  lecture: [ {name:'明清时期：统一多民族国家的巩固与发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'清朝边疆治理与闭关锁国练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 中国近现代史（八年级上下册） ================= */
+'hist-opium': { title: '两次鸦片战争', stage: 'junior', cat: 'cnmod', diff: 4.0, hot: true,
+  fact: '1840年英国发动鸦片战争，《南京条约》是中国近代史上第一个丧权辱国的不平等条约，中国开始沦为半殖民地半封建社会；第二次鸦片战争中英法联军火烧圆明园，中国的半殖民地化程度进一步加深。',
+  prev: ['hist-qing'], next: ['hist-yangwu'],
+  lecture: [ {name:'鸦片战争与第二次鸦片战争', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'《南京条约》内容与影响练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-yangwu': { title: '太平天国与洋务运动', stage: 'junior', cat: 'cnmod', diff: 4.4, hot: false,
+  fact: '太平天国运动是中国历史上规模最宏大的农民战争，《天朝田亩制度》的绝对平均理想无法实现；洋务运动主张自强求富、创办军事与民用工业，是中国历史上第一次近代化运动，但根本目的仍是维护清王朝统治。',
+  prev: ['hist-opium'], next: ['hist-wuxu', 'hist-gz-lateqing'],
+  lecture: [ {name:'太平天国运动与洋务运动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'洋务运动评价练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-wuxu': { title: '甲午战争与戊戌变法', stage: 'junior', cat: 'cnmod', diff: 4.7, hot: false,
+  fact: '甲午战败签订《马关条约》，允许日本在通商口岸设厂，列强侵略由商品输出转向资本输出，掀起瓜分中国狂潮；公车上书拉开维新变法序幕，戊戌变法在慈禧太后镇压下失败，但在思想文化上产生深远影响。',
+  prev: ['hist-yangwu'], next: ['hist-xinhai', 'hist-revolution'],
+  lecture: [ {name:'甲午中日战争与列强瓜分中国狂潮', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'戊戌变法失败原因练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-xinhai': { title: '辛亥革命与中华民国建立', stage: 'junior', cat: 'cnmod', diff: 5.0, hot: true,
+  fact: '孙中山创立同盟会，三民主义成为革命的指导思想；武昌起义后中华民国临时政府成立，1912年宣统帝下诏退位；《中华民国临时约法》是中国历史上第一部具有资产阶级共和国宪法性质的重要文件，但革命果实被袁世凯窃取。',
+  prev: ['hist-wuxu'], next: ['hist-newculture', 'hist-gz-republic'],
+  lecture: [ {name:'辛亥革命与中华民国的创建', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'辛亥革命历史意义练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-newculture': { title: '新文化运动与五四运动', stage: 'junior', cat: 'cnmod', diff: 5.3, hot: false,
+  fact: '新文化运动高举民主与科学两面大旗，动摇了封建道德礼教的统治地位；巴黎和会上中国外交失败引发五四运动，工人阶级开始登上政治舞台，五四运动是中国旧民主主义革命走向新民主主义革命的转折点。',
+  prev: ['hist-xinhai'], next: ['hist-cpc'],
+  lecture: [ {name:'新文化运动与五四运动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'新文化运动内容与五四精神练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-cpc': { title: '中共诞生与国民革命', stage: 'junior', cat: 'cnmod', diff: 5.5, hot: false,
+  fact: '马克思主义的传播为中国共产党成立奠定思想基础，1921年中共一大宣告中国共产党诞生，这是开天辟地的大事变；1924年国共合作实现，北伐战争胜利进军，基本推翻北洋军阀的统治。',
+  prev: ['hist-newculture'], next: ['hist-antiwar'],
+  lecture: [ {name:'中国共产党的诞生与北伐战争', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中共一大与国共合作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-antiwar': { title: '从局部抗战到全民族抗战', stage: 'junior', cat: 'cnmod', diff: 5.9, hot: true,
+  fact: '九一八事变后中国人民局部抗战开始；西安事变和平解决促成国共第二次合作；七七事变标志全民族抗战开始，淞沪会战打破日本三个月灭亡中国的迷梦，平型关大捷、台儿庄战役与百团大战鼓舞了全国抗战士气。',
+  prev: ['hist-cpc'], next: ['hist-liberation', 'hist-worldwar', 'hist-gz-cpc'],
+  lecture: [ {name:'中华民族的抗日战争', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'西安事变与抗战重要战役练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-liberation': { title: '人民解放战争', stage: 'junior', cat: 'cnmod', diff: 6.1, hot: false,
+  fact: '抗战胜利后重庆谈判签订《双十协定》；刘邓大军千里跃进大别山揭开战略进攻序幕，三大战役基本消灭国民党军队主力，渡江战役解放南京，国民党反动统治覆灭。',
+  prev: ['hist-antiwar'], next: ['hist-prc'],
+  lecture: [ {name:'人民解放战争的胜利', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'三大战役与解放战争胜因练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-prc': { title: '中华人民共和国成立和巩固', stage: 'junior', cat: 'cnmod', diff: 5.8, hot: true,
+  fact: '1949年开国大典宣告中华人民共和国成立，实现民族独立和人民解放；抗美援朝为经济建设赢得和平环境、大大提高国际地位；《中华人民共和国土地改革法》废除封建土地制度，解放农村生产力。',
+  prev: ['hist-liberation'], next: ['hist-explore'],
+  lecture: [ {name:'中华人民共和国的成立和巩固', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'新中国成立意义与抗美援朝练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-explore': { title: '社会主义建设在探索中前进', stage: 'junior', cat: 'cnmod', diff: 6.0, hot: false,
+  fact: '一五计划开始改变我国工业落后面貌、向社会主义工业化迈进；1956年三大改造完成，标志生产资料私有制转变为社会主义公有制、社会主义基本制度建立；中共八大是探索的良好开端，「大跃进」与人民公社化运动是探索中的严重失误。',
+  prev: ['hist-prc'], next: ['hist-reform'],
+  lecture: [ {name:'社会主义制度的建立与社会主义建设的探索', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'一五计划与三大改造练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-reform': { title: '伟大的历史转折与改革开放', stage: 'junior', cat: 'cnmod', diff: 6.4, hot: true,
+  fact: '1978年真理标准问题大讨论为十一届三中全会奠定思想基础；十一届三中全会作出把党和国家工作中心转移到经济建设上来、实行改革开放的历史性决策；家庭联产承包责任制、经济特区与社会主义市场经济体制改革逐步推进。',
+  prev: ['hist-explore'], next: ['hist-newera', 'hist-globalization', 'hist-gz-socialism', 'hist-xb1-law'],
+  lecture: [ {name:'中国特色社会主义道路的开创与发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'十一届三中全会与经济特区练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-newera': { title: '中国特色社会主义进入新时代', stage: 'junior', cat: 'cnmod', diff: 6.7, hot: false,
+  fact: '中共十九大宣布中国特色社会主义进入新时代，社会主要矛盾已转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾；「一国两制」成功实践于港澳；脱贫攻坚取得全面胜利，全面建成小康社会。',
+  prev: ['hist-reform'], next: ['hist-xb1-frontier', 'hist-xb3-china'],
+  lecture: [ {name:'中国特色社会主义进入新时代', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'新时代成就与一国两制练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 世界史（九年级上下册） ================= */
+'hist-orient': { title: '古代亚非欧文明', stage: 'junior', cat: 'world', diff: 2.4, hot: false,
+  fact: '古埃及金字塔、古巴比伦《汉谟拉比法典》、古印度种姓制度与佛教诞生，亚非文明多发源于大河流域；古希腊城邦孕育民主政治，古罗马法治成就影响深远，古希腊罗马文化是西方文明的源头。',
+  prev: ['hist-qinhan'], next: ['hist-medieval'],
+  lecture: [ {name:'古代亚非欧文明', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'大河文明与海洋文明比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-medieval': { title: '封建时代的亚洲与欧洲', stage: 'junior', cat: 'world', diff: 3.6, hot: false,
+  fact: '日本大化改新仿效唐朝制度建立封建国家，阿拉伯帝国沟通东西方文化；西欧庄园是中世纪社会的基本经济单位，城市自治与大学兴起；《查士丁尼法典》等奠定欧洲民法基础。',
+  prev: ['hist-orient'], next: ['hist-newroute', 'hist-gx-ancient'],
+  lecture: [ {name:'封建时代的欧洲与亚洲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'西欧庄园与拜占庭帝国练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-newroute': { title: '文艺复兴与新航路开辟', stage: 'junior', cat: 'world', diff: 4.8, hot: true,
+  fact: '文艺复兴的核心思潮是人文主义，但丁、达·芬奇、莎士比亚是代表人物；迪亚士、达·伽马、哥伦布、麦哲伦开辟新航路，世界开始连为一个整体；殖民掠夺与三角贸易助推欧洲资本原始积累。',
+  prev: ['hist-medieval', 'hist-ming'], next: ['hist-revolution', 'hist-gx-modern', 'hist-xb3-exchange'],
+  lecture: [ {name:'走向近代：文艺复兴与新航路开辟', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'新航路开辟影响练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-revolution': { title: '资产阶级革命与资本主义制度建立', stage: 'junior', cat: 'world', diff: 5.2, hot: false,
+  fact: '英国光荣革命后颁布《权利法案》，确立君主立宪制；美国独立战争发表《独立宣言》，1787年宪法确立三权分立原则；法国大革命颁布《人权宣言》，拿破仑法典把自由民主思想传播到欧洲各地。',
+  prev: ['hist-newroute', 'hist-wuxu'], next: ['hist-industry', 'hist-gx-capital'],
+  lecture: [ {name:'资本主义制度的初步确立', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'英法美资产阶级革命比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-industry': { title: '两次工业革命', stage: 'junior', cat: 'world', diff: 5.5, hot: false,
+  fact: '第一次工业革命以改良蒸汽机为标志，人类进入蒸汽时代；第二次工业革命以电力和内燃机为标志，进入电气时代；工业化改变社会结构的同时也带来环境污染等社会问题。',
+  prev: ['hist-revolution'], next: ['hist-worldwar', 'hist-gx-industrial', 'hist-xb2-industrial'],
+  lecture: [ {name:'工业革命与国际共产主义运动兴起', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'两次工业革命比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-worldwar': { title: '两次世界大战', stage: 'junior', cat: 'world', diff: 6.1, hot: true,
+  fact: '萨拉热窝事件引爆一战，凡尔赛—华盛顿体系暂时调整列强关系；1929年经济大危机助推法西斯上台；斯大林格勒保卫战是二战重要转折点，《联合国家宣言》标志世界反法西斯同盟形成，雅尔塔会议擘画战后秩序。',
+  prev: ['hist-industry', 'hist-antiwar'], next: ['hist-coldwar', 'hist-gx-worldwar'],
+  lecture: [ {name:'两次世界大战与世界格局演变', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'两次大战与凡尔赛华盛顿体系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-coldwar': { title: '冷战与国际格局演变', stage: 'junior', cat: 'world', diff: 6.4, hot: false,
+  fact: '杜鲁门主义出台标志冷战开始，北约与华约两大军事集团对峙；古巴导弹危机、柏林墙是冷战高潮的缩影；1991年苏联解体标志两极格局终结，世界朝多极化方向发展。',
+  prev: ['hist-worldwar'], next: ['hist-globalization', 'hist-gx-coldwar'],
+  lecture: [ {name:'二战后的世界变化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'冷战表现与两极格局练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hist-globalization': { title: '联合国与经济全球化', stage: 'junior', cat: 'world', diff: 6.6, hot: false,
+  fact: '联合国在维护国际和平与安全上发挥重要作用，世界贸易组织促进全球贸易发展；经济全球化是历史潮流但也遭遇曲折，计算机网络推动信息时代到来；人类面临气候变化等共同挑战，需要构建人类命运共同体。',
+  prev: ['hist-coldwar', 'hist-reform'], next: ['hist-gx-contemp'],
+  lecture: [ {name:'走向和平发展的世界', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'经济全球化与人类命运共同体练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+  /* ================= 高中 · 中外历史纲要（上） ================= */
+'hist-gz-civ': { title: '中华文明起源与早期国家', stage: 'senior', cat: 'ancient', diff: 5.2, hot: false,
+  fact: '中华文明起源具有多元一体、中原核心的特征，旧石器与新石器时代文化遗址星罗棋布；夏是国家形态的起点，商实行内外服制，西周分封制与宗法制结合、礼乐制度确立，构成早期政治文明的基本特征。',
+  prev: ['hist-qing', 'hist-song'], next: ['hist-gz-tang', 'hist-gx-ancient'],
+  lecture: [ {name:'中华文明的起源与早期国家', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'分封制宗法制辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-tang': { title: '三国至隋唐的制度创新与民族交融', stage: 'senior', cat: 'ancient', diff: 5.5, hot: false,
+  fact: '从三公九卿到三省六部、从察举到九品中正再到科举，制度演进凝结治理智慧；北魏孝文帝改革推动民族大交融，隋唐大运河沟通南北，丝绸之路在唐代达到鼎盛，长安成为国际大都会。',
+  prev: ['hist-gz-civ', 'hist-qing'], next: ['hist-gz-song', 'hist-xb1-pol'],
+  lecture: [ {name:'三国两晋南北朝的政权更迭与隋唐制度创新', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'三省六部与科举制演进练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-song': { title: '辽宋夏金元的经济社会与文化', stage: 'senior', cat: 'ancient', diff: 5.7, hot: false,
+  fact: '两宋农业、手工业与商业全面繁荣，交子是世界最早的纸币，经济重心南移完成；程朱理学成为官方哲学，宋词元曲与书院教育繁荣；元朝行省制度对后世影响深远。',
+  prev: ['hist-gz-tang', 'hist-song'], next: ['hist-gz-mingqing', 'hist-xb1-official', 'hist-xb2-food', 'hist-xb2-trade'],
+  lecture: [ {name:'辽宋夏金元的经济、社会与文化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'宋代商业繁荣与理学影响练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-mingqing': { title: '明至清中叶的统治与版图奠定', stage: 'senior', cat: 'ancient', diff: 5.9, hot: false,
+  fact: '明清废丞相、设内阁与军机处，君主专制达到顶峰；郑和下西洋后海禁与闭关自守使社会渐趋保守；清朝经略边疆，现代中国的版图逐步奠定，但中国社会转型已被世界大潮甩开。',
+  prev: ['hist-gz-song', 'hist-ming'], next: ['hist-gz-lateqing', 'hist-xb1-pol'],
+  lecture: [ {name:'明至清中叶中国版图的奠定与面临的挑战', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'明清经济新现象与闭关自守练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-lateqing': { title: '晚清内忧外患与救亡图存', stage: 'senior', cat: 'cnmod', diff: 6.1, hot: false,
+  fact: '两次鸦片战争、甲午战争与八国联军侵华使中国完全陷入半殖民地半封建社会深渊；太平天国、洋务运动、戊戌变法与义和团运动展现农民阶级、地主阶级与资产阶级的救亡探索，历史证明旧式救国方案在中国走不通。',
+  prev: ['hist-gz-mingqing', 'hist-yangwu'], next: ['hist-gz-republic'],
+  lecture: [ {name:'晚清时期的内忧外患与救亡图存', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'两次鸦片战争与各阶级探索练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-republic': { title: '辛亥革命与民初政局', stage: 'senior', cat: 'cnmod', diff: 6.3, hot: false,
+  fact: '辛亥革命推翻帝制、建立资产阶级共和国，是比较完全意义上的近代民族民主革命；《临时约法》确立主权在民原则；袁世凯复辟帝制失败后军阀混战，新文化运动兴起，旧民主主义革命走向尽头。',
+  prev: ['hist-gz-lateqing', 'hist-xinhai'], next: ['hist-gz-cpc'],
+  lecture: [ {name:'辛亥革命与中华民国的建立', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'辛亥革命成败之辨练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-cpc': { title: '中国共产党与新民主主义革命', stage: 'senior', cat: 'cnmod', diff: 6.6, hot: true,
+  fact: '五四运动促成马克思主义与工人运动结合，中共成立是开天辟地的大事变；井冈山道路开辟农村包围城市、武装夺取政权的革命新道路，遵义会议实现伟大转折；中国共产党成为抗日战争的中流砥柱，解放战争实现民族独立、人民解放。',
+  prev: ['hist-gz-republic', 'hist-antiwar'], next: ['hist-gz-socialism'],
+  lecture: [ {name:'中国共产党的成立与新民主主义革命', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'工农武装割据与遵义会议练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gz-socialism': { title: '社会主义革命、建设与改革开放', stage: 'senior', cat: 'cnmod', diff: 6.8, hot: false,
+  fact: '过渡时期总路线与三大改造确立社会主义基本制度；一五计划与全面社会主义建设奠基独立完整的工业体系；十一届三中全会开启改革开放和社会主义现代化建设新时期，中国特色社会主义道路越走越宽阔。',
+  prev: ['hist-gz-cpc', 'hist-reform'], next: [],
+  lecture: [ {name:'中华人民共和国成立和社会主义革命与建设', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'三大改造与改革开放进程练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 中外历史纲要（下） ================= */
+'hist-gx-ancient': { title: '古代文明的多元发展', stage: 'senior', cat: 'world', diff: 5.4, hot: false,
+  fact: '农业和畜牧业的产生是人类迈向文明的前提，两河流域、古埃及、古印度、古希腊等多元文明各具特色；波斯帝国、亚历山大帝国与罗马帝国的扩张客观上促进文明交流，不同文明相互借鉴而非单向优越。',
+  prev: ['hist-medieval', 'hist-gz-civ'], next: ['hist-gx-medieval'],
+  lecture: [ {name:'古代文明的产生与发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'多元文明特征比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-medieval': { title: '中古世界的多元面貌', stage: 'senior', cat: 'world', diff: 5.7, hot: false,
+  fact: '西欧封建庄园与城市自治、拜占庭与俄罗斯、阿拉伯帝国与奥斯曼帝国、日本与非洲各文明中古时期多元并存；各文明相对独立发展，又通过商路、宗教与移民彼此联系。',
+  prev: ['hist-gx-ancient'], next: ['hist-gx-modern', 'hist-xb3-exchange'],
+  lecture: [ {name:'中古时期的世界', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'中古欧亚非文明比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-modern': { title: '走向整体的世界', stage: 'senior', cat: 'world', diff: 5.9, hot: true,
+  fact: '新航路开辟打破世界相对分散孤立的状态，人类由分散走向整体；哥伦布大交换改变物种与人口分布；早期殖民扩张形成以欧洲为中心的世界市场雏形，也给亚非拉带来深重灾难。',
+  prev: ['hist-gx-medieval', 'hist-newroute'], next: ['hist-gx-capital'],
+  lecture: [ {name:'走向整体的世界', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'新航路开辟的双重影响练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-capital': { title: '资产阶级革命与资本主义制度确立', stage: 'senior', cat: 'world', diff: 6.1, hot: false,
+  fact: '文艺复兴、宗教改革与启蒙运动为资本主义社会描绘思想蓝图；英美法通过革命或独立战争确立代议制民主，资本主义制度在欧美扩展；它取代封建制度是历史进步，但其本质仍是维护资产阶级利益。',
+  prev: ['hist-gx-modern', 'hist-revolution'], next: ['hist-gx-industrial'],
+  lecture: [ {name:'资本主义制度的确立', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'启蒙运动与代议制练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-industrial': { title: '工业革命与马克思主义诞生', stage: 'senior', cat: 'world', diff: 6.3, hot: false,
+  fact: '两次工业革命使生产力空前发展、社会结构剧变，世界市场基本形成；贫富分化催生工人运动，马克思、恩格斯发表《共产党宣言》标志科学社会主义诞生，巴黎公社是无产阶级建立政权的第一次伟大尝试。',
+  prev: ['hist-gx-capital', 'hist-industry'], next: ['hist-gx-worldwar'],
+  lecture: [ {name:'工业革命与马克思主义的诞生', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'工业革命影响与《共产党宣言》练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-worldwar': { title: '两次世界大战与十月革命', stage: 'senior', cat: 'world', diff: 6.5, hot: true,
+  fact: '帝国主义政治经济发展不平衡是两次大战的根源；一战后凡尔赛—华盛顿体系暗藏危机，俄国十月革命建立第一个社会主义国家；二战以世界反法西斯同盟胜利告终，雅尔塔体系重塑战后格局，联合国成立。',
+  prev: ['hist-gx-industrial', 'hist-worldwar'], next: ['hist-gx-coldwar', 'hist-xb3-war'],
+  lecture: [ {name:'世界大战、十月革命与国际秩序的演变', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'两次大战与国际格局练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-coldwar': { title: '冷战与国际格局的演变', stage: 'senior', cat: 'world', diff: 6.8, hot: false,
+  fact: '冷战从杜鲁门主义到古巴导弹危机，美苏对峙又避免直接热战；第三世界、西欧与日本等多极力量在两极格局中成长；苏联解体后两极格局瓦解，世界向多极化演进，和平与发展成为时代主题。',
+  prev: ['hist-gx-worldwar', 'hist-coldwar'], next: ['hist-gx-contemp'],
+  lecture: [ {name:'20世纪下半叶世界的新变化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'冷战起源与多极化趋势练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-gx-contemp': { title: '当代世界发展的特点与趋势', stage: 'senior', cat: 'world', diff: 7.0, hot: false,
+  fact: '经济全球化在曲折中深入发展，社会信息化与文化多样化并进；全球治理面临气候变化、恐怖主义等共同挑战；构建人类命运共同体是中国为世界和平与发展贡献的中国方案。',
+  prev: ['hist-gx-coldwar', 'hist-globalization'], next: ['hist-xb2-modern', 'hist-xb3-heritage'],
+  lecture: [ {name:'当代世界发展的特点与主要趋势', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'全球化趋势与全球治理练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 选择性必修1 国家制度与社会治理 ================= */
+'hist-xb1-pol': { title: '历代政治体制的演进', stage: 'senior', cat: 'govern', diff: 6.2, hot: false,
+  fact: '从分封制到郡县制是贵族政治向官僚政治转变的关键；从三公九卿到三省六部再到内阁、军机处，君主专制步步强化；中央集权与地方治理的关系处理贯穿中国政治制度史。',
+  prev: ['hist-gz-tang', 'hist-gz-mingqing'], next: ['hist-xb1-official'],
+  lecture: [ {name:'政治体制：从分封到中央集权', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'君主专制中央集权演进练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb1-official': { title: '官员的选拔与管理', stage: 'senior', cat: 'govern', diff: 6.4, hot: false,
+  fact: '世官制、军功爵、察举制、九品中正制到科举制的演进不断扩大统治基础；科举制历经隋唐宋明清不断完善，官员考核与监察制度随之发展，为现代文官制度提供了历史借鉴。',
+  prev: ['hist-xb1-pol', 'hist-gz-song'], next: ['hist-xb1-law'],
+  lecture: [ {name:'官员的选拔与管理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'选官制度演变脉络练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb1-law': { title: '法律与教化', stage: 'senior', cat: 'govern', diff: 6.6, hot: false,
+  fact: '中国古代德治与法治相结合，从《唐律疏议》礼法合一到《大清新刑律》转型，中华法系自成一体；新中国法治建设历经曲折走向全面依法治国，法治国家、法治政府、法治社会一体建设。',
+  prev: ['hist-xb1-official', 'hist-reform'], next: ['hist-xb1-frontier'],
+  lecture: [ {name:'法律与教化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'中华法系与德法关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb1-frontier': { title: '民族关系、边疆治理与对外交往', stage: 'senior', cat: 'govern', diff: 6.9, hot: false,
+  fact: '中国历史上各民族交往交流交融形成多元一体格局，羁縻府州、土司制度、改土归流与盟旗制度蕴含治理智慧；从朝贡体系到现代外交，独立自主的和平外交政策与人类命运共同体理念一脉相承。',
+  prev: ['hist-xb1-law', 'hist-newera'], next: [],
+  lecture: [ {name:'民族关系与国家关系', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'民族交融与边疆治理练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 选择性必修2 经济与社会生活 ================= */
+'hist-xb2-food': { title: '食物生产与社会生活', stage: 'senior', cat: 'econ', diff: 6.0, hot: false,
+  fact: '人类从采集渔猎走向种植养殖，农业起源使人类由食物采集者变成食物生产者；小麦、水稻、玉米等作物的传播与新航路后的物种交流改变全球饮食结构；粮食安全始终关系社会稳定。',
+  prev: ['hist-gz-song', 'hist-qing'], next: ['hist-xb2-trade'],
+  lecture: [ {name:'食物生产与社会生活', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'农业起源与物种交流练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb2-trade': { title: '古代的商业贸易与交通', stage: 'senior', cat: 'econ', diff: 6.3, hot: false,
+  fact: '从贝币到交子、会子，货币演进见证商业繁荣；丝绸之路、大运河与海上商路联通欧亚，市镇、市舶司与商帮构成中国古代商业网络；商业贸易促进文化交流与技术传播。',
+  prev: ['hist-xb2-food', 'hist-gz-song'], next: ['hist-xb2-industrial'],
+  lecture: [ {name:'商业贸易与日常生活', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'商路与货币演进练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb2-industrial': { title: '工业革命与现代社会生活', stage: 'senior', cat: 'econ', diff: 6.6, hot: false,
+  fact: '工业革命催生工厂制度与城市化浪潮，生产方式从手工劳动走向机器大工业；火车、轮船与电报缩短时空距离；近现代中国从洋务企业到民族工业再到新型工业化，社会生活随之深刻变迁。',
+  prev: ['hist-xb2-trade', 'hist-industry'], next: ['hist-xb2-modern'],
+  lecture: [ {name:'生产工具与劳作方式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'工业化与社会生活变迁练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb2-modern': { title: '现代经济的发展与生活变迁', stage: 'senior', cat: 'econ', diff: 6.9, hot: false,
+  fact: '20世纪经济大危机催生国家干预模式，战后资本主义新变化与苏联社会主义建设各具探索；中国改革开放创造经济发展奇迹，电子商务与数字生活重塑人们的日常消费方式。',
+  prev: ['hist-xb2-industrial', 'hist-gx-contemp'], next: [],
+  lecture: [ {name:'现代经济社会发展与生活变迁', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'现代经济模式比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 选择性必修3 文化交流与传播 ================= */
+'hist-xb3-exchange': { title: '多元文明的交流互鉴', stage: 'senior', cat: 'cult', diff: 6.1, hot: false,
+  fact: '文字、艺术与宗教沿商路传播，亚历山大东征与阿拉伯帝国扩张客观上促进文化交融；人类文化在交流互鉴中发展，文明因多样而交流、因交流而互鉴、因互鉴而丰富。',
+  prev: ['hist-newroute', 'hist-gx-medieval'], next: ['hist-xb3-war'],
+  lecture: [ {name:'文化的交流与传播', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文明交流路径梳理练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb3-war': { title: '战争与文化交锋', stage: 'senior', cat: 'cult', diff: 6.5, hot: false,
+  fact: '战争既给文化带来浩劫也带来碰撞：亚历山大东征传播希腊文化，蒙古西征推动东西方交流；两次世界大战中大量文化遗产惨遭破坏，战后《海牙公约》等国际公约构筑文化保护制度。',
+  prev: ['hist-xb3-exchange', 'hist-gx-worldwar'], next: ['hist-xb3-heritage'],
+  lecture: [ {name:'战争与文化交锋', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'战争对文化影响两重性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb3-heritage': { title: '文化遗产：全人类的共同财富', stage: 'senior', cat: 'cult', diff: 6.8, hot: false,
+  fact: '文化遗产是不可再生的珍贵资源，《世界遗产公约》确立保护框架，长城、故宫、敦煌莫高窟见证中华文明；保护文化遗产要坚持真实性与完整性并重，在合理利用中传承。',
+  prev: ['hist-xb3-war', 'hist-gx-contemp'], next: ['hist-xb3-china'],
+  lecture: [ {name:'文化遗产：全人类共同的财富', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文化遗产保护原则练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hist-xb3-china': { title: '中华文化与世界文化的交融', stage: 'senior', cat: 'cult', diff: 7.0, hot: false,
+  fact: '中华文化在吸纳佛教文化等外来文明中丰富自身，造纸术、瓷器与儒家经典西传深刻影响世界；文化自信源于五千多年文明的积淀与创新性发展，中华文化为世界文明贡献中国智慧。',
+  prev: ['hist-xb3-heritage', 'hist-newera'], next: [],
+  lecture: [ {name:'中华文化的传承与创新', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'中华文化世界意义练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

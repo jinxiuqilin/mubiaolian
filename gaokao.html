@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>目标链 · 高考真题卷库</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><text x='12' y='17' font-size='13' text-anchor='middle' fill='%23f6f7f4'>卷</text></svg>">
+<style>
+  :root { --ink: #18211c; --ink-soft: #47554c; --ink-faint: #828d86; --line: #e2e7e1; --bg: #f6f7f4; --card: #fff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font: 15px/1.6 "PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif; min-height: 100vh; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 40px; }
+  header h1 { font-size: 24px; letter-spacing: .5px; }
+  header p { color: var(--ink-faint); font-size: 13px; margin-top: 4px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 14px; }
+  .tab, .yr, .vt { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 7px 16px; cursor: pointer; font-size: 14px; color: var(--ink-soft); transition: all .15s; }
+  .tab:hover, .yr:hover, .vt:hover { border-color: var(--ac); color: var(--ac); }
+  .tab.on, .yr.on, .vt.on { background: var(--ac); border-color: var(--ac); color: #fff; }
+  .yr, .vt { padding: 5px 14px; font-size: 13.5px; }
+  .years { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; min-height: 36px; }
+  .variants { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; min-height: 32px; }
+  .variants .lbl { font-size: 12.5px; color: var(--ink-faint); }
+  .tagline { color: var(--ink-faint); font-size: 12.5px; margin: 2px 0 14px; }
+  .tagline b { color: var(--ink-soft); }
+  .viewer { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); box-shadow: 0 8px 24px -12px rgba(24,33,28,.12); }
+  .viewer iframe { display: block; width: 100%; height: 78vh; border: 0; }
+  .src { margin-top: 12px; font-size: 12.5px; color: var(--ink-faint); display: flex; gap: 16px; flex-wrap: wrap; }
+  .src a { color: var(--ink-soft); }
+  .back { position: fixed; right: 18px; bottom: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 13px; color: var(--ink-soft); text-decoration: none; box-shadow: 0 4px 14px -6px rgba(24,33,28,.2); }
+  .back:hover { color: var(--ac); border-color: var(--ac); }
+  .home-link { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; background: linear-gradient(135deg, #2f6b57, #3d8a70); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; box-shadow: 0 4px 14px -6px rgba(47,107,87,.5); transition: transform .15s ease, box-shadow .15s ease; }
+  .home-link:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(47,107,87,.6); }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+<div class="wrap">
+  <header>
+    <a class="home-link" href="mubiaolian-math.html">🏠 ← 返回目标链主页</a>
+    <h1>目标链 · 高考真题卷库</h1>
+    <p>本地自托管 · 试卷仅供学习交流 · 科目 → 年份 → 卷别 · 各站考点标注基于对应主卷</p>
+  </header>
+  <div class="tabs" id="tabs"></div>
+  <div class="years" id="years"></div>
+  <div class="variants" id="variants"><span class="lbl">卷别：</span></div>
+  <div class="tagline" id="tagline"></div>
+  <div class="viewer" id="viewer"></div>
+  <div class="src" id="src"></div>
+  <footer style="margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-faint);line-height:1.9">
+    本站试卷仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 contact@mubiaolian.com，核实后 24 小时内下架。<br>
+    © 2026 目标链 mubiaolian.com · <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+  </footer>
+</div>
+<a class="back" href="mubiaolian-math.html">🏠 返回主页</a>
+<script>
+const SITES = [["math", "数学", "∑", "#2f6b57", "新课标Ⅰ卷"], ["chinese", "语文", "文", "#8c3a2f", "新课标Ⅰ卷"], ["english", "英语", "A", "#2f5a8f", "新课标Ⅰ卷"], ["physics", "物理", "P", "#6d4a9c", "广东卷"], ["chem", "化学", "C", "#a83a5e", "广东卷"], ["bio", "生物", "B", "#4e8a3c", "广东卷"], ["pol", "政治", "政", "#1f7a8c", "广东卷"], ["hist", "历史", "史", "#9a6215", "湖南卷"], ["geo", "地理", "地", "#6b7d2f", "广东卷"]];
+const PAPERS = {"bio":{"2026":[{"name":"广东卷","pdf":"gaokao/bio2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-shengwu2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2026.pdf","url":""}],"2025":[{"name":"广东卷","pdf":"gaokao/bio2025.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-shengwu2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shengwu2025.pdf","url":""}],"2024":[{"name":"广东卷","pdf":"gaokao/bio2024.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-shengwu2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shengwu2024.pdf","url":""}],"2023":[{"name":"广东卷","pdf":"gaokao/bio2023.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2023.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shengwu2023.pdf","url":""}],"2022":[{"name":"广东卷","pdf":"gaokao/bio2022.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2022.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shengwu2022.pdf","url":""}],"2021":[{"name":"广东卷","pdf":"gaokao/bio2021.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2021.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shengwu2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shengwu2021.pdf","url":""}]},"geo":{"2026":[{"name":"广东卷","pdf":"gaokao/geo2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-dili2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2026.pdf","url":""}],"2025":[{"name":"广东卷","pdf":"gaokao/geo2025.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-dili2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-dili2025.pdf","url":""}],"2024":[{"name":"广东卷","pdf":"gaokao/geo2024.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-dili2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-dili2024.pdf","url":""}],"2023":[{"name":"广东卷","pdf":"gaokao/geo2023.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2023.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-dili2023.pdf","url":""}],"2022":[{"name":"广东卷","pdf":"gaokao/geo2022.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2022.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-dili2022.pdf","url":""}],"2021":[{"name":"广东卷","pdf":"gaokao/geo2021.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2021.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-dili2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-dili2021.pdf","url":""}]},"chem":{"2026":[{"name":"广东卷","pdf":"gaokao/chem2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-huaxue2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2026.pdf","url":""}],"2025":[{"name":"广东卷","pdf":"gaokao/chem2025.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-huaxue2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-huaxue2025.pdf","url":""}],"2024":[{"name":"广东卷","pdf":"gaokao/chem2024.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-huaxue2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-huaxue2024.pdf","url":""}],"2023":[{"name":"广东卷","pdf":"gaokao/chem2023.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2023.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-huaxue2023.pdf","url":""}],"2022":[{"name":"广东卷","pdf":"gaokao/chem2022.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2022.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-huaxue2022.pdf","url":""}],"2021":[{"name":"广东卷","pdf":"gaokao/chem2021.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2021.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-huaxue2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-huaxue2021.pdf","url":""}]},"hist":{"2026":[{"name":"湖南卷","pdf":"gaokao/hist2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-lishi2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2026.pdf","url":""}],"2025":[{"name":"教育部共享卷","pdf":"gaokao/gx-lishi2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-lishi2025.pdf","url":""}],"2024":[{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-lishi2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-lishi2024.pdf","url":""}],"2023":[{"name":"湖南卷","pdf":"gaokao/hist2023.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2023.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-lishi2023.pdf","url":""}],"2022":[{"name":"湖南卷","pdf":"gaokao/hist2022.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2022.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-lishi2022.pdf","url":""}],"2021":[{"name":"湖南卷","pdf":"gaokao/hist2021.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2021.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-lishi2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-lishi2021.pdf","url":""}]},"math":{"2026":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2026.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2026.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2026.pdf","url":""}],"2025":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2025.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2025.pdf","url":""}],"2024":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2024.pdf","url":""},{"name":"全国甲卷·理科数学","pdf":"gaokao/jia-shuxue-li2024.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2024.pdf","url":""}],"2023":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2023.pdf","url":""},{"name":"全国甲卷·理科数学","pdf":"gaokao/jia-shuxue-li2023.pdf","url":""},{"name":"全国乙卷·理科数学","pdf":"gaokao/yi-shuxue-li2023.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2023.pdf","url":""}],"2022":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2022.pdf","url":""},{"name":"全国甲卷·理科数学","pdf":"gaokao/jia-shuxue-li2022.pdf","url":""},{"name":"全国乙卷·理科数学","pdf":"gaokao/yi-shuxue-li2022.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2022.pdf","url":""}],"2021":[{"name":"新课标Ⅰ卷","pdf":"gaokao/math2021.pdf","url":""},{"name":"全国甲卷·理科数学","pdf":"gaokao/jia-shuxue-li2021.pdf","url":""},{"name":"全国乙卷·理科数学","pdf":"gaokao/yi-shuxue-li2021.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-shuxue2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-shuxue2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-shuxue2021.pdf","url":""}]},"physics":{"2026":[{"name":"广东卷","pdf":"gaokao/physics2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-wuli2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2026.pdf","url":""}],"2025":[{"name":"教育部共享卷","pdf":"gaokao/gx-wuli2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-wuli2025.pdf","url":""}],"2024":[{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-wuli2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-wuli2024.pdf","url":""}],"2023":[{"name":"广东卷","pdf":"gaokao/physics2023.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2023.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-wuli2023.pdf","url":""}],"2022":[{"name":"广东卷","pdf":"gaokao/physics2022.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2022.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-wuli2022.pdf","url":""}],"2021":[{"name":"广东卷","pdf":"gaokao/physics2021.pdf","url":""},{"name":"全国甲卷·理综合卷","pdf":"gaokao/jia-lizong2021.pdf","url":""},{"name":"全国乙卷·理综合卷","pdf":"gaokao/yi-lizong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-wuli2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-wuli2021.pdf","url":""}]},"english":{"2026":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2026.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2026.pdf","url":""}],"2025":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2025.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yingyu2025.pdf","url":""}],"2024":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2024.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yingyu2024.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yingyu2024.pdf","url":""}],"2023":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2023.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yingyu2023.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yingyu2023.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yingyu2023.pdf","url":""}],"2022":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2022.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yingyu2022.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yingyu2022.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yingyu2022.pdf","url":""}],"2021":[{"name":"新课标Ⅰ卷","pdf":"gaokao/english2021.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yingyu2021.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yingyu2021.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yingyu2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yingyu2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yingyu2021.pdf","url":""}]},"chinese":{"2026":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2026.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2026.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2026.pdf","url":""}],"2025":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2025.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2025.pdf","url":""}],"2024":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2024.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yuwen2024.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2024.pdf","url":""}],"2023":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2023.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yuwen2023.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yuwen2023.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2023.pdf","url":""}],"2022":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2022.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yuwen2022.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yuwen2022.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2022.pdf","url":""}],"2021":[{"name":"新课标Ⅰ卷","pdf":"gaokao/chinese2021.pdf","url":""},{"name":"全国甲卷","pdf":"gaokao/jia-yuwen2021.pdf","url":""},{"name":"全国乙卷","pdf":"gaokao/yi-yuwen2021.pdf","url":""},{"name":"新课标Ⅱ卷","pdf":"gaokao/x2-yuwen2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-yuwen2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-yuwen2021.pdf","url":""}]},"pol":{"2026":[{"name":"广东卷","pdf":"gaokao/pol2026.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-zhengzhi2026.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2026.pdf","url":""}],"2025":[{"name":"广东卷","pdf":"gaokao/pol2025.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-zhengzhi2025.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2025.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-zhengzhi2025.pdf","url":""}],"2024":[{"name":"广东卷","pdf":"gaokao/pol2024.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2024.pdf","url":""},{"name":"教育部共享卷","pdf":"gaokao/gx-zhengzhi2024.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2024.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-zhengzhi2024.pdf","url":""}],"2023":[{"name":"广东卷","pdf":"gaokao/pol2023.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2023.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2023.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2023.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-zhengzhi2023.pdf","url":""}],"2022":[{"name":"广东卷","pdf":"gaokao/pol2022.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2022.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2022.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2022.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-zhengzhi2022.pdf","url":""}],"2021":[{"name":"广东卷","pdf":"gaokao/pol2021.pdf","url":""},{"name":"全国甲卷·文综合卷","pdf":"gaokao/jia-wenzong2021.pdf","url":""},{"name":"全国乙卷·文综合卷","pdf":"gaokao/yi-wenzong2021.pdf","url":""},{"name":"北京卷","pdf":"gaokao/bj-zhengzhi2021.pdf","url":""},{"name":"天津卷","pdf":"gaokao/tj-zhengzhi2021.pdf","url":""}]}};
+const q = new URLSearchParams(location.search);
+let cur = { s: q.get('s') || 'math', y: parseInt(q.get('y')) || 0, v: 0 };
+const tabs = document.getElementById('tabs');
+SITES.forEach(([id, name, icon]) => {
+  const b = document.createElement('button');
+  b.className = 'tab'; b.textContent = icon + ' ' + name; b.dataset.s = id;
+  b.onclick = () => { cur.s = id; cur.y = 0; cur.v = 0; render(); };
+  tabs.appendChild(b);
+});
+const site = () => SITES.find(x => x[0] === cur.s);
+function render() {
+  const [id, name, icon, color, tag] = site();
+  document.documentElement.style.setProperty('--ac', color);
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.s === id));
+  const years = document.getElementById('years');
+  years.innerHTML = '';
+  const ys = Object.keys(PAPERS[id]).map(Number).sort((a, b) => b - a);
+  if (!cur.y || !ys.includes(cur.y)) cur.y = ys[0];
+  ys.forEach(y => {
+    const b = document.createElement('button');
+    b.className = 'yr'; b.textContent = y;
+    b.onclick = () => { cur.y = y; cur.v = 0; render(); };
+    if (y === cur.y) b.classList.add('on');
+    years.appendChild(b);
+  });
+  const vs = PAPERS[id][cur.y] || [];
+  if (cur.v >= vs.length) cur.v = 0;
+  const box = document.getElementById('variants');
+  box.innerHTML = '<span class="lbl">卷别：</span>';
+  if (vs.length > 1) {
+    vs.forEach((v, i) => {
+      const b = document.createElement('button');
+      b.className = 'vt'; b.textContent = v.name;
+      b.onclick = () => { cur.v = i; render(); };
+      if (i === cur.v) b.classList.add('on');
+      box.appendChild(b);
+    });
+  } else {
+    box.insertAdjacentHTML('beforeend', '<span>' + (vs[0] ? vs[0].name : '—') + '</span>');
+  }
+  const mainName = vs[0] ? vs[0].name : '';
+  document.getElementById('tagline').innerHTML =
+    '<b>' + name + ' · ' + cur.y + '</b> · 站内考点标注基于：' + mainName + ' · 人工整理，或有遗漏';
+  const v = vs[cur.v] || {};
+  const viewer = document.getElementById('viewer');
+  document.getElementById('src').innerHTML = v.pdf
+    ? '<span>本页 PDF 为公开真题试卷的本地副本，仅供学习交流</span>'
+    : '<span>该卷暂缺，敬请期待</span>';
+  viewer.innerHTML = v.pdf ? '<iframe src="' + v.pdf + '#page=1&view=FitH" title="' + name + cur.y + '"></iframe>'
+                           : '<div style="padding:60px;text-align:center;color:var(--ink-faint)">该卷暂缺</div>';
+  document.querySelectorAll('.yr').forEach(b => b.classList.toggle('on', parseInt(b.textContent) === cur.y));
+  syncUrl();
+}
+function syncUrl() {
+  const u = new URL(location);
+  u.search = '?s=' + cur.s + '&y=' + cur.y + (cur.v ? '&v=' + cur.v : '');
+  history.replaceState(null, '', u);
+}
+render();
+</script>
+</body>
+</html>

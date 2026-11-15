@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 初高中化学知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）化学知识目标站 —— 初中到高中化学主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#a83a5e" />
+<meta property="og:title" content="目标链 · 初高中化学知识目标站" />
+<meta property="og:description" content="初中到高中化学主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-chem.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M12 4.8l6.2 3.6v7.2L12 19.2l-6.2-3.6V8.4z' fill='none' stroke='%23f6f7f4' stroke-width='1.4' stroke-linejoin='round'/><circle cx='12' cy='12' r='3.4' fill='none' stroke='%23f6f7f4' stroke-width='1.2'/></svg>" />
+<style>
+  :root {
+    --bg: #f8f4f6;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #a83a5e;
+    --accent-deep: #7f2b48;
+    --accent-soft: #f8ecf1;
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(168,58,94,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(168,58,94,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #c46a8a); box-shadow: 0 3px 10px -2px rgba(168,58,94,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #d183a0 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(127,43,72,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(168,58,94,.06); border: 1px dashed rgba(168,58,94,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(168,58,94,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(168,58,94,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #d183a0); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(168,58,94,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #c46a8a);
+    box-shadow: 0 8px 18px -8px rgba(168,58,94,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(168,58,94,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(168,58,94,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(168,58,94,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #faf3f6; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fbf8fa, #f5edf1);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链化学站"><i class="subj-ico">C</i>化学</span>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">56 个主干环 · 224 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>初高中化学知识<span class="accent">目标链</span></h1>
+  <p>化学从初三起始、两段贯通：初中到高中主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/56</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：氧化还原反应" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链化学站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">广东卷 · 省自主命题 · 2021-2025 · 人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链化学站 · 知识点数据（56 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：56 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 224 个 ============ */
+/* ============ 历年高考考情（广东卷 · 省自主命题 2021-2025）：环id → {年份:[T题号·考点]} ============
+ * 广东省自2021年起新高考选考科目（含化学）均为省自主命题（语数英才是新课标Ⅰ卷）。
+ * 数据源：各年真题原文 PDF 抽取文本逐题核对（中国教育在线 / 掌上高考 / 更三高考等），解析版交叉验证。
+ * 人工整理，或有遗漏。卷型变化：2021-2022 为 21 题（含选考二选一 T20/T21），2023 起 20 题、取消选考题；
+ * 工艺流程/因果陈述等综合题与实验评价题未强行归环。 */
+const EXAM = {
+  'matter-classify': {
+    2023: ['T5·物质变化与胶体性质'],
+    2021: ['T1·文物材质与合金判断'],
+  },
+  'ion-reaction': {
+    2022: ['T14·离子方程式书写判断'],
+    2021: ['T15·离子方程式正误判断'],
+  },
+  'mole': {
+    2025: ['T10·阿伏加德罗常数计算'],
+    2024: ['T10·阿伏加德罗常数计算'],
+    2023: ['T11·侯氏制碱NA计算'],
+    2021: ['T11·阿伏加德罗常数计算'],
+  },
+  'sodium-family': {
+    2023: ['T10·钠铜化合物转化'],
+  },
+  'chlorine-family': {
+    2022: ['T8·氯气制备装置评价'],
+    2021: ['T17·氯气制备与溶解度探究'],
+  },
+  'iron-family': {
+    2021: ['T10·铁及其化合物转化'],
+  },
+  'periodic-law': {
+    2025: ['T9·电离能周期律图像'],
+    2024: ['T12·元素推断与周期律'],
+    2023: ['T14·元素推断与周期律'],
+    2022: ['T7·元素周期表推断'],
+    2021: ['T13·元素推断与周期律'],
+  },
+  'chem-bond': {
+    2025: ['T2·多烯环配合物结构'],
+  },
+  'sulfur-family': {
+    2023: ['T9·SO2性质系列实验'],
+  },
+  'nitrogen-family': {
+    2025: ['T15·氮氧化物实验分析'],
+    2023: ['T4·氨喷泉实验装置'],
+  },
+  'heat-reaction': {
+    2024: ['T19·盖斯定律与弱酸电离'],
+    2023: ['T17·反应热测量实验探究'],
+    2021: ['T19·盖斯定律与平衡计算'],
+  },
+  'rate': {
+    2023: ['T15·催化历程能垒图', 'T19·配离子反应速率与平衡'],
+    2022: ['T15·催化剂与活化能图像'],
+  },
+  'equilibrium': {
+    2025: ['T19·钛化合物平衡计算'],
+    2023: ['T19·配离子反应速率与平衡'],
+    2022: ['T13·化学平衡图像分析', 'T19·铬化合物平衡综合'],
+    2021: ['T19·盖斯定律与平衡计算'],
+  },
+  'electro-battery': {
+    2025: ['T14·水系电池充放电'],
+    2024: ['T5·锌块电化学防腐'],
+    2023: ['T6·原电池去除氯离子', 'T13·电解食盐水与燃料电池'],
+    2022: ['T16·氯流电池充放电分析'],
+    2021: ['T9·原电池工作原理'],
+  },
+  'electrolysis': {
+    2024: ['T16·电解冶铁原理计算'],
+    2023: ['T13·电解食盐水与燃料电池', 'T16·双极膜电解制氨'],
+    2022: ['T10·电解回收铝合金废料'],
+    2021: ['T16·电解原理与电极反应'],
+  },
+  'nutrients-organic': {
+    2024: ['T4·饮食营养有机常识'],
+    2022: ['T9·糖类与碳循环常识'],
+  },
+  'organic-synthesis': {
+    2025: ['T20·光酶催化有机合成'],
+    2024: ['T20·催化合成路线设计'],
+    2022: ['T21·有机合成与推断〔选考〕'],
+    2021: ['T21·有机合成与推断〔选考〕'],
+  },
+  'weak-electrolyte': {
+    2025: ['T17·苯甲酸Ka测定探究'],
+    2024: ['T19·盖斯定律与弱酸电离'],
+    2022: ['T17·醋酸电离平衡探究'],
+  },
+  'salt-hydrolysis': {
+    2021: ['T8·盐类水解与离子浓度'],
+  },
+  'ksp': {
+    2024: ['T17·沉淀转化速率平衡探究'],
+    2021: ['T18·工艺流程与Ksp计算'],
+  },
+  'crystal-structure': {
+    2025: ['T12·配位平衡与守恒'],
+    2022: ['T20·物质结构与性质〔选考〕'],
+    2021: ['T20·物质结构与性质〔选考〕'],
+  },
+};
+/* 广东卷真题原文（均已探活并下载验证；2021 eol 无 PDF 故用已核验解析版 PDF，其余为官方渠道直链） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=chem&y=2021',
+  2022: 'gaokao.html?s=chem&y=2022',
+  2023: 'gaokao.html?s=chem&y=2023',
+  2024: 'gaokao.html?s=chem&y=2024',
+  2025: 'gaokao.html?s=chem&y=2025',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 初中 · 基础与实验 ---- */
+  'chem-intro': [
+    { t: '物理变化与化学变化', d: '判据是「有无新物质生成」：冰融化、汽油挥发是物理变化，铁生锈、食物腐败是化学变化。易错：蜡烛燃烧兼有两类变化——石蜡熔化是物理变化，燃烧生成 CO₂ 和水是化学变化。' },
+    { t: '物理性质与化学性质', d: '颜色、状态、气味、密度、熔沸点、溶解性属物理性质；可燃性、氧化性、稳定性、酸碱性属化学性质。易错：「能」「会」「易」等字眼是性质描述，与「正在发生的变化」混为一谈。' },
+    { t: '观察与描述实验现象', d: '描述要「一光二热三生成」：如铁在氧气中燃烧，剧烈燃烧火星四射、放出大量热、生成黑色固体。易错：把「生成四氧化三铁」当现象——那是结论，现象只能说黑色固体。' },
+    { t: '科学探究的基本环节', d: '提出问题→猜想假设→设计方案→实验验证→得出结论→反思评价。易错：控制变量法设计对照实验时漏掉「唯一变量」原则，一次改变多个量导致结论无效。' },
+  ],
+  'lab-instrument': [
+    { t: '可加热仪器辨析', d: '试管可直接加热，烧杯、烧瓶垫石棉网加热，量筒、集气瓶、胶头滴管绝不能加热。易错：认为烧杯可直接加热——受热不均会炸裂。' },
+    { t: '量筒与天平使用', d: '量筒读数视线与凹液面最低处相平；托盘天平「左物右码」，精度 0.1 g。易错：仰视读数偏小、俯视偏大；砝码与药品放反时实际质量=砝码−游码。' },
+    { t: '酒精灯使用规范', d: '两查：灯芯、酒精量不超 2/3 不少于 1/4；禁止吹灭、禁止对燃、禁止添酒精。易错：用嘴吹灭酒精灯引燃灯内酒精蒸气。' },
+    { t: '药品安全三不原则', d: '不能用手接触药品、不能把鼻孔凑到容器口闻气味、不得尝任何药品的味道；闻气体用扇闻。易错：剩余药品放回原瓶——应放入指定容器。' },
+  ],
+  'lab-ops': [
+    { t: '固体液体药品取用', d: '粉末用药匙或纸槽「一斜二送三直立」，块状用镊子「一横二放三慢竖」；液体倾倒瓶塞倒放、标签向手心。易错：瓶塞正放沾染桌面杂质污染试剂。' },
+    { t: '加热试管里的液体', d: '液体不超过试管容积 1/3，试管与桌面约成 45° 角，先预热后集中加热，管口不对人。易错：加热固体时试管口向上倾斜——冷凝水回流应「口略向下」。' },
+    { t: '过滤操作要点', d: '一贴（滤纸紧贴漏斗内壁）、二低（滤纸低于漏斗口、液面低于滤纸边）、三靠（烧杯靠玻璃棒、玻璃棒靠三层滤纸、漏斗下端靠烧杯内壁）。易错：液面高于滤纸边缘使滤液浑浊需再过滤。' },
+    { t: '玻璃棒的作用归纳', d: '溶解时搅拌加速溶解、过滤时引流、蒸发时搅拌防局部过热飞溅、转移固体时蘸取。易错：蒸发用到干时用玻璃棒 — 应停止加热利用余热蒸干。' },
+  ],
+  /* ---- 初中 · 空气与氧 ---- */
+  'air-composition': [
+    { t: '空气成分按体积分数', d: '氮气 78%、氧气 21%、稀有气体 0.94%、CO₂ 0.03% 等。易错：把 78% 说成质量分数——题干明确「按体积计算」。' },
+    { t: '红磷测定氧气含量', d: '红磷足量燃烧耗尽瓶内氧气，冷却后打开弹簧夹，进入水的体积约占瓶内空气体积 1/5。易错：未冷却就打开弹簧夹使测量值偏小；用木炭代替红磷生成气体压强不降。' },
+    { t: '实验误差分析', d: '偏小原因：红磷不足、气密性差、未冷却读数；偏大原因：燃烧匙伸入过慢、弹簧夹未夹紧。易错：混淆「装置漏气偏小」与「止水夹漏气偏大」的机理。' },
+    { t: '空气污染与保护', d: '计入空气质量评价的污染物：SO₂、NO₂、CO、可吸入颗粒物 PM10、细颗粒物 PM2.5 及臭氧。易错：CO₂ 不算空气污染物——它是温室气体但本身无毒。' },
+  ],
+  'oxygen-prop': [
+    { t: '氧气的物理性质', d: '通常状况下无色无味气体，密度略大于空气，不易溶于水（不是不溶）。易错：说「氧气微溶于水所以能排水法收集」——应为「不易溶于水」。' },
+    { t: '木炭硫铁在氧气中燃烧', d: '木炭发白光、硫发蓝紫色火焰、铁丝火星四射生成黑色固体；集气瓶底放少量水或细沙防止炸裂。易错：铁丝在空气中不能燃烧，只能在纯氧中燃烧。' },
+    { t: '氧化反应与缓慢氧化', d: '剧烈氧化（燃烧）与缓慢氧化（动植物呼吸、食物腐烂、金属锈蚀）都放热。易错：认为发光放热的都是燃烧——白炽灯发光放热不是燃烧。' },
+    { t: '氧气的用途', d: '供给呼吸（医疗急救、高空飞行）与支持燃烧（炼钢、气焊、宇航）两大用途。易错：把「氧气可燃」说成「氧气助燃」——氧气本身不可燃。' },
+  ],
+  'oxygen-prepare': [
+    { t: '高锰酸钾制氧气装置', d: '固体加热型装置，试管口放一团棉花防止粉末进入导管，收集可用排水法或向上排空气法。易错：忘记棉花导致高锰酸钾粉末堵塞导管使水槽变红。' },
+    { t: '过氧化氢与催化剂', d: 'H₂O₂ 在 MnO₂ 催化下分解，属固液不加热型，节能环保。易错：催化剂「一变两不变」——改变化学反应速率，本身质量和化学性质不变，物理性质可能变。' },
+    { t: '收集方法与验满', d: '排水法收集的氧气较纯，验满用带火星木条平放瓶口，复燃则满。易错：验满时木条伸入瓶内——那是检验，验满只在瓶口。' },
+    { t: '加热型装置操作顺序', d: '组装查气密性→装药→固定→加热→收集→先撤导管再熄灯。易错：先熄灯后撤导管，水倒吸炸裂试管。' },
+  ],
+  /* ---- 初中 · 物质构成 ---- */
+  'molecule-atom': [
+    { t: '分子的基本性质', d: '质量和体积小、不断运动、彼此有间隔；同种分子性质相同，不同种分子性质不同。易错：用「分子变大」解释热胀冷缩——是分子间隔变大，分子本身不变。' },
+    { t: '分子定义与应用', d: '分子是保持物质化学性质的最小粒子；由分子构成的物质，化学变化中分子本身改变。易错：说「分子保持物质的物理性质」——物理性质是宏观集体属性，单个分子谈不上。' },
+    { t: '原子定义与应用', d: '原子是化学变化中的最小粒子，化学变化中原子不可再分，只是重新组合。易错：认为原子一定比分子小——比较微粒大小要先限定对象。' },
+    { t: '微观示意图读图', d: '反应前后原子种类数目不变，据此判断反应物生成物与化学计量数之比。易错：忽略图中未画出的过量分子，把混合物当纯净物代入比例。' },
+  ],
+  'water-composition': [
+    { t: '电解水实验现象', d: '正极氧气负极氢气，体积比 1:2，即「正氧负氢、氢二氧一」；加入少量 NaOH 或稀硫酸增强导电性。易错：把体积比与质量比混淆——氢氧质量比为 1:8。' },
+    { t: '水组成推论', d: '电解水生成氢气氧气，据元素守恒推出水由氢、氧两种元素组成，属于化合物。易错：说「水由氢气和氧气组成」——水是纯净物，由元素组成而非物质混合。' },
+    { t: '硬水与软水', d: '含较多可溶性钙镁化合物的水是硬水，用肥皂水区分：泡沫多浮渣少为软水；生活中煮沸降低水的硬度。易错：蒸馏才是净化程度最高的操作，实验室常用而非生活常用。' },
+    { t: '自来水净化流程', d: '沉淀→过滤→吸附（活性炭）→消毒（氯气等），均为物理变化的是沉淀过滤吸附，杀菌消毒是化学变化。易错：认为过滤能除去可溶性杂质——过滤只除不溶性杂质。' },
+  ],
+  'atom-structure': [
+    { t: '原子的构成', d: '原子由原子核（质子和中子）与核外电子构成，质子带正电、中子不带电、电子带负电；原子不显电性因质子数=电子数。易错：所有原子都有中子——普通氢原子（氕）无中子。' },
+    { t: '相对原子质量', d: '≈质子数+中子数，以碳 12 原子质量的 1/12 为标准。易错：相对原子质量是比值不是实际质量，单位为「1」常省略不写。' },
+    { t: '核外电子分层排布', d: '第一层最多 2 个、第二层最多 8 个、最外层不超过 8 个；金属原子最外层一般少于 4 个易失去，非金属多于 4 个易得到。易错：稀有气体「稳定结构」不都是 8 电子——氦最外层 2 电子。' },
+    { t: '原子结构示意图', d: '圆圈内数字表质子数，弧线上数字表各层电子数；最外层电子数决定元素化学性质。易错：把核电荷数与最外层电子数在判断元素种类时弄反——种类只看质子数。' },
+  ],
+  'element-period': [
+    { t: '元素的定义', d: '元素是质子数（核电荷数）相同的一类原子的总称，决定元素种类的是质子数。易错：「海水中含有氢气」类说法——应说含氢元素，元素论种类不论个数。' },
+    { t: '元素符号意义', d: '宏观表示一种元素、微观表示一个原子，加系数后只有微观意义。易错：2H 表示 2 个氢原子，若说「表示两种元素」则错。' },
+    { t: '元素周期表结构', d: '7 个周期 16 个族，周期数=电子层数，原子序数=质子数；同周期从左到右原子序数递增。易错：把「周期」与「族」行列位置弄反——横行是周期，纵列是族。' },
+    { t: '地壳中元素含量', d: '地壳中含量前四位：氧、硅、铝、铁；铝是含量最多的金属元素。易错：认为铁比铝多，或把「地壳中」与「生物细胞中」（氧碳氢氮）的排序混用。' },
+  ],
+  'ion-formation': [
+    { t: '离子的形成', d: '原子得失电子后带电：失电子成阳离子（如 Na⁺），得电子成阴离子（如 Cl⁻）；离子符号电荷数标右上角先数后号。易错：Ca²⁺ 写成 Ca⁺²，或把「2 个钙离子」写成 Ca₂⁺。' },
+    { t: '常见离子与原子团', d: 'OH⁻、NO₃⁻、SO₄²⁻、CO₃²⁻、NH₄⁺ 等原子团在许多反应中作为整体参加。易错：原子团不是在任何反应中都保持不变——KClO₃ 分解时氯酸根被破坏。' },
+    { t: '离子化合物形成', d: '钠失去 1 个电子给氯，形成 Na⁺ 与 Cl⁻，静电作用结合成 NaCl。易错：说「氯化钠中含有分子」——离子化合物由离子构成，无 NaCl 分子。' },
+    { t: '分子与原子构成的物质', d: '水、二氧化碳由分子构成；金属、稀有气体、金刚石由原子直接构成；盐类多由离子构成。易错：认为所有物质都由分子构成。' },
+  ],
+  'valence-formula': [
+    { t: '常见化合价口诀', d: '一价钾钠氯氢银，二价氧钙钡镁锌，三铝四硅五价磷，二三铁二四碳，铜汞二价最常见。易错：单质中元素化合价为 0，不是「没有化合价」。' },
+    { t: '化合价规则应用', d: '化合物中正负化合价代数和为零，据此检验化学式正误或求未知元素化合价。易错：Fe₃O₄ 中铁为 +8/3 价——实际是 Fe²⁺ 与 Fe³⁺ 混合价态，初中只按代数和算平均价处理题目设计好的数据。' },
+    { t: '化学式书写', d: '正价在前负价在后，用交叉约简法确定原子个数比；读法从右到左「某化某」带读数字。易错：氧化铝写错为 AlO——应 Al₂O₃，交叉后要约简。' },
+    { t: '化学式的意义', d: '宏观表示物质及元素组成，微观表示一个分子及原子构成，还可计算相对分子质量与元素质量比。易错：H₂O 中「2」表示 1 个水分子含 2 个氢原子，不是「2 个氢元素」。' },
+  ],
+  /* ---- 初中 · 化学方程式 ---- */
+  'mass-conserve': [
+    { t: '守恒定律内容', d: '参加化学反应的各物质质量总和等于反应后生成的各物质质量总和。易错：忽略「参加」二字——过量反应物剩余部分不计入。' },
+    { t: '守恒的微观本质', d: '反应前后原子种类不变、数目不变、质量不变，所以宏观质量守恒。易错：说成「分子种类不变」——化学变化中分子一定改变。' },
+    { t: '实验验证守恒', d: '有气体参加或生成的反应必须在密闭容器中验证守恒，如红磷燃烧、盐酸与碳酸钠在锥形瓶加气球。易错：镁条在空气中燃烧质量增加与守恒矛盾——参加反应的氧气质量未计入。' },
+    { t: '守恒定律的应用', d: '求某生成物质量、推断物质组成元素、解释增重减重问题。易错：由「煤燃烧后灰渣变轻」推出不守恒——CO₂ 气体逸散了。' },
+  ],
+  'equation-write': [
+    { t: '书写原则', d: '以客观事实为基础、遵守质量守恒定律；条件「点燃」「高温」「Δ（加热）」不能张冠李戴。易错：把 CO 还原 Fe₂O₃ 的条件写成「点燃」——应为「高温」。' },
+    { t: '配平方法', d: '最小公倍数法、观察法、奇数配偶法；配平后各原子数目两边相等。易错：改化学式下标来「配平」——下标是物质组成，只能配化学计量数。' },
+    { t: '气体沉淀符号', d: '生成物中有气体标↑（反应物无气体时）、溶液中生成沉淀标↓。易错：反应物有气体时生成物仍标↑，如 C+O₂ 点燃 CO₂ 不标。' },
+    { t: '方程式读法', d: '「+」读作「和」、「=」读作「生成」，同时读出质（物质）、量（粒子个数比、质量比）两层意义。易错：把等号读成「等于」。' },
+  ],
+  'equation-calc': [
+    { t: '计算五步骤', d: '设未知量、写方程式、找相关物质相对分子质量与已知量、列比例式、写答案。易错：相对分子质量算错或忘记乘化学计量数。' },
+    { t: '纯净物换算', d: '方程式计算只能代入纯净物质量；混合物要先换算：纯物质质量=混合物质量×纯度。易错：把 10 g 含杂质 10% 的样品直接代入——应代入 9 g。' },
+    { t: '气体体积参与计算', d: '初中常由体积×密度换算成质量后代入；标况下气体密度是常考数据。易错：质量与体积单位不统一导致比例式颠倒。' },
+    { t: '图像与表格型计算', d: '抓住「恰好完全反应」拐点，判断哪种物质完全反应。易错：把未反应完阶段的图像数据当作完全反应数据使用。' },
+  ],
+  /* ---- 初中 · 碳与燃料 ---- */
+  'carbon-forms': [
+    { t: '金刚石石墨C60对比', d: '三者都由碳元素组成，碳原子排列方式不同导致物理性质差异巨大：金刚石最硬、石墨软且导电。易错：说「结构相同性质不同」——恰恰是结构不同。' },
+    { t: '木炭活性炭吸附性', d: '疏松多孔结构能吸附色素和异味，活性炭吸附能力更强，吸附是物理变化。易错：把木炭吸附二氧化硫说成化学变化——吸附过程无新物质生成。' },
+    { t: '碳的化学性质', d: '常温下稳定（古代字画长久保存），高温下可燃性与还原性显著：C+2CuO 高温 2Cu+CO₂↑。易错：碳还原氧化铜的条件写成「加热」——必须高温。' },
+    { t: '碳还原氧化铜现象', d: '黑色粉末逐渐变红，产生使澄清石灰水变浑浊的气体。易错：试管口向上倾斜——生成的水应冷凝流出，管口应略向下。' },
+  ],
+  'co-co2': [
+    { t: 'CO₂ 的物理性质与用途', d: '不燃烧不助燃、密度大于空气、能溶于水：用于灭火、人工降雨（干冰）、光合作用原料。易错：干冰升华吸热是物理变化，不是「干冰燃烧」。' },
+    { t: 'CO₂ 的化学性质', d: '与水反应生成碳酸（紫色石蕊变红）、使澄清石灰水变浑浊、与灼热的碳反应生成 CO。易错：使石蕊变红的是碳酸而非 CO₂ 本身。' },
+    { t: 'CO 的性质与毒性', d: '无色无味有剧毒（与血红蛋白结合），可燃生成 CO₂，高温还原金属氧化物。易错：煤炉上方放一盆水防 CO 中毒——CO 难溶于水，无效。' },
+    { t: 'CO 与 CO₂ 转化', d: 'CO₂+C 高温 2CO，2CO+O₂ 点燃 2CO₂；除 CO₂ 中混有的 CO 不能点燃（CO₂ 中点不着）。易错：除杂把混合气体点燃——气体中大量 CO₂ 阻碍 CO 燃烧。' },
+  ],
+  'co2-lab': [
+    { t: '药品选择原理', d: '大理石（石灰石）与稀盐酸：反应速率适中便于收集。易错：用稀硫酸——生成微溶的硫酸钙覆盖表面使反应停止；用碳酸钠粉末——速率太快无法收集。' },
+    { t: '装置与收集方法', d: '固液不加热型发生装置，只能向上排空气法收集（CO₂ 能溶于水且与水反应）。易错：用排水法收集 CO₂——除非明确饱和碳酸氢钠溶液的特殊情境。' },
+    { t: '验满与检验', d: '验满：燃着木条放瓶口，火焰熄灭则满；检验：通入澄清石灰水变浑浊。易错：用带火星木条验满——那是氧气的验满方法。' },
+    { t: '长颈漏斗与分液漏斗', d: '长颈漏斗下端管口必须插入液面以下形成液封；分液漏斗有活塞可控制速率。易错：长颈漏斗下端在液面以上，气体从漏斗口逸出。' },
+  ],
+  'fuel-fire': [
+    { t: '燃烧三个条件', d: '可燃物、与氧气接触、温度达到着火点，三者缺一不可。易错：着火点是物质固有属性，不能说「降低着火点灭火」。' },
+    { t: '灭火原理', d: '清除可燃物、隔绝氧气、降温到着火点以下，破坏任一条件即可。易错：用水灭火说成「降低着火点」——是降低温度。' },
+    { t: '爆炸与安全标志', d: '可燃物在有限空间急剧燃烧就会爆炸，点燃氢气、甲烷前必须验纯。易错：所有爆炸都是化学变化——气球爆炸、轮胎爆炸是物理变化。' },
+    { t: '化石燃料与新能源', d: '煤石油天然气是不可再生能源；煤隔绝空气加强热干馏是化学变化，石油分馏是物理变化。易错：石油分馏「蒸馏出汽油」误认为化学变化。' },
+  ],
+  /* ---- 初中 · 金属 ---- */
+  'metal-nature': [
+    { t: '合金与纯金属性质比较', d: '合金一般硬度更大、熔点更低、抗腐蚀性更好：生铁与钢含碳量不同，不锈钢抗腐蚀。易错：合金是混合物不是化合物；「合金性能一定比纯金属差」说法错误。' },
+    { t: '金属与氧气反应', d: '镁铝常温即反应（铝表面生成致密氧化铝保护膜），铁铜需点燃或加热，金不反应。易错：「真金不怕火炼」说明金的化学性质极不活泼。' },
+    { t: '金属与酸反应', d: '活泼金属（H 前）与稀盐酸稀硫酸反应生成盐和氢气。易错：铁与盐酸生成 FeCl₂（浅绿色）而不是 FeCl₃；浓硫酸硝酸不适用（强氧化性）。' },
+    { t: '铝的抗氧化', d: '铝制品耐腐蚀是因为表面致密的 Al₂O₃ 薄膜，不是铝不活泼。易错：用钢丝球猛刷铝锅破坏保护膜反而加速腐蚀。' },
+  ],
+  'metal-activity': [
+    { t: '活动性顺序表', d: '钾钙钠镁铝、锌铁锡铅（氢）、铜汞银铂金——越靠前越活泼。易错：氢的位置——H 前金属能置换酸中氢，H 后不能。' },
+    { t: '与盐溶液反应', d: '前换后：Fe+CuSO₄=FeSO₄+Cu；盐必须可溶。易错：金属钠投入硫酸铜溶液——钠先与水剧烈反应，不能置换出铜。' },
+    { t: '滤液滤渣分析', d: '向 FeSO₄ 与 CuSO₄ 混合液中加锌：先置换铜后置换铁，滤渣成分按过量不足分类讨论。易错：忽略「先远后近」反应次序——先被置换的是活动性差距大的金属。' },
+    { t: '置换反应定义', d: '单质+化合物→新单质+新化合物，A+BC→AC+B。易错：CO 还原氧化铜不是置换反应——CO 是化合物不是单质。' },
+  ],
+  'iron-smelt': [
+    { t: '高炉炼铁原理', d: 'Fe₂O₃+3CO 高温 2Fe+3CO₂，焦炭燃烧供热并生成还原剂 CO，石灰石造渣。易错：炼铁是「还原」不是「冶炼成合金」；产品是生铁不是纯铁。' },
+    { t: '炼铁计算', d: '由铁矿石质量与纯度算理论产铁量：Fe₂O₃ 含铁 70%。易错：赤铁矿 Fe₂O₃ 与磁铁矿 Fe₃O₄ 含铁率混淆——后者 72.4%。' },
+    { t: '铁生锈条件', d: '氧气和水同时存在才生锈，缺一不可；铁锈主要成分 Fe₂O₃·xH₂O 疏松多孔不能保护内层。易错：铁锈层能阻止锈蚀——错，铝的氧化膜才致密。' },
+    { t: '防锈措施', d: '保持干燥、刷漆涂油、镀保护层、制成不锈钢；从「隔绝氧气或水」角度作答。易错：只答「涂油漆」不说明原理，简答题要写「隔绝氧气和水」。' },
+  ],
+  /* ---- 初中 · 溶液 ---- */
+  'solution-form': [
+    { t: '溶液特征', d: '均一性、稳定性、混合物，三者缺一不可；溶液不一定无色（CuSO₄ 蓝色、FeSO₄ 浅绿色）。易错：把「无色透明」当溶液的必要特征。' },
+    { t: '溶质溶剂判断', d: '固体气体溶于液体时液体是溶剂，两种液体互溶时量多者为溶剂；只要有水，水就是溶剂。易错：酒精溶于水说「酒精是溶剂」——水无论多少都是溶剂。' },
+    { t: '乳化与溶解', d: '洗涤剂去油污靠乳化（油污分散成细小液滴），汽油去油污靠溶解。易错：两者机理张冠李戴，乳化的「细小液滴」仍是混合物。' },
+    { t: '溶解时的吸放热', d: 'NaOH 溶解放热、NH₄NO₃ 溶解吸热、NaCl 溶解温度基本不变。易错：浓硫酸稀释与 NaOH 溶解都放热，但「生石灰溶于水」放热是化学反应。' },
+  ],
+  'solubility': [
+    { t: '饱和与不饱和转化', d: '加溶质、蒸发溶剂、降温（多数）可使不饱和变饱和；反之升温加溶剂。易错：氢氧化钙溶解度随温度升高而减小，方向相反。' },
+    { t: '溶解度定义四要素', d: '一定温度、100 g 溶剂、饱和状态、溶解的质量（克）。易错：缺「一定温度」或把「100 g 溶液」当「100 g 溶剂」。' },
+    { t: '溶解度曲线应用', d: '交点表示该温度下溶解度相等；陡升型（KNO₃）用降温结晶、平缓型（NaCl）用蒸发结晶提纯。易错：提纯 NaCl 中少量 KNO₃ 用降温结晶——应该蒸发结晶，主物质决定方法。' },
+    { t: '气体溶解度', d: '随温度升高减小、随压强增大增大；打开汽水冒泡是减压导致。易错：烧开水冒气泡说成「压强减小」——是温度升高溶解度减小。' },
+  ],
+  'conc-calc': [
+    { t: '质量分数计算', d: '溶质质量分数=溶质质量/溶液质量×100%；溶液质量=溶质+溶剂。易错：气体溶质（HCl 溶于水）按气体质量算但溶液总质量要按加入总量。' },
+    { t: '稀释守恒', d: '稀释前后溶质质量不变：m₁w₁=m₂w₂。易错：稀释后体积不等于两体积之和（密度变化），要用质量计算。' },
+    { t: '配制溶液步骤', d: '计算→称量（固体用天平、液体用量筒）→溶解→装瓶贴标签；用蒸馏水。易错：量筒读数仰视使实际量取水偏多，质量分数偏小。' },
+    { t: '误差分析', d: '药品潮解、砝码生锈、量水仰视读数都会影响结果，逐项判断偏大偏小。易错：NaOH 潮解使称取的溶质实际偏少→质量分数偏小。' },
+  ],
+  /* ---- 初中 · 酸碱盐 ---- */
+  'acid-common': [
+    { t: '盐酸与硫酸的物理性质', d: '浓盐酸有挥发性（瓶口白雾），浓硫酸有吸水性可作干燥剂。易错：浓盐酸敞口放置质量分数变小、浓硫酸变大（吸收空气中水分）。' },
+    { t: '浓硫酸稀释', d: '酸入水、沿器壁、慢慢倒、不断搅拌；不可把水倒入浓硫酸。易错：顺序颠倒导致酸液飞溅伤人。' },
+    { t: '酸的化学性质（通性）', d: '与指示剂、活泼金属、金属氧化物、碱、某些盐（碳酸盐）反应；本质都与 H⁺ 有关。易错：铜与稀盐酸不反应——Cu 排在 H 后。' },
+    { t: '盐酸硫酸鉴别', d: '用 BaCl₂ 溶液：产生白色沉淀的是稀硫酸（BaSO₄）；或加碳酸钠比较气泡剧烈程度粗略区分。易错：用 AgNO₃ 鉴别——盐酸产生沉淀而硫酸银微溶也可能浑浊，现象不明显。' },
+  ],
+  'base-ph': [
+    { t: '氢氧化钠与氢氧化钙', d: 'NaOH 俗称烧碱火碱苛性钠，强吸水潮解可作干燥剂；Ca(OH)₂ 俗称熟石灰消石灰，由生石灰加水制得。易错：NaOH 干燥气体有范围——不能干燥 CO₂、SO₂ 等酸性气体。' },
+    { t: '碱的通性', d: '与指示剂、非金属氧化物、酸、某些盐反应；本质都与 OH⁻ 有关。易错：碱溶液使酚酞变红，但酚酞试液「变红」不能证明一定是碱——碳酸钠溶液也显碱性。' },
+    { t: 'pH 及测定', d: '用玻璃棒蘸待测液滴在 pH 试纸上，与标准比色卡对照；读整数。易错：把试纸浸入溶液（污染试剂）；蒸馏水润湿试纸使酸性偏大碱性偏小。' },
+    { t: '酸碱指示剂', d: '石蕊：酸红碱蓝；酚酞：碱红酸不变色。易错：酚酞遇酸「变白」——是「不变色」，不是褪色。' },
+  ],
+  'neutralization': [
+    { t: '中和反应实质', d: 'H⁺+OH⁻=H₂O，生成盐和水；放热反应。易错：认为生成盐和水的反应都是中和反应——CO₂+NaOH 也生成盐和水但不是中和。' },
+    { t: 'pH 变化曲线', d: '向盐酸中滴加氢氧化钠：pH 从小于 7 升到大于 7，恰好中和时 pH=7。易错：横纵坐标轴方向看反，或把「恰好中和」点当「过量」点。' },
+    { t: '生活中和反应应用', d: '熟石灰改良酸性土壤、胃药中和过多胃酸、蚊虫叮咬涂碱性物质止痒。易错：用氢氧化钠改良土壤——碱性太强腐蚀庄稼，应使用熟石灰。' },
+    { t: '中和反应的验证', d: '在碱中加酚酞再滴酸，红色恰好消失证明中和；借助温度计或 pH 计更精确。易错：不借助指示剂直接混合就断言「恰好完全反应」。' },
+  ],
+  'salt-fertilizer': [
+    { t: '常见盐的性质', d: '食盐维持电解质平衡，纯碱 Na₂CO₃ 显碱性用于去油污，小苏打 NaHCO₃ 受热分解用于焙制糕点。易错：纯碱是盐不是碱——分类按组成离子不看酸碱性。' },
+    { t: '碳酸根检验', d: '加稀盐酸产生使澄清石灰水变浑浊的气体，即含 CO₃²⁻。易错：只加酸冒气泡就说含碳酸根——活泼金属与酸反应也冒气泡。' },
+    { t: '复分解反应条件', d: '生成物中有沉淀、气体或水之一生成；反应物要求可溶（酸碱盐间）。易错：BaCl₂ 与 Cu(OH)₂ 不反应——碱不溶。' },
+    { t: '化肥识别与使用', d: '氮肥促叶、磷肥促根、钾肥促茎秆；铵态氮肥不能与草木灰（碱性）混用。易错：区分氮磷钾肥看营养元素符号 N、P、K；加碱研磨闻氨味可鉴别铵态氮肥。' },
+  ],
+  /* ---- 高中 · 反应原理与元素化合物 ---- */
+  'matter-classify': [
+    { t: '树状与交叉分类', d: '氧化物分为酸性、碱性、两性、过氧化物等；Na₂O₂ 属过氧化物不是碱性氧化物。易错：把「非金属氧化物都酸性」说绝对——CO、NO 是不成盐氧化物。' },
+    { t: '同素异形体', d: 'O₂ 与 O₃、金刚石与石墨与 C60：同种元素组成的不同单质。易错：与同位素混淆——同位素说的是原子（如 ¹H ²H ³H），同素异形体说的是单质。' },
+    { t: '分散系与胶体', d: '按分散质粒子直径分：溶液 <1 nm、胶体 1~100 nm、浊液 >100 nm；Fe(OH)₃ 胶体制备用饱和氯化铁滴入沸水。易错：胶体能通过滤纸但不能通过半透膜，丁达尔效应是鉴别胶体的最简方法。' },
+    { t: '胶体的性质与应用', d: '介稳性、聚沉（豆腐制作、三角洲成因）、电泳；烟、云、雾都是胶体。易错：说「胶体带电」——胶体粒子可能带电，胶体分散系整体不带电。' },
+  ],
+  'ion-reaction': [
+    { t: '电解质判断', d: '水溶液或熔融状态下能导电的化合物；酸碱盐、活泼金属氧化物是电解质。易错：CO₂ 溶液能导电但 CO₂ 是非电解质——导电的是碳酸；单质与混合物既不是电解质也不是非电解质。' },
+    { t: '强电解质与弱电解质', d: '完全电离的是强电解质（强酸、强碱、多数盐），部分电离的是弱电解质（弱酸、弱碱、水）。易错：导电性强弱与强弱电解质无必然联系——导电能力看离子浓度。' },
+    { t: '离子方程式书写', d: '写、拆、删、查：强酸强碱可溶盐拆成离子，气体沉淀弱电解质氧化物保留化学式。易错：CaCO₃ 与盐酸反应中 CaCO₃ 不拆；微溶物澄清时拆、浑浊时不拆。' },
+    { t: '离子共存判断', d: '生成沉淀（Ba²⁺ 与 SO₄²⁻）、气体（H⁺ 与 CO₃²⁻）、水（H⁺ 与 OH⁻）不能共存；注意题目附加的酸性碱性无色条件。易错：忽略「无色」隐含排除 Cu²⁺ 蓝、Fe³⁺ 黄、MnO₄⁻ 紫。' },
+  ],
+  'redox-basic': [
+    { t: '五大概念关系', d: '升失氧：化合价升高、失电子、被氧化、是还原剂；降得还：反之。易错：把「氧化剂被还原」说成「氧化剂被氧化」——氧化剂得电子、化合价降低、被还原。' },
+    { t: '电子转移表示法', d: '双线桥标同种元素得失电子去向，单线桥只标电子从失方到得方。易错：双线桥箭头从反应前指反应后，桥上写「得/失 e⁻」不写「得到电子的个数」单位。' },
+    { t: '氧化性还原性比较', d: '由「强制弱」原理：氧化剂的氧化性 > 氧化产物；依据方程式、金属活动性、浓度温度综合判断。易错：认为化合价越高氧化性一定越强——浓硫酸中 S(+6) 与稀盐酸 H(+1) 不能这样比。' },
+    { t: '价态规律与配平', d: '同种元素中间价歧化（Cl₂+NaOH）、相邻高价低价归中（KClO₃+HCl）；配平先守电子再守原子。易错：归中反应「只靠拢不交叉」——S(−2) 与 S(+6) 生成 S(0) 与 S(+4)，不是 −2→+4。' },
+  ],
+  'mole': [
+    { t: '物质的量与阿伏加德罗常数', d: '摩尔是六个基本物理量之一，只用于微观粒子；N=n·Nₐ，Nₐ≈6.02×10²³/mol。易错：「1 mol 氢」表述不规范——必须指明粒子种类（氢原子、氢分子）。' },
+    { t: '摩尔质量', d: '数值上等于相对分子（原子）质量，单位 g/mol；M=m/n。易错：1 mol H₂O 与 1 mol D₂O 摩尔质量不同——同位素影响质量。' },
+    { t: '气体摩尔体积', d: '标准状况（0℃、101 kPa）下 Vm≈22.4 L/mol，适用任何气体。易错：水蒸气在标况不是气体不能套用；「22.4 L/mol」不能脱离「标况」使用。' },
+    { t: '物质的量浓度', d: 'cB=nB/V，V 是溶液体积不是溶剂体积；配制 1 mol/L 溶液必须用容量瓶定容。易错：把 1 L 水当 1 L 溶液计算。' },
+  ],
+  'sodium-family': [
+    { t: '钠的物理性质与保存', d: '银白色、质软、密度比水小、熔点低；保存在煤油中隔绝空气与水。易错：钠保存在汽油中——汽油易挥发且易燃，煤油更安全。' },
+    { t: '钠与水反应', d: '浮、熔、游、响、红五字诀：生成 NaOH 与 H₂，滴酚酞变红。易错：说「钠置换出铜」——钠投入盐溶液先与水反应。' },
+    { t: '氧化钠与过氧化钠', d: 'Na₂O 是碱性氧化物，Na₂O₂ 与水、CO₂ 反应都放出 O₂（供氧剂），其中氧为 −1 价。易错：Na₂O₂ 与 CO₂ 不属于「酸性氧化物+碱」类反应，是歧化反应。' },
+    { t: '碳酸钠与碳酸氢钠', d: '热稳定性 Na₂CO₃ > NaHCO₃（受热分解的是小苏打）；鉴别用 CaCl₂ 或加热，与盐酸反应小苏打更剧烈。易错：Na₂CO₃ 溶液与 Ca(OH)₂ 反应也有沉淀，但不能用来鉴别两者。' },
+  ],
+  'chlorine-family': [
+    { t: '氯气的物理性质与毒性', d: '黄绿色、有刺激性气味、有毒、能溶于水（1:2）；闻气味必须扇闻。易错：实验室制氯气尾气用 NaOH 吸收——不用石灰水（溶解度小）。' },
+    { t: '氯气与水反应', d: 'Cl₂+H₂O⇌HCl+HClO，次氯酸有漂白性与杀菌作用、见光分解。易错：干燥氯气无漂白性——起漂白作用的是 HClO 而非 Cl₂ 本身。' },
+    { t: '氯水成分', d: '「三分四离子」：Cl₂、HClO、H₂O 分子与 H⁺、Cl⁻、ClO⁻、OH⁻；久置变稀盐酸。易错：氯水中加 AgNO₃ 产生白色沉淀证明有 Cl⁻；说「氯水是纯净物」则错。' },
+    { t: '漂白粉与消毒液', d: 'Cl₂ 与石灰乳制漂白粉（有效成分 Ca(ClO)₂），与 NaOH 制 84 消毒液（NaClO）；保存需密封防潮避光。易错：漂白粉失效原理是 Ca(ClO)₂ 与 CO₂、水反应生成 HClO 分解。' },
+  ],
+  'iron-family': [
+    { t: '铁的氧化物与氢氧化物', d: 'FeO 黑、Fe₂O₃ 红棕、Fe₃O₄ 黑（混合价态）；Fe(OH)₂ 白色沉淀迅速变灰绿最终变红棕色 Fe(OH)₃。易错：制 Fe(OH)₂ 需将胶头滴管插入液面以下并用煮沸除氧的水。' },
+    { t: 'Fe²⁺ 与 Fe³⁺ 检验', d: 'Fe³⁺ 遇 KSCN 变红；Fe²⁺ 先加 KSCN 不变色再加氯水变红。易错：用酸性 KMnO₄ 检验 Fe²⁺ 时 Cl⁻ 干扰——应选 KSCN+氯水组合。' },
+    { t: '铁三角转化', d: 'Fe²⁺→Fe³⁺ 用氯水、H₂O₂ 等氧化剂；Fe³⁺→Fe²⁺ 用铁粉或铜；Fe²⁺ 与 Fe³⁺ 保存策略不同。易错：FeCl₃ 溶液中加足量铁粉的离子方程式 Fe+2Fe³⁺=3Fe²⁺ 配比写反。' },
+    { t: 'Fe³⁺ 与铜的反应', d: '2FeCl₃+Cu=2FeCl₂+CuCl₂，是蚀刻印刷电路板原理。易错：铁与过量稀硝酸生成 Fe³⁺，过量铁与稀硝酸生成 Fe²⁺——取决于谁过量。' },
+  ],
+  /* ---- 高中 · 结构与周期律 ---- */
+  'periodic-table': [
+    { t: '能层与能级', d: '电子按能量高低分层排布（K L M N…），能层内再分 s p d f 能级；构造原理决定填充顺序。易错：能层序数越大电子能量越高，不是离核越远就一定能量越高（简并情况）。' },
+    { t: '基态与电子排布式', d: 'Fe：1s²2s²2p⁶3s²3p⁶3d⁶4s²；3d 在 4s 后填但书写时电子层数排序。易错：Cr、Cu 的「半充满全充满」特例——Cu 是 3d¹⁰4s¹ 而非 3d⁹4s²。' },
+    { t: '周期表分区', d: 's 区（ⅠA ⅡA）、p 区（ⅢA~ⅦA、0 族）、d 区、ds 区、f 区；主族序数=最外层电子数。易错：He 属 p 区（0 族）却排 s 区位置——按电子排布分区不看位置。' },
+    { t: '原子序数与位置关系', d: '原子序数=质子数=核电荷数；短周期相邻同主族差 8，四周期主族间差 18。易错：同主族二、三周期差 8，三、四周期差 18——记错周期跨度。' },
+  ],
+  'periodic-law': [
+    { t: '原子半径递变', d: '同周期从左到右半径减小（核电荷增大引力增强），同主族从上到下半径增大。易错：稀有气体原子半径测量基准不同，一般不参与周期内比较。' },
+    { t: '金属性非金属性递变', d: '同周期左→右金属性减弱非金属性增强；判断依据：与水或酸反应剧烈程度、最高价氧化物水化物酸碱性、氢化物稳定性。易错：比较非金属性用「氢化物沸点」——应比较稳定性，沸点属物理性质。' },
+    { t: '两性线与对角线规则', d: 'Al 位于金属与非金属分界线，Al₂O₃ 是两性氧化物，Be 与 Al 相似。易错：铝与盐酸、氢氧化钠都反应推出「金属都有此性质」——铝的特殊性源于两性。' },
+    { t: '周期律的应用', d: '由位置推性质：同主族相似性、上下递变性；「位置—结构—性质」三角互推。易错：忽视「多数主族」限定，把过渡元素硬套主族递变规律。' },
+  ],
+  'chem-bond': [
+    { t: '离子键与共价键判断', d: '活泼金属与活泼非金属间形成离子键，非金属间形成共价键；含铵根的盐也含离子键。易错：AlCl₃ 是共价化合物——「金属+非金属」不一定是离子键；NaOH 既含离子键又含共价键。' },
+    { t: '电子式书写', d: '阴离子、复杂阳离子要加方括号与电荷标注；共用电子对写在两原子之间。易错：CO₂ 电子式漏标碳周围两对孤对电子；N₂ 中 N≡N 三键少画一对电子。' },
+    { t: '离子化合物与共价化合物', d: '含离子键的必是离子化合物；共价化合物只含共价键。易错：说「共价化合物中不能含离子键」对，但「含共价键的必是共价化合物」错（NaOH 反例）。' },
+    { t: '结构式与键参数', d: '一根短线表示一对共用电子，孤对电子不画；键能越大键长越短越稳定。易错：把 H—O—H 写成 H=O=H——氧只形成 2 个共价键。' },
+  ],
+  /* ---- 高中 · 无机延伸与反应原理 ---- */
+  'sulfur-family': [
+    { t: 'SO₂ 的性质', d: '酸性氧化物、较强还原性（使酸性 KMnO₄ 褪色）、弱氧化性、漂白性（可逆，品红恢复红色）。易错：SO₂ 使溴水、KMnO₄ 褪色是还原性不是漂白性。' },
+    { t: '浓硫酸三大特性', d: '吸水性（干燥剂）、脱水性（炭化蔗糖）、强氧化性（与 Cu 加热、与 C 反应、常温钝化 Fe Al）。易错：浓硫酸干燥 NH₃——酸性干燥剂不能干燥碱性气体。' },
+    { t: 'SO₂ 的实验室制法', d: 'Na₂SO₃+H₂SO₄（较浓）=Na₂SO₄+SO₂↑+H₂O，向上排空气法收集。易错：用稀硫酸反应太慢、用盐酸会引入 HCl 杂质。' },
+    { t: '硫的价态转化', d: '−2（H₂S）、0（S）、+4（SO₂）、+6（SO₃/H₂SO₄）之间的转化靠氧化剂还原剂；工业制硫酸三步骤。易错：S 与 Fe 反应生成 FeS（+2 价硫）而不是 Fe₂S₃——硫氧化性较弱。' },
+  ],
+  'nitrogen-family': [
+    { t: 'N₂ 的性质与固定', d: 'N≡N 键能大，常温稳定；人工固氮（合成氨）与自然固氮（雷电、根瘤菌）。易错：N₂ 与 O₂ 放电条件下生成 NO——不需要催化剂，与 SO₂ 制三氧化硫条件区分。' },
+    { t: 'NO 与 NO₂', d: 'NO 无色不溶于水、遇 O₂ 变红棕色 NO₂；NO₂ 红棕色、与水反应生成硝酸和 NO。易错：用排水法收集 NO₂——NO₂ 与水反应，只能向上排空气法。' },
+    { t: '氨的性质', d: '极易溶于水（喷泉实验）、与酸成铵盐、催化氧化制硝酸；检验用湿润红色石蕊试纸变蓝。易错：氨水中 NH₃·H₂O 是弱碱，说「一水合氨是强电解质」则错。' },
+    { t: '铵盐与硝酸', d: '铵盐受热分解、与碱共热放氨（检验）；硝酸见光分解、与 Cu 反应不产 H₂（浓→NO₂、稀→NO）。易错：稀硝酸与铜反应说成生成 H₂——硝酸是氧化性酸，先氧化后成盐。' },
+  ],
+  'heat-reaction': [
+    { t: '反应热与焓变', d: '恒压下 ΔH=反应热；放热 ΔH<0（燃烧、中和、活泼金属与酸），吸热 ΔH>0（大多数分解、Ba(OH)₂·8H₂O+NH₄Cl）。易错：需加热的反应不一定吸热——燃烧也需点燃。' },
+    { t: '键能与反应热', d: 'ΔH=反应物键能总和−生成物键能总和；断裂旧键吸热、形成新键放热。易错：公式正负号颠倒——先断后成，断键吸热为正项。' },
+    { t: '热化学方程式', d: '注明物质聚集状态（g l s aq），ΔH 与计量数成正比。易错：漏标状态或把「△H=−241.8 kJ/mol」的正负写反。' },
+    { t: '盖斯定律', d: '反应热只与始末状态有关与路径无关，方程式可加减、ΔH 同步运算。易错：方程式乘系数后 ΔH 忘乘，或翻转方程式后忘变号。' },
+  ],
+  'rate': [
+    { t: '速率表达式', d: 'v=Δc/Δt，单位 mol/(L·s)；同一反应各物质速率之比等于计量数之比。易错：比较快慢未换算成同物质同方向——先按计量数换算再比数值。' },
+    { t: '影响速率的因素', d: '浓度、压强（气体）、温度、催化剂及接触面积；有效碰撞理论解释。易错：加惰性气体恒温恒容速率不变，恒温恒压体积增大浓度减小速率变慢——要看容器条件。' },
+    { t: '碰撞理论', d: '活化能越低活化分子比例越大反应越快；催化剂降低活化能不改变 ΔH。易错：催化剂「提高活化分子百分数」而不是「增加活化分子总数（未提温度时）」的表述陷阱。' },
+    { t: '实验测速率', d: '用出现浑浊时间（Na₂S₂O₃+稀硫酸）、收集气体体积等测定；控制变量设计对比实验。易错：固体表面积影响实验中未固定颗粒大小，变量不唯一。' },
+  ],
+  'equilibrium': [
+    { t: '平衡状态判断', d: '本质判据：正速率=逆速率；变量不变即平衡（颜色、总压、平均相对分子质量等）。易错：「浓度相等」不是平衡标志——速率相等才是；恒温恒容下气体分子数不变的反应压强恒为常数。' },
+    { t: '平衡移动原理', d: '勒夏特列：改变条件平衡向减弱改变的方向移动；催化剂同等加快正逆速率不移动。易错：加入反应物「转化率一定降低」——恒温恒压充入反应物气体可能升高。' },
+    { t: '速率-时间图像', d: '先拐先平数值大；断点突变（浓度压强）与渐变（温度）区分。易错：恒温恒容充惰气总压增大但分压不变平衡不移动，图像无变化。' },
+    { t: '转化率与 K', d: 'K 只随温度变化；Q 与 K 比较判方向：Q<K 正向。易错：固体纯液体不写入 K 表达式——C(s)+H₂O(g) 的 K 只含气体项。' },
+  ],
+  /* ---- 高中 · 电化学与有机 ---- */
+  'electro-battery': [
+    { t: '原电池构成条件', d: '活泼性不同两电极、电解质溶液、闭合回路、能自发进行的氧化还原反应。易错：两电极材料可以都活泼（如 Zn-Cu 可换 Zn-Fe）——关键是存在电位差与自发反应。' },
+    { t: '电极反应式书写', d: '负极失电子氧化、正极得电子还原；先定正负极再守恒电荷质量。易错：燃料电池正极在酸性、碱性介质中产物不同——酸性生成 H₂O，碱性生成 OH⁻。' },
+    { t: '盐桥与双液电池', d: '盐桥中阴离子移向负极区（氧化生成正离子）、阳离子移向正极区，平衡电荷。易错：离子移动方向按「同性相吸」反推错——阳离子永远流向正极（ cathode）。' },
+    { t: '常见化学电源', d: '锌锰干电池（一次）、铅蓄电池（二次，放电充电方程式互逆）、氢氧燃料电池（高效清洁）。易错：铅蓄电池放电时两极都生成 PbSO₄，电解质硫酸浓度减小。' },
+  ],
+  'electrolysis': [
+    { t: '电解池原理', d: '阳极接电源正极发生氧化、阴极接负极发生还原；电能转化学能，反应可非自发。易错：与原电池电极名混淆——电解池先按「与电源哪极相连」定阴阳，再定氧化还原。' },
+    { t: '放电顺序', d: '阳极：活性电极（金属本身）> S²⁻ > I⁻ > Br⁻ > Cl⁻ > OH⁻ > 含氧酸根；阴极：Ag⁺ > Cu²⁺ > H⁺ > … 易错：用 Cu 作阳极电解含氧酸盐——阳极是铜溶解不是 OH⁻ 放电。' },
+    { t: '电解的应用', d: '氯碱工业（NaCl 溶液→NaOH+H₂+Cl₂）、电镀（镀层金属作阳极）、电解精炼铜（粗铜阳极）。易错：电镀时电解质溶液浓度不变——阳极溶解与阴极析出等量。' },
+    { t: '电解规律归纳', d: '电解水型（NaOH/H₂SO₄）、电解电解质型（HCl）、放 H₂ 生碱型（NaCl）、放 O₂ 生酸型（CuSO₄）四大类。易错：电解后「复原」加什么——按「出什么补什么」，如电解 CuSO₄ 加 CuO。' },
+  ],
+  'methane-family': [
+    { t: '甲烷的正四面体结构', d: '碳原子 sp³ 杂化，键角 109°28′，五个原子不在同一平面。易错：把 CH₄ 当平面正方形——二氯甲烷只有一种结构可证。' },
+    { t: '取代反应', d: '光照下与 Cl₂ 逐步取代生成 CH₃Cl 等；每步都生成 HCl。易错：甲烷与氯气在暗处不反应；生成物是混合物不能只写四氯化碳。' },
+    { t: '烷烃与同系物', d: 'CnH2n+2 饱和链烃，燃烧通式；同系物结构相似、分子组成相差 nCH₂。易错：同系物必须「结构相似」——环烷烃与烷烃通式虽近但不是同系物。' },
+    { t: '同分异构体', d: '分子式相同结构不同；丁烷两种、戊烷三种；书写按「主链由长到短、支链由整到散」。易错：等效碳原子重复书写导致重复结构，2-甲基丁烷与 3-甲基丁烷是同一种。' },
+  ],
+  'alkene-benzene': [
+    { t: '乙烯结构与加成', d: '碳碳双键（σ+π），平面结构，与 Br₂ 加成使溴水褪色、聚合生成聚乙烯。易错：乙烯使酸性 KMnO₄ 褪色是氧化反应不是加成。' },
+    { t: '乙烯的实验室制法', d: '乙醇与浓硫酸 170℃ 消去反应制乙烯，浓硫酸起催化剂脱水作用。易错：温度 140℃ 生成乙醚；温度计水银球应插入液面下。' },
+    { t: '苯的结构', d: '平面正六边形，碳碳键完全等同（介于单双键之间），凯库勒式只是历史表达。易错：苯使溴水褪色——是萃取，不是反应；与液溴在 FeBr₃ 催化下才取代。' },
+    { t: '苯的化学性质', d: '取代（溴代、硝化）、加成（与 H₂ 制环己烷）、燃烧黑烟浓（含碳量高）。易错：苯能加成就说「无碳碳单键」——实际六键等同，非单双键交替。' },
+  ],
+  'ethanol-acetic': [
+    { t: '乙醇结构与物理性质', d: '含羟基 −OH，与水任意比互溶（氢键）；无水乙醇用生石灰+蒸馏制取。易错：乙醇不是电解质；「酒精的浓度 75%」是体积分数。' },
+    { t: '乙醇的化学性质', d: '与钠反应（比水缓和）、催化氧化生成乙醛（铜作催化剂）、与氢卤酸取代。易错：钠与乙醇反应「1 mol 乙醇产生 0.5 mol H₂」——6 个氢中只有羟基氢被置换。' },
+    { t: '乙酸酸性', d: '羧基 −COOH，酸性弱于盐酸但强于碳酸：「强酸制弱酸」与 Na₂CO₃ 反应。易错：乙酸使石蕊变红但「醋酸是强酸」说法错——是弱酸，存在电离平衡。' },
+    { t: '酯化反应', d: '醇酸酯化「酸脱羟基醇脱氢」，浓硫酸催化吸水，用饱和碳酸钠溶液收集乙酸乙酯。易错：用 NaOH 溶液收集产物——酯会被水解，应用饱和 Na₂CO₃（溶醇吸酸降溶解）。' },
+  ],
+  'nutrients-organic': [
+    { t: '葡萄糖的检验', d: '含醛基：银镜反应（水浴、碱性环境）或与新制 Cu(OH)₂ 加热生成砖红色沉淀。易错：银镜反应需氨银溶液现配现用、试管洁净，用酒精灯直接加热会失败。' },
+    { t: '蔗糖麦芽糖淀粉', d: '蔗糖无还原性、水解生成葡萄糖与果糖；淀粉遇碘单质变蓝。易错：淀粉水解检验顺序——先加硫酸水解、中和后再加银氨溶液，不中和则失败。' },
+    { t: '油脂', d: '高级脂肪酸甘油酯，水解生成高级脂肪酸与甘油（皂化反应制肥皂）；液态油加氢硬化。易错：油脂不是高分子化合物——相对分子质量远小于蛋白质淀粉。' },
+    { t: '蛋白质', d: '氨基酸缩聚而成，两性、水解、盐析（可逆提纯）、变性（不可逆，加热紫外线重金属）、颜色反应（浓硝酸变黄）。易错：盐析与变性混淆——盐析可恢复，变性不可逆。' },
+  ],
+  'organic-synthesis': [
+    { t: '官能团的引入', d: '引入 C=C：消去（醇脱水、卤代烃脱卤化氢）；引入 −X：取代、加成；引入 −OH：水解、加成。易错：醇消去需浓硫酸加热（乙醇 170℃），羟基碳的相邻碳上无氢则不能消去。' },
+    { t: '官能团的消除与转化', d: '加成消除双键，氧化 −OH→−CHO→−COOH，酯化保护羟基。易错：一步转化想当然——烯烃直接氧化不能一步得完整羧酸时需分步设计路线。' },
+    { t: '合成路线设计', d: '正推与逆推结合，原料易得、步骤少、条件温和、绿色环保；用题给信息反应搭桥。易错：忽视题给新信息（如信息型反应），只用课本反应硬拼导致卡壳。' },
+    { t: '有机推断方法', d: '抓分子式与不饱和度、特征反应（银镜→醛基、NaHCO₃→羧基）、结构碎片残基分析。易错：不饱和度算错——环与双键各贡献 1，三键贡献 2。' },
+  ],
+  /* ---- 高中 · 水溶液平衡与结构进阶 ---- */
+  'weak-electrolyte': [
+    { t: '电离平衡与 Ka', d: '弱电解质部分电离，Ka=c(H⁺)c(A⁻)/c(HA) 只随温度变化；Ka 越大酸性越强。易错：加水稀释 Ka 不变但电离程度增大——「越稀越电离」。' },
+    { t: '多元弱酸分步电离', d: 'H₂CO₃、H₂S 分步电离且 Ka1≫Ka2，酸性强弱看第一步。易错：NaHS 溶液中 HS⁻ 电离与水解同时存在，酸碱性由 K 与 Kh 大小决定。' },
+    { t: '电离平衡移动', d: '加酸（同离子）、加碱、稀释、升温（电离吸热）都影响平衡；醋酸中加醋酸钠 c(H⁺) 减小。易错：加水稀释所有粒子浓度都减小但 c(H⁺)/c(CH₃COOH) 比值增大。' },
+    { t: '强弱的实验判断', d: '比较 0.1 mol/L 酸的 pH、导电性、与同金属反应速率；有弱酸强酸盐对照实验设计。易错：pH=2 的醋酸与盐酸等体积混合后比较——未稀释时 pH 相同浓度不同。' },
+  ],
+  'ph-water': [
+    { t: '水的离子积', d: 'Kw=c(H⁺)·c(OH⁻)，25℃ 时 10⁻¹⁴，只随温度变化；任何水溶液中都存在。易错：酸溶液中 c(OH⁻) 不为零，只是极小；升温 Kw 增大纯水 pH<7 仍是中性。' },
+    { t: '酸碱对水的电离影响', d: '酸或碱都抑制水的电离，能水解的盐促进水的电离。易错：pH=3 的盐酸与 pH=11 的氨水等体积混合显碱性——氨水浓度更大（弱碱需过量浓度才达同 pH）。' },
+    { t: 'pH 计算方法', d: 'pH=−lg c(H⁺)；强酸强碱混合先算过量再求 pH，同浓度相乘除稀释倍数。易错：两强碱混合先用 c(OH⁻) 计算再换算 c(H⁺)，直接用 c(H⁺) 平均则错。' },
+    { t: '稀释规律', d: '酸碱稀释 10ⁿ 倍 pH 变 n（强）/小于 n（弱）；无限稀释趋于 7（酸从下逼近、碱从上逼近）。易错：pH=6 的盐酸稀释 100 倍得 pH≈6.96 而非 8——酸不可能稀释成碱。' },
+  ],
+  'salt-hydrolysis': [
+    { t: '水解实质与规律', d: '盐的离子与水电离的 H⁺ 或 OH⁻ 结合，促进水的电离；「有弱才水解、谁强显谁性」。易错：强酸强碱盐不水解（NaCl 中性）；判断「酸碱性」与「是否水解」是两回事。' },
+    { t: '水解方程式书写', d: '单水解用 ⇌、不标 ↑↓、多元弱酸根分步水解以第一步为主。易错：Na₂CO₃ 水解一步写成生成 H₂CO₃——应先生成 HCO₃⁻。' },
+    { t: '水解平衡移动', d: '升温促进水解（吸热）、稀释促进、加酸抑制酸根水解；「越稀越水解」。易错：FeCl₃ 溶液加热蒸干得 Fe(OH)₃ 而非 FeCl₃——水解彻底进行。' },
+    { t: '水解的应用', d: '明矾净水（Al³⁺ 水解胶体吸附）、泡沫灭火器（Al³⁺ 与 HCO₃⁻ 双水解）、化肥使用（铵态氮肥与草木灰混用失效）。易错：双水解「完全进行」用 =、标 ↑↓，单水解用 ⇌ 不标符号。' },
+  ],
+  'ksp': [
+    { t: '溶解平衡特征', d: '「逆、等、动、定、变」五字诀；Q 与 Ksp 比较判断沉淀生成或溶解方向。易错：把「难溶」理解为「不溶」——没有绝对不溶的电解质。' },
+    { t: 'Ksp 表达式与计算', d: 'Ksp 只列离子浓度幂（固体不计），随温度变化；由 Ksp 求溶解度注意换算关系。易错：Mg(OH)₂ 的 Ksp=c(Mg²⁺)·c²(OH⁻)，浓度幂次与化学式计量数对应写错。' },
+    { t: '沉淀的生成与溶解', d: '生成：Q>Ksp（加沉淀剂调 pH）；溶解：加酸、络合、氧化还原降低离子浓度使 Q<Ksp。易错：CaCO₃ 溶于盐酸说成「溶解度大」——是离子反应消耗 CO₃²⁻ 使平衡右移。' },
+    { t: '沉淀转化', d: '难溶向更难溶转化（ZnS→CuS），锅炉除垢 Na₂CO₃→CaCO₃→可溶于酸的转化。易错：AgI 转化为 Ag₂S 可以，反向通常不行——转化方向由 Ksp 与浓度综合决定。' },
+  ],
+  'crystal-structure': [
+    { t: '四大晶体类型', d: '分子晶体（微粒分子、作用范德华力/氢键）、共价晶体（原子、共价键：金刚石 SiO₂）、离子晶体（离子键）、金属晶体（金属键）。易错：稀有气体晶体微粒是原子但属分子晶体——作用力是范德华力。' },
+    { t: '熔沸点比较', d: '共价晶体>离子晶体>金属晶体（不定）>分子晶体；分子晶体看氢键、相对分子质量、极性。易错：不同类型晶体硬度熔点有交错，规律只适用「一般情况下」的比较。' },
+    { t: '均摊法数微粒', d: '顶点 1/8、棱 1/4、面心 1/2、体内 1；NaCl 晶胞含 4 Na⁺ 与 4 Cl⁻。易错：六方晶系顶点按 1/6 算，套用立方晶系比例则错。' },
+    { t: '晶胞密度计算', d: 'ρ=Z·M/(Nₐ·a³)，Z 为晶胞含微粒数；配位数与空间利用率。易错：棱长单位 pm 换算 cm 漏 10⁻¹⁰，密度算错数量级。' },
+  ],
+};
+const CAT_LABEL = { basic: '基础与实验', matter: '物质构成', reaction: '反应原理', element: '元素化合物', metal: '金属与电化学', solution: '溶液', acidbase: '酸碱盐', organic: '有机化学', society: '化学与社会' };
+
+
+
+/* 课标溯源：每环对应《义务教育化学课程标准（2022年版）》（义教2022，课程内容含科学探究与化学实验、物质的性质与转化、物质的化学变化等学习主题）与《普通高中化学课程标准（2017年版2020年修订）》（高中2017，必修 第一册/第二册，选择性必修1 化学反应原理 / 2 物质结构与性质 / 3 有机化学基础）。
+   v1 为结构级对照：page 仅标注模块或主题，不编页码。 */
+const CURRICULUM = {
+  /* ---- 初中 · 基础与实验 ---- */
+  'chem-intro':        { doc: '义教2022·科学探究与化学实验（物质的性质与变化：物理变化与化学变化）', page: '科学探究与化学实验', tag: 'std' },
+  'lab-instrument':    { doc: '义教2022·科学探究与化学实验（常用仪器认读与实验安全规则）', page: '科学探究与化学实验', tag: 'std' },
+  'lab-ops':           { doc: '义教2022·科学探究与化学实验（药品取用、加热、过滤、蒸发等基本操作）', page: '科学探究与化学实验', tag: 'std' },
+  /* ---- 初中 · 空气与氧 ---- */
+  'air-composition':   { doc: '义教2022·物质的性质与应用（空气与氧气：空气的主要成分与氧气含量测定）', page: '物质的性质与应用', tag: 'std' },
+  'oxygen-prop':       { doc: '义教2022·物质的性质与应用（空气与氧气：氧气的主要性质与用途）', page: '物质的性质与应用', tag: 'std' },
+  'oxygen-prepare':    { doc: '义教2022·物质的性质与应用（空气与氧气：氧气的实验室制取与催化剂）', page: '物质的性质与应用', tag: 'std' },
+  /* ---- 初中 · 物质构成 ---- */
+  'molecule-atom':     { doc: '义教2022·物质组成的再认识（分子、原子等微粒的基本性质）', page: '物质组成的再认识', tag: 'std' },
+  'water-composition': { doc: '义教2022·物质的性质与应用（水与常见的溶液：水的组成与净化）', page: '物质的性质与应用', tag: 'std' },
+  'atom-structure':    { doc: '义教2022·物质组成的再认识（原子的构成与核外电子排布）', page: '物质组成的再认识', tag: 'std' },
+  'element-period':    { doc: '义教2022·物质组成的再认识（元素与元素周期表）', page: '物质组成的再认识', tag: 'std' },
+  'ion-formation':     { doc: '义教2022·物质组成的再认识（离子的形成与常见离子）', page: '物质组成的再认识', tag: 'std' },
+  'valence-formula':   { doc: '义教2022·物质组成的再认识（化学式与化合价）', page: '物质组成的再认识', tag: 'std' },
+  /* ---- 初中 · 化学方程式 ---- */
+  'mass-conserve':     { doc: '义教2022·物质的化学变化（质量守恒定律及其微观解释）', page: '物质的化学变化', tag: 'std' },
+  'equation-write':    { doc: '义教2022·物质的化学变化（化学方程式的书写与配平）', page: '物质的化学变化', tag: 'std' },
+  'equation-calc':     { doc: '义教2022·物质的化学变化（依据化学方程式的简单计算）', page: '物质的化学变化', tag: 'std' },
+  /* ---- 初中 · 碳与燃料 ---- */
+  'carbon-forms':      { doc: '义教2022·物质的性质与应用（碳和碳的氧化物：碳单质的性质与用途）', page: '物质的性质与应用', tag: 'std' },
+  'co-co2':            { doc: '义教2022·物质的性质与应用（碳和碳的氧化物：一氧化碳与二氧化碳）', page: '物质的性质与应用', tag: 'std' },
+  'co2-lab':           { doc: '义教2022·物质的性质与应用（碳和碳的氧化物：二氧化碳的实验室制取）', page: '物质的性质与应用', tag: 'std' },
+  'fuel-fire':         { doc: '义教2022·化学与社会·跨学科实践（燃烧的条件、灭火原理与能源利用）', page: '化学与社会·跨学科实践', tag: 'std' },
+  /* ---- 初中 · 金属与溶液 ---- */
+  'metal-nature':      { doc: '义教2022·物质的性质与应用（金属与金属矿物：金属材料与金属的化学性质）', page: '物质的性质与应用', tag: 'std' },
+  'metal-activity':    { doc: '义教2022·物质的性质与应用（金属与金属矿物：金属活动性顺序与置换反应）', page: '物质的性质与应用', tag: 'std' },
+  'iron-smelt':        { doc: '义教2022·物质的性质与应用（金属与金属矿物：铁的冶炼、锈蚀与防护）', page: '物质的性质与应用', tag: 'std' },
+  'solution-form':     { doc: '义教2022·物质的性质与应用（水与常见的溶液：溶液的形成与乳化）', page: '物质的性质与应用', tag: 'std' },
+  'solubility':        { doc: '义教2022·物质的性质与应用（水与常见的溶液：饱和溶液与溶解度曲线）', page: '物质的性质与应用', tag: 'std' },
+  'conc-calc':         { doc: '义教2022·物质的性质与应用（水与常见的溶液：溶质质量分数与溶液配制）', page: '物质的性质与应用', tag: 'std' },
+  /* ---- 初中 · 酸碱盐 ---- */
+  'acid-common':       { doc: '义教2022·物质的性质与应用（常见的酸：盐酸与硫酸的性质）', page: '物质的性质与应用', tag: 'std' },
+  'base-ph':           { doc: '义教2022·物质的性质与应用（常见的碱与溶液酸碱度）', page: '物质的性质与应用', tag: 'std' },
+  'neutralization':    { doc: '义教2022·物质的性质与应用（中和反应及其应用）', page: '物质的性质与应用', tag: 'std' },
+  'salt-fertilizer':   { doc: '义教2022·物质的性质与应用（生活中常见的盐与化学肥料）', page: '物质的性质与应用', tag: 'std' },
+  /* ---- 高中 ---- */
+  'matter-classify':   { doc: '高中2017·必修（常见的无机物及其应用：物质及其分类、分散系与胶体）', page: '必修', tag: 'std' },
+  'ion-reaction':      { doc: '高中2017·必修（常见的无机物及其应用：离子反应与离子方程式）', page: '必修', tag: 'std' },
+  'redox-basic':       { doc: '高中2017·必修（常见的无机物及其应用：氧化还原反应）', page: '必修', tag: 'std' },
+  'mole':              { doc: '高中2017·必修（化学科学与实验探究：物质的量及其相关计算）', page: '必修', tag: 'std' },
+  'sodium-family':     { doc: '高中2017·必修（常见的无机物及其应用：钠及其重要化合物）', page: '必修', tag: 'std' },
+  'chlorine-family':   { doc: '高中2017·必修（常见的无机物及其应用：氯及其化合物）', page: '必修', tag: 'std' },
+  'iron-family':       { doc: '高中2017·必修（常见的无机物及其应用：铁及其重要化合物）', page: '必修', tag: 'std' },
+  'periodic-table':    { doc: '高中2017·必修（物质结构基础与化学反应规律：原子结构与元素周期表）', page: '必修', tag: 'std' },
+  'periodic-law':      { doc: '高中2017·必修（物质结构基础与化学反应规律：元素周期律及其应用）', page: '必修', tag: 'std' },
+  'chem-bond':         { doc: '高中2017·必修（物质结构基础与化学反应规律：离子键与共价键）', page: '必修', tag: 'std' },
+  'sulfur-family':     { doc: '高中2017·必修（常见的无机物及其应用：硫及其重要化合物）', page: '必修', tag: 'std' },
+  'nitrogen-family':   { doc: '高中2017·必修（常见的无机物及其应用：氮及其重要化合物）', page: '必修', tag: 'std' },
+  'heat-reaction':     { doc: '高中2017·必修（物质结构基础与化学反应规律：化学反应与能量）与选择性必修1（焓变与盖斯定律）', page: '必修', tag: 'std' },
+  'rate':              { doc: '高中2017·必修（物质结构基础与化学反应规律：化学反应速率）与选择性必修1（速率影响因素）', page: '必修', tag: 'std' },
+  'equilibrium':       { doc: '高中2017·必修（化学反应规律：化学平衡）与选择性必修1（平衡移动与转化率）', page: '必修', tag: 'std' },
+  'electro-battery':   { doc: '高中2017·必修（化学反应与能量：化学能转化为电能——原电池与化学电源）', page: '必修', tag: 'std' },
+  'electrolysis':      { doc: '高中2017·必修（化学反应与能量：电能转化为化学能——电解池及其应用）', page: '必修', tag: 'std' },
+  'methane-family':    { doc: '高中2017·必修（简单的有机化合物及其应用：甲烷与烷烃）', page: '必修', tag: 'std' },
+  'alkene-benzene':    { doc: '高中2017·必修（简单的有机化合物及其应用：乙烯与苯）', page: '必修', tag: 'std' },
+  'ethanol-acetic':    { doc: '高中2017·必修（简单的有机化合物及其应用：乙醇与乙酸）', page: '必修', tag: 'std' },
+  'nutrients-organic': { doc: '高中2017·必修（简单的有机化合物及其应用：糖类、油脂与蛋白质）', page: '必修', tag: 'std' },
+  'organic-synthesis': { doc: '高中2017·选择性必修3（有机化学基础：官能团转化与有机合成）', page: '选择性必修3', tag: 'std' },
+  'weak-electrolyte':  { doc: '高中2017·选择性必修1（化学反应原理：弱电解质的电离平衡）', page: '选择性必修1', tag: 'std' },
+  'ph-water':          { doc: '高中2017·选择性必修1（化学反应原理：水的电离与溶液酸碱性）', page: '选择性必修1', tag: 'std' },
+  'salt-hydrolysis':   { doc: '高中2017·选择性必修1（化学反应原理：盐类的水解）', page: '选择性必修1', tag: 'std' },
+  'ksp':               { doc: '高中2017·选择性必修1（化学反应原理：沉淀溶解平衡与溶度积）', page: '选择性必修1', tag: 'std' },
+  'crystal-structure': { doc: '高中2017·选择性必修2（物质结构与性质：晶体结构与性质）', page: '选择性必修2', tag: 'std' },
+};
+
+/* 每环可检验的通过标准（PASS）：完成环即可自我对照打钩 */
+const PASS = {
+  'chem-intro':        '能各举三个物理变化与化学变化的例子并说出判断依据，四类性质描述各举一例',
+  'lab-instrument':    '能认读十种常用仪器并说出用途，安全三不原则与灭火器使用零遗漏',
+  'lab-ops':           '能独立完成固体液体取用与加热过滤蒸发，正误操作图判错全对',
+  'air-composition':   '能背出空气体积分数组成，红磷实验误差六种情形分析零错',
+  'oxygen-prop':       '能准确描述铁丝硫粉在氧气中燃烧现象，缓慢氧化举例三个以上',
+  'oxygen-prepare':    '能画出两套制氧装置并说明棉花作用，催化剂「一变两不变」表述完整',
+  'molecule-atom':     '能用微粒性质解释三种生活现象，微观示意图配平判断全对',
+  'water-composition': '电解水「正氧负氢、氢二氧一」零错，硬水软水检验与净化流程排序全对',
+  'atom-structure':    '能画出 1~20 号元素原子结构示意图，相对原子质量计算零错',
+  'element-period':    '元素符号默写前 20 号全对，周期表定位「周期=层数、族序=最外层」应用无误',
+  'ion-formation':     '能正确书写 10 种常见离子符号并说明形成过程，原子团在反应中的行为说得清',
+  'valence-formula':   '常用化合价口诀默写，能据化合价书写并检验 10 个化学式',
+  'mass-conserve':     '能用微观三不变解释守恒，密闭容器实验设计与增重减重解释各一道零错',
+  'equation-write':    '20 个常用方程式默写配平零错，条件与↑↓符号使用全对',
+  'equation-calc':     '五步计算流程规范，含杂质与混合物换算题两道全对',
+  'carbon-forms':      '能说出三种碳单质结构差异与对应性质，碳还原氧化铜现象与条件零错',
+  'co-co2':            'CO 与 CO₂ 性质对比表默写，鉴别与除杂方法各两道零错',
+  'co2-lab':           '药品选择理由说得清，验满与检验操作区分明确，长颈漏斗液封原理零错',
+  'fuel-fire':         '燃烧三条件与灭火三原理对应作答，爆炸分类与验纯原因各一题零错',
+  'metal-nature':      '合金与纯金属性质比较零错，铝的抗腐蚀机理与用钢丝球刷铝锅的后果说得清',
+  'metal-activity':    '活动性顺序默写零错，滤液滤渣分类讨论题两道全对，置换反应判断零错',
+  'iron-smelt':        '高炉炼铁方程式与计算零错，铁生锈条件与防锈措施按「隔绝氧气和水」规范作答',
+  'solution-form':     '溶液三特征应用判断全对，乳化与溶解机理区分零错，吸放热三种情形举例',
+  'solubility':        '溶解度四要素背写，溶解度曲线交点与结晶方法选择各两道零错',
+  'conc-calc':         '质量分数计算与稀释守恒各两道零错，配制步骤与误差分析方向判断全对',
+  'acid-common':       '酸的通性五条各举一例，浓硫酸稀释操作规范复述，盐酸硫酸鉴别方法零错',
+  'base-ph':           '两种碱的性质与用途对比，pH 试纸使用规范复述，指示剂变色规律零错',
+  'neutralization':    '中和实质离子方程式书写零错，pH 变化曲线三道判读全对，生活应用举例三个',
+  'salt-fertilizer':   '四种常见盐的俗名化学式用途默写，碳酸根检验与复分解条件应用零错，化肥鉴别题两道',
+  'matter-classify':   '物质树状分类图独立画出，胶体三大性质与丁达尔效应判断零错',
+  'ion-reaction':      '电解质判断十题零错，离子方程式书写与正误判断各三道全对，离子共存题零错',
+  'redox-basic':       '五大概念关系图默写，双线桥标注三道零错，氧化性还原性强弱比较依据说得清',
+  'mole':              'n m M N V c 五量换算各三道零错，22.4 L/mol 使用条件判断全对',
+  'sodium-family':     '钠与水「浮熔游响红」复述，Na₂O₂ 供氧与两种碳酸钠盐鉴别三道零错',
+  'chlorine-family':   '氯水成分背写，干燥氯气与潮湿氯气漂白性差异零错，漂白粉制备与失效方程式各一道',
+  'iron-family':       'Fe(OH)₂ 变色过程描述零错，Fe²⁺ Fe³⁺ 检验方法与铁三角转化各三道全对',
+  'periodic-table':    '能写出 1~36 号典型元素电子排布式，位置结构性质互推三道零错',
+  'periodic-law':      '半径与金属性非金属性递变规律默写，比较非金属性的三种正确依据零错',
+  'chem-bond':         '离子键共价键判断十题零错，含离子键的共价键物质举例，电子式书写五种物质全对',
+  'sulfur-family':     'SO₂ 性质四条各配反应，浓硫酸三大特性与钝化条件零错，价态转化图独立画出',
+  'nitrogen-family':   'NO NO₂ 性质与收集方法零错，喷泉实验原理与硝酸与铜反应两道方程式全对',
+  'heat-reaction':     'ΔH 符号判断十题零错，热化学方程式书写规范，盖斯定律计算两道全对',
+  'rate':              '速率换算比较零错，影响因素各配实验设计，惰性气体两种条件下影响判断全对',
+  'equilibrium':       '平衡状态判断标志十题零错，勒夏特列原理应用三道，速率-时间图像判读两道',
+  'electro-battery':   '原电池构成条件与正负极判断零错，三类电池电极反应式各写一道，盐桥离子移动方向零错',
+  'electrolysis':      '阴阳极与放电顺序判断零错，氯碱工业与电镀原理方程式各一道，电解后复原策略两道',
+  'methane-family':    '正四面体结构证据复述，取代反应条件与产物零错，同分异构体书写五种以内全对',
+  'alkene-benzene':    '加成加聚反应判断零错，乙烯制备温度与温度计位置，苯的取代加成条件区分',
+  'ethanol-acetic':    '官能团性质与检验零错，酯化反应「酸脱羟基醇脱氢」默写，产物收集用饱和碳酸钠的原因说得清',
+  'nutrients-organic': '葡萄糖检验两种方法条件零错，三大营养物质性质对比表默写，盐析与变性区分',
+  'organic-synthesis': '官能团引入消除转化路线图独立完成，不饱和度计算零错，框图推断两道全对',
+  'weak-electrolyte':  'Ka 表达式与稀释规律应用零错，强弱电解质实验判断方案设计两道',
+  'ph-water':          'Kw 使用条件与酸碱混合 pH 计算各三道零错，稀释图像判读两道',
+  'salt-hydrolysis':   '水解规律口诀应用零错，水解方程式书写规范（⇌与符号），蒸干产物判断两道全对',
+  'ksp':               'Ksp 表达式书写与 Q/K 判断零错，沉淀生成溶解转化各两道计算全对',
+  'crystal-structure': '四大晶体类型与微粒作用力默写，均摊法计算两道零错，晶胞密度计算公式推导清晰',
+};
+
+/* 典型案例：链上最有代表性的「从现象到方法」样本 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'equation-write': { title: '从 8Al+3Fe₃O₄ 说起：配平的三条路径与一个原则',
+    text: '铝热反应 8Al+3Fe₃O₄=4Al₂O₃+9Fe 怎么配？死盯数字容易乱。路径一：最小公倍数法抓氧——左边 O₄、右边 O₃，最小公倍数 12，得 Fe₃O₄ 系数 3、Al₂O₃ 系数 4，再配 Al 得 8、Fe 得 9。路径二：奇数配偶法——Al₂O₃ 中 O 为偶数位、Fe₃O₄ 中 O 为奇数位，先把 Fe₃O₄ 配 3 凑出偶数个氧，其余顺势推。路径三：电子守恒法（进阶）——Al 升 3 价共失 24e⁻，Fe 由 +8/3 降为 0 每个得 8/3e⁻，9 个铁原子恰好收电子。三条路殊途同归，原则只有一个：只动化学计量数、绝不改化学式下标。配平卡壳时，先数最复杂的化合物，从「只出现在一处」的元素下手，链条就断了而不断。' },
+  'metal-activity': { title: '滤液滤渣不烧脑：金属活动性顺序的三步分析法',
+    text: '向含 FeSO₄ 和 CuSO₄ 的混合溶液中加入一定量锌粉，滤渣与滤液成分是什么？第一步定次序：锌先与谁反应？活动性差距大的优先——先 Zn 置换 Cu，铜被置换完后锌才轮到置换铁，绝不「同时进行」。第二步定用量：锌少量→滤渣只有 Cu，滤液有 Zn²⁺、Fe²⁺；锌恰好置换完铜→滤液剩 Zn²⁺、Fe²⁺；锌足量→滤渣 Cu+Fe（可能还有剩余 Zn），滤液只剩 Zn²⁺。第三步定验证：滤液中滴盐酸无气泡说明无剩余金属单质。记住「前换后、先远后近、论金论量」，所有滤液滤渣题都是这三步的排列组合——顺序错一环，全盘皆输；顺序对，题目就是送分。' },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口；学段深链：初中/高中学段深链均已抓取验证） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_jun: { name: '智慧教育·初中化学', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bec0c6-54e6-11ed-9c34-850ba61fa9f4%2Fe7bbd05c-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·高中化学', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2Fe7bbd05c-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2F5036342972', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部教育考试院', url: 'https://www.neea.edu.cn', note: '官方考试信息' },
+};
+/* ============ 主干环 NODES：56 环（初中 29 + 高中 27），prev/next 双向依赖 ============ */
+const NODES = {
+/* ================= 初中 · 走进化学与实验 ================= */
+'chem-intro': { title: '物质的变化与性质', stage: 'junior', cat: 'basic', diff: 1.0, hot: false,
+  fact: '没有生成新物质的变化是物理变化，生成新物质的是化学变化；物质不需要发生化学变化就表现的性质是物理性质，需要通过化学变化表现的是化学性质。',
+  prev: [], next: ['lab-instrument'],
+  lecture: [ {name:'物质的变化与性质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'变化与性质辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'lab-instrument': { title: '常用仪器与实验安全', stage: 'junior', cat: 'basic', diff: 1.1, hot: false,
+  fact: '试管、烧杯、量筒、酒精灯、天平各司其职；安全规则是化学实验的第一课——不能用手接触药品、不能凑近闻气味、剩余药品按要求处理。',
+  prev: ['chem-intro'], next: ['lab-ops'],
+  lecture: [ {name:'常用仪器认读与实验安全', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'仪器与安全规则练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'lab-ops': { title: '药品取用与基本操作', stage: 'junior', cat: 'basic', diff: 1.3, hot: false,
+  fact: '固体用药匙或镊子、液体用倾倒或滴管；加热时试管外壁要擦干、液体不超三分之一、管口不对人；过滤讲究一贴二低三靠。',
+  prev: ['lab-instrument'], next: ['air-composition'],
+  lecture: [ {name:'药品取用与加热过滤蒸发', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'基本操作正误判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'air-composition': { title: '空气的组成与保护', stage: 'junior', cat: 'element', diff: 1.4, hot: false,
+  fact: '空气按体积计约含氮气 78%、氧气 21%；红磷燃烧测氧气含量实验的成败关键在装置气密性与红磷足量。',
+  prev: ['lab-ops'], next: ['oxygen-prop'],
+  lecture: [ {name:'空气的组成与氧气含量测定', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'空气组成与空气污染练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'oxygen-prop': { title: '氧气的性质与用途', stage: 'junior', cat: 'element', diff: 1.6, hot: false,
+  fact: '氧气无色无味、不易溶于水、密度略大于空气，化学性质活泼支持燃烧；铁丝在纯氧中剧烈燃烧、火星四射生成黑色四氧化三铁。',
+  prev: ['air-composition'], next: ['oxygen-prepare'],
+  lecture: [ {name:'氧气的性质与用途', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'燃烧现象描述练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'oxygen-prepare': { title: '氧气的实验室制取与催化剂', stage: 'junior', cat: 'element', diff: 1.8, hot: true,
+  fact: '高锰酸钾加热或过氧化氢加二氧化锰制氧气，可排水法或向上排空气法收集；催化剂只改速率、质量和化学性质不变。',
+  prev: ['oxygen-prop'], next: ['molecule-atom'],
+  lecture: [ {name:'氧气的实验室制取', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'制气装置选择练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'molecule-atom': { title: '分子与原子', stage: 'junior', cat: 'matter', diff: 1.9, hot: false,
+  fact: '分子是保持物质化学性质的最小粒子，原子是化学变化中的最小粒子；微粒质量小、不停运动、有间隔，温度越高运动越快。',
+  prev: ['oxygen-prepare'], next: ['water-composition', 'atom-structure'],
+  lecture: [ {name:'分子与原子', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'微粒性质与微观示意练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'water-composition': { title: '水的组成与净化', stage: 'junior', cat: 'element', diff: 2.0, hot: false,
+  fact: '电解水「正氧负氢、体积比 1:2」证明水由氢、氧元素组成；自来水净化经沉淀、吸附、过滤、消毒，蒸馏可得最纯水。',
+  prev: ['molecule-atom'], next: [],
+  lecture: [ {name:'水的组成与净化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'电解水与硬水软水练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'atom-structure': { title: '原子的构成与核外电子排布', stage: 'junior', cat: 'matter', diff: 2.1, hot: false,
+  fact: '原子由居于中心的原子核（质子+中子）与核外电子构成，质子数决定元素种类；最外层电子数决定化学性质，八电子（氦二电子）为相对稳定结构。',
+  prev: ['molecule-atom'], next: ['element-period', 'ion-formation'],
+  lecture: [ {name:'原子的结构与核外电子', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'原子结构示意图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'element-period': { title: '元素与元素周期表', stage: 'junior', cat: 'matter', diff: 2.2, hot: true,
+  fact: '元素是质子数相同的一类原子的总称；元素周期表按原子序数排列，同一周期电子层数相同、同一族最外层电子数相同。',
+  prev: ['atom-structure'], next: ['ion-formation', 'periodic-table', 'periodic-law'],
+  lecture: [ {name:'元素与元素周期表', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'元素符号与周期表定位练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'ion-formation': { title: '离子与物质的形成', stage: 'junior', cat: 'matter', diff: 2.4, hot: false,
+  fact: '原子得电子成阴离子、失电子成阳离子；钠与氯通过电子得失形成氯化钠，原子团（如硫酸根）在反应中常作为整体参加。',
+  prev: ['atom-structure', 'element-period'], next: ['valence-formula', 'chem-bond'],
+  lecture: [ {name:'离子的形成与原子团', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'离子符号与带电判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'valence-formula': { title: '化合价与化学式', stage: 'junior', cat: 'matter', diff: 2.5, hot: true,
+  fact: '化合价是元素成键能力的体现，单质为零价、化合物中正负化合价代数和为零；据此书写化学式并读出名称。',
+  prev: ['ion-formation'], next: ['mass-conserve', 'chem-bond'],
+  lecture: [ {name:'化合价规则与化学式书写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'化合价计算与化学式练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 化学方程式 ================= */
+'mass-conserve': { title: '质量守恒定律', stage: 'junior', cat: 'reaction', diff: 2.6, hot: false,
+  fact: '化学反应前后物质总质量不变，因为原子种类、数目、质量都不变；「参加」反应的物质质量才计入守恒。',
+  prev: ['valence-formula'], next: ['equation-write'],
+  lecture: [ {name:'质量守恒定律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'守恒定律与微观解释练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'equation-write': { title: '化学方程式的书写与配平', stage: 'junior', cat: 'reaction', diff: 2.7, hot: true,
+  fact: '写、配、注、标四步：以客观事实为据写化学式，用最小公倍数法配平，标注条件与↑↓符号；配平的本质是原子守恒。',
+  prev: ['mass-conserve'], next: ['equation-calc'],
+  lecture: [ {name:'化学方程式书写与配平', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'方程式配平专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'equation-calc': { title: '依据化学方程式的计算', stage: 'junior', cat: 'reaction', diff: 2.9, hot: false,
+  fact: '设、写、找、列、答五步：化学方程式中各物质的相对分子质量之比即质量比，纯净物质量才能直接代入计算。',
+  prev: ['equation-write'], next: ['carbon-forms', 'mole'],
+  lecture: [ {name:'化学方程式的基本计算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'方程式计算含杂质问题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 碳与燃料 ================= */
+'carbon-forms': { title: '碳单质的性质与用途', stage: 'junior', cat: 'element', diff: 3.0, hot: false,
+  fact: '金刚石、石墨、C60 都由碳元素组成但碳原子排列不同，物理性质差异巨大；碳在常温下稳定，高温下还原性与可燃性显露。',
+  prev: ['equation-calc'], next: ['co-co2'],
+  lecture: [ {name:'碳单质与同素异形体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'碳单质性质比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'co-co2': { title: '一氧化碳与二氧化碳', stage: 'junior', cat: 'element', diff: 3.1, hot: false,
+  fact: 'CO 可燃有毒性、是冶金还原剂；CO₂ 不燃不助燃、能溶于水生成碳酸、使澄清石灰水变浑浊，二者组成元素相同性质迥异。',
+  prev: ['carbon-forms'], next: ['co2-lab'],
+  lecture: [ {name:'碳的氧化物性质对比', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'CO与CO₂性质鉴别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'co2-lab': { title: '二氧化碳的实验室制取', stage: 'junior', cat: 'element', diff: 3.2, hot: false,
+  fact: '大理石与稀盐酸反应制 CO₂，用向上排空气法收集、燃着木条验满；药品不能用碳酸钠（太快）或稀硫酸（微溶硫酸钙覆膜）。',
+  prev: ['co-co2'], next: ['fuel-fire'],
+  lecture: [ {name:'二氧化碳的实验室制取', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'制气装置与验满练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'fuel-fire': { title: '燃烧、灭火与燃料', stage: 'junior', cat: 'society', diff: 3.3, hot: false,
+  fact: '燃烧三条件：可燃物、氧气（或空气）、温度达着火点，破坏其一即可灭火；化石燃料面临枯竭，新能源开发是必由之路。',
+  prev: ['co2-lab'], next: ['metal-nature', 'redox-basic', 'heat-reaction'],
+  lecture: [ {name:'燃烧条件与灭火原理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'燃烧灭火与能源练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 金属与溶液 ================= */
+'metal-nature': { title: '金属材料与金属的化学性质', stage: 'junior', cat: 'metal', diff: 3.4, hot: false,
+  fact: '合金的硬度一般比组分金属大、熔点更低；多数金属能与氧气反应，镁铝锌铁铜活泼性依次减弱。',
+  prev: ['fuel-fire'], next: ['metal-activity'],
+  lecture: [ {name:'金属材料与金属性质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'合金与金属氧化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'metal-activity': { title: '金属活动性顺序与置换反应', stage: 'junior', cat: 'metal', diff: 3.5, hot: true,
+  fact: '排在氢前的金属能置换酸中氢，排在前面的金属能把后面金属从其盐溶液中置换出来；单质+化合物→单质+化合物是置换反应。',
+  prev: ['metal-nature'], next: ['iron-smelt', 'redox-basic', 'electro-battery'],
+  lecture: [ {name:'金属活动性顺序及其应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'金属活动性判断与滤液滤渣练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'iron-smelt': { title: '铁的冶炼、锈蚀与防护', stage: 'junior', cat: 'metal', diff: 3.6, hot: false,
+  fact: '高炉炼铁用 CO 高温还原铁矿石；铁锈蚀需要氧气和水同时存在，刷漆镀层烤蓝等隔绝防护是保全铁资源的关键。',
+  prev: ['metal-activity'], next: ['solution-form', 'iron-family'],
+  lecture: [ {name:'铁的冶炼与防锈', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'炼铁计算与防锈措施练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'solution-form': { title: '溶液的形成与乳化', stage: 'junior', cat: 'solution', diff: 3.7, hot: false,
+  fact: '溶液是均一稳定的混合物，由溶质与溶剂组成；汽油去油污是溶解、洗涤剂去油污是乳化，机理不同。',
+  prev: ['iron-smelt'], next: ['solubility'],
+  lecture: [ {name:'溶液的形成与乳化作用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'溶液概念与乳化辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'solubility': { title: '溶解度与溶解度曲线', stage: 'junior', cat: 'solution', diff: 3.9, hot: true,
+  fact: '固体的溶解度指一定温度下 100 g 溶剂里达到饱和状态时溶解的质量；多数固体溶解度随温度升高增大，气体随温度升高减小。',
+  prev: ['solution-form'], next: ['conc-calc', 'equilibrium'],
+  lecture: [ {name:'饱和溶液与溶解度曲线', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'溶解度曲线读图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'conc-calc': { title: '溶质质量分数与溶液配制', stage: 'junior', cat: 'solution', diff: 4.0, hot: false,
+  fact: '溶质质量分数=溶质质量/溶液质量×100%；配制一定溶质质量分数溶液需计算、称量、量取、溶解四步。',
+  prev: ['solubility'], next: ['acid-common'],
+  lecture: [ {name:'溶质质量分数计算与配制', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'溶液稀释与配制误差练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 酸碱盐 ================= */
+'acid-common': { title: '常见的酸', stage: 'junior', cat: 'acidbase', diff: 4.1, hot: true,
+  fact: '盐酸、硫酸都能解离出 H⁺，能使紫色石蕊变红；浓硫酸有吸水性与强腐蚀性，稀释放热且必须酸入水。',
+  prev: ['conc-calc'], next: ['base-ph', 'sulfur-family'],
+  lecture: [ {name:'常见的酸及其性质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'酸的通性与鉴别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'base-ph': { title: '常见的碱与酸碱度', stage: 'junior', cat: 'acidbase', diff: 4.2, hot: true,
+  fact: '氢氧化钠、氢氧化钙都能解离出 OH⁻ 使石蕊变蓝；溶液酸碱度用 pH 表示，pH<7 酸性、=7 中性、>7 碱性。',
+  prev: ['acid-common'], next: ['neutralization'],
+  lecture: [ {name:'常见的碱与溶液酸碱度', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'pH判断与碱的性质练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'neutralization': { title: '中和反应', stage: 'junior', cat: 'acidbase', diff: 4.3, hot: true,
+  fact: '酸与碱作用生成盐和水，实质是 H⁺ 与 OH⁻ 结合生成水；改良酸性土壤、治疗胃酸过多都是中和反应的应用。',
+  prev: ['base-ph'], next: ['salt-fertilizer', 'ion-reaction'],
+  lecture: [ {name:'中和反应及其应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中和反应判断与图像练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'salt-fertilizer': { title: '常见的盐与化学肥料', stage: 'junior', cat: 'acidbase', diff: 4.5, hot: true,
+  fact: '食盐、纯碱、小苏打、石灰石各显其能；碳酸根离子的检验用稀盐酸和澄清石灰水；氮磷钾肥作用不同，铵态氮肥不能与碱性物质混用。',
+  prev: ['neutralization'], next: ['matter-classify', 'sodium-family', 'chlorine-family', 'nitrogen-family'],
+  lecture: [ {name:'生活中常见的盐与化肥', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'盐的性质与化肥鉴别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+/* ================= 高中 · 反应原理与元素化合物 ================= */
+'matter-classify': { title: '物质的分类与转化', stage: 'senior', cat: 'matter', diff: 2.8, hot: false,
+  fact: '树状分类法与交叉分类法整理物质家族，同素异形体与氧化物类别要辨析；胶体是分散质粒子直径 1~100 nm 的分散系，有丁达尔效应。',
+  prev: ['salt-fertilizer'], next: [],
+  lecture: [ {name:'物质的分类与胶体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'物质分类与胶体判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ion-reaction': { title: '电解质与离子反应', stage: 'senior', cat: 'reaction', diff: 3.1, hot: false,
+  fact: '在水溶液或熔融状态下能导电的化合物是电解质；离子反应的实质是某些离子浓度的减小，离子方程式要拆强电解质、守恒电荷与原子。',
+  prev: ['neutralization'], next: [],
+  lecture: [ {name:'电解质与离子反应', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'离子方程式书写与正误判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'redox-basic': { title: '氧化还原反应', stage: 'senior', cat: 'reaction', diff: 3.3, hot: true,
+  fact: '有电子转移（化合价升降）的反应是氧化还原反应：升失氧、降得还；氧化剂得电子被还原，双线桥与单线桥是分析利器。',
+  prev: ['metal-activity', 'fuel-fire'], next: [],
+  lecture: [ {name:'氧化还原反应的概念与配平', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'氧化还原分析双线桥练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'mole': { title: '物质的量与气体摩尔体积', stage: 'senior', cat: 'reaction', diff: 3.5, hot: true,
+  fact: '物质的量是联系微观粒子与宏观质量的桥梁：n=m/M，标准状况下 Vm≈22.4 L/mol；cB=nB/V 把浓度纳入计量体系。',
+  prev: ['equation-calc'], next: [],
+  lecture: [ {name:'物质的量及其单位摩尔', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'物质的量综合换算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'sodium-family': { title: '钠及其重要化合物', stage: 'senior', cat: 'element', diff: 3.6, hot: true,
+  fact: '钠浮熔游响红是钠与水的标志性现象；氧化钠与过氧化钠供氧能力不同，碳酸钠与碳酸氢钠的热稳定性与溶解度差异是鉴别抓手。',
+  prev: ['salt-fertilizer'], next: [],
+  lecture: [ {name:'钠及其化合物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'钠与碱金属性质练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'chlorine-family': { title: '氯及其化合物', stage: 'senior', cat: 'element', diff: 3.7, hot: false,
+  fact: '氯气黄绿色有毒、能与水和碱反应；氯水中氯水杀菌靠次氯酸，84 消毒液与漂白粉的有效成分分别是 NaClO 与 Ca(ClO)₂。',
+  prev: ['salt-fertilizer'], next: [],
+  lecture: [ {name:'氯气的性质与含氯消毒剂', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'氯水成分与漂白原理练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'iron-family': { title: '铁及其重要化合物', stage: 'senior', cat: 'element', diff: 3.8, hot: false,
+  fact: '+2 价与 +3 价铁相互转化是主线：Fe²⁺ 浅绿色、遇 KSCN 不变色，Fe³⁺ 黄色、遇 KSCN 变红；补铁剂与维生素 C 同服防氧化。',
+  prev: ['iron-smelt'], next: [],
+  lecture: [ {name:'铁的氧化物与氢氧化物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'铁三角转化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 结构与周期律 ================= */
+'periodic-table': { title: '原子结构与元素周期表', stage: 'senior', cat: 'matter', diff: 4.0, hot: false,
+  fact: '能层与能级、构造原理决定电子排布；周期表按原子序数分区（s p d f），同周期同主族位置关系是推断题的地图。',
+  prev: ['element-period'], next: ['periodic-law'],
+  lecture: [ {name:'原子结构与元素周期表', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'位置结构性质推断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'periodic-law': { title: '元素周期律', stage: 'senior', cat: 'matter', diff: 4.1, hot: false,
+  fact: '原子半径、金属性与非金属性、主要化合价随原子序数周期性变化；同周期从左到右金属性减弱、非金属性增强。',
+  prev: ['periodic-table', 'element-period'], next: [],
+  lecture: [ {name:'元素周期律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'递变规律比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'chem-bond': { title: '化学键与物质结构基础', stage: 'senior', cat: 'matter', diff: 4.2, hot: true,
+  fact: '阴阳离子通过离子键结合成离子化合物，原子通过共用电子对形成共价键；电子式与结构式是表达化学键的通用语言。',
+  prev: ['ion-formation', 'valence-formula'], next: [],
+  lecture: [ {name:'离子键与共价键', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电子式书写与键型判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 无机延伸与反应原理 ================= */
+'sulfur-family': { title: '硫及其化合物', stage: 'senior', cat: 'element', diff: 4.4, hot: false,
+  fact: 'SO₂ 既有氧化性又有还原性、能漂白品红；浓硫酸三大特性：吸水、脱水、强氧化；不同价态硫的转化靠氧化剂还原剂搭桥。',
+  prev: ['acid-common'], next: [],
+  lecture: [ {name:'硫及其化合物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'硫的价态转化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'nitrogen-family': { title: '氮及其化合物', stage: 'senior', cat: 'element', diff: 4.5, hot: false,
+  fact: 'N₂ 键能大性质稳定；NO 与 NO₂ 转化是大气化学核心，氨的喷泉实验与催化氧化连起 NH₃→NO→NO₂→HNO₃ 产业链。',
+  prev: ['salt-fertilizer'], next: [],
+  lecture: [ {name:'氮及其化合物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'氮的固定与硝酸性质练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'heat-reaction': { title: '反应热与焓变', stage: 'senior', cat: 'reaction', diff: 4.6, hot: false,
+  fact: '恒压条件下反应热等于焓变 ΔH，放热 ΔH<0；热化学方程式要注明聚集状态，盖斯定律让分步反应热可以加减拼装。',
+  prev: ['fuel-fire'], next: ['rate'],
+  lecture: [ {name:'反应热与热化学方程式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'盖斯定律计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'rate': { title: '化学反应速率', stage: 'senior', cat: 'reaction', diff: 4.8, hot: true,
+  fact: 'v=Δc/Δt 定量描述快慢，浓度、温度、压强、催化剂都影响速率；碰撞理论指出有效碰撞需要足够的能量与合适的取向。',
+  prev: ['heat-reaction'], next: ['equilibrium'],
+  lecture: [ {name:'化学反应速率', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'速率计算与影响因素练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'equilibrium': { title: '化学平衡与移动', stage: 'senior', cat: 'reaction', diff: 5.0, hot: true,
+  fact: '正逆速率相等、各组分浓度保持不变即平衡状态；勒夏特列原理指出改变条件平衡向减弱该改变的方向移动，等效平衡是进阶。',
+  prev: ['rate', 'solubility'], next: ['methane-family'],
+  lecture: [ {name:'化学平衡状态与平衡移动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'平衡判断与移动方向练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 电化学与有机 ================= */
+'electro-battery': { title: '原电池与化学电源', stage: 'senior', cat: 'metal', diff: 5.2, hot: true,
+  fact: '自发的氧化还原反应在原电池中拆到两极：负极氧化失电子、正极还原得电子；干电池、充电电池、燃料电池是三大化学电源。',
+  prev: ['metal-activity'], next: ['electrolysis'],
+  lecture: [ {name:'原电池的工作原理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电极反应式书写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'electrolysis': { title: '电解池及其应用', stage: 'senior', cat: 'metal', diff: 5.4, hot: false,
+  fact: '外接电源迫使非自发反应发生：阳极氧化、阴极还原；电解精炼铜、电镀与氯碱工业是电解原理的三大应用。',
+  prev: ['electro-battery'], next: ['weak-electrolyte'],
+  lecture: [ {name:'电解池的工作原理与应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电解产物判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'methane-family': { title: '甲烷与烷烃', stage: 'senior', cat: 'organic', diff: 5.5, hot: false,
+  fact: '甲烷正四面体结构、取代反应生成氯代物；烷烃通式 CnH2n+2，同系物结构相似组成相差 CH₂，同分异构体由此登场。',
+  prev: ['equilibrium'], next: ['alkene-benzene'],
+  lecture: [ {name:'甲烷与烷烃', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'同分异构体书写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'alkene-benzene': { title: '乙烯与苯', stage: 'senior', cat: 'organic', diff: 5.7, hot: false,
+  fact: '乙烯含碳碳双键、能发生加成与加聚反应是化工之母；苯特殊稳定结构介于单双键之间，取代与加成条件分明。',
+  prev: ['methane-family'], next: ['ethanol-acetic'],
+  lecture: [ {name:'乙烯与苯的性质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'加成加聚反应练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ethanol-acetic': { title: '乙醇与乙酸', stage: 'senior', cat: 'organic', diff: 5.8, hot: true,
+  fact: '羟基与羧基是两类关键官能团：乙醇催化氧化成乙醛，乙酸的酸性弱于盐酸但能与碳酸钠反应，酯化反应「酸脱羟基醇脱氢」。',
+  prev: ['alkene-benzene'], next: ['nutrients-organic'],
+  lecture: [ {name:'乙醇乙酸与酯化反应', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'官能团性质与酯化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'nutrients-organic': { title: '基本营养物质', stage: 'senior', cat: 'organic', diff: 5.9, hot: false,
+  fact: '糖类、油脂、蛋白质三大营养物质：葡萄糖能发生银镜反应，油脂水解得高级脂肪酸与甘油，蛋白质遇浓硝酸变黄。',
+  prev: ['ethanol-acetic'], next: ['organic-synthesis'],
+  lecture: [ {name:'糖类油脂与蛋白质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'营养物质检验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'organic-synthesis': { title: '有机合成与推断', stage: 'senior', cat: 'organic', diff: 6.1, hot: false,
+  fact: '官能团的引入与转化是合成路线的骨架：消去、取代、加成是三大桥梁；推断题抓住特征反应与分子式残基分析。',
+  prev: ['nutrients-organic'], next: [],
+  lecture: [ {name:'有机合成路线设计', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'有机框图推断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 水溶液平衡与结构进阶 ================= */
+'weak-electrolyte': { title: '弱电解质的电离平衡', stage: 'senior', cat: 'reaction', diff: 6.2, hot: false,
+  fact: '弱酸弱碱部分电离、存在电离平衡，电离平衡常数 Ka Kb 衡量强弱；多元弱酸分步电离且逐级减弱。',
+  prev: ['electrolysis'], next: ['ph-water'],
+  lecture: [ {name:'弱电解质的电离', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电离平衡与Ka比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ph-water': { title: '水的电离与溶液pH', stage: 'senior', cat: 'reaction', diff: 6.3, hot: false,
+  fact: '水的离子积 Kw=c(H⁺)·c(OH⁻)，酸碱抑制水的电离、水解盐促进；pH=−lg c(H⁺)，酸碱混合先算过量再定酸碱性。',
+  prev: ['weak-electrolyte'], next: ['salt-hydrolysis'],
+  lecture: [ {name:'水的电离与溶液的酸碱性', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'pH计算与酸碱混合练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'salt-hydrolysis': { title: '盐类的水解', stage: 'senior', cat: 'reaction', diff: 6.5, hot: true,
+  fact: '强碱弱酸盐显碱性、强酸弱碱盐显酸性，实质是盐的离子促进水的电离；「谁弱谁水解、谁强显谁性」口诀破题。',
+  prev: ['ph-water'], next: ['ksp'],
+  lecture: [ {name:'盐类的水解', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'溶液酸碱性判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ksp': { title: '沉淀溶解平衡', stage: 'senior', cat: 'reaction', diff: 6.6, hot: false,
+  fact: '难溶电解质在水中存在溶解平衡，溶度积 Ksp 只随温度变化；Q>Ksp 生成沉淀、Q<Ksp 沉淀溶解，沉淀转化趋向更难溶。',
+  prev: ['salt-hydrolysis'], next: ['crystal-structure'],
+  lecture: [ {name:'沉淀的生成与溶解', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'Ksp计算与图像练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'crystal-structure': { title: '晶体结构与性质', stage: 'senior', cat: 'matter', diff: 6.8, hot: false,
+  fact: '分子晶体、共价晶体、离子晶体、金属晶体的微粒与作用力各不相同；均摊法数原子、晶胞参数算密度是结构题两大基本功。',
+  prev: ['ksp'], next: [],
+  lecture: [ {name:'晶体结构与性质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'晶胞计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

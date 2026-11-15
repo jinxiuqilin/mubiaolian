@@ -1,0 +1,2244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 初高中政治知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）政治知识目标站 —— 初中到高中政治主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#1f7a8c" />
+<meta property="og:title" content="目标链 · 初高中政治知识目标站" />
+<meta property="og:description" content="初中到高中政治主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-pol.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M12 5v14M8.5 19h7M6 8h12' stroke='%23f6f7f4' stroke-width='1.6' stroke-linecap='round'/><path d='M6 8l-2.6 5.5M6 8l2.6 5.5M3.4 13.5a2.6 2.6 0 0 0 5.2 0M18 8l-2.6 5.5M18 8l2.6 5.5M15.4 13.5a2.6 2.6 0 0 0 5.2 0' fill='none' stroke='%23f6f7f4' stroke-width='1.5' stroke-linecap='round'/></svg>" />
+<style>
+  :root {
+    --bg: #f3f7f8;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #1f7a8c;
+    --accent-deep: #14596b;
+    --accent-soft: #e9f3f5;
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(31,122,140,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(31,122,140,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #5ba3b3); box-shadow: 0 3px 10px -2px rgba(31,122,140,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #7cb5c2 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(20,89,107,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(31,122,140,.06); border: 1px dashed rgba(31,122,140,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(31,122,140,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(31,122,140,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #7cb5c2); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(31,122,140,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #5ba3b3);
+    box-shadow: 0 8px 18px -8px rgba(31,122,140,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(31,122,140,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(31,122,140,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(31,122,140,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f0f6f7; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #f9fbfc, #eaf4f6);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链政治站"><i class="subj-ico">政</i>政治</span>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">56 个主干环 · 224 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>初高中政治知识<span class="accent">目标链</span></h1>
+  <p>政治从七年级起始、两段贯通：初中到高中主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/56</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：依法治国" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链政治站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">广东卷 · 省自主命题 · 2021-2025 · 人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链政治站 · 知识点数据（56 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：56 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 224 个 ============ */
+/* ============ 历年高考考情（广东卷 · 省自主命题 2021-2025）：环id → {年份:[T题号·考点]} ============
+ * 广东省自2021年起新高考选考科目（含思想政治）均为省自主命题（语数英才是新课标Ⅰ卷）。
+ * 数据源：各年真题原文（中国教育在线 Word / 掌上高考 PDF）逐题核对，解析版与官方平台内容交叉验证。
+ * 人工整理，或有遗漏。卷型恒定：16 道选择（48分）+ 4 道非选择（52分），共 20 题；
+ * 2021-2022 旧教材命题，2023 起新教材（含法律与生活、逻辑与思维等选必内容）。
+ * 已知瑕疵：2024 T16 原卷设问有勘误（「下列判断一定正确的是」）；2025 卷头「19小题」系原卷标注笔误，实际编号 1-20。 */
+const EXAM = {
+  'pol-socialism': {
+    2022: ['T16·唯物史观的创立'],
+  },
+  'pol-transformation': {
+    2023: ['T1·中国式现代化历程'],
+  },
+  'pol-reform': {
+    2024: ['T1·改革开放与顶层设计'],
+  },
+  'pol-newera': {
+    2025: ['T1·中国梦与民族复兴'],
+  },
+  'pol-ownership': {
+    2025: ['T5·集体经济与农民增收'],
+  },
+  'pol-market': {
+    2025: ['T4·供给侧传导路径分析'],
+    2023: ['T4·价格机制与政府引导'],
+    2022: ['T3·价格弹性与促消费'],
+    2021: ['T2·关税与价格变动', 'T3·供给曲线特例判断', 'T4·价格变动成因分析'],
+  },
+  'pol-development': {
+    2025: ['T2·城乡融合发展'],
+    2024: ['T4·低空经济与新发展动能'],
+    2022: ['T2·融入新发展格局'],
+  },
+  'pol-distribution': {
+    2024: ['T5·个人养老金税收优惠'],
+    2023: ['T3·养老保险全国统筹'],
+  },
+  'pol-party': {
+    2025: ['T6·党的巡视与党内监督'],
+    2024: ['T6·党纪学习与自我革命'],
+    2023: ['T2·党章修改的意义', 'T8·党员先锋模范作用'],
+    2021: ['T18·党的建设与自我革命'],
+  },
+  'pol-congress': {
+    2024: ['T17·人大备案审查制度'],
+    2023: ['T19·人大代表议案建议履职'],
+  },
+  'pol-consult': {
+    2025: ['T7·民主党派参政议政'],
+    2024: ['T7·政协民主监督与检察监督'],
+    2022: ['T7·多党合作与政治协商'],
+  },
+  'pol-ethnic-grassroots': {
+    2024: ['T8·基层协商与社区治理'],
+    2023: ['T7·民族地区协调发展'],
+    2022: ['T6·基层民主与乡村治理'],
+  },
+  'pol-ruleoflaw': {
+    2025: ['T17·司法职能与著作权侵权'],
+    2023: ['T9·人民法院司法为民'],
+    2022: ['T9·检察机关公益诉讼'],
+    2021: ['T7·司法机关与依法治国'],
+  },
+  'pol-philosophy': {
+    2024: ['T9·唯物主义与唯心主义'],
+    2021: ['T13·哲学对科学的启迪'],
+  },
+  'pol-material': {
+    2024: ['T10·漫画哲理：意识与真理'],
+    2022: ['T12·意识反映与联系观'],
+    2021: ['T12·意识能动性的限度'],
+  },
+  'pol-practice': {
+    2024: ['T10·漫画哲理：意识与真理'],
+    2022: ['T13·实践与艺术创作', 'T20·认识论与价值选择'],
+  },
+  'pol-dialectic': {
+    2025: ['T10·整体与部分的功能'],
+    2024: ['T11·价值判断与联系多样性'],
+    2023: ['T11·矛盾观与量变质变'],
+    2022: ['T12·意识反映与联系观'],
+    2021: ['T15·规律与整体部分关系', 'T16·联系多样性与条件性'],
+  },
+  'pol-contradiction': {
+    2025: ['T8·矛盾特殊性与地域文化'],
+    2022: ['T15·矛盾对立统一启示'],
+    2021: ['T20·矛盾分析法应用'],
+  },
+  'pol-history': {
+    2024: ['T20·社会历史本质与辩证分合'],
+    2023: ['T12·社会意识的能动作用'],
+  },
+  'pol-value': {
+    2025: ['T19·月壤砖：价值·文化·创新'],
+    2024: ['T11·价值判断与联系多样性'],
+    2022: ['T14·劳动教育的价值', 'T20·认识论与价值选择'],
+    2021: ['T14·价值观的导向作用', 'T19·革命家书与理想信念'],
+  },
+  'pol-culture-basics': {
+    2022: ['T11·优秀文化的社会作用'],
+    2021: ['T10·科技与文化消费变迁'],
+  },
+  'pol-tradition': {
+    2025: ['T11·礼仪文化与教化功能'],
+    2023: ['T10·工匠精神与文化传承'],
+    2022: ['T10·非遗传承与文化传播'],
+    2021: ['T11·文化继承与创新'],
+  },
+  'pol-confidence': {
+    2025: ['T3·中国话语的世界影响'],
+    2024: ['T19·中国故事与国际传播'],
+  },
+  'pol-intl': {
+    2025: ['T13·全球南方与全球治理', 'T20·中马命运共同体之道'],
+    2024: ['T13·中国与WTO改革'],
+    2023: ['T14·上合组织与国际合作', 'T18·数字丝路与经济全球化'],
+    2022: ['T18·公共外交与中国形象'],
+    2021: ['T9·联合国的作用'],
+  },
+  'pol-law-life': {
+    2025: ['T14·民法典调整范围', 'T15·监护与财产权保护', 'T17·司法职能与著作权侵权'],
+    2024: ['T14·动产交付与不动产登记', 'T15·证据种类与行政诉讼', 'T18·以旧换新与产品责任'],
+    2023: ['T15·劳动合同与劳动者权益', 'T17·预制菜产业与合同违约'],
+  },
+  'pol-logic': {
+    2025: ['T16·全称判断推理运用', 'T19·月壤砖：价值·文化·创新'],
+    2024: ['T16·直言判断推理', 'T20·社会历史本质与辩证分合'],
+    2023: ['T16·复合判断推理'],
+  },
+};
+/* 广东卷真题原文（均已探活并下载验证；2021/2022 为 eol Word 原卷，2023-2025 为掌上高考官方 PDF） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=pol&y=2021',
+  2022: 'gaokao.html?s=pol&y=2022',
+  2023: 'gaokao.html?s=pol&y=2023',
+  2024: 'gaokao.html?s=pol&y=2024',
+  2025: 'gaokao.html?s=pol&y=2025',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 初中 · 成长与自我 ---- */
+  'pol-intro': [
+    { t: '中学时代的独特价值', d: '中学时代见证从少年到青年的生命进阶，为人一生的发展奠定基础。易错：把中学时代仅仅当作小学的延续——它提供了发展自我的多种机会，是人生发展的新阶段。' },
+    { t: '少年梦想的特点', d: '少年的梦想与个人的人生目标紧密相连，与时代的脉搏紧密相连、与中国梦密不可分。易错：梦想越大越好——梦想应指向明确的努力方向并付诸行动，空想无法变成现实。' },
+    { t: '努力是实现梦想的桥梁', d: '努力是一种生活态度，是不服输的坚忍和从头再来的勇气；努力需要立志、需要坚持。易错：只把理想挂嘴边——把梦想落实在每天的具体行动中才有意义。' },
+    { t: '个人与时代的关系', d: '个人梦想汇入中国梦才有更持久的生命力。易错：认为个人理想与国家发展无关——个人前途与国家命运紧密相连，这是本课的价值落点。' },
+  ],
+  'pol-learning': [
+    { t: '学习的内涵与表现', d: '学习不局限于课堂与书本，包括知识的获取、各种能力的培养与如何做人。易错：认为学习就是读课本考试——探究、发现、体验、感悟都是学习。' },
+    { t: '学习的重要性', d: '学习点亮生命、给生命添加养料，学习激发前进的动力。易错：「学习是为了应付考试」——学习更是成长本身的需要，没有终点、终生都需要学习。' },
+    { t: '学会学习的方法', d: '学会学习需要发现并保持对学习的兴趣、掌握科学的学习方法、善于运用不同的学习方式。易错：照搬学霸的时间表——学习方法因人而异，适合自己的才是最好的。' },
+    { t: '自主学习与终生学习', d: '自主学习是主动的、有计划的学习状态；学习伴随着人的成长而发展，终生学习是时代要求。易错：把「学习」等同于「上学」——离开学校后学习依然继续。' },
+  ],
+  'pol-self': [
+    { t: '正确认识自己的意义', d: '正确认识自己能促进自我发展、促进与他人的交往。易错：认识自我就是找缺点——认识自我既包括优点也包括不足，目的是更好地发展。' },
+    { t: '认识自己的途径', d: '从生理、社会、心理等方面认识自己，通过自我评价与他人评价认识自己。易错：只信别人怎么说——他人评价要冷静分析、既不盲从也不忽视。' },
+    { t: '接纳与欣赏自己', d: '接纳自己的全部——优点与不完美、现在与过去；欣赏自己的独特、努力与奉献。易错：接纳自己等于放纵缺点——接纳是坦然面对并不断改进，不是躺平。' },
+    { t: '做更好的自己', d: '做更好的自己要扬长避短、主动改正缺点、激发潜能，并在与他人共同生活的过程中成长。易错：与别人比较才是进步——更好的自己指与昨天的自己比。' },
+  ],
+  'pol-friend': [
+    { t: '友谊的特质', d: '友谊是一种亲密的关系、是平等的与双向的、是一种心灵的相遇。易错：「好朋友就该无条件帮忙」——友谊平等双向，不是单方面索取。' },
+    { t: '澄清友谊的误区', d: '友谊不是一成不变的、竞争并不必然伤害友谊、朋友可以不同。易错：朋友之间有竞争就是背叛——良性竞争能促进共同成长。' },
+    { t: '建立与呵护友谊', d: '建立友谊要开放自己、持续行动；呵护友谊要用心关怀、尊重对方、正确处理冲突、正确对待伤害。易错：网上加个好友就是朋友——建立友谊需要时间与真心投入。' },
+    { t: '网上交友有边界', d: '网上交往具有虚拟、平等、自主等特点，要考虑影响与后果、将网上的朋友转化为现实中的朋友需要慎重。易错：轻易向网友透露个人信息——虚拟交往有安全风险。' },
+  ],
+  'pol-family': [
+    { t: '家庭的含义', d: '家庭由婚姻关系、血缘关系或收养关系结合成的亲属生活组织构成。易错：只有血缘才是家人——收养关系同样是家庭关系的基础。' },
+    { t: '亲情的表现差异', d: '每个家庭的亲情表现不尽相同，有的温馨和睦、有的磕磕绊绊。易错：父母唠叨严厉就是不爱——亲情表达方式多样，不能只看表面。' },
+    { t: '化解亲子冲突', d: '亲子冲突需要双方良性互动与沟通：掌握互动沟通的技巧、选择不伤害父母感情的做法。易错：冷战是对抗的最好方式——回避不解决问题，沟通才是出路。' },
+    { t: '孝亲敬长', d: '孝亲敬长是中华民族的传统美德，也是每个中国公民的法定义务。易错：未成年只能等长大再尽孝——聆听、倾诉、以实际行动帮父母分忧都是尽孝。' },
+  ],
+  'pol-teacher': [
+    { t: '教师职业的理解', d: '教师是履行教育教学职责的专业人员，承担教书育人的使命。易错：老师只是传授知识——老师还承担塑造人格、培养品德的育人职责。' },
+    { t: '面对风格不同的老师', d: '每位老师都有独特风格，承认老师之间的差异、接纳并尊重不同风格的老师。易错：只上自己喜欢的老师的课——尊重风格差异本身是重要的学习态度。' },
+    { t: '教学相长', d: '教与学是师生相互陪伴、相互促进、共同成长的过程；正确对待老师的表扬与批评。易错：批评就是针对我——老师的批评意味着关爱、提醒和期待。' },
+    { t: '师生交往的礼仪与界限', d: '彼此尊重、平等相待、相互关心、携手共进；与老师交往要注意方式方法。易错：和老师称兄道弟才亲近——尊重前提下的真诚沟通才是好的师生关系。' },
+  ],
+  'pol-life': [
+    { t: '生命的特点', d: '生命来之不易、是独特的、是不可逆的、是短暂的。易错：生命可以重来——生命的不可逆性要求我们倍加珍惜。' },
+    { t: '生命有接续', d: '在人类生命的接续中，我们总能为自己的生命找到一个位置，担当一份使命。易错：个人死亡就是生命的终结——生命的接续包括身体生命、社会关系中的生命与精神信念上的生命。' },
+    { t: '敬畏生命', d: '敬畏生命让我们从对自己生命的珍惜走向对他人生命的关怀，体悟生命价值。易错：只顾自己安全就是珍爱生命——对生命的敬畏是内在的自愿关怀，不是外在约束。' },
+    { t: '守护生命', d: '爱护身体：养成健康生活方式、掌握基本的自救自护方法；养护精神：守住心灵、充实精神世界。易错：只重身体不重精神——精神生命同样需要养护。' },
+  ],
+  'pol-resilience': [
+    { t: '挫折的普遍性', d: '生活的道路并不总是平坦的，挫折是普遍存在的。易错：好学生不会有挫折——挫折与身份无关，人们对挫折的认识和态度决定了感受差异。' },
+    { t: '对挫折的不同反应', d: '面对不同的挫折，不同的人会有不同的情绪感受和行为反应；即使遭遇同样的挫折，人们的反应也不同。易错：挫折感完全由挫折大小决定——对挫折的认知和态度才是关键。' },
+    { t: '发掘生命的力量', d: '我们需要及时调整自己，正确对待挫折；发掘生命的力量要培养面对困难的勇气和坚强的意志。易错：求助就是软弱——向他人寻求帮助是增强生命韧性的方法之一。' },
+    { t: '增强韧性的方法', d: '欣赏培养幽默感、和自己信任的人谈一谈、考虑并接受最坏的结果、关心帮助他人、培养兴趣爱好。易错：只记住一句「要坚强」——韧性要靠具体方法练习出来。' },
+  ],
+  'pol-youth': [
+    { t: '青春期身体变化', d: '身体变化主要表现在身体外形的变化、内部器官的完善、性机能的成熟。易错：发育早晚不正常——受遗传、营养、锻炼等影响，发育各不相同，都是正常现象。' },
+    { t: '正视身体变化', d: '正视身体的变化，欣然接受青春花蕾的绽放；在追求形体仪表等外在美的同时提高品德和文化修养，体现青春的内在美。易错：以瘦为美盲目节食——外在美与内在美要统一。' },
+    { t: '思维的独立与批判', d: '思维的独立并不等同于一味追求独特，而是有自己独到的见解；思维的批判性表现在对事情有自己的看法并敢于表达。易错：批判性思维就是挑刺——批判要有建设性，只为质疑而质疑不是独立思考。' },
+    { t: '青春的证明', d: '自信让我们充满激情，自强让青春奋进的步伐更加坚定。易错：自负当自信——自信建立在正确认识自己之上，自负是过高估计自己。' },
+  ],
+  'pol-emotion': [
+    { t: '情绪的基本类型', d: '基本情绪包括喜、怒、哀、惧，还有害羞、焦虑、厌恶和内疚等复杂情绪。易错：情绪有好坏之分——情绪本身无好坏，表达和管理方式才有恰当与否。' },
+    { t: '情绪的影响因素', d: '个人的生理周期、对某件事情的预期、周围的舆论氛围、自然环境等会影响情绪。易错：情绪完全由外界决定——对事情的看法才是情绪反应的内在因素。' },
+    { t: '情绪的调节方法', d: '改变认知评价、转移注意、合理宣泄、放松训练等是常用的调节方法。易错：宣泄就是发脾气——合理宣泄要在道德与法律允许的范围内。' },
+    { t: '情感与情绪的关系', d: '情感与情绪紧密相关：情绪是短暂的、不稳定的，情感是稳定的、持久的。易错：把情感等同于情绪——情感是在多次情绪体验的基础上形成的稳定感受。' },
+  ],
+  'pol-collective': [
+    { t: '集体的力量来源', d: '集体的力量来源于成员共同的目标和团结协作。易错：人多就是集体力量大——没有共同目标与协作的人群只是乌合之众。' },
+    { t: '集体与个人的关系', d: '集体的力量是强大的，在某种程度上可以影响甚至改变一个人；个人在集体生活中会自觉不自觉地产生与集体要求相一致的态度和行为。易错：集体利益与个人利益总冲突——二者本质上是一致的。' },
+    { t: '集体生活成就我', d: '集体生活可以培养我们负责任的态度和能力、培养人际交往的基本态度和能力，发展个性、涵养品格。易错：集体生活压抑个性——在集体中包容他人不同、发展自己的个性。' },
+    { t: '共建美好集体', d: '美好集体是民主的、公正的，充满关怀与友爱的，善于合作的，充满活力的；共建需要自主建设、自我管理、共同确定愿景。易错：建设班集体是班主任的事——每位成员都是集体的主人。' },
+  ],
+  'pol-law-basic': [
+    { t: '生活与法律息息相关', d: '法律就在我们身边，我们的生活与法律息息相关；法律深深地嵌入我们的生活之中，渗透到社会的方方面面。易错：不犯法就不用懂法——法律既是行为规范也是权利保障，每个人都生活在法律之中。' },
+    { t: '法律的本质', d: '法律是统治阶级意志的体现，是用来统治国家、管理社会的工具，也是调整社会关系、判断是非曲直、处理矛盾和纠纷的标尺。易错：法律只约束老百姓——我国法律体现广大人民的意志，对全体社会成员有普遍约束力。' },
+    { t: '法律的三个特征', d: '法律由国家制定或认可、由国家强制力保证实施、对全体社会成员具有普遍约束力。易错：道德也靠强制力实施——国家强制力（如军队、警察、法庭）是法律区别于道德等行为规范的最主要特征。' },
+    { t: '法治的意义', d: '法治是人们共同的生活愿景，也是国家治理现代化的重要标志；全面推进依法治国总目标是建设中国特色社会主义法治体系、建设社会主义法治国家。易错：法治就是刑罚打击——法治更强调规则之治与权利保障。' },
+  ],
+  'pol-society': [
+    { t: '个人与社会的关系', d: '个人是社会中的人，人的身份是在社会关系中确定的；社会是个人成长的大舞台。易错：「个人离开社会照样能生存」——人的生存和发展离不开社会提供的种种条件。' },
+    { t: '感受社会生活', d: '参与社会生活的方式是多样的，人们在社会交往中形成了各种社会关系。易错：学生只要读书不问社会——关注社会发展变化是必修功课。' },
+    { t: '亲社会行为', d: '亲社会行为又叫积极的社会行为，谦让、分享、帮助他人、关心社会发展等都属于亲社会行为。易错：亲社会行为是天生就有的——它是在人际交往和社会实践中养成的。' },
+    { t: '网络改变世界', d: '网络丰富日常生活、推动社会进步；网络信息良莠不齐、沉迷网络影响正常生活。易错：网络是虚拟的可以随意发言——网络生活同样是公共生活，要遵守道德与法律。' },
+  ],
+  'pol-rules': [
+    { t: '秩序与规则', d: '社会规则明确社会秩序的内容、保障社会秩序的实现；社会规则包括道德、纪律、法律等。易错：规则限制自由——规则划定了自由的边界，是人们享有自由的保障。' },
+    { t: '自由与规则不可分', d: '社会规则划定了自由的边界，自由不是随心所欲，它受道德、纪律、法律等社会规则的约束。易错：想干什么就干什么才是自由——越过边界的自由会侵犯他人自由并失去自己的自由。' },
+    { t: '自觉遵守规则', d: '遵守社会规则需要他律和自律，既监督、提醒、奖惩等外在约束，也自我约束；发自内心地敬畏规则。易错：没人看见就不守规则——自律是把规则内化于心。' },
+    { t: '维护与改进规则', d: '我们要坚定维护规则，从自己做起、自觉遵守规则；在保证自身安全的前提下提醒、监督、帮助他人遵守规则。易错：规则一成不变——规则随社会发展需要改进和完善，积极为新规则建言也是参与。' },
+  ],
+  'pol-responsibility': [
+    { t: '责任与角色', d: '责任是一个人分内应该做的事情；在社会生活的舞台上，每个人都扮演着多种角色，每种角色都意味着承担相应的责任。易错：角色只有一个——同一人可以同时是子女、学生、公民等多种角色，责任随之多样。' },
+    { t: '责任的来源', d: '责任来自对他人的承诺、职业要求、道德原则、法律规定等。易错：责任都是别人强加的——很多责任源于承诺与道德自觉。' },
+    { t: '负责任的态度', d: '只有人人具有责任心，自觉履行应尽的责任，我们才能共享更加幸福美好的生活。易错：承担责任的代价大于回报就不干——不计代价与回报的奉献精神是社会责任感的集中表现。' },
+    { t: '做负责任的人', d: '对承担责任的代价与回报进行正确评估，作出合理选择；无论何时何地都努力提升自身素质、增强履行责任的能力。易错：把责任推给他人或环境——主动承担、不推诿是担当的核心。' },
+  ],
+  'pol-nation-interest': [
+    { t: '国家利益的内涵', d: '国家利益是一个主权国家在国际社会中生存需求和发展需求的总和，关系民族生存、国家兴亡。易错：国家利益就是政府利益——它包括安全利益、政治利益、经济利益、文化利益等，最根本的是国家的独立自主。' },
+    { t: '国家核心利益', d: '国家的核心利益包括国家主权、国家安全、领土完整、国家统一、宪法确立的国家政治制度和社会大局稳定、经济社会可持续发展的基本保障。易错：核心利益可以商量——核心利益不容侵犯、不容交易。' },
+    { t: '国家利益与人民利益', d: '在我们国家，国家利益反映广大人民的共同需求，是人民利益的集中表现，二者相辅相成、高度统一。易错：把二者对立起来——国家利益至上，人民利益高于一切。' },
+    { t: '总体国家安全观', d: '坚持总体国家安全观，以人民安全为宗旨、以政治安全为根本、以经济安全为基础；维护国家安全是每个公民的法定义务。易错：国家安全只是军警的事——人人都是国家安全的一道防线。' },
+  ],
+  'pol-constitution': [
+    { t: '宪法的内容特点', d: '宪法规定国家生活中带有全局性、根本性的问题：国家性质、根本制度、公民基本权利和义务等。易错：宪法把所有法律内容都写进去——宪法只规定最根本最重要的问题，普通法律是宪法的具体化。' },
+    { t: '宪法的最高法律效力', d: '宪法具有最高的法律效力：宪法是其他法律的立法基础和立法依据，任何法律不得与宪法相抵触。易错：宪法与其他法律地位平等——普通法律与宪法相抵触的部分无效。' },
+    { t: '根本活动准则', d: '宪法是一切组织和个人的根本活动准则，全国各族人民、一切国家机关和武装力量、各政党和各社会团体都必须以宪法为根本活动准则。易错：只有政府部门要遵守宪法——包括政党、团体在内的一切组织和个人都在其列。' },
+    { t: '宪法监督与增强宪法意识', d: '全国人大及其常委会监督宪法实施；增强宪法意识要对国家公职人员进行宪法宣誓、开展宪法宣传教育。易错：宪法离生活很远——设立国家宪法日、宪法宣誓制度都在提醒宪法就在身边。' },
+  ],
+  'pol-rights': [
+    { t: '公民基本权利的种类', d: '政治权利和自由（选举权和被选举权、政治自由、监督权）、人身自由、社会经济与文化教育权利等。易错：把一般权利当基本权利——基本权利由宪法确认，如人格尊严不受侵犯。' },
+    { t: '选举权与被选举权', d: '选举权和被选举权是公民的一项基本政治权利，行使这项权利是公民参与管理国家和管理社会的基础。易错：班级选班干部也是行使选举权——宪法所指是选举人大代表等国家权力机关组成人员的权利。' },
+    { t: '人身自由', d: '人身自由不受侵犯、人格尊严不受侵犯、住宅不受侵犯、通信自由和通信秘密受法律保护。易错：生命健康权不属于人身自由——人身自由广义上包含人身自由不受侵犯与人格尊严等。' },
+    { t: '依法行使权利', d: '行使权利有界限：不得损害国家的、社会的、集体的利益和其他公民的合法的自由和权利；维护权利守程序，依照法定方式与程序维权。易错：权利无限可用——权利有边界，滥用权利要担责。' },
+  ],
+  'pol-duties': [
+    { t: '公民基本义务的种类', d: '遵守宪法法律、维护国家利益（维护国家统一和民族团结、维护国家安全荣誉和利益）、依法服兵役、依法纳税等。易错：纳税只是有钱人的义务——依法纳税是每个公民的基本义务。' },
+    { t: '法定义务须履行', d: '法定义务是由宪法和法律规定的公民必须履行的义务，不履行法定义务要承担相应法律责任。易错：义务可做可不做——法定义务具有强制性。' },
+    { t: '违反义务须担责', d: '违反法定义务必须依法承担相应的法律责任：民事责任、行政责任、刑事责任。易错：违宪不担责——违反宪法同样要被追究，违宪审查制度保障宪法实施。' },
+    { t: '权利与义务相统一', d: '权利与义务相互依存、相互促进；公民既是合法权利的享有者，又是法定义务的承担者。易错：先享受权利再谈义务——不能只享有权利不履行义务，也不能只履行义务不享有权利。' },
+  ],
+  'pol-justice': [
+    { t: '无法治不自由', d: '法治与自由相互联系、无法割裂：法治标定了自由的界限，法治是自由的保障。易错：限制自由的法治不是好法治——正是法治让自由有了可靠保障。' },
+    { t: '法律面前人人平等', d: '任何组织和个人都没有超越宪法和法律的特权，公民平等地享有权利、平等地履行义务。易错：领导干部可以例外——特权思想与法治精神相悖。' },
+    { t: '公平的内涵', d: '公平包括权利公平、规则公平、机会公平。易错：平均就是公平——公平不等于平均，机会与规则的平等才是核心。' },
+    { t: '守护正义', d: '正义是社会制度的重要价值，是社会和谐的基本条件；守护正义需要勇气和智慧，面对非正义行为要敢于斗争、讲究策略。易错：见义勇为就是蛮干——守护正义要在保证自身安全前提下依法进行。' },
+  ],
+  'pol-economy': [
+    { t: '改革开放的意义', d: '改革开放是党的一次伟大觉醒，是决定当代中国命运的关键抉择，是当代中国大踏步赶上时代的重要法宝。易错：改革就是改掉社会主义制度——改革是社会主义制度的自我完善和发展。' },
+    { t: '基本经济制度', d: '公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制共同构成社会主义基本经济制度。易错：把基本经济制度只理解为所有制——分配制度与经济体制同属基本经济制度。' },
+    { t: '公有制与非公有制', d: '公有制经济与非公有制经济都是社会主义市场经济的重要组成部分，都是我国经济社会发展的重要基础。易错：民营经济可有可无——国家鼓励、支持、引导非公有制经济发展。' },
+    { t: '创新是第一动力', d: '创新是引领发展的第一动力，是建设现代化经济体系的战略支撑；创新不限于科技，生活各领域都需要创新。易错：创新只是科学家的事——人人都可以创新，创新精神需要从小培养。' },
+  ],
+  'pol-democracy': [
+    { t: '社会主义民主的本质', d: '我国社会主义民主是维护人民根本利益的最广泛、最真实、最管用的民主，人民当家作主是社会主义民主政治的本质和核心。易错：民主就是全民直选一切——民主实现形式多样，我国通过人民代表大会制度等实现人民当家作主。' },
+    { t: '两种民主形式', d: '选举民主与协商民主是我国社会主义民主的两种重要形式。易错：只知道投票——协商民主同样是人民当家作主的重要实现形式。' },
+    { t: '民主制度载体', d: '人民代表大会制度、中国共产党领导的多党合作和政治协商制度、民族区域自治制度、基层群众自治制度是人民当家作主的制度保障。易错：把根本政治制度与基本政治制度混为一谈——人大制度是根本政治制度。' },
+    { t: '增强民主意识', d: '公民要自觉增强民主意识：依法参与民主选举、民主协商、民主决策、民主管理、民主监督。易错：民主只是国家机关的事——公民的有序政治参与是社会主义民主的重要体现。' },
+  ],
+  'pol-law-china': [
+    { t: '法治的要求', d: '法治要求实行良法之治、实行善治。易错：有法律就有法治——良法反映最广大人民的意志和利益、维护社会秩序与公平正义；善治还要求公众参与、依法治理。' },
+    { t: '全面依法治国的地位', d: '全面依法治国是中国特色社会主义的本质要求和重要保障，是国家治理的一场深刻革命。易错：依法治国只是司法机关的事——它需要全社会共同推进。' },
+    { t: '法治政府', d: '法治政府是按照法治原则运作的政府，政府的各项权力都应该在法治轨道上运行；依法行政的核心是规范政府的行政权。易错：依法行政约束公民——它约束的对象是政府及其工作人员。' },
+    { t: '厉行法治的要求', d: '厉行法治要推进科学立法、严格执法、公正司法、全民守法；公民要增强尊法学法守法用法意识。易错：法治就是治民——法治既规范公共权力也保障公民权利。' },
+  ],
+  'pol-culture': [
+    { t: '中华文化的根与魂', d: '文化是一个国家、一个民族的灵魂；中华优秀传统文化是中华民族的精神命脉。易错：传统文化已经过时——中华文化积淀着中华民族最深层的精神追求，仍具有时代价值。' },
+    { t: '中华文化的特点', d: '中华文化源远流长、博大精深。易错：把中华文化与汉文化等同——中华文化是各民族文化的集大成。' },
+    { t: '文化自信的底气', d: '文化自信来自中华优秀传统文化的积淀、传承与创新、发展，来自当今中国特色社会主义的蓬勃实践。易错：文化自信就是复古——自信建立在创造性转化与创新性发展之上。' },
+    { t: '传统美德的传承', d: '中华传统美德内涵丰富：孝老爱亲、诚实守信、助人为乐、敬业奉献等；美德的力量在于践行。易错：美德背诵即可——美德需要在生活中身体力行。' },
+  ],
+  'pol-dream': [
+    { t: '中国梦的内涵', d: '中国梦的基本内涵是国家富强、民族振兴、人民幸福；实现中华民族伟大复兴是近代以来中华民族最伟大的梦想。易错：中国梦只是经济目标——它涵盖国家、民族、人民三个层面。' },
+    { t: '实现中国梦的路径', d: '实现中国梦必须走中国道路、弘扬中国精神、凝聚中国力量。易错：照搬别国发展模式——中国道路就是中国特色社会主义道路。' },
+    { t: '「两个一百年」与两步走', d: '到本世纪中叶把我国建成富强民主文明和谐美丽的社会主义现代化强国；分两个阶段安排：2035 年基本实现社会主义现代化。易错：把建成时间记成 2035 年——2035 年是基本实现现代化，本世纪中叶建成强国。' },
+    { t: '共享发展成果', d: '发展为了人民、发展依靠人民、发展成果由人民共享，让人民群众有更多获得感、幸福感、安全感。易错：发展只是追求 GDP——发展的人民性是中国特色社会主义的本质要求。' },
+  ],
+  'pol-world': [
+    { t: '当今世界的特点', d: '当今世界是一个开放的世界、发展的世界、紧密联系的世界。易错：退回封闭可以独善其身——闭关自守只会落后于时代。' },
+    { t: '经济全球化', d: '经济全球化的重要表现：商品生产在全球范围内完成、商品贸易在全球范围内进行。易错：全球化只有好处——它也带来风险与挑战，需要趋利避害。' },
+    { t: '文化多样性', d: '文化多样性是人类社会的基本特征，是世界文化充满活力的表现，也是人类文明进步的重要动力。易错：文化差异是冲突根源——正确对待差异能促进文明互鉴。' },
+    { t: '人类命运共同体', d: '人类命运共同体理念主张建设持久和平、普遍安全、共同繁荣、开放包容、清洁美丽的世界。易错：共同体就是一体化——它强调合作共赢而非消除国家差异。' },
+  ],
+  'pol-china-world': [
+    { t: '中国的国际地位', d: '中国是世界格局中的重要力量，国际影响力、感召力、塑造力显著提升。易错：夸大或贬低中国作用——要客观认识中国仍处于并将长期处于社会主义初级阶段的基本国情。' },
+    { t: '中国担当', d: '中国积极参与全球治理，为解决全球性问题贡献中国智慧和中国方案。易错：中国要当世界警察——中国推动的是共商共建共享的全球治理观。' },
+    { t: '一带一路', d: '「一带一路」倡议秉持共商共建共享原则，是构建人类命运共同体的重要实践平台。易错：一带一路是地缘政治工具——它是开放包容的经济合作倡议。' },
+    { t: '和平发展道路', d: '中国始终走和平发展道路，坚持独立自主的和平外交政策。易错：强大会走向霸权——中国承诺永不称霸、永不扩张。' },
+  ],
+  'pol-youth-future': [
+    { t: '少年强则国强', d: '青少年的品格影响着国家的未来发展，青年一代有理想、有本领、有担当，国家就有前途，民族就有希望。易错：国家大事与少年无关——少年的责任担当关系民族未来。' },
+    { t: '把握机遇迎接挑战', d: '当今时代机遇与挑战并存，要善于抓住机遇、勇于迎接挑战，做好积累与准备。易错：等准备好了再出发——在实践中成长，边干边学。' },
+    { t: '职业准备与敬业精神', d: '做好职业准备要考虑自己的兴趣爱好、能力经验与社会需求；敬业精神是职业道德的灵魂。易错：只看薪资选职业——职业选择应兼顾个人价值与社会价值。' },
+    { t: '回望成长走向未来', d: '回望成长收获经验与感悟，带着自信与自强走向未来，做有自信、懂自尊、能自强的中国人。易错：毕业就是学习的终点——终生学习是走向未来的必备姿态。' },
+  ],
+  /* ---- 高中 · 必修1 中国特色社会主义 ---- */
+  'pol-socialism': [
+    { t: '原始社会与奴隶社会', d: '原始社会生产力低下、共同劳动共同占有生产资料；奴隶社会出现了国家与阶级剥削，是历史的一大进步。易错：认为剥削出现就是历史倒退——判断标准是生产力是否发展。' },
+    { t: '封建社会与资本主义社会', d: '封建社会的经济基础是地主阶级占有土地，资本主义社会资本家占有生产资料、雇佣工人劳动。易错：把资本主义繁荣归功于资本家善心——其发展建立在雇佣劳动创造的剩余价值之上。' },
+    { t: '空想社会主义', d: '空想社会主义者揭露资本主义弊端、勾画理想社会，但看不到人民群众的力量，没有找到变革社会的力量与正确道路。易错：把空想社会主义当成科学社会主义的实践形态——它只是思想来源之一。' },
+    { t: '科学社会主义的诞生', d: '资本主义发展和工人运动的兴起是历史前提；1848 年《共产党宣言》发表标志着科学社会主义诞生。易错：认为科学社会主义是纯粹的书本推演——它建立在唯物史观与剩余价值学说两大发现之上。' },
+  ],
+  'pol-revolution': [
+    { t: '近代中国的基本国情', d: '半殖民地半封建社会是近代中国的基本国情，帝国主义与中华民族的矛盾、封建主义与人民大众的矛盾是主要矛盾。易错：只背「两半」概念——国情决定革命性质、步骤与前途，这才是考点核心。' },
+    { t: '新旧民主主义革命的区别', d: '根本区别在领导权：旧民主主义革命由资产阶级领导，新民主主义革命由无产阶级（通过中国共产党）领导。易错：把「新」理解为时间更晚——领导阶级与革命前途才是「新」的实质。' },
+    { t: '两个革命的关系', d: '新民主主义革命是社会主义革命的必要准备，社会主义革命是新民主主义革命的必然趋势。易错：主张「毕其功于一役」——两个革命性质不同、相互衔接又不能混为一谈。' },
+    { t: '站起来的伟大飞跃', d: '中华人民共和国成立开辟了中国历史新纪元，实现了中华民族从「东亚病夫」到站起来的伟大飞跃。易错：把新中国成立与社会主义制度确立混为一谈——制度确立是 1956 年三大改造完成。' },
+  ],
+  'pol-transformation': [
+    { t: '过渡时期总路线', d: '「一化三改」：逐步实现国家的社会主义工业化，逐步实现对农业、手工业、资本主义工商业的社会主义改造。易错：把「一化」与「三改」割裂——二者是「一体两翼」的关系。' },
+    { t: '三大改造的方式', d: '对农业、手工业走合作化道路，对资本主义工商业实行公私合营与赎买政策。易错：认为赎买是让步软弱——和平赎买是社会主义改造史上的创举。' },
+    { t: '制度确立的意义', d: '1956 年生产资料私有制的社会主义改造基本完成，标志着社会主义制度在我国确立。易错：把三大改造完成与改革开放混淆——改革开放是 1978 年之后的事。' },
+    { t: '最广泛深刻的社会变革', d: '社会主义制度的确立实现了中华民族有史以来最为广泛而深刻的社会变革，为当代中国一切发展进步奠定了根本政治前提和制度基础。易错：忽略「最广泛最深刻」的定位表述。' },
+  ],
+  'pol-reform': [
+    { t: '改革开放的起点', d: '1978 年 12 月党的十一届三中全会重新确立马克思主义的思想路线、政治路线和组织路线，作出实行改革开放的重大决策。易错：把真理标准问题大讨论当成改革开放起点——它是思想先导，全会才是标志。' },
+    { t: '改革开放的意义', d: '改革开放是决定当代中国命运的关键一招，也是决定实现「两个一百年」奋斗目标、实现中华民族伟大复兴的关键一招。易错：低估开放作用——开放与改革同等重要。' },
+    { t: '中国特色社会主义的构成', d: '中国特色社会主义道路、理论、制度、文化四位一体，统一于中国特色社会主义伟大实践。易错：四者关系混淆——道路是实现途径、理论是行动指南、制度是根本保障、文化是精神力量。' },
+    { t: '四个自信', d: '坚定道路自信、理论自信、制度自信、文化自信。易错：自信等于自满——自信是在正视问题基础上的坚定，改革开放只有进行时没有完成时。' },
+  ],
+  'pol-newera': [
+    { t: '新时代的内涵', d: '中国特色社会主义进入新时代，这是我国发展新的历史方位，意味着近代以来久经磨难的中华民族迎来了从站起来、富起来到强起来的伟大飞跃。易错：三个「起来」对应阶段混淆——站起来（新中国成立）、富起来（改革开放）、强起来（新时代）。' },
+    { t: '主要矛盾的转化', d: '我国社会主要矛盾已转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。易错：认为主要矛盾变化改变了社会主义初级阶段的基本国情——基本国情与国际地位没有变。' },
+    { t: '坚持以人民为中心', d: '新时代坚持以人民为中心的发展思想，把人民对美好生活的向往作为奋斗目标。易错：以 GDP 为中心与以人民为中心混用——发展最终要落脚在人民福祉上。' },
+    { t: '一以贯之', d: '新时代坚持和发展中国特色社会主义要一以贯之，统筹推进「五位一体」总体布局、协调推进「四个全面」战略布局。易错：把「五位一体」当成经济布局——它包括经济、政治、文化、社会、生态文明建设五个方面。' },
+  ],
+  'pol-ownership': [
+    { t: '公有制经济的构成', d: '公有制经济包括国有经济、集体经济以及混合所有制经济中的国有成分和集体成分。易错：把混合所有制经济整体算作公有制——只有其中的国有和集体成分属于公有制。' },
+    { t: '公有制主体地位的体现', d: '公有资产在社会总资产中占优势，国有经济控制国民经济命脉、对经济发展起主导作用。易错：主体地位量化为数量越多越好——占优势要有质的优势，国有经济主导作用体现在控制力上。' },
+    { t: '非公有制经济的作用', d: '非公有制经济是社会主义市场经济的重要组成部分，在支撑经济增长、促进创新、扩大就业、增加税收等方面具有重要作用。易错：把非公有制经济当作补充地位——它与公有制经济都是重要基础。' },
+    { t: '「两个毫不动摇」', d: '毫不动摇巩固和发展公有制经济，毫不动摇鼓励、支持、引导非公有制经济发展。易错：二者对立理解——坚持二者共同发展才能激发市场活力。' },
+  ],
+  'pol-market': [
+    { t: '市场配置资源', d: '市场决定资源配置是市场经济的一般规律，主要通过价格、供求、竞争等机制实现。易错：价格由政府随时定——市场价格主要由市场形成。' },
+    { t: '市场调节的弊端', d: '市场调节存在自发性、盲目性、滞后性等固有的弊端，需要科学的宏观调控。易错：三种弊端不分——自发性是逐利违规、盲目性是信息不全跟风、滞后性是调节事后性。' },
+    { t: '社会主义市场经济的基本特征', d: '坚持党的领导是把准方向的保障；促进全体人民实现共同富裕是根本目标；能够把科学的宏观调控、有效的政府治理同发挥市场作用结合起来。易错：认为社会主义市场经济与资本主义市场经济毫无区别——基本制度不同是其根本区别。' },
+    { t: '政府与市场的关系', d: '市场在资源配置中起决定性作用，更好发挥政府作用，二者有机统一。易错：政府作用被理解为全面干预——政府主要做市场做不了、做不好的事。' },
+  ],
+  'pol-development': [
+    { t: '新发展理念的内容', d: '创新、协调、绿色、开放、共享的新发展理念是一个系统的理论体系。易错：五者并列可取舍——五大理念相互贯通、相互促进，是具有内在联系的集合体。' },
+    { t: '创新与协调发展', d: '创新是引领发展的第一动力；协调是持续健康发展的内在要求，解决发展不平衡问题。易错：协调就是平均用力——协调强调补齐短板、增强后劲。' },
+    { t: '绿色与开放发展', d: '绿色解决人与自然和谐共生问题，绿水青山就是金山银山；开放是国家繁荣发展的必由之路。易错：把环保当负担——绿色发展是长远竞争力。' },
+    { t: '高质量发展与新发展格局', d: '高质量发展是全面建设社会主义现代化国家的首要任务；构建以国内大循环为主体、国内国际双循环相互促进的新发展格局。易错：把内循环理解成闭关——双循环绝不是封闭的国内循环。' },
+  ],
+  'pol-distribution': [
+    { t: '按劳分配', d: '按劳分配是社会主义公有制经济中个人消费品分配的基本原则，以劳动者提供的劳动（数量和质量）为尺度。易错：把公有制下的工资都当按劳分配——福利、社会保障收入不属于按劳分配。' },
+    { t: '按生产要素分配', d: '劳动、资本、土地、知识、技术、管理、数据等生产要素按贡献参与分配。易错：按要素分配导致两极分化必然论——初次分配之外还有再分配与第三次分配调节。' },
+    { t: '三次分配', d: '初次分配讲效率主要由市场机制形成，再分配主要由政府调节（税收、社会保障、转移支付），第三次分配靠道德力量（慈善公益）。易错：把社保算进初次分配——社会保障属于再分配。' },
+    { t: '社会保障的作用', d: '社会保障是民生保障的安全网，通过防范和化解社会成员的生存危机、调节收入分配促进社会公平正义。易错：福利越高越好——社会保障水平要与经济发展水平相适应。' },
+  ],
+  'pol-party': [
+    { t: '党的性质与宗旨', d: '中国共产党是中国工人阶级的先锋队，同时是中国人民和中华民族的先锋队；全心全意为人民服务是党的根本宗旨。易错：把党理解为某个阶层利益的代表——党没有任何自己特殊的利益。' },
+    { t: '党的领导地位', d: '中国共产党的领导是中国特色社会主义最本质的特征，是中国特色社会主义制度的最大优势。易错：党的领导与人民当家作主割裂——党的领导是人民当家作主和依法治国的根本保证。' },
+    { t: '党的执政方式', d: '科学执政、民主执政、依法执政，其中依法执政是党治国理政的基本方式。易错：三种执政方式排序混淆——依法执政是新的历史条件下党执政的基本方式。' },
+    { t: '全面从严治党的意义', d: '全面从严治党是党永葆生机活力、走好新的赶考之路的必由之路，自我革命是跳出治乱兴衰历史周期率的第二个答案。易错：从严治党削弱党的领导——恰恰是保证党始终成为坚强领导核心。' },
+  ],
+  'pol-congress': [
+    { t: '人大制度的地位', d: '人民代表大会制度是坚持党的领导、人民当家作主、依法治国有机统一的根本政治制度安排。易错：把人大制度当成基本政治制度——它是根本政治制度，基本政治制度是政党制度、民族区域自治、基层群众自治。' },
+    { t: '人大的职权', d: '全国人大及其常委会行使立法权、决定权、任免权、监督权。易错：把人大代表个人职权与人代会职权混淆——职权属于人民代表大会这个机关而非代表个人。' },
+    { t: '人大代表的职责', d: '人大代表由民主选举产生，依法行使审议权、表决权、提案权、质询权，与人民群众保持密切联系。易错：代表是荣誉称号——代表是职务，要履行法定职责。' },
+    { t: '民主选举方式', d: '我国人大代表的选举实行直接选举与间接选举相结合、差额选举。易错：所有代表都由选民直选——全国人大代表由省级人大等间接选举产生。' },
+  ],
+  'pol-consult': [
+    { t: '多党合作的基本方针', d: '长期共存、互相监督、肝胆相照、荣辱与共是中国共产党同各民主党派合作的基本方针。易错：十六字方针随意拆换——注意与「十六字」退役军人类口诀区分记忆。' },
+    { t: '多党合作的前提', d: '坚持中国共产党的领导是多党合作的首要前提和根本保证，中国共产党是执政党、各民主党派是参政党。易错：把多党合作当成多党轮流执政——我国不搞西方那种多党竞争。' },
+    { t: '人民政协的性质', d: '人民政协是中国共产党领导的多党合作和政治协商的重要机构，是社会主义协商民主的重要渠道和专门协商机构。易错：把政协当国家权力机关——政协不是国家机关，不履行国家权力。' },
+    { t: '政协的职能', d: '政治协商、民主监督、参政议政是人民政协的主要职能。易错：把立法权划给政协——立法权属于人大，政协职能围绕协商监督建言。' },
+  ],
+  'pol-ethnic-grassroots': [
+    { t: '民族区域自治制度', d: '在国家统一领导下，各少数民族聚居的地方实行区域自治，设立自治机关、行使自治权。易错：民族自治就是民族独立——自治以国家统一为前提，地方是国家的地方行政区域。' },
+    { t: '处理民族关系的方针', d: '坚持民族平等、民族团结和各民族共同繁荣的方针，铸牢中华民族共同体意识。易错：三者顺序与关系混淆——民族平等是前提，民族团结是保证，共同繁荣是目的。' },
+    { t: '基层群众自治的内容', d: '基层群众自治制度让人民群众在城乡社区治理、基层公共事务和公益事业中依法直接行使民主权利。易错：把村委会当成基层政权——村委会、居委会是基层群众性自治组织，不是一级政府。' },
+    { t: '基层民主的实践形式', d: '民主选举、民主协商、民主决策、民主管理、民主监督在基层落地，村（居）民自治章程与村规民约是重要依托。易错：把村规民约当法律——它依靠村民共同约定的约束力而非国家强制力。' },
+  ],
+  'pol-ruleoflaw': [
+    { t: '全面依法治国的总目标', d: '建设中国特色社会主义法治体系、建设社会主义法治国家，坚持党的领导、人民当家作主、依法治国有机统一。易错：把总目标背成十六字方针——总目标与方针是两个层次。' },
+    { t: '新十六字方针', d: '科学立法、严格执法、公正司法、全民守法。易错：与旧十六字（有法可依、有法必依…）混淆——新方针强调立法质量与实施效果。' },
+    { t: '法治政府的内涵', d: '职能科学、权责法定、执法严明、公开公正、廉洁高效、守法诚信。易错：法治政府等于万能政府——职能科学恰恰要求厘清政府与市场边界。' },
+    { t: '法治国家、法治政府、法治社会一体建设', d: '三者相互支撑：法治国家是目标、法治政府是主体、法治社会是基础。易错：只抓其中一项——一体建设强调协同推进。' },
+  ],
+  /* ---- 高中 · 必修4 哲学与文化 ---- */
+  'pol-philosophy': [
+    { t: '哲学的起源', d: '哲学源于人们在实践中对世界的追问和思考。易错：哲学是哲学家凭空想出来的——哲学智慧产生于人类的实践活动。' },
+    { t: '哲学与具体科学', d: '具体科学是哲学的基础，具体科学的进步推动哲学发展；哲学为具体科学提供世界观和方法论的指导。易错：哲学是「科学之科学」——把哲学当成凌驾于科学之上的总科学是错误的。' },
+    { t: '哲学的基本问题', d: '思维和存在的关系问题是哲学的基本问题，包含两方面：思维和存在何者为本原，思维和存在有没有同一性。易错：把基本问题等同于基本派别——基本问题包含两个具体方面，不能混同。' },
+    { t: '两大基本派别', d: '唯物主义认为物质是本原，意识是派生的；唯心主义认为意识是本原，物质依赖于意识。易错：把「心有多大舞台就有多大」当唯物论——强调意识作用不等于主张意识第一性。' },
+  ],
+  'pol-material': [
+    { t: '物质的含义', d: '物质是不依赖于人的意识并能为人的意识所反映的客观实在；物质的唯一特性是客观实在性。易错：把物质等同于具体物质形态——物质是对万事万物共同本质的抽象概括。' },
+    { t: '物质与运动', d: '运动是物质固有的根本属性和存在方式，物质是运动的物质、运动是物质的运动。易错：脱离物质谈运动（唯心主义）或脱离运动谈物质（形而上学）都是错的。' },
+    { t: '物质与意识的辩证关系', d: '物质决定意识，要一切从实际出发、实事求是；意识对物质具有能动的反作用，正确的意识促进事物发展。易错：只背「决定—反作用」漏掉方法论——辩证关系题必须答方法论。' },
+    { t: '规律的客观性', d: '规律是事物运动过程中固有的、本质的、必然的、稳定的联系，尊重规律是发挥主观能动性的前提。易错：人类可以创造或消灭规律——规律只能被认识和利用，不能被创造和消灭。' },
+  ],
+  'pol-practice': [
+    { t: '实践的含义与特点', d: '实践是人们改造客观世界的物质活动，具有客观物质性、能动性、社会历史性。易错：把读书、思考当实践——实践以改造客观世界为直接目标，纯思维活动不是实践。' },
+    { t: '实践是认识的基础', d: '实践是认识的来源、是认识发展的动力、是检验认识的真理性的唯一标准、是认识的目的。易错：认识的唯一来源与获得认识的途径混淆——途径有直接经验和间接经验（学习），但来源只有一个：实践。' },
+    { t: '真理的特点', d: '真理是标志主观同客观相符合的哲学范畴，是客观的、具体的、有条件的。易错：多数人认同的就是真理——真理的检验标准是实践而非人数。' },
+    { t: '认识的反复性无限性上升性', d: '认识受主客观条件限制，追求真理是一个永无止境的过程，要与时俱进、开拓创新。易错：谬误可以转化为真理的随意表述——真理超出适用条件和范围会变成谬误。' },
+  ],
+  'pol-dialectic': [
+    { t: '联系的普遍性', d: '任何事物都与周围其他事物有联系，世界是一个普遍联系的有机整体。易错：任意两个事物都有联系——联系是有条件的，不能主观臆造联系。' },
+    { t: '联系的客观性与多样性', d: '联系是事物本身固有的，不以人的意志为转移；联系形式多样，要善于分析和把握事物存在发展的各种条件。易错：人无能为力只能听任联系——人可以根据事物固有联系建立新的具体联系。' },
+    { t: '发展的实质', d: '发展是事物的前进和上升，是新事物的产生和旧事物的灭亡。易错：任何变化都是发展——只有前进性、上升性的变化才是发展。' },
+    { t: '量变与质变', d: '量变是质变的必要准备，质变是量变的必然结果；要重视量的积累、抓住时机促成质变。易错：量变必然立即引起质变——量变达到一定程度才会引起质变。' },
+  ],
+  'pol-contradiction': [
+    { t: '矛盾的含义', d: '矛盾是事物内部和事物之间既对立又统一的关系，斗争性与同一性是矛盾的基本属性。易错：把矛盾等同于对抗冲突——矛盾双方相互依存、相互转化，不只有斗争。' },
+    { t: '矛盾的普遍性与特殊性', d: '矛盾的普遍性与特殊性相互联结：普遍性寓于特殊性之中，特殊性也离不开普遍性。易错：说「普遍性包含特殊性」——方向反了，是普遍性寓于（存在于）特殊性之中。' },
+    { t: '主次矛盾与矛盾的主次方面', d: '主要矛盾在事物发展中处于支配地位起决定作用；矛盾的主要方面决定事物的性质。易错：两者混用——主次矛盾用于「办事情」，主次方面用于「看问题」。' },
+    { t: '两点论与重点论', d: '坚持两点论与重点论相统一，反对形而上学的一点论和均衡论。易错：抓重点就可以忽视次要矛盾——重点论以两点论为前提。' },
+  ],
+  'pol-history': [
+    { t: '社会存在与社会意识', d: '社会存在决定社会意识，社会意识是社会存在的反映并具有相对独立性。易错：社会意识落后于社会存在是唯一表现——社会意识有时落后于存在，有时先于存在而变化发展。' },
+    { t: '生产力和生产关系', d: '生产力决定生产关系，生产关系对生产力具有反作用；生产关系一定要适合生产力状况。易错：拔高生产关系能促发展——超越生产力水平的生产关系会阻碍发展。' },
+    { t: '经济基础与上层建筑', d: '经济基础决定上层建筑，上层建筑对经济基础具有反作用；上层建筑一定要适合经济基础状况。易错：把两大规律顺序背反——先「生产力—生产关系」再「经济基础—上层建筑」。' },
+    { t: '改革与社会主义社会发展', d: '改革是社会主义制度的自我完善和发展，是发展中国特色社会主义的强大动力。易错：改革是改变社会主义制度——改变的是体制弊端，不是根本制度。' },
+  ],
+  'pol-masses': [
+    { t: '人民群众的含义', d: '人民群众是指一切对社会历史起推动作用的人们，既包括普通个人也包括杰出人物，劳动群众是主体的部分。易错：把人民群众等同于体力劳动者——脑力劳动者同样属于人民群众。' },
+    { t: '人民群众创造历史的表现', d: '人民群众是社会物质财富的创造者、社会精神财富的创造者、社会变革的决定力量。易错：把精神财富创造归功于个别精英——文化创造同样以群众实践为源泉。' },
+    { t: '群众观点', d: '相信人民群众自己解放自己，全心全意为人民服务，一切向人民群众负责，虚心向人民群众学习。易错：群众观点与群众路线混背——观点是「怎么看」，路线是「怎么做」。' },
+    { t: '群众路线', d: '一切为了群众，一切依靠群众，从群众中来，到群众中去。易错：只记四句不记方法论意义——群众路线是无产阶级政党的根本的领导方法和工作方法。' },
+  ],
+  'pol-value': [
+    { t: '人的价值', d: '人的价值在于创造价值、在于对社会的责任和贡献，即通过自己的活动满足社会、他人和自己的需要。易错：人的价值用金钱衡量——评价一个人的价值主要看他的贡献。' },
+    { t: '价值观的导向作用', d: '价值观对人们认识世界和改造世界的活动、对人生道路的选择具有重要的导向作用。易错：价值观无对错之分——有正确与错误价值观之分，要自觉遵循社会发展的客观规律。' },
+    { t: '价值判断与价值选择', d: '价值判断是价值选择的基础；正确的价值判断要自觉遵循社会发展的客观规律、自觉站在最广大人民的立场上。易错：把个人好恶当价值标准——人民立场是最高标准。' },
+    { t: '人生价值的实现', d: '在劳动和奉献中创造价值，在个人与社会的统一中实现价值，在砥砺自我中走向成功（需要充分发挥主观能动性、顽强拼搏、提高个人素质、坚定理想信念）。易错：只强调主观奋斗——个人与社会的统一是实现人生价值的客观前提。' },
+  ],
+  'pol-culture-basics': [
+    { t: '文化的内涵', d: '文化是相对于经济、政治而言的人类全部精神活动及其产品，既包括世界观、人生观、价值观等意识形态的部分，又包括自然科学和技术、语言和文字等非意识形态的部分。易错：文化等同于学历与文艺——文化的外延远大于文学艺术。' },
+    { t: '文化与经济政治的关系', d: '经济是基础，文化是经济和政治的反映；文化具有相对独立性，并反作用于经济政治。易错：文化随经济发展同步变化——文化发展与经济发展不完全同步，可超前或滞后。' },
+    { t: '文化的功能', d: '文化具有引领风尚、教育人民、服务社会、推动发展的功能。易错：文化只是消遣娱乐——文化是民族复兴的精神支撑。' },
+    { t: '文化与文明', d: '文明是文化发展的积极成果；文化有先进与落后、健康与腐朽之分，文明一般指人类社会的积极成果。易错：文化与文明完全等同——文化概念外延更广、属性判断不同。' },
+  ],
+  'pol-tradition': [
+    { t: '中华传统文化的主要内容', d: '核心思想理念（讲仁爱、重民本、守诚信、崇正义、尚和合、求大同）、中华传统美德、中华人文精神。易错：传统文化就是儒学——中华文化是各民族、各家思想长期交融的结果。' },
+    { t: '对待传统文化的正确态度', d: '「取其精华、去其糟粕」，批判继承、古为今用；反对守旧主义与历史虚无主义。易错：全盘继承或全盘否定两个极端——要作具体分析。' },
+    { t: '创造性转化与创新性发展', d: '创造性转化是按照时代特点对传统文化要素加以转化、赋予新的时代内涵和现代表达形式；创新性发展是对内涵加以补充、拓展、完善。易错：两者混用——转化侧重形式表达，发展侧重内涵拓展。' },
+    { t: '传统文化的当代价值', d: '中华优秀传统文化能为人们认识与改造世界提供有益启迪、为治国理政提供有益借鉴、为道德建设提供有益启发。易错：传统智慧与现代治理无关——民本、诚信等思想在今天仍有借鉴价值。' },
+  ],
+  'pol-confidence': [
+    { t: '文化自信的来源', d: '文化自信来自对时代发展趋势、中国特色社会主义实践的深刻把握，对自身文化价值、生命力、创造力的充分肯定。易错：文化自信源于历史悠久——历史积淀只是条件之一，现实实践的成就才是底气所在。' },
+    { t: '文化自信的意义', d: '文化自信是一个国家、一个民族发展中更基本、更深沉、更持久的力量；没有高度的文化自信就没有中华民族的伟大复兴。易错：把文化自信与经济自信（国力）并列理解——它更基础、更广泛、更深厚。' },
+    { t: '社会主义核心价值观', d: '国家层面富强、民主、文明、和谐，社会层面自由、平等、公正、法治，个人层面爱国、敬业、诚信、友善。易错：三个层面内容错位背诵——注意与「三个倡导」的对应关系。' },
+    { t: '文化交流与文明互鉴', d: '面向世界、博采众长，坚持以我为主、为我所用；文明因交流而多彩、因互鉴而丰富。易错：文化交流就是输出或输入单向过程——交流互鉴是双向的。' },
+  ],
+  /* ---- 高中 · 选择性必修延伸 ---- */
+  'pol-intl': [
+    { t: '国家结构形式', d: '单一制与联邦制是主要的国家结构形式；我国是单一制国家。易错：把「一国两制」下特别行政区的高度自治当成联邦制——我国仍是单一制，中央拥有全部权力。' },
+    { t: '国家管理形式', d: '国家管理形式即政体，主要有君主立宪制与民主共和制；我国实行人民代表大会制度。易错：政体与国体混用——国体是国家性质，政体是国家政权的组织形式。' },
+    { t: '国际关系的决定因素', d: '国家利益是国际关系的决定性因素，共同利益是国家合作的基础、利益对立是冲突的根源。易错：意识形态决定国际关系——利益才是根本，意识形态是影响因素之一。' },
+    { t: '构建人类命运共同体', d: '推动建设相互尊重、公平正义、合作共赢的新型国际关系，坚持共商共建共享的全球治理观。易错：命运共同体是权宜口号——它是中国特色大国外交的顶层设计理念。' },
+  ],
+  'pol-law-life': [
+    { t: '民法调整的范围', d: '民法调整平等主体的自然人、法人和非法人组织之间的人身关系和财产关系。易错：所有纠纷都找民法——行政、刑事关系不由民法调整。' },
+    { t: '民法的基本原则', d: '平等、自愿、公平、诚信、守法与公序良俗、绿色原则。易错：把「绿色原则」漏掉——节约资源、保护生态环境是民法典新增的基本原则。' },
+    { t: '合同与违约责任', d: '合同是民事主体之间设立、变更、终止民事法律关系的协议；违约要承担继续履行、赔偿损失等责任。易错：口头约定不算合同——口头合同同样有效（法律另有规定除外），但要保留证据。' },
+    { t: '依法维权', d: '公民合法权益受侵害时可通过协商、调解、仲裁、诉讼等方式依法维权。易错：维权就靠打官司——多元纠纷解决方式中诉讼是最后一道防线。' },
+  ],
+  'pol-logic': [
+    { t: '逻辑学的研究对象', d: '形式逻辑研究思维的形式、规律和方法，核心是概念、判断、推理。易错：把「逻辑」当口号——形式逻辑是一门有严格规则的科学。' },
+    { t: '思维的基本规律', d: '同一律、矛盾律、排中律是形式逻辑的基本规律。易错：矛盾律与辩证矛盾混淆——形式逻辑的矛盾律反对的是自相矛盾的思维混乱，不否定客观事物自身的矛盾。' },
+    { t: '推理的种类', d: '演绎推理从一般到个别，前提真且形式有效则结论必真；归纳推理从个别到一般；类比推理从特殊到特殊。易错：演绎结论必然真需要两个条件——前提真实且推理形式有效，缺一不可。' },
+    { t: '科学思维与创新思维', d: '科学思维追求客观实际、坚持真理；创新思维要以问题为导向，多角度、多层次思考。易错：创新思维可以脱离逻辑约束——创新建立在逻辑思维基础之上，不是胡思乱想。' },
+  ],
+};
+const CAT_LABEL = { growth: '成长与自我', moral: '道德与交往', life: '生命与安全', law: '法律与法治', society: '社会与责任', nation: '国情与制度', world: '世界与全球', party: '党的领导与社会主义', economy: '经济与社会', philosophy: '哲学与文化', logic: '逻辑与思维' };
+
+
+
+
+
+/* 课标溯源：每环对应《义务教育道德与法治课程标准（2022年版）》（义教2022，课程内容按生命安全与健康教育、法治教育、中华民族共同体意识教育等主题组织）与《普通高中思想政治课程标准（2017年版2020年修订）》（高中2017，必修1 中国特色社会主义 / 必修2 经济与社会 / 必修3 政治与法治 / 必修4 哲学与文化，选择性必修1-3）。
+   v1 为结构级对照：page 仅标注模块或主题，不编页码。 */
+const CURRICULUM = {
+  /* ---- 初中 · 成长与自我 ---- */
+  'pol-intro':         { doc: '义教2022·生命安全与健康教育（健全人格：正确认识自我、树立人生理想）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-learning':      { doc: '义教2022·生命安全与健康教育（学习观念与学习方法养成）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-self':          { doc: '义教2022·生命安全与健康教育（正确认识自我、悦纳自我）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-friend':        { doc: '义教2022·生命安全与健康教育（人际交往：友谊的建立与呵护）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-family':        { doc: '义教2022·中华优秀传统文化教育（孝亲敬长等家庭美德）', page: '中华优秀传统文化教育', tag: 'std' },
+  'pol-teacher':       { doc: '义教2022·生命安全与健康教育（师生交往与尊师美德）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-life':          { doc: '义教2022·生命安全与健康教育（生命教育与珍爱生命）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-resilience':    { doc: '义教2022·生命安全与健康教育（挫折应对与心理韧性）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-youth':         { doc: '义教2022·生命安全与健康教育（青春期身心发展与自我认同）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-emotion':       { doc: '义教2022·生命安全与健康教育（情绪管理与情感培育）', page: '生命安全与健康教育', tag: 'std' },
+  'pol-collective':    { doc: '义教2022·国情教育（集体主义观念与责任意识）', page: '国情教育', tag: 'std' },
+  /* ---- 初中 · 法律与法治 ---- */
+  'pol-law-basic':     { doc: '义教2022·法治教育（法律的本质、特征与法治观念启蒙）', page: '法治教育', tag: 'std' },
+  /* ---- 初中 · 社会与责任 ---- */
+  'pol-society':       { doc: '义教2022·国情教育（个人与社会关系、亲社会行为与网络素养）', page: '国情教育', tag: 'std' },
+  'pol-rules':         { doc: '义教2022·法治教育（规则意识、自由与规则的关系）', page: '法治教育', tag: 'std' },
+  'pol-responsibility':{ doc: '义教2022·国情教育（责任意识：责任与角色、担当精神）', page: '国情教育', tag: 'std' },
+  'pol-nation-interest':{ doc: '义教2022·国情教育（国家利益观与总体国家安全观）', page: '国情教育', tag: 'std' },
+  /* ---- 初中 · 宪法与公民 ---- */
+  'pol-constitution':  { doc: '义教2022·法治教育（宪法教育：宪法的地位与效力）', page: '法治教育', tag: 'std' },
+  'pol-rights':        { doc: '义教2022·法治教育（公民基本权利与依法行使权利）', page: '法治教育', tag: 'std' },
+  'pol-duties':        { doc: '义教2022·法治教育（公民基本义务与权利义务相统一）', page: '法治教育', tag: 'std' },
+  'pol-justice':       { doc: '义教2022·法治教育（自由平等公平正义的法治价值取向）', page: '法治教育', tag: 'std' },
+  /* ---- 初中 · 国情与制度 ---- */
+  'pol-economy':       { doc: '义教2022·国情教育（改革开放成就与基本经济制度、创新驱动）', page: '国情教育', tag: 'std' },
+  'pol-democracy':     { doc: '义教2022·国情教育（社会主义民主与公民民主意识）', page: '国情教育', tag: 'std' },
+  'pol-law-china':     { doc: '义教2022·法治教育（全面依法治国与法治政府建设）', page: '法治教育', tag: 'std' },
+  'pol-culture':       { doc: '义教2022·中华优秀传统文化教育（文化自信与中华传统美德）', page: '中华优秀传统文化教育', tag: 'std' },
+  'pol-dream':         { doc: '义教2022·国情教育（中国梦与社会主义现代化强国建设）', page: '国情教育', tag: 'std' },
+  /* ---- 初中 · 世界与未来 ---- */
+  'pol-world':         { doc: '义教2022·国情教育（经济全球化、文化多样性与人类命运共同体）', page: '国情教育', tag: 'std' },
+  'pol-china-world':   { doc: '义教2022·国情教育（中国的国际地位与和平发展道路）', page: '国情教育', tag: 'std' },
+  'pol-youth-future':  { doc: '义教2022·国情教育（少年担当、职业准备与理想信念教育）', page: '国情教育', tag: 'std' },
+  /* ---- 高中 ---- */
+  'pol-socialism':     { doc: '高中2017·必修1 中国特色社会主义（社会主义从空想到科学、从理论到实践的发展）', page: '必修1 中国特色社会主义', tag: 'std' },
+  'pol-revolution':    { doc: '高中2017·必修1 中国特色社会主义（新民主主义革命的胜利）', page: '必修1 中国特色社会主义', tag: 'std' },
+  'pol-transformation':{ doc: '高中2017·必修1 中国特色社会主义（社会主义制度在中国的确立）', page: '必修1 中国特色社会主义', tag: 'std' },
+  'pol-reform':        { doc: '高中2017·必修1 中国特色社会主义（伟大的改革开放与中国特色社会主义道路）', page: '必修1 中国特色社会主义', tag: 'std' },
+  'pol-newera':        { doc: '高中2017·必修1 中国特色社会主义（中国特色社会主义进入新时代）', page: '必修1 中国特色社会主义', tag: 'std' },
+  'pol-ownership':     { doc: '高中2017·必修2 经济与社会（我国的生产资料所有制）', page: '必修2 经济与社会', tag: 'std' },
+  'pol-market':        { doc: '高中2017·必修2 经济与社会（我国的社会主义市场经济体制）', page: '必修2 经济与社会', tag: 'std' },
+  'pol-development':   { doc: '高中2017·必修2 经济与社会（新发展理念与推动高质量发展）', page: '必修2 经济与社会', tag: 'std' },
+  'pol-distribution':  { doc: '高中2017·必修2 经济与社会（我国的个人收入分配与社会保障）', page: '必修2 经济与社会', tag: 'std' },
+  'pol-party':         { doc: '高中2017·必修3 政治与法治（中国共产党的领导：性质、宗旨与执政方式）', page: '必修3 政治与法治', tag: 'std' },
+  'pol-congress':      { doc: '高中2017·必修3 政治与法治（人民代表大会制度）', page: '必修3 政治与法治', tag: 'std' },
+  'pol-consult':       { doc: '高中2017·必修3 政治与法治（中国共产党领导的多党合作和政治协商制度）', page: '必修3 政治与法治', tag: 'std' },
+  'pol-ethnic-grassroots': { doc: '高中2017·必修3 政治与法治（民族区域自治制度与基层群众自治制度）', page: '必修3 政治与法治', tag: 'std' },
+  'pol-ruleoflaw':     { doc: '高中2017·必修3 政治与法治（全面依法治国与法治政府建设）', page: '必修3 政治与法治', tag: 'std' },
+  'pol-philosophy':    { doc: '高中2017·必修4 哲学与文化（哲学的基本问题与哲学史上的两个对子）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-material':      { doc: '高中2017·必修4 哲学与文化（探究世界的本质：物质、意识与规律）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-practice':      { doc: '高中2017·必修4 哲学与文化（把握世界的规律：实践、认识与真理）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-dialectic':     { doc: '高中2017·必修4 哲学与文化（唯物辩证法：联系观与发展观）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-contradiction': { doc: '高中2017·必修4 哲学与文化（唯物辩证法：矛盾观与矛盾分析法）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-history':       { doc: '高中2017·必修4 哲学与文化（寻觅社会的真谛：社会历史观）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-masses':        { doc: '高中2017·必修4 哲学与文化（群众观点与群众路线）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-value':         { doc: '高中2017·必修4 哲学与文化（实现人生的价值：价值观与人生价值）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-culture-basics':{ doc: '高中2017·必修4 哲学与文化（文化的内涵与功能）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-tradition':     { doc: '高中2017·必修4 哲学与文化（正确认识中华传统文化与「双创」方针）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-confidence':    { doc: '高中2017·必修4 哲学与文化（文化自信与发展中国特色社会主义文化）', page: '必修4 哲学与文化', tag: 'std' },
+  'pol-intl':          { doc: '高中2017·选择性必修1 当代国际政治与经济（国际关系与人类命运共同体）', page: '选择性必修1', tag: 'std' },
+  'pol-law-life':      { doc: '高中2017·选择性必修2 法律与生活（民事权利义务与依法维权）', page: '选择性必修2', tag: 'std' },
+  'pol-logic':         { doc: '高中2017·选择性必修3 逻辑与思维（思维形式、逻辑规律与科学思维）', page: '选择性必修3', tag: 'std' },
+};
+
+/* 过关判据：做到这条才算学会（可验证的行为化标准） */
+const PASS = {
+  'pol-intro':         '能用自己的话说出中学时代对人生的意义，并把个人梦想与中国梦的关系说清楚。',
+  'pol-learning':      '能举出三个课堂之外的「学习」实例，并说明适合自己的两种学习方法。',
+  'pol-self':          '能通过自我评价与他人评价各一条分析自己的优缺点，并说出做更好的自己的一条具体行动。',
+  'pol-friend':        '能说出友谊的三个特质，并用一个事例说明如何处理朋友间的冲突。',
+  'pol-family':        '能解释家庭的三种构成基础，并给出化解亲子冲突的一个沟通策略。',
+  'pol-teacher':       '能说明「教学相长」的含义，并示范面对老师批评的正确回应方式。',
+  'pol-life':          '能说出生命的四个特点，并解释「生命的接续」为什么让生命超越个体。',
+  'pol-resilience':    '能分析一次挫折经历中自己的认知与反应，并列举三种增强韧性的方法。',
+  'pol-youth':         '能区分青春期身体变化的三类表现，并说明「思维独立」不等于标新立异。',
+  'pol-emotion':       '能辨别基本情绪类型，并现场演示两种恰当的情绪调节方法。',
+  'pol-collective':    '能解释集体力量的来源，并举一个集体生活成就个人的真实例子。',
+  'pol-law-basic':     '能完整说出法律的三个特征，并解释「国家强制力」为什么是最主要特征。',
+  'pol-society':       '能说明个人与社会相互依存的关系，并举两个亲社会行为的例子。',
+  'pol-rules':         '能论述「自由与规则不可分」，并用自律的一个实例说明敬畏规则。',
+  'pol-responsibility':'能对同一人的多重角色分别说出对应责任，并解释「不言代价与回报」的奉献精神。',
+  'pol-nation-interest': '能说出国家利益的构成与核心利益内容，并解释总体国家安全观中「以人民安全为宗旨」。',
+  'pol-constitution':  '能从内容、效力、程序三方面论证宪法为什么是国家根本法。',
+  'pol-rights':        '能分类列举公民基本权利，并说明行使权利的界限与守程序的要求。',
+  'pol-duties':        '能列举四类公民基本义务，并完整论述权利与义务相统一的关系。',
+  'pol-justice':       '能解释公平的三个方面，并说明守护正义既要勇气也要策略。',
+  'pol-economy':       '能说明基本经济制度的三个组成部分，并解释创新为什么是第一动力。',
+  'pol-democracy':     '能说出社会主义民主的特点与本质，并区分选举民主与协商民主。',
+  'pol-law-china':     '能解释「良法之治」与「善治」的内涵，并说明依法行政约束的对象。',
+  'pol-culture':       '能阐述中华文化的特点与文化自信的底气来源。',
+  'pol-dream':         '能完整说出中国梦的内涵与实现路径，并分清 2035 与本世纪中叶的目标。',
+  'pol-world':         '能描述经济全球化的两个重要表现，并说明对待文化多样性的正确态度。',
+  'pol-china-world':   '能举出中国参与全球治理的两个实例，并说明中国为什么走和平发展道路。',
+  'pol-youth-future':  '能结合自身实际制定一份包含社会需求的职业准备计划。',
+  'pol-socialism':     '能按顺序说出社会形态演进过程，并解释科学社会主义诞生的两大理论基石。',
+  'pol-revolution':    '能从领导权与前途两方面说明新民主主义革命「新」在哪里。',
+  'pol-transformation':'能复述过渡时期总路线的内容，并说出社会主义制度确立的时间与意义。',
+  'pol-reform':        '能说明十一届三中全会的决策意义，并完整阐述「四位一体」的构成与关系。',
+  'pol-newera':        '能说出新时代主要矛盾的准确表述，并解释为什么基本国情没有变。',
+  'pol-ownership':     '能区分公有制经济的构成，并说明公有制主体地位的两个体现。',
+  'pol-market':        '能分析市场调节三个弊端各对应一个实例，并说明「决定性作用」与「更好发挥政府作用」的关系。',
+  'pol-development':   '能逐一说出五大发展理念各自解决的问题，并解释双循环不是封闭循环。',
+  'pol-distribution':  '能区分按劳分配与按要素分配的适用范围，并指出社保属于哪次分配。',
+  'pol-party':         '能完整表述党的性质与宗旨，并区分科学执政、民主执政、依法执政。',
+  'pol-congress':      '能说出人大制度的地位、人大四项职权与代表四项权利并互不混淆。',
+  'pol-consult':       '能说出多党合作的基本方针与政协三大职能，并说明政协为什么不是权力机关。',
+  'pol-ethnic-grassroots': '能解释民族区域自治的前提与「三个方针」的关系，并说明村委会的性质。',
+  'pol-ruleoflaw':     '能背准新十六字方针并逐条解释，说明法治国家、法治政府、法治社会的关系。',
+  'pol-philosophy':    '能准确表述哲学基本问题的两个方面，并判断材料中观点属于哪一派别。',
+  'pol-material':      '能完整表述物质与意识的辩证关系及其方法论，并说明为什么规律不能被创造。',
+  'pol-practice':      '能说出实践四个「基础地位」并解释来源与途径的区别。',
+  'pol-dialectic':     '能用联系的条件性批驳一个主观臆造的联系，并区分量变与质变的关系要求。',
+  'pol-contradiction': '能区分主次矛盾与矛盾主次方面的适用场景，并完整运用两点论重点论分析材料。',
+  'pol-history':       '能按顺序说出两大社会基本规律，并说明社会意识相对独立性的两种表现。',
+  'pol-masses':        '能完整表述群众观点与群众路线，并说出人民群众创造历史的三个表现。',
+  'pol-value':         '能说明人的价值的评价标准，并从三个维度阐述人生价值的实现途径。',
+  'pol-culture-basics':'能界定文化的内涵外延，并说明文化与经济政治「反映—反作用」的双向关系。',
+  'pol-tradition':     '能区分创造性转化与创新性发展，并对一个传统文化事例给出正确的对待态度。',
+  'pol-confidence':    '能准确背诵社会主义核心价值观三个层面，并说出文化自信的真正来源。',
+  'pol-intl':          '能区分国家结构形式与管理形式，并用国家利益理论分析一个国际热点。',
+  'pol-law-life':      '能说出民法六大基本原则（含绿色原则），并列举三种诉讼外的维权方式。',
+  'pol-logic':         '能说出形式逻辑三大基本规律，并举一个违反同一律的例子。',
+};
+
+/* 真实案例：来自公开教学与真题的典型场景拆解 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'pol-constitution': { title: '宪法为什么是根本法：从一份地方性法规看三层效力',
+    text: '某市人大常委会通过一项法规，其中一条允许「对拒不配合执法的公民限制人身自由」，被全国人大常委会法工委要求纠正。<br><br><b>第一层：内容对比。</b>限制人身自由属于宪法规定的公民基本权利范畴，只有法律才能设定——地方性法规无权触碰，因为宪法把「最根本最重要的问题」留给了自己。<br><b>第二层：效力对比。</b>该法规与宪法精神相抵触，按「宪法具有最高法律效力」必须修改或撤销——这就是「不得与宪法相抵触」的落地方式。<br><b>第三层：程序对比。</b>普通法律的修改只需人大过半数，而宪法修改需要全国人大全体代表的三分之二以上多数——严格的程序保障了根本法的稳定性。<br><br><b>迁移要诀</b>：遇到「某法规被纠正/某文件与宪法不符」类材料，按「内容—效力—程序」三层依次检查，答案要点通常齐了。' },
+  'pol-contradiction': { title: '两点论与重点论：一道哲学大题的标准拆法',
+    text: '材料：某县推进乡村振兴，既大力发展特色产业（占财政投入 70%），又同步改善教育医疗，但也出现了盲目跟风种植导致滞销的问题。<br><br><b>第一步：找矛盾。</b>材料中的矛盾不止一个——产业发展与民生改善是一对，规模扩张与市场风险是一对。先别急着套原理，把「谁在决定这个县的局面」指出来：特色产业投入占大头，是主要矛盾。<br><b>第二步：配原理。</b>主要矛盾在事物发展中处于支配地位、起决定作用，要求办事情善于抓住重点——对应「大力发展特色产业」。<br><b>第三步：补另一手。</b>两点论要求统筹兼顾——对应「同步改善教育医疗」；而盲目跟风说明没有具体分析本地实际，违背了具体问题具体分析。<br><br><b>易错提醒</b>：只写「抓主要矛盾」只得一半分——设问问的是「如何统筹」，必须两点论与重点论成对出现，再加一句具体问题具体分析收尾。' },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口；学段深链抓取后回填） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_jun: { name: '智慧教育·道德与法治·七年级上册', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2F6a74973a-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·思想政治·必修1 中国特色社会主义', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2F6a748f2e-0772-11ed-ac74-092ab92074e6%2F44bee8bc-54e6-11ed-9c34-850ba61fa9f4%2F5036342986', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部教育考试院', url: 'https://www.neea.edu.cn', note: '官方考试信息' },
+};
+/* ============ 主干环 NODES：56 环（初中 28 + 高中 28），prev/next 双向依赖 ============ */
+const NODES = {
+/* ================= 初中 · 成长与自我（七年级上下） ================= */
+'pol-intro': { title: '中学时代与少年有梦', stage: 'junior', cat: 'growth', diff: 1.0, hot: false,
+  fact: '中学时代见证着一个人从少年到青年的生命进阶，为新的人生发展打下基础；少年的梦想与个人的人生目标紧密相连、与时代的脉搏紧密相连，中国梦是中华民族的共同梦想。',
+  prev: [], next: ['pol-learning', 'pol-self'],
+  lecture: [ {name:'中学时代与少年有梦', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中学时代与梦想练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-learning': { title: '学习新天地', stage: 'junior', cat: 'growth', diff: 1.2, hot: false,
+  fact: '中学阶段的学习包括知识的获取、能力的培养以及如何做人；学习不仅表现为接受和掌握，也表现为探究、发现、体验和感悟，需要自觉、主动的态度，学会自主学习。',
+  prev: ['pol-intro'], next: ['pol-self'],
+  lecture: [ {name:'学习新天地与学习方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'学习观念与方法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-self': { title: '认识自我', stage: 'junior', cat: 'growth', diff: 1.4, hot: false,
+  fact: '正确认识自己可以促进自我发展、促进与他人的交往；途径包括从生理、心理、社会等方面认识自己，通过自我评价和他人评价认识自己，要接纳自己、欣赏自己、做更好的自己。',
+  prev: ['pol-intro', 'pol-learning'], next: ['pol-friend', 'pol-life'],
+  lecture: [ {name:'认识自己的途径与方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'认识自我与悦纳自我练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-friend': { title: '友谊与同伴交往', stage: 'junior', cat: 'moral', diff: 1.6, hot: false,
+  fact: '友谊是一种亲密的关系、是平等的与双向的、是一种心灵的相遇；建立友谊需要开放自己、持续行动，呵护友谊需要用心关怀、尊重对方、正确处理冲突；交友要讲原则、慎交网友。',
+  prev: ['pol-self'], next: ['pol-family'],
+  lecture: [ {name:'让友谊之树常青', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'友谊特质与交友原则练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-family': { title: '亲情之爱', stage: 'junior', cat: 'moral', diff: 1.8, hot: false,
+  fact: '家庭是由婚姻关系、血缘关系或收养关系结合成的亲属生活组织；每个家庭的亲情表现不尽相同，爱的碰撞需要理解与沟通，孝亲敬长是中华民族的传统美德也是法定义务。',
+  prev: ['pol-friend'], next: ['pol-teacher'],
+  lecture: [ {name:'家的意味与爱在家人间', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'亲情碰撞与孝亲敬长练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-teacher': { title: '师生交往', stage: 'junior', cat: 'moral', diff: 2.0, hot: false,
+  fact: '教师是履行教育教学职责的专业人员，承担教书育人的使命；面对不同风格的老师要承认差别、接纳并尊重；教学相长，正确对待老师的表扬与批评，彼此尊重、相互关心、携手共进。',
+  prev: ['pol-family'], next: ['pol-life'],
+  lecture: [ {name:'走近老师与师生交往', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'师生关系与教学相长练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-life': { title: '珍爱生命', stage: 'junior', cat: 'life', diff: 2.1, hot: false,
+  fact: '生命来之不易、是独特的、是不可逆的与短暂的；生命有接续性，在人类生命的接续中我们总能为自己的生命找到一个位置；敬畏生命要珍视自己的生命并关怀他人的生命。',
+  prev: ['pol-self', 'pol-teacher'], next: ['pol-resilience'],
+  lecture: [ {name:'生命可以永恒吗与敬畏生命', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'生命特点与敬畏生命练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-resilience': { title: '挫折与生命韧性', stage: 'junior', cat: 'growth', diff: 2.3, hot: false,
+  fact: '生活难免有挫折，产生不同感受和行为反应的主要根源是人们对挫折的认识和态度不同；发掘生命的力量需要培养面对困难的勇气和坚强的意志，掌握增强生命韧性的方法。',
+  prev: ['pol-life'], next: ['pol-youth'],
+  lecture: [ {name:'增强生命的韧性', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'挫折态度与韧性方法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-youth': { title: '青春时光', stage: 'junior', cat: 'growth', diff: 2.4, hot: false,
+  fact: '青春期的身体变化主要表现在身体外形、内部器官、性机能的发育；受遗传、营养、锻炼等因素影响个体发育各不相同，要正视身体变化、追求内在美；思维的独立要有自己的见解但不等同于一味追求独特。',
+  prev: ['pol-resilience'], next: ['pol-emotion'],
+  lecture: [ {name:'青春期的身心变化与独立思维', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'青春期特点与内在美练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-emotion': { title: '情绪与情感管理', stage: 'junior', cat: 'growth', diff: 2.6, hot: false,
+  fact: '基本情绪有喜、怒、哀、惧，情绪受多方面因素影响且相互感染；情绪的表达与身心健康有关，要学会以恰当方式表达情绪、合理调节情绪；情感与情绪紧密相关，传递正向情感体验美好情感。',
+  prev: ['pol-youth'], next: ['pol-collective'],
+  lecture: [ {name:'情绪管理与美好情感', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'情绪调节方法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-collective': { title: '集体生活', stage: 'junior', cat: 'moral', diff: 2.8, hot: false,
+  fact: '集体的联结度越高、力量越大，集体的力量来源于成员共同的目标和团结协作；集体生活成就个人：培养负责任的态度与人际交往的基本态度，发展个性、涵养品格；共建美好集体需要自治精神与共同愿景。',
+  prev: ['pol-emotion'], next: ['pol-law-basic'],
+  lecture: [ {name:'集体的力量与共建美好集体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'集体生活与个人成长练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 法律与法治（七下—九上） ================= */
+'pol-law-basic': { title: '法律初探', stage: 'junior', cat: 'law', diff: 3.0, hot: false,
+  fact: '法律是统治阶级意志的体现，是用来统治国家、管理社会的工具；法律由国家制定或认可、靠国家强制力保证实施、对全体社会成员具有普遍约束力；生活与法律息息相关，法治是人们共同的生活愿景。',
+  prev: ['pol-collective'], next: ['pol-society'],
+  lecture: [ {name:'法律的本质与特征', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'法律特征辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 社会与责任（八上） ================= */
+'pol-society': { title: '走进社会生活', stage: 'junior', cat: 'society', diff: 3.2, hot: false,
+  fact: '个人与社会是相互依存、相互制约的关系，人的身份是在社会关系中确定的；亲社会行为在人际交往和社会实践中养成，要养成亲社会行为、参与社会实践。',
+  prev: ['pol-law-basic'], next: ['pol-rules'],
+  lecture: [ {name:'我与社会与网络生活', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'个人与社会关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-rules': { title: '规则与秩序', stage: 'junior', cat: 'society', diff: 3.4, hot: false,
+  fact: '社会规则是人们为了维护良好的社会秩序而制定的行为准则，种类包括道德、纪律、法律等；自由与规则不可分：社会规则划定了自由的边界、是人们享有自由的保障，遵守规则需要他律与自律。',
+  prev: ['pol-society'], next: ['pol-responsibility'],
+  lecture: [ {name:'维护秩序与遵守规则', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'自由与规则关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-responsibility': { title: '责任与担当', stage: 'junior', cat: 'society', diff: 3.6, hot: false,
+  fact: '责任是一个人分内应该做的事情，来源包括对他人的承诺、职业要求、道德原则、法律规定等；只有人人具有责任心、自觉履行应尽的责任，社会才能美好；做负责任的人要不言代价与回报地奉献。',
+  prev: ['pol-rules'], next: ['pol-nation-interest'],
+  lecture: [ {name:'责任与角色同在', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'责任来源与担当练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-nation-interest': { title: '国家利益与国家安全', stage: 'junior', cat: 'nation', diff: 3.8, hot: true,
+  fact: '国家利益是一个主权国家在国际社会中生存需求和发展需求的总和，包括安全利益、政治利益、经济利益、文化利益等，核心是国家的独立自主；坚持总体国家安全观，维护国家安全是每个公民的法定义务。',
+  prev: ['pol-responsibility'], next: ['pol-constitution'],
+  lecture: [ {name:'国家利益至上与总体国家安全观', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'国家利益与国家安全练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 宪法与公民（八下） ================= */
+'pol-constitution': { title: '宪法是根本活动准则', stage: 'junior', cat: 'law', diff: 4.0, hot: true,
+  fact: '宪法是党的主张和人民意志的统一，是国家的根本法：规定国家生活中最根本最重要的问题、具有最高的法律效力、制定和修改程序比其他法律更严格；宪法是公民权利的保障书，是一切组织和个人的根本活动准则。',
+  prev: ['pol-nation-interest'], next: ['pol-rights'],
+  lecture: [ {name:'坚持宪法至上', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'宪法地位与效力练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-rights': { title: '公民权利', stage: 'junior', cat: 'law', diff: 4.2, hot: false,
+  fact: '公民的基本权利包括政治权利和自由、人身自由、社会经济与文化教育权利等；依法行使权利：行使权利有界限，不得损害国家的、社会的、集体的利益和其他公民的合法的自由和权利，维护权利守程序。',
+  prev: ['pol-constitution'], next: ['pol-duties'],
+  lecture: [ {name:'公民基本权利与依法行使', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'公民权利辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-duties': { title: '公民义务', stage: 'junior', cat: 'law', diff: 4.4, hot: false,
+  fact: '公民的基本义务包括遵守宪法法律、维护国家利益、依法服兵役、依法纳税等；法定义务须履行、违反义务须担责；权利与义务相统一：二者相互依存、相互促进，公民既是合法权利的享有者又是法定义务的承担者。',
+  prev: ['pol-rights'], next: ['pol-justice'],
+  lecture: [ {name:'公民基本义务与权利义务相统一', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'权利义务关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-justice': { title: '自由平等公平正义', stage: 'junior', cat: 'law', diff: 4.6, hot: false,
+  fact: '法治与自由相互联系、无法割裂，无法治不自由；法律面前人人平等是社会主义法治的基本原则之一；公平包括权利公平、规则公平、机会公平，正义是社会制度的重要价值与基本价值条件，要守护正义、维护公平正义。',
+  prev: ['pol-duties'], next: ['pol-economy'],
+  lecture: [ {name:'自由平等的追求与公平正义的守护', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'公平正义内涵练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 国情与制度（九上） ================= */
+'pol-economy': { title: '富强与创新', stage: 'junior', cat: 'nation', diff: 5.1, hot: false,
+  fact: '改革开放是决定当代中国命运的关键抉择；公有制为主体、多种所有制经济共同发展，按劳分配为主体、多种分配方式并存，社会主义市场经济体制是社会主义基本经济制度；创新是引领发展的第一动力，建设创新型国家。',
+  prev: ['pol-justice'], next: ['pol-democracy', 'pol-reform'],
+  lecture: [ {name:'踏上强国之路与创新驱动发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'改革开放与基本经济制度练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-democracy': { title: '民主与人民当家作主', stage: 'junior', cat: 'nation', diff: 5.1, hot: true,
+  fact: '我国社会主义民主是维护人民根本利益的最广泛、最真实、最管用的民主，本质特征是人民当家作主；人民当家作主是社会主义民主政治的本质和核心，通过选举民主与协商民主等多种形式实现，公民要增强民主意识。',
+  prev: ['pol-economy'], next: ['pol-law-china', 'pol-culture', 'pol-congress'],
+  lecture: [ {name:'人民当家作主与公民民主意识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'社会主义民主特点练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-law-china': { title: '法治中国', stage: 'junior', cat: 'law', diff: 5.1, hot: true,
+  fact: '法治要求实行良法之治与善治；全面依法治国是中国特色社会主义的本质要求和重要保障，坚持依法治国、依法执政、依法行政共同推进；法治政府是按照法治原则运作的政府，行政权的行使有法律依据、受法律约束。',
+  prev: ['pol-democracy'], next: ['pol-culture', 'pol-ruleoflaw'],
+  lecture: [ {name:'法治国家与法治政府', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'依法治国与依法行政练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-culture': { title: '文明与家园', stage: 'junior', cat: 'nation', diff: 5.2, hot: false,
+  fact: '中华优秀传统文化是中华民族的精神命脉，文化是一个国家、一个民族的灵魂；中华文化积淀着中华民族最深层的精神追求，代表着中华民族独特的精神标识，要坚定文化自信、传承与发展中华优秀传统文化。',
+  prev: ['pol-law-china', 'pol-democracy'], next: ['pol-dream', 'pol-culture-basics'],
+  lecture: [ {name:'延续文化血脉与文化自信', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中华文化与文化自信练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-dream': { title: '和谐与梦想', stage: 'junior', cat: 'nation', diff: 5.4, hot: false,
+  fact: '实现中华民族伟大复兴是近代以来中华民族最伟大的梦想，中国梦的基本内涵是国家富强、民族振兴、人民幸福；实现中国梦必须走中国道路、弘扬中国精神、凝聚中国力量，分两步走建成社会主义现代化强国。',
+  prev: ['pol-culture'], next: ['pol-world', 'pol-china-world', 'pol-newera'],
+  lecture: [ {name:'中国梦与强国之路', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中国梦内涵与实现路径练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 世界与未来（九下） ================= */
+'pol-world': { title: '我们共同的世界', stage: 'junior', cat: 'world', diff: 5.6, hot: false,
+  fact: '当今世界是开放的世界、发展的世界、紧密联系的世界；经济全球化的重要表现是商品生产在全球范围内完成与商品贸易在全球范围内进行；文化多样性是人类社会的基本特征，要正确对待文化差异。',
+  prev: ['pol-dream'], next: ['pol-china-world'],
+  lecture: [ {name:'同住地球村与经济全球化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'全球化与文化多样性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-china-world': { title: '世界舞台上的中国', stage: 'junior', cat: 'world', diff: 5.8, hot: true,
+  fact: '中国是世界格局中的重要力量，正以新的发展理念、务实的行动推动构建人类命运共同体；中国的国际影响力不断提升，在国际事务中发挥着日益重要的作用；中国积极参与全球治理，贡献中国智慧与方案。',
+  prev: ['pol-world', 'pol-dream'], next: ['pol-youth-future', 'pol-intl'],
+  lecture: [ {name:'中国担当与人类命运共同体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中国与世界关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pol-youth-future': { title: '走向未来的少年', stage: 'junior', cat: 'society', diff: 6.0, hot: false,
+  fact: '青少年的品格影响着国家未来发展，少年强、青年强则中国强；走向未来要把握机遇、迎接挑战，做好职业准备、敬业精神，回望成长、收获现在，走向明天、走向未来，做自信自强的中国青年。',
+  prev: ['pol-china-world'], next: ['pol-socialism', 'pol-law-life'],
+  lecture: [ {name:'走向未来的少年与职业准备', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'少年担当与未来规划练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+/* ================= 高中 · 必修1 中国特色社会主义 ================= */
+'pol-socialism': { title: '社会主义从空想到科学', stage: 'senior', cat: 'party', diff: 6.2, hot: false,
+  fact: '原始社会、奴隶社会、封建社会、资本主义社会、共产主义社会是人类社会发展的一般进程；科学社会主义产生的历史条件是空想社会主义与实践基础——资本主义的发展和工人运动的兴起，1848 年《共产党宣言》发表标志着科学社会主义的诞生。',
+  prev: ['pol-youth-future'], next: ['pol-revolution'],
+  lecture: [ {name:'社会主义从空想到科学、从理论到实践', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'人类社会进程与科学社会主义练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-revolution': { title: '新民主主义革命', stage: 'senior', cat: 'party', diff: 6.4, hot: false,
+  fact: '近代中国半殖民地半封建社会的基本国情决定了必须先进行新民主主义革命再进行社会主义革命，两个革命相互衔接；新民主主义革命「新」在领导权属于无产阶级、前途是社会主义，中华人民共和国成立实现了中华民族从「东亚病夫」到站起来的伟大飞跃。',
+  prev: ['pol-socialism'], next: ['pol-transformation'],
+  lecture: [ {name:'新民主主义革命的必由之路', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'新民主主义革命性质练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-transformation': { title: '社会主义改造与制度确立', stage: 'senior', cat: 'party', diff: 6.6, hot: false,
+  fact: '过渡时期的总路线是「一化三改」——社会主义工业化与对农业、手工业、资本主义工商业的社会主义改造；1956 年生产资料私有制的社会主义改造基本完成，标志着社会主义制度在我国确立，实现了中华民族有史以来最为广泛而深刻的社会变革。',
+  prev: ['pol-revolution'], next: ['pol-reform'],
+  lecture: [ {name:'社会主义制度在中国的确立', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'过渡时期总路线与三大改造练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-reform': { title: '改革开放与中国特色社会主义', stage: 'senior', cat: 'party', diff: 6.8, hot: true,
+  fact: '1978 年党的十一届三中全会作出改革开放的重大决策；改革开放是决定当代中国命运的关键一招，是党和人民大踏步赶上时代的重要法宝；中国特色社会主义道路、理论、制度、文化四位一体，道路是实现途径。',
+  prev: ['pol-transformation', 'pol-economy'], next: ['pol-newera'],
+  lecture: [ {name:'伟大的改革开放与中国特色社会主义', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'改革开放意义与四个自信练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-newera': { title: '中国特色社会主义新时代', stage: 'senior', cat: 'party', diff: 6.7, hot: false,
+  fact: '经过长期努力，中国特色社会主义进入了新时代，这是我国发展新的历史方位；我国社会主要矛盾已转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾；新时代坚持和发展中国特色社会主义要一以贯之。',
+  prev: ['pol-reform', 'pol-dream'], next: ['pol-ownership', 'pol-party', 'pol-intl'],
+  lecture: [ {name:'新时代的历史方位与主要矛盾', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'新时代与主要矛盾转化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 必修2 经济与社会 ================= */
+'pol-ownership': { title: '我国的生产资料所有制', stage: 'senior', cat: 'economy', diff: 6.7, hot: false,
+  fact: '公有制为主体、多种所有制经济共同发展是社会主义初级阶段的生产资料所有制；公有制经济包括国有经济、集体经济与混合所有制经济中的国有成分和集体成分，公有制主体地位体现在公有资产占优势与国有经济控制经济命脉。',
+  prev: ['pol-newera'], next: ['pol-market'],
+  lecture: [ {name:'公有制为主体 多种所有制经济共同发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'基本经济制度构成练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-market': { title: '社会主义市场经济体制', stage: 'senior', cat: 'economy', diff: 6.9, hot: false,
+  fact: '市场在资源配置中起决定性作用，市场调节主要通过价格、供求、竞争机制实现，但有自发性、盲目性、滞后性等弊端；社会主义市场经济体制把社会主义制度和市场经济有机结合起来，坚持党的领导，更好发挥政府作用。',
+  prev: ['pol-ownership'], next: ['pol-development'],
+  lecture: [ {name:'使市场在资源配置中起决定性作用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'市场调节与宏观调控练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-development': { title: '新发展理念与高质量发展', stage: 'senior', cat: 'economy', diff: 6.9, hot: true,
+  fact: '贯彻创新、协调、绿色、开放、共享的新发展理念，推动高质量发展；建设现代化经济体系要大力发展实体经济、深化供给侧结构性改革、实施乡村振兴战略与区域协调发展战略；构建以国内大循环为主体、国内国际双循环相互促进的新发展格局。',
+  prev: ['pol-market'], next: ['pol-distribution'],
+  lecture: [ {name:'贯彻新发展理念 推动高质量发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'新发展理念内涵练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-distribution': { title: '收入分配与社会保障', stage: 'senior', cat: 'economy', diff: 7.1, hot: false,
+  fact: '按劳分配是社会主义的分配原则，按生产要素分配是生产要素所有权在经济上的实现；初次分配、再分配、第三次分配协调配套，完善个人收入分配要理顺三者关系；社会保障通过防范化解风险、调节收入分配发挥民生保障安全网作用。',
+  prev: ['pol-development'], next: [],
+  lecture: [ {name:'我国的个人收入分配与社会保障', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'分配方式与社会保障练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 必修3 政治与法治 ================= */
+'pol-party': { title: '中国共产党的领导', stage: 'senior', cat: 'party', diff: 6.7, hot: true,
+  fact: '中国共产党是中国工人阶级的先锋队，同时是中国人民和中华民族的先锋队，全心全意为人民服务是党的根本宗旨；党的领导是中国特色社会主义最本质的特征，坚持科学执政、民主执政、依法执政，把党的领导落实到国家治理各领域各方面各环节。',
+  prev: ['pol-newera'], next: ['pol-congress'],
+  lecture: [ {name:'历史和人民的选择与党的领导', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'党的性质宗旨与执政方式练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-congress': { title: '人民代表大会制度', stage: 'senior', cat: 'nation', diff: 6.9, hot: false,
+  fact: '人民代表大会制度是我国的根本政治制度，坚持国家一切权力属于人民；全国人民代表大会是最高国家权力机关，行使立法权、决定权、任免权、监督权；人大代表由民主选举产生，与人民群众保持密切联系，对人民负责、受人民监督。',
+  prev: ['pol-party', 'pol-democracy'], next: ['pol-consult'],
+  lecture: [ {name:'人民代表大会制度的理论与实践', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'人大职权与代表职责练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-consult': { title: '政党制度与协商民主', stage: 'senior', cat: 'nation', diff: 6.9, hot: false,
+  fact: '中国共产党领导的多党合作和政治协商制度是我国的一项基本政治制度，基本方针是长期共存、互相监督、肝胆相照、荣辱与共；人民政协是社会主义协商民主的重要渠道和专门协商机构，协商民主是我国社会主义民主政治的特有形式和独特优势。',
+  prev: ['pol-congress'], next: ['pol-ethnic-grassroots'],
+  lecture: [ {name:'中国共产党领导的多党合作和政治协商制度', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'政协职能与协商民主练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-ethnic-grassroots': { title: '民族区域自治与基层群众自治', stage: 'senior', cat: 'nation', diff: 7.1, hot: false,
+  fact: '民族区域自治制度是在国家统一领导下各少数民族聚居地方实行区域自治的制度，是我国的一项基本政治制度，坚持民族平等、民族团结和各民族共同繁荣的方针；基层群众自治制度让人民群众直接行使民主权利，村委会、居委会是基层群众性自治组织。',
+  prev: ['pol-consult'], next: ['pol-ruleoflaw'],
+  lecture: [ {name:'民族区域自治制度与基层群众自治制度', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'基本政治制度辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-ruleoflaw': { title: '全面依法治国', stage: 'senior', cat: 'law', diff: 7.1, hot: true,
+  fact: '全面依法治国是国家治理的一场深刻革命，坚持依法治国、依法执政、依法行政共同推进，法治国家、法治政府、法治社会一体建设；科学立法、严格执法、公正司法、全民守法是新十六字方针；法治政府是职能科学、权责法定、执法严明、公开公正、廉洁高效、守法诚信的政府。',
+  prev: ['pol-ethnic-grassroots', 'pol-law-china'], next: ['pol-philosophy', 'pol-law-life'],
+  lecture: [ {name:'全面依法治国与法治政府建设', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'依法治国方针与法治政府练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 必修4 哲学与文化 ================= */
+'pol-philosophy': { title: '哲学的基本问题与派别', stage: 'senior', cat: 'philosophy', diff: 7.3, hot: false,
+  fact: '哲学源于人们在实践中对世界的追问与思考，是对具体知识的概括和升华；哲学的基本问题是思维和存在的关系问题，包括何者为本原与有无同一性两个方面；唯物主义与唯心主义是哲学的两大基本派别。',
+  prev: ['pol-ruleoflaw'], next: ['pol-material'],
+  lecture: [ {name:'哲学的起源与基本问题', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'哲学基本问题与派别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-material': { title: '物质与意识', stage: 'senior', cat: 'philosophy', diff: 7.3, hot: true,
+  fact: '物质是不依赖于人的意识并能为人的意识所反映的客观实在，物质的唯一特性是客观实在性；物质决定意识，意识是客观存在的主观映像，对改造客观世界具有指导作用；规律是客观的，要把发挥主观能动性与尊重客观规律相结合，一切从实际出发、实事求是。',
+  prev: ['pol-philosophy'], next: ['pol-practice'],
+  lecture: [ {name:'世界的物质性与规律的客观性', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'物质与意识关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-practice': { title: '实践与认识', stage: 'senior', cat: 'philosophy', diff: 7.3, hot: false,
+  fact: '实践是人们改造客观世界的物质活动，具有客观物质性、能动性、社会历史性；实践是认识的来源、发展动力、检验标准与目的；认识具有反复性、无限性、上升性，真理是客观的、具体的、有条件的，追求真理是一个永无止境的过程。',
+  prev: ['pol-material'], next: ['pol-dialectic', 'pol-logic'],
+  lecture: [ {name:'实践是认识的基础与真理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'实践与认识关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-dialectic': { title: '联系观与发展观', stage: 'senior', cat: 'philosophy', diff: 7.3, hot: false,
+  fact: '联系是事物之间以及事物内部诸要素之间的相互依赖、相互影响、相互制约和相互作用，联系具有普遍性、客观性、多样性；发展的实质是事物的前进和上升，是新事物的产生和旧事物的灭亡，事物发展是前进性与曲折性的统一、量变与质变的统一。',
+  prev: ['pol-practice'], next: ['pol-contradiction'],
+  lecture: [ {name:'唯物辩证法的联系观与发展观', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'联系特征与发展状态练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-contradiction': { title: '矛盾分析法', stage: 'senior', cat: 'philosophy', diff: 7.5, hot: true,
+  fact: '矛盾是事物内部和事物之间既对立又统一的关系，是事物发展的源泉和动力；矛盾的普遍性与特殊性相互联结，是关于事物矛盾问题的精髓；坚持两点论与重点论的统一，具体问题具体分析是马克思主义活的灵魂。',
+  prev: ['pol-dialectic'], next: ['pol-history'],
+  lecture: [ {name:'唯物辩证法的矛盾观', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'矛盾普遍性特殊性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-history': { title: '社会历史观', stage: 'senior', cat: 'philosophy', diff: 7.5, hot: false,
+  fact: '社会存在决定社会意识，社会意识具有相对独立性并反作用于社会存在；生产关系一定要适合生产力状况、上层建筑一定要适合经济基础状况是支配人类社会发展的基本规律；改革是社会主义制度的自我完善和发展，是发展中国特色社会主义的强大动力。',
+  prev: ['pol-contradiction'], next: ['pol-masses'],
+  lecture: [ {name:'社会存在与社会意识与两大规律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'社会基本矛盾练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-masses': { title: '人民群众与群众路线', stage: 'senior', cat: 'philosophy', diff: 7.5, hot: false,
+  fact: '人民群众是历史的创造者——是社会物质财富的创造者、社会精神财富的创造者、社会变革的决定力量；坚持群众观点和群众路线：一切为了群众、一切依靠群众，从群众中来、到群众中去，这是我们党取得一切成就的重要法宝。',
+  prev: ['pol-history'], next: ['pol-value'],
+  lecture: [ {name:'人民群众是历史的创造者', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'群众观点与群众路线练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-value': { title: '价值观与人生价值', stage: 'senior', cat: 'philosophy', diff: 7.7, hot: false,
+  fact: '人的价值在于创造价值、在于对社会的责任和贡献，评价一个人的价值主要看他的贡献；价值观对人们认识世界和改造世界的活动具有重要的导向作用；实现人生价值要在劳动和奉献中、在个人与社会的统一中、在砥砺自我中创造与实现。',
+  prev: ['pol-masses'], next: ['pol-culture-basics'],
+  lecture: [ {name:'价值判断与价值选择及人生价值实现', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'价值观导向作用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-culture-basics': { title: '文化的内涵与功能', stage: 'senior', cat: 'philosophy', diff: 7.7, hot: false,
+  fact: '文化是相对于经济、政治而言的人类全部精神活动及其产品，文化是经济和政治的反映并反作用于经济政治；文化具有引领风尚、教育人民、服务社会、推动发展的功能；文化与文明：文明是文化发展的积极成果，文化有先进与落后之分。',
+  prev: ['pol-value', 'pol-culture'], next: ['pol-tradition'],
+  lecture: [ {name:'文化的内涵、功能与载体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文化与经济社会关系练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-tradition': { title: '中华优秀传统文化的创造性转化', stage: 'senior', cat: 'philosophy', diff: 7.7, hot: false,
+  fact: '中华传统文化源远流长、博大精深，核心思想理念、中华传统美德、中华人文精神是主要内容；对待传统文化要「取其精华、去其糟粕」，坚持创造性转化、创新性发展，使中华文化与当代文化相适应、与现代社会相协调。',
+  prev: ['pol-culture-basics'], next: ['pol-confidence'],
+  lecture: [ {name:'中华优秀传统文化的当代价值', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'传统文化双创方针练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-confidence': { title: '文化自信与文化交流', stage: 'senior', cat: 'philosophy', diff: 7.7, hot: true,
+  fact: '文化自信是一个国家、一个民族发展中更基本、更深沉、更持久的力量，来自对时代发展趋势、中国特色社会主义实践的深刻把握；坚持马克思主义在意识形态领域指导地位的根本制度，坚持以社会主义核心价值观引领文化建设，坚持吸收外来、面向未来，发展中国特色社会主义文化。',
+  prev: ['pol-tradition'], next: [],
+  lecture: [ {name:'文化自信与发展中国特色社会主义文化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文化自信来源练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 选择性必修延伸 ================= */
+'pol-intl': { title: '当代国际政治与经济', stage: 'senior', cat: 'world', diff: 6.7, hot: false,
+  fact: '国家结构形式有单一制与复合制，国家管理形式即政体；国际关系的决定性因素是国家利益，国际竞争的实质是以经济和科技实力为基础的综合国力的较量；中国倡导构建人类命运共同体，推动经济全球化朝着更加开放、包容、普惠、平衡、共赢的方向发展。',
+  prev: ['pol-newera', 'pol-china-world'], next: [],
+  lecture: [ {name:'国际关系与人类命运共同体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'国际关系决定因素练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-law-life': { title: '法律与生活', stage: 'senior', cat: 'law', diff: 7.1, hot: false,
+  fact: '民法调整平等主体之间的人身关系和财产关系，民事主体地位平等、遵循自愿、公平、诚信原则；合同是民事主体之间设立、变更、终止民事法律关系的协议，要弘扬社会主义核心价值观与契约精神；公民要树立法治意识，用法律维护自身合法权益。',
+  prev: ['pol-ruleoflaw', 'pol-youth-future'], next: [],
+  lecture: [ {name:'民事权利义务与依法维权', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'民法原则与合同练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'pol-logic': { title: '逻辑与思维', stage: 'senior', cat: 'logic', diff: 7.5, hot: false,
+  fact: '逻辑学研究的对象是思维形式、思维规律与思维方法；概念、判断、推理是思维形式的基本环节，演绎推理、归纳推理、类比推理各有所长；科学思维要求把握辩证思维方法、培养创新思维能力，坚持实事求是、追求真理。',
+  prev: ['pol-practice'], next: [],
+  lecture: [ {name:'逻辑思维的基本要求', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'推理形式与思维方法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, new Set(ids.map(i => NODES[i].diff)).size * 118 + 220);
+  /* x 按难度档位等距排列，相邻档列间距恒定，避免窄档挤在一起 */
+  const ranks = {};
+  [...new Set(ids.map(i => NODES[i].diff))].sort((a,b)=>a-b).forEach((v,i)=>{ ranks[v]=i; });
+  const K = Object.keys(ranks).length;
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 92 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = K > 1 ? ranks[d] / (K - 1) : 0;
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*92+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

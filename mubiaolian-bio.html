@@ -1,0 +1,2252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 初高中生物知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）生物知识目标站 —— 初中到高中生物主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#4e8a3c" />
+<meta property="og:title" content="目标链 · 初高中生物知识目标站" />
+<meta property="og:description" content="初中到高中生物主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-bio.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M8.2 4.5c7.6 4.2-7.6 10.8 0 15M15.8 4.5c-7.6 4.2 7.6 10.8 0 15' fill='none' stroke='%23f6f7f4' stroke-width='1.4' stroke-linecap='round'/><path d='M9 8.5h6M9 12h6M9 15.5h6' stroke='%23f6f7f4' stroke-width='1.1' stroke-linecap='round'/></svg>" />
+<style>
+  :root {
+    --bg: #f5f8f3;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #4e8a3c;
+    --accent-deep: #3a6b2c;
+    --accent-soft: #eef5ea;
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(78,138,60,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(78,138,60,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #7db35f); box-shadow: 0 3px 10px -2px rgba(78,138,60,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #97c47f 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(58,107,44,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(78,138,60,.06); border: 1px dashed rgba(78,138,60,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(78,138,60,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(78,138,60,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #97c47f); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(78,138,60,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #7db35f);
+    box-shadow: 0 8px 18px -8px rgba(78,138,60,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(78,138,60,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(78,138,60,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(78,138,60,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f3f7f0; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fafbf7, #eff5ea);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链生物站"><i class="subj-ico">B</i>生物</span>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">55 个主干环 · 220 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>初高中生物知识<span class="accent">目标链</span></h1>
+  <p>生物从七年级起始、两段贯通：初中到高中主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/55</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：光合作用" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链生物站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">广东卷 · 省自主命题 · 2021-2025 · 人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链生物站 · 知识点数据（56 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：56 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 220 个 ============ */
+/* ============ 历年高考考情（广东卷 · 省自主命题 2021-2025）：环id → {年份:[T题号·考点]} ============
+ * 广东省自2021年起新高考选考科目（含生物学）均为省自主命题（语数英才是新课标Ⅰ卷）。
+ * 数据源：各年真题原文（中国教育在线 / 掌上高考等 PDF·Word）逐题核对 + 解析版交叉验证。
+ * 人工整理，或有遗漏。卷型变化：2021-2022 为 22 题（含选考二选一 T21/T22），2023 起 21 题、取消选考题。 */
+const EXAM = {
+  'bio-molecule': {
+    2025: ['T2·蛋白质检测实验'],
+    2024: ['T15·蛋白质结构与功能'],
+  },
+  'cell-detail': {
+    2025: ['T3·生物膜结构模型'],
+    2022: ['T8·线粒体结构与DNA', 'T9·分泌蛋白运输路径'],
+  },
+  'membrane-transport': {
+    2025: ['T8·物质跨膜运输'],
+    2021: ['T13·渗透作用与质壁分离', 'T19·跨膜运输与实验'],
+  },
+  'enzyme-atp': {
+    2023: ['T1·酶活性影响因素'],
+    2022: ['T13·酶催化条件分析'],
+  },
+  'cell-respiration': {
+    2024: ['T5·线粒体与细胞呼吸'],
+    2023: ['T7·有氧呼吸与辅酶'],
+    2022: ['T10·细胞呼吸与种子活力'],
+    2021: ['T9·酵母菌呼吸实验'],
+  },
+  'photosynthesis-hs': {
+    2025: ['T18·光质与光合调控'],
+    2024: ['T2·原核细胞与光合'],
+    2023: ['T18·光合与光饱和点'],
+    2022: ['T18·光合作用实验设计'],
+    2021: ['T12·卡尔文循环', 'T15·光合速率与光强'],
+  },
+  'cell-division-hs': {
+    2025: ['T4·有丝分裂观察'],
+    2022: ['T4·有丝分裂观察实验'],
+  },
+  'cell-life-course': {
+    2023: ['T2·细胞癌变与基因', 'T17·RNA调控与凋亡'],
+    2022: ['T11·细胞癌变机理'],
+    2021: ['T4·细胞凋亡'],
+  },
+  'meiosis': {
+    2025: ['T10·染色体不分离'],
+    2024: ['T9·减数分裂染色体不分离'],
+  },
+  'gene-separation': {
+    2023: ['T20·转基因与分离定律'],
+  },
+  'gene-assortment': {
+    2024: ['T14·自由组合与标记'],
+    2022: ['T19·自由组合与ZW遗传'],
+  },
+  'sex-inheritance': {
+    2024: ['T18·遗传病与系谱分析'],
+    2023: ['T16·ZW遗传与育种'],
+    2022: ['T16·遗传病基因检测', 'T19·自由组合与ZW遗传'],
+    2021: ['T20·果蝇伴X突变检测'],
+  },
+  'dna-evidence': {
+    2022: ['T5·遗传学经典实验'],
+  },
+  'dna-replication': {
+    2025: ['T7·DNA复制与测序'],
+    2022: ['T12·DNA碱基互补配对'],
+    2021: ['T5·DNA双螺旋模型'],
+  },
+  'gene-expression': {
+    2025: ['T19·表观遗传与育种'],
+    2024: ['T10·表观遗传'],
+    2022: ['T7·核孔与mRNA转运'],
+    2021: ['T7·翻译过程'],
+  },
+  'gene-mutation': {
+    2025: ['T9·基因突变与密码子'],
+  },
+  'chrom-variation': {
+    2025: ['T19·表观遗传与育种'],
+    2021: ['T11·单倍体育种', 'T16·染色体变异与减数分裂'],
+  },
+  'evolution': {
+    2025: ['T12·物种形成机制', 'T16·基因频率与遗传病'],
+    2024: ['T11·基因频率与自然选择'],
+    2023: ['T4·线粒体与生物进化'],
+    2022: ['T14·基因频率与进化'],
+    2021: ['T8·基因频率计算', 'T10·自然选择与适应'],
+  },
+  'homeostasis': {
+    2025: ['T14·运动与内环境稳态'],
+    2022: ['T3·内环境成分辨析'],
+  },
+  'nerve-hs': {
+    2025: ['T6·神经兴奋传导'],
+    2024: ['T6·神经系统与记忆', 'T16·突触与离子通道'],
+    2023: ['T19·神经肌肉接头'],
+    2022: ['T15·突触与神经递质'],
+    2021: ['T18·反射弧与神经调节'],
+  },
+  'hormone-hs': {
+    2025: ['T20·神经-体液免疫'],
+    2024: ['T7·激素分级调节'],
+    2023: ['T8·血糖调节'],
+  },
+  'immune-hs': {
+    2025: ['T20·神经-体液免疫'],
+    2024: ['T17·免疫与肿瘤治疗'],
+    2023: ['T14·细胞免疫与抗病毒'],
+    2022: ['T17·抗病毒免疫与疫苗'],
+    2021: ['T1·灭活疫苗与免疫'],
+  },
+  'plant-hormone': {
+    2025: ['T15·植物激素与扦插'],
+    2024: ['T19·植物激素调控实验'],
+    2023: ['T9·扦插与植物激素', 'T15·光敏色素与光信号'],
+    2022: ['T2·植物生长调节剂'],
+    2021: ['T14·乙烯催熟实验设计'],
+  },
+  'population-community': {
+    2025: ['T11·群落结构与调查', 'T17·互利共生与调节'],
+    2024: ['T12·种间关系与生态位', 'T13·生态位与多样性'],
+    2023: ['T21·群落演替与生态工程'],
+    2022: ['T20·群落结构与生态方案'],
+    2021: ['T6·K值与种群增长'],
+  },
+  'ecosystem': {
+    2025: ['T1·生态系统整体性', 'T13·食物链跨生境'],
+    2024: ['T1·生态系统与碳汇', 'T8·生态系统的信息传递', 'T20·生态恢复与实验'],
+    2023: ['T13·生态系统物质循环', 'T21·群落演替与生态工程'],
+    2022: ['T6·食物网与营养结构', 'T20·群落结构与生态方案'],
+    2021: ['T2·群落与生态系统概念', 'T3·生物多样性层次', 'T17·碳循环与碳中和'],
+  },
+  'fermentation-biotech': {
+    2023: ['T10·选择培养基筛选'],
+    2022: ['T21·微生物分离与培养'],
+    2021: ['T21·微生物培养与发酵'],
+  },
+  'gene-cell-engineering': {
+    2025: ['T5·动物细胞培养', 'T21·基因工程与代谢'],
+    2024: ['T21·基因工程载体构建'],
+    2023: ['T3·体外受精与胚胎移植', 'T12·植物体细胞杂交'],
+    2022: ['T22·PCR与表达载体'],
+    2021: ['T22·基因工程与蛋白质工程'],
+  },
+};
+/* 广东卷真题原文（均已探活；2021 为 eol Word 原卷，其余为 PDF；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=bio&y=2021',
+  2022: 'gaokao.html?s=bio&y=2022',
+  2023: 'gaokao.html?s=bio&y=2023',
+  2024: 'gaokao.html?s=bio&y=2024',
+  2025: 'gaokao.html?s=bio&y=2025',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 初中 · 科学方法与基础 ---- */
+  'bio-intro': [
+    { t: '生物的基本特征', d: '营养、呼吸、排泄、对外界刺激作出反应、生长繁殖、遗传变异是生物共有特征。易错：机器人会动会「回应」不是生物——它不能自主生长繁殖；珊瑚是生物的分泌物而非生物体。' },
+    { t: '调查与观察方法', d: '调查要明确目的对象并如实记录，样本选取要有代表性；观察要有明确目的并借助工具。易错：调查全国中学生视力状况不必人人统计——抽样调查足够，但样本不能只取一所重点中学。' },
+    { t: '对照实验设计', d: '一组对照实验只能有一个变量，其余条件相同且适宜。易错：探究「光照对种子萌发的影响」时把两组放在不同温度下——同时改变两个变量，结论无效。' },
+    { t: '提出问题与作出假设', d: '问题要可探究，假设要对问题作出肯定或否定的回答。易错：把「光会影响鼠妇的分布吗」写成「鼠妇喜欢潮湿」——假设必须回应所提出的问题，且需实验检验。' },
+  ],
+  'bio-env': [
+    { t: '非生物因素对生物的影响', d: '光、温度、水、空气、土壤等非生物因素影响生物的分布与生存。易错：「南橘北枳」是温度影响而非光照；「葵花朵朵向太阳」是光照影响。' },
+    { t: '生物因素与种间关系', d: '捕食、竞争、寄生、合作是常见生物因素关系。易错：水稻与稗草争水争肥是竞争而非捕食；菟丝子与大豆是寄生而非共生。' },
+    { t: '生态系统的组成', d: '生物部分（生产者、消费者、分解者）加非生物部分构成生态系统。易错：绿色植物是生产者，但「植物都是生产者」不对——菟丝子是寄生植物属消费者。' },
+    { t: '食物链与食物网', d: '食物链从生产者开始、到最高级消费者结束，不含分解者和非生物部分。易错：把「草→兔→狐」写成「草←兔←狐」方向反了；食物链中不能出现阳光。' },
+  ],
+  'bio-microscope': [
+    { t: '显微镜的结构与放大倍数', d: '放大倍数=目镜倍数×物镜倍数，指长度放大而非面积。易错：物镜越长倍数越大、目镜越长倍数越小，两者规律相反。' },
+    { t: '低倍换高倍的操作', d: '先在低倍镜下找到物像并移到视野中央，再转动转换器换高倍镜，随后只调细准焦螺旋。易错：换高倍镜后视野变暗应调大光圈或换凹面镜，而不是调节粗准焦螺旋。' },
+    { t: '物像与标本移动方向', d: '显微镜成倒像，物像偏哪就往哪移装片才能移到中央。易错：物像在右下方，把装片往左上移会把它移出视野——应往右下移。' },
+    { t: '临时装片制作流程', d: '洋葱表皮装片按「擦—滴—撕—展—盖—染」，盖盖玻片先一侧触水滴再缓缓放下。易错：盖片不平产生气泡——气泡有黑边圆圈特征，与细胞轮廓可区分。' },
+  ],
+  /* ---- 初中 · 细胞与结构层次 ---- */
+  'cell-structure': [
+    { t: '动植物细胞共有结构', d: '细胞膜、细胞质、细胞核是共有结构，细胞核内有染色体。易错：把「细胞质」说成「细胞液」——细胞液在液泡内，两者完全不同。' },
+    { t: '植物细胞特有结构', d: '细胞壁、液泡、叶绿体是植物细胞特有。易错：「植物细胞都有叶绿体」不对——根尖细胞没有叶绿体，叶绿体主要分布在叶肉细胞。' },
+    { t: '细胞膜的功能', d: '细胞膜保护细胞并控制物质进出。易错：细胞膜「控制进出」不等于「完全隔绝」——氧气、养料能进入，废物能排出。' },
+    { t: '细胞核的功能', d: '细胞核是遗传信息库，是细胞代谢和遗传的控制中心。易错：克隆羊多莉的性状与供核母羊一致——遗传信息主要在细胞核。' },
+  ],
+  'cell-life': [
+    { t: '细胞中的物质', d: '有机物（糖类、脂类、蛋白质、核酸）与无机物（水、无机盐）共存于细胞。易错：分子小、不含碳的多是无机物；把水说成有机物是常见错误。' },
+    { t: '叶绿体与线粒体', d: '叶绿体把光能转成化学能，线粒体把化学能释放供生命活动。易错：线粒体动植物细胞都有，认为「动物细胞只含线粒体不含叶绿体」正确，但反过来「有叶绿体就没有线粒体」是错的。' },
+    { t: '染色体与DNA', d: '染色体由 DNA 和蛋白质组成，DNA 上有遗传信息。易错：染色体不是「在细胞质里」——它存在于细胞核中。' },
+    { t: '细胞的能量来源', d: '细胞通过呼吸作用分解有机物释放能量。易错：「植物白天只进行光合作用」不对——呼吸作用白天黑夜都在进行。' },
+  ],
+  'cell-division': [
+    { t: '细胞分裂的过程', d: '分裂时染色体先复制再平均分配到两个新细胞中。易错：新细胞染色体形态数目与原细胞相同——这正是遗传稳定的保证，不会「减半」。' },
+    { t: '细胞生长与分裂的意义', d: '细胞生长使体积增大，分裂使数目增多。易错：细胞不能无限长大——体积过大时物质运输效率下降。' },
+    { t: '细胞分化的概念', d: '分化使细胞形态结构功能趋向专门化，产生不同组织。易错：分化后遗传物质不变——只是基因的选择性表达，不是「基因丢失」。' },
+    { t: '分裂分化辨析', d: '分裂增加数目、分化增加类型。易错：癌细胞无限增殖属分裂失控，与「分化」无关；伤口愈合既有分裂也有分化。' },
+  ],
+  'bio-levels': [
+    { t: '组织的形成与类型', d: '细胞分化形成组织：植物有保护、营养、输导、分生组织，动物有上皮、肌肉、结缔、神经组织。易错：血液属结缔组织——别看它是液态。' },
+    { t: '植物体的结构层次', d: '细胞→组织→器官→植物体。易错：植物没有「系统」层次；一株完整植物是六大器官的直接组合。' },
+    { t: '动物体的结构层次', d: '细胞→组织→器官→系统→动物体。易错：胃是器官不是组织——它含上皮、肌肉等多种组织。' },
+    { t: '器官与系统判断', d: '器官由多种组织按一定次序构成并完成特定功能。易错：一块骨是器官而非组织；皮肤是人体最大的器官。' },
+  ],
+  /* ---- 初中 · 病毒与单细胞生物 ---- */
+  'virus-single': [
+    { t: '病毒的结构特点', d: '病毒无细胞结构，由蛋白质外壳与内部遗传物质构成。易错：「病毒有细胞膜」不对；病毒比细胞小得多，需电子显微镜观察。' },
+    { t: '病毒的生活方式与分类', d: '病毒必须寄生在活细胞内，按寄主分动物病毒、植物病毒、噬菌体。易错：病毒离开活细胞通常变成结晶体，不表现生命活动——「病毒可独立生活」是错的。' },
+    { t: '病毒与人类的关系', d: '病毒致病（流感、艾滋病）但也能利用（疫苗、噬菌体治菌）。易错：疫苗本身是经处理的病毒或其成分，不能说「疫苗让人感染发病」。' },
+    { t: '单细胞生物', d: '草履虫、酵母菌、衣藻等一个细胞即完成全部生命活动。易错：草履虫靠表膜（细胞膜）完成呼吸——不是用「口沟」呼吸。' },
+  ],
+  /* ---- 初中 · 绿色植物 ---- */
+  'seed-germ': [
+    { t: '种子的结构', d: '胚由胚芽、胚轴、胚根、子叶组成，是新植株的幼体；玉米种子有胚乳，大豆种子营养贮在子叶。易错：「玉米种子」实为果实（颖果），果皮与种皮紧贴。' },
+    { t: '单子叶与双子叶植物', d: '单子叶植物子叶一片多有胚乳，双子叶植物子叶两片一般无胚乳。易错：「双子叶植物的种子都没有胚乳」不对——蓖麻是双子叶却有胚乳。' },
+    { t: '种子萌发的自身条件', d: '胚必须完整、有活力且不休眠。易错：饱满但不完整的种子（胚被虫蛀）不能萌发——子叶不完整时营养不足，胚乳种子胚乳受损同理。' },
+    { t: '种子萌发的外界条件', d: '适宜温度、一定水分、充足空气三者缺一不可。易错：实验设计中「一定量的水」不能写成「越多越好」；淹没在水中的种子缺空气不萌发。' },
+  ],
+  'plant-grow': [
+    { t: '根尖的结构与生长', d: '根冠保护、分生区分裂、伸长区伸长、成熟区生有根毛。易错：生长最快的部位是伸长区而非分生区；根毛在成熟区，是吸收的主要部位。' },
+    { t: '芽的发育', d: '芽中有分生组织，芽轴发育成茎、幼叶发育成叶、芽原基发育成侧芽。易错：「枝条是芽不断分裂直接长出来的」不准确——枝条的伸长靠芽中分生组织分裂与后续细胞生长共同完成。' },
+    { t: '木本茎的加粗', d: '形成层细胞分裂向外形成韧皮部、向内形成木质部。易错：单子叶植物茎没有形成层（如竹子），所以「竹子不能年年长粗」。' },
+    { t: '无机盐的需要', d: '需要量最多的是含氮、含磷、含钾的无机盐。易错：缺氮叶片发黄、缺磷植株矮小呈暗绿、缺钾茎秆易倒伏，三者症状不能张冠李戴。' },
+  ],
+  'photosynthesis': [
+    { t: '光合作用反应式与场所', d: '二氧化碳+水 →(光能、叶绿体) 有机物(淀粉)+氧气。易错：条件「光能」和场所「叶绿体」写在箭头上方，漏写任一项都不完整。' },
+    { t: '光合作用经典实验', d: '萨克斯绿叶遮光对照、普利斯特利增氧实验、金鱼藻放气泡实验。易错：萨克斯实验暗处理的目的是耗尽叶片原有淀粉——直接照光做对照会得出假结论。' },
+    { t: '淀粉检验与脱色', d: '碘液检验淀粉变蓝，酒精隔水加热脱去叶绿素。易错：酒精直接加热会燃烧危险——必须水浴。' },
+    { t: '光合作用的应用', d: '提高大棚产量可增加光照、提高 CO₂ 浓度、合理密植。易错：合理密植提高的是单位面积光合效率——过密叶片互相遮挡反而减产。' },
+  ],
+  'resp-transp': [
+    { t: '呼吸作用的概念', d: '活细胞分解有机物释放能量：有机物+氧气 → 二氧化碳+水+能量。易错：呼吸作用是「分解」有机物，与光合作用方向相反，所有活细胞时刻进行。' },
+    { t: '呼吸与光合对比', d: '光合只在含叶绿体细胞见光时进行，呼吸在所有活细胞全天进行。易错：「晚上植物只呼吸不放氧」对，但「白天只光合不呼吸」错——两者白天同时进行。' },
+    { t: '蒸腾作用的意义', d: '拉动水分无机盐运输、降温、参与水循环。易错：气孔是蒸腾「失水」的门户也是气体交换的窗口，由保卫细胞控制开闭。' },
+    { t: '呼吸作用原理的应用', d: '仓储粮食低温干燥、松土促根呼吸、涝害排水。易错：水果低温保存是抑制呼吸减少消耗——零下结冰反而破坏细胞结构。' },
+  ],
+  'plant-biosphere': [
+    { t: '碳—氧平衡', d: '绿色植物通过光合作用消耗二氧化碳、释放氧气维持平衡。易错：维持平衡靠「绿色植物」整体——单个细胞或无叶绿体部分不参与。' },
+    { t: '水循环中的植物角色', d: '根吸水、导管运输、气孔散失，蒸腾提高大气湿度。易错：导管运输自下而上运水和无机盐，筛管自上而下运有机物，方向不能混。' },
+    { t: '植树造林的意义', d: '森林涵养水源、调节气候、防风固沙。易错：「森林是地球之肺」强调其供氧与固碳功能，与「湿地是地球之肾」的表述区分开。' },
+    { t: '保护植被的措施', d: '退耕还林、控制放牧、植树节义务。易错：草场过度放牧退化后单靠自然恢复很慢，需人工干预——「生态系统稳定不受破坏就能自动恢复」要有限度理解。' },
+  ],
+  /* ---- 初中 · 人体生理 ---- */
+  'human-origin': [
+    { t: '现代类人猿与人类的关系', d: '森林古猿是共同祖先，环境变化使一支下地直立行走。易错：「人是由现代类人猿进化来的」错——两者是平行演化的亲戚关系。' },
+    { t: '直立行走的意义', d: '直立使前肢解放、视野开阔，为工具使用与脑发展奠基。易错：直立行走是人与猿分界的标志之一，但不是唯一标准。' },
+    { t: '火与工具的作用', d: '用火吃熟食缩短消化负担、利于脑发育，语言源于群体合作。易错：脑的发达是长期自然选择与工具行为共同作用的结果，非「一夜突变」。' },
+    { t: '人类发展阶段', d: '南方古猿→能人→直立人（如北京猿人）→智人。易错：北京猿人属直立人而非智人，与现代人不是同种。' },
+  ],
+  'nutrition-digest': [
+    { t: '六大营养物质', d: '糖类供能、脂肪储能、蛋白质建造修复，维生素、水、无机盐调节生命活动。易错：维生素不供能也不是「原料」，缺乏症要对应记——缺 A 夜盲、缺 C 坏血、缺 D 佝偻。' },
+    { t: '三大物质的消化起点', d: '淀粉从口腔、蛋白质从胃、脂肪在小肠开始消化。易错：口腔只分解淀粉不分解蛋白质——「嚼馒头越嚼越甜」是麦芽糖的甜。' },
+    { t: '消化液的来源与作用', d: '唾液淀粉酶、胃蛋白酶、胰液肠液含多种酶、胆汁不含酶乳化脂肪。易错：胆汁由肝脏分泌且不含消化酶，但脂肪消化离不开它的乳化。' },
+    { t: '小肠是吸收主场所', d: '小肠长约 5~6 米、有皱襞与绒毛、壁薄、毛细血管丰富。易错：小肠「吸收」的主要是营养物质，大肠只吸收少量水和无机盐——吸收主场所不是大肠。' },
+  ],
+  'breath': [
+    { t: '呼吸系统组成', d: '呼吸道（鼻、咽、喉、气管、支气管）与肺，肺是气体交换场所。易错：呼吸道「清洁湿润温暖」空气，但过滤能力有限——戴口罩仍有意义。' },
+    { t: '吸气与呼气的原理', d: '吸气：膈肌与肋间肌收缩→胸廓扩大→肺内压降低；呼气相反。易错：呼气时膈肌「舒张上升」而不是「收缩下降」，两态肌肉状态不能颠倒。' },
+    { t: '肺泡适于交换的特点', d: '肺泡数目多、壁一层上皮细胞、外缠毛细血管与弹性纤维。易错：气体交换靠「扩散作用」，不是主动运输也不耗能。' },
+    { t: '气体交换的结果', d: '肺泡处氧气入血，组织处氧气入细胞；静脉血变动脉血在肺循环。易错：组织处气体交换后动脉血变静脉血——「动静脉血转变部位」最易混。' },
+  ],
+  'blood-circ': [
+    { t: '心脏结构与瓣膜', d: '左心室壁最厚，房连静脉、室连动脉；房室瓣与动脉瓣防倒流。易错：「上房下室、房静室动」口诀要背牢——肺动脉里流的是静脉血。' },
+    { t: '体循环与肺循环', d: '体循环：左心室→主动脉→全身→上下腔静脉→右心房；肺循环：右心室→肺动脉→肺→肺静脉→左心房。易错：两循环「同时进行」且在心脏汇合，不是先走一个再走另一个。' },
+    { t: '血液成分与功能', d: '血浆运载血细胞与养料废物；红细胞运氧、白细胞防御、血小板止血凝血。易错：红细胞含血红蛋白在氧浓度高处结合氧——「红细胞在组织处释放氧」才对。' },
+    { t: '血型与输血', d: 'ABO 血型同型输血为原则，O 型曾称「万能供血者」但非绝对安全。易错：异型输血要慢且少，「万能」是相对的——现代医学坚持同型输血。' },
+  ],
+  'urinary': [
+    { t: '泌尿系统组成', d: '肾脏（形成尿）、输尿管（输送）、膀胱（贮存）、尿道（排出）。易错：肾脏是形成尿的器官，「膀胱形成尿液」是错的。' },
+    { t: '肾单位结构', d: '肾小球、肾小囊、肾小管构成肾单位，是基本功能单位。易错：入球小动脉粗于出球小动脉利于过滤——但出球小动脉仍是动脉而非静脉。' },
+    { t: '尿的形成两阶段', d: '肾小球和肾小囊内壁过滤（原尿）、肾小管重吸收（重吸收全部葡萄糖、大部分水、部分无机盐）。易错：原尿与尿的区别在葡萄糖——尿中出现葡萄糖提示糖尿病或肾小管病变。' },
+    { t: '排泄的途径', d: '排尿、排汗、呼气是排泄，排遗不属于排泄。易错：二氧化碳经呼吸系统排出属排泄——「排泄就是排尿」是错的。' },
+  ],
+  /* ---- 初中 · 调节与行为 ---- */
+  'nerve': [
+    { t: '神经系统的组成', d: '中枢神经系统（脑、脊髓）与周围神经系统（神经）。易错：脑干有呼吸心跳中枢——「植物人」往往脑干仍存活。' },
+    { t: '反射与反射弧', d: '反射弧五部分：感受器→传入神经→神经中枢→传出神经→效应器。易错：判断传入传出看神经节——有神经节的是传入神经；缺任一环节反射都不能完成。' },
+    { t: '简单反射与复杂反射', d: '简单反射生来就有由脊髓等低级中枢完成，复杂反射后天习得需大脑皮层。易错：缩手反射先抬手后感觉疼——信号同时传大脑但路径更长。' },
+    { t: '大脑皮层与语言', d: '大脑皮层是调节中枢，人类特有语言中枢。易错：「谈虎色变」属人类特有的语言相关复杂反射——动物听不懂语言。' },
+  ],
+  'hormone': [
+    { t: '内分泌腺与外分泌腺', d: '内分泌腺无导管、分泌物入血。易错：胰腺既外分泌（消化液）又内分泌（胰岛）——「胰腺是内分泌腺」不准确。' },
+    { t: '主要激素的功能', d: '生长激素促生长、甲状腺激素促代谢发育、胰岛素降血糖、肾上腺素应急。易错：幼年生长激素少患侏儒症、甲状腺激素少患呆小症——呆小症智力低下，与侏儒症区分。' },
+    { t: '激素调节的特点', d: '微量高效、通过体液运输、作用于靶器官靶细胞。易错：胰岛素口服失效（蛋白质被消化）——糖尿病人胰岛素须注射。' },
+    { t: '神经与激素的协调', d: '神经调节为主、快而短暂，激素调节慢而持久。易错：血糖升高既直接刺激胰岛也受神经支配——两系统不是各管各的。' },
+  ],
+  'animal-motion': [
+    { t: '运动系统的组成', d: '骨、关节（骨连结）、骨骼肌三部分。易错：关节由关节面、关节囊、关节腔组成，关节软骨缓冲摩擦——「关节面就是关节头」不完整。' },
+    { t: '运动的产生', d: '骨骼肌受刺激收缩牵动骨绕关节活动，需两组肌肉协作。易错：「肱二头肌单独完成屈肘」错——屈肘时肱二头肌收缩、肱三头肌舒张。' },
+    { t: '先天性行为与学习行为', d: '先天性行为生来有之由遗传决定，学习行为经后天学习获得。易错：动物越高等学习行为越复杂——「学习行为与遗传无关」是错的，它以遗传为基础。' },
+    { t: '社会行为', d: '群体内分工合作有等级与信息交流（声音、气味、动作）。易错：蜜蜂舞蹈传递蜜源方向是社会行为的信息交流——不是「语言」这种人类专属概念。' },
+  ],
+  /* ---- 初中 · 微生物与健康 ---- */
+  'bacteria-fungi': [
+    { t: '细菌的形态与结构', d: '球菌、杆菌、螺旋菌三类；基本结构含细胞壁、细胞膜、细胞质、DNA 集中区域，无成形细胞核。易错：「细菌没有细胞核」要说成「没有成形的细胞核」，有 DNA 集中区域。' },
+    { t: '细菌的生殖与营养', d: '分裂生殖，多数异养（腐生或寄生），有荚膜芽孢帮助休眠越冬。易错：芽孢是休眠体不是生殖细胞——一个细菌只形成一个芽孢。' },
+    { t: '真菌的结构与生殖', d: '真菌有成形细胞核，酵母菌出芽生殖，霉菌蘑菇孢子生殖。易错：青霉直立菌丝顶端扫帚状、曲霉球状——两种霉菌孢子着生形态不同。' },
+    { t: '微生物培养流程', d: '配制培养基→高温灭菌→冷却接种→恒温培养。易错：先接种后灭菌会把菌种杀光——顺序不能颠倒。' },
+  ],
+  'infection-immune': [
+    { t: '传染病的特点与环节', d: '传染性与流行性，流行需传染源、传播途径、易感人群三环节。易错：流感患者是传染源——「流感病毒是传染源」错，病毒是病原体。' },
+    { t: '预防措施的归类', d: '控制传染源（隔离治疗）、切断传播途径（消毒通风）、保护易感人群（接种疫苗）。易错：给易感者打疫苗属保护易感人群——对已患病者打疫苗无意义。' },
+    { t: '特异性与非特异性免疫', d: '第一二道防线（皮肤黏膜、杀菌物质吞噬细胞）人人天生；第三道防线针对特定病原体。易错：吞噬细胞既参与非特异也参与特异免疫——「吞噬细胞只属非特异性」不严谨。' },
+    { t: '抗原与抗体', d: '抗原刺激淋巴细胞产生抗体，抗体与抗原特异性结合。易错：抗体清除抗原后仍留存记忆——再次入侵时反应更快，这是疫苗原理。' },
+  ],
+  'medicine-safety': [
+    { t: '处方药与非处方药', d: 'Rx 需医师处方，OTC 分甲乙两类可自行购买。易错：非处方药「安全」不等于「无副作用」——超量服用同样危险。' },
+    { t: '说明书关键信息', d: '适应症、用法用量、禁忌、有效期、批准文号都要读。易错：过期药不能「看着没坏就吃」——化学成分可能已变质。' },
+    { t: '心肺复苏要点', d: '胸外按压位置在两乳头连线中点，频率每分钟 100~120 次，配合人工呼吸。易错：按压深度过浅无效——成人至少 5 厘米，但不是「越深越好」。' },
+    { t: '出血的判断与止血', d: '毛细血管渗血、静脉血暗红缓流、动脉血鲜红喷出。易错：大动脉出血要在近心端压迫——静脉出血在远心端，方向不能反。' },
+  ],
+  /* ---- 初中 · 多样性与进化 ---- */
+  'classification': [
+    { t: '分类的依据与等级', d: '界门纲目科属种七级，种是基本单位。易错：「科比目大」错——等级越小包含生物越少、共同特征越多。' },
+    { t: '分类单位与亲缘关系', d: '分类单位越小，共同特征越多、亲缘关系越近。易错：同「属」比同「科」亲缘更近，方向别搞反。' },
+    { t: '生物多样性三个层次', d: '基因（遗传）多样性、物种多样性、生态系统多样性。易错：金鱼各品种差异体现基因多样性——不是「物种多样性」。' },
+    { t: '保护多样性的措施', d: '就地保护（自然保护区）最有效，迁地保护（动物园植物园）补充，还有法制与宣传教育。易错：把濒危动物迁入动物园属迁地保护，与就地保护的主次关系要明确。' },
+  ],
+  'reproduction': [
+    { t: '有性生殖与无性生殖', d: '有性生殖经两性生殖细胞结合，无性生殖直接由母体产生新个体。易错：无性生殖「后代变异小、保持亲本性状」——嫁接苹果树正是利用这一点。' },
+    { t: '昆虫的变态发育', d: '完全变态经卵、幼虫、蛹、成虫四期，不完全变态无蛹期。易错：蝗虫、蟋蟀是不完全变态——「蝗虫发育要经过蛹」是错的。' },
+    { t: '两栖动物的发育', d: '青蛙幼体蝌蚪用鳃呼吸水中生活，成体用肺兼皮肤呼吸。易错：「两栖动物 = 水陆两栖生活的动物」错——乌龟水陆都能生活但是爬行动物。' },
+    { t: '鸟类的生殖特点', d: '体内受精、产大型硬壳卵，求偶—交配—筑巢—产卵—孵卵—育雏。易错：不是所有鸟都筑巢育雏（杜鹃巢寄生）——「所有鸟都育雏」太绝对。' },
+  ],
+  'origin-evolution': [
+    { t: '原始地球条件', d: '原始大气有水蒸气、氢气、氨、甲烷、二氧化碳、硫化氢，无游离氧。易错：原始大气「没有氧气」是关键——把氧气列进去就错了。' },
+    { t: '米勒实验的启示', d: '火花放电模拟闪电，合成了氨基酸等有机小分子。易错：米勒实验合成的是「有机小分子」而非生命——从分子到生命还有漫长过程。' },
+    { t: '化石证据', d: '化石是研究进化最直接证据，越古老地层化石越简单低等。易错：化石不是「石化了的生物」——遗迹遗物也可成化石。' },
+    { t: '自然选择学说', d: '过度繁殖、生存斗争、遗传变异、适者生存。易错：「长颈鹿脖子是伸长练出来的」是拉马克观点——达尔文认为变异先存在、环境选择。' },
+  ],
+  'eco-human': [
+    { t: '人类活动的主要环境问题', d: '温室效应、酸雨、臭氧层破坏、水土流失与荒漠化。易错：温室效应主因是 CO₂ 增多，「酸雨主因是 CO₂」错——是二氧化硫与氮氧化物。' },
+    { t: '生物入侵', d: '外来物种入侵破坏本地生态平衡，如水葫芦。易错：「外来物种都有害」不对——玉米、马铃薯是外来但良性的，入侵种指失控蔓延危害生态的。' },
+    { t: '森林的作用与危机', d: '森林是碳库、基因库、蓄水池。易错：砍伐后「种回去就行」忽视原生生态系统复杂性——人工林多样性远低于原始林。' },
+    { t: '可持续发展的理念', d: '在不损害后代利益的前提下满足当前需求。易错：可持续发展不是「停止发展」——是发展与保护的平衡。' },
+  ],
+  /* ---- 高中 · 分子与细胞 ---- */
+  'bio-molecule': [
+    { t: '元素与化合物分类', d: '大量元素 C H O N P S K Ca Mg，C 最基本；化合物分无机物（水、无机盐）与有机物（糖脂蛋白核酸）。易错：「含量最多」鲜重是水、干重是蛋白质，前提不同答案不同。' },
+    { t: '水的存在形式与功能', d: '自由水是良好溶剂参与反应，结合水是细胞结构成分。易错：种子晒干失自由水、烘烤失结合水——「晒干后种子还能萌发，炒熟后不能」的原理正源于此。' },
+    { t: '检测生物组织中的化合物', d: '还原糖用斐林试剂水浴加热砖红色、脂肪苏丹Ⅲ橘黄、蛋白质双缩脲紫。易错：斐林试剂需现配现用甲乙液混合，双缩脲先 A 后 B 不加热——三组条件不能混。' },
+    { t: '蛋白质结构多样性', d: '氨基酸种类、数目、排列顺序及肽链空间结构决定多样性。易错：脱水缩合失水数=肽键数=氨基酸数−肽链数；一条肽链至少含一个氨基和一个羧基在两端。' },
+  ],
+  'cell-detail': [
+    { t: '细胞膜的流动镶嵌模型', d: '磷脂双分子层为基本支架，蛋白质镶嵌或贯穿，糖蛋白在膜外侧。易错：判断膜内外看糖蛋白——糖蛋白分布在细胞膜外表面。' },
+    { t: '细胞器的分工', d: '线粒体动力车间、核糖体合成肽链、内质网加工运输、高尔基体分类包装、溶酶体消化车间。易错：溶酶体水解酶「在核糖体合成后直接工作」不对——需内质网高尔基体加工运输。' },
+    { t: '分泌蛋白的合成运输', d: '核糖体→内质网→高尔基体→细胞膜，线粒体供能，同位素标记追踪。易错：³H 亮氨酸先出现在附着核糖体——游离核糖体合成的是胞内蛋白。' },
+    { t: '细胞核的结构与功能', d: '核膜双层带核孔、染色质与染色体同一物质不同状态、核仁与核糖体形成相关。易错：核孔「大分子自由进出」不对——选择性运输，DNA 不能出核。' },
+  ],
+  'membrane-transport': [
+    { t: '渗透作用的条件', d: '半透膜与浓度差两者具备才发生渗透。易错：半透膜「两侧都有溶液」不一定会渗透——要看浓度差方向与有无半透膜。' },
+    { t: '质壁分离与复原', d: '外界浓度高于细胞液→失水分离，低于→吸水复原。易错：KNO₃ 溶液里先分离后自动复原——K⁺ NO₃⁻ 主动吸收进细胞，纯蔗糖溶液不会自动复原。' },
+    { t: '被动运输与主动运输', d: '自由扩散高→低不耗能不需载体，协助扩散需载体通道蛋白，主动运输逆浓度耗能。易错：判断依据看「浓度方向、载体、能量」三要素，只看浓度方向会误判协助扩散。' },
+    { t: '胞吞胞吐', d: '大分子经囊泡运输，依赖膜的流动性，耗能不需载体。易错：胞吞胞吐「不需要蛋白质参与」不对——需膜上蛋白识别与细胞骨架协助。' },
+  ],
+  'enzyme-atp': [
+    { t: '酶的本质与作用', d: '酶是活细胞产生的具有催化作用的有机物，多数是蛋白质、少数是 RNA。易错：「酶都是蛋白质」过时——核酶是 RNA；酶在核糖体或细胞内合成后发挥作用。' },
+    { t: '酶的特性与实验', d: '高效性（与无机催化剂比）、专一性、条件温和。易错：验证高效性选 Fe³⁺ 作对照；温度 pH 实验中底物与酶要先分别保温再混合——先混合再调温就废了。' },
+    { t: 'ATP 的结构与转化', d: 'ATP 由腺苷与三个磷酸基构成，远离 A 的特殊化学键易断裂。易错：ATP 与 ADP 转化「物质可逆、能量不可逆」——光能与化学能不可逆变。' },
+    { t: 'ATP 的利用', d: '主动运输、胞吞胞吐、生物发电发光、肌肉收缩都耗 ATP。易错：ATP 生成场所是细胞质基质线粒体叶绿体——「ATP 只在线粒体产生」错。' },
+  ],
+  'cell-respiration': [
+    { t: '有氧呼吸三阶段', d: '糖酵解在细胞质基质、丙酮酸分解在线粒体基质、氢氧结合在内膜，总反应生成 CO₂ 与水。易错：CO₂ 在第二阶段产生，「水在第二阶段生成」错——水是第三阶段氢氧结合的产物。' },
+    { t: '无氧呼吸两种类型', d: '动物与马铃薯块茎乳酸发酵，酵母菌植物酒精发酵。易错：无氧呼吸第二阶段不释放能量也不耗氧——「无氧呼吸不需要氧气」对，但「无氧呼吸不需要氧参与」体现在全过程。' },
+    { t: '细胞呼吸的计算', d: '消耗等量葡萄糖时无氧呼吸释放能量约为有氧的 1/15。易错：酒精发酵时 CO₂ 与酒精等摩尔——CO₂ 产生量大于 O₂ 消耗量说明同时存在两种呼吸。' },
+    { t: '影响呼吸的因素与应用', d: '温度氧气水分影响呼吸强度；粮食储藏低氧低湿低温，果蔬零上低温低氧。易错：「无氧环境保存果蔬最好」错——低氧即可，完全无氧会无氧呼吸产生酒精毒害。' },
+  ],
+  'photosynthesis-hs': [
+    { t: '光反应与暗反应', d: '光反应在类囊体膜产生 ATP、NADPH 与氧气；暗反应在基质进行 CO₂ 固定与 C₃ 还原。易错：暗反应「不需要光」但依赖光反应产物——突然停止光照 C₃ 积累 C₅ 减少。' },
+    { t: '光反应的实质', d: '水的光解与 ATP NADPH 的合成，能量转换光能→活跃化学能。易错：氧气中的氧来自水而非 CO₂——同位素 ¹⁸O 标记实验（鲁宾卡门）证实。' },
+    { t: '暗反应的循环', d: 'CO₂ 与 C₅ 结合生成 C₃，C₃ 接受 ATP NADPH 被还原成糖类。易错：卡尔文循环中 C₅ 不断再生——「CO₂ 固定消耗 C₅ 后就没有 C₅ 了」错。' },
+    { t: '光合强度的影响因素', d: '光照强度、CO₂ 浓度、温度三要素及补偿点饱和点。易错：净光合=真光合−呼吸；「有机物积累量最大」在净光合最大时而非光合最强时。' },
+  ],
+  'cell-division-hs': [
+    { t: '细胞周期与间期', d: '分裂间期占周期 90%~95%，完成 DNA 复制与相关蛋白合成。易错：判断细胞周期从「一次分裂完成」到「下一次分裂完成」，起点不是分裂期。' },
+    { t: '有丝分裂各期特征', d: '前期膜仁消失两体现、中期形定数晰赤道齐、后期点裂数加均两极、末期两消三现重开始。易错：染色体数在后期加倍（着丝粒分裂）、DNA 数在间期加倍，两条曲线拐点位置不同。' },
+    { t: '赤道板与细胞板', d: '赤道板是位置概念不存在实体，细胞板末期真实出现成细胞壁。易错：「中期细胞板清晰可见」错——那是末期，且植物细胞有细胞板动物没有。' },
+    { t: '观察分裂实验', d: '根尖分生区（正方形排列紧密）材料，盐酸酒精解离→漂洗→染色→压片。易错：解离后细胞已死亡——「观察到某细胞从中期进入后期」不可能，只能统计不同细胞。' },
+  ],
+  'cell-life-course': [
+    { t: '细胞分化的实质', d: '基因的选择性表达，遗传物质不变。易错：分化「不可逆」在自然条件下成立，但「分化了的细胞永远不能恢复分裂能力」过于绝对——植物细胞脱分化可逆。' },
+    { t: '细胞衰老的特征', d: '水分减少、酶活性降低、色素积累、呼吸减慢、核增大染色质收缩、膜通透性改变。易错：「细胞核体积增大」属衰老特征——别与癌细胞「核增大」混淆，癌细胞是核质比增大。' },
+    { t: '细胞凋亡与坏死', d: '凋亡是基因控制的程序性死亡（蝌蚪尾消失），坏死是损伤被动死亡引发炎症。易错：细胞凋亡对机体有利——「细胞死亡都是坏事」不对。' },
+    { t: '细胞癌变的机理', d: '原癌基因与抑癌基因突变累积，癌细胞无限增殖、形态改变、表面糖蛋白减少易转移。易错：「一个基因突变即致癌」错——癌变是多基因多步骤累积过程。' },
+  ],
+  /* ---- 高中 · 遗传与进化 ---- */
+  'meiosis': [
+    { t: '减数分裂的过程', d: '减Ⅰ同源染色体分离、非同源自由组合，减Ⅱ着丝粒分裂类似有丝。易错：交叉互换发生在减Ⅰ前期四分体时期——「减Ⅱ发生互换」是常见错误。' },
+    { t: '配子多样性的来源', d: '自由组合与交叉互换使配子多样。易错：一个精原细胞减数分裂（无互换）只产生 2 种 4 个精子——卵细胞则只有 1 种 1 个有效。' },
+    { t: '受精作用的意义', d: '精卵结合恢复染色体数目，减数分裂与受精维持前后代染色体恒定。易错：受精卵的细胞质几乎全部来自卵细胞——细胞质遗传呈母系遗传。' },
+    { t: '分裂图像判别', d: '看有无同源染色体与联会行为：有联会→减Ⅰ，无同源→减Ⅱ。易错：减Ⅱ中期「有姐妹染色单体、无同源染色体」——与有丝中期「两者皆有」区分。' },
+  ],
+  'gene-separation': [
+    { t: '一对相对性状的杂交', d: 'F₂ 3:1 成立前提：显性完全、配子活力相同、样本量大。易错：不完全显性（如紫茉莉红花与白花）F₂ 为 1:2:1——「杂合子表现中间型」。' },
+    { t: '相对性状与显隐性判断', d: '具相对性状纯种杂交子一代表现的为显性；自交出现性状分离则亲本为显性杂合。易错：两只白兔生出黑兔——白对黑为显性，两亲本均为杂合。' },
+    { t: '测交与自交的应用', d: '测交验证 F₁ 基因型与配子比例，自交鉴别纯合杂合。易错：植物鉴别首选自交（免人工去雄），动物只能测交——「鉴别动植物都用测交」不对。' },
+    { t: '分离定律的概率应用', d: '杂合子自交 n 代，杂合子比例 (1/2)ⁿ；携带者婚配发病概率计算。易错：明确「生一个患病」与「再生一个患病」概率不同——前者是条件概率。' },
+  ],
+  'gene-assortment': [
+    { t: '自由组合的实质', d: '减Ⅰ后期非同源染色体上非等位基因自由组合。易错：同源染色体上的非等位基因（连锁）不遵循自由组合定律。' },
+    { t: '9:3:3:1 及其变式', d: '两对独立遗传 F₂ 9:3:3:1；9:7（互补）、12:3:1（显性上位）、13:3（抑制）等变式源于基因互作。易错：见到 9:7 不能说「不符合自由组合」——恰是自由组合后非等位基因互作的表现。' },
+    { t: '棋盘法与概率拆解', d: '多对性状独立时逐对分析再相乘。易错：求「两对性状均为显性」概率用 (3/4)²=9/16——先拆再乘，直接背结论容易在变式题翻车。' },
+    { t: '自由组合的验证', d: '测交后代 1:1:1:1 验证 F₁ 产生四种比例相同的配子。易错：F₁ 自交 9:3:3:1 与测交 1:1:1:1 适用的验证目标不同——前者看性状比、后者看配子比。' },
+  ],
+  'sex-inheritance': [
+    { t: '性别决定方式', d: 'XY 型（人、果蝇）雄异配，ZW 型（鸟蛾）雌异配。易错：「含 XX 的一定是雌性」在 ZW 型不成立——ZW 型雄性是 ZZ。' },
+    { t: 'X 染色体隐性遗传特点', d: '男患者多于女患者、隔代交叉遗传、女病其子必病。易错：「父亲色盲女儿必色盲」错——女儿是携带者，除非母亲也提供色盲基因。' },
+    { t: '系谱图判断口诀', d: '无中生有为隐性、有中生无为显性；隐性看女病父子皆病为伴 X，显性看男病母女皆病为伴 X。易错：先确定显隐再判断常伴——顺序颠倒直接套口诀会误判。' },
+    { t: '人类遗传病的调查', d: '调查发病率在人群中随机取样、调查遗传方式在家系中调查。易错：样本取「某医院新生儿」会引入偏差——随机与样本量足够是关键。' },
+  ],
+  'dna-evidence': [
+    { t: '肺炎链球菌转化实验', d: '格里菲思发现转化因子，艾弗里证明 DNA 是转化因子。易错：R 型菌「转化」为 S 型不是变异——是摄取了 S 型菌的 DNA 片段。' },
+    { t: '噬菌体侵染实验', d: '³²P 标记 DNA 进入细菌、³⁵S 标记蛋白质留在外壳，证明 DNA 是遗传物质。易错：搅拌离心后上清液含 ³⁵S、沉淀物含 ³²P——两组分别标记，不是一锅混合。' },
+    { t: '实验误差分析', d: '保温时间过短 DNA 未充分注入、过长细菌裂解释放子代噬菌体，都使沉淀物放射性降低。易错：³²P 组上清放射性偏高原因与 ³⁵S 组沉淀放射性偏高原因不同——前者保温时长，后者搅拌不充分。' },
+    { t: 'RNA 也是遗传物质', d: '烟草花叶病毒等 RNA 病毒的遗传物质是 RNA。易错：「DNA 是主要的遗传物质」针对整个生物界——具体到 RNA 病毒，其遗传物质就只是 RNA。' },
+  ],
+  'dna-replication': [
+    { t: 'DNA 双螺旋结构要点', d: '反向平行双链、碱基互补 A=T G≡C、螺旋直径与螺距固定。易错：A=T 之间是两个氢键、G≡C 之间三个——「氢键数目相等」不对。' },
+    { t: '碱基互补计算', d: 'A=T、G=C；(A+G)=(T+C)=(A+C)=(T+G)=50% 用于快解。易错：一条链上 (A+G)/(T+C) 的比值与互补链互为倒数——两链该比值乘积为 1。' },
+    { t: '半保留复制', d: '边解旋边复制，子代 DNA 各含一条亲代链。易错：n 代后含 ¹⁵N 标记的 DNA 占 2/2ⁿ——第 n 代总 DNA 数是 2ⁿ 个，别记成 n 个。' },
+    { t: '复制的条件与特点', d: '模板、原料、能量、酶四条件，多起点双向复制提高效率。易错：复制发生在细胞核（及线粒体叶绿体）——「DNA 复制只在细胞核」忽略细胞器 DNA。' },
+  ],
+  'gene-expression': [
+    { t: '转录的过程', d: '以 DNA 一条链为模板、四种核糖核苷酸为原料、RNA 聚合酶催化合成 mRNA。易错：转录「以整条 DNA 为模板」错——通常只转录基因区段，且只以其中一条链为模板。' },
+    { t: '翻译与密码子', d: 'mRNA 上三个相邻碱基为一个密码子，tRNA 携带氨基酸反密码子配对。易错：密码子 64 种、决定氨基酸 61 种——终止密码子不编码氨基酸，「64 种密码子对应 64 种氨基酸」错。' },
+    { t: '中心法则及其补充', d: '复制、转录、翻译为主，RNA 复制与逆转录见于 RNA 病毒。易错：中心法则普遍适用于细胞生物与病毒，但 RNA 复制逆转录只发生在被病毒侵染的细胞中。' },
+    { t: '基因对性状的控制', d: '直接控制（结构蛋白）与间接控制（酶或激素）两条途径。易错：囊性纤维病是直接控制例子、白化病是间接控制（缺酪氨酸酶）——两例不能互换。' },
+  ],
+  'gene-mutation': [
+    { t: '基因突变的概念', d: '碱基对增添、缺失或替换引起基因结构改变。易错：「基因突变就是基因位置改变」错——那是染色体结构变异（易位）；突变是基因内部碱基变化。' },
+    { t: '突变的特征与原因', d: '随机性、不定向性、低频性、多害少利性；物理化学生物因素诱发。易错：「不定向」指一个基因可突变为等位基因多种形式——环境只起选择作用不决定方向。' },
+    { t: '突变与性状的关系', d: '替换可能因密码子简并性不改变氨基酸。易错：「突变一定引起性状改变」错——简并性、隐性突变（AA→Aa）等情况下性状不变。' },
+    { t: '基因重组的类型', d: '自由组合型（减Ⅰ后期）与交叉互换型（减Ⅰ前期四分体）。易错：基因重组「不产生新基因，只产生新基因型」——新基因来自突变。' },
+  ],
+  'chrom-variation': [
+    { t: '染色体结构变异', d: '缺失、重复、倒位、易位四种，可用染色体组型分析。易错：易位发生在「非同源染色体」之间——同源染色体间交叉互换属基因重组。' },
+    { t: '染色体数目的变异', d: '个别染色体增减（21 三体）或以染色体组倍数增减。易错：二倍体生物的生殖细胞叫「配子」不叫「单倍体」——单倍体是针对个体而言。' },
+    { t: '染色体组判断', d: '细胞内形态相同的染色体有几条就有几个染色体组。易错：六倍体小麦体细胞 42 条含 6 个染色体组——其配子 21 条含 3 个组，但配子叫「单倍体个体」的前提是它发育成了个体。' },
+    { t: '五种育种方法比较', d: '杂交育种集优但周期长、诱变育种提高突变率、单倍体育种明显缩短年限、多倍体育种器官大产量高、基因工程定向改造。易错：单倍体育种「染色体数都减半」错——花药培养后还需秋水仙素加倍，最终仍是二倍体纯合。' },
+  ],
+  'evolution': [
+    { t: '种群与基因库', d: '种群是进化的基本单位，基因库是全部个体全部基因的总和。易错：进化「以个体为单位」错——个体的基因型终生不变，种群基因频率才变化。' },
+    { t: '基因频率的计算', d: '基因频率=(某基因数)/(全部等位基因数)；哈代温伯格平衡下 (p+q)²=1。易错：伴 X 遗传基因频率要除以「基因总数含两条 X」——用常染色体算法直接算会错。' },
+    { t: '物种形成的环节', d: '突变和基因重组、自然选择、隔离三环节。易错：生殖隔离是物种形成的标志——「出现地理隔离就形成新物种」错，地理隔离只是常见前奏。' },
+    { t: '共同进化与多样性', d: '不同物种间、生物与无机环境间共同进化，形成基因、物种、生态系统三层次多样性。易错：捕食者与猎物「军备竞赛」是共同进化——「捕食者把猎物吃光」在共同进化框架下不会发生。' },
+  ],
+  /* ---- 高中 · 稳态与调节 ---- */
+  'homeostasis': [
+    { t: '内环境的组成', d: '血浆、组织液、淋巴三者相互转化构成细胞外液。易错：红细胞内血红蛋白不属于内环境成分——「血红蛋白出现在血浆」是溶血现象而非正常。' },
+    { t: '内环境的成分判断', d: '凡与外界直接相通的腔道（消化道、呼吸道、肺泡、尿道）内液体不属于内环境。易错：消化液、汗液、尿液均不属于内环境——胃液「在体内但不在内环境」。' },
+    { t: '稳态的调节机制', d: '神经—体液—免疫调节网络，各器官系统协调配合。易错：稳态「恒定不变」错——是相对稳定的动态平衡，pH 维持在 7.35~7.45 范围内波动。' },
+    { t: '组织水肿的机理', d: '血浆蛋白减少、毛细血管通透性增大、淋巴回流受阻等都致组织液增多。易错：营养不良引起水肿的原理是血浆蛋白合成减少——「喝水太多直接变成组织液」不严谨。' },
+  ],
+  'nerve-hs': [
+    { t: '静息电位与动作电位', d: '静息外正内负（K⁺ 外流），动作电位外负内正（Na⁺ 内流）。易错：K⁺ Na⁺ 均经离子通道顺浓度梯度协助扩散，恢复静息还需钠钾泵主动转运。' },
+    { t: '兴奋的传导', d: '神经纤维上以局部电流形式双向传导，膜内电流方向与传导方向一致。易错：体外刺激神经中部，兴奋双向传导——「体内刺激下兴奋只向效应器传」是反射弧决定的。' },
+    { t: '突触的传递', d: '突触前膜释放神经递质经突触间隙作用于后膜受体，单向传递。易错：递质「进入」下一个神经元错——递质与后膜受体结合后被酶解或回收。' },
+    { t: '兴奋剂与毒品的作用位', d: '多数作用于突触——促进释放、抑制回收或冒充递质。易错：可卡因抑制多巴胺回收使突触间隙多巴胺增多——「直接刺激大脑皮层产生快感」不准确。' },
+  ],
+  'hormone-hs': [
+    { t: '激素调节的特点', d: '微量高效、通过体液运输、作用于靶器官靶细胞。易错：激素「提供能量」错——激素只起调节（信使）作用，不参与供能也不构成细胞结构。' },
+    { t: '血糖平衡调节', d: '胰岛素降糖（促进摄取利用储存）、胰高血糖素升糖（促进肝糖原分解与非糖转化）。易错：肌糖原不能直接分解升血糖——「胰高血糖素分解肌糖原」是错的。' },
+    { t: '甲状腺激素的分级调节', d: '下丘脑→促甲状腺激素释放激素→垂体→促甲状腺激素→甲状腺，激素过多负反馈抑制。易错：缺碘时甲状腺激素少、负反馈弱、TSH 增多导致甲状腺肿大——「大脖子病是甲状腺激素过多」错。' },
+    { t: '神经与体液调节的关系', d: '不少内分泌腺本身受中枢神经支配，内分泌参与神经调节的延伸。易错：体温调节既有神经（汗腺血管）也有体液（甲状腺激素肾上腺素）——「体温调节只靠神经」不完整。' },
+  ],
+  'immune-hs': [
+    { t: '免疫系统的组成', d: '免疫器官（骨髓胸腺脾淋巴结）、免疫细胞（淋巴细胞吞噬细胞）、免疫活性物质（抗体细胞因子溶菌酶）。易错：溶菌酶属免疫活性物质但「由免疫细胞产生」不对——唾液腺等非免疫细胞也能产生。' },
+    { t: '体液免疫流程', d: '病原体被 APC 摄取处理呈递，辅助性 T 细胞活化并分泌细胞因子，B 细胞增殖分化为浆细胞与记忆 B 细胞，抗体与抗原结合。易错：浆细胞「不再识别抗原」——它只分泌抗体，识别由抗体完成。' },
+    { t: '细胞免疫流程', d: '细胞毒性 T 细胞识别并裂解被感染的靶细胞。易错：靶细胞裂解后病原体「被细胞免疫消灭」错——暴露出来的病原体最终由抗体与吞噬细胞处理。' },
+    { t: '二次免疫与免疫失调', d: '记忆细胞使二次免疫更快更强；过敏、自身免疫病、免疫缺陷是三大失调。易错：过敏反应「首次接触就发作」错——首次致敏产生抗体附着于细胞，再次接触才发作。' },
+  ],
+  'plant-hormone': [
+    { t: '生长素的发现', d: '达尔文向光实验、温特琼脂块实验证明「生长素」存在。易错：温特实验才证明 «刺激» 是化学物质——达尔文实验只能推测「某种刺激」。' },
+    { t: '生长素的运输', d: '极性运输只能从形态学上端到下端，横向运输发生在尖端。易错：「重力使生长素向下运输」混淆了极性运输与横向分布——重力影响的是横向分布不均。' },
+    { t: '生长素的两重性', d: '低浓度促进、高浓度抑制，顶端优势与根的向地性是典型表现。易错：茎的背地性「体现两重性」不严谨——近地侧高浓度仍促进生长，未体现「抑制」。' },
+    { t: '植物激素间的协作', d: '赤霉素促伸长打破休眠、细胞分裂素促细胞分裂、脱落酸促休眠抗逆、乙烯促成熟。易错：植物生长发育「由某一种激素决定」错——是多种激素共同调控的结果。' },
+  ],
+  /* ---- 高中 · 生物与环境 ---- */
+  'population-community': [
+    { t: '种群的数量特征', d: '种群密度是基本特征，出生率死亡率决定数量变化，年龄结构预测趋势，性别比例影响密度。易错：年龄结构「增长型」预测未来数量增长——不能说「现在就在增长」。' },
+    { t: '种群密度的调查', d: '样方法适植物与活动弱的动物，标志重捕法适活动能力强的动物。易错：标志重捕法计算 M/m=N/n——标志物脱落会使估算值偏高。' },
+    { t: 'J 形与 S 形增长', d: 'J 形在理想条件（食物空间无限、无天敌），S 形受 K 值制约。易错：K/2 时增长速率最大——「K/2 时种群数量最大」错，K 时数量最大但增长速率趋零。' },
+    { t: '群落的结构与演替', d: '垂直分层提高资源利用率，初生演替从裸岩开始、次生演替有土壤条件。易错：火山岩上开始的演替是初生演替——弃耕农田是次生演替。' },
+  ],
+  'ecosystem': [
+    { t: '生态系统的结构', d: '组成成分（非生物的物质能量、生产者、消费者、分解者）与营养结构（食物链食物网）。易错：食物链「从太阳开始」错——营养结构中的食物链从生产者写起。' },
+    { t: '能量流动的特点', d: '单向流动、逐层递减，传递效率 10%~20%。易错：营养级越高能量越少但「个体数量不一定越少」——数目金字塔可能倒置（一棵树与树上昆虫）。' },
+    { t: '物质循环的特点', d: '全球性、反复利用、带「碳」字循环最典型。易错：碳返回大气的途径有呼吸、分解、燃烧——「分解者不参与碳循环」大错，恰是关键环节。' },
+    { t: '信息传递与稳定性', d: '物理化学行为信息调节种间关系；抵抗力稳定性与恢复力稳定性一般相反。易错：热带雨林抵抗力稳定性高恢复力稳定性低——「两者总是同步高低」错。' },
+  ],
+  /* ---- 高中 · 生物技术与工程 ---- */
+  'fermentation-biotech': [
+    { t: '果酒果醋的制作', d: '酵母菌 18~25℃ 无氧产酒精，醋酸菌 30~35℃ 有氧产醋酸。易错：果醋发酵需持续通氧——「醋酸菌无氧也能产醋酸」错，它是好氧菌。' },
+    { t: '腐乳与泡菜', d: '毛霉产蛋白酶脂肪酶，乳酸菌无氧产乳酸。易错：泡菜坛沿水槽注水是「水封」隔绝空气——加盐量过多抑制乳酸菌发酵且过咸。' },
+    { t: '无菌技术', d: '消毒（较温和）与灭菌（彻底）区别，高压蒸汽灭菌最常用。易错：接种环用灼烧灭菌、玻璃器皿用干热灭菌、培养基用高压蒸汽灭菌——方法与对象要对应。' },
+    { t: '微生物的计数与分离', d: '稀释涂布平板法计活菌，平板划线法分离纯化。易错：涂布计数结果偏低——两个或多个菌连在一起只计一个菌落，且不是所有菌都能在该培养基生长。' },
+  ],
+  'gene-cell-engineering': [
+    { t: '基因工程的工具酶', d: '限制酶识别特定序列切出黏性末端，DNA 连接酶缝合磷酸二酯键。易错：限制酶切割位点「在识别序列内部」且具有特异性——EcoRⅠ 只切 GAATTC。' },
+    { t: '基因表达载体的构建', d: '目的基因+启动子+终止子+标记基因。易错：启动子在目的基因「上游」启动转录——「启动子编码蛋白质」错，它是调控序列。' },
+    { t: '植物组织培养', d: '外植体经脱分化形成愈伤组织、再分化成根芽，体现全能性。易错：愈伤组织「排列紧密分化程度高」错——它是高度液泡化、无定形状态的薄壁细胞。' },
+    { t: '单克隆抗体制备', d: 'B 淋巴细胞与骨髓瘤细胞融合为杂交瘤细胞，兼产抗体与无限增殖。易错：细胞融合后需两次筛选——先筛杂交瘤细胞、再筛能产生特定抗体的杂交瘤细胞。' },
+  ],
+};
+const CAT_LABEL = { basic: '科学方法与基础', structure: '结构与层次', plant: '绿色植物', human: '人体生理', micro: '微生物与健康', heredity: '遗传变异', evolve: '进化与多样性', regulate: '稳态与调节', ecology: '生态与环保', biotech: '生物技术与工程', animal: '动物运动与行为' };
+
+
+
+
+/* 课标溯源：每环对应《义务教育生物学课程标准（2022年版）》（义教2022，课程内容含生物体的结构层次、生物与环境、生物圈中的绿色植物等学习主题）与《普通高中生物学课程标准（2017年版2020年修订）》（高中2017，必修 课程1 分子与细胞 / 课程2 遗传与进化，选择性必修 稳态与调节 / 生物与环境 / 生物技术与工程）。
+   v1 为结构级对照：page 仅标注模块或主题，不编页码。 */
+const CURRICULUM = {
+  /* ---- 初中 · 科学方法与基础 ---- */
+  'bio-intro':         { doc: '义教2022·生物学与社会·跨学科实践（科学观察、调查与对照实验的基本方法）', page: '生物学与社会·跨学科实践', tag: 'std' },
+  'bio-env':           { doc: '义教2022·生物与环境（生态因素、生态系统的组成与类型）', page: '生物与环境', tag: 'std' },
+  'bio-microscope':    { doc: '义教2022·生物体的结构层次（显微镜观察与临时装片制作的方法基础）', page: '生物体的结构层次', tag: 'std' },
+  /* ---- 初中 · 细胞与结构层次 ---- */
+  'cell-structure':    { doc: '义教2022·生物体的结构层次（细胞的基本结构与动植物细胞异同）', page: '生物体的结构层次', tag: 'std' },
+  'cell-life':         { doc: '义教2022·生物体的结构层次（细胞的生活需要物质和能量）', page: '生物体的结构层次', tag: 'std' },
+  'cell-division':     { doc: '义教2022·生物体的结构层次（细胞分裂与分化）', page: '生物体的结构层次', tag: 'std' },
+  'bio-levels':        { doc: '义教2022·生物体的结构层次（多细胞生物体的结构层次）', page: '生物体的结构层次', tag: 'std' },
+  /* ---- 初中 · 病毒与微生物 ---- */
+  'virus-single':      { doc: '义教2022·生物体的多样性（病毒的结构、生活方式与单细胞生物）', page: '生物体的多样性', tag: 'std' },
+  /* ---- 初中 · 绿色植物 ---- */
+  'seed-germ':         { doc: '义教2022·植物的生活（种子的结构与萌发条件）', page: '植物的生活', tag: 'std' },
+  'plant-grow':        { doc: '义教2022·植物的生活（根茎叶的生长与无机盐的作用）', page: '植物的生活', tag: 'std' },
+  'photosynthesis':    { doc: '义教2022·植物的生活（绿色植物的光合作用）', page: '植物的生活', tag: 'std' },
+  'resp-transp':       { doc: '义教2022·植物的生活（呼吸作用与蒸腾作用）', page: '植物的生活', tag: 'std' },
+  'plant-biosphere':   { doc: '义教2022·植物的生活（绿色植物在生物圈中的作用）', page: '植物的生活', tag: 'std' },
+  /* ---- 初中 · 人体生理 ---- */
+  'human-origin':      { doc: '义教2022·生物的进化（人类的起源与发展）', page: '生物的进化', tag: 'std' },
+  'nutrition-digest':  { doc: '义教2022·人体生理与健康（营养物质与消化吸收）', page: '人体生理与健康', tag: 'std' },
+  'breath':            { doc: '义教2022·人体生理与健康（人体呼吸系统的结构与气体交换）', page: '人体生理与健康', tag: 'std' },
+  'blood-circ':        { doc: '义教2022·人体生理与健康（血液循环与物质运输）', page: '人体生理与健康', tag: 'std' },
+  'urinary':           { doc: '义教2022·人体生理与健康（泌尿系统与人体废物的排出）', page: '人体生理与健康', tag: 'std' },
+  /* ---- 初中 · 调节与行为 ---- */
+  'nerve':             { doc: '义教2022·人体生理与健康（神经系统与神经调节）', page: '人体生理与健康', tag: 'std' },
+  'hormone':           { doc: '义教2022·人体生理与健康（激素调节）', page: '人体生理与健康', tag: 'std' },
+  'animal-motion':     { doc: '义教2022·动物的运动和行为（运动的产生与动物行为类型）', page: '动物的运动和行为', tag: 'std' },
+  /* ---- 初中 · 微生物与健康 ---- */
+  'bacteria-fungi':    { doc: '义教2022·生物体的多样性（细菌、真菌的形态结构培养与作用）', page: '生物体的多样性', tag: 'std' },
+  'infection-immune':  { doc: '义教2022·人体生理与健康（传染病的预防与人体免疫）', page: '人体生理与健康', tag: 'std' },
+  'medicine-safety':   { doc: '义教2022·人体生理与健康（安全用药与急救常识）', page: '人体生理与健康', tag: 'std' },
+  /* ---- 初中 · 多样性与进化 ---- */
+  'classification':    { doc: '义教2022·生物体的多样性（生物分类的等级与生物多样性保护）', page: '生物体的多样性', tag: 'std' },
+  'reproduction':      { doc: '义教2022·生物的生殖、发育与遗传（有性生殖无性生殖与动植物发育）', page: '生物的生殖、发育与遗传', tag: 'std' },
+  'origin-evolution':  { doc: '义教2022·生物的进化（生命起源与生物进化的证据和学说）', page: '生物的进化', tag: 'std' },
+  'eco-human':         { doc: '义教2022·生物与环境（人类活动对生态环境的影响与可持续发展）', page: '生物与环境', tag: 'std' },
+  /* ---- 高中 ---- */
+  'bio-molecule':      { doc: '高中2017·必修1 分子与细胞（细胞的分子组成）', page: '必修1 分子与细胞', tag: 'std' },
+  'cell-detail':       { doc: '高中2017·必修1 分子与细胞（细胞的结构）', page: '必修1 分子与细胞', tag: 'std' },
+  'membrane-transport':{ doc: '高中2017·必修1 分子与细胞（细胞的物质输入和输出）', page: '必修1 分子与细胞', tag: 'std' },
+  'enzyme-atp':        { doc: '高中2017·必修1 分子与细胞（细胞的能量供应和利用：降低反应活化能的酶与ATP）', page: '必修1 分子与细胞', tag: 'std' },
+  'cell-respiration':  { doc: '高中2017·必修1 分子与细胞（细胞的能量供应和利用：细胞呼吸）', page: '必修1 分子与细胞', tag: 'std' },
+  'photosynthesis-hs': { doc: '高中2017·必修1 分子与细胞（细胞的能量供应和利用：光合作用与能量转化）', page: '必修1 分子与细胞', tag: 'std' },
+  'cell-division-hs':  { doc: '高中2017·必修1 分子与细胞（细胞的增殖）', page: '必修1 分子与细胞', tag: 'std' },
+  'cell-life-course':  { doc: '高中2017·必修1 分子与细胞（细胞的分化、衰老、凋亡与癌变）', page: '必修1 分子与细胞', tag: 'std' },
+  'meiosis':           { doc: '高中2017·必修2 遗传与进化（减数分裂和受精作用）', page: '必修2 遗传与进化', tag: 'std' },
+  'gene-separation':   { doc: '高中2017·必修2 遗传与进化（基因的分离定律）', page: '必修2 遗传与进化', tag: 'std' },
+  'gene-assortment':   { doc: '高中2017·必修2 遗传与进化（基因的自由组合定律）', page: '必修2 遗传与进化', tag: 'std' },
+  'sex-inheritance':   { doc: '高中2017·必修2 遗传与进化（伴性遗传与人类遗传病）', page: '必修2 遗传与进化', tag: 'std' },
+  'dna-evidence':      { doc: '高中2017·必修2 遗传与进化（DNA是主要的遗传物质）', page: '必修2 遗传与进化', tag: 'std' },
+  'dna-replication':   { doc: '高中2017·必修2 遗传与进化（DNA的结构与复制）', page: '必修2 遗传与进化', tag: 'std' },
+  'gene-expression':   { doc: '高中2017·必修2 遗传与进化（基因的表达与中心法则）', page: '必修2 遗传与进化', tag: 'std' },
+  'gene-mutation':     { doc: '高中2017·必修2 遗传与进化（基因突变和基因重组）', page: '必修2 遗传与进化', tag: 'std' },
+  'chrom-variation':   { doc: '高中2017·必修2 遗传与进化（染色体变异与育种应用）', page: '必修2 遗传与进化', tag: 'std' },
+  'evolution':         { doc: '高中2017·必修2 遗传与进化（现代生物进化理论与物种形成）', page: '必修2 遗传与进化', tag: 'std' },
+  'homeostasis':       { doc: '高中2017·选择性必修1 稳态与调节（机体的内环境与稳态）', page: '选择性必修1 稳态与调节', tag: 'std' },
+  'nerve-hs':          { doc: '高中2017·选择性必修1 稳态与调节（神经调节）', page: '选择性必修1 稳态与调节', tag: 'std' },
+  'hormone-hs':        { doc: '高中2017·选择性必修1 稳态与调节（体液调节）', page: '选择性必修1 稳态与调节', tag: 'std' },
+  'immune-hs':         { doc: '高中2017·选择性必修1 稳态与调节（免疫调节）', page: '选择性必修1 稳态与调节', tag: 'std' },
+  'plant-hormone':     { doc: '高中2017·选择性必修1 稳态与调节（植物生命活动的调节）', page: '选择性必修1 稳态与调节', tag: 'std' },
+  'population-community': { doc: '高中2017·选择性必修2 生物与环境（种群及其动态与群落）', page: '选择性必修2 生物与环境', tag: 'std' },
+  'ecosystem':         { doc: '高中2017·选择性必修2 生物与环境（生态系统的结构与功能及稳定性）', page: '选择性必修2 生物与环境', tag: 'std' },
+  'fermentation-biotech': { doc: '高中2017·选择性必修3 生物技术与工程（发酵工程与微生物培养技术）', page: '选择性必修3 生物技术与工程', tag: 'std' },
+  'gene-cell-engineering': { doc: '高中2017·选择性必修3 生物技术与工程（基因工程与细胞工程）', page: '选择性必修3 生物技术与工程', tag: 'std' },
+};
+
+/* 每环可检验的通过标准（PASS）：完成环即可自我对照打钩 */
+const PASS = {
+  'bio-intro':         '能默写六项生物基本特征各配一例，设计一组单变量对照实验且变量指认无误',
+  'bio-env':           '生态因素与非生物因素区分零错，能画出一条四营养级食物链并标注各成分角色',
+  'bio-microscope':    '低倍换高倍六步操作复述无误，物像移动方向与气泡判断各三题全对',
+  'cell-structure':    '动植物细胞结构图默画，七种结构归属判断十题零错',
+  'cell-life':         '两种能量转换器功能对号入座，染色体组成与位置表述完整',
+  'cell-division':     '分裂过程「先复制再均分」能画示意，分化「遗传物质不变」判断零错',
+  'bio-levels':        '动植物结构层次排序各三题，四种动物组织与实例对应全对',
+  'virus-single':      '病毒结构与生活方式填空零错，三类寄主各举两例',
+  'seed-germ':         '种子结构图标注无误，萌发内外条件分类填空与实验设计各一道零错',
+  'plant-grow':        '根尖四区功能排序与根毛位置零错，缺氮磷钾症状配对全对',
+  'photosynthesis':    '光合反应式默写零错，萨克斯实验三处细节（暗处理、遮光、水浴脱色）原理说得清',
+  'resp-transp':       '光合呼吸对比表默写，蒸腾意义三条配现象举例',
+  'plant-biosphere':   '碳氧平衡机制复述，导管筛管运输方向与物质判断零错',
+  'human-origin':      '起源演化主线复述，「人由现代类人猿进化而来」辨析零错',
+  'nutrition-digest':  '三大物质消化起点终点填空，维生素缺乏症与吸收主场所判断全对',
+  'breath':            '吸呼气肌肉状态与胸廓变化四格表默写，肺泡适于交换三特点配原理',
+  'blood-circ':        '心脏四腔连线口诀默写，体循环肺循环路径各画一遍且动静脉血转化判断零错',
+  'urinary':           '尿形成两阶段填空，原尿与尿的成分差异及机理说得清',
+  'nerve':             '反射弧五部分默写并标神经节，简单复杂反射各举三例判断零错',
+  'hormone':           '四种激素功能与异常症对应零错，内外分泌腺区别各配实例',
+  'animal-motion':     '屈肘伸肘肌肉协作复述，先天性与学习行为判断十题零错',
+  'bacteria-fungi':    '细菌真菌结构对比表默写，培养四步流程排序与芽孢判断零错',
+  'infection-immune':  '三环节三措施一一对应归类，三道防线判断与抗原抗体概念零错',
+  'medicine-safety':   '说明书六项信息能逐条指认，三类出血的止血位置判断全对',
+  'classification':    '七级分类单位默写，分类单位与共同特征关系判断零错',
+  'reproduction':      '完全变态与不完全变态举例区分，无性生殖应用两例配原理',
+  'origin-evolution':  '米勒实验与化石证据要点复述，自然选择四要点各配一例',
+  'eco-human':         '四类环境问题成因对应零错，生物入侵判断与保护措施举例',
+  'bio-molecule':      '鲜重干重含量对比零错，三种检测实验的试剂颜色条件各默写一遍',
+  'cell-detail':       '八种细胞器功能连线全对，分泌蛋白运输路径排序零错',
+  'membrane-transport': '三种运输方式三要素判断十题，质壁分离复原现象与原因对应零错',
+  'enzyme-atp':        '酶三特性各配实验设计，ATP 与 ADP 转化的物质能量可逆性表述完整',
+  'cell-respiration':  '三阶段场所产物表格默写，无氧呼吸两类型判断与 CO₂/O₂ 比值分析零错',
+  'photosynthesis-hs': '光暗反应场所产物对比表默写，突变条件下 C₃ C₅ 变化判断全对',
+  'cell-division-hs':  '各期特征口诀默写，DNA 染色体数目变化曲线两条拐点标注零错',
+  'cell-life-course':  '衰老六特征默写，凋亡坏死癌变三者判断各两例零错',
+  'meiosis':           '减Ⅰ减Ⅱ各期图像判别六题零错，精子卵细胞形成过程数目对比说得清',
+  'gene-separation':   '分离定律实质复述，显隐性判断与纯杂合鉴别各两道零错',
+  'gene-assortment':   '自由组合实质复述，9:3:3:1 及两种变式的基因型拆解各一道',
+  'sex-inheritance':   '系谱图显隐与常伴判断四题零错，色盲遗传三条规律默写',
+  'dna-evidence':      '两大经典实验流程与结论复述，同位素标记的误差分析方向判断零错',
+  'dna-replication':   '结构四要点默写，半保留复制 n 代比例计算两道全对',
+  'gene-expression':   '转录翻译的场所模板原料对比表默写，中心法则各途径适用生物判断零错',
+  'gene-mutation':     '突变三类型各配一例，五特征默写且「不定向」含义表述准确',
+  'chrom-variation':   '结构变异四类型判断零错，五种育种方案优缺点比较各配作物实例',
+  'evolution':         '基因频率计算两道零错，物种形成三环节与生殖隔离判断说得清',
+  'homeostasis':       '三大成分转化关系画图零错，内环境成分判断十题（含胃液尿液）全对',
+  'nerve-hs':          '静息动作电位的离子基础默写，突触单向传递原因与电位测量题零错',
+  'hormone-hs':        '血糖两种激素作用复述，分级调节与负反馈画图各一遍',
+  'immune-hs':         '体液细胞免疫流程图默画，二次免疫特点与三大免疫失调判断零错',
+  'plant-hormone':     '生长素发现三实验要点复述，两重性与顶端优势实例分析零错',
+  'population-community': '两种调查方法适用对象判断零错，J/S 曲线关键点（K、K/2）标注与演替类型判断',
+  'ecosystem':         '能量流动计算两道零错，物质循环特点与两种稳定性关系说得清',
+  'fermentation-biotech': '果酒果醋腐乳泡菜菌种条件表格默写，无菌操作方法与对象对应全对',
+  'gene-cell-engineering': '基因工程四步骤默写，两次筛选的目的区分与组织培养流程判断零错',
+};
+
+/* 典型案例：链上最有代表性的「从现象到方法」样本 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'bio-microscope': { title: '视野里的「污点」在哪：显微镜三步定位法',
+    text: '换上高倍镜后视野中央出现一个黑边圆圈，是污点、气泡还是细胞？三步定位：第一步转动目镜——动则是目镜上的污物；第二步移动物像——物像动则是装片上的；两者都不动则是物镜上的。第三步辨身份：气泡圆而黑边粗、中央空亮，压盖玻片会变形游走；细胞有规则轮廓与结构层次。顺带的操作账也一并算清：放大倍数=目镜×物镜（长度放大），换高倍后视野变暗调光圈、物像跑偏先在低倍镜下移到中央再换——很多同学高倍镜下直接找像，找十分钟还找不到，根源都在低倍这一步没做扎实。' },
+  'gene-assortment': { title: '从 3:1 到 9:3:3:1：概率棋盘的三步拆解',
+    text: '黄色圆粒（双显杂合 YyRr）自交，后代纯合黄圆概率多少？三步拆解不慌：第一步逐对拆开——黄绿一对是 Yy×Yy，圆皱一对是 Rr×Rr；第二步逐对算——每对中显性 3/4、纯合显性 YY=1/4；第三步独立相乘——黄圆纯合=(1/4)×(1/4)=1/16，黄圆表现型=(3/4)×(3/4)=9/16。所有 9:3:3:1 变式题都是这三步的排列组合：见到 9:7，想到互补——两对都显才表现；见到 12:3:1，想到显性上位——A 抑制 B。核心心法只有一句：先拆对、再算比、后相乘，配子法或棋盘法是算术、拆解才是 genetics 的思路。' },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口；初高中学段深链均已抓取落地验证） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_jun: { name: '智慧教育·生物学·七年级上册', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2F44bebcde-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·生物学·必修1 分子与细胞', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2F44bebcde-54e6-11ed-9c34-850ba61fa9f4%2Fff8080814371757b01437c363a187b0a%2F5036342995', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部教育考试院', url: 'https://www.neea.edu.cn', note: '官方考试信息' },
+};
+/* ============ 主干环 NODES：55 环（初中 28 + 高中 27），prev/next 双向依赖 ============ */
+const NODES = {
+/* ================= 初中 · 科学方法与基础 ================= */
+'bio-intro': { title: '认识生物与科学探究', stage: 'junior', cat: 'basic', diff: 1.0, hot: false,
+  fact: '生物具有营养、呼吸、排泄、应激性、生长繁殖、遗传变异等基本特征；科学探究按「提出问题—作出假设—制定计划—实施计划—得出结论—表达交流」推进，对照实验必须控制唯一变量。',
+  prev: [], next: ['bio-env', 'bio-microscope'],
+  lecture: [ {name:'认识生物与科学探究方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'生物特征与对照实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'bio-env': { title: '生物与环境', stage: 'junior', cat: 'ecology', diff: 1.2, hot: false,
+  fact: '环境中的光、温度、水等是非生物因素，影响某生物的其他生物是生物因素；生态系统由生物部分与非生物部分构成，生产者、消费者、分解者的角色由营养功能决定。',
+  prev: ['bio-intro'], next: [],
+  lecture: [ {name:'生物与环境的关系', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'生态因素与生态系统练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'bio-microscope': { title: '显微镜与临时装片', stage: 'junior', cat: 'basic', diff: 1.5, hot: false,
+  fact: '目镜与物镜倍数相乘是放大倍数；观察时先低倍再高倍，物像与标本移动方向相反；制作洋葱表皮临时装片按「擦—滴—撕—展—盖—染」六步。',
+  prev: ['bio-intro'], next: ['cell-structure'],
+  lecture: [ {name:'显微镜的使用与临时装片制作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'显微镜操作与视野判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'cell-structure': { title: '细胞的结构', stage: 'junior', cat: 'structure', diff: 1.8, hot: false,
+  fact: '细胞都有细胞膜、细胞质、细胞核；植物细胞另有细胞壁、液泡和叶绿体，动物细胞没有。细胞膜控制物质进出，细胞核是遗传信息库。',
+  prev: ['bio-microscope'], next: ['cell-life'],
+  lecture: [ {name:'动植物细胞结构比较', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'细胞结构辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'cell-life': { title: '细胞的生活', stage: 'junior', cat: 'structure', diff: 2.0, hot: false,
+  fact: '细胞的生活需要物质和能量：叶绿体把光能转成化学能储存，线粒体把有机物中的能量释放；细胞核内的 DNA 上有指导发育的遗传信息，染色体由 DNA 和蛋白质组成。',
+  prev: ['cell-structure'], next: ['cell-division'],
+  lecture: [ {name:'细胞的生活需要物质和能量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'能量转换器与染色体练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'cell-division': { title: '细胞分裂与分化', stage: 'junior', cat: 'structure', diff: 2.2, hot: true,
+  fact: '细胞分裂使细胞数目增多，染色体先复制再均分保证遗传物质稳定；细胞分化产生不同组织，遗传物质在分化过程中不变。',
+  prev: ['cell-life'], next: ['bio-levels'],
+  lecture: [ {name:'细胞分裂与分化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'分裂分化判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'bio-levels': { title: '生物体的结构层次', stage: 'junior', cat: 'structure', diff: 2.4, hot: false,
+  fact: '细胞→组织→器官→植物体是植物的结构层次；动物还多出系统一级：细胞→组织→器官→系统→动物体。组织由形态相似、功能相同的细胞群构成。',
+  prev: ['cell-division'], next: ['virus-single'],
+  lecture: [ {name:'动植物体的结构层次', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'结构层次排序练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 病毒与微生物 ================= */
+'virus-single': { title: '病毒与单细胞生物', stage: 'junior', cat: 'micro', diff: 2.5, hot: false,
+  fact: '病毒没有细胞结构，由蛋白质外壳和内部遗传物质构成，必须寄生在活细胞中；草履虫、酵母菌等单细胞生物能独立完成全部生命活动。',
+  prev: ['bio-levels'], next: ['seed-germ'],
+  lecture: [ {name:'病毒与单细胞生物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'病毒结构与生活方式练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 绿色植物 ================= */
+'seed-germ': { title: '种子的结构与萌发', stage: 'junior', cat: 'plant', diff: 2.6, hot: false,
+  fact: '种子的主要结构是胚——胚芽、胚轴、胚根、子叶，是新植株的幼体；萌发需要适宜温度、一定水分和充足空气，胚根最先突破种皮。',
+  prev: ['virus-single'], next: ['plant-grow'],
+  lecture: [ {name:'种子的结构与萌发条件', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'种子结构与萌发实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'plant-grow': { title: '植株的生长', stage: 'junior', cat: 'plant', diff: 2.7, hot: false,
+  fact: '根生长靠分生区细胞分裂和伸长区细胞伸长；芽发育成枝条，茎的加粗来自形成层；植物生活需要量最多的是含氮、磷、钾的无机盐。',
+  prev: ['seed-germ'], next: ['photosynthesis'],
+  lecture: [ {name:'根的生长与植株生长', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'根尖结构与无机盐练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'photosynthesis': { title: '光合作用', stage: 'junior', cat: 'plant', diff: 2.8, hot: true,
+  fact: '绿色植物通过叶绿体利用光能，把二氧化碳和水转变成储存能量的有机物并释放氧气；原料、产物、条件、场所四要素对应「原料从气孔和根来，产物去全身」。',
+  prev: ['plant-grow'], next: ['resp-transp'],
+  lecture: [ {name:'光合作用的过程与实验', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'光合作用经典实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'resp-transp': { title: '呼吸作用与蒸腾作用', stage: 'junior', cat: 'plant', diff: 2.9, hot: false,
+  fact: '活细胞利用氧把有机物分解成二氧化碳和水并释放能量；蒸腾作用通过气孔散失水分，拉动水分和无机盐的运输并降低叶面温度。',
+  prev: ['photosynthesis'], next: ['plant-biosphere'],
+  lecture: [ {name:'呼吸作用与蒸腾作用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'光合呼吸对比练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'plant-biosphere': { title: '绿色植物与生物圈', stage: 'junior', cat: 'ecology', diff: 3.0, hot: false,
+  fact: '绿色植物是生产者，通过光合作用维持生物圈的碳—氧平衡；水分从根到叶再散失到大气，参与生物圈的水循环。',
+  prev: ['resp-transp'], next: ['human-origin'],
+  lecture: [ {name:'绿色植物与碳氧平衡', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'碳氧平衡与水循环练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 人体生理 ================= */
+'human-origin': { title: '人类的起源与发展', stage: 'junior', cat: 'evolve', diff: 3.1, hot: false,
+  fact: '人类和现代类人猿的共同祖先是森林古猿；环境变化迫使古猿下地直立行走，工具制造与火的使用推动脑的发育和语言的产生。',
+  prev: ['plant-biosphere'], next: ['nutrition-digest'],
+  lecture: [ {name:'人类的起源与发展', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'人类起源证据练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'nutrition-digest': { title: '营养与消化', stage: 'junior', cat: 'human', diff: 3.2, hot: false,
+  fact: '糖类是主要供能物质，蛋白质是建造组织的基本物质，脂肪是备用能源；淀粉在口腔开始消化，蛋白质在胃开始，最终在小肠被彻底分解吸收。',
+  prev: ['human-origin'], next: ['breath'],
+  lecture: [ {name:'食物的营养物质与消化吸收', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'消化部位与吸收练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'breath': { title: '人体的呼吸', stage: 'junior', cat: 'human', diff: 3.3, hot: false,
+  fact: '呼吸系统由呼吸道和肺组成；吸气时膈肌与肋间肌收缩胸廓扩大，肺内气压降低；气体交换靠扩散作用，肺泡壁与毛细血管壁都只由一层上皮细胞构成。',
+  prev: ['nutrition-digest'], next: ['blood-circ'],
+  lecture: [ {name:'呼吸运动与气体交换', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'吸呼气肌肉状态判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'blood-circ': { title: '血液循环与运输', stage: 'junior', cat: 'human', diff: 3.4, hot: true,
+  fact: '心脏四腔，房连静、室连动，动脉瓣与房室瓣防止倒流；体循环左心室出发回到右心房，肺循环右心室出发回到左心房；红细胞运输氧，白细胞防御，血小板止血。',
+  prev: ['breath'], next: ['urinary'],
+  lecture: [ {name:'心脏结构与血液循环', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'血液循环路径练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'urinary': { title: '泌尿系统与排泄', stage: 'junior', cat: 'human', diff: 3.5, hot: false,
+  fact: '肾单位是肾脏结构和功能的基本单位；尿的形成经过肾小球和肾小囊内壁的过滤作用与肾小管的重吸收作用两个阶段。',
+  prev: ['blood-circ'], next: ['nerve'],
+  lecture: [ {name:'尿液的形成与排出', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'尿形成两阶段练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 调节与行为 ================= */
+'nerve': { title: '神经调节', stage: 'junior', cat: 'regulate', diff: 3.6, hot: true,
+  fact: '神经系统由中枢神经系统和周围神经系统组成；神经调节的基本方式是反射，其结构基础是反射弧——感受器、传入神经、神经中枢、传出神经、效应器五部分缺一不可。',
+  prev: ['urinary'], next: ['hormone'],
+  lecture: [ {name:'反射与反射弧', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'反射弧结构与条件反射练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'hormone': { title: '激素调节', stage: 'junior', cat: 'regulate', diff: 3.7, hot: false,
+  fact: '内分泌腺没有导管，分泌物直接进入血液；胰岛素降低血糖，生长激素影响身高发育，甲状腺激素促进代谢与发育，激素含量少但作用大。',
+  prev: ['nerve'], next: ['animal-motion'],
+  lecture: [ {name:'内分泌腺与激素调节', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'激素功能与异常症练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'animal-motion': { title: '动物的运动与行为', stage: 'junior', cat: 'animal', diff: 3.8, hot: false,
+  fact: '运动系统由骨、关节和肌肉组成，骨骼肌受神经传来的刺激收缩牵动骨绕关节活动；先天性行为由遗传决定，学习行为在遗传基础上经后天学习获得。',
+  prev: ['hormone'], next: ['bacteria-fungi'],
+  lecture: [ {name:'运动的产生与动物行为', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'先天性与学习行为练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 微生物与健康 ================= */
+'bacteria-fungi': { title: '细菌和真菌', stage: 'junior', cat: 'micro', diff: 3.9, hot: true,
+  fact: '细菌有细胞壁、细胞膜、细胞质但没有成形的细胞核，靠分裂繁殖；真菌有真正的细胞核，孢子繁殖。培养微生物要按「高温灭菌—接种—恒温培养」流程。',
+  prev: ['animal-motion'], next: ['infection-immune'],
+  lecture: [ {name:'细菌真菌的形态结构', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'细菌真菌对比与培养练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'infection-immune': { title: '传染病与免疫', stage: 'junior', cat: 'micro', diff: 4.0, hot: false,
+  fact: '传染病流行需传染源、传播途径、易感人群三环节，预防措施按环节设计；特异性免疫产生抗体与记忆，抗原抗体一一对应，计划免疫是重要防线。',
+  prev: ['bacteria-fungi'], next: ['medicine-safety'],
+  lecture: [ {name:'传染病与免疫', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'预防措施归类练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'medicine-safety': { title: '用药与急救', stage: 'junior', cat: 'human', diff: 4.1, hot: false,
+  fact: '安全用药要读懂说明书的有效成分、适应症、用法用量与禁忌；心肺复苏的胸外按压位置与频率有明确规范，出血类型决定止血方法。',
+  prev: ['infection-immune'], next: ['classification'],
+  lecture: [ {name:'安全用药与急救常识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'说明书信息与止血判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ================= 初中 · 多样性与进化 ================= */
+'classification': { title: '生物的分类', stage: 'junior', cat: 'evolve', diff: 4.2, hot: false,
+  fact: '分类从大到小依次是界、门、纲、目、科、属、种，种是最基本的分类单位；分类依据形态结构和生理功能，越靠近种亲缘关系越近。',
+  prev: ['medicine-safety'], next: ['reproduction'],
+  lecture: [ {name:'生物分类的等级与方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'分类等级与检索练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'reproduction': { title: '生物的生殖与发育', stage: 'junior', cat: 'evolve', diff: 4.3, hot: false,
+  fact: '有性生殖经过两性生殖细胞结合；昆虫与两栖动物的变态发育、鸟类的孵卵育雏各有特点；植物的无性生殖（扦插、嫁接）能保持亲本优良性状。',
+  prev: ['classification'], next: ['origin-evolution', 'meiosis', 'gene-separation', 'sex-inheritance'],
+  lecture: [ {name:'生殖发育的类型比较', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'变态发育与无性生殖练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'origin-evolution': { title: '生物的起源与进化', stage: 'junior', cat: 'evolve', diff: 4.4, hot: false,
+  fact: '原始大气没有氧气，米勒实验模拟出氨基酸等有机小分子；化石是研究进化的直接证据，自然选择学说解释了生物的多样性与适应性。',
+  prev: ['reproduction'], next: ['eco-human'],
+  lecture: [ {name:'生命起源与自然选择', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'化石证据与选择学说练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'eco-human': { title: '人类活动与生态环境', stage: 'junior', cat: 'ecology', diff: 4.5, hot: false,
+  fact: '森林破坏、水土流失、酸雨、温室效应都与人类活动相关；保护生物多样性包括就地保护、迁地保护和法制教育三个层面，可持续发展是核心思想。',
+  prev: ['origin-evolution'], next: ['bio-molecule'],
+  lecture: [ {name:'人类活动对生态的影响', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'环境问题与保护措施练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+/* ================= 高中 · 分子与细胞 ================= */
+'bio-molecule': { title: '细胞中的元素与化合物', stage: 'senior', cat: 'structure', diff: 4.6, hot: false,
+  fact: 'C 是最基本元素，C、H、O、N 占干重九成；水以自由水和结合水存在，蛋白质是含量最多的有机物；还原糖、脂肪、蛋白质的检测各用特定试剂并观察特定颜色。',
+  prev: ['eco-human'], next: ['cell-detail'],
+  lecture: [ {name:'细胞中的元素和化合物', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'化合物检测实验练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'cell-detail': { title: '细胞的基本结构', stage: 'senior', cat: 'structure', diff: 4.8, hot: false,
+  fact: '细胞膜以磷脂双分子层为基本支架、具有流动性；线粒体是有氧呼吸主要场所，叶绿体是光合作用场所，核糖体合成蛋白质；细胞核是遗传信息库和代谢控制中心。',
+  prev: ['bio-molecule'], next: ['membrane-transport'],
+  lecture: [ {name:'细胞器与细胞核', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'细胞器功能归类练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'membrane-transport': { title: '物质的输入与输出', stage: 'senior', cat: 'structure', diff: 5.0, hot: false,
+  fact: '水通过半透膜的渗透作用决定细胞吸水失水；被动运输顺浓度梯度不耗能，主动运输逆浓度梯度耗能且需载体蛋白；大分子经胞吞胞吐进出。',
+  prev: ['cell-detail'], next: ['enzyme-atp'],
+  lecture: [ {name:'渗透作用与物质跨膜运输', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'运输方式判断与质壁分离练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'enzyme-atp': { title: '酶与ATP', stage: 'senior', cat: 'structure', diff: 5.1, hot: false,
+  fact: '酶是活细胞产生的具有催化作用的有机物，绝大多数是蛋白质；高效性、专一性、作用条件温和；ATP 是直接能源物质，ADP 与 ATP 的相互转化时刻发生。',
+  prev: ['membrane-transport'], next: ['cell-respiration'],
+  lecture: [ {name:'酶的特性与ATP', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'酶实验设计与ATP练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'cell-respiration': { title: '细胞呼吸', stage: 'senior', cat: 'structure', diff: 5.3, hot: false,
+  fact: '有氧呼吸三阶段分别在细胞质基质、线粒体基质、线粒体内膜进行，1 分子葡萄糖彻底氧化释放大量能量；无氧呼吸只在第一阶段释放少量能量，产物是乳酸或酒精和二氧化碳。',
+  prev: ['enzyme-atp'], next: ['photosynthesis-hs'],
+  lecture: [ {name:'有氧呼吸与无氧呼吸', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'呼吸过程与装置判读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'photosynthesis-hs': { title: '光合作用', stage: 'senior', cat: 'structure', diff: 5.4, hot: false,
+  fact: '光反应在类囊体薄膜上把光能转成 ATP 和 NADPH 中的化学能并释放氧气；暗反应在叶绿体基质中进行二氧化碳的固定与还原；影响光合的外因有光照、CO₂ 浓度与温度。',
+  prev: ['cell-respiration'], next: ['cell-division-hs'],
+  lecture: [ {name:'光合作用的过程与应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'光暗反应与曲线判读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'cell-division-hs': { title: '细胞增殖', stage: 'senior', cat: 'structure', diff: 5.5, hot: false,
+  fact: '有丝分裂各期特征可概括为「膜仁消失显两体、形定数晰赤道齐、点裂数加均两极、两消三现重开始」； DNA 加倍在间期，染色体加倍在后期，观察染色体的最佳时期是中期。',
+  prev: ['photosynthesis-hs'], next: ['cell-life-course'],
+  lecture: [ {name:'有丝分裂过程与实验', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'分裂图像判别练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'cell-life-course': { title: '分化、衰老、凋亡与癌变', stage: 'senior', cat: 'structure', diff: 5.6, hot: false,
+  fact: '细胞分化是基因选择性表达的结果；衰老细胞出现水分减少、酶活性降低、色素积累等特征；细胞凋亡由基因决定，癌变是原癌基因与抑癌基因突变累积的结果。',
+  prev: ['cell-division-hs'], next: ['meiosis'],
+  lecture: [ {name:'细胞的分化衰老与癌变', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'凋亡坏死与癌变判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 遗传与进化 ================= */
+'meiosis': { title: '减数分裂与受精作用', stage: 'senior', cat: 'heredity', diff: 5.7, hot: false,
+  fact: '减数第一次分裂同源染色体分离、非同源染色体自由组合，减数第二次分裂着丝粒分裂；受精时卵细胞只从极体一侧进入，配子多样性来自交叉互换与自由组合。',
+  prev: ['cell-life-course', 'reproduction'], next: ['gene-separation', 'chrom-variation'],
+  lecture: [ {name:'减数分裂与受精作用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'分裂图像与数目判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gene-separation': { title: '基因的分离定律', stage: 'senior', cat: 'heredity', diff: 5.8, hot: true,
+  fact: '控制同一性状的等位基因随同源染色体分开而分离；一对相对性状杂交 F₂ 3:1 的前提是显性完全、配子活力相同且样本足够大；测交可验证 F₁ 的基因型。',
+  prev: ['meiosis', 'reproduction'], next: ['gene-assortment'],
+  lecture: [ {name:'分离定律与测交验证', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'一对相对性状遗传练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gene-assortment': { title: '基因的自由组合定律', stage: 'senior', cat: 'heredity', diff: 6.0, hot: false,
+  fact: '非同源染色体上的非等位基因自由组合，F₂ 9:3:3:1 是两对独立遗传性状的典型比例；9:3:3:1 的变式（9:7、12:3:1 等）提示基因互作的存在。',
+  prev: ['gene-separation'], next: ['sex-inheritance'],
+  lecture: [ {name:'自由组合定律与变式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'两对性状概率计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'sex-inheritance': { title: '伴性遗传与人类遗传病', stage: 'senior', cat: 'heredity', diff: 6.1, hot: false,
+  fact: '色盲、血友病是 X 染色体隐性遗传，表现为男多女少、隔代交叉遗传；人类遗传病分单基因、多基因和染色体异常三类，调查发病率要在人群中随机取样。',
+  prev: ['gene-assortment', 'reproduction'], next: ['dna-evidence'],
+  lecture: [ {name:'伴性遗传与遗传病', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'遗传系谱图分析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'dna-evidence': { title: 'DNA是主要的遗传物质', stage: 'senior', cat: 'heredity', diff: 6.2, hot: false,
+  fact: '肺炎链球菌转化实验与 T2 噬菌体侵染实验证明 DNA 是遗传物质；噬菌体用 ³⁵S 标记蛋白质、³²P 标记 DNA，侵染时只有 DNA 进入细菌。',
+  prev: ['sex-inheritance'], next: ['dna-replication'],
+  lecture: [ {name:'DNA是主要的遗传物质', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'经典实验同位素标记练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'dna-replication': { title: 'DNA的结构与复制', stage: 'senior', cat: 'heredity', diff: 6.3, hot: false,
+  fact: 'DNA 双螺旋的两条链反向平行、碱基互补配对；复制以半保留方式进行，边解旋边复制；n 代后含亲代链的 DNA 分子始终只有 2 个。',
+  prev: ['dna-evidence'], next: ['gene-expression'],
+  lecture: [ {name:'DNA双螺旋与半保留复制', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'碱基计算与复制练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gene-expression': { title: '基因的表达', stage: 'senior', cat: 'heredity', diff: 6.4, hot: false,
+  fact: '转录在细胞核以 DNA 一条链为模板合成 mRNA，翻译在核糖体按密码子合成多肽；中心法则包括复制、转录、翻译及 RNA 自我复制等途径。',
+  prev: ['dna-replication'], next: ['gene-mutation'],
+  lecture: [ {name:'转录翻译与中心法则', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'碱基与氨基酸对应计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gene-mutation': { title: '基因突变与基因重组', stage: 'senior', cat: 'heredity', diff: 6.5, hot: false,
+  fact: '基因突变是碱基对的增添、缺失或替换，具有随机性、不定向性、低频性和多害少利性；基因重组发生在减数分裂的非同源染色体自由组合与同源染色体交叉互换。',
+  prev: ['gene-expression'], next: ['chrom-variation'],
+  lecture: [ {name:'基因突变与重组', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'突变影响与重组来源练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'chrom-variation': { title: '染色体变异与育种', stage: 'senior', cat: 'heredity', diff: 6.6, hot: false,
+  fact: '染色体结构变异有缺失、重复、倒位、易位；单倍体、二倍体、多倍体以染色体组数目界定，秋水仙素抑制纺锤体形成使染色体数目加倍，单倍体育种能明显缩短育种年限。',
+  prev: ['gene-mutation', 'meiosis'], next: ['evolution'],
+  lecture: [ {name:'染色体变异与五种育种', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'育种方案比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'evolution': { title: '现代生物进化理论', stage: 'senior', cat: 'evolve', diff: 6.7, hot: false,
+  fact: '种群是进化的基本单位，基因频率改变标志着进化发生；突变和基因重组提供原材料，自然选择决定方向，隔离是物种形成的必要条件。',
+  prev: ['chrom-variation'], next: ['homeostasis'],
+  lecture: [ {name:'现代生物进化理论', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'基因频率计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 稳态与调节 ================= */
+'homeostasis': { title: '内环境与稳态', stage: 'senior', cat: 'regulate', diff: 6.8, hot: false,
+  fact: '内环境是细胞外液，由血浆、组织液、淋巴构成并相互转化；稳态是理化性质保持相对稳定的状态，其调节机制是神经—体液—免疫网络。',
+  prev: ['evolution'], next: ['nerve-hs'],
+  lecture: [ {name:'内环境与稳态', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'内环境成分判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'nerve-hs': { title: '神经调节', stage: 'senior', cat: 'regulate', diff: 6.9, hot: false,
+  fact: '静息电位外正内负由 K⁺ 外流形成，动作电位外负内正由 Na⁺ 内流形成；兴奋在神经纤维上以电信号双向传导，在突触间经神经递质单向传递。',
+  prev: ['homeostasis'], next: ['hormone-hs'],
+  lecture: [ {name:'兴奋的产生与传递', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'电位测量与突触判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'hormone-hs': { title: '体液调节', stage: 'senior', cat: 'regulate', diff: 6.9, hot: false,
+  fact: '激素通过体液运输作用于靶细胞，具有微量高效和通过调节代谢发挥作用的特点；血糖调节中胰岛素与胰高血糖素拮抗，甲状腺激素分级调节存在负反馈。',
+  prev: ['nerve-hs'], next: ['immune-hs'],
+  lecture: [ {name:'激素调节与血糖平衡', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'血糖调节模型练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'immune-hs': { title: '免疫调节', stage: 'senior', cat: 'regulate', diff: 7.0, hot: false,
+  fact: '非特异性免疫是第一、二道防线，特异性免疫分体液免疫与细胞免疫；辅助性 T 细胞与细胞因子协调 B 细胞和细胞毒性 T 细胞的活化，二次免疫更快更强。',
+  prev: ['hormone-hs'], next: ['plant-hormone'],
+  lecture: [ {name:'特异性免疫与免疫应用', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'体液细胞免疫流程练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'plant-hormone': { title: '植物生命活动的调节', stage: 'senior', cat: 'regulate', diff: 7.0, hot: false,
+  fact: '生长素在尖端产生并极性运输，低浓度促进、高浓度抑制表现两重性；赤霉素促进伸长，脱落酸抑制生长，植物生长发育由多种激素共同调控。',
+  prev: ['immune-hs'], next: ['population-community'],
+  lecture: [ {name:'生长素与植物激素', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'向光性与两重性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 生物与环境 ================= */
+'population-community': { title: '种群与群落', stage: 'senior', cat: 'ecology', diff: 7.0, hot: false,
+  fact: '种群的数量特征以种群密度为核心，「J」形增长在理想条件下发生，「S」形增长受 K 值限制；群落的空间结构与研究土壤小动物类群丰富度的方法各有特点。',
+  prev: ['plant-hormone'], next: ['ecosystem'],
+  lecture: [ {name:'种群特征与群落结构', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'增长曲线与演替练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'ecosystem': { title: '生态系统', stage: 'senior', cat: 'ecology', diff: 7.0, hot: false,
+  fact: '生态系统的结构包括组成成分与营养结构；能量流动单向递减传递效率 10%~20%，物质循环具有全球性，信息传递调节种间关系；抵抗力稳定性与恢复力稳定性一般相反。',
+  prev: ['population-community'], next: ['fermentation-biotech'],
+  lecture: [ {name:'生态系统的功能与稳定', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'能量流动计算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ================= 高中 · 生物技术与工程 ================= */
+'fermentation-biotech': { title: '发酵与微生物技术', stage: 'senior', cat: 'biotech', diff: 7.0, hot: false,
+  fact: '果酒靠酵母菌无氧呼吸、果醋靠醋酸菌有氧呼吸；培养基按功能分选择与鉴别两类，无菌技术围绕防止外来杂菌污染展开，计数用稀释涂布平板法。',
+  prev: ['ecosystem'], next: ['gene-cell-engineering'],
+  lecture: [ {name:'传统发酵与微生物培养', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'无菌操作与计数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gene-cell-engineering': { title: '基因工程与细胞工程', stage: 'senior', cat: 'biotech', diff: 7.0, hot: false,
+  fact: '基因工程的工具是限制酶、DNA 连接酶和载体，操作四步骤为获取目的基因、构建表达载体、导入受体细胞、检测与鉴定；植物组织培养利用细胞全能性，单克隆抗体由杂交瘤细胞产生。',
+  prev: ['fermentation-biotech'], next: [],
+  lecture: [ {name:'基因工程的操作与细胞工程', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'工程步骤与工具酶练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

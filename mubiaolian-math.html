@@ -1,0 +1,3017 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 全学段数学知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）数学知识目标站 —— 小学到高中数学主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#2f6b57" />
+<meta property="og:title" content="目标链 · 全学段数学知识目标站" />
+<meta property="og:description" content="小学到高中数学主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-math.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M5.5 18.5h13.5M5.5 18.5V5' stroke='%23f6f7f4' stroke-width='1.5' stroke-linecap='round'/><path d='M8 7.5q4 11 8.5 0' fill='none' stroke='%23f6f7f4' stroke-width='1.5' stroke-linecap='round'/></svg>" />
+<style>
+  :root {
+    --bg: #f4f6f2;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #2f6b57;
+    --accent-deep: #244f41;
+    --accent-soft: #e5f0ea;
+    --pri: #3579c6;   /* 小学 */
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(47,107,87,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(53,121,198,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #3d8a70); box-shadow: 0 3px 10px -2px rgba(47,107,87,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #4ea283 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.primary { border-top-color: var(--pri); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.primary .badge { color: var(--pri); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.primary:hover { border-color: var(--pri); border-top-color: var(--pri); box-shadow: 0 10px 26px -8px rgba(53,121,198,.45); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done.primary { background: linear-gradient(150deg, #4b8cd4, var(--pri)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(53,121,198,.65); }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(36,79,65,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.primary { color: var(--pri); background: #e8f0fb; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(53,121,198,.06); border: 1px dashed rgba(53,121,198,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(47,107,87,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(47,107,87,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #4ea283); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(47,107,87,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #3d8a70);
+    box-shadow: 0 8px 18px -8px rgba(47,107,87,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(47,107,87,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(47,107,87,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(47,107,87,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f2f7f4; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.primary .stage-tag { background: var(--pri); }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fafdfb, #f1f6f3);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-primary { --sub-c: var(--pri); --ring: rgba(52,120,196,.38); }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <span class="subj-tab active" aria-current="page" title="当前：目标链数学站"><i class="subj-ico">∑</i>数学</span>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">95 个主干环 · 474 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>全学段数学知识<span class="accent">目标链</span></h1>
+  <p>小学到高中数学主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/95</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：二次函数" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--pri)"></span>小学</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链数学站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">新课标Ⅰ卷 · 2021-2025 · 人工整理，或有遗漏 · 点年份看整卷 · 点题号直达该题所在页</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链数学站 · 知识点数据（95 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：60 个节点已挂人工核验过的 B 站真实公开课直链（见 LINK 库，BV 号经 API 全量探活）；
+ * 其余节点挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）与 B 站关键词搜索深链——
+ * 均为真实可访问页面，无死链、无编造深链。
+ * ===================================================================== */
+const STAGE_LABEL = { primary: '小学', junior: '初中', senior: '高中' };
+
+/* ============ 历年高考考情（新课标Ⅰ卷 · 2021-2025）============
+ * 逐题考点 → 本站知识环的人工对应，来源：教育部教育考试院试卷评析、
+ * 学科网《2022-2025新高考1卷考点分布》逐题表、中国教育在线 2021 双向细目表。
+ * 逐题口径可能存在遗漏或归类差异，持续校对补充中。 */
+const EXAM = {
+  /* 集合 / 复数 / 向量 —— 每年必考的送分小题 */
+  'set-logic':  { 2021:['T1·以不等式为媒介的集合运算'], 2022:['T1·集合的交集运算'], 2023:['T1·集合的交集运算'], 2024:['T1·集合的交集运算'], 2025:['T2·集合的补集运算'] },
+  'complex':    { 2021:['T2·复数的运算与共轭复数'], 2022:['T2·共轭复数与复数运算'], 2023:['T2·共轭复数与复数运算'], 2024:['T2·复数的运算'], 2025:['T1·复数的运算'] },
+  'vector':     { 2021:['T10·三角函数与平面向量'], 2022:['T3·三点共线的向量问题'], 2023:['T3·向量垂直的坐标运算'], 2024:['T3·平面向量的坐标运算'], 2025:['T6·平面向量的应用'] },
+  /* 函数主线 */
+  'fun-prop':   { 2021:['T13·函数的奇偶性','T15·绝对值函数的最值'], 2022:['T10·函数零点、对称中心、极值与切线','T12·函数奇偶性与抽象函数'], 2023:['T11·抽象函数求值'], 2024:['T6·函数的单调性与参数','T8·抽象函数','T10·函数单调性的综合运用'], 2025:['T5·函数的周期性与奇偶性','T19·函数与三角函数的结合'] },
+  'power-exp-log': { 2022:['T7·构造函数比较大小'], 2023:['T4·指数型函数的单调性','T10·对数函数的实际运用'], 2025:['T8·比较大小'] },
+  'trig':       { 2021:['T4·正弦函数的单调性'], 2022:['T6·三角函数图象及其性质'], 2023:['T15·复合三角函数的零点'], 2024:['T7·三角函数图象交点'], 2025:['T4·三角函数图象的对称中心'] },
+  'trig-trans': { 2021:['T6·三角函数的求值'], 2022:['T18·倍角公式与三角函数最值'], 2023:['T8·三角恒等变换'], 2024:['T4·三角恒等变换'], 2025:['T11·三角公式的综合运用'] },
+  'solve-tri':  { 2021:['T19·解三角形'], 2023:['T17·解三角形'], 2024:['T15·解三角形'] },
+  /* 数列 */
+  'sequence':   { 2021:['T17·递推数列求通项公式'], 2022:['T17·数列的通项公式与不等式证明'], 2023:['T7·等差数列的判定与求和','T20·等差数列的通项与求和'], 2024:['T19·数列新定义运算综合'], 2025:['T13·等比数列的公比','T16·数列的通项与求和'] },
+  'seq-sum':    { 2021:['T16·数列求和（数学文化）','T17·递推数列求和公式'], 2023:['T20·等差数列求和'], 2025:['T16·数列的通项与求和'] },
+  /* 不等式 / 导数 */
+  'ineq-proof': { 2022:['T17·数列解答中的不等式证明'] },
+  'derivative': { 2022:['T15·导数的几何意义'], 2024:['T13·曲线的切线方程'], 2025:['T12·曲线的切线方程'] },
+  'dapply':     { 2021:['T7·导数的应用与不等关系','T22·导数与单调性、不等式证明'], 2022:['T22·利用导数求参与零点、同构问题'], 2023:['T19·利用导数研究单调性并证明不等式'], 2024:['T18·利用导数求参与中心对称'] },
+  /* 解析几何 */
+  'row-line':   { 2021:['T11·直线与圆方程'], 2022:['T14·圆与圆的位置关系、公切线'], 2023:['T6·直线与圆的位置关系、切线长'], 2025:['T7·直线与圆的位置关系'] },
+  'ellipse':    { 2021:['T5·椭圆的几何性质'], 2022:['T16·椭圆的定义与弦长'], 2023:['T5·椭圆离心率的计算'], 2024:['T16·椭圆离心率、直线与椭圆综合'], 2025:['T18·椭圆的综合运用'] },
+  'hyper-par':  { 2021:['T14·抛物线','T21·双曲线方程与定值问题'], 2022:['T11·抛物线的定义与几何性质','T21·双曲线的几何性质与弦长面积'], 2023:['T16·双曲线的离心率'], 2024:['T12·双曲线的离心率'], 2025:['T3·双曲线的离心率','T10·抛物线的性质运用'] },
+  'conic':      { 2022:['T21·双斜率弦长与三角形面积'], 2024:['T11·解析几何创新问题','T16·直线与椭圆综合'], 2025:['T18·椭圆综合解答题'] },
+  /* 立体几何 */
+  'solid':      { 2021:['T3·圆锥的有关计算'], 2022:['T4·棱台体积','T8·几何体的外接球'], 2023:['T12·内切球','T14·棱台的体积计算'], 2024:['T5·圆柱与圆锥的综合运用'] },
+  'solid-rel':  { 2021:['T12·立体几何与平面向量','T20·垂直关系证明、二面角与体积'], 2022:['T9·线线垂直与线面垂直','T19·点面距与二面角'], 2023:['T18·线线平行证明与二面角'], 2024:['T17·线面平行与二面角'], 2025:['T9·空间几何体的线面位置关系','T17·面面垂直、外接球与异面直线所成角'] },
+  'solid-coord':{ 2023:['T18·空间向量法求线线平行与二面角'], 2024:['T17·空间向量法求线面平行与二面角'] },
+  /* 计数 / 概率统计 */
+  'perm-comb':  { 2023:['T13·排列组合'], 2024:['T14·排列组合'] },
+  'binomial':   { 2022:['T13·二项式系数'] },
+  'cond-prob':  { 2021:['T8·相互独立事件的概率'], 2022:['T20·条件概率'] },
+  'discrete-rv':{ 2021:['T18·概率分布列与数学期望'], 2025:['T14·随机变量与数学期望'] },
+  'stats-adv':  { 2022:['T20·独立性检验'], 2024:['T9·正态分布'], 2025:['T15·独立性检验'] },
+  /* 初中段被高考直接考到的点 */
+  'prob-basic': { 2022:['T5·古典概型'] },
+  'stats-basic':{ 2021:['T9·样本数字特征的性质'], 2023:['T9·数据的数字特征'] },
+};
+
+/* 各年新课标Ⅰ卷数学真题卷公开页（中国教育在线/掌上高考，均已探活；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=math&y=2021',
+  2022: 'gaokao.html?s=math&y=2022',
+  2023: 'gaokao.html?s=math&y=2023',
+  2024: 'gaokao.html?s=math&y=2024',
+  2025: 'gaokao.html?s=math&y=2025',
+};
+
+/* 逐题定位：点题号直达该题所在页。pdf=文字版真题 PDF（#page=N 跳页）；page=分页图片卷（第1页为主链接，第N页加 _{N-1} 后缀）。
+ * 页码由 PDF 文字层逐页匹配题号得出；2023 年公开渠道均为扫描件，暂只有整卷链接。 */
+const EXAM_QSRC = {
+  2021: { pdf: 'gaokao/math2021-q.pdf',
+          loc: { 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:1, 8:1, 9:2, 10:2, 11:2, 12:2, 13:2, 14:2, 15:2, 16:2, 17:3, 18:3, 19:3, 20:3, 21:4, 22:4 } },
+  2022: { pdf: 'gaokao/math2022-q.pdf',
+          loc: { 1:1, 2:1, 3:1, 4:1, 5:2, 6:2, 7:2, 8:2, 9:2, 10:2, 11:2, 12:3, 13:3, 14:3, 15:3, 16:3, 17:3, 18:3, 19:3, 20:4, 21:4, 22:5 } },
+  2023: { page: 'https://gaokao.eol.cn/shiti/sx/202306/t20230613_2437671.shtml' },
+  2024: { pdf: 'gaokao/math2024-q.pdf',
+          loc: { 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:2, 8:2, 9:2, 10:2, 11:2, 12:3, 13:3, 14:3, 15:3, 16:3, 17:3, 18:4, 19:4 } },
+  2025: { pdf: 'gaokao/math2025.pdf',
+          loc: { 1:1, 2:1, 3:1, 4:1, 5:1, 6:1, 7:2, 8:2, 9:2, 10:2, 11:3, 12:3, 13:3, 14:3, 15:3, 16:4, 17:4, 18:4, 19:4 } },
+};
+
+/* ============ 子知识点颗粒度：每环 2~8 个细粒度考点，全站共 474 个 ============
+ * 结构：{ t:子点名称, d:一句话简介（讲什么+易错点）, h:1 表示重点难点（导图标 🔥） }
+ * 难点精讲视频位第二批人工核验后填充；每个子点自动生成 B 站关键词搜索兜底链接 */
+const SUBS = {
+  /* ---- 小学 · 数与运算 ---- */
+  'count-num': [
+    { t: '自然数与0', d: '从0开始数数，0也表示“没有”。易错：0是最小的自然数，但不是最小的一位数。' },
+    { t: '十进制计数法', d: '满十进一，相邻计数单位进率都是10。易错：10个一万是十万，别跳级数。' },
+    { t: '数位与计数单位', d: '“数位”是位置，“计数单位”是单位。易错：4在十位上表示4个十。' },
+    { t: '数位顺序表', d: '从右往左依次是个、十、百、千、万……易错：每级末尾的0不读，中间的0要读。' },
+    { t: '万以内数的认识', d: '读写千位、百位的数。易错：中间有0的数如3040，中间的0要读出来。' },
+  ],
+  'add-meaning': [
+    { t: '加法与减法的意义', d: '把两部分合起来是加法，从总数里去掉是减法。易错：加法和减法互为逆运算。' },
+    { t: '10以内加减法', d: '数的分与合是口算基础。易错：分解要熟练到脱口而出，别扳手指。' },
+    { t: '20以内进位加退位减', d: '凑十法、破十法是核心。易错：8+7想“8凑2剩5得15”，别一直数手指。' },
+    { t: '连加连减与加减混合', d: '从左到右依次计算。易错：第一步的结果要记牢，再算第二步。' },
+    { t: '看图列式解决问题', d: '先找信息和问题，再决定用加还是减。易错：大括号下的“？”表示求总数用加法。' },
+  ],
+  'compare': [
+    { t: '大于小于等于号', d: '开口朝大数，尖角朝小数。易错：开口那边才是大的，口诀别记反。' },
+    { t: '多位数大小比较', d: '先比位数，位数相同从最高位比起。易错：位数多的数一定大。' },
+    { t: '量的比较（长短·轻重）', d: '直接观察或用工具测量再比较。易错：比轻重不能只看大小，还要看材料。' },
+    { t: '排序与序数', d: '“第几个”表示顺序，“几个”表示数量。易错：从左数和从右数结果不一样。' },
+    { t: '估算与近似数', d: '凑成整十整百快速估计。易错：“约是”和“等于”不同，估算要用≈。' },
+  ],
+  'money-rec': [
+    { t: '认识元角分', d: '1元=10角，1角=10分。易错：人民币单位是十进制，别和长度单位混淆。' },
+    { t: '认识各种面值', d: '纸币硬币有1、2、5、10、20、50、100元等。易错：付款可以用不同面值组合。' },
+    { t: '元角分的换算', d: '几元几角可以写成小数形式。易错：3元5角=3.5元，这是小数的启蒙。' },
+    { t: '简单购物计算', d: '付出的钱-商品价格=找回的钱。易错：找零不能超过付出的钱数。' },
+    { t: '商品价格比较', d: '统一单位再比较大小。易错：5.6元＞5.06元，别只看数字位数。' },
+  ],
+  'clock-time': [
+    { t: '认识整时与半时', d: '时针短、分针长。易错：半时时时针指在两个数字中间。' },
+    { t: '认识几时几分', d: '时针刚过几就是几时。易错：分针指着6是半时，不是6分。' },
+    { t: '时分秒的关系', d: '1时=60分，1分=60秒。易错：秒针走一小格是1秒，走一圈是1分。' },
+    { t: '经过时间', d: '结束时刻-开始时刻=经过时间。易错：跨小时的要分段计算。' },
+    { t: '年月日与星期', d: '大月31天小月30天。易错：闰年2月29天，全年366天。' },
+  ],
+  'add-sub': [
+    { t: '口算与竖式', d: '相同数位对齐，从个位算起。易错：进位的1和退位点容易忘加忘减。' },
+    { t: '多位数加减法', d: '数位对齐逐位计算。易错：中间有0的连续退位，如1000-358最易错。' },
+    { t: '加减法各部分关系', d: '和=加数+加数，被减数=差+减数。易错：求加数用和减另一个加数。' },
+    { t: '加减法验算', d: '用交换加数或逆运算检查。易错：验算不是重算一遍，要换一种方法。' },
+  ],
+  'mul-div': [
+    { t: '乘法口诀表', d: '大九九45句要背熟，是乘除法地基。易错：五六三十还是三十五，混淆口诀。' },
+    { t: '乘法与除法的意义', d: '几个相同加数的和用乘法，平均分用除法。易错：乘除法互为逆运算。' },
+    { t: '用口诀求商', d: '想“几乘除数等于被除数”。易错：商和余数要分清，口诀要选对。' },
+    { t: '乘加乘减混合', d: '先乘后加的雏形。易错：3×4+2先算乘法，别从左往右一起算。' },
+  ],
+  'remainder': [
+    { t: '整除的意义', d: '没有余数才叫整除。易错：整除要求商是整数且没有余数，两个条件都要满足。' },
+    { t: '有余数除法', d: '被除数=商×除数+余数。易错：验算时用商乘除数再加余数，别算成减。' },
+    { t: '余数与除数的关系', d: '余数必须比除数小。易错：余数最大是除数减1，容易填成除数。' },
+    { t: '2·3·5的整除特征', d: '2和5看个位，3看各位数字之和。易错：判断9的倍数也是看数字和，与3相通。' },
+    { t: '竖式除法', d: '商写在对应数位上。易错：商中间不够商1要补0占位。' },
+  ],
+  'mix-op': [
+    { t: '四则运算顺序', d: '先乘除后加减，有括号先算括号。易错：同级运算要从左到右依次算。' },
+    { t: '先乘除后加减', d: '乘除是二级运算，优先于加减。易错：2+3×4先算乘法得14，不是20。' },
+    { t: '含括号的混合运算', d: '先小括号，再中括号，最后大括号。易错：括号前是减号或除号时，去括号要变号。' },
+    { t: '列综合算式', d: '把分步算式合并成一个式子。易错：需要先算的部分记得加上括号。' },
+  ],
+  'law-op': [
+    { t: '加法交换律与结合律', d: 'a+b=b+a，(a+b)+c=a+(b+c)。易错：减法和除法没有交换律。' },
+    { t: '乘法交换律与结合律', d: '位置变积不变。易错：25×4=100、125×8=1000是常用凑整搭档。' },
+    { t: '乘法分配律', d: '(a+b)×c=a×c+b×c，展开或合并都行。易错：和乘法结合律混淆，25×(4×8)≠25×4×25×8。', h: 1 },
+    { t: '简便运算', d: '凑整、基准数、带着符号搬家。易错：移数时要带符号一起走，凭空交换会出错。' },
+    { t: '减法与除法的性质', d: 'a-b-c=a-(b+c)，连除类似。易错：连续减去两个数等于减去两数之和。' },
+  ],
+  'multi-mul-div': [
+    { t: '两三位数乘一位数', d: '从个位乘起，满几十进几。易错：连续进位时进位数字容易漏加。' },
+    { t: '多位数乘两位数', d: '用第二个因数每位分别乘，再错位相加。易错：第二层积要向左错一位。' },
+    { t: '除数是一位数除法', d: '先看首位够不够除，不够就看前两位。易错：商中间或末尾的0不能丢。' },
+    { t: '除数是两位数除法', d: '把除数看作整十数试商，再调商。易错：试商偏大要调小，别急着写答案。' },
+    { t: '乘除法估算与验算', d: '乘法用除法验算，除法用乘法验算。易错：估算先把数看成整十整百再算。' },
+  ],
+  'unit': [
+    { t: '长度单位换算', d: '毫米、厘米、米、千米之间互化。易错：千米和米之间进率是1000，不是10。' },
+    { t: '质量单位换算', d: '克、千克、吨，1吨=1000千克。易错：大象的质量要用吨来表示。' },
+    { t: '面积单位', d: '平方厘米、平方分米、平方米，进率100。易错：面积单位和长度单位进率不同。' },
+    { t: '体积与容积单位', d: '立方米、立方分米（升）、立方厘米（毫升）。易错：1升=1立方分米，不是1立方厘米。' },
+    { t: '名数改写', d: '高级单位化低级单位乘进率，反之除以进率。易错：方向记反是最常见错误。' },
+  ],
+  'big-num': [
+    { t: '亿以内数的读法', d: '先四位分级再从高往低读。易错：每级末尾的0不读，中间的0要读。' },
+    { t: '亿以内数的写法', d: '哪一位上一个单位也没有就写0占位。易错：跨级的空位要连续补0。' },
+    { t: '数的产生与十进制', d: '相邻两个计数单位进率都是10。易错：亿级的数位顺序别背错。' },
+    { t: '近似数与四舍五入', d: '省略万位后面的尾数看千位。易错：38万≈40万，“≈”不能写成“=”。' },
+    { t: '大数的大小比较', d: '先数位数，位数相同比最高位。易错：大数比较先分级再数位数。' },
+  ],
+  'decimal': [
+    { t: '小数的意义与读写', d: '分母是10、100的分数可以写成小数。易错：0.3表示十分之三，不是三分之十。' },
+    { t: '小数的大小比较', d: '先比整数部分，再一位位比小数。易错：0.8＞0.15，位数多不代表大。' },
+    { t: '小数点移动规律', d: '右移一位扩大10倍，左移一位缩小到十分之一。易错：方向记反是最常见错误。', h: 1 },
+    { t: '小数加减法', d: '小数点对齐再计算。易错：位数不同末尾要补0对齐。' },
+    { t: '小数乘法', d: '先按整数乘，再点小数点。易错：积的小数位数是两个因数位数之和。' },
+    { t: '分数小数互化', d: '分数化小数用分子除以分母。易错：最简分数分母只含2和5才能化成有限小数。' },
+  ],
+  'factor-multiple': [
+    { t: '找因数与倍数', d: '成对找因数才不遗漏。易错：一个数最小的倍数是它本身，没有最大的倍数。' },
+    { t: '奇数与偶数', d: '能被2整除的是偶数。易错：0也是偶数；奇+奇=偶，奇偶运算有规律。' },
+    { t: '质数与合数', d: '只有1和它本身两个因数的是质数。易错：1既不是质数也不是合数，最小质数是2。' },
+    { t: '分解质因数', d: '写成几个质数相乘的形式。易错：要除到全是质数为止，1不是质因数。' },
+    { t: '最大公因数', d: '公有的因数中最大的一个。易错：互质的两个数最大公因数是1。' },
+    { t: '最小公倍数', d: '公有的倍数中最小的一个。易错：成倍数关系时，大数本身就是最小公倍数。' },
+  ],
+  'fraction': [
+    { t: '分数的意义与单位“1”', d: '把单位“1”平均分成若干份。易错：必须“平均分”，分母表示分的份数。', h: 1 },
+    { t: '分数与除法的关系', d: 'a÷b=a/b（b≠0）。易错：除法是运算，分数是一个数，被除数相当于分子。' },
+    { t: '真分数假分数带分数', d: '真分数小于1，假分数大于或等于1。易错：假分数不是“假的分数”。' },
+    { t: '约分与通分', d: '约分用公因数除，通分化成同分母。易错：结果要约到最简分数才算完。' },
+    { t: '分数大小比较', d: '同分母比分子，异分母先通分。易错：分子相同时，分母小的分数反而大。' },
+    { t: '分数加减法', d: '同分母直接加减，异分母先通分。易错：结果要约成最简，别忘通分和约分。' },
+  ],
+  'negative-prep': [
+    { t: '生活中的负数', d: '零上零下温度、收入支出都用负数。易错：0既不是正数也不是负数。' },
+    { t: '相反意义的量', d: '规定一个方向为正，相反方向为负。易错：向东记为正，向西就是负。' },
+    { t: '负数的大小比较', d: '数轴上越往左越小。易错：-3＞-5，负号后面的数大反而小。' },
+    { t: '数轴初步', d: '0是正负数的分界点。易错：负数都在0的左边，正数都在右边。' },
+  ],
+  'percent': [
+    { t: '百分数的意义', d: '表示一个数是另一个数的百分之几。易错：百分数后面不能带单位名称。' },
+    { t: '百分数与分数小数互化', d: '百分数化小数去掉%后小数点左移两位。易错：方向别搞反，化百分数要乘100。' },
+    { t: '增长率与合格率', d: '增加的部分÷原量=增长率。易错：增长20%再降20%不回原值。' },
+    { t: '折扣·税率·利息', d: '打几折就是按原价的百分之几十出售。易错：先涨价再打折，不是原价的那个百分数。' },
+  ],
+  'ratio-proportion': [
+    { t: '比的意义与化简', d: '两数相除又叫两个数的比。易错：化简比的结果还是一个比，比值才是一个数。' },
+    { t: '比与分数除法的关系', d: '比的前项相当于分子、被除数。易错：比的后项不能为0。' },
+    { t: '比例的基本性质', d: '内项之积等于外项之积。易错：判断四个数能否成比例，交叉相乘来验证。' },
+    { t: '正比例与反比例', d: '比值一定成正比，乘积一定成反比。易错：先找不变量，再判断是哪种关系。', h: 1 },
+    { t: '比例尺与按比例分配', d: '图上距离：实际距离=比例尺。易错：1:1000表示图上1厘米实际10米。' },
+  ],
+  'equation-prep': [
+    { t: '用字母表示数', d: '字母可以表示任意数，让式子更简洁通用。易错：书写规范，数字在前、乘号省略。' },
+    { t: '等式与方程', d: '含有未知数的等式叫方程。易错：方程一定是等式，但含未知数的不一定是方程。' },
+    { t: '解简易方程', d: '用等式性质，两边同加减同乘除。易错：解完要代回原方程检验。' },
+    { t: '列方程解决问题', d: '找等量关系，设未知数列方程。易错：设谁为x要选便于表达的那个量。' },
+  ],
+  'app-problem': [
+    { t: '和差倍问题', d: '和差公式：大数=(和+差)÷2。易错：先画线段图理清谁多谁少再动笔。' },
+    { t: '归一归总问题', d: '先求单一量是归一，先求总量是归总。易错：看清题目是正归一还是反归一。' },
+    { t: '平均数问题', d: '平均数=总数量÷总份数。易错：平均数是移多补少的结果，不代表每份都一样。' },
+    { t: '年龄问题', d: '年龄差永远不变，倍数在变。易错：抓住“年龄差不变”这个不变量列式。' },
+  ],
+  'journey-prob': [
+    { t: '行程三量关系', d: '速度×时间=路程。易错：单位要统一，米/分和千米/时不能直接混算。' },
+    { t: '相遇问题', d: '路程和=速度和×时间。易错：两人相向而行，速度要相加。', h: 1 },
+    { t: '追及问题', d: '路程差=速度差×时间。易错：快追慢才追得上，速度用减法。', h: 1 },
+    { t: '火车过桥与隧道', d: '路程=桥长+车长。易错：过桥要走完整个车身，别只算桥长。', h: 1 },
+    { t: '流水行船问题', d: '顺水速=船速+水速，逆水速=船速-水速。易错：两公式相加减可求船速与水速。' },
+  ],
+  'assume-prob': [
+    { t: '鸡兔同笼', d: '假设全是鸡，多出来的脚来自兔子。易错：假设鸡算出来的是兔，结果要反过来。', h: 1 },
+    { t: '盈亏问题', d: '用“一盈一亏”之差分配。易错：两次都盈或都亏时要用差，一盈一亏用和。' },
+    { t: '植树问题', d: '两端都栽时棵数=段数+1。易错：看清是两端都栽、只栽一端还是两端都不栽。' },
+    { t: '周期与余数问题', d: '按循环规律找周期，用除法算余数。易错：余几就取周期里第几个，余0取最后一个。', h: 1 },
+  ],
+  /* ---- 小学 · 图形与几何 ---- */
+  'position-direction': [
+    { t: '上下前后左右', d: '以观察者为准确定方位。易错：对面人的左右方向和你相反。' },
+    { t: '东南西北', d: '上北下南左西右东。易错：人转身后描述的方向要跟着变。' },
+    { t: '平面图上的方向', d: '地图通常按“上北下南”绘制。易错：先看方向标，再描述位置和路线。' },
+    { t: '用数对表示位置', d: '竖排是列、横排是行，(列,行)。易错：数对有顺序，(2,3)≠(3,2)。' },
+    { t: '描述简单路线', d: '说清方向和距离两个要素。易错：转弯之后方向要跟着变。' },
+  ],
+  'angle': [
+    { t: '线段·直线·射线', d: '线段两端口，直线无端点，射线一端无限延伸。易错：直线和射线不能量长度。' },
+    { t: '角的概念与表示', d: '从一点引出两条射线组成角。易错：角的边是射线，长短与角的大小无关。' },
+    { t: '角的分类', d: '锐角＜直角＜钝角＜平角＜周角。易错：1平角=2直角=180°，1周角=4直角。' },
+    { t: '量角器量角', d: '中心对顶点，0刻度线对边。易错：内外圈刻度读反，先估一估再读数。' },
+    { t: '角的画法与计算', d: '先画一条射线，再在量角器上找度数画另一条边。易错：画完要回头核对度数。' },
+  ],
+  'plane-shape': [
+    { t: '三角形与四边形的认识', d: '由三条线段围成的是三角形，四条的是四边形。易错：围成要“首尾相连”。' },
+    { t: '长方形与正方形特征', d: '长方形对边相等四角都是直角。易错：正方形具有长方形的所有特征。' },
+    { t: '平行四边形与梯形', d: '两组对边平行是平行四边形，只有一组是梯形。易错：平行四边形不属于梯形。' },
+    { t: '图形的拼组', d: '两个完全一样的三角形能拼成平行四边形。易错：必须“完全一样”才能拼。' },
+    { t: '七巧板与图形分解', d: '复杂图形由基本图形拼成。易错：数图形个数时别漏拼成的组合图形。' },
+  ],
+  'quad-tri': [
+    { t: '三角形的分类', d: '按角分锐角、直角、钝角三角形，按边分等腰、等边。易错：等边三角形是特殊的等腰三角形。' },
+    { t: '三角形的内角和', d: '内角和恒为180°，与大小形状无关。易错：撕拼法、折叠法都能验证。' },
+    { t: '三角形的三边关系', d: '两边之和大于第三边，两边之差小于第三边。易错：用较小两边之和与第三边比。' },
+    { t: '三角形的稳定性', d: '三角形不易变形，四边形易变形。易错：生活应用如自行车架、屋顶架。' },
+    { t: '四边形的分类', d: '按对边是否平行分为平行四边形、梯形等。易错：正方形既是特殊的长方形也是特殊的菱形。' },
+  ],
+  'trans-graph': [
+    { t: '轴对称图形与对称轴', d: '对折后能完全重合的图形。易错：对称轴是直线，一个图形可能有多条对称轴。' },
+    { t: '图形的平移', d: '沿直线移动，形状大小不变。易错：数格子要看关键点的移动，别凭整体感觉。' },
+    { t: '图形的旋转', d: '绕定点转动，要说明中心、方向、角度三要素。易错：三要素缺一不可。' },
+    { t: '图形的密铺', d: '图形拼接后不留空、不重叠。易错：正五边形不能单独密铺。' },
+    { t: '用变换设计图案', d: '综合运用平移、旋转、轴对称创作。易错：先确定基本图形，再选变换方式。' },
+  ],
+  'observe-shape': [
+    { t: '从不同方向观察物体', d: '正面、侧面、上面看到的形状可能不同。易错：看到的形状与实物本身要分开说。' },
+    { t: '观察小方块组合体', d: '数清每个方向看到的正方形个数。易错：被挡住的小方块也要算在立体里。' },
+    { t: '三个方向的视图对应', d: '同一立体三个方向视图各不相同。易错：先摆一摆再画，别凭空想象。' },
+    { t: '由视图还原立体', d: '根据视图想象原来的立体形状。易错：一种视图可能对应多种不同立体。' },
+  ],
+  'perimeter-area': [
+    { t: '周长的概念', d: '封闭图形一周的长度。易错：周长是长度单位，面积是平方单位，别混。' },
+    { t: '长方形正方形周长', d: '长方形周长=(长+宽)×2。易错：忘乘2是高频错误。' },
+    { t: '平行四边形面积', d: '面积=底×高，高是垂直的高。易错：沿边的高不是斜边，要画垂线。' },
+    { t: '三角形面积', d: '面积=底×高÷2。易错：忘除以2；底和高必须是互相对应的一组。' },
+    { t: '梯形面积', d: '面积=(上底+下底)×高÷2。易错：高是两底之间的垂线段，别找成腰。' },
+    { t: '组合图形面积', d: '用割补、加减转化求面积。易错：分割后要找全每块的条件，别想当然。', h: 1 },
+  ],
+  'circle-pri': [
+    { t: '圆的认识', d: '圆心定位置，半径定大小。易错：同圆中所有半径都相等，画圆时针脚不能动。' },
+    { t: '半径与直径', d: 'd=2r，直径是过圆心的弦。易错：两端都在圆上且过圆心才是直径。' },
+    { t: '圆的周长', d: 'C=πd=2πr。易错：半圆的周长=πr+d，不是圆周长的一半。', h: 1 },
+    { t: '圆的面积', d: 'S=πr²，把圆剪拼成近似长方形推导。易错：r²别算成2r，π取值看清题目要求。', h: 1 },
+  ],
+  'volume': [
+    { t: '长方体与正方体认识', d: '6个面、8个顶点、12条棱。易错：相交于同一个顶点的三条棱才是长宽高。' },
+    { t: '展开图', d: '展开图能折回原来的立体图形。易错：相对的面中间隔着一个面。', h: 1 },
+    { t: '表面积', d: '六个面的面积总和。易错：实际问题可能不算某个面，比如无盖的水箱。' },
+    { t: '体积与容积概念', d: '物体所占空间大小是体积，能容纳多少是容积。易错：容积从里面量，体积从外面量。' },
+    { t: '长方体正方体体积', d: 'V=长×宽×高，正方体V=a³。易错：计算前先把单位统一。' },
+    { t: '排水法求不规则体积', d: '水面上升部分的体积就是物体体积。易错：用放入后的刻度减去放入前的刻度。', h: 1 },
+  ],
+  /* ---- 小学 · 统计与概率 ---- */
+  'data-collect': [
+    { t: '分类与整理', d: '按不同标准分类，结果不同但总数不变。易错：分类标准要统一，别重复别遗漏。' },
+    { t: '数据收集方法', d: '调查、举手、投票都是收集方式。易错：收集前先想清楚要收集什么。' },
+    { t: '简单统计表', d: '表格记录每类数据的数量。易错：填表前数清各类数量，画“正”字计数。' },
+    { t: '象形统计图', d: '用图形个数表示数量多少。易错：一个符号代表几个要标注清楚。' },
+  ],
+  'chart-read': [
+    { t: '条形统计图', d: '直条长短表示数量多少。易错：先看清一格代表几个，再读数。' },
+    { t: '折线统计图', d: '反映数量的增减变化趋势。易错：线越陡变化越快，先看趋势再读点。' },
+    { t: '扇形统计图', d: '表示部分占总体的百分比。易错：各部分百分比之和为100%。' },
+    { t: '统计图的选择', d: '比多少用条形，看趋势用折线，看占比用扇形。易错：扇形图看不出具体数量。' },
+  ],
+  'average': [
+    { t: '平均数的意义', d: '移多补少后的匀称结果。易错：平均数不代表每个数据都等于它。' },
+    { t: '求平均数', d: '总数量÷总份数=平均数。易错：先求总和再除，别把个数弄错。' },
+    { t: '平均数比大小', d: '比较两组整体水平用平均数。易错：人数不同时不能比总数。' },
+    { t: '复杂平均数', d: '先分别求出各部分总数再合并。易错：平均数的平均≠总平均，要重新求总数。' },
+  ],
+  'possibility': [
+    { t: '一定·可能·不可能', d: '确定事件与不确定事件。易错：“不太可能”不等于“不可能”。' },
+    { t: '可能性的大小', d: '占的数量多，可能性就大。易错：可能性大不等于一定发生。' },
+    { t: '公平性判断', d: '各方机会相等游戏才公平。易错：转盘要面积相等才公平。' },
+    { t: '简单游戏设计', d: '修改规则使各方概率相等。易错：掷骰子比大小，规则要让每方机会均等。' },
+  ],
+  /* ---- 初中 ---- */
+  'rational': [
+    { t: '正数与负数', d: '负数表示具有相反意义的量。易错：0既不是正数也不是负数。' },
+    { t: '数轴', d: '原点、正方向、单位长度三要素缺一不可。易错：数轴上的点从左到右越来越大。' },
+    { t: '相反数', d: '只有符号不同的两个数互为相反数。易错：-(-5)=5，a的相反数是-a。' },
+    { t: '绝对值', d: '数轴上表示数的点到原点的距离。易错：绝对值有非负性，|a|≥0恒成立。' },
+    { t: '有理数大小比较', d: '正数＞0＞负数，两个负数绝对值大的反而小。易错：-3＞-5，别看走眼。' },
+    { t: '有理数四则运算', d: '先确定符号，再算绝对值。易错：减一个数等于加它的相反数，除以一个数等于乘它的倒数。', h: 1 },
+  ],
+  'exponent': [
+    { t: '同底数幂的乘除', d: '乘法底数不变指数相加，除法指数相减。易错：是指数相加，不是幂相乘。' },
+    { t: '幂的乘方', d: '底数不变，指数相乘：(aᵐ)ⁿ=aᵐⁿ。易错：与同底数幂乘法混淆，一个乘指数一个加指数。' },
+    { t: '积的乘方', d: '每个因式都要乘方：(ab)ⁿ=aⁿbⁿ。易错：系数忘记乘方，(2a)³=8a³不是2a³。' },
+    { t: '科学记数法', d: '写成a×10ⁿ，其中1≤|a|＜10。易错：n等于整数位数减1，小数用负指数。' },
+    { t: '零指数与负整数指数幂', d: 'a⁰=1，a⁻ᵖ=1/aᵖ（a≠0）。易错：底数不为0这个条件别漏写。' },
+  ],
+  'radic': [
+    { t: '平方根与算术平方根', d: '正数有两个平方根，互为相反数。易错：√a只表示算术平方根，是正的那个。', h: 1 },
+    { t: '立方根', d: '任何数都有唯一的立方根。易错：负数也有立方根，³√-8=-2。' },
+    { t: '无理数', d: '无限不循环小数叫无理数。易错：π、√2是无理数，但√4=2是有理数。' },
+    { t: '实数与数轴', d: '实数与数轴上的点一一对应。易错：无理数也能在数轴上找到准确位置。' },
+    { t: '实数运算与估算', d: '先算高级运算，估算用夹逼法确定范围。易错：比较√10与3.2，可以比较10与3.2²。' },
+  ],
+  'integer': [
+    { t: '用字母表示数', d: '字母可以表示任意数，让式子更简洁通用。易错：书写规范，数字在前、乘号省略。' },
+    { t: '单项式与多项式', d: '数与字母的积是单项式，几个单项式的和是多项式。易错：单项式的次数是所有字母指数之和。' },
+    { t: '同类项辨析', d: '所含字母相同，相同字母的指数也相同。易错：与字母顺序无关，只看种类和次数。' },
+    { t: '合并同类项', d: '系数相加，字母和指数不变。易错：3a+2a=5a，不是5a²。' },
+    { t: '去括号法则', d: '括号前是负号，去括号时里面全变号。易错：漏乘括号内最后一项最常见。', h: 1 },
+    { t: '整式加减化简求值', d: '先化简，再代入求值。易错：代入负数或分数时要加括号。' },
+  ],
+  'polynomial': [
+    { t: '整式的乘法', d: '单项式乘多项式，用分配律乘到每一项。易错：多项式乘多项式要“每一项乘每一项”，别漏项。' },
+    { t: '平方差公式', d: '(a+b)(a-b)=a²-b²。易错：必须是一同一反的结构才适用。' },
+    { t: '完全平方公式', d: '(a±b)²=a²±2ab+b²。易错：中间项2ab容易漏掉，结果不能少项。', h: 1 },
+    { t: '公式变形技巧', d: 'a²+b²=(a+b)²-2ab，常用于整体代换。易错：看清题目给的是和还是积。' },
+    { t: '整式的除法', d: '单项式除单项式，系数与同底数幂分别相除。易错：只在同底数幂之间相除，字母别弄混。' },
+  ],
+  'factor': [
+    { t: '提公因式法', d: '找各项系数的最大公因数与相同字母的最低次幂。易错：提完后别丢“1”，如6a-6=6(a-1)。' },
+    { t: '公式法（平方差·完全平方）', d: '符合公式结构就直接套用。易错：先提公因式再用公式，顺序不能反。' },
+    { t: '十字相乘法', d: '拆常数项凑中间项。易错：拆开后必须乘回去检验符号是否正确。', h: 1 },
+    { t: '分组分解法', d: '分组后各组分别提因式，再提整体公因式。易错：分组要让每组都有公因式或成公式形。' },
+    { t: '因式分解的应用', d: '整体代换简化计算。易错：分解要彻底，每个因式都不能再分解为止。' },
+  ],
+  'eq1': [
+    { t: '方程与等式的性质', d: '等式两边同加减、同乘除（除数≠0）。易错：不能除以含字母的式子，它可能为0。' },
+    { t: '移项与去分母', d: '移项要变号，去分母每项都要乘。易错：不含分母的项也要乘最简公分母。' },
+    { t: '解一元一次方程五步法', d: '去分母→去括号→移项→合并同类项→系数化1。易错：按步骤走，跳步最容易错。' },
+    { t: '列方程解应用题', d: '设未知数、找等量关系、列方程、解并检验。易错：设和答都要带单位。' },
+    { t: '方程思想', d: '把未知数当作已知数，用等量关系建模型。易错：不是所有题都适合算术法，方程更通用。' },
+  ],
+  'eq2': [
+    { t: '一元二次方程的一般式', d: 'ax²+bx+c=0（a≠0）。易错：先化成一般式再确定a、b、c，注意带符号。' },
+    { t: '直接开平方法', d: '形如(x+m)²=n（n≥0）直接开方。易错：n＜0时无实数根，别忘了判断。' },
+    { t: '配方法', d: '加上一次项系数一半的平方，凑成完全平方式。易错：加了多少就要减多少，保持恒等。', h: 1 },
+    { t: '公式法与判别式', d: 'x=(-b±√(b²-4ac))/2a。易错：先算判别式Δ判断根的情况，再代入求根。' },
+    { t: '因式分解法', d: '分解成两个一次因式的积为0。易错：积为0则至少一个因式为0，别两边同时除。' },
+    { t: '根与系数关系（韦达定理）', d: 'x₁+x₂=-b/a，x₁·x₂=c/a。易错：使用前提是Δ≥0，先验判别式再用。', h: 1 },
+  ],
+  'frac-eq': [
+    { t: '分式的意义', d: '形如A/B且B中含字母。易错：分式为0要求分子为0且分母不为0，两个条件缺一不可。' },
+    { t: '分式基本性质', d: '分子分母同乘（除）一个非零整式，值不变。易错：必须乘除整个分子和分母，不能只乘某一项。' },
+    { t: '约分与通分', d: '约分除以公因式，通分化成同分母。易错：通分要找最简公分母，系数和字母因式都取最高次。' },
+    { t: '分式运算', d: '乘除先约分，加减先通分。易错：减法去括号要变号，结果必须化成最简分式。' },
+    { t: '分式方程解法', d: '两边同乘最简公分母化为整式方程。易错：不含分母的常数项也要乘，不能漏乘。' },
+    { t: '增根与验根', d: '使最简公分母为0的根是增根，必须舍去。易错：解分式方程必须验根，这是必做步骤。', h: 1 },
+    { t: '分式方程应用', d: '工程、行程问题常设工作效率或速度。易错：找清“谁比谁多多少”，还要检验是否符合实际。' },
+  ],
+  'sys-eq': [
+    { t: '代入消元法', d: '用一个未知数表示另一个未知数再代入。易错：选系数为1的未知数变形，计算量小。' },
+    { t: '加减消元法', d: '同号相减、异号相加，消去一个元。易错：先把系数统一再加减，别只消掉一半。' },
+    { t: '三元一次方程组', d: '三个方程逐步消元，化二元再化一元。易错：先定好消哪个元，三个方程都用它。' },
+    { t: '含参方程组', d: '参数当常数参与运算。易错：讨论参数取值时，要考虑它对解的影响。', h: 1 },
+    { t: '方程组应用题', d: '设几个未知数就需要几个独立等量关系。易错：两个未知数必须找到两个条件，缺一不可。' },
+  ],
+  'ineq': [
+    { t: '不等式的性质', d: '两边同加减不变号，乘除负数要变号。易错：正数不变号、负数必变号，0不能作除数。' },
+    { t: '解一元一次不等式', d: '步骤同解方程，但系数化1时要看正负。易错：两边除以负数忘变号是头号错误。', h: 1 },
+    { t: '不等式组与解集', d: '取各不等式解集的公共部分：同大取大，同小取小。易错：大小小大中间找，大大小小解不了。' },
+    { t: '数轴表示解集', d: '大于向右、小于向左，有等号画实心圈。易错：空心实心别画反。' },
+    { t: '不等式应用题', d: '方案设计与最值问题常见。易错：最后要写出所有满足条件的整数解，别只给一个。' },
+  ],
+  'func-concept': [
+    { t: '变量与常量', d: '变化过程中变化的量是变量，固定不变的是常量。易错：判断要结合具体情境。' },
+    { t: '函数的三种表示法', d: '列表法、解析式法、图象法各有优势。易错：三种方式可以互相转化，读懂对应关系。' },
+    { t: '自变量取值范围', d: '分母不为0、被开方数≥0、符合实际意义。易错：三种限制要同时满足，取交集。', h: 1 },
+    { t: '函数图象的读取与分析', d: '横轴是自变量，纵轴是函数值。易错：先看清坐标轴表示什么量，再读升降与拐点。' },
+  ],
+  'linear-fn': [
+    { t: '正比例函数', d: 'y=kx（k≠0），是过原点的直线。易错：|k|越大直线越陡，k决定方向。' },
+    { t: '一次函数的图象与性质', d: 'y=kx+b，k定升降，b定与y轴交点。易错：k、b的符号共同决定图象经过的象限。' },
+    { t: '待定系数法', d: '先设解析式，再代入已知点求系数。易错：两点确定一条直线，代入前先设好形式。' },
+    { t: 'k与b对图象的影响', d: 'k＞0上升，k＜0下降，b是y轴交点的纵坐标。易错：b的正负对应交点在正负半轴。' },
+    { t: '与方程不等式的关系', d: '图象在x轴上方就是y＞0的部分。易错：交点的横坐标是对应方程的解，是分界点。' },
+    { t: '方案选择应用', d: '比较两个函数值的大小来选方案。易错：先求交点再分段讨论，不能只给一个答案。' },
+  ],
+  'inverse-fn': [
+    { t: '反比例函数的概念与图象', d: 'y=k/x（k≠0），图象是双曲线，有两支。易错：图象无限接近坐标轴但永不相交。' },
+    { t: 'k的几何意义', d: '过双曲线上任一点作垂线，矩形面积=|k|。易错：面积取绝对值，符号看象限。', h: 1 },
+    { t: '增减性', d: '同一支内，k＞0时y随x增大而减小。易错：必须强调“在每一支上”，不能跨支比较。' },
+    { t: '与一次函数综合', d: '联立方程组求交点坐标。易错：交点要同时满足两个解析式，解出来要检验。' },
+    { t: '实际应用', d: '压强与体积、总量一定等场景。易错：实际问题中自变量范围通常限定在第一象限。' },
+  ],
+  'quad-fn': [
+    { t: 'y=ax²的图象', d: '抛物线，a决定开口方向与开口大小。易错：|a|越大开口越小，对称轴是y轴。' },
+    { t: '配方化顶点式', d: 'y=a(x-h)²+k，顶点为(h,k)。易错：先提系数a再配方，括号内加减要平衡。', h: 1 },
+    { t: '顶点·对称轴·开口方向', d: '对称轴x=-b/2a。易错：a、b同号对称轴在y轴左侧，“左同右异”。' },
+    { t: '平移规律', d: '自变量左加右减，常数项上加下减。易错：y=a(x+2)²是向左平移，别记反。', h: 1 },
+    { t: '与x轴交点及判别式', d: '令y=0解方程，Δ＞0有两个交点。易错：Δ=0相切一个交点，Δ＜0没有交点。' },
+    { t: '最值问题', d: '开口向上顶点处取最小值，向下取最大值。易错：对称轴不在取值范围内时，最值在端点处。', h: 1 },
+    { t: '利润与抛物线应用', d: '利润=（售价-成本）×销量，先列函数再求最值。易错：注意自变量的实际取值范围。' },
+  ],
+  'coordsys': [
+    { t: '有序数对', d: '(a,b)是有顺序的，(2,3)和(3,2)表示不同的点。易错：先横后纵，约定不能乱。' },
+    { t: '坐标系概念', d: '原点、x轴、y轴构成坐标平面。易错：坐标轴上的点不属于任何象限。' },
+    { t: '象限与坐标轴上的点', d: '四个象限符号依次(+,+)、(-,+)、(-,-)、(+,-)。易错：按逆时针顺序记忆。' },
+    { t: '坐标特征归纳', d: '各象限及坐标轴上点的坐标有固定特征。易错：x轴上点纵坐标为0，y轴上点横坐标为0。' },
+    { t: '用坐标表示平移', d: '向左右平移变横坐标，向上下平移变纵坐标。易错：一次平移只改变一个坐标。' },
+    { t: '对称点的坐标', d: '关于x轴对称纵坐标变号，关于y轴对称横坐标变号。易错：关于原点对称则横纵都变号。' },
+  ],
+  'intersect': [
+    { t: '对顶角与邻补角', d: '对顶角相等，邻补角之和为180°。易错：对顶角是由位置关系推出的相等关系。' },
+    { t: '垂线与点到直线的距离', d: '垂线段最短，距离是一个长度。易错：垂线是直线，垂线段才是线段。' },
+    { t: '同位角·内错角·同旁内角', d: '三线八角：同位F形、内错Z形、同旁U形。易错：先找截线，再辨认位置关系。', h: 1 },
+    { t: '平行线的判定', d: '同位角相等、内错角相等或同旁内角互补，则两直线平行。易错：判定是由角推平行，性质反之。' },
+    { t: '平行线的性质', d: '两直线平行，同位角相等。易错：先有平行这个前提，才有角的等量关系。' },
+    { t: '命题与证明初步', d: '命题由题设和结论两部分组成。易错：判断真假要举反例或推理，不能凭感觉。' },
+  ],
+  'triangle': [
+    { t: '三边关系', d: '两边之和大于第三边，两边之差小于第三边。易错：判断时用“较小两边之和”与第三边比。' },
+    { t: '内角和与外角', d: '内角和180°，外角等于不相邻两个内角之和。易错：外角是内角的邻补角。' },
+    { t: '三角形的重要线段', d: '中线、高线、角平分线都是线段。易错：三条中线交于重心，中线分出等面积三角形。' },
+    { t: '全等判定（SSS·SAS·ASA·AAS·HL）', d: '五组条件各判一种。易错：SSA和AAA不能判定全等，HL只适用于直角三角形。', h: 1 },
+    { t: '角平分线与垂直平分线', d: '角平分线上的点到角两边距离相等。易错：垂直平分线的性质是到线段两端点距离相等，别混。' },
+    { t: '等腰三角形', d: '等边对等角，三线合一。易错：腰和底不确定时要分类讨论，别漏解。' },
+  ],
+  'pytha': [
+    { t: '勾股定理', d: '直角三角形中a²+b²=c²，c是斜边。易错：只有直角三角形才能用，先确认直角在哪。' },
+    { t: '勾股定理的逆定理', d: '满足a²+b²=c²就是直角三角形。易错：最大边所对的角才是直角，先找最大边。' },
+    { t: '常见勾股数', d: '3-4-5、5-12-13、6-8-10等。易错：同倍放大仍是勾股数，如9-12-15。' },
+    { t: '实际测量应用', d: '梯子、旗杆问题化归为直角三角形。易错：先画图标出直角，再设未知数。' },
+    { t: '折叠问题', d: '折叠前后对应边、对应角相等。易错：抓住折痕是对称轴，设未知数列勾股方程。', h: 1 },
+  ],
+  'similar': [
+    { t: '成比例线段', d: '四条线段a:b=c:d成比例。易错：比例的基本性质是内项之积等于外项之积。' },
+    { t: '平行线分线段成比例', d: '平行于三角形一边截其他两边所得线段成比例。易错：对应线段要找准，别交叉错位。' },
+    { t: '相似三角形的判定', d: '两角相等、两边成比例且夹角相等、三边成比例。易错：平行于一边构成的三角形必与原三角形相似。' },
+    { t: '相似三角形的性质', d: '对应边成比例，周长比等于相似比。易错：面积比等于相似比的平方，别忘平方。', h: 1 },
+    { t: '位似', d: '位似是特殊的相似，对应点连线交于位似中心。易错：位似比可正可负，注意方向。' },
+    { t: '测量应用', d: '用影子、标杆测高度，本质是相似三角形。易错：同一时刻太阳光下，影长与物高成比例。' },
+  ],
+  'quad-poly': [
+    { t: '平行四边形的性质与判定', d: '两组对边平行且相等，对角线互相平分。易错：判定与性质要区分清楚，别循环论证。' },
+    { t: '矩形', d: '有一个角是直角的平行四边形。易错：对角线相等的平行四边形才是矩形。' },
+    { t: '菱形', d: '一组邻边相等的平行四边形。易错：对角线互相垂直的平行四边形是菱形，面积=对角线积÷2。' },
+    { t: '正方形', d: '同时具备矩形和菱形的所有性质。易错：判定正方形要同时验证矩形和菱形的条件。' },
+    { t: '中位线定理', d: '三角形中位线平行于第三边且等于其一半。易错：中位线连接两边中点，不是中线。' },
+    { t: '多边形内角和与外角和', d: '内角和=(n-2)×180°，外角和恒为360°。易错：外角和与边数无关，任意多边形都是360°。' },
+  ],
+  'circle': [
+    { t: '圆的概念与弦弧', d: '圆心定位置，半径定大小。易错：同圆或等圆中半径都相等，这是常用隐含条件。' },
+    { t: '垂径定理', d: '垂直于弦的直径平分弦，并且平分弦所对的弧。易错：构造半径、弦心距、半弦长的直角三角形再勾股求解。', h: 1 },
+    { t: '弧弦圆心角', d: '同圆或等圆中，等弧对等弦、等圆心角。易错：必须有“同圆或等圆”这个前提。' },
+    { t: '圆周角定理', d: '圆周角等于同弧所对圆心角的一半。易错：直径所对的圆周角是直角，常作辅助线用。', h: 1 },
+    { t: '圆内接四边形', d: '圆内接四边形对角互补。易错：是“内对角”互补，别找错角。' },
+    { t: '点与圆的位置关系', d: '点到圆心距离d与r比较：d＜r在内，d=r在上，d＞r在外。易错：d是到圆心的距离。' },
+    { t: '切线的判定与性质', d: '过半径外端且垂直于半径的直线是切线。易错：切线垂直的是过切点的那条半径。' },
+    { t: '正多边形与圆', d: '中心角=360°÷n。易错：半径、边心距、中心角的一半构成直角三角形。' },
+  ],
+  'stats-basic': [
+    { t: '数据收集与调查方式', d: '普查全面但费时费力，抽样调查省力高效。易错：破坏性检验只能用抽样调查。' },
+    { t: '频数与频率', d: '频率=频数÷总数，各组频率之和为1。易错：频数是次数，频率是比例。' },
+    { t: '平均数·中位数·众数', d: '中位数取中间位置，众数出现次数最多。易错：求中位数先排序；平均数受极端值影响。' },
+    { t: '方差与标准差', d: '方差越小数据越稳定。易错：方差的单位是原数据单位的平方，标准差才与原数据同单位。' },
+    { t: '统计图的选择', d: '折线图看变化趋势，扇形图看占比。易错：条形图比数量，扇形图比比例，用途别选错。' },
+    { t: '用样本估计总体', d: '用样本的特征估计总体的特征。易错：样本要有代表性，容量越大越可靠。' },
+  ],
+  'prob-basic': [
+    { t: '确定事件与随机事件', d: '一定发生或一定不发生是确定事件。易错：“不太可能”不等于“不可能”。' },
+    { t: '概率的意义', d: '概率刻画事件发生的可能性大小。易错：概率大不代表一定发生。' },
+    { t: '列表法', d: '两步试验用表格列出所有等可能结果。易错：每种结果必须等可能才能用。' },
+    { t: '树状图法', d: '用分支展示所有可能路径。易错：第一步之后每一步的可能性都要画全。' },
+    { t: '用频率估计概率', d: '大量重复试验中频率稳定于概率。易错：试验次数太少时波动大，不能直接当概率。' },
+  ],
+  'fraction-expr': [
+    { t: '分式的概念与基本性质', d: '形如A/B且B含字母，分母不为0。易错：分母中字母的取值隐含限制，先写条件再化简。' },
+    { t: '约分与通分', d: '约分要约到最简，通分取最简公分母。易错：约分前先把分子分母因式分解，别只约数字。' },
+    { t: '分式的加减', d: '同分母直接加减，异分母先通分。易错：减法分配到分子时要给分子加括号，符号别错。' },
+    { t: '分式的乘除', d: '分子乘分子、分母乘分母，除法颠倒再乘。易错：先约分再运算，能分解的先分解。' },
+    { t: '分式化简求值', d: '混合运算化到最简再代入。易错：代值前检查原分母的取值限制，别代禁值。', h: 1 },
+  ],
+  'sqrt-expr': [
+    { t: '二次根式的概念与性质', d: '√a（a≥0）非负，(√a)²=a，√(a²)=|a|。易错：√(a²)化简要加绝对值，a的正负要讨论。' },
+    { t: '最简二次根式', d: '被开方数不含分母、不含能开尽方的因数。易错：√8=2√2，化简要彻底才算最简。' },
+    { t: '二次根式的运算', d: '加减先化简再合并同类根式，乘除套法则。易错：√2+√3≠√5，只有同类根式才能合并。', h: 1 },
+    { t: '分母有理化', d: '分子分母同乘共轭根式去掉分母中的根号。易错：1/(√3-1)同乘√3+1，别乘反了符号。' },
+  ],
+  'iso-sym': [
+    { t: '轴对称与垂直平分线', d: '对称轴垂直平分对应点连线；线段垂直平分线上的点到两端等距。易错：性质与判定的方向别混用。' },
+    { t: '等腰三角形的性质', d: '等边对等角，顶角平分线、底边中线与高线三线合一。易错：三线合一只在等腰三角形中成立。' },
+    { t: '等腰三角形的判定与分类', d: '等角对等边；已知两边分类讨论腰与底。易错：求周长要检验能否构成三角形，别漏增根。', h: 1 },
+    { t: '等边三角形与含30°角', d: '三边相等三角均为60°；直角三角形中30°所对直角边是斜边一半。易错：一半的结论前提是30°角在直角三角形中。' },
+  ],
+  'rot-sym': [
+    { t: '旋转的性质', d: '对应点到旋转中心等距，对应线段夹角等于旋转角。易错：旋转角是对应点与中心连线的夹角，方向别数反。' },
+    { t: '中心对称与中心对称图形', d: '绕一点旋转180°后重合。易错：中心对称是两图形间的关系，中心对称图形是图形自身的性质。' },
+    { t: '旋转作图与坐标', d: '绕原点旋转90°的坐标规律(x,y)→(-y,x)等。易错：顺时针与逆时针的变换公式别记混。' },
+    { t: '旋转构造法', d: '共端点的等线段想旋转，构造全等转移线段。易错：旋转谁、绕哪点、转多少度，三要素想清再动手。', h: 1 },
+  ],
+  'circle-calc': [
+    { t: '弧长公式', d: 'l=nπr/180。易错：n是圆心角的度数，代入前别把度化成别的单位。' },
+    { t: '扇形面积公式', d: 'S=nπr²/360=½lr。易错：已知弧长用½lr最快，两公式等价可互推。' },
+    { t: '圆锥的侧面展开', d: '展开是扇形：母线为半径，底面周长为弧长。易错：侧面积πrl中的l是母线不是高。', h: 1 },
+    { t: '阴影面积与滚动问题', d: '割补、平移、旋转把不规则图形化成扇形与基本图形。易错：找准每段弧的圆心角与半径。' },
+  ],
+  'trig-jr': [
+    { t: '锐角三角函数的定义', d: 'sin=对边/斜边，cos=邻边/斜边，tan=对边/邻边。易错：前提是直角三角形，先找直角再认边。' },
+    { t: '特殊角的三角函数值', d: '30°、45°、60°的sin cos tan。易错：sin30°=cos60°，互余角的三角函数关系记牢。' },
+    { t: '解直角三角形', d: '已知两元素（至少一边）求其余。易错：已知斜边选sin/cos，已知直角边选tan，选对工具少绕路。' },
+    { t: '解直角三角形的应用', d: '仰角俯角、坡度、方位角问题。易错：把实物图抽象成直角三角形，缺条件时作垂线补形。', h: 1 },
+  ],
+  'view-jr': [
+    { t: '平行投影与中心投影', d: '太阳光线平行，灯光光线发散。易错：同一时刻平行投影下物高与影长成比例。' },
+    { t: '三视图的规则', d: '主视图、左视图、俯视图：长对正、高平齐、宽相等。易错：看不见的轮廓线要画虚线，别漏。' },
+    { t: '由视图还原几何体', d: '先由主俯定大体形状，再用左视图验证。易错：两种视图相同几何体未必相同，三视图都要看。' },
+    { t: '由视图求面积与体积', d: '还原出几何体后套公式计算。易错：视图上标注是投影尺寸，还原时注意对应关系。' },
+  ],
+  /* ---- 高中 ---- */
+  'set-logic': [
+    { t: '集合的概念与表示', d: '确定性、互异性、无序性三大特征。易错：求出参数后要用互异性检验。' },
+    { t: '子集与真子集', d: '任何集合是自身的子集，空集是任何集合的子集。易错：列举子集时别漏空集和自身。' },
+    { t: '交并补运算', d: '交集取公共部分，并集合并，补集取反。易错：用数轴最直观，注意端点的开闭。' },
+    { t: '充分必要条件', d: 'p⇒q成立，则p是q的充分条件。易错：分清谁是条件谁是结论，小范围能推大范围。', h: 1 },
+    { t: '全称与存在量词', d: '∀表示所有，∃表示存在。易错：恒成立问题用∀，有解问题用∃。' },
+    { t: '命题的否定', d: '全称量词与存在量词互换，结论否定。易错：只否定结论不改量词是常见错误。' },
+  ],
+  'fun-prop': [
+    { t: '函数的概念与表示', d: '每个x都对应唯一的y。易错：判断是否为函数，看对应关系是否唯一。' },
+    { t: '定义域与值域', d: '定义域优先，一切性质都在定义域内讨论。易错：复合函数定义域是“作用于x的范围”，别混。' },
+    { t: '单调性', d: '任取两点比较函数值大小。易错：必须用定义任意取值证明，不能用特殊值代替。' },
+    { t: '奇偶性', d: 'f(-x)=±f(x)，且定义域关于原点对称。易错：先验证定义域对称，否则无奇偶可言。' },
+    { t: '对称性与周期性', d: 'f(a+x)=f(b-x)则对称轴x=(a+b)/2。易错：对称与周期公式别背混，可赋值法推导。' },
+    { t: '图象变换（平移·翻转·伸缩）', d: '左加右减，上加下减。易错：先平移后伸缩与先伸缩后平移结果不同，注意顺序。' },
+    { t: '抽象函数', d: '没有解析式，靠赋值法挖掘性质。易错：给x、y赋特殊值推导，别直接设解析式。', h: 1 },
+  ],
+  'power-exp-log': [
+    { t: '根式与分数指数幂', d: 'n次方根与分数指数幂可以互化。易错：负数没有偶次方根，先看清根号内符号。' },
+    { t: '指数函数图象与性质', d: 'y=aˣ（a＞0且a≠1），图象过(0,1)。易错：a＞1递增，0＜a＜1递减，底数不能为1。' },
+    { t: '对数的运算', d: 'logₐ(MN)=logₐM+logₐN。易错：真数必须大于0，运算后要验证定义域。' },
+    { t: '对数函数图象与性质', d: 'y=logₐx图象过(1,0)。易错：与指数函数互为反函数，图象关于y=x对称。' },
+    { t: '幂函数', d: 'y=xᵅ，系数必须是1。易错：y=2x²不是幂函数，看系数和指数位置。' },
+    { t: '三类函数比大小', d: '同底比指数，异底化同底或找中间量。易错：找0、1等中间值作桥梁最稳妥。', h: 1 },
+  ],
+  'trig-def': [
+    { t: '任意角与弧度制', d: '弧度=弧长/半径，180°=π rad。易错：角度与弧度不能在同一式中混用。' },
+    { t: '三角函数的定义', d: '用单位圆上点的坐标定义正弦、余弦。易错：角在任意象限时符号不同，按定义判断。' },
+    { t: '同角基本关系', d: 'sin²α+cos²α=1，tanα=sinα/cosα。易错：活用“1”的代换，1=sin²+cos²。' },
+    { t: '诱导公式', d: '口诀“奇变偶不变，符号看象限”。易错：符号由原角所在象限决定，不是新角。', h: 1 },
+  ],
+  'trig': [
+    { t: '图象与性质', d: '正弦余弦周期2π，正切周期π。易错：正切在每段区间内递增，但不能说整体单调。' },
+    { t: '五点作图法', d: '取相位0、π/2、π、3π/2、2π五个关键点。易错：先令ωx+φ等于这五个值，再解出x。' },
+    { t: 'y=Asin(ωx+φ)', d: 'A定振幅，ω定周期2π/ω，φ定相位。易错：图象平移量是φ/ω，别直接移φ。', h: 1 },
+    { t: '由图象求解析式', d: '从图象读A、ω、φ。易错：定φ要结合最高点或上升零点所在区间，多解要取舍。' },
+  ],
+  'trig-trans': [
+    { t: '两角和差公式', d: 'cos(α±β)、sin(α±β)的展开公式。易错：cos差公式中间是加号，与直觉相反。' },
+    { t: '二倍角公式', d: 'sin2α=2sinαcosα，cos2α有三种形式。易错：按题目条件选最合适的cos2α形式。' },
+    { t: '辅助角公式', d: 'asinα+bcosα=√(a²+b²)·sin(α+φ)。易错：tanφ=b/a确定φ，还要看象限定符号。', h: 1 },
+    { t: '化简求值与证明', d: '降幂、切化弦、凑角是三板斧。易错：化简目标要明确，朝已知角靠拢。' },
+  ],
+  'solve-tri': [
+    { t: '正弦定理', d: 'a/sinA=b/sinB=c/sinC=2R。易错：已知两角一边用正弦，边角对应别搞反。' },
+    { t: '余弦定理', d: 'c²=a²+b²-2ab·cosC。易错：已知两边及夹角用余弦；判断形状时边角互化要统一。' },
+    { t: '三角形面积公式', d: 'S=½ab·sinC=½bc·sinA。易错：公式中的角必须是两边的夹角，别拿对角算。' },
+    { t: '解三角形的综合应用', d: '测量高度距离、航行方位问题。易错：先画图标已知量，把方向角仰角翻译成三角形元素。', h: 1 },
+  ],
+  'sequence': [
+    { t: '数列概念与通项公式', d: '数列是定义在正整数集上的函数。易错：通项公式不唯一，归纳出的规律要验证。' },
+    { t: '等差数列', d: 'aₙ=a₁+(n-1)d，公差d。易错：若m+n=p+q，则aₘ+aₙ=aₚ+a_q，靠下标之和相等。' },
+    { t: '等比数列', d: 'aₙ=a₁·qⁿ⁻¹，公比q≠0。易错：各项与公比都不为0，注意q=1的常数列。' },
+    { t: '递推求通项', d: '累加法、累乘法、构造法。易错：aₙ₊₁=paₙ+q构造新等比数列后，要验证首项。', h: 1 },
+  ],
+  'seq-sum': [
+    { t: '裂项相消', d: '1/n(n+1)=1/n-1/(n+1)。易错：裂项系数别丢，如1/n(n+2)=½(1/n-1/(n+2))。' },
+    { t: '错位相减', d: '等差乘等比型求和的专用方法。易错：减号要对齐同下标项，最后一步除以1-q别漏。', h: 1 },
+    { t: '分组并项与倒序相加', d: '通项拆成等差等比分别求和，或正写倒写相加。易错：并项后剩余项与符号要处理干净。' },
+    { t: 'aₙ与Sₙ的关系', d: 'aₙ=Sₙ-Sₙ₋₁（n≥2），n=1单独验证。易错：通项求完必须检验n=1是否吻合。' },
+  ],
+  'vector': [
+    { t: '向量的概念与线性运算', d: '向量既有大小又有方向。易错：零向量方向任意，规定模为0。' },
+    { t: '共线向量', d: '方向相同或相反的向量，也叫平行向量。易错：零向量与任意向量共线。' },
+    { t: '平面向量基本定理', d: '不共线的两向量可作基底表示一切向量。易错：基底必须不共线，表示方式不唯一。' },
+    { t: '坐标运算', d: '加法对应坐标相加，减法终点减起点。易错：AB的坐标=终点B减起点A，别反过来。' },
+    { t: '数量积', d: 'a·b=|a||b|cosθ，结果是一个数。易错：数量积不满足结合律，也没有除法。', h: 1 },
+    { t: '模与夹角', d: '|a|=√(a·a)，cosθ=a·b/(|a||b|)。易错：夹角范围是[0,π]，垂直时数量积为0。' },
+    { t: '向量的几何应用', d: '证平行用共线定理，证垂直用数量积为0。易错：解几何题先建系或选好基底。' },
+  ],
+  'complex': [
+    { t: '复数的概念与分类', d: 'z=a+bi，b=0是实数，b≠0是虚数。易错：虚部是b不是bi，实部是a。' },
+    { t: '复数四则运算', d: '按多项式法则运算，i²=-1。易错：除法分子分母同乘共轭，化简到最简形式。' },
+    { t: '共轭复数', d: 'z与z̄实部相同、虚部互为相反数。易错：z·z̄=|z|²，结果是实数。' },
+    { t: '复数的模', d: '|z|=√(a²+b²)。易错：模表示距离，是非负实数。' },
+    { t: '复数的几何意义', d: '复数与复平面上的点一一对应。易错：虚轴不包括原点，原点属于实轴。' },
+  ],
+  'ineq2': [
+    { t: '三个二次的关系', d: '二次函数图象、二次方程的根、二次不等式解集三位一体。易错：开口方向决定解集形状，先看a的正负。' },
+    { t: '一元二次不等式的解法', d: '化为一般式、求根、按图象写解集。易错：Δ＜0时结合开口判断解集是R还是空集。' },
+    { t: '含参数的二次不等式', d: '按开口方向、根的大小分类讨论。易错：a的符号先定，不能默认开口向上。', h: 1 },
+    { t: '分式与高次不等式', d: '移项化成一边为0，穿针引线法。易错：奇穿偶不穿，端点虚实看是否带等号。' },
+  ],
+  'ineq-proof': [
+    { t: '基本不等式（均值定理）', d: 'a+b≥2√(ab)（a,b＞0）。易错：一正二定三相等，等号成立条件别忘验证。' },
+    { t: '用均值不等式求最值', d: '积定和最小，和定积最大。易错：先凑出定值才能用，凑法是解题关键。', h: 1 },
+    { t: '比较法', d: '作差与0比，作商与1比。易错：作商比较要先保证两数同号且为正。' },
+    { t: '分析法与综合法', d: '执果索因用分析法，由因导果用综合法。易错：分析法的每一步都必须可逆。' },
+    { t: '放缩法初步', d: '适度放缩逼近目标式。易错：放缩过头或不够都会失败，方向要对。' },
+    { t: '线性规划', d: '不等式组围成可行域，目标函数找最值。易错：最值在可行域顶点处取得，注意整数解。' },
+  ],
+  'derivative': [
+    { t: '平均变化率与瞬时变化率', d: '平均变化率是割线斜率，瞬时变化率是切线斜率。易错：割线逼近切线的极限思想。' },
+    { t: '导数的定义', d: 'f\'(x₀)=lim(Δy/Δx)。易错：定义式中Δx趋于0但不等于0。' },
+    { t: '基本初等函数求导', d: '(xⁿ)\'=nxⁿ⁻¹等基本公式。易错：常数导数为0，√x、1/x要先化成幂形式再求导。' },
+    { t: '四则运算求导法则', d: '和差积商各有法则。易错：(uv)\'=u\'v+uv\'，不是各自求导再相乘。' },
+    { t: '复合函数求导', d: '由外到内层层求导再相乘。易错：设中间变量u，链式法则别漏层。', h: 1 },
+  ],
+  'dapply': [
+    { t: '单调性判断', d: 'f\'(x)＞0递增，f\'(x)＜0递减。易错：先求定义域，在定义域内讨论导数符号。' },
+    { t: '极值的求解', d: '导数在一点两侧变号才是极值点。易错：f\'(x₀)=0不一定是极值，要看两侧是否变号。' },
+    { t: '最值问题', d: '比较所有极值与端点值。易错：闭区间上必有最值，开区间上可能没有。' },
+    { t: '含参数的讨论', d: '按参数范围分类讨论单调性与极值。易错：分类标准来自根的大小比较，不重不漏。', h: 1 },
+    { t: '恒成立问题', d: '分离参数转化为求函数最值。易错：a≥f(x)恒成立则a≥f(x)的最大值，方向别搞反。', h: 1 },
+    { t: '零点问题', d: '零点即f(x)=0的根，对应图象与x轴交点。易错：结合单调性判断零点个数，别只解方程。' },
+  ],
+  'func-limit': [
+    { t: '数列的极限', d: 'n→∞时数列无限趋近的确定值。易错：只有收敛数列才有极限，公比|q|＜1才收敛。' },
+    { t: '函数的极限', d: 'x→x₀或x→∞时函数值的趋势。易错：左右极限都存在且相等，极限才存在。' },
+    { t: '极限的四则运算', d: '各部分极限存在才能拆开运算。易错：∞-∞、0×∞型不能直接用四则法则，先变形。' },
+    { t: '连续性初步', d: '极限值等于函数值即在该点连续。易错：连续要求函数在该点有定义。' },
+    { t: '瞬时变化率与切线斜率', d: '切线斜率就是该点的导数值。易错：“在某点处的切线”与“过某点的切线”不同，后者要设切点。' },
+  ],
+  'row-line': [
+    { t: '倾斜角与斜率', d: 'k=tanα（α≠90°），倾斜角范围[0,π)。易错：垂直于x轴的直线斜率不存在。' },
+    { t: '直线方程五种形式', d: '点斜式、斜截式、两点式、截距式、一般式。易错：每种都有适用限制，截距式不能表示过原点的直线。' },
+    { t: '两直线的位置关系', d: '平行时k相等b不等，垂直时k₁k₂=-1。易错：斜率不存在的直线要单独讨论。' },
+    { t: '点线距与平行线距', d: 'd=|Ax₀+By₀+C|/√(A²+B²)。易错：使用前先把方程化成一般式。' },
+    { t: '圆的标准与一般方程', d: '(x-a)²+(y-b)²=r²。易错：一般式化标准式用配方法，D²+E²-4F＞0才表示圆。' },
+    { t: '直线与圆的位置关系', d: '比较圆心距d与半径r：d＜r相交。易错：优先用几何法求d，别硬解方程组。' },
+    { t: '圆与圆的位置关系', d: '比较d与r₁+r₂、|r₁-r₂|。易错：相交时d介于两数之间，共五类位置关系。' },
+  ],
+  'ellipse': [
+    { t: '椭圆的定义与标准方程', d: '到两焦点距离之和为定值2a。易错：定值必须大于焦距2c，否则轨迹不存在。' },
+    { t: '椭圆的几何性质', d: '范围、顶点、离心率e=c/a＜1。易错：焦点位置看分母，x²下分母大则焦点在x轴。' },
+    { t: '焦点三角形', d: '椭圆上一点与两焦点构成三角形，用定义转化边长。易错：结合余弦定理与面积公式联立。' },
+    { t: '点与椭圆的位置关系', d: '代入方程比较大小判断位置。易错：与焦点距离问题优先回归定义，别硬算。', h: 1 },
+  ],
+  'hyper-par': [
+    { t: '双曲线的定义与方程', d: '到两焦点距离之差的绝对值为定值2a。易错：定值必须小于焦距2c，方程右端是1。' },
+    { t: '渐近线', d: '双曲线特有的参照线y=±(b/a)x。易错：焦点在y轴时渐近线为y=±(a/b)x，别背反。' },
+    { t: '抛物线的定义与标准方程', d: '到焦点与到准线的距离相等。易错：四种开口方程形式对应，p是焦点到准线距离的一半。' },
+    { t: '焦半径与焦点弦', d: '开口向右时焦半径=x+p/2，通径长2p。易错：焦半径公式随开口方向变化，先定开口。', h: 1 },
+  ],
+  'conic': [
+    { t: '离心率与焦点弦', d: '离心率刻画曲线的“扁”的程度。易错：椭圆e∈(0,1)，双曲线e＞1，抛物线e=1。' },
+    { t: '直线与圆锥曲线综合', d: '联立消元，韦达定理设而不求。易错：Δ＞0是前提，弦长公式|AB|=√(1+k²)|x₁-x₂|。', h: 1 },
+  ],
+  'solid': [
+    { t: '棱柱·棱锥·棱台', d: '按侧面与底面特征区分三类多面体。易错：棱台上下底面相似但不全等。' },
+    { t: '圆柱·圆锥·圆台·球', d: '旋转体由平面图形绕轴旋转而成。易错：球的大圆半径就是球的半径。' },
+    { t: '表面积与体积公式', d: '柱体V=Sh，锥体V=Sh/3。易错：锥体体积是同底等高柱体的三分之一。' },
+    { t: '三视图', d: '正视图、侧视图、俯视图三视角。易错：长对正、高平齐、宽相等，看不见的轮廓画虚线。' },
+    { t: '直观图与展开图', d: '斜二测画法：横不变、纵减半。易错：直观图中角度会变形，平行于y轴的线段长度减半。' },
+  ],
+  'solid-rel': [
+    { t: '平面的基本性质', d: '三个公理是立体几何的基石。易错：不共线三点、两相交直线都能确定一个平面。' },
+    { t: '线线关系', d: '空间两直线平行、相交、异面三种。易错：异面直线所成角要平移后计算，范围(0,90°]。' },
+    { t: '线面平行与垂直', d: '线面平行需线在面外且平行于面内一线。易错：“线在面外”这个条件别漏；线面垂直需垂直面内两条相交直线。', h: 1 },
+    { t: '面面平行与垂直', d: '面面平行推出线面平行，面面垂直推出线面垂直。易错：判定与性质定理的转化方向要记清。' },
+    { t: '线面角与二面角', d: '线面角是斜线与其射影的夹角。易错：线面角范围[0,90°]，二面角范围[0,180°]。' },
+    { t: '证明方法归纳', d: '定义法、判定定理法、向量法各有优势。易错：几何法要写全定理条件，向量法要建好坐标系。' },
+  ],
+  'solid-coord': [
+    { t: '空间向量及其运算', d: '类比平面向量，加减与数乘运算法则类似。易错：空间向量是自由的，可以平移。' },
+    { t: '共线与共面向量', d: '共线即平行向量。易错：共面向量定理常用于证明四点共面。' },
+    { t: '空间向量基本定理', d: '不共面的三向量可作基底表示任意向量。易错：基底向量必须不共面。' },
+    { t: '建系与坐标运算', d: '选好原点与坐标轴是解题关键。易错：利用图形已有的垂直关系建系，坐标别标错。' },
+    { t: '用向量求空间角', d: '线面角取夹角余弦的绝对值。易错：异面直线角要取绝对值，二面角要判断方向。', h: 1 },
+    { t: '用向量求距离', d: '点面距d=|n·AP|/|n|。易错：求出法向量后要验证它与面内向量垂直。' },
+  ],
+  'perm-comb': [
+    { t: '分类加法计数原理', d: '完成一件事有n类办法，各类相加。易错：分类要不重不漏，每类都能独立完成。' },
+    { t: '分步乘法计数原理', d: '分n个步骤完成，各步相乘。易错：每一步缺一不可，步骤之间相互依赖。' },
+    { t: '排列', d: '与顺序有关，A(n,m)=n!/(n-m)!。易错：先判断是否与顺序有关，有关才用排列。' },
+    { t: '组合', d: '与顺序无关，C(n,m)。易错：C(n,m)=C(n,n-m)，组合数性质要灵活运用。' },
+    { t: '涂色·分组·分配问题', d: '相邻用捆绑法，不相邻用插空法。易错：平均分组要除以组数的排列数，消除重复计数。' },
+  ],
+  'binomial': [
+    { t: '二项式定理与通项', d: '(a+b)ⁿ展开，Tₖ₊₁=C(n,k)aⁿ⁻ᵏbᵏ。易错：通项是第k+1项，k从0取。', h: 1 },
+    { t: '二项式系数的性质', d: '对称性、增减性与最大值。易错：二项式系数和与各项系数和是两回事。' },
+    { t: '赋值法求系数和', d: '令a、b取1、-1等特殊值。易错：求奇次项系数和用f(1)与f(-1)的组合。' },
+    { t: '指定项问题', d: '常数项、有理项、系数最大项。易错：先写通项再令指数条件，最后验证k范围。' },
+  ],
+  'cond-prob': [
+    { t: '条件概率', d: 'P(B|A)=P(AB)/P(A)。易错：A已发生缩小了样本空间，与P(AB)不同。', h: 1 },
+    { t: '事件的相互独立性', d: 'P(AB)=P(A)P(B)。易错：独立与互斥是两回事，互斥一般不独立。' },
+    { t: '全概率公式', d: '按样本空间的划分分步求复杂概率。易错：划分要完备且互斥，别漏某一种情况。', h: 1 },
+    { t: '贝叶斯公式', d: '由结果反推原因概率。易错：分母是全概率，条件方向别倒置。' },
+  ],
+  'discrete-rv': [
+    { t: '离散型随机变量', d: '取值可一一列出，且各取值有确定概率。易错：分布列所有概率之和必须为1，先验证。' },
+    { t: '分布列与期望', d: 'E(X)=Σxᵢpᵢ，是加权平均。易错：期望不一定是随机变量可能的取值。' },
+    { t: '方差', d: 'D(X)=E(X²)-[E(X)]²。易错：方差反映波动大小，E(aX+b)=aE(X)+b。' },
+    { t: '二项分布与超几何分布', d: '独立重复试验服从二项分布。易错：超几何分布是不放回抽取，别与二项分布混淆。', h: 1 },
+    { t: '正态分布', d: '对称钟形曲线，μ定位置，σ定胖瘦。易错：活用对称性和3σ原则简化计算。' },
+  ],
+  'stats-adv': [
+    { t: '随机抽样（简单·系统·分层）', d: '抽签法、随机数法最基础。易错：分层抽样按比例分配，各层都要抽到。' },
+    { t: '用样本估计总体分布', d: '频率分布直方图展示整体分布。易错：纵轴是频率/组距，各矩形面积之和为1。' },
+    { t: '百分位数', d: 'p分位数把数据分成两部分。易错：先排序再定位，位置可能落在两数之间需取平均。' },
+    { t: '一元线性回归', d: '回归直线必过样本中心点。易错：|r|越接近1线性相关越强，预测要合理，别过度外推。' },
+    { t: '独立性检验', d: 'χ²越大越有把握认为两变量相关。易错：对照临界值下结论，只能说“有关”，不能说“因果”。' },
+  ],
+};
+const CAT_LABEL = { num: '数与运算', algebra: '代数', geometry: '几何', func: '函数', calc: '导数', conic: '解析几何(圆锥曲线)', stat: '统计与概率' };
+
+/* 课标溯源：每环对应的课程标准依据
+   《义务教育数学课程标准（2022年版）》（义教2022）·《普通高中数学课程标准（2017年版2020年修订）》（高中2017）
+   doc = 出处（领域·主题·学段/单元），page = 课标书页码，tag = std(课标条目) / ext(拓展) */
+const CURRICULUM = {
+  /* ---- 小学 · 数与运算/数量关系（义教2022·数与代数 P23-33）---- */
+  'count-num':       { doc: '义教2022·数与代数·数与运算（第一、二学段：20以内到万以内的数、十进制计数法）', page: 'P23-29', tag: 'std' },
+  'compare':         { doc: '义教2022·数与代数·数与运算（第一学段：比较数的大小）', page: 'P23', tag: 'std' },
+  'add-meaning':     { doc: '义教2022·数与代数·数与运算（第一学段：加减法的意义与20以内加减法）', page: 'P23-25', tag: 'std' },
+  'money-rec':       { doc: '义教2022·综合与实践·主题活动（第一学段：认识货币单位、购物活动）', page: 'P50-51', tag: 'std' },
+  'clock-time':      { doc: '义教2022·综合与实践·主题活动（第一学段：认识时间单位）', page: 'P50-51', tag: 'std' },
+  'add-sub':         { doc: '义教2022·数与代数·数与运算（第一、二学段：两位数与多位数加减法）', page: 'P26-29', tag: 'std' },
+  'unit':            { doc: '义教2022·图形与几何·图形的认识与测量（长度、面积、体积单位）+ 综合与实践（质量、时间单位）', page: 'P35-41、P51-52', tag: 'std' },
+  'mul-div':         { doc: '义教2022·数与代数·数与运算（第一学段：乘法与除法的算理与算法、表内乘除法）', page: 'P24-26', tag: 'std' },
+  'remainder':       { doc: '义教2022·数与代数·数与运算（第一学段：整数乘除法的意义，除法是乘法的逆运算）', page: 'P24-26', tag: 'std' },
+  'multi-mul-div':   { doc: '义教2022·数与代数·数与运算（第二学段：探索并掌握多位数的乘除法）', page: 'P27-29', tag: 'std' },
+  'law-op':          { doc: '义教2022·数与代数·数与运算（第二学段：探索并理解运算律，能用字母表示运算律）', page: 'P27-29', tag: 'std' },
+  'factor-multiple': { doc: '义教2022·数与代数·数与运算（第三学段：2、3、5的倍数特征，公因数与公倍数，质数与合数）', page: 'P30-31', tag: 'std' },
+  'mix-op':          { doc: '义教2022·数与代数·数与运算（第二、三学段：整数四则混合运算，感悟运算的一致性）', page: 'P27-32', tag: 'std' },
+  'big-num':         { doc: '义教2022·数与代数·数与运算（第二学段：认识万以上的数，了解十进制计数法，会用万、亿为单位表示大数）', page: 'P27-28', tag: 'std' },
+  'decimal':         { doc: '义教2022·数与代数·数与运算（第二、三学段：初步认识小数，理解小数的意义与四则运算）', page: 'P27、P30-32', tag: 'std' },
+  'fraction':        { doc: '义教2022·数与代数·数与运算（第二、三学段：感悟分数单位，理解分数的意义与四则运算）', page: 'P27、P30-32', tag: 'std' },
+  'negative-prep':   { doc: '义教2022·综合与实践·主题活动（第三学段：负数）+ 学业质量第三学段「了解负数」', page: 'P48-53、P81', tag: 'std' },
+  'percent':         { doc: '义教2022·统计与概率·数据的收集整理与表达（第三学段：探索百分数的意义，感受百分数的统计意义）', page: 'P45-46', tag: 'std' },
+  'ratio-proportion':{ doc: '义教2022·数与代数·数量关系（第三学段：在实际情境中理解比和比例以及按比例分配的含义）', page: 'P30-31', tag: 'std' },
+  'equation-prep':   { doc: '义教2022·数与代数·数量关系（第三学段：用字母表示关系、性质和规律；等式的基本性质）', page: 'P30', tag: 'std' },
+  'app-problem':     { doc: '义教2022·数与代数·数量关系（第二学段：运用数和数的运算解决实际问题）', page: 'P27-28', tag: 'std' },
+  'journey-prob':    { doc: '义教2022·数与代数·数量关系（第二学段：常见数量关系 路程=速度×时间）', page: 'P27-28', tag: 'std' },
+  'assume-prob':     { doc: '义教2022·数与代数·数量关系（第二、三学段：解决较复杂的真实问题，经历探索解决问题策略的过程）', page: 'P28、P31', tag: 'std' },
+  /* ---- 小学 · 图形与几何（义教2022 P33-42）---- */
+  'position-direction': { doc: '义教2022·图形与几何·图形的位置与运动（第一、三学段：基本方向；用方向和距离确定位置）', page: 'P36、P40-41', tag: 'std' },
+  'angle':           { doc: '义教2022·图形与几何·图形的认识与测量（第二、三学段：角的认识、度量与比较）', page: 'P36-37、P39', tag: 'std' },
+  'plane-shape':     { doc: '义教2022·图形与几何·图形的认识与测量（第一、二学段：辨认立体图形与平面图形，三角形四边形分类）', page: 'P33-37', tag: 'std' },
+  'quad-tri':        { doc: '义教2022·图形与几何·图形的认识与测量（第二、三学段：三角形四边形分类与特征、内角和、三边关系）', page: 'P36-40', tag: 'std' },
+  'trans-graph':     { doc: '义教2022·图形与几何·图形的位置与运动（第二、三学段：感知并理解平移、旋转、轴对称）', page: 'P38、P41', tag: 'std' },
+  'observe-shape':   { doc: '义教2022·图形与几何·图形的认识与测量（第二、三学段：观察物体，辨认前面、侧面、上面看到的形状图）', page: 'P38、P40', tag: 'std' },
+  'perimeter-area':  { doc: '义教2022·图形与几何·图形的认识与测量（第二、三学段：周长与面积，平行四边形、三角形、梯形的面积）', page: 'P37-40', tag: 'std' },
+  'circle-pri':      { doc: '义教2022·图形与几何·图形的认识与测量（第三学段：圆和扇形，认识圆周率）', page: 'P40', tag: 'std' },
+  'volume':          { doc: '义教2022·图形与几何·图形的认识与测量（第三学段：体积与容积，长正方体、圆柱圆锥的体积与表面积）', page: 'P40-41', tag: 'std' },
+  /* ---- 小学 · 统计与概率（义教2022 P42-48）---- */
+  'data-collect':    { doc: '义教2022·统计与概率·数据的收集整理与表达（第二学段：经历简单的数据收集和整理、描述和分析的过程）', page: 'P44-45', tag: 'std' },
+  'chart-read':      { doc: '义教2022·统计与概率·数据的收集整理与表达（第二、三学段：条形、折线、扇形统计图）', page: 'P44-46', tag: 'std' },
+  'average':         { doc: '义教2022·统计与概率·数据的收集整理与表达（第二学段：探索平均数的意义）', page: 'P44-45', tag: 'std' },
+  'possibility':     { doc: '义教2022·统计与概率·随机现象发生的可能性（第三学段：定性描述简单随机现象发生可能性的大小）', page: 'P46-47', tag: 'std' },
+  /* ---- 初中 · 数与代数（义教2022·第四学段 P59-68）---- */
+  'rational':        { doc: '义教2022·数与代数·数与式·有理数（理解负数与有理数的意义，数轴，相反数、绝对值，乘方与运算律）', page: 'P59-60', tag: 'std' },
+  'exponent':        { doc: '义教2022·数与代数·数与式（理解乘方的意义；了解整数指数幂的意义和基本性质）', page: 'P59、P61', tag: 'std' },
+  'radic':           { doc: '义教2022·数与代数·数与式·实数（无理数与实数，平方根、算术平方根、立方根，实数与数轴一一对应）', page: 'P60-61', tag: 'std' },
+  'sqrt-expr':       { doc: '义教2022·数与代数·数与式·实数（了解二次根式、最简二次根式的概念与四则运算法则）', page: 'P61', tag: 'std' },
+  'integer':         { doc: '义教2022·数与代数·数与式·代数式（理解整式的概念，掌握合并同类项和去括号的法则）', page: 'P61', tag: 'std' },
+  'polynomial':      { doc: '义教2022·数与代数·数与式·代数式（简单的整式乘法运算；理解乘法公式 (a+b)(a-b)=a²-b²、(a±b)²=a²±2ab+b²）', page: 'P61', tag: 'std' },
+  'factor':          { doc: '义教2022·数与代数·数与式·代数式（能用提公因式法、公式法进行因式分解）', page: 'P61-62', tag: 'std' },
+  'eq1':             { doc: '义教2022·数与代数·方程与不等式·方程与方程组（掌握等式的基本性质，能解一元一次方程）', page: 'P62', tag: 'std' },
+  'eq2':             { doc: '义教2022·数与代数·方程与不等式·方程与方程组（配方法、公式法、因式分解法解一元二次方程；根的判别式；根与系数的关系）', page: 'P62', tag: 'std' },
+  'frac-eq':         { doc: '义教2022·数与代数·方程与不等式·方程与方程组（能解可化为一元一次方程的分式方程）', page: 'P62', tag: 'std' },
+  'fraction-expr':   { doc: '义教2022·数与代数·数与式·代数式（了解分式和最简分式的概念，利用分式的基本性质进行约分、通分和四则运算）', page: 'P62', tag: 'std' },
+  'sys-eq':          { doc: '义教2022·数与代数·方程与不等式·方程与方程组（掌握消元法，能解二元一次方程组）', page: 'P62', tag: 'std' },
+  'ineq':            { doc: '义教2022·数与代数·方程与不等式·不等式与不等式组（探索不等式的基本性质，解一元一次不等式并在数轴上表示解集）', page: 'P62-63', tag: 'std' },
+  'func-concept':    { doc: '义教2022·数与代数·函数·函数的概念（了解常量、变量的意义，函数的概念和表示法）', page: 'P63', tag: 'std' },
+  'linear-fn':       { doc: '义教2022·数与代数·函数·一次函数（结合具体情境体会一次函数的意义，待定系数法，图象与性质，与二元一次方程的关系）', page: 'P63-64', tag: 'std' },
+  'inverse-fn':      { doc: '义教2022·数与代数·函数·反比例函数（体会反比例函数的意义，图象与性质，解决简单实际问题）', page: 'P64', tag: 'std' },
+  'quad-fn':         { doc: '义教2022·数与代数·函数·二次函数（画二次函数的图象并了解性质，最值，与一元二次方程的关系）', page: 'P64', tag: 'std' },
+  /* ---- 初中 · 图形与几何（义教2022·第四学段 P68-79）---- */
+  'coordsys':        { doc: '义教2022·图形与几何·图形与坐标·图形的位置与坐标（理解平面直角坐标系，建立坐标系描述物体的位置）', page: 'P76', tag: 'std' },
+  'intersect':       { doc: '义教2022·图形与几何·图形的性质·相交线与平行线（对顶角、垂线、平行线的判定与性质定理）', page: 'P69-70', tag: 'std' },
+  'iso-sym':         { doc: '义教2022·图形与几何·图形的性质·三角形（等腰三角形的性质与判定）+ 图形的变化·轴对称', page: 'P71、P74', tag: 'std' },
+  'triangle':        { doc: '义教2022·图形与几何·图形的性质·三角形（全等三角形的概念与判定）+ 图形的变化·图形的相似（相似三角形的判定与性质）', page: 'P70-71、P75', tag: 'std' },
+  'pytha':           { doc: '义教2022·图形与几何·图形的性质·三角形（探索勾股定理及其逆定理，并能运用它们解决简单的实际问题）', page: 'P72', tag: 'std' },
+  'similar':         { doc: '义教2022·图形与几何·图形的变化·图形的相似（比例的基本性质，相似三角形的判定与性质，位似）', page: 'P75', tag: 'std' },
+  'quad-poly':       { doc: '义教2022·图形与几何·图形的性质·四边形（多边形内角和与外角和公式；平行四边形、矩形、菱形、正方形的性质与判定）', page: 'P72-73', tag: 'std' },
+  'rot-sym':         { doc: '义教2022·图形与几何·图形的变化·图形的旋转（旋转的基本性质，中心对称与中心对称图形）', page: 'P74', tag: 'std' },
+  'view-jr':         { doc: '义教2022·图形与几何·图形的变化·图形的投影（中心投影与平行投影；直棱柱、圆柱、圆锥、球的三视图与侧面展开图）', page: 'P75-76', tag: 'std' },
+  'circle':          { doc: '义教2022·图形与几何·图形的性质·圆（垂径定理，圆周角定理及其推论，点与圆、直线与圆的位置关系，切线）', page: 'P73-74', tag: 'std' },
+  'circle-calc':     { doc: '义教2022·图形与几何·图形的性质·圆（会计算圆的弧长、扇形的面积）', page: 'P74', tag: 'std' },
+  'trig-jr':         { doc: '义教2022·图形与几何·图形的变化·图形的相似（利用相似的直角三角形，探索并认识锐角三角函数，能解直角三角形）', page: 'P75', tag: 'std' },
+  /* ---- 初中 · 统计与概率（义教2022·第四学段 P79-83）---- */
+  'stats-basic':     { doc: '义教2022·统计与概率·抽样与数据分析（简单随机抽样，平均数、中位数、众数、加权平均数，方差，频数直方图，用样本估计总体）', page: 'P80-82', tag: 'std' },
+  'prob-basic':      { doc: '义教2022·统计与概率·随机事件的概率（列表、画树状图列出可能结果，简单随机事件的概率，频率估计概率）', page: 'P82', tag: 'std' },
+  /* ---- 高中 · 必修（高中2017·2020修订）---- */
+  'set-logic':       { doc: '高中2017·必修·主题一预备知识（集合；常用逻辑用语：充分条件、必要条件、量词、逻辑联结词）', page: 'P81-85', tag: 'std' },
+  'fun-prop':        { doc: '高中2017·必修·主题二函数·函数概念与性质（用集合语言和对应关系刻画函数；单调性、最大最小值、奇偶性）', page: 'P91-93', tag: 'std' },
+  'power-exp-log':   { doc: '高中2017·必修·主题二函数·幂函数、指数函数、对数函数（指数幂运算性质，指对函数图象与性质，对数与指数互为反函数）', page: 'P93-95', tag: 'std' },
+  'trig-def':        { doc: '高中2017·必修·主题二函数·三角函数（任意角与弧度制；借助单位圆理解三角函数的定义）', page: 'P95-96', tag: 'std' },
+  'trig':            { doc: '高中2017·必修·主题二函数·三角函数（三角函数的图象与性质，诱导公式，y=Asin(ωx+φ)）', page: 'P96-97', tag: 'std' },
+  'trig-trans':      { doc: '高中2017·必修·主题二函数·三角函数（同角三角函数的基本关系式；两角和与差、二倍角公式与三角恒等变换）', page: 'P97-98', tag: 'std' },
+  'solve-tri':       { doc: '高中2017·必修·主题三几何与代数·平面向量及其应用·向量应用与解三角形（掌握余弦定理、正弦定理并解决实际问题）', page: 'P106-107', tag: 'std' },
+  'sequence':        { doc: '高中2017·选择性必修·主题一函数·数列（数列的概念，等差、等比数列的通项公式与前n项和公式）', page: 'P117-118', tag: 'std' },
+  'seq-sum':         { doc: '高中2017·选择性必修·主题一函数·数列（探索并掌握等差、等比数列的前n项和公式，理解通项公式与前n项和公式的关系）', page: 'P117-118', tag: 'std' },
+  'vector':          { doc: '高中2017·必修·主题三几何与代数·平面向量及其应用（向量概念、运算、基本定理及坐标表示、数量积与投影）', page: 'P105-107', tag: 'std' },
+  'complex':         { doc: '高中2017·必修·主题三几何与代数·复数（通过方程的解认识复数，代数表示与几何意义，四则运算）', page: 'P107-108', tag: 'std' },
+  'ineq2':           { doc: '高中2017·必修·主题一预备知识（从函数观点看一元二次方程和一元二次不等式）', page: 'P86-89', tag: 'std' },
+  'ineq-proof':      { doc: '高中2017·必修·主题一预备知识·相等关系与不等关系（基本不等式及其应用）', page: 'P85-86', tag: 'std' },
+  'derivative':      { doc: '高中2017·选择性必修·主题一函数·一元函数导数及其应用（导数概念及其意义；导数运算与四则运算法则）', page: 'P118-120', tag: 'std' },
+  'dapply':          { doc: '高中2017·选择性必修·主题一函数·导数在研究函数中的应用（利用导数研究单调性、极值与最值）', page: 'P120', tag: 'std' },
+  'func-limit':      { doc: '高中2017·选择性必修·主题一函数·导数概念及其意义（由平均变化率过渡到瞬时变化率，体会极限思想）', page: 'P118-119', tag: 'std' },
+  'row-line':        { doc: '高中2017·选择性必修·主题二几何与代数·平面解析几何（直线与方程：倾斜角、斜率、方程形式；圆与方程：标准方程与一般方程，位置关系）', page: 'P122-124', tag: 'std' },
+  'ellipse':         { doc: '高中2017·选择性必修·主题二几何与代数·平面解析几何·圆锥曲线与方程（椭圆的定义、标准方程及简单几何性质）', page: 'P124', tag: 'std' },
+  'hyper-par':       { doc: '高中2017·选择性必修·主题二几何与代数·平面解析几何·圆锥曲线与方程（抛物线与双曲线的定义、几何图形和标准方程）', page: 'P124', tag: 'std' },
+  'conic':           { doc: '高中2017·选择性必修·主题二几何与代数·平面解析几何·圆锥曲线与方程（运用代数方法认识圆锥曲线的性质与位置关系，体会数形结合）', page: 'P124-125', tag: 'std' },
+  'solid':           { doc: '高中2017·必修·主题三几何与代数·立体几何初步·基本立体图形（柱、锥、台、球的结构特征，表面积与体积公式，直观图）', page: 'P109-110', tag: 'std' },
+  'solid-rel':       { doc: '高中2017·必修·主题三几何与代数·立体几何初步·基本图形位置关系（四个基本事实；线面、面面平行与垂直的性质定理与判定定理）', page: 'P110-112', tag: 'std' },
+  'solid-coord':     { doc: '高中2017·选择性必修·主题二几何与代数·空间向量与立体几何（空间直角坐标系，空间向量运算，用向量方法研究位置关系与夹角距离）', page: 'P122-124', tag: 'std' },
+  'perm-comb':       { doc: '高中2017·选择性必修·主题三概率与统计·计数原理（分类加法与分步乘法计数原理；排列与组合）', page: 'P126-127', tag: 'std' },
+  'binomial':        { doc: '高中2017·选择性必修·主题三概率与统计·计数原理·二项式定理（用多项式运算法则和计数原理证明二项式定理）', page: 'P127', tag: 'std' },
+  'cond-prob':       { doc: '高中2017·选择性必修·主题三概率与统计·概率·随机事件的条件概率（条件概率、乘法公式、全概率公式）', page: 'P128', tag: 'std' },
+  'discrete-rv':     { doc: '高中2017·选择性必修·主题三概率与统计·概率（离散型随机变量及其分布列、二项分布、超几何分布、正态分布）', page: 'P128-129', tag: 'std' },
+  'stats-adv':       { doc: '高中2017·必修·主题四概率与统计·统计（抽样方法、统计图表、用样本估计总体）+ 选择性必修·统计（相关系数、一元线性回归、2×2列联表）', page: 'P112-114、P129-130', tag: 'std' },
+};
+
+/* 过关判据：每环一条可自测的行为判据——做到即过关，不靠「感觉学会了」 */
+const PASS = {
+  /* ---- 小学 ---- */
+  'count-num':       '能读写出万以内的整数，说出每个数字所在的数位和表示的意义',
+  'compare':         '能正确比较两个数的大小并按大小排序 5 个数，会用 >、<、= 表示',
+  'add-meaning':     '能用画图解释「凑十法」的算理，20 以内加减法 3 秒内口算',
+  'money-rec':       '能辨认各种面值人民币，正确算出一次购物应找的零钱',
+  'clock-time':      '能正确读出钟面上的几时几分，说出 1 时=60 分、1 分=60 秒等换算',
+  'add-sub':         '能用竖式正确计算多位数加减法，解释进位/退位的算理并验算',
+  'unit':            '能正确进行长度、面积、体积、质量、时间单位的换算与选择',
+  'mul-div':         '能用乘法解决相同加数问题、用除法解决平均分问题，表内乘除口算熟练',
+  'remainder':       '能计算有余数的除法，说出「余数必须小于除数」并会用余数推周期',
+  'multi-mul-div':   '能笔算三位数乘两位数、除数是两位数的除法，并用估算判断结果合理性',
+  'law-op':          '能用字母表示交换/结合/分配律，并用运算律简算如 25×44',
+  'factor-multiple': '能找出 100 以内某数的全部因数，说出 2、3、5 倍数的特征，区分质数与合数',
+  'mix-op':          '能正确执行四则混合运算顺序，列综合算式解决两步实际问题',
+  'big-num':         '能读写亿以内的大数，会省略万位或亿位后面的尾数求近似数',
+  'decimal':         '能说出小数的意义，比较小数大小，正确进行小数四则运算',
+  'fraction':        '能解释分数单位，比较异分母分数大小，进行分数四则运算',
+  'negative-prep':   '能用负数表示相反意义的量，在数轴上标出并比较正负数的大小',
+  'percent':         '能完成百分数与分数、小数的互化，解决求百分率、打折、利息问题',
+  'ratio-proportion':'能化简比、求比值，判断两种量是否成正比例，解按比例分配问题',
+  'equation-prep':   '能用字母表示运算律与公式，解形如 x+5=12、3x=18 的简易方程',
+  'app-problem':     '能从题目中找出数量关系并列式解答，会验算并写出答句',
+  'journey-prob':    '能用 路程=速度×时间 解决基本行程问题，会画线段图分析',
+  'assume-prob':     '会用假设法或列表法解决鸡兔同笼类问题，并检验答案的合理性',
+  'position-direction': '能用「方向+距离」描述位置，并按描述在平面图上确定位置',
+  'angle':           '能辨认五类角，用量角器量角并画出指定度数的角',
+  'plane-shape':     '能辨认长方形、正方形、三角形、平行四边形、圆并说出各自特征',
+  'quad-tri':        '能按边和角给三角形、四边形分类，用内角和 180° 求未知角',
+  'trans-graph':     '能在方格纸上画出图形平移、旋转 90°、轴对称后的图形',
+  'observe-shape':   '能说出从前面、上面、左面观察物体看到的形状，并根据三视图还原物体',
+  'perimeter-area':  '能选择正确公式计算常见平面图形的周长与面积',
+  'circle-pri':      '能说出圆心、半径、直径的关系（d=2r），理解圆周率并计算圆的周长',
+  'volume':          '能计算长正方体、圆柱、圆锥的体积与表面积，区分体积与容积单位',
+  'data-collect':    '能设计简单的调查收集数据，并用画「正」字等方式整理',
+  'chart-read':      '能读懂条形、折线、扇形统计图并回答问题，会选择合适的图表表达数据',
+  'average':         '能计算一组数据的平均数，并用「移多补少」解释平均数的意义',
+  'possibility':     '能列举随机现象的所有可能结果，用「可能/一定/不可能」描述事件',
+  /* ---- 初中 ---- */
+  'rational':        '能将有理数分类、在数轴上表示，会求相反数与绝对值，正确进行四则混合运算',
+  'exponent':        '能正确运用同底数幂乘除、幂的乘方、积的乘方法则进行计算',
+  'radic':           '能求一个数的平方根与立方根，判断无理数，进行实数运算与大小比较',
+  'sqrt-expr':       '能化简二次根式为最简形式，正确进行二次根式的加减乘除',
+  'integer':         '能进行整式加减，正确去括号并合并同类项',
+  'polynomial':      '能运用平方差与完全平方公式计算，并能解释公式的几何意义',
+  'factor':          '能用提公因式法和公式法分解因式，并用整式乘法检验结果',
+  'eq1':             '能解含分母、括号的一元一次方程，会用方程解决简单实际问题',
+  'eq2':             '能用配方法、公式法、因式分解法解一元二次方程，会用判别式判断根的情况',
+  'frac-eq':         '能解分式方程并养成验根习惯，会列分式方程解应用题',
+  'fraction-expr':   '能约分、通分并完成分式混合运算，说出分式有意义的条件',
+  'sys-eq':          '能用代入法、加减消元法解二元一次方程组，并列方程组解应用题',
+  'ineq':            '能解一元一次不等式（组）并在数轴上表示解集',
+  'func-concept':    '能判断一个对应关系是否为函数，求自变量取值范围，读懂函数图象',
+  'linear-fn':       '能画一次函数图象，由图象读出增减性，用待定系数法求解析式',
+  'inverse-fn':      '能画反比例函数图象，说出 k 的几何意义，用反比例函数解决实际问题',
+  'quad-fn':         '能配方求二次函数的顶点与对称轴，画图象并求最值',
+  'coordsys':        '能建立坐标系描述位置，写出平移、对称、旋转后点的坐标变化规律',
+  'intersect':       '能运用对顶角、垂直、平行线的判定与性质定理进行推理计算',
+  'iso-sym':         '能利用等腰三角形的性质（含三线合一）进行计算与证明',
+  'triangle':        '能找出全等与相似的判定条件并书写证明，用相似求线段长',
+  'pytha':           '能用勾股定理及其逆定理进行计算与直角判断，解决实际问题',
+  'similar':         '能用相似三角形的性质按比例计算线段，理解位似并作位似图形',
+  'quad-poly':       '能证明平行四边形、矩形、菱形、正方形，会用多边形内角和公式计算',
+  'rot-sym':         '能说出旋转三要素，找出中心对称图形的对称中心',
+  'view-jr':         '能画出直棱柱、圆柱、圆锥的三视图，由视图还原立体图形',
+  'circle':          '能用垂径定理、圆周角定理进行计算与证明，判断直线与圆的位置关系',
+  'circle-calc':     '能计算弧长与扇形面积，求圆锥侧面展开图的相关量',
+  'trig-jr':         '能说出 sin、cos、tan 的定义，用特殊角函数值与解直角三角形解决实际问题',
+  'stats-basic':     '能选择合适的抽样方法，计算平均数、中位数、众数、方差并解释统计意义',
+  'prob-basic':      '能用列表法、树状图法求简单随机事件的概率，会用频率估计概率',
+  /* ---- 高中 ---- */
+  'set-logic':       '能进行集合的交并补运算，判断充分必要条件，正确写出命题的否定',
+  'fun-prop':        '能用定义证明函数的单调性与奇偶性，求简单抽象函数的解析式与值域',
+  'power-exp-log':   '能比较指数、对数、幂函数值的大小，解简单的指对数方程与不等式',
+  'trig-def':        '能进行角度与弧度的互化，用单位圆定义任意角的三角函数',
+  'trig':            '能由 y=Asin(ωx+φ) 描述图象变换，用诱导公式化简求值',
+  'trig-trans':      '能运用和、差、倍角公式进行三角恒等变换化简与证明',
+  'solve-tri':       '能运用正弦、余弦定理解三角形，解决测量距离高度类实际问题',
+  'sequence':        '能由通项公式写项、由前几项归纳通项，掌握等差等比数列的判定与通项',
+  'seq-sum':         '能用公式法、分组法、裂项法、错位相减法求数列前 n 项和',
+  'vector':          '能进行向量的线性运算，用基底表示向量，用数量积求夹角与模长',
+  'complex':         '能进行复数的四则运算，说出复数的几何意义并求模',
+  'ineq2':           '能借助「三个二次」的关系解一元二次不等式及简单分式、绝对值不等式',
+  'ineq-proof':      '能用作差法、综合法证明简单不等式，会用基本不等式求最值',
+  'derivative':      '能求基本初等函数与简单复合函数的导数，理解导数的几何意义',
+  'dapply':          '能用导数求单调区间、极值与最值，解决简单优化问题',
+  'func-limit':      '能解释平均变化率到瞬时变化率的过渡，会求曲线上一点处的切线方程',
+  'row-line':        '能求直线与圆的各种形式方程，判断位置关系并求弦长',
+  'ellipse':         '能由定义求椭圆的标准方程，并利用几何性质解题',
+  'hyper-par':       '能求双曲线、抛物线的标准方程，理解渐近线等几何特征',
+  'conic':           '能联立方程并用韦达定理处理弦长、中点、定点定值问题',
+  'solid':           '能识别柱、锥、台、球的结构特征，计算表面积与体积',
+  'solid-rel':       '能运用基本事实与线面、面面平行垂直的定理进行空间证明',
+  'solid-coord':     '能建立空间直角坐标系，用空间向量求线面角、二面角与距离',
+  'perm-comb':       '能区分分类与分步计数，正确计算排列数与组合数，处理相邻不相邻问题',
+  'binomial':        '能写出二项展开式的通项公式，求指定项系数，处理整除与近似问题',
+  'cond-prob':       '能区分条件概率与事件独立，用全概率公式与贝叶斯公式计算',
+  'discrete-rv':     '能写出离散型随机变量的分布列，求期望方差，识别二项、超几何、正态分布',
+  'stats-adv':       '能选择抽样方法，求回归方程并做预测，用 2×2 列联表完成独立性检验',
+};
+
+/* 典型教学案例：为关键环配备一道贯穿式案例，覆盖环内多个子考点（可按环扩展） */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+  'count-num': [['数数跳位，写数时「零」漏占位（三千零五写成 305）', '位值概念不牢 → 回到计数器先拨后写，从右起四位一级分级再读写', '']],
+  'compare': [['位数多的数一定大？（小数不适用）；多组比大小顺序乱', '整数先数位数再从最高位比起 → 口诀「先看位数，再从最高位一位一位比」', '']],
+  'add-meaning': [['见「多」就加、见「少」就减，比较对象弄反', '没分清「谁和谁比、谁是标准」→ 画线段图先标出标准量，再标比较量', '']],
+  'money-rec': [['元和角直接相加（3 元 5 角 + 2 元 8 角 算成 5 元 13 角不化简）', '没统一单位就运算 → 先统一成「角」算完再聚成「几元几角」', '']],
+  'clock-time': [['时针快到下一个大数就认成下一个小时；分针读数忘乘 5', '钟面读数规则不熟 → 先看时针刚过哪个数定「时」，再数分针小格', '']],
+  'add-sub': [['进位退位漏标记，中间有 0 的退位连退算错', '竖式流程机械记忆，退位链一断就错 → 每一步标进退位点，专练「中间有 0」题', 'add-meaning']],
+  'unit': [['高级单位 ↔ 低级单位换算，乘除方向搞反', '进率没背熟、方向规则死记 → 先背进率表，再记「变小单位乘进率，变 大单位除以进率」', 'clock-time']],
+  'mul-div': [['口诀会背，除法求商对应不上', '除法是乘法逆运算这层没建立 → 用「几个几」回归乘法意义，求商想口诀缺几补几', 'add-sub']],
+  'remainder': [['余数比除数大；验算时忘加余数', '「余数必须小于除数」没内化 → 每题先查余数，再用 商×除数+余数 回验', 'mul-div']],
+  'multi-mul-div': [['积的位数、商的首位估错，中间的 0 处理乱', '位值对位不熟 → 动笔前先估算数量级（几百×几十≈几千），精算后回头核对', 'law-op']],
+  'law-op': [['减法里乱用交换律；分配律只乘一项漏另一项', '只记形式没懂意义，变形「合法性」边界不清 → 每一步说出用的是哪条律、它适用什么运算', 'mix-op']],
+  'factor-multiple': [['说「3 是倍数」「12 是因数」（方向反）；找因数漏成对的一边', '概念的方向性没抓住 → 抓住「a÷b 整除 → b 是 a 的因数、a 是 b 的倍数」成对记忆，找因数成对开方找', 'remainder']],
+  'mix-op': [['从左往右依次算到底，忽略先乘除后加减；括号视而不见', '运算顺序没内化 → 动笔前先「画线标序」：先括号，再二级（乘除），后一级（加减）', 'add-sub']],
+  'big-num': [['亿以内数读写错位；改写成「万/亿」作单位出错', '四位一级分级不熟 → 先从右起每四位画分级线，再读写；改写先数尾数有几个 0', 'count-num']],
+  'decimal': [['小数加减点没对齐；乘积的小数位数点错', '整数竖式习惯平移过来 → 加减「点对点」；乘法先按整数算，再数两个乘数小数位之和', 'multi-mul-div']],
+  'fraction': [['1/2 + 1/3 = 2/5（分子分母各自相加）；约分漏公因数', '分数单位不同不能直接相加没建立 → 回到图形看「分数单位」，先通分再算；约分找公因数逐次除', 'decimal']],
+  'negative-prep': [['认为 -3 > -1（只比数字大小）', '数轴方向感没建立 → 数轴上标出两点，明确「越往左越小」', 'big-num']],
+  'percent': [['「增加百分之几」基准找错，单位「1」定位错', '没圈出「比谁」→ 先找「比/是/占」后面的量，它才是单位 1', 'fraction']],
+  'ratio-proportion': [['化简比和求比值混为一谈；正比例反比例判断错', '两个概念对象不同 → 化简结果仍是「比」（两个数），比值是一个「数」；判断看「比值一定还是积一定」', 'percent']],
+  'equation-prep': [['解方程两边不同步变形；把 x=5 当成 5x', '方程是「等式两边同变」没理解 → 用天平模型，每步两边同时做同一件事', 'mix-op']],
+  'app-problem': [['读完题抓数字就列式，不管条件之间的逻辑', '缺「先翻译再列式」流程 → 每题先写三行：已知什么、求什么、数量关系式是什么', 'mix-op']],
+  'journey-prob': [['相遇问题和追及问题速度用错（和差混）', '模型和情景没对上 → 画线段图标方向：相向而行用速度和，同向追及用速度差', 'app-problem']],
+  'assume-prob': [['假设全对之后，差额怎么处理想不清', '差额的来源没想透 → 鸡兔同笼列表对比，体会「每换一只，差多少」的节奏', 'app-problem']],
+  'position-direction': [['「甲在乙的什么方向」观测点搞反', '参照物没定位 → 圈出「在」字后面的那个点，以它为中心画方向标', 'count-num']],
+  'angle': [['量角器内外圈读混，差 180°', '0 刻度线没对准 → 对准 0 线后先估角是锐是钝，再选对应的一圈读数', 'count-num']],
+  'plane-shape': [['认为正方形不是长方形', '集合包含关系没建立 → 画集合圈：正方形是「四边都相等」的特殊长方形', 'angle']],
+  'quad-tri': [['判断 2、3、7 能否围成三角形出错', '只比了两边 → 记「两边之和大于第三边」，最快用「两条短边之和 > 最长边」验证', 'plane-shape']],
+  'trans-graph': [['平移时图形方向和格数对应错', '平移是「每个点都移动相同格数」没建立 → 抓住几个关键点逐点平移，再连成图形', 'plane-shape']],
+  'observe-shape': [['三视图的左右方向画反', '视角想象不足 → 用积木实物摆一遍，正面、左面、上面各「拍一张照片」再画', 'plane-shape']],
+  'perimeter-area': [['周长面积公式混用；单位 cm 和 cm² 乱写', '一维二维概念混淆 → 先问自己算的是「一圈线」（周长）还是「铺满面」（面积），单位跟着维度走', 'unit']],
+  'circle-pri': [['直径半径关系用反（d=2r 记成 r=2d）', '概念关系没固化 → 圆规画圆体会「半径定大小，直径是两倍跨度」', 'perimeter-area']],
+  'volume': [['体积和表面积公式张冠李戴；容积单位换算乱', '三维公式死记没理解 → 柱体体积统一理解成「底面积 × 高」，容积单位对齐体积单位（1L=1dm³）', 'perimeter-area']],
+  'data-collect': [['分类标准不统一，统计时重复或遗漏', '分类要「不重不漏」没建立 → 先定唯一标准再计数，数完回查有没有重复项和漏项', 'count-num']],
+  'chart-read': [['条形图一格代表几读错；折线图当条形图比大小', '先看轴和图例的习惯没养成 → 读图三步：先纵轴刻度、再图例、后数据', 'data-collect']],
+  'average': [['以为平均数就是「最中间的数」；忘了「平均×个数=总数」能回推', '平均数是「匀出来的虚拟数」没理解 → 用移多补少演示；记牢三个量知二求一', 'chart-read']],
+  'possibility': [['认为「可能性相等」= 结果会交替出现', '随机性误解 → 抛硬币实验记录：长期频率稳定，短期没有规律', 'fraction']],
+  'rational': [['混合运算符号错；-|-3| 这类双重符号处理错', '符号法则机械记没数轴支撑 → 回数轴：先定符号，再算绝对值；多重符号从里往外逐层去', 'negative-prep']],
+  'exponent': [['a³·a² 算成 a⁶；(a³)² 算成 a⁵', '同底数幂三条法则混淆 → 抓住「乘法加指数、乘方乘指数、除法减指数」，各写一道展开验证', 'rational']],
+  'radic': [['√9 写成 ±3；√(a²) 直接等于 a', '平方根和算术平方根混 → √ 前缀只给非负结果；化简 √(a²) 前先讨论 a 的符号', 'rational']],
+  'sqrt-expr': [['捏造 √(a+b) = √a + √b', '运算律误用到根号里 → √(ab)=√a·√b 只对乘除成立；加减必须先化成最简再合并同类根式', 'radic']],
+  'integer': [['3x + 2x² 合并成 5x³', '同类项判定没抓住 → 同类项 = 字母相同且相同字母的指数也相同；圈出同类项，系数相加、字母指数不动', 'rational']],
+  'polynomial': [['(a+b)² = a² + b²，漏掉中间项 2ab', '分配律展开跳步 → 强迫自己写完整中间步 (a+b)(a+b)，逐项相乘再对比公式记忆', 'integer']],
+  'factor': [['分解不彻底，公因式漏提；结果又乘回去（和整式乘法混）', '「目标是积的形式」没建立 → 流程化：先提公因式，再看公式（平方差/完全平方），最后用乘法回验', 'polynomial']],
+  'eq1': [['移项忘变号；去分母时常数项漏乘', '「移项=两边同加减」没内化 → 每步把等号两边都写出来同步变形，去分母逐项检查', 'integer']],
+  'eq2': [['不求 Δ 直接开方；求根公式代入符号错；因式分解丢解', '公式记忆不准、检验习惯缺失 → 先算 Δ 定方法；公式代入前先抄一遍结构；解完整理「几个解」', 'eq1']],
+  'fraction-expr': [['约分跨过加减号（把 x+1 的 x 和分母的 x 约掉）；通分忘乘分子', '约分只能对「整体因式」进行 → 分子分母先各自因式分解，再找公共因式约；通分后分子逐项乘', 'polynomial']],
+  'frac-eq': [['去分母漏乘某项；解完不验根', '整式化扩大了取值范围会产生增根 → 去分母必须逐项乘最简公分母；解出后必代回公分母验根', 'fraction-expr']],
+  'sys-eq': [['加减消元时符号错；解出后代回只验一个方程', '消元目标不清晰 → 消元前先定「消哪个未知数、系数怎么配」；解完必须两个方程都验', 'eq1']],
+  'ineq': [['两边同除负数忘变号；解集在数轴上方向画反', '不等式性质 3 没有触发意识 → 系数一旦变负立刻想「变号」；用特殊值代回检验解集方向', 'eq1']],
+  'func-concept': [['x 的取值范围（定义域）忘写；把「一对一对应」也排除出函数', '函数本质是「每个输入唯一输出」没抓住 → 用机器输入输出比喻；任何函数问题先写定义域', 'eq1']],
+  'linear-fn': [['k 和 b 的作用混（谁管方向、谁管交点）；平移方向记反', '数形对应没建立 → 列表描三点画图：k 定升降、b 定与 y 轴交点；平移「上加下减、左加右减」逐字对', 'func-concept']],
+  'inverse-fn': [['认为双曲线穿过原点；k 的几何意义不会用', '图象形态陌生 → 列多点描图记「两支、不过原点、无限贴近轴」；k = 矩形面积 |xy|', 'func-concept']],
+  'quad-fn': [['a<0 开口方向判反；配方符号错；平移方向用反', '顶点式与一般式转换不熟 → 配方后完整写出 y=a(x−h)²+k 并报出顶点，再画草图核对开口与位置', 'eq2']],
+  'coordsys': [['象限内点的符号记反；点平移后坐标变化写反', '坐标是有序对没内化 → 画十字标出四象限符号表；平移记「左减右加（x）、下减上加（y）」', 'position-direction']],
+  'intersect': [['对顶角和邻补角混；平行判定条件凑不齐就下结论', '「三线八角」位置关系没认清 → 用字母标出截线和被截线，按「同位、内错、同旁」逐类找角', 'angle']],
+  'iso-sym': [['「三线合一」用在非等腰三角形上；等腰分类漏了等边', '性质适用条件没抓 → 用任何性质前先问「这是什么三角形」；分类讨论先想「腰=底吗」', 'intersect']],
+  'triangle': [['SSA 当判定用；全等书写对应顶点顺序乱', '判定定理边界不清 → 全等只认 SAS/ASA/AAS/SSS/HL；书写严格按对应顶点字母顺序', 'iso-sym']],
+  'pytha': [['直角没确认就套 c²=a²+b²；斜边认错', '「斜边是直角所对的最长边」没固化 → 每题先找直角、圈斜边，再列式', 'triangle']],
+  'similar': [['相似比 k 直接用于面积（漏平方）或体积（漏立方）', '比的幂次关系没建立 → 列表记：边比 k → 面积比 k² → 体积比 k³', 'triangle']],
+  'quad-poly': [['判定定理条件凑不满就下结论；矩形菱形性质混', '判定与性质双向混记 → 分两张清单：性质（已知它是什么→推出性质）、判定（满足什么→它是什么）', 'triangle']],
+  'rot-sym': [['旋转三要素漏说；中心对称和轴对称混', '变换要素没抓全 → 描述旋转必含「中心、方向、角度」；中心对称=旋转 180° 的特例', 'iso-sym']],
+  'view-jr': [['主视/俯视方向错；看不见的轮廓画成实线', '视角规则不熟 → 摆模型按方向逐个画；记「看不见的线一律虚线」', 'quad-poly']],
+  'circle': [['垂径定理条件没验就用；圆周角与圆心角关系弄反', '定理前提（直径/弦心距）没验 → 每题先连「垂直于弦的直径」辅助线，再套「弧加倍」关系', 'pytha']],
+  'circle-calc': [['弧长用成周长公式；圆锥侧面展开的半径当成了底面半径', '公式对象混 → 弧长先想「占整个圆的比例 = n/360」；展开图半径 = 母线 l，不是底面 r', 'circle']],
+  'trig-jr': [['sin 和 cos 的对边邻边找反', '定义没对照三角形记 → 每次先标出「斜边、∠的对边、∠的邻边」，再写比值', 'pytha']],
+  'stats-basic': [['求中位数忘排序；把所有出现过的数都当众数', '统计量定义流程不严 → 中位数必先排序（分奇偶处理）；众数 = 出现次数最多的那个数', 'chart-read']],
+  'prob-basic': [['列举样本点漏重漏；放回与不放回混', '样本空间没列全 → 先画树状图或列表列全所有等可能结果，再数 favourable', 'stats-basic']],
+  'set-logic': [['∈ 和 ⊂ 混用；充分必要条件方向判反', '符号语义没分清 → ∈ 前是元素、⊂ 前是集合；「A⇒B」则 A 是 B 的充分条件、B 是 A 的必要条件', 'func-concept']],
+  'fun-prop': [['单调区间用「∪」连接；验奇偶性忘查定义域是否对称', '性质成立前提没抓 → 单调区间只能用逗号或「和」分开写；奇偶性第一步查定义域对称', 'set-logic']],
+  'power-exp-log': [['捏造 log(a+b) 类运算；忽略 0<a<1 时图象递减', '运算法则边界模糊 → 对数法则逐条背「真数必须为正」；比大小先看底数与 1 的大小', 'fun-prop']],
+  'trig-def': [['弧度和角度混用；各象限三角函数符号判错', '单位制和符号规律没固化 → 弧度制下先统一单位；符号用「全正、正弦一二、余弦一四、正切一三」', 'circle']],
+  'trig': [['y=Asin(ωx+φ) 平移伸缩的顺序影响结果没意识到', '变换复合顺序敏感度低 → 先用五点法画基图；每步变换都写出中间解析式，不跳步', 'trig-def']],
+  'trig-trans': [['和差公式加减号记混；降幂升幂用反', '公式网络没结构 → 以 cos(α±β) 为「根」画推导树；用前代一个特殊角快速验证', 'trig']],
+  'solve-tri': [['SSA 情形漏讨论两解；解完不检查「大边对大角」', '解的个数意识弱 → 见 SSA 必讨论解的个数；解完用大边对大角回检', 'trig-trans']],
+  'sequence': [['an=Sn−Sn−1 忘了只对 n≥2 成立，n=1 漏单独验', '定义域意识弱 → 用 Sn 求通项必分两段；写出通项后用 n=1、2 回验', 'power-exp-log']],
+  'seq-sum': [['裂项相消后首尾核对漏项；错位相减乘公比后符号错', '方法流程长易错 → 裂项展开写出「剩下哪几项」再下结论；错位相减两式逐行对齐相减', 'sequence']],
+  'vector': [['向量当数量加减（丢方向）；点乘结果又当向量用', '向量的双重身份没固化 → 每个向量写清起点终点；运算完先问「结果是数还是向量」', 'coordsys']],
+  'complex': [['i² 当成 i 用；模和共轭混', 'i 的周期性没记牢 → 运算中每出现 i² 立刻换成 −1；共轭=虚部变号，模=平方和开方', 'eq2']],
+  'ineq2': [['解集取「两根之外」还是「之间」弄反', '图象和解集对应没建立 → 画开口向上的抛物线草图：>0 取两边、<0 取中间（a>0 时）', 'eq2']],
+  'ineq-proof': [['「和一定积最大」用反；忘验证取等条件成立', '「一正二定三相等」没查 → 用均值不等式前逐项检查：都是正数吗、和或积确实定值吗、能取等吗', 'ineq2']],
+  'derivative': [['复合函数求导漏内层；除法法则分子写反', '法则结构不牢 → 复合函数从外向内逐层剥着求；商法则背成「下平方：分子 = 上′×下 − 上×下′」', 'power-exp-log']],
+  'dapply': [['导数零点直接当极值点（漏验变号）；「过某点」的切线当「在某点」做', '定义辨析弱 → 极值点必须两侧导数变号；切线题先分类：点在曲线上（在某点）还是不在（设切点）', 'derivative']],
+  'func-limit': [['0/0 型直接代入求值', '极限是趋势不是代入 → 先化简（约分/有理化）消去零因子，再代值', 'derivative']],
+  'row-line': [['斜率不存在的情形漏讨论；点到直线距离公式系数代错', '特例意识弱 → 求斜率先问「会不会竖直」；距离公式代完用「结果应为正」自检', 'coordsys']],
+  'ellipse': [['焦点在 x 轴还是 y 轴判断错；离心率公式写倒', '标准方程结构没抓 → 记「焦点在分母较大的那条轴上」；e = c/a，先算 c²=a²−b²', 'row-line']],
+  'hyper-par': [['渐近线斜率记混；抛物线焦点位置和 p 的关系错', '参数意义混 → 双曲线渐近线令方程右边=0 直接读；抛物线焦点到准线距离 = |p|，开口看系数符号', 'row-line']],
+  'conic': [['联立后忘写 Δ>0；解出的点不带范围限制出现增解', '代数化后几何约束被丢 → 联立方程组后第一行就写「判别式>0」；解完回代图形核验范围', 'ellipse']],
+  'solid': [['三视图还原时前后层次错；侧面积公式混用', '空间想象不足 → 从「长方体切一角」练还原；侧面积按「侧面展开图」重新推一遍再记', 'volume']],
+  'solid-rel': [['线面平行判定漏了「直线在平面外」这个前提', '定理前提没有清单化 → 把判定定理、性质定理各抄一遍，用红笔标出前提条件', 'solid']],
+  'solid-coord': [['法向量算错方向；二面角忘结合图形定锐钝', '向量法流程机械 → 建系后每步写坐标依据；求出角后回图形判断取锐角还是钝角', 'vector']],
+  'perm-comb': [['分类分步顺序乱；相邻（捆绑）与不相邻（插空）策略混', '计数策略没有程序 → 先问「完成这件事分几类/几步」；排列组合先特殊（受限元素）、先组合后排', 'prob-basic']],
+  'binomial': [['通项公式中 r 和 n 混；求指定项系数漏组合数', '通项细节不牢 → 写出 T(r+1)=C(n,r)·a^(n−r)·b^r 后，先标出 r 的合法范围再动笔', 'perm-comb']],
+  'cond-prob': [['P(AB) 和 P(A|B) 混为一谈；全概率公式的「划分」漏情形', '样本空间缩放没理解 → 条件概率先写清「以谁为新的样本空间」；全概率先检查划分是否互斥且完备', 'prob-basic']],
+  'discrete-rv': [['分布列概率加起来不是 1 也不检查；期望方差公式混用', '完整性和公式边界弱 → 分布列写完第一件事验 Σ=1；方差用 E(X²)−[E(X)]² 简算', 'prob-basic']],
+  'stats-adv': [['独立性检验的临界值（3.841/6.635）记混；回归直线过样本中心这个性质没用上', '统计结论语义不清 → 记「K² 越大越有（相关）关系」；求回归方程前先算样本中心点', 'stats-basic']],
+};
+
+const CASES = {
+  'cond-prob': {
+    title: '次品来自哪台机床？——条件概率与全概率一题贯通',
+    text: '某车间甲、乙两台机床生产同一种零件：甲机床产量占 60%，次品率 2%；乙机床占 40%，次品率 5%。从全部产品中随机抽取一件。<br>'
+        + '<b>第①问（全概率）</b>：抽到次品的概率是多少？——按「来源」分类：P(次品) = 0.6×0.02 + 0.4×0.05 = 0.032。'
+        + '体会分类加法（计数原理）在这里的作用：把复杂事件按互斥来源拆开。<br>'
+        + '<b>第②问（条件概率+贝叶斯）</b>：已知抽到的是次品，它来自甲机床的概率？——P(甲|次品) = 0.6×0.02 ÷ 0.032 = 0.375。'
+        + '注意：这是「缩小样本空间后重新计算」，不是 60%！<br>'
+        + '<b>易错点</b>：把 P(甲·次品) 与 P(次品|甲) 混为一谈——前者是联合概率 0.012，后者是条件概率 0.02。',
+    steps: [
+      { label: '提示 · 先想清楚', text: '别急着套公式。先问自己：「抽到次品」这个事件，能按什么标准拆成互斥的情形？——线索就在零件的「来源」（甲机床 / 乙机床）。' },
+      { label: '引导 · 跟着问自己', text: '① 每一类的概率怎么表达？（来源占比 × 该来源的次品率）② 两类相加得到的是什么？（全概率）③ 第②问的前提变了——「已知是次品」，此时样本空间还和原来一样大吗？分母该换成谁？' },
+    ],
+  },
+  'stats-adv': {
+    title: '食堂满意度调查——统计推断四步走',
+    text: '学校食堂想知道新菜品满意度，全校高一 480 人、高二 400 人、高三 320 人。<br>'
+        + '<b>第①步（分层抽样）</b>：按比例抽 60 人 → 各层 24、20、16 人，保证各年级意见都进入样本。<br>'
+        + '<b>第②步（用样本估计总体）</b>：样本满意率 85% → 估计全校约 1200×0.85 ≈ 1020 人满意（样本有随机性，只是估计）。<br>'
+        + '<b>第③步（回归预测）</b>：收集「排队时长 x 与满意度评分 y」数据，得回归方程 ŷ = 90 − 1.5x → 排队 10 分钟时预测满意度约 75 分（预测而非因果）。<br>'
+        + '<b>第④步（独立性检验）</b>：由「性别 × 是否满意」2×2 列联表算出 χ² = 5.2 > 3.841 → 在 0.05 显著性水平下认为满意度与性别有关。',
+    steps: [
+      { label: '提示 · 先想清楚', text: '统计推断的四个环节各管一件事：怎么抽、怎么估、怎么预测、怎么检验。先想「分层抽样」按什么分层、每层分到多少人。' },
+      { label: '引导 · 跟着问自己', text: '① 60 人按 480:400:320 的比例分到各层是多少？② 样本满意率 85% 能直接当成全校的吗——差在哪？③ 回归方程 ŷ=90−1.5x 中 x=10 代入算出的是「预测值」还是「事实」？④ χ²=5.2 与临界值 3.841 比大小，结论该怎么下？' },
+    ],
+  },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_pri: { name: '智慧教育·小学数学', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbb2de-0590-11ed-9c79-92fc3b3249d5%2Fe7bbd296-0590-11ed-9c79-92fc3b3249d5%2Fe7bbcf80-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_jun: { name: '智慧教育·初中数学', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2Fe7bbcf80-0590-11ed-9c79-92fc3b3249d5%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·高中数学', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2Fe7bbcf80-0590-11ed-9c79-92fc3b3249d5%2F5036342963%2F5036342972', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部考试中心', url: 'https://www.neea.edu.cn', note: '官方真题索引' },
+};
+
+const NODES = {
+
+  /* ================= 小学 · 数与运算 ================= */
+  'count-num': { title: '数的认识与数位', stage: 'primary', cat: 'num', diff: 1.2, hot: false,
+    fact: '理解自然数、十进制计数法与数位顺序，从20以内到万以内的数，是一切数学的起点。',
+    prev: [], next: ['compare', 'add-meaning', 'angle', 'clock-time', 'position-direction', 'data-collect', 'big-num'],
+    lecture: [ {name:'数的认识·数与代数（小学）', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'小学数的认识练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'compare': { title: '大小比较与排序', stage: 'primary', cat: 'num', diff: 1.5, hot: false,
+    fact: '数的大小比较、多少与排序，初建数感和数量关系。',
+    prev: ['count-num'], next: ['app-problem'],
+    lecture: [ {name:'大小比较与排序', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'大小比较练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'add-meaning': { title: '加减法的意义与20以内', stage: 'primary', cat: 'num', diff: 1.4, hot: false,
+    fact: '理解合并与去掉的含义，用凑十法计算20以内加减法，从数数走向运算的第一步。',
+    prev: ['count-num'], next: ['add-sub', 'money-rec'],
+    lecture: [ {name:'加减法的意义与20以内加减法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'20以内加减法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'money-rec': { title: '人民币与购物', stage: 'primary', cat: 'num', diff: 1.6, hot: false,
+    fact: '认识人民币及元角分换算，在购物情境中运用加减法，数学走进生活的第一课。',
+    prev: ['add-meaning'], next: ['unit'],
+    lecture: [ {name:'认识人民币', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'人民币购物练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'clock-time': { title: '认识时间', stage: 'primary', cat: 'num', diff: 1.8, hot: false,
+    fact: '认识钟面与整时、几时几分，建立时间观念，为学习时间单位打基础。',
+    prev: ['count-num'], next: ['unit'],
+    lecture: [ {name:'认识钟表与时间', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'认识时间练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'add-sub': { title: '两位数与多位数加减法', stage: 'primary', cat: 'num', diff: 1.8, hot: false,
+    fact: '从两位数加减到多位数笔算，掌握进位与退位，四则运算的第一块基石。',
+    prev: ['add-meaning'], next: ['mul-div', 'mix-op'],
+    lecture: [ {name:'整数加减法精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'小学加减法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'unit': { title: '单位换算与计量', stage: 'primary', cat: 'num', diff: 1.6, hot: false,
+    fact: '长度、面积、体积、质量等常用单位及其互化，是运算与度量的基础。',
+    prev: ['money-rec', 'clock-time'], next: ['perimeter-area'],
+    lecture: [ {name:'单位换算与计量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'单位换算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'mul-div': { title: '表内乘除法', stage: 'primary', cat: 'num', diff: 2.2, hot: false,
+    fact: '乘法口诀与表内除法，乘除运算的起点，多位数乘除法由此展开。',
+    prev: ['add-sub'], next: ['remainder', 'multi-mul-div', 'mix-op'],
+    lecture: [ {name:'整数乘除法精讲', src:'B站·关键词搜索', url: PORTALS.bilibili.url, needCheck:false} ],
+    practice: [ {name:'小学乘除法练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'remainder': { title: '整除与余数', stage: 'primary', cat: 'num', diff: 2.6, hot: false,
+    fact: '整除及有余数除法，余数必须比除数小，是因数、倍数与分数概念的铺垫。',
+    prev: ['mul-div'], next: ['factor-multiple'],
+    lecture: [ {name:'整除与余数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'整除余数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'multi-mul-div': { title: '多位数乘除法', stage: 'primary', cat: 'num', diff: 2.7, hot: false,
+    fact: '两三位数乘除一位数、多位数乘两位数与除数是两位数的除法，计算能力的大关卡。',
+    prev: ['mul-div', 'law-op'], next: ['decimal'],
+    lecture: [ {name:'多位数乘除法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'多位数乘除练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'law-op': { title: '运算律与简便计算', stage: 'primary', cat: 'num', diff: 2.9, hot: false,
+    fact: '加法交换律结合律、乘法交换律结合律与分配律，简算技巧背后是代数思维的启蒙。',
+    prev: ['mix-op'], next: ['multi-mul-div'],
+    lecture: [ {name:'运算律与简便计算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'运算律练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'factor-multiple': { title: '因数与倍数', stage: 'primary', cat: 'num', diff: 2.9, hot: false,
+    fact: '找因数、找倍数、公因数与最小公倍数，是数论与分数的入口。',
+    prev: ['remainder'], next: ['fraction'],
+    lecture: [ {name:'因数与倍数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'因数倍数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'mix-op': { title: '整数四则混合运算', stage: 'primary', cat: 'num', diff: 3.0, hot: true,
+    fact: '运算顺序（先乘除后加减、括号）与四则混合，是高年级与初中的计算引擎。',
+    prev: ['add-sub', 'mul-div'], next: ['law-op', 'app-problem', 'fraction', 'equation-prep', 'rational'],
+    lecture: [ {name:'四则混合运算与运算顺序', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'小学四则混合运算题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'big-num': { title: '大数的认识', stage: 'primary', cat: 'num', diff: 2.1, hot: false,
+    fact: '万以上的数、亿级计数单位与用万或亿作单位的近似数，把数位扩展到更大范围。',
+    prev: ['count-num'], next: ['decimal', 'negative-prep'],
+    lecture: [ {name:'大数的认识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'大数读写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'decimal': { title: '小数', stage: 'primary', cat: 'num', diff: 3.1, hot: false,
+    fact: '小数的意义、读写、性质与加减，小数点移动规律，衔接分数与初中实数。',
+    prev: ['multi-mul-div', 'big-num'], next: ['fraction', 'percent'],
+    lecture: [ {name:'小数的意义与运算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'小数运算练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'fraction': { title: '分数的意义与运算', stage: 'primary', cat: 'num', diff: 3.2, hot: false,
+    fact: '分数的意义、分数单位、大小比较与加减运算，理解单位"1"是关键。',
+    prev: ['decimal', 'factor-multiple', 'mix-op'], next: ['percent', 'ratio-proportion', 'possibility', 'rational'],
+    lecture: [ {name:'分数与小数精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'分数小数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'negative-prep': { title: '负数的初步认识', stage: 'primary', cat: 'num', diff: 3.4, hot: false,
+    fact: '生活中相反意义的量与负数记法，为初中学习有理数与数轴铺路。',
+    prev: ['big-num'], next: ['rational'],
+    lecture: [ {name:'负数的初步认识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'负数认识练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'percent': { title: '百分数', stage: 'primary', cat: 'num', diff: 3.6, hot: false,
+    fact: '百分数的意义、与分数小数的互化及百分数应用，是生活中用得最多的数。',
+    prev: ['fraction', 'decimal'], next: ['ratio-proportion'],
+    lecture: [ {name:'百分数与比例', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'百分数应用练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'ratio-proportion': { title: '比与比例', stage: 'primary', cat: 'num', diff: 3.8, hot: false,
+    fact: '比的意义与化简、比例的基本性质、正比例与反比例的判断，初中函数思维的启蒙。',
+    prev: ['percent', 'fraction'], next: ['func-concept'],
+    lecture: [ {name:'比与比例', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'比和比例练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'equation-prep': { title: '用字母表示数与简易方程', stage: 'primary', cat: 'num', diff: 3.7, hot: false,
+    fact: '用字母表示数与运算律、含字母的式子与简易方程，从算术思维过渡到代数思维。',
+    prev: ['mix-op'], next: ['eq1'],
+    lecture: [ {name:'用字母表示数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'简易方程练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'app-problem': { title: '典型应用题', stage: 'primary', cat: 'num', diff: 3.4, hot: false,
+    fact: '和差倍、归一归总、平均数、年龄等典型应用题，训练把文字翻译成运算的能力。',
+    prev: ['compare', 'mix-op'], next: ['journey-prob', 'assume-prob', 'average', 'rational'],
+    lecture: [ {name:'小学应用题精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'小学数学应用题', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'journey-prob': { title: '行程问题', stage: 'primary', cat: 'num', diff: 4.1, hot: true,
+    fact: '速度时间路程、相遇、追及与火车过桥等行程模型，小学应用题的巅峰。',
+    prev: ['app-problem'], next: ['sys-eq'],
+    lecture: [ {name:'行程问题专题', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'行程问题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'assume-prob': { title: '假设与策略问题', stage: 'primary', cat: 'num', diff: 3.9, hot: false,
+    fact: '鸡兔同笼、植树、周期等假设与策略问题，训练逆向思考与有序列举。',
+    prev: ['app-problem'], next: [],
+    lecture: [ {name:'鸡兔同笼与数学广角', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'假设策略问题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 小学 · 图形与几何 ================= */
+  'position-direction': { title: '位置与方向', stage: 'primary', cat: 'geometry', diff: 1.7, hot: false,
+    fact: '用上下左右、东南西北与数对描述位置和路线，发展空间观念的第一步。',
+    prev: ['count-num'], next: ['plane-shape', 'coordsys'],
+    lecture: [ {name:'位置与方向', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'位置与方向练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'angle': { title: '角的认识与度量', stage: 'primary', cat: 'geometry', diff: 2.0, hot: false,
+    fact: '角的概念、度量与分类，是平面几何的起点。',
+    prev: ['count-num'], next: ['plane-shape', 'intersect'],
+    lecture: [ {name:'角的认识与度量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'角的度量练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'plane-shape': { title: '平面图形的认识', stage: 'primary', cat: 'geometry', diff: 2.5, hot: false,
+    fact: '长方形、正方形、三角形、平行四边形等基本图形及其特征。',
+    prev: ['angle', 'position-direction'], next: ['quad-tri', 'trans-graph', 'perimeter-area', 'observe-shape', 'intersect'],
+    lecture: [ {name:'平面图形的认识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'平面图形练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'quad-tri': { title: '四边形与三角形特征', stage: 'primary', cat: 'geometry', diff: 2.8, hot: false,
+    fact: '平行四边形、梯形、三角形的边角特征、分类与内角和，几何推理的萌芽。',
+    prev: ['plane-shape'], next: ['perimeter-area'],
+    lecture: [ {name:'四边形与三角形的特征', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'四边形三角形练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'trans-graph': { title: '图形的变换·轴对称·旋转·平移', stage: 'primary', cat: 'geometry', diff: 2.6, hot: false,
+    fact: '轴对称、平移、旋转等图形变换，为几何直观与函数图象对称奠定基础。',
+    prev: ['plane-shape'], next: ['quad-fn'],
+    lecture: [ {name:'图形的变换', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'图形变换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'observe-shape': { title: '观察物体', stage: 'primary', cat: 'geometry', diff: 3.2, hot: false,
+    fact: '从不同方向观察物体与立体图形，判断看到的形状，是三视图与空间想象力的起点。',
+    prev: ['plane-shape'], next: ['volume', 'solid'],
+    lecture: [ {name:'观察物体', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'观察物体练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'perimeter-area': { title: '周长与面积', stage: 'primary', cat: 'geometry', diff: 3.0, hot: false,
+    fact: '长方形、正方形、平行四边形、三角形与梯形的周长面积及组合图形，是度量的基础。',
+    prev: ['plane-shape', 'quad-tri', 'unit'], next: ['circle-pri', 'volume'],
+    lecture: [ {name:'周长与面积', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'周长面积练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'circle-pri': { title: '圆的初步认识', stage: 'primary', cat: 'geometry', diff: 3.5, hot: false,
+    fact: '圆的认识、圆心半径直径与圆周率，圆的周长与面积公式，衔接初中圆的性质。',
+    prev: ['perimeter-area'], next: ['circle'],
+    lecture: [ {name:'圆的认识与周长面积', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'圆的周长面积练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'volume': { title: '长方体与体积', stage: 'primary', cat: 'geometry', diff: 3.6, hot: false,
+    fact: '体积概念、容积与长方体正方体体积，衔接初中立体几何与高中空间图形。',
+    prev: ['perimeter-area', 'observe-shape'], next: ['solid'],
+    lecture: [ {name:'长方体与体积', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'体积容积练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 小学 · 统计与概率 ================= */
+  'data-collect': { title: '数据的收集与整理', stage: 'primary', cat: 'stat', diff: 1.9, hot: false,
+    fact: '用调查、举手、画正字等方式收集并整理数据，统计意识从这里开始。',
+    prev: ['count-num'], next: ['chart-read'],
+    lecture: [ {name:'数据的收集与整理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'数据收集整理练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'chart-read': { title: '统计图表', stage: 'primary', cat: 'stat', diff: 3.3, hot: false,
+    fact: '读条形统计图、折线统计图与扇形统计图，从图表中获取并分析信息。',
+    prev: ['data-collect'], next: ['average', 'stats-basic'],
+    lecture: [ {name:'统计图表的认识', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'统计图表练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'average': { title: '平均数', stage: 'primary', cat: 'stat', diff: 3.5, hot: false,
+    fact: '平均数的意义与计算，移多补少的思想，用统计量描述一组数据的整体水平。',
+    prev: ['chart-read', 'app-problem'], next: ['stats-basic', 'stats-adv'],
+    lecture: [ {name:'平均数与条形统计图', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'平均数练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  'possibility': { title: '可能性', stage: 'primary', cat: 'stat', diff: 2.7, hot: false,
+    fact: '一定、可能、不可能与简单随机现象，体验事件发生的确定性与不确定性。',
+    prev: ['fraction'], next: ['prob-basic'],
+    lecture: [ {name:'可能性与随机现象', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+    practice: [ {name:'可能性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+  /* ================= 初中 · 代数和数 ================= */
+  'rational': { title: '有理数', stage: 'junior', cat: 'num', diff: 3.8, hot: false,
+    fact: '负数、数轴与绝对值、有理数四则，把数从正整数扩展到全体有理数。',
+    prev: ['mix-op', 'fraction', 'app-problem', 'negative-prep'], next: ['exponent', 'radic', 'integer', 'func-concept'],
+    lecture: [ {name:'有理数及其运算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'有理数章节真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'exponent': { title: '幂的运算', stage: 'junior', cat: 'algebra', diff: 4.2, hot: false,
+    fact: '同底数幂的乘除、幂的乘方与积的乘方，是整式与指数的前提。',
+    prev: ['rational'], next: ['integer', 'polynomial'],
+    lecture: [ {name:'幂的运算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'幂运算真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'radic': { title: '实数与平方根', stage: 'junior', cat: 'num', diff: 4.4, hot: false,
+    fact: '平方根、立方根、实数与无理数，是二次根式与勾股定理的基础。',
+    prev: ['rational'], next: ['sqrt-expr'],
+    lecture: [ {name:'实数与平方根', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'实数平方根真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'sqrt-expr': { title: '二次根式', stage: 'junior', cat: 'num', diff: 4.8, hot: false,
+    fact: '二次根式的性质、化简与运算，解直角三角形与一元二次方程公式法的计算工具。',
+    prev: ['radic'], next: ['eq2', 'pytha'],
+    lecture: [ {name:'二次根式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'二次根式真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'integer': { title: '整式与合并同类项', stage: 'junior', cat: 'algebra', diff: 4.3, hot: false,
+    fact: '单项式、多项式、合并同类项与整式加减，代数符号运算的开始。',
+    prev: ['rational', 'exponent'], next: ['polynomial', 'eq1'],
+    lecture: [ {name:'整式与合并同类项', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'整式运算真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'polynomial': { title: '多项式与乘法公式', stage: 'junior', cat: 'algebra', diff: 4.6, hot: false,
+    fact: '整式乘法与完全平方、平方差公式，为因式分解做正反互逆的准备。',
+    prev: ['integer', 'exponent'], next: ['factor', 'fraction-expr', 'eq2'],
+    lecture: [ {name:'多项式乘法与公式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'乘法公式真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'factor': { title: '因式分解', stage: 'junior', cat: 'algebra', diff: 4.8, hot: true,
+    fact: '提公因式、公式法与十字相乘，是解方程与二次函数的关键工具。',
+    prev: ['polynomial'], next: ['eq2'],
+    lecture: [ {name:'因式分解精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'因式分解真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'eq1': { title: '一元一次方程', stage: 'junior', cat: 'algebra', diff: 4.5, hot: true,
+    fact: '等式性质与解一元一次方程，是解决实际应用题的核心工具。',
+    prev: ['integer', 'equation-prep'], next: ['eq2', 'ineq', 'sys-eq', 'func-concept'],
+    lecture: [ {name:'一元一次方程精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'一元一次方程真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'eq2': { title: '一元二次方程', stage: 'junior', cat: 'algebra', diff: 4.7, hot: true,
+    fact: '配方法、公式法与因式分解解一元二次方程，是二次函数与高次问题的入口。',
+    prev: ['eq1', 'polynomial', 'factor', 'sqrt-expr'], next: ['ineq', 'quad-fn', 'complex', 'ineq2'],
+    lecture: [ {name:'一元二次方程精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'一元二次方程真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'frac-eq': { title: '分式方程', stage: 'junior', cat: 'algebra', diff: 4.6, hot: false,
+    fact: '解分式方程与增根检验，是整式乘除与函数应用的衔接。',
+    prev: ['fraction-expr'], next: [],
+    lecture: [ {name:'分式方程精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'分式方程真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'fraction-expr': { title: '分式', stage: 'junior', cat: 'algebra', diff: 4.7, hot: false,
+    fact: '分式的基本性质、约分通分与四则运算，是分式方程的直接基础。',
+    prev: ['polynomial'], next: ['frac-eq'],
+    lecture: [ {name:'分式及其运算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'分式运算真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'sys-eq': { title: '二元一次方程组', stage: 'junior', cat: 'algebra', diff: 4.8, hot: false,
+    fact: '解二元一次方程组的核心是消元思想：代入消元是把一个未知数用另一个表示后代入另一式；加减消元是把两式中某未知数的系数化为相同或互为相反数后相加减，从而化二元为一元。',
+    prev: ['eq1', 'journey-prob'], next: [],
+    lecture: [ {name:'二元一次方程组', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'方程组真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'ineq': { title: '一元一次不等式', stage: 'junior', cat: 'algebra', diff: 4.9, hot: false,
+    fact: '解不等式与解集数轴表示，是高中不等式证明与导数的铺垫。',
+    prev: ['eq1', 'eq2'], next: ['ineq-proof'],
+    lecture: [ {name:'一元一次不等式', src:'B站·关键词搜索', url: PORTALS.bilibili.url, needCheck:false} ],
+    practice: [ {name:'不等式真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 函数 ================= */
+  'func-concept': { title: '函数的概念', stage: 'junior', cat: 'func', diff: 4.6, hot: false,
+    fact: '变量、函数定义、图象与表格，函数思想的正式引入。',
+    prev: ['eq1', 'rational', 'ratio-proportion'], next: ['linear-fn', 'inverse-fn', 'quad-fn', 'coordsys', 'set-logic'],
+    lecture: [ {name:'函数的概念', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'函数概念真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'linear-fn': { title: '一次函数', stage: 'junior', cat: 'func', diff: 4.9, hot: false,
+    fact: '一次函数解析式、图象与性质，是函数与方程结合的第一形态。',
+    prev: ['func-concept'], next: ['quad-fn', 'row-line'],
+    lecture: [ {name:'一次函数精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'一次函数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'inverse-fn': { title: '反比例函数', stage: 'junior', cat: 'func', diff: 5.0, hot: false,
+    fact: '反比例函数解析式与图象，理解变量成反比关系。',
+    prev: ['func-concept'], next: [],
+    lecture: [ {name:'反比例函数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'反比例函数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'quad-fn': { title: '二次函数', stage: 'junior', cat: 'func', diff: 5.6, hot: true,
+    fact: '二次函数图象、顶点与最值，承接一元二次方程，是中考压轴与高中函数基础。',
+    prev: ['eq2', 'func-concept', 'linear-fn', 'trans-graph'], next: ['power-exp-log', 'ellipse'],
+    lecture: [ {name:'二次函数精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'二次函数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 几何 ================= */
+  'coordsys': { title: '平面直角坐标系', stage: 'junior', cat: 'geometry', diff: 4.7, hot: false,
+    fact: '坐标平面、各象限与点的坐标，是函数图象与解析几何的共同底座。',
+    prev: ['func-concept', 'position-direction'], next: ['vector', 'row-line'],
+    lecture: [ {name:'平面直角坐标系', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'坐标几何真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'intersect': { title: '相交线与平行线', stage: 'junior', cat: 'geometry', diff: 4.0, hot: false,
+    fact: '对顶角、同位角内错角、平行公理，初中几何的公理起点。',
+    prev: ['angle', 'plane-shape'], next: ['triangle', 'iso-sym'],
+    lecture: [ {name:'相交线与平行线', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'几何初步真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'iso-sym': { title: '轴对称与等腰三角形', stage: 'junior', cat: 'geometry', diff: 4.5, hot: false,
+    fact: '轴对称、垂直平分线与等腰等边三角形的性质判定，几何对称思想的正式开始。',
+    prev: ['intersect'], next: ['triangle', 'rot-sym'],
+    lecture: [ {name:'轴对称与等腰三角形', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'等腰三角形真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'triangle': { title: '全等与相似三角形', stage: 'junior', cat: 'geometry', diff: 5.2, hot: true,
+    fact: '全等判定、相似判定与性质，中考平面几何的核心大题来源。',
+    prev: ['intersect', 'iso-sym'], next: ['pytha', 'similar', 'quad-poly', 'solid'],
+    lecture: [ {name:'全等与相似三角形', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'三角形综合真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'pytha': { title: '勾股定理', stage: 'junior', cat: 'geometry', diff: 5.0, hot: true,
+    fact: '勾股定理及其逆定理，是几何计算与解析几何距离公式的基础。',
+    prev: ['triangle', 'sqrt-expr'], next: ['circle', 'row-line', 'trig-jr'],
+    lecture: [ {name:'勾股定理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'勾股定理真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'similar': { title: '相似综合与位似', stage: 'junior', cat: 'geometry', diff: 5.4, hot: false,
+    fact: '相似三角形与位似图形的应用，将比例思想贯穿平面几何。',
+    prev: ['triangle'], next: ['circle', 'trig-jr'],
+    lecture: [ {name:'相似与位似', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'相似应用真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'quad-poly': { title: '平行四边形与多边形', stage: 'junior', cat: 'geometry', diff: 5.0, hot: false,
+    fact: '特殊四边形性质、多边形内角和与公式计算。',
+    prev: ['triangle', 'rot-sym'], next: ['view-jr'],
+    lecture: [ {name:'平行四边形与多边形', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'四边形真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'rot-sym': { title: '旋转与中心对称', stage: 'junior', cat: 'geometry', diff: 4.9, hot: false,
+    fact: '旋转的性质、中心对称与旋转作图，旋转构造是几何压轴题的重要手法。',
+    prev: ['iso-sym'], next: ['quad-poly'],
+    lecture: [ {name:'旋转与中心对称', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'旋转真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'view-jr': { title: '投影与视图', stage: 'junior', cat: 'geometry', diff: 4.6, hot: false,
+    fact: '平行投影中心投影与三视图，平面与立体互相转化的空间想象训练。',
+    prev: ['quad-poly'], next: ['solid'],
+    lecture: [ {name:'投影与视图', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'投影视图真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'circle': { title: '圆的性质', stage: 'junior', cat: 'geometry', diff: 5.5, hot: true,
+    fact: '圆心角、圆周角、切线性质，圆是中考与高中解析几何圆的共同根。',
+    prev: ['pytha', 'similar', 'circle-pri'], next: ['row-line', 'trig-def', 'circle-calc'],
+    lecture: [ {name:'圆的性质精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'圆相关真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'circle-calc': { title: '弧长与扇形面积', stage: 'junior', cat: 'geometry', diff: 5.3, hot: false,
+    fact: '弧长、扇形面积与圆锥侧面展开的计算，圆的度量应用。',
+    prev: ['circle'], next: [],
+    lecture: [ {name:'弧长与扇形面积', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'弧长扇形真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'trig-jr': { title: '锐角三角函数', stage: 'junior', cat: 'geometry', diff: 5.4, hot: true,
+    fact: 'sin cos tan 的定义、特殊角数值与解直角三角形，测量问题的中考大题来源。',
+    prev: ['pytha', 'similar'], next: ['trig'],
+    lecture: [ {name:'锐角三角函数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'解直角三角形真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 初中 · 统计概率 ================= */
+  'stats-basic': { title: '统计初步', stage: 'junior', cat: 'stat', diff: 3.4, hot: false,
+    fact: '统计图表、平均数众数中位数，初识数据的收集与描述。',
+    prev: ['chart-read', 'average'], next: ['prob-basic', 'stats-adv'],
+    lecture: [ {name:'统计初步', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'统计初步真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  'prob-basic': { title: '概率初步', stage: 'junior', cat: 'stat', diff: 3.8, hot: false,
+    fact: '必然、随机事件与概率计算，是高中概率分布的起点。',
+    prev: ['stats-basic', 'possibility'], next: ['perm-comb', 'cond-prob', 'discrete-rv'],
+    lecture: [ {name:'概率初步', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+    practice: [ {name:'概率初步真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+  /* ================= 高中 · 函数 ================= */
+  'set-logic': { title: '集合与常用逻辑用语', stage: 'senior', cat: 'algebra', diff: 4.8, hot: false,
+    fact: '集合运算、充分必要条件、全称存在命题，高中代数与函数的环境语言。',
+    prev: ['func-concept'], next: ['fun-prop'],
+    lecture: [ {name:'集合与常用逻辑用语', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'集合逻辑真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'fun-prop': { title: '函数的性质与图象', stage: 'senior', cat: 'func', diff: 5.3, hot: false,
+    fact: '定义域值域、单调性、奇偶性的研究，是高中函数的核心。',
+    prev: ['set-logic'], next: ['power-exp-log', 'trig-def'],
+    lecture: [ {name:'函数的性质与图象', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'函数性质真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'power-exp-log': { title: '指数、对数与幂函数', stage: 'senior', cat: 'func', diff: 5.6, hot: true,
+    fact: '指数函数、对数函数、幂函数的图象性质，导数与数列的必备基础。',
+    prev: ['fun-prop', 'quad-fn'], next: ['sequence', 'derivative'],
+    lecture: [ {name:'指数对数与幂函数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'指数对数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'trig-def': { title: '任意角与三角函数定义', stage: 'senior', cat: 'func', diff: 5.5, hot: false,
+    fact: '任意角与弧度制、单位圆定义三角函数、同角关系与诱导公式，三角的地基。',
+    prev: ['circle', 'fun-prop'], next: ['trig'],
+    lecture: [ {name:'任意角与三角函数定义', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'三角函数定义真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'trig': { title: '三角函数图象与性质', stage: 'senior', cat: 'func', diff: 5.8, hot: true,
+    fact: '正余弦正切图象、五点作图与 y=Asin(ωx+φ) 变换，函数观点看三角。',
+    prev: ['trig-def', 'trig-jr'], next: ['trig-trans', 'vector'],
+    lecture: [ {name:'三角函数精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'三角函数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'trig-trans': { title: '三角恒等变换', stage: 'senior', cat: 'func', diff: 6.0, hot: true,
+    fact: '两角和差与倍角公式及应用，三角综合题与解三角形的核心。',
+    prev: ['trig'], next: ['solve-tri'],
+    lecture: [ {name:'三角恒等变换', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'三角变换真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'solve-tri': { title: '解三角形', stage: 'senior', cat: 'func', diff: 6.0, hot: true,
+    fact: '正弦定理、余弦定理与面积公式，测量航行等应用题的核心工具。',
+    prev: ['trig-trans'], next: [],
+    lecture: [ {name:'解三角形', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'解三角形真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'sequence': { title: '数列', stage: 'senior', cat: 'algebra', diff: 5.9, hot: true,
+    fact: '等差、等比数列与求和公式、递推，高考必考主干。',
+    prev: ['power-exp-log'], next: ['seq-sum'],
+    lecture: [ {name:'数列精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'数列真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'seq-sum': { title: '数列求和方法', stage: 'senior', cat: 'algebra', diff: 6.0, hot: true,
+    fact: '裂项相消、错位相减、分组并项与 an-Sn 关系，高考数列大题固定考点。',
+    prev: ['sequence'], next: [],
+    lecture: [ {name:'数列求和方法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'数列求和真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'vector': { title: '平面向量', stage: 'senior', cat: 'algebra', diff: 5.6, hot: false,
+    fact: '向量的线性运算、数量积与坐标表示，是解析与立体几何的工具。',
+    prev: ['coordsys', 'trig'], next: ['solid-coord'],
+    lecture: [ {name:'平面向量', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'平面向量真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'complex': { title: '复数初步', stage: 'senior', cat: 'algebra', diff: 5.2, hot: false,
+    fact: '复数的四则运算与复平面表示，扩展数与代数运算。',
+    prev: ['eq2'], next: [],
+    lecture: [ {name:'复数初步', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'复数真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'ineq2': { title: '一元二次不等式', stage: 'senior', cat: 'algebra', diff: 5.2, hot: false,
+    fact: '三个二次的关系、二次不等式解法与含参讨论，衔接初高中不等式的关键。',
+    prev: ['eq2'], next: ['ineq-proof', 'derivative'],
+    lecture: [ {name:'一元二次不等式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'二次不等式真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'ineq-proof': { title: '不等式证明与均值不等式', stage: 'senior', cat: 'algebra', diff: 5.4, hot: false,
+    fact: '基本不等式及其最值应用，是导数与最值问题的常用工具。',
+    prev: ['ineq', 'ineq2'], next: [],
+    lecture: [ {name:'不等式与均值不等式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'不等式证明真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 导数 ================= */
+  'derivative': { title: '导数概念与运算', stage: 'senior', cat: 'calc', diff: 6.3, hot: true,
+    fact: '导数的定义、几何意义与基本求导公式，是研究函数变化的工具。',
+    prev: ['power-exp-log', 'ineq2'], next: ['dapply', 'func-limit'],
+    lecture: [ {name:'导数的概念与运算', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'导数基础真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'dapply': { title: '导数与函数单调性·极值最值', stage: 'senior', cat: 'calc', diff: 7.0, hot: true,
+    fact: '用导数研究单调区间、极值与最值，高考压轴题核心方法。',
+    prev: ['derivative'], next: [],
+    lecture: [ {name:'导数应用·单调性极值', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'导数应用真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'func-limit': { title: '极限与瞬时变化率', stage: 'senior', cat: 'calc', diff: 6.6, hot: false,
+    fact: '函数极限初步与瞬时变化率思想，是导数的一致连续理解层面。',
+    prev: ['derivative'], next: [],
+    lecture: [ {name:'极限与瞬时变化率', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'极限初步真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 解析几何 / 圆锥曲线 ================= */
+  'row-line': { title: '直线与圆的方程', stage: 'senior', cat: 'conic', diff: 5.8, hot: false,
+    fact: '点斜式、一般式、两直线关系及圆的标准/一般方程，解析几何起点。',
+    prev: ['coordsys', 'linear-fn', 'circle', 'pytha'], next: ['ellipse', 'hyper-par'],
+    lecture: [ {name:'直线与圆的方程', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'直线圆方程真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'ellipse': { title: '椭圆', stage: 'senior', cat: 'conic', diff: 5.9, hot: true,
+    fact: '椭圆的定义、标准方程与几何性质、焦点三角形，圆锥曲线的第一站。',
+    prev: ['row-line', 'quad-fn'], next: ['hyper-par', 'conic'],
+    lecture: [ {name:'椭圆', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'椭圆真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'hyper-par': { title: '双曲线与抛物线', stage: 'senior', cat: 'conic', diff: 6.1, hot: false,
+    fact: '双曲线定义方程与渐近线、抛物线四种标准方程与焦半径，圆锥曲线第二站。',
+    prev: ['row-line', 'ellipse'], next: ['conic'],
+    lecture: [ {name:'双曲线与抛物线', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'双曲线抛物线真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'conic': { title: '直线与圆锥曲线综合', stage: 'senior', cat: 'conic', diff: 6.5, hot: true,
+    fact: '直线与椭圆、双曲线、抛物线的位置关系与联立韦达定理，解析几何压轴。',
+    prev: ['ellipse', 'hyper-par'], next: [],
+    lecture: [ {name:'圆锥曲线精讲', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'圆锥曲线综合真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 立体几何 ================= */
+  'solid': { title: '空间几何体与三视图', stage: 'senior', cat: 'geometry', diff: 5.2, hot: false,
+    fact: '棱柱棱锥棱台圆柱圆锥的结构、三视图与表面积体积。',
+    prev: ['volume', 'triangle', 'observe-shape', 'view-jr'], next: ['solid-rel'],
+    lecture: [ {name:'空间几何体与三视图', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'空间几何真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'solid-rel': { title: '空间点线面的位置关系', stage: 'senior', cat: 'geometry', diff: 5.6, hot: false,
+    fact: '直线与平面平行垂直的判定与性质，立体几何证明核心。',
+    prev: ['solid'], next: ['solid-coord'],
+    lecture: [ {name:'空间点线面的位置关系', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'立体几何证明真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'solid-coord': { title: '空间向量与立体几何', stage: 'senior', cat: 'geometry', diff: 6.0, hot: false,
+    fact: '用空间向量处理夹角、距离与证明，立体几何的代数化方法。',
+    prev: ['vector', 'solid-rel'], next: [],
+    lecture: [ {name:'空间向量与立体几何', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'空间向量真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  /* ================= 高中 · 统计概率进阶 ================= */
+  'perm-comb': { title: '计数原理与排列组合', stage: 'senior', cat: 'func', diff: 5.4, hot: true,
+    fact: '分步分类计数、排列与组合，概率统计的计数底座。',
+    prev: ['prob-basic'], next: ['binomial', 'cond-prob'],
+    lecture: [ {name:'排列组合', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'排列组合真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'binomial': { title: '二项式定理', stage: 'senior', cat: 'func', diff: 5.8, hot: false,
+    fact: '二项式定理与通项公式、二项式系数性质与赋值法，计数原理的高峰。',
+    prev: ['perm-comb'], next: ['discrete-rv'],
+    lecture: [ {name:'二项式定理', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'二项式定理真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'cond-prob': { title: '条件概率与全概率', stage: 'senior', cat: 'func', diff: 6.0, hot: true,
+    fact: '条件概率、独立性与全概率贝叶斯公式，概率进阶的思维关口。',
+    prev: ['prob-basic', 'perm-comb'], next: ['discrete-rv'],
+    lecture: [ {name:'条件概率与全概率', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'条件概率真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'discrete-rv': { title: '离散型随机变量与分布列', stage: 'senior', cat: 'func', diff: 6.2, hot: true,
+    fact: '分布列、期望与方差，把概率初步推向高考计算核心。',
+    prev: ['prob-basic', 'binomial', 'cond-prob'], next: [],
+    lecture: [ {name:'离散型随机变量与分布列', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'随机变量真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+  'stats-adv': { title: '统计推断与抽样', stage: 'senior', cat: 'func', diff: 5.4, hot: false,
+    fact: '随机抽样、用样本估计总体、回归与相关分析等进阶统计。',
+    prev: ['stats-basic', 'average'], next: [],
+    lecture: [ {name:'统计推断与抽样', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+    practice: [ {name:'统计推断真题', src:'官方免费平台·真题持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+const LINK = {
+  // —— 高中 · 函数 ——
+  'set-logic':   { lecture: {name:'16分钟专讲集合易错点', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1yo4y1D7fc', needCheck:false}
+                 , practice: {name:'数学逻辑用语·随堂例题', src:'B站·公开课', url:'https://www.bilibili.com/video/BV1yo4y1D7fc', needCheck:false} },
+  'fun-prop':    { lecture: {name:'高中函数单调·奇偶·周期性总结', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1SK411G72L', needCheck:false} },
+  'power-exp-log':{ lecture:{name:'函数·初等函数核心知识全梳理', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1aL41177hc', needCheck:false} },
+  'trig-trans':  { lecture: {name:'14分钟掌握三角恒等变换核心', src:'小姚老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1544y1774z', needCheck:false} },
+  'vector':      { lecture: {name:'平面向量零基础快速上手', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1GZ4y1d7Xs', needCheck:false} },
+  'ineq-proof':  { lecture: {name:'基本不等式·高中数学同步课(中档)', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV19b4y127Tc', needCheck:false} },
+  // —— 高中 · 导数 ——
+  'dapply':      { lecture: {name:'导数压轴题解法合集', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1xX4y1T7vP', needCheck:false} },
+  // —— 高中 · 解析几何/圆锥曲线 ——
+  'conic':       { lecture: {name:'圆锥曲线·也可以很好做（奥数国一主讲）', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV11a4y1Y7e2', needCheck:false} },
+  // —— 高中 · 立体几何 ——
+  'solid':       { lecture: {name:'立体几何三章总复习(几何体/点线面/空间向量)', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1Nf4y197aY', needCheck:false} },
+  'solid-rel':   { lecture: {name:'22分钟梳理位置关系高频证法', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1Yh411e7xk', needCheck:false} },
+  'solid-coord': { lecture: {name:'空间向量·法向量速算技巧', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1dg411U7qq', needCheck:false} },
+  // —— 高中 · 计数/概率统计 ——
+  'perm-comb':   { lecture: {name:'排列组合·20分钟从零基础到高考', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1Gg4y1t7HA', needCheck:false} },
+  'discrete-rv': { lecture: {name:'离散型随机变量及其分布（常规）', src:'小姚老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1aD4y1Q7cw', needCheck:false} },
+  'stats-adv':   { lecture: {name:'一元线性回归模型及其应用', src:'小姚老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1sK411s7nH', needCheck:false} },
+  // —— 初中 · 数与代数 ——
+  'rational':    { lecture: {name:'七年级数学：有理数的概念（宋浩老师）', src:'宋浩老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1DM4y1H7Mj', needCheck:false} },
+  'exponent':    { lecture: {name:'幂的四大运算，5分钟搞明白运算规则', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1YTcdezERG', needCheck:false} },
+  'factor':      { lecture: {name:'初中因式分解', src:'铭门学府张超·B站免费公开课', url:'https://www.bilibili.com/video/BV1V1ay6AEnE', needCheck:false},
+                 practice: {name:'因式分解：练完这10道题就无敌了', src:'函树方程根·B站免费公开课', url:'https://www.bilibili.com/video/BV1CmdHY1Etr', needCheck:false} },
+  'eq1':         { lecture: {name:'【七年级】一个视频搞定一元一次方程', src:'数学李柯子·B站免费公开课', url:'https://www.bilibili.com/video/BV1c8mUYeEbt', needCheck:false},
+                 practice: {name:'一个视频讲透一元一次方程解应用题', src:'Tom张数学·B站免费公开课', url:'https://www.bilibili.com/video/BV1WQSMBWENt', needCheck:false} },
+  // —— 初中 · 方程与不等式 ——
+  'eq2':         { lecture: {name:'一元二次方程·八大解法全解', src:'亮亮巧解初中数学·B站', url:'https://www.bilibili.com/video/BV1CiYe6HEBV', needCheck:false} },
+  'frac-eq':     { lecture: {name:'零基础搞定分式方程', src:'数学李柯子·B站免费公开课', url:'https://www.bilibili.com/video/BV1yKxoexEbV', needCheck:false} },
+  'sys-eq':      { lecture: {name:'14讲搞定二元一次方程组', src:'一点老师·B站免费公开课', url:'https://www.bilibili.com/video/BV14841137L1', needCheck:false} },
+  'ineq':        { lecture: {name:'初中数学七年级下册：解一元一次不等式', src:'乐乐课堂·B站免费公开课', url:'https://www.bilibili.com/video/BV14x411L7sg', needCheck:false} },
+  // —— 初中 · 函数 ——
+  'linear-fn':   { lecture: {name:'零基础搞定一次函数', src:'数学李柯子·B站免费公开课', url:'https://www.bilibili.com/video/BV1Km421s7F5', needCheck:false},
+                 practice: {name:'一次函数必会基础练习', src:'数学李柯子·B站免费公开课', url:'https://www.bilibili.com/video/BV1H1421R7xw', needCheck:false} },
+  'inverse-fn':  { lecture: {name:'6小时“肝”完《反比例函数》', src:'一点老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1NP411c7iK', needCheck:false} },
+  'quad-fn':     { lecture: {name:'二次函数·零基础到中考压轴', src:'一数·初中版(B站)', url:'https://www.bilibili.com/video/BV18qxczTEtR', needCheck:false} },
+  // —— 初中 · 几何 ——
+  'triangle':    { lecture: {name:'十分钟速通全等三角形判定', src:'数学找老盘·B站免费公开课', url:'https://www.bilibili.com/video/BV1N6HLzoEDJ', needCheck:false},
+                 practice: {name:'全等三角形·考试经典例题', src:'王老师数学课堂·B站免费公开课', url:'https://www.bilibili.com/video/BV13R4y1p7tv', needCheck:false} },
+  'similar':     { lecture: {name:'20分钟快速掌握相似三角形', src:'中考数学老学长·B站免费公开课', url:'https://www.bilibili.com/video/BV1kv4y1D7Lx', needCheck:false} },
+  'pytha':       { lecture: {name:'3小时“肝”完《勾股定理》', src:'一点老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1BY411d7aq', needCheck:false},
+                 practice: {name:'初二勾股定理经典题型', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1ZpyHYkEwZ', needCheck:false} },
+  'circle':      { lecture: {name:'中考必考之「圆」：20分钟打通任督二脉', src:'亮亮巧解初中数学·B站免费公开课', url:'https://www.bilibili.com/video/BV1S7C1BSESB', needCheck:false} },
+  // —— 小学 · 数与运算 ——
+  'add-sub':     { lecture: {name:'【人教版二上】第二单元《100以内加减法（二）》', src:'数学课代表·B站免费公开课', url:'https://www.bilibili.com/video/BV1nf4y1A7uZ', needCheck:false} },
+  'mul-div':     { lecture: {name:'乘法与除法互逆关系', src:'胜开乐学·B站免费公开课', url:'https://www.bilibili.com/video/BV1Wu411p7ZP', needCheck:false},
+                 practice: {name:'用2-6的乘法口诀求商·同步讲解', src:'数学课代表·B站免费公开课', url:'https://www.bilibili.com/video/BV1bh411x72G', needCheck:false} },
+  'factor-multiple':{ lecture:{name:'清华附小五年级数学：因数与倍数', src:'慢羊羊老师·B站免费公开课', url:'https://www.bilibili.com/video/BV17t4y1n7ox', needCheck:false} },
+  'fraction':    { lecture: {name:'小学数学·分数与小数互化', src:'向老师微课堂·B站免费公开课', url:'https://www.bilibili.com/video/BV1PF411z79X', needCheck:false} },
+  'percent':     { lecture: {name:'认识百分数', src:'三春卷卷·B站免费公开课', url:'https://www.bilibili.com/video/BV1REotYXEDt', needCheck:false} },
+  'app-problem': { lecture: {name:'小学数学：30类经典应用题题型详解', src:'大凉柚·B站免费公开课', url:'https://www.bilibili.com/video/BV1is4y187wQ', needCheck:false} },
+  // —— 小学 · 图形与几何 ——
+  'plane-shape': { lecture: {name:'认识平面图形', src:'包子里没有肉·B站免费公开课', url:'https://www.bilibili.com/video/BV1bz421C7eg', needCheck:false} },
+  'perimeter-area':{ lecture:{name:'四年级上·周长与面积预习', src:'于泽超会教·B站免费公开课', url:'https://www.bilibili.com/video/BV1J4un6mETV', needCheck:false} },
+  'volume':      { lecture: {name:'五下·长方体正方体的体积公式', src:'数学老师阿力·B站免费公开课', url:'https://www.bilibili.com/video/BV1edfwYJE5J', needCheck:false} },
+  // —— 小学 · 补充核验 ——
+  'count-num':   { lecture: {name:'数的产生及十进制计数法·知识讲解', src:'人教版·B站免费公开课', url:'https://www.bilibili.com/video/BV1fTyfYEEfj', needCheck:false} },
+  'compare':     { lecture: {name:'100以内数的大小比较·清华附小动画', src:'清华附小·B站免费公开课', url:'https://www.bilibili.com/video/BV1vHPDevE21', needCheck:false} },
+  'unit':        { lecture: {name:'一节课理清小学数学常见单位进率', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1RLjdzqEAo', needCheck:false} },
+  'remainder':   { lecture: {name:'有余数的竖式除法·清华附小趣味动画', src:'清华附小·B站免费公开课', url:'https://www.bilibili.com/video/BV1ev4y1z7uf', needCheck:false} },
+  'mix-op':      { lecture: {name:'四则混合运算的顺序·清华附小动画', src:'清华附小·B站免费公开课', url:'https://www.bilibili.com/video/BV1PBNueqEbJ', needCheck:false} },
+  'angle':       { lecture: {name:'角的度量（一）·北师大版四年级', src:'张静老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1hd1iY3Evj', needCheck:false} },
+  'trans-graph': { lecture: {name:'图形的运动·清华附小动画', src:'清华附小·B站免费公开课', url:'https://www.bilibili.com/video/BV1SeNVeRE8x', needCheck:false} },
+  // —— 初中 · 补充核验 ——
+  'radic':       { lecture: {name:'平方根、立方根及实数·十分钟速通', src:'亮亮巧解初中数学·B站', url:'https://www.bilibili.com/video/BV1uuxtz3EPH', needCheck:false} },
+  'integer':     { lecture: {name:'整式的加减：合并同类项全解', src:'亮亮巧解初中数学·B站', url:'https://www.bilibili.com/video/BV1FWYqzME7p', needCheck:false} },
+  'polynomial':  { lecture: {name:'平方差公式·完全平方公式·数形结合', src:'雷说数学·B站免费公开课', url:'https://www.bilibili.com/video/BV1654y1G7ZC', needCheck:false} },
+  'func-concept':{ lecture: {name:'常量与变量·函数的概念', src:'青禾初中同步·B站免费公开课', url:'https://www.bilibili.com/video/BV1PG411G7UZ', needCheck:false} },
+  'coordsys':    { lecture: {name:'平面直角坐标系·一小时从入门到精通', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1E9WEzaEQi', needCheck:false} },
+  'intersect':   { lecture: {name:'同位角、内错角与同旁内角讲解', src:'乐乐课堂·B站免费公开课', url:'https://www.bilibili.com/video/BV18x411x71F', needCheck:false} },
+  'quad-poly':   { lecture: {name:'平行四边形·系统精讲', src:'一点老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1rG4y1R7kU', needCheck:false} },
+  'stats-basic': { lecture: {name:'中位数、众数与平均数的联系与区别', src:'杨光老师·B站免费公开课', url:'https://www.bilibili.com/video/BV1Sm4y1v7cf', needCheck:false} },
+  'prob-basic':  { lecture: {name:'随机事件和概率·概率初步', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1HpeozeEWz', needCheck:false} },
+  // —— 高中 · 补充核验 ——
+  'trig':        { lecture: {name:'单位圆与三角函数的定义', src:'郑老师George·B站免费公开课', url:'https://www.bilibili.com/video/BV1y24y1Y7G2', needCheck:false} },
+  'sequence':    { lecture: {name:'【数列】免费最全系统讲解+真题应用（74集）', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1jS4y1d7vx', needCheck:false},
+                 practice: {name:'等差等比数列·一课通', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1F5BGYiE8t', needCheck:false} },
+  'complex':     { lecture: {name:'复数的概念、运算与速算技巧速通', src:'究数·B站免费公开课', url:'https://www.bilibili.com/video/BV1egonBxEWW', needCheck:false} },
+  'derivative':  { lecture: {name:'一个视频搞懂高中导数', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1sCQEB4E2R', needCheck:false} },
+  'func-limit':  { lecture: {name:'10分钟吃透导数入门：平均变化率与瞬时变化率', src:'B站·免费公开课', url:'https://www.bilibili.com/video/BV1CGfFBnEwn', needCheck:false} },
+  'row-line':    { lecture: {name:'直线和圆的位置关系', src:'一数·B站免费公开课', url:'https://www.bilibili.com/video/BV1Z4411z7P6', needCheck:false} },
+};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--pri)"></span>小学 <b>${stCnt('primary')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年新课标Ⅰ卷数学真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

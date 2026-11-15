@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>目标链 · 全学段英语知识目标站</title>
+<meta name="description" content="目标链（mubiaolian.com）英语知识目标站 —— 小学到高中英语主干知识点链式图谱，可追溯前置必备、跳转后续延伸。" />
+<meta name="theme-color" content="#2f5a8f" />
+<meta property="og:title" content="目标链 · 全学段英语知识目标站" />
+<meta property="og:description" content="小学到高中英语主干知识点链式图谱：按难度串联、可追溯前置必备、一键跳转后续延伸，讲解与练习均来自公开网络免费平台。" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mubiaolian.com/mubiaolian-english.html" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><path d='M12 4.8c4.4 0 7.7 2.7 7.7 6.2S16.4 17.2 12 17.2c-.9 0-1.7-.1-2.5-.3l-3.3 1.7.8-2.9C5.3 14.6 4.3 13 4.3 11c0-3.5 3.3-6.2 7.7-6.2z' fill='none' stroke='%23f6f7f4' stroke-width='1.4' stroke-linejoin='round'/><circle cx='9' cy='11' r='.9' fill='%23f6f7f4'/><circle cx='12' cy='11' r='.9' fill='%23f6f7f4'/><circle cx='15' cy='11' r='.9' fill='%23f6f7f4'/></svg>" />
+<style>
+  :root {
+    --bg: #f4f6f2;
+    --surface: #ffffff;
+    --ink: #17211b;
+    --ink-soft: #47554c;
+    --ink-faint: #828d86;
+    --line: #e2e7e1;
+    --accent: #2f5a8f;
+    --accent-deep: #24466f;
+    --accent-soft: #e8eef7;
+    --pri: #3579c6;   /* 小学 */
+    --jun: #c98a2e;   /* 初中 */
+    --sen: #a24e8a;   /* 高中 */
+    --radius: 16px;
+    --shadow: 0 1px 2px rgba(24,33,28,.04), 0 8px 24px -12px rgba(24,33,28,.12);
+    --shadow-lg: 0 2px 6px rgba(24,33,28,.06), 0 24px 56px -18px rgba(24,33,28,.22);
+    --font: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font); color: var(--ink); background: var(--bg);
+    background-image:
+      radial-gradient(1100px 500px at 85% -80px, rgba(47,90,143,.08), transparent 62%),
+      radial-gradient(900px 460px at -10% 90px, rgba(53,121,198,.06), transparent 60%);
+    background-attachment: fixed;
+    line-height: 1.6; font-size: 15px; -webkit-font-smoothing: antialiased;
+  }
+  .container { width: min(1280px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- Header ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 1px solid color-mix(in srgb, var(--line) 80%, transparent); }
+  nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #4f7ab5); box-shadow: 0 3px 10px -2px rgba(47,90,143,.5); display: grid; place-items: center; }
+  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
+  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
+  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
+  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
+  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
+  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
+  .status-note { font-size: .78rem; color: var(--ink-faint); }
+
+  /* ---------- Intro ---------- */
+  .intro { padding: 44px 0 10px; }
+  .intro h1 { font-size: clamp(1.75rem, 3.6vw, 2.55rem); line-height: 1.2; font-weight: 800; letter-spacing: -.01em; margin-bottom: 12px; }
+  .intro h1 .accent { background: linear-gradient(120deg, var(--accent) 20%, #4ea283 90%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .intro p { color: var(--ink-soft); max-width: 46rem; font-size: 1rem; }
+  .count-note { display: flex; align-items: center; gap: 8px; margin-top: 14px; flex-wrap: wrap; }
+  .stat-chip { display: inline-flex; align-items: center; gap: 7px; font-size: .8rem; font-weight: 600; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(24,33,28,.04); }
+  .stat-chip b { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .stat-chip .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; padding: 18px 0; color: var(--ink-soft); font-size: .85rem; }
+  .legend .lg { display: flex; align-items: center; gap: 7px; }
+  .lg-dot { width: 14px; height: 14px; border-radius: 50%; }
+  .lg-a { width: 22px; height: 0; border-top: 2px solid var(--ink-faint); }
+  .hint { margin-left: auto; color: var(--ink-faint); }
+
+  /* ---------- Canvas ---------- */
+  .canvas-wrap {
+    background-image: radial-gradient(rgba(24,33,28,.055) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    background-color: var(--surface);
+    border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); overflow: auto;
+  }
+  .canvas-inner { position: relative; height: 420px; min-width: 100%; }
+  svg.links { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .node {
+    position: absolute; transform: translate(-50%, -50%);
+    width: 96px; min-height: 48px; padding: 7px 8px 6px;
+    background: var(--surface); border: 1.5px solid var(--line); border-top: 3px solid var(--line); border-radius: 13px;
+    text-align: center; cursor: pointer; font-size: .78rem; line-height: 1.35; color: var(--ink);
+    box-shadow: var(--shadow); z-index: 2;
+    display: flex; flex-direction: column; gap: 3px; align-items: center; justify-content: center;
+    user-select: none;
+    transition: transform .18s cubic-bezier(.34,1.56,.64,1), box-shadow .18s ease, border-color .18s ease;
+  }
+  .node:hover { transform: translate(-50%, -50%) scale(1.06); z-index: 3; }
+  .node .badge { font-size: .58rem; font-weight: 700; letter-spacing: .14em; opacity: .55; }
+  .node .t { font-weight: 600; }
+  .node .s { font-size: .66rem; color: var(--ink-faint); }
+  .node.primary { border-top-color: var(--pri); }
+  .node.junior { border-top-color: var(--jun); }
+  .node.senior { border-top-color: var(--sen); }
+  .node.primary .badge { color: var(--pri); }
+  .node.junior .badge { color: var(--jun); }
+  .node.senior .badge { color: var(--sen); }
+  .node.primary:hover { border-color: var(--pri); border-top-color: var(--pri); box-shadow: 0 10px 26px -8px rgba(53,121,198,.45); }
+  .node.junior:hover { border-color: var(--jun); border-top-color: var(--jun); box-shadow: 0 10px 26px -8px rgba(201,138,46,.45); }
+  .node.senior:hover { border-color: var(--sen); border-top-color: var(--sen); box-shadow: 0 10px 26px -8px rgba(162,78,138,.45); }
+  .node .hot { font-size: .6rem; font-weight: 700; color: #c0392b; background: #fdecea; border-radius: 99px; padding: 0 6px; }
+  .node.done.primary { background: linear-gradient(150deg, #4b8cd4, var(--pri)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(53,121,198,.65); }
+  .node.done.junior { background: linear-gradient(150deg, #d99e42, var(--jun)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(201,138,46,.65); }
+  .node.done.senior { background: linear-gradient(150deg, #b663a0, var(--sen)); border-color: transparent; border-top-color: rgba(255,255,255,.35); box-shadow: 0 6px 18px -6px rgba(162,78,138,.65); }
+  .node.done .t, .node.done .badge, .node.done .s { color: #fff; }
+  .node.done .badge { opacity: .8; }
+  .node.done .hot { color: #fff; background: rgba(255,255,255,.26); }
+
+  .node .gk { font-size: .6rem; font-weight: 700; color: #24618f; background: #e7f0f9; border-radius: 99px; padding: 0 6px; }
+  .node.done .gk { color: #fff; background: rgba(255,255,255,.26); }
+  .exam-src { font-size: .68rem; font-weight: 500; color: var(--ink-faint); margin-left: 6px; letter-spacing: 0; }
+  .exam-row { display: flex; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); align-items: flex-start; }
+  .exam-row:last-child { border-bottom: none; }
+  .exam-year { flex-shrink: 0; font-weight: 800; font-size: .78rem; color: var(--accent); background: var(--accent-soft); border-radius: 8px; padding: 1px 8px; margin-top: 1px; font-variant-numeric: tabular-nums; }
+  a.exam-year { text-decoration: none; transition: background .15s ease, color .15s ease; }
+  a.exam-year:hover { background: var(--accent); color: #fff; }
+  .exam-pts { font-size: .84rem; color: var(--ink-soft); display: flex; flex-direction: column; gap: 3px; }
+  .exam-pts b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; margin-right: 2px; }
+  .exam-pts a.qlk { color: var(--ink-soft); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); transition: color .15s ease, border-color .15s ease; }
+  .exam-pts a.qlk:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .exam-pts a.qlk b { color: inherit; }
+  .node .check {
+    position: absolute; top: -9px; right: -9px;
+    width: 21px; height: 21px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    font-size: .7rem; font-weight: 700;
+    display: none; align-items: center; justify-content: center;
+    z-index: 4; box-shadow: 0 2px 8px rgba(36,79,65,.45), 0 0 0 2.5px var(--surface);
+  }
+  .node.done .check { display: flex; }
+
+  /* ---------- Detail modal ---------- */
+  .overlay { position: fixed; inset: 0; background: rgba(20,28,23,.46); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity .22s ease; display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px; }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .modal { background: var(--surface); border-radius: 24px; max-width: 620px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow-lg); transform: translateY(16px) scale(.97); opacity: 0; transition: transform .28s cubic-bezier(.22,1,.36,1), opacity .22s ease; }
+  .overlay.open .modal { transform: none; opacity: 1; }
+  .modal-head { padding: 22px 26px 16px; border-bottom: 1px solid var(--line); position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 45%, #fff), var(--surface)); border-radius: 24px 24px 0 0; }
+  .stage-tag { display: inline-flex; align-items: center; gap: 6px; font-size: .72rem; font-weight: 700; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+  .stage-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .stage-tag.primary { color: var(--pri); background: #e8f0fb; }
+  .stage-tag.junior { color: var(--jun); background: #f7efe0; }
+  .stage-tag.senior { color: var(--sen); background: #f6e9f2; }
+  .modal-head h2 { font-size: 1.38rem; font-weight: 800; line-height: 1.3; letter-spacing: -.01em; }
+  .modal-close { position: absolute; top: 16px; right: 18px; border: 0; background: color-mix(in srgb, var(--line) 65%, #fff); color: var(--ink-soft); width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; display: grid; place-items: center; transition: all .18s ease; }
+  .modal-close:hover { background: #fdecea; color: #c0392b; transform: rotate(90deg); }
+  .modal-body { padding: 20px 26px 26px; }
+  .fact { color: var(--ink-soft); font-size: .94rem; margin-bottom: 18px; }
+  .curr { font-size: .82rem; line-height: 1.6; margin: -8px 0 18px; padding: 9px 12px; border-radius: 10px;
+          background: var(--accent-soft); border-left: 3px solid var(--accent); color: var(--ink-soft); }
+  .curr b { color: var(--accent-deep); font-weight: 600; }
+  .curr.ext { background: rgba(230,145,20,.09); border-left-color: #e69114; }
+  .curr.ext b { color: #b06e00; }
+  .pass { font-size: .86rem; line-height: 1.6; margin: -8px 0 18px; padding: 10px 12px; border-radius: 10px;
+          background: rgba(53,121,198,.06); border: 1px dashed rgba(53,121,198,.45); color: var(--ink); }
+  .pass b { color: #2a6ab5; font-weight: 600; }
+  .case { margin: -8px 0 18px; padding: 12px 14px; border-radius: 10px;
+          background: rgba(230,145,20,.07); border-left: 3px solid #e69114; }
+  .case h4 { font-size: .88rem; font-weight: 700; color: #b06e00; margin-bottom: 6px; }
+  .case p { font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .block { margin-bottom: 20px; }
+  .block h4 { font-size: .78rem; font-weight: 700; color: var(--ink-faint); text-transform: uppercase; letter-spacing: .6px; margin-bottom: 10px; }
+  .link-item { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 13px; margin-bottom: 8px; text-decoration: none; color: var(--ink); background: var(--surface); transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .link-item:hover { border-color: var(--accent); box-shadow: 0 6px 16px -6px rgba(47,90,143,.25); transform: translateY(-1px); }
+  .link-item .ic { width: 34px; height: 34px; border-radius: 9px; background: var(--accent-soft); display: grid; place-items: center; color: var(--accent); font-weight: 700; font-size: .7rem; flex-shrink: 0; }
+  .link-item .ln { flex: 1; }
+  .link-item .ln .tt { font-weight: 600; font-size: .92rem; }
+  .link-item .ln .src { font-size: .76rem; color: var(--ink-faint); }
+  .link-item .pin { font-size: .7rem; color: #c0392b; }
+  .link-item .go { color: var(--ink-faint); }
+  .nav-rels { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--line); background: var(--surface); border-radius: 99px; padding: 7px 13px; font-size: .82rem; cursor: pointer; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 6px; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(47,90,143,.35); }
+  .chip b { font-weight: 700; opacity: .6; }
+  .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
+
+  /* ---------- 打卡进度 ---------- */
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+  .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #4ea283); border-radius: 999px; transition: width .45s cubic-bezier(.22,1,.36,1); box-shadow: 0 0 8px rgba(47,90,143,.4); }
+  .progress-text { font-size: .85rem; color: var(--ink-soft); font-weight: 600; white-space: nowrap; }
+  .reset-progress { border: none; background: none; color: var(--ink-faint); font-size: .75rem; text-decoration: underline; cursor: pointer; }
+  .reset-progress:hover { color: #c0392b; }
+  .modal-actions { margin-top: 4px; }
+  .toggle-btn {
+    width: 100%; border: none; border-radius: 13px; padding: 13px;
+    font-size: .95rem; font-weight: 700; cursor: pointer; color: #fff;
+    background: linear-gradient(135deg, var(--accent), #4f7ab5);
+    box-shadow: 0 8px 18px -8px rgba(47,90,143,.6);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -10px rgba(47,90,143,.7); }
+  .toggle-btn:active { transform: translateY(0); }
+  .toggle-btn.undone { background: linear-gradient(135deg, #97a29b, var(--ink-faint)); box-shadow: none; }
+
+  /* ---------- 搜索与进度数据 ---------- */
+  .tool-row { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .search-box {
+    flex: 1; min-width: 220px; max-width: 360px;
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 10px 14px; font-size: .92rem; font-family: inherit;
+    background: #fff; color: inherit;
+  }
+  .search-box { transition: border-color .15s ease, box-shadow .15s ease; }
+  .search-box:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3.5px rgba(47,90,143,.14); }
+  .tool-btn {
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    border-radius: 12px; padding: 9px 14px; font-size: .85rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s ease;
+  }
+  .tool-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(47,90,143,.35); }
+  .search-results {
+    margin-top: 8px; max-width: 380px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  }
+  .search-results:empty { display: none; }
+  .search-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%; text-align: left; border: none; background: none;
+    padding: 10px 14px; font-size: .88rem; color: inherit;
+    cursor: pointer; font-family: inherit;
+  }
+  .search-item:hover { background: #f2f7f4; }
+  .search-item .stage-tag { font-size: .68rem; font-weight: 700; border-radius: 99px; padding: 1px 8px; color: #fff; white-space: nowrap; }
+  .search-item.primary .stage-tag { background: var(--pri); }
+  .search-item.junior .stage-tag { background: var(--jun); }
+  .search-item.senior .stage-tag { background: var(--sen); }
+  .search-empty { padding: 10px 14px; font-size: .85rem; color: var(--ink-faint); }
+  .sub-count { font-size: .75rem; color: var(--ink-faint); font-weight: 600; margin-left: 8px; }
+  /* ---- 子知识点导图（与主图谱同视觉语言 + 动效） ---- */
+  .sub-map {
+    position: relative; margin-top: 8px;
+    background: linear-gradient(180deg, #fafdfb, #f1f6f3);
+    border: 1px solid var(--line); border-radius: 14px;
+    overflow-x: auto;
+  }
+  .sub-map.stage-primary { --sub-c: var(--pri); --ring: rgba(52,120,196,.38); }
+  .sub-map.stage-junior  { --sub-c: var(--jun); --ring: rgba(192,138,46,.38); }
+  .sub-map.stage-senior  { --sub-c: var(--sen); --ring: rgba(162,78,138,.38); }
+  .sub-map svg.sub-links { position: absolute; inset: 0; pointer-events: none; }
+  /* 悬停节点：前置入线（橙）/ 后续出线（青蓝）分明区分 */
+  svg.links .lnk.pre { stroke: #e0722e; stroke-width: 2.8; opacity: .95; }
+  svg.links .lnk.nxt { stroke: #1e8fa8; stroke-width: 2.8; opacity: .95; }
+  .sub-map svg.sub-links line, .sub-map svg.sub-links path { stroke: var(--sub-c); stroke-width: 2.5; fill: none; opacity: .45; }
+  .sub-map svg.sub-links .draw { stroke-dasharray: 500; stroke-dashoffset: 500; animation: subdraw .7s ease forwards; }
+  .sub-map svg.sub-links .flow { stroke-dasharray: 5 9; opacity: .85; animation: subflow 1.4s linear infinite; }
+  @keyframes subdraw { to { stroke-dashoffset: 0; } }
+  @keyframes subflow { to { stroke-dashoffset: -56; } }
+  .sub-mnode {
+    position: absolute; width: 150px; min-height: 48px; box-sizing: border-box;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    padding: 6px 9px; line-height: 1.35;
+    background: #fff; color: var(--ink-soft);
+    border: 2px solid var(--sub-c); border-radius: 12px;
+    font-size: .78rem; font-weight: 600; cursor: pointer; font-family: inherit;
+    box-shadow: 0 2px 6px rgba(0,0,0,.07);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+    animation: subpop .4s ease backwards;
+  }
+  @keyframes subpop { from { opacity: 0; transform: translateY(10px) scale(.88); } }
+  .sub-mnode:hover { transform: translateY(-3px); box-shadow: 0 7px 16px rgba(0,0,0,.14); }
+  .sub-mnode.done { background: var(--sub-c); color: #fff; }
+  .sub-mnode.done::before { content: '✓ '; }
+  .sub-mnode.current { animation: subpulse 1.6s ease-out infinite; }
+  .sub-mnode.current.done { animation: subpulse 1.6s ease-out infinite; }
+  @keyframes subpulse {
+    0%   { box-shadow: 0 0 0 0 var(--ring), 0 2px 6px rgba(0,0,0,.07); }
+    70%  { box-shadow: 0 0 0 9px rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+    100% { box-shadow: 0 0 0 0 rgba(0,0,0,0), 0 2px 6px rgba(0,0,0,.07); }
+  }
+  .sub-chain-actions { display: flex; gap: 10px; margin-top: 10px; }
+  .sub-chain-actions .toggle-btn { flex: 1; width: auto; }
+  /* ---- 当前子点详情（简介 + 难点标记 + 视频位/兜底搜索） ---- */
+  .sub-detail {
+    margin-top: 10px; padding: 12px 14px;
+    background: #fff; border: 1px dashed var(--line); border-radius: 12px;
+  }
+  .sd-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .sd-name { font-weight: 700; font-size: .92rem; color: var(--ink); }
+  .sd-hard {
+    font-size: .72rem; font-weight: 700; color: #b4451f;
+    background: rgba(212,96,43,.12); border: 1px solid rgba(212,96,43,.3);
+    padding: 2px 9px; border-radius: 999px;
+  }
+  .sd-desc { margin: 8px 0 10px; font-size: .85rem; line-height: 1.7; color: var(--ink-soft); }
+  .sd-links .link-item:last-child { margin-bottom: 0; }
+  .sd-soon { opacity: .62; pointer-events: none; }
+  .sub-fire { font-style: normal; margin-right: 4px; font-size: .7rem; }
+
+  footer { padding: 30px 0 56px; }
+  .foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: .84rem; color: var(--ink-faint); }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; margin-left: 16px; }
+
+  .node { -webkit-tap-highlight-color: transparent; }
+  .canvas-wrap { touch-action: pan-x pan-y; }
+  body.modal-open { overflow: hidden; }
+
+  @media (max-width: 760px) {
+    .status-note { display: none; }
+    .subj-ico { display: none; }
+    .subj-tab { padding: 5px 10px; }
+    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
+    .stat-chip { font-size: .74rem; padding: 4px 10px; }
+    .intro { padding: 28px 0 6px; }
+    .intro p { font-size: .94rem; }
+    .legend { gap: 12px; padding: 14px 0; font-size: .8rem; }
+    .hint { margin-left: 0; width: 100%; }
+    .overlay { padding: 12px; }
+    .modal-head { padding: 18px 18px 12px; }
+    .modal-head h2 { font-size: 1.15rem; padding-right: 34px; }
+    .modal-body { padding: 16px 18px 20px; }
+    .link-item { padding: 12px; }
+  }
+  /* ===== 错因诊断 · 支架式案例（OmniEdu 式先诊断再支架 · 2026-11-05）===== */
+  .pitfall .pf-row { display: flex; gap: 8px; padding: 7px 0; border-bottom: 1px dashed rgba(0,0,0,.09); font-size: .84rem; line-height: 1.65; align-items: baseline; }
+  .pitfall .pf-row:last-child { border-bottom: none; }
+  .pitfall .pf-ic { flex: none; }
+  .pitfall .pf-sym { flex: none; max-width: 42%; color: #a8402f; font-weight: 700; }
+  .pitfall .pf-fix { color: var(--ink-soft); }
+  .pitfall .pf-jump { display: inline-block; margin-left: 6px; }
+  .case .scaffold details { margin: 7px 0; border-radius: 8px; border: 1px solid rgba(0,0,0,.09); background: rgba(255,255,255,.5); overflow: hidden; }
+  .case .scaffold summary { cursor: pointer; padding: 8px 12px; font-size: .84rem; font-weight: 700; color: #b06e00; user-select: none; list-style: none; display: flex; align-items: center; }
+  .case .scaffold summary::-webkit-details-marker { display: none; }
+  .case .scaffold summary::after { content: '▸'; margin-left: auto; transition: transform .15s; opacity: .6; }
+  .case .scaffold details[open] summary::after { transform: rotate(90deg); }
+  .case .scaffold .st-body { padding: 0 12px 10px; font-size: .84rem; line-height: 1.7; color: var(--ink-soft); }
+  .case .case-remedy { margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.12); font-size: .82rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+</style>
+<!-- 一屏布局 override -->
+<style>
+html{height:100%;}
+body{display:flex;flex-direction:column;min-height:100vh;}
+section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
+.canvas-inner{flex:1;height:auto;min-height:300px;}
+nav{height:50px;}
+.intro{padding:12px 0 6px;}
+.intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
+.intro p{font-size:.9rem;}
+.count-note{margin-top:4px;}
+.stat-chip{padding:3px 10px;font-size:.75rem;}
+.legend{padding:6px 0;font-size:.8rem;}
+footer{padding:12px 0 36px;font-size:.88rem;}
+@media (max-width:768px){
+  .canvas-inner{min-height:420px;}
+  nav{height:62px;}
+  .intro{padding:20px 0 8px;}
+}
+@media (min-width:769px){ .intro p{display:none;} }
+</style>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</head>
+<body>
+<!-- 可拖动卡通学科浏览条 -->
+<div class="mbl-carousel">
+  <div class="mbl-carousel-track">
+    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+  </div>
+</div>
+<style>
+  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel::-webkit-scrollbar{display:none}
+  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track.dragging{cursor:grabbing}
+  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
+  .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
+  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
+  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
+  .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
+  .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
+  @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
+</style>
+<script>
+(function(){
+  var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
+  var down=false,sx=0,sl=0,moved=0;
+  el.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.pageX;sl=el.scrollLeft;el.classList.add('dragging');e.preventDefault();});
+  window.addEventListener('mousemove',function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>4)moved=1;el.scrollLeft=sl-dx;});
+  window.addEventListener('mouseup',function(){down=false;el.classList.remove('dragging');});
+  el.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();moved=0;}},true);
+  el.addEventListener('wheel',function(e){
+    var d=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    var max=el.scrollWidth-el.clientWidth;
+    if((d>0&&el.scrollLeft<max-1)||(d<0&&el.scrollLeft>1)){e.preventDefault();el.scrollLeft+=d;}
+  },{passive:false});
+  var p=location.pathname.split('/').pop();
+  document.querySelectorAll('.mbl-card').forEach(function(a){
+    if(p===a.getAttribute('href')||(p===''&&a.getAttribute('href')==='mubiaolian-math.html')) a.classList.add('cur');
+  });
+})();
+</script>
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="subject-row">
+      <div class="subject-switch" role="navigation" aria-label="学科切换">
+        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
+        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
+        <span class="subj-tab active" aria-current="page" title="当前：目标链英语站"><i class="subj-ico">A</i>英语</span>
+        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
+        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
+        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
+        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
+        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
+        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
+      </div>
+    </div>
+    <span class="status-note">87 个主干环 · 348 个子考点</span>
+  </nav>
+</header>
+
+<section class="intro container">
+  <h1>全学段英语知识<span class="accent">目标链</span></h1>
+  <p>小学到高中英语主干知识点，不按年级、完全按知识难度从易到难串联成链式图谱。点击任意节点，可查看讲解视频与真题练习，并一键跳转前置必备、后续延伸知识点。</p>
+  <span class="count-note" id="countNote">…</span>
+  <div class="progress-row">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-text" id="progressText">已点亮 0/87</span>
+    <button class="reset-progress" id="resetProgress">重置进度</button>
+  </div>
+  <div class="tool-row">
+    <input class="search-box" id="searchBox" type="text" placeholder="搜索知识点直达，如：定语从句" autocomplete="off" />
+    <button class="tool-btn" id="exportProgress">导出进度</button>
+    <button class="tool-btn" id="importProgress">导入进度</button>
+    <input type="file" id="importFile" accept="application/json,.json" hidden />
+  </div>
+  <div class="search-results" id="searchResults"></div>
+  <div class="legend">
+    <span class="lg"><span class="lg-dot" style="background:var(--pri)"></span>小学</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--jun)"></span>初中</span>
+    <span class="lg"><span class="lg-dot" style="background:var(--sen)"></span>高中</span>
+    <span class="lg"><span class="lg-a"></span>前置 → 后续依赖</span>
+    <span class="hint">← 左右滑动浏览 →</span>
+  </div>
+</section>
+
+<section class="container">
+  <div class="canvas-wrap">
+    <div class="canvas-inner" id="canvas">
+      <svg class="links" id="linksSvg"></svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <span>© 2026 mubiaolian.com · 目标链英语站</span>
+    <div class="foot-links">
+      <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
+      <a href="about.html">关于目标链</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-head">
+      <span class="stage-tag" id="mStage"></span>
+      <h2 id="mTitle"></h2>
+      <button class="modal-close" id="mClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="fact" id="mFact"></p>
+      <p class="curr" id="mCurr" hidden></p>
+      <p class="pass" id="mPass" hidden></p>
+            <div class="block" id="mPitfallBlock" hidden>
+        <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
+        <div class="pitfall" id="mPitfall"></div>
+      </div>
+      <div class="case" id="mCase" hidden>
+        <h4 id="mCaseTitle"></h4>
+        <p id="mCaseText"></p>
+      </div>
+      <div class="block" id="mExamBlock" hidden>
+        <h4>历年高考考情<span class="exam-src">新课标Ⅰ卷 · 按板块人工整理，或有遗漏 · 点年份看整卷</span></h4>
+        <div id="mExam"></div>
+      </div>
+      <div class="block">
+        <h4>本环子知识点导图<span class="sub-count" id="mSubCount"></span></h4>
+        <div class="sub-map" id="mSubMap"></div>
+        <div class="sub-chain-actions">
+          <button class="toggle-btn" id="mSubToggle">点亮此子点</button>
+        </div>
+        <div class="sub-detail" id="mSubDetail" hidden>
+          <div class="sd-head">
+            <span class="sd-name" id="sdName"></span>
+            <span class="sd-hard" id="sdHard" hidden>🔥 重点难点</span>
+          </div>
+          <p class="sd-desc" id="sdDesc"></p>
+          <div class="sd-links" id="sdLinks"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h4>讲解视频</h4>
+        <div id="mLecture"></div>
+      </div>
+
+      <div class="block">
+        <h4>真题练习</h4>
+        <div id="mPractice"></div>
+      </div>
+
+      <div class="block">
+        <h4>前置必备 · 跳到前置</h4>
+        <div class="nav-rels" id="mPrev"></div>
+      </div>
+
+      <div class="block">
+        <h4>后续延伸 · 跳到后续</h4>
+        <div class="nav-rels" id="mNext"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="toggle-btn" id="mToggle">点亮此环 · 已学会</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+ * 目标链英语站 · 知识点数据（87 个主干环，数据库驱动可继续扩展）
+ * 每个节点三块内容：讲解链接 / 真题链接 / 前置-后续关系。
+ *
+ * 当前状态：87 个节点全部挂官方平台直达入口（国家中小学智慧教育平台·课程教学栏目）
+ * 与 B 站关键词搜索深链——均为真实可访问页面，无死链、无编造深链（v1 不写死 BV 号）。
+ * ===================================================================== */
+const STAGE_LABEL = { primary: '小学', junior: '初中', senior: '高中' };
+/* ============ 子知识点 SUBS：每环 4 个细粒度考点（t 考点 + d 讲解含易错提示），共 348 个 ============ */
+/* ============ 历年高考考情（新课标Ⅰ卷英语）：环id → {年份:[题型板块·主题]} ============
+ * 板块粒度（非逐题）。数据源：各年真题原文（eol，已探活）+ 教育部考试院官方评析
+ * （eol/chsi 转载）。人工整理，或有遗漏。 */
+const EXAM = {
+  'practical-reading-en': {
+    2025: ['阅读A·交通与碳排放'],
+    2024: ['阅读A·栖息地修复志愿者招募'],
+    2023: ['阅读A·阿姆斯特丹租车指南'],
+    2022: ['阅读A·课程评分规则'],
+    2021: ['阅读A·罗马青年旅舍广告'],
+  },
+  'reading-inference': {
+    2025: ['阅读BCD·教学相长/车轮上的生活/微塑料治理'],
+    2024: ['阅读BCD·兽医针灸/纸质书与电子书/生物样本数据质量'],
+    2023: ['阅读BCD·生态污水净化/数字极简主义/灰熊保护'],
+    2022: ['阅读BCD·食物浪费回收/养老院养母鸡/语音演化与农业'],
+    2021: ['阅读BCD·律师转行翻谱人/候鸟保护邮票/情商研究'],
+  },
+  'gap-fill-7': {
+    2025: ['七选五·大学咖啡馆员工经验分享'],
+    2024: ['七选五·如何用好英语词典'],
+    2023: ['七选五·学会自我原谅'],
+    2022: ['七选五·如何找到健身搭档'],
+    2021: ['七选五·在巴黎旅居生活的建议'],
+  },
+  'cloze-adv': {
+    2025: ['完形·旧物寻找新主人'],
+    2024: ['完形·模仿他人目标失败后认清自我方向'],
+    2023: ['完形·背受伤选手跑完全程的体育精神'],
+    2022: ['完形·家庭露营途中趣事'],
+    2021: ['完形·面包厂暑假打工领悟劳动价值'],
+  },
+  'grammar-blank': {
+    2025: ['语填·围棋艺术展介绍'],
+    2024: ['语填·英国「丝路花园」介绍'],
+    2023: ['语填·小笼包（中国传统美食）介绍'],
+    2022: ['语填·大熊猫国家公园（GPNP）概况'],
+    2021: ['语填·游黄山游记'],
+  },
+  'applied-high': {
+    2025: ['应用文·给Chris写信：班报增设栏目二选一并说明理由'],
+    2024: ['应用文·给外教Chris写邮件介绍学校美术课'],
+    2023: ['应用文·向Chris反映随机分组口语问题并提建议'],
+    2022: ['应用文·邀请外教Chris做「Talk and Talk」节目访谈'],
+    2021: ['应用文·英文报创刊10周年写稿投稿'],
+  },
+  'continuation-writing': {
+    2025: ['续写·登门向兄弟道歉、化解矛盾'],
+    2024: ['续写·出租车司机退车费的故事（诚信与信任）'],
+    2023: ['续写·参加写作比赛作品获奖'],
+    2022: ['续写·脑疾男孩David参加越野赛'],
+    2021: ['续写·双胞胎母亲节为母亲做早餐'],
+  },
+};
+/* 各年新课标Ⅰ卷英语真题卷公开页（eol，均已探活；点弹窗年份直达） */
+const EXAM_PAPERS = {
+  2021: 'gaokao.html?s=english&y=2021',
+  2022: 'gaokao.html?s=english&y=2022',
+  2023: 'gaokao.html?s=english&y=2023',
+  2024: 'gaokao.html?s=english&y=2024',
+  2025: 'gaokao.html?s=english&y=2025',
+};
+const EXAM_QSRC = {};
+
+
+const SUBS = {
+  /* ---- 小学 · 语音 ---- */
+  'letters': [
+    { t: '大小写', d: '26 个字母的大小写对应与印刷体、手写体区别。易错：b/d、p/q 镜像混淆，i 与 j 的小点常漏写。' },
+    { t: '笔顺占格', d: '四线三格中的占格位置与书写笔顺。易错：大写字母一律占上两格，唯独 f 占三格。' },
+    { t: '字母名称音', d: '字母名称音 Aa /eɪ/、Ee /iː/ 的正确朗读。易错：Gg 与 Jj 名称音相近，听力常混。' },
+    { t: '元辅分类', d: 'a e i o u 五个元音字母与其余辅音字母的分类。易错：y 兼作元音（happy 中发 /i/）。' },
+  ],
+  'phonics-basics': [
+    { t: '短元音拼读', d: 'c-a-t→/kæt/ 三音连拼，五个短元音的口型。易错：把 cap 读成 /keɪp/，短元音读成字母名。' },
+    { t: '字母组合', d: 'sh / ch / th / ee / oo 等组合发音。易错：th 在 th-in 与 th-is 中清浊两种发音不分。' },
+    { t: '哑音 e 长音', d: 'cake / time 中「元音+辅音+e」读字母本音。易错：hop 与 hope 只差一个 e，读音全变。' },
+    { t: '见词能读', d: '按拼读规则朗读未学过的简单单词。易错：习惯死记整词读音，遇新词不敢开口拼。' },
+  ],
+  'songs-chants': [
+    { t: '节奏重音', d: '跟唱儿歌感受英语轻重交替的节拍。易错：逐词平均用力，丢掉轻重节奏。' },
+    { t: '韵脚感知', d: 'cat / hat / bat 押韵词族的积累。易错：只顾唱词不辨音，韵脚混读。' },
+    { t: '句型复现', d: '歌谣中反复出现的句型自然内化。易错：会唱不会说，唱完不复述句型。' },
+    { t: '绕口令', d: '简单绕口令练清浊辅音分辨。易错：求快不求准，th 与 s 不分越练越偏。' },
+  ],
+  'greetings': [
+    { t: '时段问候', d: 'Good morning / afternoon / evening 按时段选用。易错：晚上见面用 Good evening，睡前才说 Good night。' },
+    { t: '介绍句型', d: 'I\'m... / My name is... / This is...（介绍他人）。易错：混搭出 *I\'m name Lily 这类中式结构。' },
+    { t: '告别用语', d: 'Goodbye / See you / Bye-bye 的正式度差异。易错：对师长只说 Bye-bye 显得随意。' },
+    { t: '感谢回应', d: 'Thank you. — You\'re welcome. 应答链。易错：初次见面的正式问候与随意寒暄场景用混。' },
+  ],
+  'classroom-expressions': [
+    { t: '课堂指令', d: 'Stand up. / Sit down. / Open your books. 易错：指令中人称一致性——your books 而非 the book。' },
+    { t: '请求许可', d: 'May I come in? / Can I borrow...? 易错：May I 比 Can I 更礼貌，对师长应优先用 May。' },
+    { t: '求助表达', d: 'Pardon? / Sorry, I don\'t understand. 易错：用光杆 What? 追问显得不礼貌。' },
+    { t: '值日报告', d: '日期+天气+出勤的值日生报告句串。易错：日期表达中星期与月份的顺序、逗号位置写错。' },
+  ],
+  'simple-dialogue': [
+    { t: '问答配对', d: '问句与答语逻辑匹配（问原因用 because 答）。易错：答非所问——问 How 答位置。' },
+    { t: '购物对话', d: 'Can I help you? / How much is it? 完整链路。易错：How much 问价格、How many 问数量，混用。' },
+    { t: '电话用语', d: 'This is... speaking. / Who\'s that? 易错：电话里说 *I am Lily，应用 This is Lily speaking。' },
+    { t: '得体应答', d: '根据场景选择礼貌回应。易错：被夸奖时中式否认 No, no——英语习惯回 Thank you。' },
+  ],
+  'listening-basics': [
+    { t: '听前读题', d: '放音前快速浏览图片与选项预判。易错：听音开始才看题，顾此失彼。' },
+    { t: '抓关键词', d: '锁定数字、人名、动作词等核心信息。易错：逐词硬听，关键词一闪而过。' },
+    { t: '数字反应', d: 'thirteen / thirty 等 -teen 与 -ty 的辨音。易错：两类数词重音不同，听混后数值差十倍。' },
+    { t: '听后核对', d: '利用间隙核对答案与涂卡。易错：连听带猜不回头，涂错行。' },
+  ],
+  'show-tell': [
+    { t: '开场句', d: 'Hello, everyone. Today I\'d like to talk about... 易错：开口直接进正文，缺问候铺垫。' },
+    { t: '观点+细节', d: '一个观点配两个细节支撑。易错：只有观点没有例子，内容空洞。' },
+    { t: '收尾句', d: 'That\'s all. Thank you! 收束表达。易错：戛然而止，忘记致谢收尾。' },
+    { t: '体态语', d: '目光扫场配合自然手势。易错：全程盯稿背诵，与听众零交流。' },
+  ],
+  'numbers-colors': [
+    { t: '基数词', d: 'one 至 twenty 及整十数的拼写规律。易错：forty 无 u、ninety 去 y 加 ie 的特殊拼写。' },
+    { t: '序数词', d: 'first / second / third 及 -th 构成。易错：fifth / eighth / ninth / twelfth 的不规则拼写。' },
+    { t: '颜色词', d: 'red / blue / yellow / green / brown 等基本色。易错：brown 与 black 发音相近，听音混淆。' },
+    { t: '计数表达', d: 'How many...? 问答与数量表达。易错：How many 后接可数名词复数，误接单数。' },
+  ],
+  'family-school': [
+    { t: '家庭成员', d: 'father / mother / brother / sister / grandparents。易错：cousin 通指堂表兄弟姐妹，不分男女长幼。' },
+    { t: '学校场所', d: 'classroom / playground / library 等场所词。易错：classroom（教室）与 school（学校）范围混淆。' },
+    { t: '学习用品', d: 'pencil / ruler / eraser / book 等用品词。易错：a 与 an 的选用——an eraser、an apple。' },
+    { t: '所有格启蒙', d: 'my father\'s car 名词所有格初探。易错：\'s 只加在有生命的名词后，无生命用 of。' },
+  ],
+  'daily-routines': [
+    { t: '作息短语', d: 'get up / have breakfast / go to bed 一天时间线。易错：三餐不加冠词——have lunch 不说 *have a lunch。' },
+    { t: '时间表达', d: 'at 6:30 / in the morning / on Monday 搭配。易错：具体某天的早上用 on Sunday morning。' },
+    { t: '频度搭配', d: 'usually / often 与日常短语组合。易错：与三单冲突——*She usually get up 漏 s。' },
+    { t: '顺序叙事', d: 'first / then / after that 串联一天活动。易错：then 与 than 拼写混淆。' },
+  ],
+  'adjectives-basics': [
+    { t: '描述外貌', d: 'tall / short / thin / young / old 描述人物。易错：fat 在英语中欠礼貌，描述体型常用 heavy。' },
+    { t: '描述事物', d: 'big / small / long / new / old 描述物品。易错：形容词堆叠时的自然顺序（大小→颜色）。' },
+    { t: '定语位置', d: '形容词置于名词前：a red apple。易错：中文语序迁移——*a apple red。' },
+    { t: '系表结构', d: 'be + 形容词作表语：The sky is blue. 易错：*I very happy 漏掉系动词 am。' },
+  ],
+  'topic-vocab': [
+    { t: '话题分类', d: '动物 / 食物 / 天气 / 运动分话题记词。易错：随机抄写无分类，记忆散乱难提取。' },
+    { t: '词形关联', d: '同话题词成组记忆：sunny / rainy / windy。易错：sunny 双写 n、rainy 去 y 加 i 的拼写规则错。' },
+    { t: '高频搭配', d: 'play football / do homework / have lunch 动宾搭配。易错：球类前加多余 the——*play the football。' },
+    { t: '滚动复习', d: '按遗忘周期复习话题词表。易错：背一遍即丢，一周后遗忘超七成。' },
+  ],
+  'be-verb': [
+    { t: 'am/is/are 选用', d: 'I am、he/she/it is、you/we/they are。易错：you 后接 are 而非 is。' },
+    { t: '缩写形式', d: 'I\'m / she\'s / they\'re 与 isn\'t / aren\'t。易错：this is 无缩写形式，*this\'s 不存在。' },
+    { t: '否定句', d: 'be 后直接加 not 构成否定。易错：*I no happy——no 与 not 混用。' },
+    { t: '一般疑问句', d: 'be 提前构成 Are you...? 并用 Yes/No 回答。易错：简短回答末尾不缩写——Yes, I am. 不能说 *Yes, I\'m.。' },
+  ],
+  'plural-nouns': [
+    { t: '规则变化', d: '直接加 -s；以 s / x / ch / sh 结尾加 -es。易错：tomatoes / potatoes 加 -es 而 photos 不加。' },
+    { t: 'f 变 ves', d: 'knife→knives、leaf→leaves。易错：roofs / chiefs 是例外，只加 -s。' },
+    { t: '不规则变化', d: 'man→men、child→children、foot→feet。易错：*mans、*childs 类规则化错误。' },
+    { t: '单复同形', d: 'sheep / deer / fish 单复数同形。易错：two sheeps 画蛇添足加 s。' },
+  ],
+  'pronouns-basics': [
+    { t: '主格人称', d: 'I / you / he / she / it / we / they 作主语。易错：并列主语用主格——Tom and I 而非 *Me and Tom。' },
+    { t: '物主代词', d: 'my / your / his / her / its / our / their + 名词。易错：its 与 it\'s 混淆——it\'s = it is。' },
+    { t: '性数一致', d: '代词与所指对象性别、单复一致。易错：The girl lost *his book——性别配错。' },
+    { t: '宾格', d: 'me / him / her / us / them 作动词、介词宾语。易错：*Give the book to I 应为 to me。' },
+  ],
+  'simple-present': [
+    { t: '三单 -s', d: 'he / she / it 作主语动词加 -s / -es。易错：*He like apples——漏 s 是最高频失分点。' },
+    { t: 'does 否疑', d: 'doesn\'t + 动词原形、Does he...? 易错：*He doesn\'t likes——does 已带 s，动词必须还原。' },
+    { t: '频度副词', d: 'always / usually / often / sometimes / never 置于实义动词前。易错：*He goes always to school 位置错。' },
+    { t: '时间标志', d: 'every day / usually / once a week 提示一般现在时。易错：every day（状语）与 everyday（形容词）混写。' },
+  ],
+  'there-be': [
+    { t: '基本句式', d: 'There is + 单数或不可数，There are + 复数。易错：中文「有」直译成 *There have many people。' },
+    { t: '就近原则', d: 'There is a book and two pens——谓语与最近名词一致。易错：被并列复数带偏误用 are。' },
+    { t: '否定疑问', d: 'There isn\'t any... / Is there any...? 易错：否定疑问中 some 需换 any。' },
+    { t: '与 have 之别', d: 'there be 表存在，have 表拥有。易错：表达「教室里有桌子」误用 have。' },
+  ],
+  'countable': [
+    { t: '可数名词', d: '有单复数之分，可用 a / an 与数词修饰。易错：orange 表「橙汁」时不可数——*an orange juice。' },
+    { t: '不可数名词', d: 'water / milk / bread / rice 无复数形式。易错：*two breads 应为 two pieces of bread。' },
+    { t: '量词表达', d: 'a glass of / a piece of / a bowl of 结构。易错：复数落在量词上——two glasses of water。' },
+    { t: 'some/any', d: 'some 多用于肯定句，any 用于否定疑问。易错：Would you like some...? 表委婉邀请仍用 some。' },
+  ],
+  'imperative': [
+    { t: '肯定祈使', d: '动词原形开头：Open the door, please. 易错：受三单影响写成 *Opens the door。' },
+    { t: '否定祈使', d: 'Don\'t + 动词原形。易错：*Don\'t to run、*Not run 两种错式。' },
+    { t: '礼貌附加', d: 'please 前后位置的标点规则。易错：please 放句尾时前面要加逗号。' },
+    { t: 'Let\'s 句型', d: 'Let\'s + 动词原形表建议，反意疑问用 shall we。易错：*Let\'s to go 多余 to。' },
+  ],
+  'present-prog': [
+    { t: '构成规则', d: 'am / is / are + 现在分词。易错：*He is read a book 漏 -ing。' },
+    { t: '-ing 构成', d: '直接加 / 去 e 加 / 双写末尾字母加。易错：run→running 要双写，write→writing 要去 e。' },
+    { t: '时间标志', d: 'now / Look! / Listen! 提示进行时。易错：看到 Look! 仍写一般现在时。' },
+    { t: '时态对比', d: '进行时表此刻正在做，一般现在表习惯。易错：*She is watching TV every day 两种时态混用。' },
+  ],
+  'simple-past-basics': [
+    { t: '规则 -ed', d: '直接加 / 去 e 加 / 双写加 -ed。易错：stop→stoped 漏双写 p。' },
+    { t: '-ed 读音', d: '清辅音后读 /t/、浊辅音后读 /d/、/t/ /d/ 后读 /ɪd/。易错：所有 -ed 都读 /ɪd/，worked 应读 /t/。' },
+    { t: '时间标志', d: 'yesterday / last week / ... ago。易错：句尾有 ago 却仍用一般现在时。' },
+    { t: '否定疑问', d: 'didn\'t + 动词原形、Did you...? 易错：*He didn\'t went——did 已表过去，动词还原。' },
+  ],
+  'prepositions-basics': [
+    { t: 'in/on/under', d: 'in 在里、on 在上（接触面）、under 在下。易错：on the tree（树上长的）与 in the tree（外来的）之别。' },
+    { t: 'behind/beside', d: 'behind 在后、beside 在旁、in front of 在前。易错：方向参照系搞反。' },
+    { t: 'between 搭配', d: 'between A and B 表两者之间。易错：between 后接 and 不接 to。' },
+    { t: '看图定位', d: '按图准确选用方位介词。易错：看图不细，球在桌下误选 on。' },
+  ],
+  'can-modal': [
+    { t: '能力表达', d: 'can + 动词原形表能力。易错：*She can swims——can 后必须接动词原形。' },
+    { t: '请求句', d: 'Can you...? / Can I...? 提出请求。易错：肯定回答啰嗦，简答 Sure. / Of course. 即可。' },
+    { t: '否定形式', d: 'can\'t / cannot 的规范拼写。易错：can\'t 与 can 在听力中的辨音——重读的 can\'t 元音更长。' },
+    { t: 'could 委婉', d: 'Could you...? 语气更委婉。易错：把 could 仅理解为过去式，拒用于现在请求。' },
+  ],
+  'sentence-patterns': [
+    { t: '主谓宾', d: 'I like English. 的主语+谓语+宾语结构。易错：中文语序迁移——*English I like。' },
+    { t: '主系表', d: 'She is a nurse. / It looks nice. 易错：*She is nurse 表职业名词仍需冠词 a。' },
+    { t: '句型辨认', d: '区分行为动词句与系动词句。易错：行为动词句误加 be——*He is like sports。' },
+    { t: '并列句', d: 'and / but / or 连接两个分句。易错：后半句漏三单——*I like apples and he like pears。' },
+  ],
+  'future-basics': [
+    { t: '结构构成', d: 'am / is / are going to + 动词原形。易错：*I going to swim 漏掉 be。' },
+    { t: '计划意图', d: '表事先的打算：I\'m going to visit Beijing. 易错：临时决定误用 be going to。' },
+    { t: '时间从句', d: 'when 引导的从句用一般现在表将来。易错：*When he will come, I\'ll tell him。' },
+    { t: '与 will 初辨', d: 'will 表预测与临时决定。易错：两个结构随意互换，语气差异全丢。' },
+  ],
+  'picture-reading': [
+    { t: '图文对应', d: '把句子与图片情境对应理解。易错：忽略图中数量、颜色等细节误判。' },
+    { t: '猜词线索', d: '靠图片与已知词推测生词大意。易错：一见生词就查词典，放弃推理训练。' },
+    { t: '句图排序', d: '按图片逻辑为句子排序。易错：忽略 first / then 的排序信号。' },
+    { t: '正误判断', d: '判断句子与图意相符与否。易错：方位或数量被偷换仍判 True。' },
+  ],
+  'graded-reading': [
+    { t: '选书原则', d: '五指法则：一页生词不超过 5 个。易错：越级读原版小说，挫败感强。' },
+    { t: '意群阅读', d: '按短语为单位默读，不逐词指读。易错：手指逐词点读，速度上不来。' },
+    { t: '故事复述', d: '读完用 3-5 句话复述情节。易错：只认字不复述，阅读停留在解码层面。' },
+    { t: '词块积累', d: '摘抄高频句型与固定搭配。易错：只抄单词不抄搭配，孤词难用。' },
+  ],
+  'picture-writing': [
+    { t: '完整成句', d: '每句保证主谓（宾）齐全。易错：*In the park, playing football 无主语。' },
+    { t: '时态一致', d: '一组句子统一时态。易错：前句 is 后句 was 随意切换。' },
+    { t: '观察要素', d: '谁+在哪+做什么+心情，四要素齐全。易错：只写动作，漏掉场景与人物。' },
+    { t: '连接成段', d: '用 and / then 连句成小段落。易错：句句以 I 开头，句式单调。' },
+  ],
+  'self-intro-writing': [
+    { t: '五句框架', d: '姓名→年龄→外貌→爱好→愿望成文。易错：想到哪写到哪，缺收尾句。' },
+    { t: '爱好表达', d: 'I like doing / My hobby is doing。易错：*I like play football——like 后接 doing。' },
+    { t: '年龄句式', d: 'I am ... years old. 易错：中文「我有12岁」直译成 *I have 12 years old。' },
+    { t: '书写规范', d: '句首大写、句末标点、单词间距。易错：I 在句中任何位置都大写，误写成 i。' },
+  ],
+  /* ---- 初中 · 音标与词法 ---- */
+  'ipa': [
+    { t: '元音分类', d: '12 个单元音 + 8 个双元音，长短对立。易错：/iː/ 与 /ɪ/ 长短混读，sheep 与 ship 不分。' },
+    { t: '清浊辅音', d: '/p/-/b/、/t/-/d/、/k/-/g/ 清浊对立。易错：词尾清辅音读成浊音，把 cab 读成 cap 的对立面。' },
+    { t: '开闭音节', d: '开音节读字母本音、闭音节读短音。易错：five（开）与 fish（闭）规则套错。' },
+    { t: '拼读规则', d: '辅音连缀、r 音节（car）与成节音（little）。易错：little 第二个音节是成节音 /l/，漏读音。' },
+  ],
+  'past-irregular': [
+    { t: 'AAA 型', d: 'cut / put / read 原形与过去式同形。易错：read 的过去式拼写不变但读音变为 /red/。' },
+    { t: 'ABB 型', d: 'buy→bought、teach→taught、keep→kept。易错：*buyed、*teached 类规则化错误。' },
+    { t: 'ABC 型', d: 'go→went→gone、do→did→done 三态全记。易错：write→wrote→written 的过去分词拼错。' },
+    { t: '分组记忆', d: '按 -ought / -aught、-ook 等规律分组。易错：catch 不属 -aught 组，应记 caught 而非 *catched。' },
+  ],
+  'comparative': [
+    { t: '-er/-est 构成', d: '单音节加 -er / -est，含双写与改 y 规则。易错：big→bigger 双写、happy→happier 改 y。' },
+    { t: 'more/most', d: '多音节词前加 more / most。易错：*more taller——双重比较级是最常见错式。' },
+    { t: 'than 结构', d: 'A is taller than B. 易错：than 后接代词用宾格：taller than me / him。' },
+    { t: '同级比较', d: 'as + 原级 + as 表「和…一样」。易错：*as taller as——同级比较用原级 as tall as。' },
+  ],
+  'word-formation': [
+    { t: '前缀', d: 'un- / im- / dis- / re- 改变词义方向。易错：im- 只用于 p 开头词——impossible 而非 *unpossible。' },
+    { t: '后缀', d: '-ful / -less / -ly / -er 标记词性。易错：careful（细心）与 careless（粗心）的反义后缀混用。' },
+    { t: '合成词', d: 'classroom / playground 两词合一。易错：合成词拆开写或顺序写反 *roomclass。' },
+    { t: '词性转化', d: 'water(n.)→water(v.) 零转化。易错：句中词性判断错误导致所填形式全错。' },
+  ],
+  'simple-future': [
+    { t: 'will 句式', d: 'will + 动词原形，所有人称通用。易错：*He will comes——三单残留。' },
+    { t: 'won\'t 否定', d: 'will not 缩写为 won\'t。易错：*willn\'t——不存在的形式。' },
+    { t: '语用分工', d: 'will 表预测与临时决定，be going to 表事先计划。易错：两结构互换不辨语气差异。' },
+    { t: '时间标志', d: 'tomorrow / next week / in 2030。易错：in + 时间段表「…之后」与 after 混用。' },
+  ],
+  'past-prog': [
+    { t: '构成形式', d: 'was / were + doing。易错：*I was do my homework——漏 -ing。' },
+    { t: '时间标志', d: 'at 8 last night / this time yesterday。易错：与一般过去时标志混用不辨。' },
+    { t: '背景铺垫', d: 'when / while 从句中作持续性背景。易错：while 后误用短暂动词。' },
+    { t: '动作交叉', d: 'was doing...when did 结构——长动作被打断。易错：when 从句误用进行时。' },
+  ],
+  'articles': [
+    { t: 'a/an 选用', d: '按发音而非字母：an hour / a university。易错：h 不发音用 an，u 发 /juː/ 用 a。' },
+    { t: 'the 特指', d: '第二次提及、双方共知、独一无二加 the。易错：*a sun——独一无二事物用 the sun。' },
+    { t: '零冠词', d: '球类运动、三餐、泛指复数不加冠词。易错：*play the football、*have the lunch。' },
+    { t: '固定搭配', d: 'in the morning / by bus / at night。易错：at night 不加 the，*in the night 中式。' },
+  ],
+  'pronouns-full': [
+    { t: '宾格全表', d: 'me / him / her / us / them 作动宾、介宾。易错：*between you and I——介词后用 me。' },
+    { t: '名词性物主代词', d: 'mine / yours / hers / theirs 独立使用。易错：*a friend of me 应为 a friend of mine。' },
+    { t: '反身代词', d: 'myself / himself / themselves 强调与固定搭配。易错：*himselfs 复数形式错；enjoy oneself 固定。' },
+    { t: '不定代词', d: 'each / every / both / all / either / neither。易错：neither 表两者都不、both 表两者都，范围混淆。' },
+  ],
+  'listening-strategy': [
+    { t: '听前预测', d: '利用选项反推场景与问题方向。易错：埋头检查笔答试题，漏读听力选项。' },
+    { t: '数字速记', d: '价格、时刻、号码的速记符号。易错：eighteen / eighty 听混，数值差十倍。' },
+    { t: '主旨捕捉', d: '独白首尾句常含主旨。易错：开头走神，错过定场句。' },
+    { t: '果断放弃', d: '一题没听到立即跳过保下一题。易错：死磕上一题，连丢两题。' },
+  ],
+  'present-perfect': [
+    { t: '构成形式', d: 'have / has + 过去分词。易错：*He have finished——主谓不一致。' },
+    { t: 'since/for', d: 'since + 时间点，for + 时间段。易错：*since two years 应为 for two years。' },
+    { t: 'been/gone to', d: 'have been to 去过（已回），have gone to 去了（未回）。易错：方向完全相反仍混用。' },
+    { t: '与过去时界限', d: '完成时不与具体过去时间连用。易错：*I have seen it yesterday——yesterday 必须用过去时。' },
+  ],
+  'modal-full': [
+    { t: 'must/have to', d: 'must 表主观必要，have to 表客观被迫。易错：mustn\'t 表「禁止」而非「不必」，不必用 needn\'t。' },
+    { t: 'should 建议', d: 'should + 动词原形提建议。易错：*should to do——情态动词后不加 to。' },
+    { t: 'may 许可', d: 'May I...? 正式请求与回答方式。易错：回答避免生硬的 *Yes, you may，用 Certainly / Of course。' },
+    { t: '推测雏形', d: 'may / might 表初步推测。易错：might 与 may 的确定度差异忽略。' },
+  ],
+  'reading-main-idea': [
+    { t: '主题句定位', d: '段首、段末主题句的识别。易错：把例子、数据当主旨。' },
+    { t: '全文主旨', d: '标题选择与 main idea 题作答。易错：主旨选项过宽或过窄都不会排除。' },
+    { t: '段落大意', d: '用短语概括每段核心。易错：逐句翻译式概括，抓不住重心。' },
+    { t: '细节干扰', d: '细节正确的选项不能当主旨。易错：以偏概全的选项极具迷惑性。' },
+  ],
+  'cloze-basics': [
+    { t: '通读主线', d: '跳读首尾段与各段首句抓主线。易错：看一空填一空，主线没立起来。' },
+    { t: '瞻前顾后', d: '答案线索常在空格前后句。易错：只盯空格本句，语境断裂。' },
+    { t: '复现原则', d: '原词、同义词在上下文复现。易错：忽略复现线索凭感觉硬选。' },
+    { t: '回读验证', d: '填完通读全文检查逻辑。易错：填完即交，语流断裂未发现。' },
+  ],
+  'detail-reading': [
+    { t: '关键词定位', d: '用题干人名、数字回文定位。易错：用选项原词定位，被同义替换骗过。' },
+    { t: '同义替换', d: '正确选项多为原文的同义改写。易错：照抄原词的选项反而多为陷阱。' },
+    { t: '简单推断', d: '推断题忠于原文走一步逻辑。易错：代入常识过度推断。' },
+    { t: '细节偷换', d: '警惕时间、主语、范围被偷换。易错：只看选项前半句对就选。' },
+  ],
+  'object-clause': [
+    { t: '连接词', d: 'that（无词义）/ if / whether（是否）/ wh- 词。易错：从句缺主语或宾语时该用 what 却用 that。' },
+    { t: '陈述语序', d: '从句一律用陈述语序。易错：*I don\'t know where is he——倒装是最高频错式。' },
+    { t: '时态呼应', d: '主句过去时，从句用相应过去时态。易错：客观真理、自然规律从句仍用一般现在时的特例。' },
+    { t: 'if/whether', d: '介词后、不定式前、or not 前只能用 whether。易错：*I\'m worried about if。' },
+  ],
+  'adverbial-clause': [
+    { t: '时间从句', d: 'when / while / as / before / after 引导。易错：主将从现——时间从句用一般现在表将来。' },
+    { t: '条件从句', d: 'if / unless / as long as。易错：*If it will rain——从句误加 will。' },
+    { t: '原因结果', d: 'because 与 so 不共存；so...that 表结果。易错：中文习惯迁移 *because...so 连用。' },
+    { t: '让步目的', d: 'though / although 不与 but 连用；so that 表目的。易错：*Although...but 双连词。' },
+  ],
+  'passive-basics': [
+    { t: 'be done 构成', d: 'be + 过去分词，时态变化落在 be 上。易错：*The room cleaned yesterday——漏 was。' },
+    { t: '各时态被动', d: '一般现在 / 过去 / 将来的被动式。易错：*is built last year——时态与时间状语矛盾。' },
+    { t: '主被转换', d: '主动句宾语变被动句主语，原主语用 by 引出。易错：双宾语句转换时只变一个宾语。' },
+    { t: '情态被动', d: 'must / can / should be done。易错：*must be finish——漏过去分词。' },
+  ],
+  'relative-clause-basics': [
+    { t: '关系代词选用', d: '指人 who / that，指物 which / that。易错：*The book who...——指物误用 who。' },
+    { t: '从句位置', d: '定语从句紧跟先行词之后。易错：先行词与从句被介词短语隔断后找不到先行词。' },
+    { t: 'that 优先', d: '先行词含序数词、最高级、不定代词时优先 that。易错：*everything which——应为 that。' },
+    { t: '宾语省略', d: '关系代词作从句宾语时可省略。易错：作主语也省略，从句没了主语。' },
+  ],
+  'sentence-patterns-exam': [
+    { t: 'so...that', d: 'so + 形容词/副词 + that 结果状语从句。易错：与 such...that（接名词短语）结构混用。' },
+    { t: 'not...until', d: '「直到…才」的强调用法。易错：not 的位置放错，until 从句时态错配。' },
+    { t: 'too...to', d: '「太…而不能」= so...that + can\'t。易错：too...to 本身含否定，仍再加 not。' },
+    { t: '宾补句型', d: 'ask / tell sb (not) to do sth。易错：*ask him don\'t go——否定应移到不定式 not to go。' },
+  ],
+  'review-strategy': [
+    { t: '时态主线', d: '八大时态在时间轴上对比梳理。易错：逐个孤立背诵，对比题型一做就乱。' },
+    { t: '从句主线', d: '宾语、状语、定语三大从句对比表。易错：连接词与语序规则互相串门。' },
+    { t: '非谓语主线', d: 'to do / doing / done 功能一览。易错：初中浅尝辄止，高中直接断层。' },
+    { t: '错题归档', d: '错题按考点归类定期重做。易错：只抄题不归因，同一坑反复摔。' },
+  ],
+  'prepositions-full': [
+    { t: '时间介词', d: 'in 年/月/季节，on 具体某天，at 时刻。易错：*in Monday 应为 on Monday。' },
+    { t: '方位介词', d: 'across / through / over / above 辨析。易错：across 表平面穿过，through 表内部穿过。' },
+    { t: '固定搭配', d: 'be good at / be afraid of / depend on。易错：搭配中的介词张冠李戴。' },
+    { t: '易混辨析', d: 'beside（在旁）/ besides（除…还有）/ except（除…之外无）。易错：besides 与 except 的「有无」方向搞反。' },
+  ],
+  'infinitive-vs-gerund': [
+    { t: '接 to do', d: 'decide / want / hope / plan 后接 to do。易错：*want doing——接续搭配记错。' },
+    { t: '接 doing', d: 'enjoy / finish / practise / mind 后接 doing。易错：*enjoy to play——高频错式。' },
+    { t: '皆可义变', d: 'remember to do（记得要去做）与 remember doing（记得做过）。易错：forget / remember 的方向弄反。' },
+    { t: 'stop 结构', d: 'stop to do 停下来去做另一事，stop doing 停止手头事。易错：语义完全相反仍混用。' },
+  ],
+  'situational-communication': [
+    { t: '问路指路', d: 'How can I get to...? / Go straight and turn left。易错：指路时以对方视角分不清左右。' },
+    { t: '就医表达', d: 'What\'s wrong? / I have a headache. 易错：*I have headache——疾病名前加冠词 a。' },
+    { t: '购物场景', d: 'How much...? / That\'s too expensive. 易错：只会重复问价，不会用句式表达还价。' },
+    { t: '邀请应答', d: '接受用 I\'d love to，拒绝要补原因。易错：生硬拒绝不带歉意，语用失分。' },
+  ],
+  'letter-writing': [
+    { t: '格式要素', d: '称呼 Dear...、正文、落款 Yours,... 三件套。易错：称呼后用逗号而非冒号，落款位置随意。' },
+    { t: '开头段', d: 'I\'m writing to tell you... / Thanks for your last letter. 易错：开头直奔主题，缺寒暄过渡。' },
+    { t: '结尾段', d: 'Looking forward to your reply. 易错：look forward to 中 to 是介词，后接 doing。' },
+    { t: '邮件主题', d: 'Subject 行简明点题。易错：主题空缺或写成整句。' },
+  ],
+  'topic-writing': [
+    { t: '审题三问', d: '写什么 / 给谁写 / 用什么时态。易错：漏看人称与时态限定。' },
+    { t: '提纲三段', d: '开头点题、中间叙事、结尾感受。易错：写成流水账，详略不分。' },
+    { t: '时态锁定', d: '记叙过去通篇用过去时。易错：叙事中途跳时态。' },
+    { t: '亮点意识', d: '用一次从句或强调句提档次。易错：堆复杂句出语法错，反被扣分。' },
+  ],
+  'word-guessing': [
+    { t: '构词线索', d: '用前后缀与词根推义。易错：猜出词义不回语境验证，与上下文矛盾仍用。' },
+    { t: '定义线索', d: 'or / that is / i.e. 后的同位解释。易错：忽略破折号、冒号等标点提示。' },
+    { t: '逻辑线索', d: 'but / however 转折处反推词义。易错：沿前句褒贬直推，漏看转折。' },
+    { t: '举例线索', d: 'such as / for example 后归纳共性。易错：以偏概全，把单个例子当全类。' },
+  ],
+  'trans-transition': [
+    { t: '并列递进', d: 'and / besides / what\'s more 的层次。易错：递进与并列混用，层次不清。' },
+    { t: '转折对比', d: 'but / however / while 的差异。易错：however 置句首后不写逗号、首字母不大写。' },
+    { t: '因果关系', d: 'because / since / as / therefore。易错：because 与 so 同句连用。' },
+    { t: '总结顺序', d: 'first / second / finally / in a word。易错：first 与 firstly 混排不统一。' },
+  ],
+  'exam-vocab': [
+    { t: '分组滚动', d: '1600 词按话题与词频分 30 组滚动记。易错：从 A 背到 Z，通常弃于字母 C。' },
+    { t: '词块记忆', d: '动词短语与固定搭配整块记。易错：孤词记忆，用时报不出搭配。' },
+    { t: '语境记词', d: '在阅读例句中记生词。易错：只背词义表，一词多义记不全。' },
+    { t: '自测闭环', d: '遮义默写+错词本三轮复习。易错：只看不觉——眼熟不等于会用。' },
+  ],
+  'task-reading': [
+    { t: '信息定位', d: '按题干关键词定位原文语句。易错：题序与文段顺序不对应仍硬找。' },
+    { t: '形式转换', d: '图表填空需按空格语法变形。易错：抄原词不变形，与空格要求不符。' },
+    { t: '完整回答', d: '回答问题保持问句结构完整。易错：Yes/No 后缺主语和助动词。' },
+    { t: '字数限制', d: '不超过题目规定词数。易错：答句超词被扣分。' },
+  ],
+  'notice-writing': [
+    { t: '格式规范', d: '标题 NOTICE 居中、日期、落款。易错：标题后多加句号或感叹号。' },
+    { t: '时态人称', d: '通知多用一般现在/将来时、第三人称。易错：混入第一人称叙述口吻。' },
+    { t: '要素齐全', d: '时间、地点、人物、事件、备注五 W 不缺。易错：漏集合时间或地点。' },
+    { t: '简洁文风', d: '多用短语与省略结构。易错：把通知写成记叙文。' },
+  ],
+  /* ---- 高中 · 语法与从句进阶 ---- */
+  'long-sentence': [
+    { t: '找谓语', d: '先定位限定动词，确定主句骨架。易错：把分词、不定式误当谓语，主干找歪。' },
+    { t: '拆从句', d: '借助连接词切分主从边界。易错：嵌套从句只切一层，第二层漏拆。' },
+    { t: '抓主干', d: '先懂主谓宾再看修饰成分。易错：从头逐词硬啃，被修饰语淹没。' },
+    { t: '意群扫读', d: '以短语为单位扫读提速。易错：逐词回视，速度与理解双输。' },
+  ],
+  'noun-clause': [
+    { t: '主语从句', d: 'That he failed the exam surprised us. 易错：主语从句谓语用单数，被句尾复数名词误导。' },
+    { t: '连接词选择', d: '从句缺主语或宾语用 what，成分齐全用 that。易错：*I believe that he said——said 后缺宾语应用 what。' },
+    { t: '同位语从句', d: 'The fact that... 中 that 只起连接作用。易错：与定语从句混淆——同位语从句的 that 不作成分。' },
+    { t: '语序时态', d: '一律陈述语序，时态呼应主句。易错：疑问词一开头就倒装。' },
+  ],
+  'relative-clause-adv': [
+    { t: '介词+关系代词', d: 'in which / of whom 结构，介词与先行词或动词搭配。易错：depend on which 中介词照应动词搭配，选错。' },
+    { t: '非限制性从句', d: '逗号隔开的补充说明，不用 that 引导。易错：*..., that...——非限制性从句禁用 that。' },
+    { t: 'as/which', d: 'as 引导的从句可置句首，指代整个主句。易错：as 与 which 的位置规则混淆。' },
+    { t: 'whose/where/when', d: 'whose 表所属，where / when 在从句中作状语。易错：先行词表地点仍用 which 试图作状语。' },
+  ],
+  'non-finite': [
+    { t: '不定式', d: 'to do 表目的与将来；可作主宾定状补。易错：*for to do——介词 for 后直接接 to do。' },
+    { t: '动名词', d: 'doing 表一般性与已发生动作。易错：与不定式连用的意义差别记混。' },
+    { t: '分词作状语', d: 'doing 表主动进行，done 表被动完成。易错：*Seeing from the hill——主语被看应用 Seen。' },
+    { t: '逻辑主语', d: '分词的逻辑主语须与主句主语一致。易错：悬垂分词——*Walking along the street, a car hit him。' },
+  ],
+  'subjunctive': [
+    { t: '与现在相反', d: 'If I were you, I would...——be 一律用 were。易错：*If I was you（考试判错）。' },
+    { t: '与过去相反', d: '从句 had done，主句 would have done。易错：从句与主句的虚拟形式配对错位。' },
+    { t: '与将来相反', d: '从句 should / were to do。易错：三种时间的虚拟形式互相串用。' },
+    { t: '从句虚拟', d: 'wish 后用过去/过去完成；insist / suggest 表「要求」时接 should do。易错：suggest 表「表明」时不用虚拟。' },
+  ],
+  'inversion': [
+    { t: '否定倒装', d: 'Never / Seldom / Hardly 置句首用部分倒装。易错：*Never I have seen——应为 have I seen。' },
+    { t: 'only 倒装', d: 'only + 状语置句首部分倒装。易错：only 修饰主语时不倒装。' },
+    { t: 'so/neither 句', d: 'So do I 表「我也一样」。易错：So I do 表赞同前述（不倒装），两种意思混淆。' },
+    { t: '完全倒装', d: '方位副词开头主谓全倒：Here comes the bus. 易错：代词作主语不倒装——Here it comes。' },
+  ],
+  'listening-academic': [
+    { t: '独白结构', d: '讲座类独白「总-分-总」结构预判。易错：把例子当论点记。' },
+    { t: '笔记速记', d: '缩写与符号速记关键信息。易错：试图全记，反而漏掉关键。' },
+    { t: '多组信息', d: '多组数字、地点对应不同对象。易错：张冠李戴——价格配错物品。' },
+    { t: '态度推断', d: '语气词与 but 之后的真实态度。易错：把字面态度当真，忽略转折后立场。' },
+  ],
+  'emphasis-ellipsis': [
+    { t: '强调句判断', d: '去掉 It is...that 后句子仍完整即为强调句。易错：与主语从句结构混淆。' },
+    { t: '强调句时态', d: 'is / was 随原句时态定。易错：一律用 is。' },
+    { t: '从句省略', d: 'when / if + doing / done 省略主语和 be。易错：省略后逻辑主语与主句不一致。' },
+    { t: '不定式省略', d: '保留 to 省略动词：I\'d like to. 易错：把 to 一并省掉导致结构残缺。' },
+  ],
+  'reading-inference': [
+    { t: '隐含意义', d: '从细节推出未明说的结论。易错：一步推断走成两步，过度发挥。' },
+    { t: '态度判断', d: '形容词副词的褒贬色彩与转折定位态度。易错：把客观描述误读为主观态度。' },
+    { t: '例证作用', d: '例子服务于观点，考「为何举例」。易错：就例答例，不看其论证功能。' },
+    { t: '错项排除', d: '原词抄写、无中生有、过度推断三类错项。易错：被熟悉的原词诱惑。' },
+  ],
+  'gap-fill-7': [
+    { t: '位置特征', d: '段首句主旨、段中句过渡、段尾句总结。易错：不看空前空后，按语义硬配。' },
+    { t: '代词线索', d: '空后 this / they 回指空前名词。易错：指代对象锁定错误。' },
+    { t: '词汇复现', d: '同义词与上下义词的呼应。易错：只对字面原词，错过同义复现。' },
+    { t: '主线校验', d: '用全文主线复核每个选定项。易错：单句通顺，全篇跑偏。' },
+  ],
+  'grammar-blank': [
+    { t: '有提示词', d: '给动词先判谓语非谓语，再定时态语态。易错：不判语态直接填时态。' },
+    { t: '词性转换', d: '形容词副词名词的相互转换。易错：happily 漏改 y、fifth 类不规则拼写。' },
+    { t: '无提示词', d: '冠词、代词、介词、连词四大类判断。易错：从句缺连接词仍填介词。' },
+    { t: '语境校验', d: '填后通读全篇查逻辑。易错：句子对，全篇错。' },
+  ],
+  'summary-writing': [
+    { t: '要点提取', d: '每段中心句与核心论据。易错：要点平均用力，重点段漏压。' },
+    { t: '压缩改写', d: '同义替换+句式合并压缩信息。易错：整句照抄原文，有判 0 分风险。' },
+    { t: '人称时态', d: '概要用第三人称、保持原文时态。易错：擅自转换人称时态。' },
+    { t: '字数控制', d: '60 词左右不超限。易错：删过头丢要点，或超词被扣分。' },
+  ],
+  'applied-high': [
+    { t: '类型框架', d: '邀请、建议、申请、感谢信各有固定框架。易错：框架错配——邀请信写申请信开头。' },
+    { t: '格式分', d: '称呼、正文、落款三件套齐全。易错：漏落款白扣格式分。' },
+    { t: '要点覆盖', d: '题目所列要点一个不落。易错：要点漏写最伤分。' },
+    { t: '润色升级', d: '非谓语、从句、词块各用一次。易错：为高级而高级，语法出错反扣分。' },
+  ],
+  'cloze-adv': [
+    { t: '情感主线', d: '记叙类完形的情感起伏贯穿全文。易错：选词与情感走向相悖。' },
+    { t: '词义辨析', d: '近义词在语境中的精细差别。易错：只对比中文释义，不看英文语境。' },
+    { t: '双重锁定', d: '固定搭配与词汇复现互相印证。易错：搭配成立但语义矛盾仍选。' },
+    { t: '三重验证', d: '语法、语义、逻辑三关全过再定答案。易错：只过一关就定答案。' },
+  ],
+  'academic-vocab': [
+    { t: '熟词生义', d: 'address（处理）/ book（预订）等第二义。易错：只记第一义，阅读卡壳。' },
+    { t: '一词多义', d: '按本义→引申义画词义网络。易错：多义并列硬背，无主线易忘。' },
+    { t: '高频词块', d: 'come to terms with 等学术词块。易错：把词块拆成单词理解。' },
+    { t: '词频取舍', d: '3000 内高频优先，生僻词放过。易错：平均用力背低频词。' },
+  ],
+  'modal-speculation': [
+    { t: '推测梯度', d: 'must（肯定）> may / might（可能）> can\'t（不可能）。易错：can\'t 表「不可能」与 mustn\'t「禁止」混淆。' },
+    { t: '对现在推测', d: 'must do / must be doing。易错：*must to be——多加 to。' },
+    { t: '对过去推测', d: 'must / may / can\'t have done。易错：*must had done——情态后接 have done。' },
+    { t: '反问配套', d: 'must 表推测时反问按实际时态构成。易错：反问部分直接沿用 must。' },
+  ],
+  'continuation-writing': [
+    { t: '读透原文', d: '情节线、情感线、伏笔三线梳理。易错：忽略伏笔，续写与前文断裂。' },
+    { t: '段首定向', d: '所给段首句锁定续写方向。易错：无视段首句自顾自写。' },
+    { t: '动作链', d: '连续 5 个动作写活紧张场景。易错：只有心理独白没有动作。' },
+    { t: '情感闭环', d: '结尾回扣主题完成情感升华。易错：强行说教式结尾，破坏叙事。' },
+  ],
+  'argumentative-english': [
+    { t: '观点句', d: '首段亮明观点并预告结构。易错：观点模糊，正反骑墙。' },
+    { t: '论证展开', d: '论据=解释+例子+小结三步走。易错：只举例不解释，论证悬空。' },
+    { t: '让步段', d: 'Admittedly... However... 先让步再拉回。易错：让步后忘记拉回己方立场。' },
+    { t: '衔接升级', d: 'however / moreover / consequently 分层使用。易错：全篇 and / but 二连。' },
+  ],
+  'error-correction': [
+    { t: '动词扫描', d: '时态、主谓一致、非谓语三查。易错：动词形式错误约占三分之一，漏查重灾。' },
+    { t: '名词冠词', d: '单复数与冠词的增删判断。易错：不可数名词加 s。' },
+    { t: '介连代词', d: '介词增删、连词逻辑、代词指代。易错：and 与 but 的逻辑关系错判。' },
+    { t: '扫描清单', d: '按十大错型清单逐行扫描。易错：无框架逐词读，节奏全乱。' },
+  ],
+  'tense-concord': [
+    { t: '主从呼应', d: '主句过去时，从句用相应过去时态。易错：宾语从句忘记回拉时态。' },
+    { t: '语法一致', d: '谓语随主语核心词的单复而定。易错：就近名词干扰——The books on the desk *is。' },
+    { t: '意义一致', d: '集体名词按意义定单复。易错：family 强调整体用 are。' },
+    { t: '就近就远', d: 'either...or 就近，as well as 就远。易错：with 短语干扰谓语单复判断。' },
+  ],
+  'literary-reading': [
+    { t: '叙事视角', d: '第一人称限知视角的信息限制。易错：用全知眼光解读限知文本。' },
+    { t: '象征修辞', d: 'metaphor 与象征的深层含义。易错：停留在字面义，错过言外之意。' },
+    { t: '情感脉络', d: '情绪曲线与转折点定位。易错：首尾情感混为一谈。' },
+    { t: '主题提炼', d: '小事件映射大主题。易错：主题概括过大或过小。' },
+  ],
+  'practical-reading-en': [
+    { t: '图文联动', d: '文字与图表信息交叉验证。易错：只读文字，漏看图注与坐标。' },
+    { t: '广告细读', d: '折扣、期限与限制条件定位。易错：忽略星号、小字的例外条款。' },
+    { t: '说明书', d: '步骤顺序与警示语定位。易错：题目乱序作答，步骤张冠李戴。' },
+    { t: '网页定位', d: '导航栏、FAQ、标签页定位法。易错：线性通读，效率极低。' },
+  ],
+  'independent-writing': [
+    { t: '审题立意', d: '圈定题眼词锁定论证方向。易错：把话题写成问题分析，偏题跑题。' },
+    { t: '段落模式', d: '举例、对比、因果三种展开模式。易错：通篇只用一种，结构单调。' },
+    { t: '语言升级', d: '动词短语替换弱动词，长短句交错。易错：长句堆出语法错，得不偿失。' },
+    { t: '限时训练', d: '30 分钟内完成初稿加检查。易错：无时间观念，写不完。' },
+  ],
+  'exam-strategy': [
+    { t: '时间分配', d: '听力、阅读、完形、写作的分块预算。易错：阅读恋战，挤占写作时间。' },
+    { t: '作答顺序', d: '先强项后弱项的个性化顺序。易错：按卷面顺序死磕弱项。' },
+    { t: '涂卡规范', d: '分部分涂卡防止串行。易错：最后 5 分钟集中涂卡来不及。' },
+    { t: '检查策略', d: '只复核标记过的存疑题。易错：全卷重做，越改越错。' },
+  ],
+  'culture-english': [
+    { t: '节日习俗', d: 'Christmas / Thanksgiving 的来历与习俗。易错：把中国节日的语义硬套过去。' },
+    { t: '俚语习语', d: '习语不可逐词直译。易错：kick the bucket 直译成「踢水桶」。' },
+    { t: '社交礼仪', d: '小费文化与用餐习惯差异。易错：用中式礼仪解读英美术语。' },
+    { t: '历史背景', d: '重大历史事件与作品背景知识。易错：背景空白导致阅读误判。' },
+  ],
+  'cross-culture': [
+    { t: '称呼禁忌', d: '不问年龄收入，直呼其名常是友好。易错：以中式尊称套用，反而引起尴尬。' },
+    { t: '高低语境', d: '低语境文化偏好直白表达。易错：把委婉当冷淡、把直白当冒犯。' },
+    { t: '语用失误', d: '关心式提问与回答长度的期待差。易错：回答过短显得敷衍，过长显得防卫。' },
+    { t: '非语言交际', d: '眼神、距离、手势的文化差异。易错：同一手势在不同文化含义相反。' },
+  ],
+  'speech-debate-en': [
+    { t: '演讲结构', d: 'hook—thesis—body—call to action 四段式。易错：无 hook，平铺直叙抓不住人。' },
+    { t: '即兴反驳', d: '先接对方逻辑再反驳：They claim..., yet... 易错：直接否定，不接对方前提。' },
+    { t: '修辞装备', d: '排比、设问、引用三件套。易错：修辞堆砌，冲淡论点。' },
+    { t: '台风控制', d: '停顿、重音、目光三要素。易错：语速过快，全程无停顿。' },
+  ],
+};
+const CAT_LABEL = { pho: '语音拼读', vocab: '词汇积累', gram: '语法句法', comm: '听说交际', read: '阅读理解', write: '写作表达' };
+
+/* 课标溯源：每环对应《义务教育英语课程标准（2022年版）》（义教2022，一级 3~4 年级 / 二级 5~6 年级 / 三级 7~9 年级，
+   核心素养四维：语言能力、文化意识、思维品质、学习能力）与《普通高中英语课程标准（2017年版2020年修订）》
+   （高中2017，必修课程 / 选择性必修课程，主题语境：人与自我、人与社会、人与自然，六要素整合）。
+   v1 为结构级对照：page 仅标注级别或课程模块，不编页码。 */
+const CURRICULUM = {
+  /* ---- 小学 ---- */
+  'letters':                 { doc: '义教2022·语言知识·语音（一级：正确认读与书写 26 个字母）', page: '一级', tag: 'std' },
+  'phonics-basics':          { doc: '义教2022·语言知识·语音（一级：根据拼读规则读出简单单词）', page: '一级', tag: 'std' },
+  'greetings':               { doc: '义教2022·语言技能·说（一级：就熟悉的个人情况进行简单交流）', page: '一级', tag: 'std' },
+  'numbers-colors':          { doc: '义教2022·语言知识·词汇（一级：数字、颜色等基本主题词汇）', page: '一级', tag: 'std' },
+  'family-school':           { doc: '义教2022·主题语境·人与自我（一级：家庭与学校生活的基本表达）', page: '一级', tag: 'std' },
+  'be-verb':                 { doc: '义教2022·语言知识·语法（一级：be 动词的初步运用）', page: '一级', tag: 'std' },
+  'classroom-expressions':   { doc: '义教2022·语言技能·说（一级：课堂指令与请求的得体表达）', page: '一级', tag: 'std' },
+  'plural-nouns':            { doc: '义教2022·语言知识·语法（一级：名词复数的初步认识）', page: '一级', tag: 'std' },
+  'pronouns-basics':         { doc: '义教2022·语言知识·语法（一级：常用人称代词与物主代词）', page: '一级', tag: 'std' },
+  'simple-present':          { doc: '义教2022·语言知识·语法（一级：一般现在时描述习惯与事实）', page: '一级', tag: 'std' },
+  'there-be':                { doc: '义教2022·语言知识·语法（一级：there be 存在句）', page: '一级', tag: 'std' },
+  'countable':               { doc: '义教2022·语言知识·语法（一级：可数与不可数名词的区分）', page: '一级', tag: 'std' },
+  'daily-routines':          { doc: '义教2022·主题语境·人与自我（一级：日常作息与生活安排）', page: '一级', tag: 'std' },
+  'songs-chants':            { doc: '义教2022·语言技能·听（一级：借助韵律儿歌感知语音语调）', page: '一级', tag: 'std' },
+  'picture-reading':         { doc: '义教2022·语言技能·读（一级：借助图片理解简单语句）', page: '一级', tag: 'std' },
+  'imperative':              { doc: '义教2022·语言知识·语法（一级：祈使句的肯定与否定）', page: '一级', tag: 'std' },
+  'present-prog':            { doc: '义教2022·语言知识·语法（一级：现在进行时描述正在发生的事）', page: '一级', tag: 'std' },
+  'adjectives-basics':       { doc: '义教2022·语言知识·词汇（一级：描述性常用形容词）', page: '一级', tag: 'std' },
+  'simple-dialogue':         { doc: '义教2022·语言技能·说（一级：简单情景对话的交流）', page: '一级', tag: 'std' },
+  'graded-reading':          { doc: '义教2022·语言技能·读（一级：课外阅读与语感积累）', page: '一级', tag: 'std' },
+  'simple-past-basics':      { doc: '义教2022·语言知识·语法（二级：一般过去时的规则变化）', page: '二级', tag: 'std' },
+  'picture-writing':         { doc: '义教2022·语言技能·写（一级：看图写话的初步表达）', page: '一级', tag: 'std' },
+  'prepositions-basics':     { doc: '义教2022·语言知识·语法（一级：常用方位介词）', page: '一级', tag: 'std' },
+  'can-modal':               { doc: '义教2022·语言知识·语法（一级：can 表能力与请求）', page: '一级', tag: 'std' },
+  'sentence-patterns':       { doc: '义教2022·语言知识·语法（一级：基本句型的识别与运用）', page: '一级', tag: 'std' },
+  'self-intro-writing':      { doc: '义教2022·语言技能·写（二级：围绕自我介绍成段表达）', page: '二级', tag: 'std' },
+  'listening-basics':        { doc: '义教2022·语言技能·听（一级：听懂简单语句的关键信息）', page: '一级', tag: 'std' },
+  'future-basics':           { doc: '义教2022·语言知识·语法（二级：be going to 表达计划）', page: '二级', tag: 'std' },
+  'topic-vocab':             { doc: '义教2022·语言知识·词汇（二级：话题词汇的分类积累）', page: '二级', tag: 'std' },
+  'show-tell':               { doc: '义教2022·语言技能·说（二级：就熟悉话题进行简单讲述）', page: '二级', tag: 'std' },
+  /* ---- 初中 ---- */
+  'ipa':                     { doc: '义教2022·语言知识·语音（三级：运用音标拼读单词）', page: '三级', tag: 'std' },
+  'past-irregular':          { doc: '义教2022·语言知识·语法（三级：常用不规则动词变化）', page: '三级', tag: 'std' },
+  'comparative':             { doc: '义教2022·语言知识·语法（三级：比较等级的构成与运用）', page: '三级', tag: 'std' },
+  'word-formation':          { doc: '义教2022·语言知识·词汇（三级：运用构词法扩大词汇量）', page: '三级', tag: 'std' },
+  'simple-future':           { doc: '义教2022·语言知识·语法（三级：一般将来时）', page: '三级', tag: 'std' },
+  'past-prog':               { doc: '义教2022·语言知识·语法（三级：过去进行时）', page: '三级', tag: 'std' },
+  'articles':                { doc: '义教2022·语言知识·语法（三级：冠词的用法）', page: '三级', tag: 'std' },
+  'pronouns-full':           { doc: '义教2022·语言知识·语法（三级：代词的完整体系）', page: '三级', tag: 'std' },
+  'listening-strategy':      { doc: '义教2022·学习策略（三级：听力理解中的预测与笔记策略）', page: '三级', tag: 'std' },
+  'present-perfect':         { doc: '义教2022·语言知识·语法（三级：现在完成时）', page: '三级', tag: 'std' },
+  'modal-full':              { doc: '义教2022·语言知识·语法（三级：常用情态动词）', page: '三级', tag: 'std' },
+  'reading-main-idea':       { doc: '义教2022·语言技能·读（三级：把握语篇主旨要义）', page: '三级', tag: 'std' },
+  'prepositions-full':       { doc: '义教2022·语言知识·语法（三级：介词及固定搭配）', page: '三级', tag: 'std' },
+  'cloze-basics':            { doc: '义教2022·语言技能·读（三级：语篇理解与语境选词）', page: '三级', tag: 'std' },
+  'infinitive-vs-gerund':    { doc: '义教2022·语言知识·语法（三级：非谓语形式的初步运用）', page: '三级', tag: 'std' },
+  'detail-reading':          { doc: '义教2022·语言技能·读（三级：获取与梳理具体信息）', page: '三级', tag: 'std' },
+  'object-clause':           { doc: '义教2022·语言知识·语法（三级：宾语从句）', page: '三级', tag: 'std' },
+  'adverbial-clause':        { doc: '义教2022·语言知识·语法（三级：状语从句）', page: '三级', tag: 'std' },
+  'passive-basics':          { doc: '义教2022·语言知识·语法（三级：常用时态的被动语态）', page: '三级', tag: 'std' },
+  'letter-writing':          { doc: '义教2022·语言技能·写（三级：书信邮件等交际性写作）', page: '三级', tag: 'std' },
+  'situational-communication': { doc: '义教2022·主题语境·人与社会（三级：常见生活场景的交际表达）', page: '三级', tag: 'std' },
+  'relative-clause-basics':  { doc: '义教2022·语言知识·语法（三级：限制性定语从句）', page: '三级', tag: 'std' },
+  'topic-writing':           { doc: '义教2022·语言技能·写（三级：围绕话题成篇表达）', page: '三级', tag: 'std' },
+  'word-guessing':           { doc: '义教2022·学习策略（三级：根据上下文推测词义）', page: '三级', tag: 'std' },
+  'trans-transition':        { doc: '义教2022·语言知识·语篇（三级：衔接与连贯手段）', page: '三级', tag: 'std' },
+  'exam-vocab':              { doc: '义教2022·语言知识·词汇（三级：1600 词左右的词汇量要求）', page: '三级', tag: 'std' },
+  'task-reading':            { doc: '义教2022·语言技能·读（三级：信息转换与任务完成）', page: '三级', tag: 'std' },
+  'sentence-patterns-exam':  { doc: '义教2022·语言知识·语法（三级：常用句型与固定结构）', page: '三级', tag: 'std' },
+  'notice-writing':          { doc: '义教2022·语言技能·写（三级：通知启事等应用文体）', page: '三级', tag: 'std' },
+  'review-strategy':         { doc: '义教2022·学习策略（三级：语法知识的系统化梳理）', page: '三级', tag: 'std' },
+  /* ---- 高中 ---- */
+  'long-sentence':           { doc: '高中2017·必修课程·语言知识（理解复合语篇的主干与层次）', page: '必修课程', tag: 'std' },
+  'noun-clause':             { doc: '高中2017·必修课程·语言知识（名词性从句的理解与运用）', page: '必修课程', tag: 'std' },
+  'relative-clause-adv':     { doc: '高中2017·必修课程·语言知识（定语从句的深化运用）', page: '必修课程', tag: 'std' },
+  'non-finite':              { doc: '高中2017·必修课程·语言知识（非谓语动词的理解与运用）', page: '必修课程', tag: 'std' },
+  'subjunctive':             { doc: '高中2017·选择性必修·语言知识（虚拟语气的理解与运用）', page: '选择性必修', tag: 'std' },
+  'inversion':               { doc: '高中2017·选择性必修·语言知识（倒装等强调手段）', page: '选择性必修', tag: 'std' },
+  'listening-academic':      { doc: '高中2017·必修课程·语言技能（听懂较长对话与独白）', page: '必修课程', tag: 'std' },
+  'emphasis-ellipsis':       { doc: '高中2017·选择性必修·语言知识（强调与省略结构）', page: '选择性必修', tag: 'std' },
+  'reading-inference':       { doc: '高中2017·必修课程·语言技能（推断隐含意义与作者态度）', page: '必修课程', tag: 'std' },
+  'gap-fill-7':              { doc: '高中2017·必修课程·语言技能（语篇填空型阅读理解）', page: '必修课程', tag: 'std' },
+  'grammar-blank':           { doc: '高中2017·必修课程·语言知识（语篇中的语法知识运用）', page: '必修课程', tag: 'std' },
+  'summary-writing':         { doc: '高中2017·选择性必修·语言技能（概要写作：信息压缩与重组）', page: '选择性必修', tag: 'std' },
+  'applied-high':            { doc: '高中2017·必修课程·语言技能（应用文写作：正式程度与格式规范）', page: '必修课程', tag: 'std' },
+  'cloze-adv':               { doc: '高中2017·必修课程·语言技能（语篇层面的词汇理解与运用）', page: '必修课程', tag: 'std' },
+  'academic-vocab':          { doc: '高中2017·必修课程·语言知识（3000 词左右的词汇积累）', page: '必修课程', tag: 'std' },
+  'modal-speculation':       { doc: '高中2017·必修课程·语言知识（情态动词表推测）', page: '必修课程', tag: 'std' },
+  'continuation-writing':    { doc: '高中2017·选择性必修·语言技能（读后续写：情节与语言协同产出）', page: '选择性必修', tag: 'std' },
+  'argumentative-english':   { doc: '高中2017·选择性必修·语言技能（议论文写作：论证展开与衔接）', page: '选择性必修', tag: 'std' },
+  'culture-english':         { doc: '高中2017·必修课程·文化知识（英美文化背景知识积累）', page: '必修课程', tag: 'std' },
+  'cross-culture':           { doc: '高中2017·必修课程·文化知识（跨文化交际中的得体性）', page: '必修课程', tag: 'std' },
+  'speech-debate-en':        { doc: '高中2017·选择性必修·语言技能（演讲与辩论的口头表达）', page: '选择性必修', tag: 'std' },
+  'error-correction':        { doc: '高中2017·必修课程·语言知识（语篇层面的语言准确性监控）', page: '必修课程', tag: 'std' },
+  'tense-concord':           { doc: '高中2017·必修课程·语言知识（时态呼应与主谓一致）', page: '必修课程', tag: 'std' },
+  'literary-reading':        { doc: '高中2017·选择性必修·语篇类型（文学类语篇的研读）', page: '选择性必修', tag: 'std' },
+  'practical-reading-en':    { doc: '高中2017·必修课程·语篇类型（多模态语篇的信息获取）', page: '必修课程', tag: 'std' },
+  'independent-writing':     { doc: '高中2017·选择性必修·语言技能（独立写作与自我修改）', page: '选择性必修', tag: 'std' },
+  'exam-strategy':           { doc: '高中2017·学业质量与备考（题型策略与学习策略的整合运用）', page: '必修课程', tag: 'std' },
+};
+
+/* 过关判据 PASS：每环一条可自测的行为化达标线 */
+const PASS = {
+  /* ---- 小学 ---- */
+  'letters':               '能按笔顺默写 26 个字母的大小写，读准每个字母的名称音',
+  'phonics-basics':        '能按拼读规则读出 50 个未学过的简单单词，听音写出 c-v-c 结构单词',
+  'greetings':             '能就问候、告别、介绍完成 4 轮情景对话，用词得体无中文直译',
+  'numbers-colors':        '能听写 1-100 基数词与 10 个常用颜色词，序数词拼写全对',
+  'family-school':         '能说出家庭三代成员与学校 10 个场所的英文名，a/an 选用零错',
+  'be-verb':               '能在 20 题混合填空中全对选用 am/is/are，并完成否定与疑问转换',
+  'classroom-expressions': '能听懂并执行 15 条课堂指令，用 May I... 礼貌提出 3 种请求',
+  'plural-nouns':          '能正确写出 30 个名词的复数形式，含 -es、改 y 与不规则变化',
+  'pronouns-basics':       '能在语篇中正确填出主格、宾格与形容词性物主代词各 10 次',
+  'simple-present':        '能改写含三单的句子 20 句无错，does 否定疑问中动词还原零失误',
+  'there-be':              '能用 there be 描述房间物品 5 句，就近原则判断全对',
+  'countable':             '能对 20 个名词正确分类可数不可数，并用量词表达 a glass of 等',
+  'daily-routines':        '能用 10 个日常短语按时间线口述一天活动，介词搭配零错',
+  'songs-chants':          '能脱稿跟唱 3 首儿歌并复述其中句型，重音节奏基本正确',
+  'picture-reading':       '能借助图片读懂 5 句小语段，看图判断正误 10 题对 9 题',
+  'imperative':            '能互改肯定否定祈使句 15 句，Let\'s 的反意疑问用 shall we 无错',
+  'present-prog':          '能根据图片写出现在进行时句子 10 句，-ing 变化全对',
+  'adjectives-basics':     '能用 15 个形容词描述人物与物品，定语位置与系表结构零错',
+  'simple-dialogue':       '能完成购物、电话等 3 个情景对话的角色扮演，应答得体',
+  'graded-reading':        '能读懂对应级别读物并复述 3-5 句，一页生词不超过 5 个',
+  'simple-past-basics':    '能写出 20 个规则动词的过去式并读准 -ed 的三种读音',
+  'picture-writing':       '能看图写出 3 句主谓宾完整的句子，时态统一无中式语序',
+  'prepositions-basics':   '能看图选用方位介词 15 题全对，区分 on/in the tree',
+  'can-modal':             '能用 can 写出能力句与请求句各 5 句，动词原形零错',
+  'sentence-patterns':     '能辨认并仿写 SVO 与主系表句型各 10 句，成分齐全',
+  'self-intro-writing':    '能写出 5 句自我介绍短文，涵盖姓名年龄爱好，书写规范',
+  'listening-basics':      '能听音选图 10 题对 9 题，-teen/-ty 数字辨音零错',
+  'future-basics':         '能用 be going to 写出 5 个计划句，when 从句用一般现在时',
+  'topic-vocab':           '能按 5 个话题各说出 15 个单词，20 个高频搭配拼写全对',
+  'show-tell':             '能脱稿完成 1 分钟展示，开场、观点、细节、收尾四要素齐全',
+  /* ---- 初中 ---- */
+  'ipa':                   '能认读 48 个音标，据音标读出生词 20 个，听音写出简单单词',
+  'past-irregular':        '能默写 80 个不规则动词的过去式与过去分词，各组类型全对',
+  'comparative':           '能完成 20 题比较级最高级转换，as...as 同级比较零错',
+  'word-formation':        '能按构词法写出 30 个派生词，前后缀使用全对',
+  'simple-future':         '能用 will 与 be going to 各写 5 句并说明语义差别',
+  'past-prog':             '能在 when/while 复合句中正确使用过去进行时 10 句',
+  'articles':              '能完成 30 题冠词填空，a/an/the/零冠词选用全对',
+  'pronouns-full':         '能完成代词全表 30 题填空，反身代词与不定代词零错',
+  'listening-strategy':    '能按预测-笔记-核对三步完成一套听力题，正确率 80%',
+  'present-perfect':       '能完成 since/for、been to/gone to 辨析 20 题，与过去时的界限判断全对',
+  'modal-full':            '能区分 must/mustn\'t/needn\'t 并完成义务类填空 15 题',
+  'reading-main-idea':     '能完成 10 篇短文的主旨题，正确率 80%，并说明排除理由',
+  'prepositions-full':     '能完成时间方位介词与固定搭配 30 题，易混词辨析零错',
+  'cloze-basics':          '能按「通读-选词-回读」流程完成一篇完形，正确率 70%',
+  'infinitive-vs-gerund':  '能判断 30 个动词的接续形式，stop/remember 类义变题全对',
+  'detail-reading':        '能完成细节题 20 题正确率 85%，同义替换识别准确',
+  'object-clause':         '能把疑问句改写为宾语从句 15 句，语序时态零错',
+  'adverbial-clause':      '能完成状语从句连词填空 20 题，主将从现零错',
+  'passive-basics':        '能完成主动被动互改 15 句，覆盖三种时态与情态被动',
+  'letter-writing':        '能写出格式完整的邮件，开头结尾句式正确，正文 60 词以上',
+  'situational-communication': '能完成 5 个情景的补全对话，固定句型使用得体',
+  'relative-clause-basics':'能合并句子为定语从句 15 句，关系代词选用全对',
+  'topic-writing':         '能写出 80 词记叙文，三段式结构，时态统一要点齐全',
+  'word-guessing':         '能对 20 个生词给出词义并说明所用的线索类型',
+  'trans-transition':      '能完成连接词填空 20 题全对，写作中使用 3 类衔接词',
+  'exam-vocab':            '能默写抽测 1600 词表 100 词正确率 90%，词块搭配零错',
+  'task-reading':          '能完成任务型阅读一套，形式转换与字数限制全部符合',
+  'sentence-patterns-exam':'能用 10 个高频句型各造一句，套用零语法错误',
+  'notice-writing':        '能写出格式规范的通知，五 W 要素齐全，语言简洁',
+  'review-strategy':       '能独立绘制时态与从句两条思维导图并讲解给同伴',
+  /* ---- 高中 ---- */
+  'long-sentence':         '能对 20 个长难句完成主干切分并准确翻译',
+  'noun-clause':           '能完成名词性从句 20 题填空，连接词与语序全对',
+  'relative-clause-adv':   '能完成介词+关系代词与非限制性从句 20 题，as/which 判断全对',
+  'non-finite':            '能完成非谓语选择 30 题，逻辑主语与主被动判断零错',
+  'subjunctive':           '能完成三类虚拟条件句转换 15 句，wish 后的虚拟全对',
+  'inversion':             '能完成 20 题倒装改写，部分倒装与完全倒装判断准确',
+  'listening-academic':    '能完成一套高考听力正确率 80%，独白题笔记完整',
+  'emphasis-ellipsis':     '能判断强调句与定语从句 15 题，省略结构还原全对',
+  'reading-inference':     '能完成推断态度题 20 题正确率 80%，能指出错项类型',
+  'gap-fill-7':            '能完成七选五 5 篇正确率 80%，能说出位置特征依据',
+  'grammar-blank':         '能完成语法填空一套正确率 80%，两类空判断全对',
+  'summary-writing':       '能将 300 词文本压缩为 60 词概要，要点齐全无整句照抄',
+  'applied-high':          '能 15 分钟内写出 80 词应用文，格式与要点零缺失',
+  'cloze-adv':             '能完成高考完形一篇正确率 75%，情感线标注完整',
+  'academic-vocab':        '能完成熟词生义 30 题判断，高频词块听写正确率 90%',
+  'modal-speculation':     '能完成推测句 20 题，对现在与对过去的推测形式全对',
+  'continuation-writing':  '能完成一篇续写，衔接段首句、动作链 5 连拍、情感闭环齐全',
+  'argumentative-english': '能写出含让步段的议论文，结构完整，衔接词 3 类以上',
+  'culture-english':       '能就 3 个英美节日做双语介绍，习语直译错误为零',
+  'cross-culture':         '能分析 5 个跨文化情景的得体做法并说明理由',
+  'speech-debate-en':      '能完成 2 分钟脱稿演讲与 1 轮即兴反驳，结构完整',
+  'error-correction':      '能完成短文改错 10 处全对，并按错型标注错误类别',
+  'tense-concord':         '能完成时态呼应与主谓一致 30 题，三原则判断全对',
+  'literary-reading':      '能分析文学语篇的视角、象征与情感线各 1 处并成文',
+  'practical-reading-en':  '能完成多模态阅读一套，图表与文字交叉定位零错',
+  'independent-writing':   '能 30 分钟完成 120 词独立写作并完成一轮自查润色',
+  'exam-strategy':         '能完成一次整卷限时模拟，时间分配执行率 90%',
+};
+
+/* 典型案例：高频易错点的深度拆解 */
+/* ============ 错因诊断卡（OmniEdu 式「先诊断再支架」· 2026-11-05）============
+ * 每环常见卡点：[典型症状, 错因与补救动作, 可选前置环id]
+ * 依据课标与高频易错点人工整理，持续补充中。 */
+const PITFALLS = {
+};
+
+const CASES = {
+  'present-perfect': {
+    title: 'have been to vs have gone to——完成时的两个方向',
+    text: '情景：妈妈问 Alice 两个字问题的差别。<br>'
+        + '<b>① Where is Tom?</b> — <b>He has gone to</b> the library.（去了还没回来，此刻人不在）<br>'
+        + '<b>②</b> Have you ever <b>been to</b> Beijing? — Yes, twice.（去过已回来，重在经历）<br>'
+        + '<b>方向图</b>：been to = 去→回（箭头折返）；gone to = 去→未回（箭头单向）。所以 He has gone to... 说完，Tom 一定不在这里，绝不能换成 been to。<br>'
+        + '<b>易错点</b>：① *He has been to the library, so he isn\'t here——方向自相矛盾；② since + 时间点（since 2020）与 for + 时间段（for two years）混用——记住「since 点、for 段」；③ *I have seen it yesterday——完成时不与具体过去时间连用，有 yesterday 就用一般过去时。',
+  },
+  'continuation-writing': {
+    title: '读后续写的动作链：三连拍写活一个场景',
+    text: '原文：The race was about to start. 续写段首句：When the gun fired, I dashed forward.<br>'
+        + '<b>三连拍（动作链）</b>：My heart pounded. I lowered my head, dug my shoes into the track and sprang ahead, arms swinging wildly.——低身→蹬地→摆臂，三个动作一气呵成，比 I ran very fast 生动十倍。<br>'
+        + '<b>情感植入</b>：动作间隙插一句心理（Fear melted into excitement.），情节与情感双线并行，评分维度「内容丰富度」就拿到了。<br>'
+        + '<b>衔接段首句</b>：第二段段首句已给定结局方向（To my surprise, I crossed the line first.），续写必须顺着它走，不能另起炉灶。<br>'
+        + '<b>易错点</b>：① 无视段首句自编剧情——直接判偏题；② 全段心理独白零动作——字数凑够、分数不高；③ 照抄原文原句——压分红线。',
+  },
+};
+
+// 官方合规平台根入口（域名已核实；smartedu 直达「课程教学」栏目）
+
+/* 外链门户（讲解与练习的统一入口，v1 不写死 BV 号） */
+const PORTALS = {
+  smartedu: { name: '国家中小学智慧教育平台', url: 'https://basic.smartedu.cn/syncClassroom', note: '官方免费·课程教学' },
+  smartedu_pri: { name: '智慧教育·小学英语', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbb2de-0590-11ed-9c79-92fc3b3249d5%2Fe7bbd296-0590-11ed-9c79-92fc3b3249d5%2F6a7495dc-0772-11ed-ac74-092ab92074e6%2Fff808081439f924c0143a40bfce722d4%2Fff8080814371757b014390f883db0453', note: '官方免费·已验证' },
+  smartedu_jun: { name: '智慧教育·初中英语', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbce2c-0590-11ed-9c79-92fc3b3249d5%2F44bebf7c-54e6-11ed-9c34-850ba61fa9f4%2F6a7495dc-0772-11ed-ac74-092ab92074e6%2Fff8080814371757b01437c363a187b0a%2Fff8080814371757b014390f883db0453%2F5136342961', note: '官方免费·已验证' },
+  smartedu_sen: { name: '智慧教育·高中英语', url: 'https://basic.smartedu.cn/syncClassroom?defaultTag=e7bbcefe-0590-11ed-9c79-92fc3b3249d5%2F6a7495dc-0772-11ed-ac74-092ab92074e6%2Fff8080814371757b01437c363a187b0a%2F5036342972', note: '官方免费·已验证' },
+  bilibili: { name: 'Bilibili·公开课', url: 'https://www.bilibili.com', note: '需按关键词检索' },
+  neea: { name: '真题·教育部考试中心', url: 'https://www.neea.edu.cn', note: '官方真题索引' },
+};
+/* ============ 主干环 NODES：87 环（小学 30 + 初中 30 + 高中 27），prev/next 双向依赖 ============ */
+const NODES = {
+/* ================= 小学 · 语音与词汇启蒙 ================= */
+'letters': { title: '字母与书写', stage: 'primary', cat: 'pho', diff: 1.0, hot: false,
+  fact: '26 个字母的大小写、笔顺与发音名，是一切英语学习的起点。',
+  prev: [], next: ['phonics-basics', 'greetings'],
+  lecture: [ {name:'字母与书写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'字母书写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'phonics-basics': { title: '自然拼读入门', stage: 'primary', cat: 'pho', diff: 1.4, hot: false,
+  fact: '字母与字母组合的基础发音（c-a-t 拼读法），「见词能读、听音能写」的第一步。',
+  prev: ['letters'], next: ['songs-chants', 'numbers-colors'],
+  lecture: [ {name:'自然拼读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'拼读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'songs-chants': { title: '儿歌韵律与语感', stage: 'primary', cat: 'pho', diff: 2.6, hot: false,
+  fact: '儿歌、歌谣与绕口令中的节奏语感，在韵律中自然内化语音与句型。',
+  prev: ['phonics-basics', 'greetings'], next: ['graded-reading', 'ipa'],
+  lecture: [ {name:'英语儿歌与韵律', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'跟唱与复述练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+/* ---- 问候交际 ---- */
+'greetings': { title: '问候与自我介绍', stage: 'primary', cat: 'comm', diff: 1.6, hot: false,
+  fact: 'Hello / Good morning / I\'m... 等问候与自我介绍句型，开口说英语的第一课。',
+  prev: ['letters'], next: ['songs-chants', 'classroom-expressions', 'simple-dialogue', 'be-verb'],
+  lecture: [ {name:'问候与介绍', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'情景对话练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'classroom-expressions': { title: '课堂用语', stage: 'primary', cat: 'comm', diff: 2.2, hot: false,
+  fact: 'Stand up, please. / May I come in? 等课堂指令与请求用语，用英语组织课堂。',
+  prev: ['greetings'], next: ['simple-dialogue', 'listening-basics'],
+  lecture: [ {name:'课堂用语', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'指令反应练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'simple-dialogue': { title: '情景小对话', stage: 'primary', cat: 'comm', diff: 3.0, hot: false,
+  fact: '购物、问候等 2-4 个来回的情景小对话，学会问答搭配与得体应答。',
+  prev: ['classroom-expressions', 'greetings'], next: ['listening-basics', 'show-tell', 'can-modal', 'situational-communication', 'letter-writing'],
+  lecture: [ {name:'情景对话', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'对话编排练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'listening-basics': { title: '听关键词抓信息', stage: 'primary', cat: 'comm', diff: 3.4, hot: false,
+  fact: '听录音时抓住数字、人名、动作等关键词，答对「听音选图」类题目。',
+  prev: ['classroom-expressions', 'simple-dialogue'], next: ['listening-strategy'],
+  lecture: [ {name:'听力入门', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'听音选图练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'show-tell': { title: '口语展示 Show & Tell', stage: 'primary', cat: 'comm', diff: 3.7, hot: false,
+  fact: '就熟悉话题做 1 分钟口头展示，「观点+细节+收尾」的口语表达雏形。',
+  prev: ['simple-dialogue', 'self-intro-writing'], next: ['ipa'],
+  lecture: [ {name:'口语展示', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'一分钟展示练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+/* ---- 基础词汇 ---- */
+'numbers-colors': { title: '数字与颜色', stage: 'primary', cat: 'vocab', diff: 1.8, hot: false,
+  fact: '1-100 的基数词与常见颜色词，计数与描述事物最基础的词汇。',
+  prev: ['phonics-basics'], next: ['family-school', 'plural-nouns', 'picture-reading'],
+  lecture: [ {name:'数字与颜色', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'数词颜色练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'family-school': { title: '家庭与学校词汇', stage: 'primary', cat: 'vocab', diff: 2.0, hot: false,
+  fact: '家庭成员、学校场所与学习用品词汇，建立「身边事物都有英文名」的词汇网。',
+  prev: ['numbers-colors'], next: ['topic-vocab', 'be-verb', 'picture-reading'],
+  lecture: [ {name:'家庭与学校', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'词汇分类练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'daily-routines': { title: '日常活动短语', stage: 'primary', cat: 'vocab', diff: 2.6, hot: false,
+  fact: 'get up / have breakfast / go to school 等日常活动短语，配合时间描述一天。',
+  prev: ['simple-present'], next: ['topic-vocab', 'present-prog', 'simple-past-basics'],
+  lecture: [ {name:'日常活动', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'短语搭配练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'adjectives-basics': { title: '形容词描述', stage: 'primary', cat: 'vocab', diff: 2.9, hot: false,
+  fact: 'big / small / tall / short 等常用形容词，描述人物外貌与事物特征。',
+  prev: ['countable', 'picture-reading'], next: ['topic-vocab', 'sentence-patterns', 'picture-writing', 'comparative'],
+  lecture: [ {name:'形容词描述', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'描述性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'topic-vocab': { title: '话题词汇分类', stage: 'primary', cat: 'vocab', diff: 3.6, hot: false,
+  fact: '按动物、食物、天气、运动等话题分类记忆词汇，形成语义网络。',
+  prev: ['family-school', 'daily-routines', 'adjectives-basics'], next: ['word-formation', 'exam-vocab'],
+  lecture: [ {name:'话题词汇', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'话题词表练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+/* ---- 语法句法 ---- */
+'be-verb': { title: 'be 动词', stage: 'primary', cat: 'gram', diff: 2.0, hot: false,
+  fact: 'am / is / are 的选用规则与缩写形式，「主语+be+表语」的英语句子基本骨架。',
+  prev: ['greetings', 'family-school'], next: ['pronouns-basics', 'simple-present'],
+  lecture: [ {name:'be 动词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'be 动词填空', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'plural-nouns': { title: '名词复数', stage: 'primary', cat: 'gram', diff: 2.2, hot: false,
+  fact: '名词复数的规则变化（-s / -es）与常见不规则变化（child→children）。',
+  prev: ['numbers-colors'], next: ['there-be', 'countable', 'word-formation', 'articles'],
+  lecture: [ {name:'名词复数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'复数变化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'pronouns-basics': { title: '人称与物主代词', stage: 'primary', cat: 'gram', diff: 2.4, hot: false,
+  fact: 'I / you / he / she / it / we / they 与 my / your / his / her 等人称、物主代词的基本用法。',
+  prev: ['be-verb'], next: ['simple-present', 'pronouns-full'],
+  lecture: [ {name:'代词入门', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'代词填空练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'simple-present': { title: '一般现在时', stage: 'primary', cat: 'gram', diff: 2.4, hot: true,
+  fact: '一般现在时的用法与第三人称单数 -s 变化，描述习惯、事实与经常性动作。',
+  prev: ['be-verb', 'pronouns-basics'], next: ['daily-routines', 'there-be', 'countable', 'imperative', 'present-prog', 'sentence-patterns', 'picture-writing'],
+  lecture: [ {name:'一般现在时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'时态填空练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'there-be': { title: 'there be 句型', stage: 'primary', cat: 'gram', diff: 2.5, hot: false,
+  fact: 'There is / are 表达「某处有某物」，就近原则与否定、疑问变化。',
+  prev: ['simple-present', 'plural-nouns'], next: ['prepositions-basics', 'prepositions-full'],
+  lecture: [ {name:'there be 句型', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'there be 练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'countable': { title: '可数与不可数名词', stage: 'primary', cat: 'gram', diff: 2.6, hot: false,
+  fact: '可数与不可数名词的区分及量词表达（a glass of water），some / any 的搭配。',
+  prev: ['plural-nouns', 'simple-present'], next: ['adjectives-basics', 'articles'],
+  lecture: [ {name:'可数与不可数', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'量词搭配练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'imperative': { title: '祈使句与指令', stage: 'primary', cat: 'gram', diff: 2.7, hot: false,
+  fact: '祈使句的肯定与否定形式（Open... / Don\'t...），发出指令、提出请求。',
+  prev: ['simple-present'], next: ['can-modal', 'picture-writing'],
+  lecture: [ {name:'祈使句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'指令改写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'present-prog': { title: '现在进行时', stage: 'primary', cat: 'gram', diff: 2.9, hot: false,
+  fact: '现在进行时 be + doing 描述正在发生的动作，-ing 形式的构成规则。',
+  prev: ['simple-present', 'daily-routines'], next: ['simple-past-basics', 'future-basics', 'past-prog'],
+  lecture: [ {name:'现在进行时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'进行时练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'simple-past-basics': { title: '一般过去时入门', stage: 'primary', cat: 'gram', diff: 3.1, hot: false,
+  fact: '规则动词 -ed 变化与 yesterday / last night 等时间标志，第一次接触「过去」的表达。',
+  prev: ['present-prog', 'daily-routines'], next: ['future-basics', 'past-irregular', 'simple-future', 'past-prog'],
+  lecture: [ {name:'一般过去时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'-ed 变化练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'prepositions-basics': { title: '方位介词', stage: 'primary', cat: 'gram', diff: 3.2, hot: false,
+  fact: 'in / on / under / behind 等方位介词，准确表达物体的位置关系。',
+  prev: ['there-be', 'picture-reading'], next: ['prepositions-full'],
+  lecture: [ {name:'方位介词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'看图选介词', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'can-modal': { title: 'can 情态表达', stage: 'primary', cat: 'gram', diff: 3.3, hot: false,
+  fact: 'can 表能力与请求（I can swim. / Can you...?），情态动词的第一课。',
+  prev: ['imperative', 'simple-dialogue'], next: ['modal-full', 'situational-communication'],
+  lecture: [ {name:'can 的用法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'情态句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'sentence-patterns': { title: '基本句型（SVO / 主系表）', stage: 'primary', cat: 'gram', diff: 3.3, hot: false,
+  fact: '主谓宾（SVO）与主系表两大基本句型，识别句子成分、写出完整句。',
+  prev: ['simple-present', 'adjectives-basics'], next: ['self-intro-writing', 'infinitive-vs-gerund', 'object-clause', 'trans-transition'],
+  lecture: [ {name:'基本句型', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'句型转换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'future-basics': { title: 'be going to 表计划', stage: 'primary', cat: 'gram', diff: 3.5, hot: false,
+  fact: 'be going to 结构表达计划与打算，初步区别于 will 的语感。',
+  prev: ['simple-past-basics', 'present-prog'], next: ['simple-future'],
+  lecture: [ {name:'be going to', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'计划表达练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+/* ---- 阅读理解 ---- */
+'picture-reading': { title: '图片阅读与猜词', stage: 'primary', cat: 'read', diff: 2.7, hot: false,
+  fact: '借助图片线索读懂句子或小语段，用上下文与图示猜测生词意思。',
+  prev: ['numbers-colors', 'family-school'], next: ['adjectives-basics', 'prepositions-basics', 'graded-reading'],
+  lecture: [ {name:'图片阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'看图判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'graded-reading': { title: '分级绘本阅读', stage: 'primary', cat: 'read', diff: 3.0, hot: false,
+  fact: '按难度分级的绘本与读物阅读，靠高频句型复现积累语感与词汇。',
+  prev: ['picture-reading', 'songs-chants'], next: ['reading-main-idea'],
+  lecture: [ {name:'分级阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'读物复述练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+/* ---- 写作表达 ---- */
+'picture-writing': { title: '看图写句', stage: 'primary', cat: 'write', diff: 3.2, hot: false,
+  fact: '看图写 1-3 句完整的话，把图片信息组织成主谓宾齐全的句子。',
+  prev: ['simple-present', 'imperative', 'adjectives-basics'], next: ['self-intro-writing', 'topic-writing'],
+  lecture: [ {name:'看图写句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'写句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+
+'self-intro-writing': { title: '自我介绍小短文', stage: 'primary', cat: 'write', diff: 3.4, hot: false,
+  fact: '写 5 句左右的自我介绍短文，涵盖姓名、年龄、爱好与家庭。',
+  prev: ['picture-writing', 'sentence-patterns'], next: ['show-tell', 'letter-writing'],
+  lecture: [ {name:'自我介绍写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_pri.url, needCheck:false} ],
+  practice: [ {name:'短文写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_pri.url, needCheck:false} ] },
+/* ================= 初中 · 音标与词法 ================= */
+'ipa': { title: '音标系统与拼读规则', stage: 'junior', cat: 'pho', diff: 3.8, hot: true,
+  fact: '48 个国际音标、元辅音分类与拼读规则，见音标能读词、听发音能拼写。',
+  prev: ['songs-chants', 'show-tell'], next: [],
+  lecture: [ {name:'国际音标', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'音标辨音练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ---- 词法 ---- */
+'past-irregular': { title: '不规则过去式', stage: 'junior', cat: 'gram', diff: 3.8, hot: false,
+  fact: 'go→went、see→saw 等 80+ 个不规则动词过去式，按规律分组记忆。',
+  prev: ['simple-past-basics'], next: ['present-perfect', 'subjunctive'],
+  lecture: [ {name:'不规则过去式', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'动词变化默写', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'comparative': { title: '比较级与最高级', stage: 'junior', cat: 'gram', diff: 3.9, hot: true,
+  fact: '比较级与最高级的构成（-er/-est、more/most）与 as...as 同级比较。',
+  prev: ['adjectives-basics'], next: [],
+  lecture: [ {name:'比较级最高级', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'比较句转换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'word-formation': { title: '构词法', stage: 'junior', cat: 'vocab', diff: 3.9, hot: false,
+  fact: '前缀后缀（un- / re- / -ful / -ly）、合成词与词性转化，成倍扩大词汇量。',
+  prev: ['topic-vocab', 'plural-nouns'], next: ['infinitive-vs-gerund', 'detail-reading', 'word-guessing', 'exam-vocab', 'academic-vocab'],
+  lecture: [ {name:'构词法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'词形转换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'simple-future': { title: '一般将来时 will', stage: 'junior', cat: 'gram', diff: 4.0, hot: false,
+  fact: 'will 的一般将来时：预测、临时决定与 will / won\'t 句式变化。',
+  prev: ['future-basics', 'simple-past-basics'], next: ['adverbial-clause'],
+  lecture: [ {name:'一般将来时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'将来时练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'past-prog': { title: '过去进行时', stage: 'junior', cat: 'gram', diff: 4.0, hot: false,
+  fact: '过去进行时 was / were doing，描述过去某刻正在进行的动作与叙事背景。',
+  prev: ['simple-past-basics', 'present-prog'], next: ['present-perfect', 'passive-basics'],
+  lecture: [ {name:'过去进行时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'时态辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'articles': { title: '冠词', stage: 'junior', cat: 'gram', diff: 4.0, hot: false,
+  fact: 'a / an / the / 零冠词的选用体系：首次提及用 a、特指用 the、泛指复数用零冠词。',
+  prev: ['countable', 'plural-nouns'], next: ['cloze-basics'],
+  lecture: [ {name:'冠词用法', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'冠词填空练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'pronouns-full': { title: '代词全表', stage: 'junior', cat: 'gram', diff: 4.1, hot: false,
+  fact: '主格宾格、形容词性与名词性物主代词、反身代词与不定代词（each / either / both）全表。',
+  prev: ['pronouns-basics'], next: ['object-clause', 'relative-clause-basics'],
+  lecture: [ {name:'代词全表', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'代词辨析练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'present-perfect': { title: '现在完成时', stage: 'junior', cat: 'gram', diff: 4.2, hot: true,
+  fact: 'have / has done 的构成、since / for 时间搭配与 have been to / gone to 辨析。',
+  prev: ['past-prog', 'past-irregular'], next: ['continuation-writing', 'tense-concord'],
+  lecture: [ {name:'现在完成时', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'完成时专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'modal-full': { title: '情态动词', stage: 'junior', cat: 'gram', diff: 4.2, hot: false,
+  fact: 'must / have to / should / may / might 等情态动词的推测与义务用法。',
+  prev: ['can-modal'], next: ['sentence-patterns-exam', 'modal-speculation'],
+  lecture: [ {name:'情态动词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'情态动词练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'prepositions-full': { title: '介词搭配', stage: 'junior', cat: 'gram', diff: 4.3, hot: false,
+  fact: '时间介词（in / on / at）、固定搭配（be interested in）与易混介词辨析。',
+  prev: ['prepositions-basics', 'there-be'], next: [],
+  lecture: [ {name:'介词搭配', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'介词专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'infinitive-vs-gerund': { title: '不定式与动名词', stage: 'junior', cat: 'gram', diff: 4.4, hot: false,
+  fact: 'to do 与 doing 作宾语的区别（like doing / decide to do）及常见固定搭配。',
+  prev: ['sentence-patterns', 'word-formation'], next: ['sentence-patterns-exam', 'non-finite'],
+  lecture: [ {name:'非谓语初步', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'接续搭配练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'object-clause': { title: '宾语从句', stage: 'junior', cat: 'gram', diff: 4.4, hot: true,
+  fact: '宾语从句的陈述语序、时态呼应与连接词 that / if / whether / wh- 的选择。',
+  prev: ['sentence-patterns', 'pronouns-full'], next: ['adverbial-clause', 'passive-basics', 'relative-clause-basics', 'noun-clause', 'non-finite'],
+  lecture: [ {name:'宾语从句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'从句改写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'adverbial-clause': { title: '状语从句', stage: 'junior', cat: 'gram', diff: 4.5, hot: false,
+  fact: '时间 / 条件 / 原因 / 结果等状语从句的引导词与「主将从现」规则。',
+  prev: ['object-clause', 'simple-future'], next: ['inversion'],
+  lecture: [ {name:'状语从句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'连词选择练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'passive-basics': { title: '被动语态', stage: 'junior', cat: 'gram', diff: 4.5, hot: false,
+  fact: '被动语态 be done 的构成与各时态变化，主动句与被动句的转换规则。',
+  prev: ['past-prog', 'object-clause'], next: ['review-strategy'],
+  lecture: [ {name:'被动语态', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'语态转换练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'relative-clause-basics': { title: '定语从句入门', stage: 'junior', cat: 'gram', diff: 4.6, hot: true,
+  fact: 'who / which / that 引导的定语从句，关系代词的选用与从句位置。',
+  prev: ['pronouns-full', 'object-clause'], next: ['long-sentence', 'relative-clause-adv'],
+  lecture: [ {name:'定语从句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'关系词填空练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'sentence-patterns-exam': { title: '重点句型与固定搭配', stage: 'junior', cat: 'gram', diff: 4.9, hot: false,
+  fact: 'so...that / not...until / 宾语补足语等中考高频句型与固定搭配清单。',
+  prev: ['infinitive-vs-gerund', 'modal-full'], next: ['review-strategy'],
+  lecture: [ {name:'重点句型', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'句型套用练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'review-strategy': { title: '中考语法体系梳理', stage: 'junior', cat: 'gram', diff: 5.0, hot: false,
+  fact: '把初中语法串成体系：时态一条线、从句一条线、非谓语一条线的复习框架。',
+  prev: ['sentence-patterns-exam', 'passive-basics'], next: ['grammar-blank', 'tense-concord'],
+  lecture: [ {name:'语法体系复习', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'中考语法真题', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+/* ---- 听说 ---- */
+'listening-strategy': { title: '听力策略', stage: 'junior', cat: 'comm', diff: 4.1, hot: false,
+  fact: '听前读题预测、听中抓主旨与数字细节、听后核对——中考听力的流程化打法。',
+  prev: ['listening-basics'], next: ['listening-academic'],
+  lecture: [ {name:'听力策略', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'听力真题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'situational-communication': { title: '情景交际', stage: 'junior', cat: 'comm', diff: 4.6, hot: false,
+  fact: '问路、就医、购物、打电话等高频情景的固定问答与礼貌用语。',
+  prev: ['simple-dialogue', 'can-modal'], next: ['listening-academic', 'culture-english', 'cross-culture'],
+  lecture: [ {name:'情景交际', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'补全对话练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+/* ---- 阅读 ---- */
+'reading-main-idea': { title: '阅读主旨题', stage: 'junior', cat: 'read', diff: 4.2, hot: false,
+  fact: '找主题句、概括段落大意与全文主旨，区分主旨与细节选项。',
+  prev: ['graded-reading'], next: ['cloze-basics', 'detail-reading'],
+  lecture: [ {name:'主旨大意题', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'主旨题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'cloze-basics': { title: '完形填空入门', stage: 'junior', cat: 'read', diff: 4.3, hot: false,
+  fact: '完形填空入门：通读全文抓主线、瞻前顾后选词、复现与搭配原则。',
+  prev: ['reading-main-idea', 'articles'], next: ['cloze-adv'],
+  lecture: [ {name:'完形填空', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'完形基础篇', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'detail-reading': { title: '细节理解与推断', stage: 'junior', cat: 'read', diff: 4.4, hot: false,
+  fact: '定位关键词、识别同义替换与简单推断，细节题正确率的保障体系。',
+  prev: ['reading-main-idea', 'word-formation'], next: ['word-guessing', 'task-reading', 'reading-inference', 'culture-english'],
+  lecture: [ {name:'细节理解题', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'细节题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'word-guessing': { title: '词义猜测', stage: 'junior', cat: 'read', diff: 4.7, hot: true,
+  fact: '通过构词法、上下文线索与逻辑关系猜测生词词义的方法体系。',
+  prev: ['detail-reading', 'word-formation'], next: ['task-reading'],
+  lecture: [ {name:'词义猜测', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'猜词专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'task-reading': { title: '任务型阅读', stage: 'junior', cat: 'read', diff: 4.8, hot: false,
+  fact: '任务型阅读：图表填空、回答问题等信息转换题型的规范作答。',
+  prev: ['word-guessing', 'detail-reading'], next: ['long-sentence', 'practical-reading-en'],
+  lecture: [ {name:'任务型阅读', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'任务型真题练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+/* ---- 词汇 ---- */
+'exam-vocab': { title: '中考高频 1600 词', stage: 'junior', cat: 'vocab', diff: 4.8, hot: true,
+  fact: '中考 1600 高频词的科学记忆：分组滚动、语境记词与词块积累。',
+  prev: ['word-formation', 'topic-vocab'], next: ['academic-vocab'],
+  lecture: [ {name:'中考词汇', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'词汇默写自测', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+/* ---- 写作 ---- */
+'letter-writing': { title: '书信与邮件', stage: 'junior', cat: 'write', diff: 4.5, hot: false,
+  fact: '英文书信与邮件的格式（称呼 / 正文 / 落款）与常用开头结尾句式。',
+  prev: ['self-intro-writing', 'simple-dialogue'], next: ['topic-writing', 'notice-writing', 'applied-high'],
+  lecture: [ {name:'书信邮件写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'书信写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'topic-writing': { title: '话题记叙作文', stage: 'junior', cat: 'write', diff: 4.6, hot: false,
+  fact: '围绕话题写 80 词记叙文：审题、列提纲、按时间或逻辑顺序展开。',
+  prev: ['letter-writing', 'picture-writing'], next: ['trans-transition'],
+  lecture: [ {name:'记叙文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'话题写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'trans-transition': { title: '连接词与语篇衔接', stage: 'junior', cat: 'write', diff: 4.7, hot: false,
+  fact: 'and / but / however / because / so 等连接词的语篇功能与逻辑衔接。',
+  prev: ['topic-writing', 'sentence-patterns'], next: ['notice-writing', 'gap-fill-7', 'summary-writing', 'argumentative-english'],
+  lecture: [ {name:'语篇衔接', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'连接词填空练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+
+'notice-writing': { title: '应用文（通知 / 启事）', stage: 'junior', cat: 'write', diff: 4.9, hot: false,
+  fact: '通知、启事、留言条等应用文的格式要点与简明表达。',
+  prev: ['letter-writing', 'trans-transition'], next: ['applied-high'],
+  lecture: [ {name:'应用文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_jun.url, needCheck:false} ],
+  practice: [ {name:'通知写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_jun.url, needCheck:false} ] },
+/* ================= 高中 · 语法与从句进阶 ================= */
+'long-sentence': { title: '长难句分析', stage: 'senior', cat: 'read', diff: 5.0, hot: false,
+  fact: '找谓语动词、拆从句、抓主干——三步读懂 40 词以上的长难句。',
+  prev: ['task-reading', 'relative-clause-basics'], next: ['relative-clause-adv', 'reading-inference'],
+  lecture: [ {name:'长难句分析', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'长难句切分练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'noun-clause': { title: '名词性从句', stage: 'senior', cat: 'gram', diff: 5.1, hot: false,
+  fact: '主语 / 宾语 / 表语 / 同位语从句的连接词选择与语序规则。',
+  prev: ['relative-clause-adv', 'object-clause'], next: [],
+  lecture: [ {name:'名词性从句', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'从句专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'relative-clause-adv': { title: '定语从句进阶', stage: 'senior', cat: 'gram', diff: 5.1, hot: false,
+  fact: '介词 + 关系代词、非限制性定语从句与 as / which 引导的特殊用法。',
+  prev: ['relative-clause-basics', 'long-sentence'], next: ['noun-clause'],
+  lecture: [ {name:'定语从句进阶', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'进阶定语从句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'non-finite': { title: '非谓语动词', stage: 'senior', cat: 'gram', diff: 5.2, hot: true,
+  fact: '不定式、动名词、分词作状语与定语的用法，逻辑主语与主被动的判断。',
+  prev: ['infinitive-vs-gerund', 'object-clause'], next: ['subjunctive', 'inversion', 'emphasis-ellipsis', 'grammar-blank', 'error-correction'],
+  lecture: [ {name:'非谓语动词', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'非谓语专项练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'subjunctive': { title: '虚拟语气', stage: 'senior', cat: 'gram', diff: 5.3, hot: true,
+  fact: 'if 虚拟条件句三类时间、wish 后的虚拟与名词性从句中的 should + 动词原形。',
+  prev: ['non-finite', 'past-irregular'], next: ['modal-speculation'],
+  lecture: [ {name:'虚拟语气', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'虚拟语气练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'inversion': { title: '倒装', stage: 'senior', cat: 'gram', diff: 5.3, hot: false,
+  fact: '否定词开头、only 状语开头的部分倒装与方位副词开头的完全倒装。',
+  prev: ['non-finite', 'adverbial-clause'], next: ['emphasis-ellipsis'],
+  lecture: [ {name:'倒装结构', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'倒装改写练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'listening-academic': { title: '长对话与独白听力', stage: 'senior', cat: 'comm', diff: 5.3, hot: true,
+  fact: '长对话与独白听力：笔记速记、数字与地点捕捉、态度推断。',
+  prev: ['listening-strategy', 'situational-communication'], next: ['speech-debate-en'],
+  lecture: [ {name:'高考听力', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'听力套题训练', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'emphasis-ellipsis': { title: '强调与省略', stage: 'senior', cat: 'gram', diff: 5.4, hot: false,
+  fact: '强调句 it is...that... 的判断方法与状语从句、不定式中的省略结构。',
+  prev: ['inversion', 'non-finite'], next: [],
+  lecture: [ {name:'强调与省略', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'强调句判断练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ---- 阅读题型 ---- */
+'reading-inference': { title: '推断与态度题', stage: 'senior', cat: 'read', diff: 5.4, hot: true,
+  fact: '推断隐含意义、作者态度题的语气词线索与三类错项排除法。',
+  prev: ['long-sentence', 'detail-reading'], next: ['gap-fill-7', 'literary-reading'],
+  lecture: [ {name:'推断与态度', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'推断题练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'gap-fill-7': { title: '七选五', stage: 'senior', cat: 'read', diff: 5.4, hot: true,
+  fact: '七选五：主旨句 / 过渡句 / 细节句的位置特征与代词、复现线索。',
+  prev: ['reading-inference', 'trans-transition'], next: ['cloze-adv', 'summary-writing'],
+  lecture: [ {name:'七选五', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'七选五真题练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'grammar-blank': { title: '语法填空', stage: 'senior', cat: 'gram', diff: 5.5, hot: true,
+  fact: '语法填空：有提示词（时态语态、词性转换）与无提示词（冠词、代词、连词）双轨打法。',
+  prev: ['review-strategy', 'non-finite'], next: ['error-correction'],
+  lecture: [ {name:'语法填空', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'语法填空真题', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'cloze-adv': { title: '完形填空进阶', stage: 'senior', cat: 'read', diff: 5.6, hot: true,
+  fact: '高考完形：情感线贯穿、词汇精细辨析与语法语义逻辑三重验证。',
+  prev: ['cloze-basics', 'gap-fill-7'], next: ['literary-reading'],
+  lecture: [ {name:'完形进阶', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'完形真题训练', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'literary-reading': { title: '文学类文本阅读', stage: 'senior', cat: 'read', diff: 6.1, hot: false,
+  fact: '叙事视角、象征与修辞、情感脉络的深度解读，读懂文学类语篇。',
+  prev: ['cloze-adv', 'reading-inference'], next: ['practical-reading-en', 'exam-strategy'],
+  lecture: [ {name:'文学类文本', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文学语篇练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'practical-reading-en': { title: '多模态实用文本', stage: 'senior', cat: 'read', diff: 6.2, hot: false,
+  fact: '图表、广告、说明书与网页信息的交叉验证阅读，C 类应用文题型的信息定位。',
+  prev: ['literary-reading', 'task-reading'], next: [],
+  lecture: [ {name:'多模态文本', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'应用文阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'exam-strategy': { title: '高考题型策略', stage: 'senior', cat: 'read', diff: 6.4, hot: false,
+  fact: '高考英语全卷策略：时间分配、作答顺序、涂卡规范与检查流程。',
+  prev: ['literary-reading', 'error-correction', 'summary-writing'], next: [],
+  lecture: [ {name:'高考全卷策略', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'整卷限时模拟', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+/* ---- 写作题型 ---- */
+'summary-writing': { title: '概要写作', stage: 'senior', cat: 'write', diff: 5.5, hot: true,
+  fact: '概要写作：抓论点句、压缩例证、60 词内用自己的话重组原文。',
+  prev: ['gap-fill-7', 'trans-transition'], next: ['exam-strategy', 'continuation-writing'],
+  lecture: [ {name:'概要写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'概要写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'applied-high': { title: '高中应用文写作', stage: 'senior', cat: 'write', diff: 5.6, hot: true,
+  fact: '高中应用文：邀请信、建议信、投稿等 80 词左右作文的框架与润色。',
+  prev: ['notice-writing', 'letter-writing'], next: ['argumentative-english'],
+  lecture: [ {name:'应用文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'应用文真题练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'academic-vocab': { title: '学术词汇 3000+', stage: 'senior', cat: 'vocab', diff: 5.6, hot: false,
+  fact: '课标 3000+ 词汇的进阶：熟词生义、一词多义与高频词块。',
+  prev: ['exam-vocab', 'word-formation'], next: [],
+  lecture: [ {name:'高考词汇', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'词汇进阶自测', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'modal-speculation': { title: '情态动词表推测', stage: 'senior', cat: 'gram', diff: 5.7, hot: false,
+  fact: 'must / may / can\'t 表推测的确定度梯度与对过去的推测 must have done。',
+  prev: ['modal-full', 'subjunctive'], next: [],
+  lecture: [ {name:'推测情态', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'推测句练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'continuation-writing': { title: '读后续写', stage: 'senior', cat: 'write', diff: 5.8, hot: true,
+  fact: '读后续写：读懂情节与情感线，用动作链与细节描写续写两段文字。',
+  prev: ['summary-writing', 'present-perfect'], next: ['independent-writing'],
+  lecture: [ {name:'读后续写', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'续写真题练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'argumentative-english': { title: '英语议论文', stage: 'senior', cat: 'write', diff: 5.8, hot: false,
+  fact: '英语议论文：观点-论据-让步-结论结构，衔接词与句式升级。',
+  prev: ['trans-transition', 'applied-high'], next: ['independent-writing'],
+  lecture: [ {name:'议论文写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'议论文写作练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'error-correction': { title: '短文改错', stage: 'senior', cat: 'write', diff: 6.0, hot: false,
+  fact: '短文改错：动词形式、名词单复数、冠词介词连词等十大高频错误扫描法。',
+  prev: ['grammar-blank', 'non-finite'], next: ['exam-strategy'],
+  lecture: [ {name:'短文改错', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'改错真题练习', src:'教育部教育考试院', url: PORTALS.neea.url, needCheck:false} ] },
+
+'tense-concord': { title: '时态呼应与主谓一致', stage: 'senior', cat: 'gram', diff: 6.1, hot: false,
+  fact: '主从句时态呼应与主谓一致三原则（语法 / 意义 / 就近）。',
+  prev: ['present-perfect', 'review-strategy'], next: [],
+  lecture: [ {name:'时态呼应与一致', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'一致原则练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+/* ---- 文化与思辨 ---- */
+'independent-writing': { title: '独立写作与润色', stage: 'senior', cat: 'write', diff: 6.3, hot: false,
+  fact: '独立写作：审题立意、段落展开模式（举例 / 对比 / 因果）与语言润色。',
+  prev: ['argumentative-english', 'continuation-writing'], next: [],
+  lecture: [ {name:'独立写作', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'限时写作训练', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'culture-english': { title: '英美文化背景', stage: 'senior', cat: 'comm', diff: 5.9, hot: false,
+  fact: '英美国家节日、习俗、俚语与历史常识，读懂文字背后的文化。',
+  prev: ['detail-reading', 'situational-communication'], next: ['cross-culture'],
+  lecture: [ {name:'英美文化', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'文化阅读练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'cross-culture': { title: '跨文化交际', stage: 'senior', cat: 'comm', diff: 5.9, hot: false,
+  fact: '称呼与禁忌、高低语境差异、语用失误避免——得体地与不同文化的人交流。',
+  prev: ['culture-english', 'situational-communication'], next: ['speech-debate-en'],
+  lecture: [ {name:'跨文化交际', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'情景得体性练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+'speech-debate-en': { title: '英语演讲与辩论', stage: 'senior', cat: 'comm', diff: 6.0, hot: false,
+  fact: '三段式演讲稿、即兴反驳与公众表达技巧，让口语输出有结构、有说服力。',
+  prev: ['cross-culture', 'listening-academic'], next: [],
+  lecture: [ {name:'演讲与辩论', src:'国家中小学智慧教育平台', url: PORTALS.smartedu_sen.url, needCheck:false} ],
+  practice: [ {name:'演讲实战练习', src:'官方免费平台·练习持续补充中', url: PORTALS.smartedu_sen.url, needCheck:false} ] },
+
+};
+
+// ---------- 已验证真实链接库（可点击，均来自免费公开平台/免费公开课，非编造） ----------
+// 说明：以下 href 均为真实可访问链接（BV 号经 API 全量探活）。未列入 LINK 的节点，
+// 讲解/练习自动走官方平台深链（智慧教育·课程教学栏目）或 B 站按资源名+作者搜索直达。
+/* v1 策略：不写死 BV 号，讲解/练习全部经 deepOf() 生成 B 站搜索深链或官方平台入口 */
+const LINK = {};
+
+// ---------- 渲染 ----------
+(function () {
+  const canvas = document.getElementById('canvas');
+  const svg = document.getElementById('linksSvg');
+
+  /* ---------- 打卡进度（localStorage 持久化，别让链断掉） ---------- */
+  const STORE_KEY = 'mubiaolian_graph_progress';
+  let progress = {};
+  try { progress = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { progress = {}; }
+  let currentId = null;
+  const saveProgress = () => localStorage.setItem(STORE_KEY, JSON.stringify(progress));
+  const isDone = id => !!progress[id];
+
+  /* 子知识点级进度（链中链，key = nodeId::子点名，更稳：子点顺序调整不影响进度） */
+  const SUB_KEY = 'mubiaolian_sub_progress';
+  let subProgress = {};
+  try { subProgress = JSON.parse(localStorage.getItem(SUB_KEY) || '{}'); } catch (e) { subProgress = {}; }
+  const saveSubProgress = () => localStorage.setItem(SUB_KEY, JSON.stringify(subProgress));
+  const subDone = (nodeId, subT) => !!subProgress[nodeId + '::' + subT];
+  /* 兼容迁移：旧版 key 为 nodeId::序号，一次性换算成 nodeId::子点名 */
+  const migrateSubProgress = () => {
+    let changed = false;
+    Object.keys(subProgress).forEach(k => {
+      const m = k.match(/^(.+)::(\d+)$/);
+      if (!m) return;
+      const list = SUBS[m[1]];
+      const sub = list && list[+m[2]];
+      if (!sub) return;
+      const nk = m[1] + '::' + sub.t;
+      if (!subProgress[nk]) subProgress[nk] = true;
+      delete subProgress[k];
+      changed = true;
+    });
+    if (changed) saveSubProgress();
+  };
+  migrateSubProgress();
+
+  const ids = Object.keys(NODES);
+  const minD = Math.min(...ids.map(i => NODES[i].diff));
+  const maxD = Math.max(...ids.map(i => NODES[i].diff));
+  const PAD_W = 70, PAD_T = 60, PAD_B = 60;
+  const W = Math.max(1100, ids.length * 118 + 220);
+  /* 同难度节点最多的一档决定画布高度，环数增多后不挤压 */
+  const groups = {};
+  ids.forEach(id => { const d=NODES[id].diff; (groups[d]=groups[d]||[]).push(id); });
+  const availH0 = Math.max(300, (canvas.parentElement.clientHeight || 0) - 2);
+  const H = Math.max(
+    window.innerWidth < 760 ? 380 : 420,
+    Math.max(...Object.values(groups).map(a => a.length)) * 66 + 130,
+    availH0
+  );
+
+  const pos = {};
+  ids.forEach(id => {
+    const d = NODES[id].diff;
+    const span = (d - minD) / (maxD - minD || 1);
+    const x = PAD_W + span * (W - PAD_W*2);
+    pos[id] = { x, y: 0 };
+  });
+
+  // 垂直分组：同一难度多个节点均匀分布在高度带上
+  Object.keys(groups).map(Number).sort((a,b)=>a-b).forEach(d => {
+    const arr = groups[d];
+    const n = arr.length;
+    arr.forEach((id, idx) => {
+      const y = PAD_T + ((idx+0.5) / n) * (H - PAD_T - PAD_B);
+      if ('x' in pos[id]) pos[id] = { x: pos[id].x, y };
+    });
+  });
+
+  // 节点
+  ids.forEach(id => {
+    const n = NODES[id];
+    const el = document.createElement('div');
+    el.className = 'node ' + n.stage + (isDone(id) ? ' done' : '');
+    el.setAttribute('data-id', id);
+    el.style.left = pos[id].x + 'px';
+    el.style.top = pos[id].y + 'px';
+    el.innerHTML =
+      `<span class="badge">${STAGE_LABEL[n.stage]}</span>` +
+      `<span class="t">${n.title}</span>` +
+      (n.hot ? `<span class="hot">升学高频</span>` : '') +
+      (EXAM[id] ? `<span class="gk">高考考情</span>` : '') +
+      `<span class="check">✓</span>`;
+    el.addEventListener('click', () => openModal(id));
+    el.addEventListener('mouseenter', () => focusLinks(id));
+    el.addEventListener('mouseleave', () => blurLinks());
+    function focusLinks(id) {
+      svg.querySelectorAll('.lnk').forEach(p => {
+        const pre = p.dataset.t === id, nxt = p.dataset.f === id;
+        if (!pre && !nxt) return;
+        p.classList.toggle('pre', pre);
+        p.classList.toggle('nxt', nxt);
+        p.setAttribute('marker-end', pre ? 'url(#arrP)' : 'url(#arrN)');
+        splash(p);
+      });
+    }
+    function blurLinks() {
+      svg.querySelectorAll('.lnk.pre, .lnk.nxt').forEach(p => {
+        p.classList.remove('pre', 'nxt');
+        p.setAttribute('marker-end', p.classList.contains('lit')
+          ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+      });
+      refreshProgress();
+    }
+    canvas.appendChild(el);
+  });
+
+  // 连线（前置 → 当前）+ 水波滤镜与加宽命中区
+  let linkMarkup = `<defs><filter id="waveF" x="-15%" y="-60%" width="130%" height="220%">
+      <feTurbulence id="waveNoise" type="fractalNoise" baseFrequency="0.02 0.07" numOctaves="1" seed="7" result="wn"/>
+      <feDisplacementMap id="waveDisp" in="SourceGraphic" in2="wn" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+    <marker id="arrG" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#828d86"/></marker>\
+<marker id="arrP" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#e0722e"/></marker>\
+<marker id="arrN" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1e8fa8"/></marker>\
+<marker id="arr-pri" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--pri)"/></marker>\
+<marker id="arr-jun" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--jun)"/></marker>\
+<marker id="arr-sen" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="var(--sen)"/></marker>\
+  </filter></defs>`;
+  ids.forEach(id => {
+    const n = NODES[id];
+    n.prev.forEach(p => {
+      if (!pos[p]) return;
+      const a = pos[p], b = pos[id];
+      const x1 = a.x + 46, y1 = a.y, x2 = b.x - 46, y2 = b.y;
+      const mx = (x1+x2)/2;
+      const d = `M ${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`;
+      linkMarkup += `<path class="lnk" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="var(--ink-faint)" stroke-width="1.6" opacity="0.5" marker-end="url(#arrG)"/>`;
+      linkMarkup += `<path class="lnk-hit" data-f="${p}" data-t="${id}" d="${d}" fill="none" stroke="rgba(0,0,0,0)" stroke-width="14" pointer-events="stroke"/>`;
+    });
+  });
+  svg.innerHTML = linkMarkup;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.style.width = W + 'px';
+  svg.style.height = H + 'px';
+
+  /* ---------- 连线水波：鼠标掠过如水面荡漾 ---------- */
+  const waveDisp = svg.querySelector('#waveDisp');
+  const waveNoise = svg.querySelector('#waveNoise');
+  const splashes = new Map();
+  function splash(path) {
+    if (!path || splashes.has(path)) return;
+    path.setAttribute('filter', 'url(#waveF)');
+    path.setAttribute('opacity', '0.95');
+    splashes.set(path, performance.now());
+    if (splashes.size === 1) requestAnimationFrame(ripple);
+  }
+  function ripple(now) {
+    splashes.forEach((t0, path) => {
+      const t = (now - t0) / 1100;
+      if (t >= 1) {
+        path.removeAttribute('filter');
+        path.setAttribute('opacity', path.classList.contains('pre') || path.classList.contains('nxt') ? '0.95' : (path.classList.contains('lit') ? '0.85' : '0.5'));
+        splashes.delete(path);
+        return;
+      }
+      const env = Math.sin(t * Math.PI) * Math.pow(1 - t, 1.2);   // 起振后逐渐平息
+      waveDisp.setAttribute('scale', (15 * env).toFixed(2));
+      waveNoise.setAttribute('baseFrequency', `0.02 ${(0.06 + 0.06 * t).toFixed(4)}`);
+    });
+    if (splashes.size) requestAnimationFrame(ripple);
+  }
+  svg.querySelectorAll('.lnk-hit').forEach(h => {
+    h.addEventListener('mouseenter', () =>
+      splash(svg.querySelector(`.lnk[data-f="${h.dataset.f}"][data-t="${h.dataset.t}"]`)));
+  });
+
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+
+  // 统计（stat 徽章）
+  const STAGE_VAR = { primary: 'pri', junior: 'jun', senior: 'sen' };
+  const stCnt = s => ids.filter(i => NODES[i].stage === s).length;
+  const subTotal = ids.reduce((n, i) => n + (SUBS[i] || []).length, 0);
+  document.getElementById('countNote').innerHTML =
+    `<span class="stat-chip"><span class="dot" style="background:var(--accent)"></span><b>${ids.length}</b> 个主干环</span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--pri)"></span>小学 <b>${stCnt('primary')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--jun)"></span>初中 <b>${stCnt('junior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:var(--sen)"></span>高中 <b>${stCnt('senior')}</b></span>` +
+    `<span class="stat-chip"><span class="dot" style="background:#c0392b"></span><b>${subTotal}</b> 个子考点</span>`;
+
+  /* ---------- 进度条与重置 ---------- */
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function refreshProgress() {
+    const done = ids.filter(isDone).length;
+    progressFill.style.width = (done / ids.length * 100) + '%';
+    progressText.textContent = `已点亮 ${done}/${ids.length}`;
+    /* 两端都已点亮的链路高亮为 stage 色——点亮越多，链越亮 */
+    svg.querySelectorAll('.lnk').forEach(p => {
+      const lit = isDone(p.dataset.f) && isDone(p.dataset.t);
+      p.classList.toggle('lit', lit);
+      p.setAttribute('stroke', lit ? `var(--${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'var(--ink-faint)');
+      p.setAttribute('opacity', lit ? '0.85' : '0.5');
+      p.setAttribute('marker-end', lit ? `url(#arr-${STAGE_VAR[NODES[p.dataset.t].stage]})` : 'url(#arrG)');
+    });
+  }
+  refreshProgress();
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    progress = {};
+    saveProgress();
+    document.querySelectorAll('.node.done').forEach(el => el.classList.remove('done'));
+    refreshProgress();
+    syncToggleButton();
+  });
+
+  /* ---------- 搜索直达 ---------- */
+  const searchBox = document.getElementById('searchBox');
+  const searchResults = document.getElementById('searchResults');
+  function jumpToNode(id) {
+    searchResults.innerHTML = '';
+    searchBox.value = '';
+    const el = document.querySelector(`.node[data-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+    setTimeout(() => openModal(id), 400);
+  }
+  searchBox.addEventListener('input', () => {
+    const q = searchBox.value.trim();
+    searchResults.innerHTML = '';
+    if (!q) return;
+    const hits = ids.filter(i => NODES[i].title.includes(q) || (SUBS[i] || []).some(s => s.t.includes(q) || (s.d || '').includes(q))).slice(0, 8);
+    if (!hits.length) {
+      searchResults.innerHTML = '<div class="search-empty">没有匹配的知识点，换个关键词试试</div>';
+      return;
+    }
+    hits.forEach(id => {
+      const n = NODES[id];
+      const btn = document.createElement('button');
+      btn.className = 'search-item ' + n.stage;
+      btn.innerHTML = `<span class="stage-tag">${STAGE_LABEL[n.stage]}</span><span>${n.title}</span>`;
+      btn.addEventListener('click', () => jumpToNode(id));
+      searchResults.appendChild(btn);
+    });
+  });
+
+  /* ---------- 进度导出 / 导入（JSON 备份，可跨设备迁移） ---------- */
+  const importFile = document.getElementById('importFile');
+  document.getElementById('exportProgress').addEventListener('click', () => {
+    const blob = new Blob(
+      [JSON.stringify({ site: 'mubiaolian.com', version: 2, exportedAt: new Date().toISOString(), progress, subProgress }, null, 2)],
+      { type: 'application/json' }
+    );
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'mubiaolian-progress.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  document.getElementById('importProgress').addEventListener('click', () => importFile.click());
+  importFile.addEventListener('change', () => {
+    const f = importFile.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result);
+        const incoming = data && data.progress ? data.progress : data;
+        if (incoming && typeof incoming === 'object' && !Array.isArray(incoming)) {
+          progress = incoming;
+          saveProgress();
+          if (data.subProgress && typeof data.subProgress === 'object') { subProgress = data.subProgress; migrateSubProgress(); saveSubProgress(); }
+          document.querySelectorAll('.node').forEach(el => el.classList.toggle('done', isDone(el.getAttribute('data-id'))));
+          refreshProgress();
+          if (subNodeId && overlay.classList.contains('open')) renderSubMapFor(subNodeId, null);
+          alert('导入成功：已点亮 ' + ids.filter(isDone).length + '/' + ids.length);
+        } else {
+          alert('文件格式不对，请选择本站导出的进度文件');
+        }
+      } catch (e) {
+        alert('文件读取失败，请选择本站导出的进度文件');
+      }
+    };
+    reader.readAsText(f);
+    importFile.value = '';
+  });
+
+  /* ---------- 分享直达：链接带 #n=节点ID 自动打开 ---------- */
+  const hashId = location.hash.startsWith('#n=') ? decodeURIComponent(location.hash.slice(3)) : null;
+  if (hashId && NODES[hashId]) setTimeout(() => jumpToNode(hashId), 600);
+
+  // ---------- Modal ----------
+  const overlay = document.getElementById('overlay');
+  const mStage = document.getElementById('mStage');
+  const mTitle = document.getElementById('mTitle');
+  const mFact = document.getElementById('mFact');
+  const mLecture = document.getElementById('mLecture');
+  const mPractice = document.getElementById('mPractice');
+  const mPrev = document.getElementById('mPrev');
+  const mNext = document.getElementById('mNext');
+  const mExamBlock = document.getElementById('mExamBlock');
+  const mExam = document.getElementById('mExam');
+  const mClose = document.getElementById('mClose');
+  const mToggle = document.getElementById('mToggle');
+
+  function syncToggleButton() {
+    if (!currentId) return;
+    const done = isDone(currentId);
+    mToggle.textContent = done ? '取消点亮' : '点亮此环 · 已学会';
+    mToggle.classList.toggle('undone', done);
+  }
+  mToggle.addEventListener('click', () => {
+    if (!currentId) return;
+    if (progress[currentId]) delete progress[currentId]; else progress[currentId] = true;
+    saveProgress();
+    const el = document.querySelector(`.node[data-id="${currentId}"]`);
+    if (el) el.classList.toggle('done', isDone(currentId));
+    syncToggleButton();
+    refreshProgress();
+  });
+
+  /* ---------- 链中链：子知识点导图（蛇形布局 + 依赖连线） ---------- */
+  let subNodeId = null, subIdx = -1;
+
+  function getSubs(nodeId) {
+    return SUBS[nodeId] || [];
+  }
+
+  function renderSubMapFor(nodeId, sel) {
+    const subs = getSubs(nodeId);
+    const countEl = document.getElementById('mSubCount');
+    const map = document.getElementById('mSubMap');
+    const toggleBtn = document.getElementById('mSubToggle');
+    if (!subs.length) {
+      map.innerHTML = '<span class="rel-empty">子知识点持续补充中</span>';
+      countEl.textContent = '';
+      toggleBtn.disabled = true;
+      subNodeId = nodeId; subIdx = -1;
+      renderSubDetail(null, -1);
+      return;
+    }
+    toggleBtn.disabled = false;
+    const done = subs.filter(s => subDone(nodeId, s.t)).length;
+    countEl.textContent = `（已点亮 ${done}/${subs.length}）`;
+    if (sel === null || sel === undefined) sel = subs.findIndex(s => !subDone(nodeId, s.t));
+    if (sel < 0) sel = 0;
+    subNodeId = nodeId; subIdx = sel;
+
+    const PER = 3, W = 150, H = 52, GX = 30, GY = 38, PAD = 20;
+    const rows = Math.ceil(subs.length / PER);
+    const perRow = Math.min(PER, subs.length);
+    const width = perRow * W + (perRow - 1) * GX + PAD * 2;
+    const height = rows * H + (rows - 1) * GY + PAD * 2;
+    map.style.height = height + 'px';
+    map.className = 'sub-map stage-' + NODES[nodeId].stage;
+    map.innerHTML = `<svg class="sub-links" width="${width}" height="${height}">
+      <defs><marker id="subArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" style="fill:var(--sub-c)"/></marker></defs>
+    </svg>`;
+    const svg = map.querySelector('svg');
+
+    const pos = subs.map((_, i) => {
+      const r = Math.floor(i / PER), c = i % PER;
+      const col = r % 2 === 0 ? c : (perRow - 1 - Math.min(c, perRow - 1));
+      return { x: PAD + col * (W + GX), y: PAD + r * (H + GY) };
+    });
+
+    let edges = '';
+    for (let i = 0; i < subs.length - 1; i++) {
+      const a = pos[i], b = pos[i + 1];
+      const geo = a.y === b.y
+        ? `<line x1="${a.x + W}" y1="${a.y + H / 2}" x2="${b.x}" y2="${b.y + H / 2}"/>`
+        : (() => { const x1 = a.x + W / 2, y1 = a.y + H, x2 = b.x + W / 2, y2 = b.y, my = (y1 + y2) / 2;
+            return `<path d="M ${x1} ${y1} C ${x1} ${my}, ${x2} ${my}, ${x2} ${y2}"/>`; })();
+      edges += geo.replace('/>', ` class="draw" marker-end="url(#subArr)" style="animation-delay:${(i * .12).toFixed(2)}s"/>`);
+      edges += geo.replace('/>', ` class="flow" style="animation-delay:${(.6 + i * .12).toFixed(2)}s"/>`);
+    }
+    svg.insertAdjacentHTML('beforeend', edges);
+
+    subs.forEach((s, i) => {
+      const el = document.createElement('button');
+      el.className = 'sub-mnode' + (subDone(nodeId, s.t) ? ' done' : '') + (i === sel ? ' current' : '');
+      el.innerHTML = (s.h ? '<i class="sub-fire">🔥</i>' : '') + s.t;
+      el.style.left = pos[i].x + 'px';
+      el.style.top = pos[i].y + 'px';
+      el.style.animationDelay = (i * .06) + 's';
+      el.addEventListener('click', () => renderSubMapFor(nodeId, i));
+      map.appendChild(el);
+    });
+
+    renderSubDetail(nodeId, sel);
+    syncSubToggle();
+  }
+
+  /* 当前子点详情：简介 + 难点视频位 + B站关键词搜索兜底 */
+  function renderSubDetail(nodeId, sel) {
+    const box = document.getElementById('mSubDetail');
+    const sdName = document.getElementById('sdName');
+    const sdHard = document.getElementById('sdHard');
+    const sdDesc = document.getElementById('sdDesc');
+    const sdLinks = document.getElementById('sdLinks');
+    const s = nodeId === null ? null : getSubs(nodeId)[sel];
+    if (!s) { box.hidden = true; return; }
+    box.hidden = false;
+    sdName.textContent = s.t;
+    sdHard.hidden = !s.h;
+    sdDesc.textContent = s.d || '';
+    const kw = encodeURIComponent(NODES[nodeId].title);
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    sdLinks.innerHTML =
+      `<a class="link-item" href="https://search.bilibili.com/all?keyword=${kw}"${target}>
+         <span class="ic">B站</span>
+         <span class="ln">
+           <span class="tt">B站搜「${NODES[nodeId].title}」</span>
+           <span class="src">按节点名检索 · 免费公开课</span>
+         </span>
+         <span class="go">↗</span>
+       </a>` +
+      (s.h ? `<div class="link-item sd-soon">
+         <span class="ic">🔥</span>
+         <span class="ln">
+           <span class="tt">难点精讲视频 · 整理中</span>
+           <span class="src">第二批挂人工核验的B站深链 + 官方平台章节</span>
+         </span>
+       </div>` : '');
+  }
+
+  function syncSubToggle() {
+    const btn = document.getElementById('mSubToggle');
+    if (subNodeId === null || subIdx < 0) return;
+    const s = getSubs(subNodeId)[subIdx];
+    if (!s) return;
+    const d = subDone(subNodeId, s.t);
+    btn.textContent = d ? '取消点亮此子点' : '点亮此子点 · 已学会';
+    btn.classList.toggle('undone', d);
+  }
+
+  document.getElementById('mSubToggle').addEventListener('click', () => {
+    if (subNodeId === null || subIdx < 0) return;
+    const subs = getSubs(subNodeId);
+    if (!subs[subIdx]) return;
+    const key = subNodeId + '::' + subs[subIdx].t;
+    if (subProgress[key]) delete subProgress[key]; else subProgress[key] = true;
+    saveSubProgress();
+    renderSubMapFor(subNodeId, subIdx);
+  });
+
+  const IS_MOBILE = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  function linkHTML(items) {
+    const badgeOf = u => /bilibili\.com/.test(u) ? 'B站' : /smartedu\.cn/.test(u) ? '官方' : '真题';
+    // 平台首页链接自动升级为点开即达的深链：B站 → 按资源名+作者搜索；智慧教育 → 课程教学栏目
+    const deepOf = it => {
+      if (/search\.bilibili\.com/.test(it.url)) return it.url;
+      if (it.url === PORTALS.bilibili.url) {
+        const m = it.src.match(/^([A-Za-z0-9\u4e00-\u9fa5（）]+)·B站/);
+        const author = m && m[1] !== 'B站' ? ' ' + m[1] : '';
+        return 'https://search.bilibili.com/all?keyword=' + encodeURIComponent(it.name + author);
+      }
+      return it.url;
+    };
+    const target = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+    return items.map(it =>
+      `<a class="link-item" href="${deepOf(it)}"${target}>
+         <span class="ic">${badgeOf(it.url)}</span>
+         <span class="ln">
+           <span class="tt">${it.name}</span>
+           <span class="src">${it.src}${it.needCheck ? ' · 官方平台入口 · 持续补充中' : ''}</span>
+         </span>
+         <span class="go">↗</span>
+       </a>`).join('');
+  }
+
+  function chips(idsArr) {
+    if (!idsArr.length) return '<span class="rel-empty">暂无 / 端点节点</span>';
+    return idsArr.map(id => {
+      const n = NODES[id];
+      return `<button class="chip" data-nav="${id}"><b>${STAGE_LABEL[n.stage]}</b>${n.title}</button>`;
+    }).join('');
+  }
+
+  function openModal(id) {
+    currentId = id;
+    history.replaceState(null, '', '#n=' + encodeURIComponent(id));
+    const n = NODES[id];
+    const ov = LINK[id] || {};
+    const lecture  = ov.lecture  ? [ov.lecture ] : n.lecture;
+    const practice = ov.practice ? [ov.practice]
+                   : ov.lecture ? [Object.assign({}, ov.lecture, { src: ov.lecture.src + ' · 含随堂例题' })]
+                   : n.practice;
+    mStage.textContent = STAGE_LABEL[n.stage] + ' · ' + CAT_LABEL[n.cat];
+    mStage.className = 'stage-tag ' + n.stage;
+    mTitle.textContent = n.title;
+    mFact.textContent = n.fact;
+    const cur = CURRICULUM[id];
+    if (cur) {
+      mCurr.hidden = false;
+      mCurr.className = 'curr' + (cur.tag === 'ext' ? ' ext' : '');
+      mCurr.innerHTML = (cur.tag === 'ext'
+        ? '<b>拓展</b> · 内容超出两版课标基本条目，供学有余力者延伸'
+        : '<b>课标依据</b> ' + cur.doc) + '<span style="opacity:.65"> · ' + cur.page + '</span>';
+    } else {
+      mCurr.hidden = false;
+      mCurr.className = 'curr ext';
+      mCurr.innerHTML = '<b>拓展</b> · 暂未建立课标条目对照';
+    }
+    if (PASS[id]) {
+      mPass.hidden = false;
+      mPass.innerHTML = '<b>✓ 过关判据</b> 做到这条才算学会 → ' + PASS[id];
+    } else {
+      mPass.hidden = true;
+    }
+    const PFB = document.getElementById('mPitfallBlock');
+    const PF = document.getElementById('mPitfall');
+    if (typeof PITFALLS !== 'undefined' && PITFALLS[id]) {
+      PFB.hidden = false;
+      PF.innerHTML = PITFALLS[id].map(p => {
+        const jump = p[2] && NODES[p[2]]
+          ? ` <button class="chip pf-jump" data-nav="${p[2]}">→ 补 ${NODES[p[2]].title}</button>` : '';
+        return `<div class="pf-row"><span class="pf-ic">⚠️</span><span class="pf-sym">${p[0]}</span><span class="pf-fix">${p[1]}${jump}</span></div>`;
+      }).join('');
+    } else {
+      PFB.hidden = true;
+    }
+    if (CASES[id]) {
+      const cs = CASES[id];
+      mCase.hidden = false;
+      mCaseTitle.textContent = cs.title;
+      const steps = cs.steps || [];
+      if (steps.length) {
+        mCaseText.innerHTML = '<div class="scaffold">' +
+          steps.map((st, i) =>
+            `<details><summary><span class="st-ic">${i === 0 ? '💡' : '🤔'}</span>第${i + 1}步 · ${st.label}</summary><div class="st-body">${st.text}</div></details>`).join('') +
+          `<details><summary><span class="st-ic">📖</span>第${steps.length + 1}步 · 完整解答</summary><div class="st-body">${cs.text}</div></details></div>`;
+      } else {
+        mCaseText.innerHTML = cs.text;
+      }
+      const pv = (n.prev || []).slice(0, 3);
+      if (pv.length) {
+        mCaseText.innerHTML += `<div class="case-remedy">🧭 卡住了？多半是前置没稳——先补这几环：${chips(pv)}</div>`;
+      }
+    } else {
+      mCase.hidden = true;
+    }
+    if (EXAM[id]) {
+      mExamBlock.hidden = false;
+      const examTarget = IS_MOBILE ? '' : ' target="_blank" rel="noopener"';
+      mExam.innerHTML = Object.keys(EXAM[id]).sort((a, b) => b - a).map(y => {
+        const pu = EXAM_PAPERS[y];
+        const yearChip = pu
+          ? `<a class="exam-year" href="${pu}"${examTarget} title="打开${y}年高考真题卷（公开版）">${y}年 ↗</a>`
+          : `<span class="exam-year">${y}年</span>`;
+        const qs = EXAM_QSRC[y];
+        return `<div class="exam-row">${yearChip}<span class="exam-pts">${
+          EXAM[id][y].map(p => {
+            const m = p.match(/^T(\d+)·(.+)$/);
+            if (!m) return `<span>${p}</span>`;
+            const q = +m[1], pg = qs && qs.loc ? qs.loc[q] : null;
+            if (!pg) return `<span><b>T${q}</b>·${m[2]}</span>`;
+            const href = qs.pdf ? `${qs.pdf}#page=${pg}`
+              : (pg === 1 ? qs.page : qs.page.replace(/\.shtml$/, '_' + (pg - 1) + '.shtml'));
+            return `<a class="qlk" href="${href}"${examTarget} title="打开${y}年真题卷 · 跳至第${pg}页（第${q}题）"><b>T${q}</b>·${m[2]} ↗</a>`;
+          }).join('')
+        }</span></div>`;
+      }).join('');
+    } else {
+      mExamBlock.hidden = true;
+    }
+    renderSubMapFor(id, null);
+    mLecture.innerHTML = linkHTML(lecture);
+    mPractice.innerHTML = linkHTML(practice);
+    mPrev.innerHTML = chips(n.prev);
+    mNext.innerHTML = chips(n.next);
+    overlay.classList.add('open');
+    document.body.classList.add('modal-open');
+    syncToggleButton();
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.classList.remove('modal-open');
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+  mClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // 弹窗内：前置/后续一键跳转
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-nav]');
+    if (!b) return;
+    e.preventDefault();
+    closeModal();
+    openModal(b.getAttribute('data-nav'));
+    const el = document.querySelector(`[data-id="${b.getAttribute('data-nav')}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  });
+})();
+</script>
+
+
+
+<!-- 画布顶部蜗牛拖动条 -->
+<style>
+  .mbl-snailbar2{position:absolute;top:26px;transform:translateX(-50%);width:min(420px,72%);height:14px;background:color-mix(in srgb,var(--surface,#fff) 78%,transparent);border:1.5px dashed color-mix(in srgb,var(--accent,#2f6b57) 50%,transparent);border-radius:99px;z-index:4;box-shadow:0 2px 10px -6px rgba(24,33,28,.25);}
+  .mbl-snailbar2 .sn2{position:absolute;top:50%;transform:translateY(-52%);font-size:17px;line-height:1;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:none;filter:drop-shadow(0 2px 3px rgba(24,33,28,.28));}
+  .mbl-snailbar2 .sn2:active{cursor:grabbing;}
+  .mbl-snailbar2 .sn2::after{content:'拖动浏览';position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#fff;background:linear-gradient(135deg,var(--accent,#2f6b57),#3d8a70);padding:2px 9px;border-radius:99px;white-space:nowrap;box-shadow:0 2px 6px -2px rgba(47,107,87,.5);pointer-events:none;}
+</style>
+<script>
+(function(){
+  var w=document.querySelector('.canvas-wrap'); if(!w) return;
+  var bar=document.createElement('div'); bar.className='mbl-snailbar2';
+  var sn=document.createElement('div'); sn.className='sn2'; sn.textContent='🐌';
+  bar.appendChild(sn); w.appendChild(bar);
+  function trackLen(){return Math.max(bar.clientWidth-30,10);}
+  function layout(){
+    var ov=w.scrollWidth-w.clientWidth;
+    if(ov<=8){bar.style.display='none';return;}
+    bar.style.display='block';
+    bar.style.left=(w.scrollLeft+w.clientWidth/2)+'px';
+    sn.style.left=(5+(w.scrollLeft/ov)*trackLen())+'px';
+  }
+  var down=false,sx=0,ss=0;
+  sn.addEventListener('mousedown',function(e){e.preventDefault();down=true;sx=e.pageX;ss=w.scrollLeft;});
+  window.addEventListener('mousemove',function(e){if(!down)return;var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.pageX-sx)*(ov/trackLen());});
+  window.addEventListener('mouseup',function(){down=false;});
+  sn.addEventListener('touchstart',function(e){down=true;sx=e.touches[0].pageX;ss=w.scrollLeft;},{passive:true});
+  sn.addEventListener('touchmove',function(e){if(!down)return;e.preventDefault();var ov=w.scrollWidth-w.clientWidth;if(ov<=0)return;w.scrollLeft=ss+(e.touches[0].pageX-sx)*(ov/trackLen());},{passive:false});
+  sn.addEventListener('touchend',function(){down=false;});
+  w.addEventListener('scroll',layout);
+  window.addEventListener('resize',layout);
+  window.addEventListener('load',layout);
+  setTimeout(layout,200); setTimeout(layout,800);
+  layout();
+})();
+</script>
+<style>.canvas-wrap{position:relative;}</style>
+
+<script>
+(function(){
+  function fitZoom(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var wrap=canvas.parentElement;
+    canvas.style.zoom='';
+    var ch=canvas.scrollHeight||420;
+    var avail=wrap.clientHeight-2;
+    if(ch<=avail) return;
+    canvas.style.zoom=Math.max(.55, avail/ch);
+  }
+  function refit(){
+    var canvas=document.getElementById('canvas'); if(!canvas) return;
+    var svg=document.getElementById('linksSvg'); if(!svg) return;
+    if(typeof NODES==='undefined'){ fitZoom(); return; }
+    var wrap=canvas.parentElement;
+    var avail=Math.max(300, wrap.clientHeight-2);
+    var W=parseFloat(svg.style.width)||1100;
+    var H=parseFloat(svg.style.height)||420;
+    var ids=Object.keys(NODES);
+    var groups={};
+    ids.forEach(function(id){var d=NODES[id].diff;(groups[d]=groups[d]||[]).push(id);});
+    var maxN=Math.max.apply(null,Object.keys(groups).map(function(k){return groups[k].length;}));
+    var need=Math.max(420, avail, maxN*66+130);
+    if(Math.abs(H-need)<2){ fitZoom(); return; }
+    var pos={};
+    ids.forEach(function(id){
+      var el=canvas.querySelector('.node[data-id="'+id+'"]');
+      if(el) pos[id]={x:parseFloat(el.style.left)||0,y:0};
+    });
+    Object.keys(groups).map(Number).sort(function(a,b){return a-b;}).forEach(function(d){
+      var arr=groups[d],n=arr.length;
+      arr.forEach(function(id,idx){
+        var y=60+((idx+0.5)/n)*(need-120);
+        var el=canvas.querySelector('.node[data-id="'+id+'"]');
+        if(el) el.style.top=y+'px';
+        if(pos[id]) pos[id].y=y;
+      });
+    });
+    svg.setAttribute('viewBox','0 0 '+W+' '+need);
+    svg.style.height=need+'px';
+    svg.querySelectorAll('.lnk,.lnk-hit').forEach(function(p){
+      var a=pos[p.dataset.f],b=pos[p.dataset.t];
+      if(!a||!b) return;
+      var x1=a.x+46,y1=a.y,x2=b.x-46,y2=b.y,mx=(x1+x2)/2;
+      p.setAttribute('d','M '+x1+' '+y1+' C '+mx+' '+y1+', '+mx+' '+y2+', '+x2+' '+y2);
+    });
+    fitZoom();
+  }
+  refit();
+  window.addEventListener('load',refit);
+  window.addEventListener('resize',refit);
+})();
+</script>
+
+</body>
+</html>

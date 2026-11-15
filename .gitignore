@@ -1,0 +1,8 @@
+# 真题 PDF：版权材料，禁止入库
+*.pdf
+
+# 本地与历史文件
+.DS_Store
+backups/
+site-deploy/
+gaokao/
