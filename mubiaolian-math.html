@@ -47,13 +47,6 @@
   nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
   .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #3d8a70); box-shadow: 0 3px 10px -2px rgba(47,107,87,.5); display: grid; place-items: center; }
-  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
-  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
-  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
-  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
-  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
-  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
   .status-note { font-size: .78rem; color: var(--ink-faint); }
 
   /* ---------- Intro ---------- */
@@ -179,6 +172,19 @@
   .chip b { font-weight: 700; opacity: .6; }
   .rel-empty { font-size: .82rem; color: var(--ink-faint); font-style: italic; }
 
+  /* ---------- 动手探索 · 互动仿真 ---------- */
+  .sim-embed { border: 1px solid var(--line); border-radius: 13px; overflow: hidden; background: #fff; }
+  .sim-frame { position: relative; width: 100%; aspect-ratio: 4 / 3; min-height: 260px; background: #f6f8f7; }
+  .sim-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .sim-note { font-size: .78rem; color: var(--ink-soft); padding: 8px 12px 0; }
+  .sim-credit { font-size: .72rem; color: var(--ink-faint); line-height: 1.6; padding: 2px 12px 10px; }
+  .sim-credit a { color: var(--accent); text-decoration: none; }
+  .desmos-btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); border-radius: 12px; padding: 10px 14px; font-size: .85rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: all .15s ease; }
+  .desmos-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); box-shadow: 0 4px 10px -4px rgba(47,107,87,.35); }
+  .desmos-btn .copied { color: var(--accent); font-size: .76rem; opacity: 0; transition: opacity .2s ease; }
+  .desmos-btn .copied.show { opacity: 1; }
+  .desmos-hint { font-size: .76rem; color: var(--ink-faint); margin-top: 6px; }
+
   /* ---------- 打卡进度 ---------- */
   .progress-row { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
   .progress-track { width: min(340px, 60vw); height: 10px; background: color-mix(in srgb, var(--line) 70%, #fff); border-radius: 999px; overflow: hidden; box-shadow: inset 0 1px 2px rgba(24,33,28,.08); }
@@ -303,9 +309,6 @@
 
   @media (max-width: 760px) {
     .status-note { display: none; }
-    .subj-ico { display: none; }
-    .subj-tab { padding: 5px 10px; }
-    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
     .stat-chip { font-size: .74rem; padding: 4px 10px; }
     .intro { padding: 28px 0 6px; }
     .intro p { font-size: .94rem; }
@@ -357,41 +360,63 @@ footer{padding:12px 0 36px;font-size:.88rem;}
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </head>
 <body>
-<!-- 可拖动卡通学科浏览条 -->
-<div class="mbl-carousel">
-  <div class="mbl-carousel-track">
-    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
-  </div>
-</div>
+
 <style>
-  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .mbl-carousel::-webkit-scrollbar{display:none}
-  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track{display:flex;gap:8px;width:max-content;margin-inline:auto;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
   .mbl-carousel-track.dragging{cursor:grabbing}
-  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
-  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:4px 10px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:16px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
   .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
   .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
   .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
-  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
-  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card .ds{display:none;}
+  .mbl-card:hover{transform:translateY(-1px) scale(1.03);box-shadow:0 8px 18px -8px rgba(24,33,28,.28);border-color:var(--cc);}
   .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
-  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-left:2px;line-height:1.5;}
   .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
   .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
   .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  .c-lab{--cc:#0f766e;}
   @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
   @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
 </style>
+
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="mbl-carousel">
+      <div class="mbl-carousel-track">
+        <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-lab" href="labs/index.html"><span class="ic">🧪</span><span class="nm">3D 实验室</span><span class="ds">互动课件</span></a>
+        <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+      </div>
+    </div>
+
+    <span class="status-note">95 个主干环 · 474 个子考点</span>
+  </nav>
+</header>
+
 <script>
 (function(){
   var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
@@ -411,36 +436,6 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   });
 })();
 </script>
-
-<header>
-  <nav class="container">
-    <a class="brand" href="#">
-      <span class="brand-mark">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-      目标链
-    </a>
-    <div class="subject-row">
-      <div class="subject-switch" role="navigation" aria-label="学科切换">
-        <span class="subj-tab active" aria-current="page" title="当前：目标链数学站"><i class="subj-ico">∑</i>数学</span>
-        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
-        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
-        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
-        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
-        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
-        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
-        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
-        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
-      </div>
-    </div>
-    <span class="status-note">95 个主干环 · 474 个子考点</span>
-  </nav>
-</header>
 
 <section class="intro container">
   <h1>全学段数学知识<span class="accent">目标链</span></h1>
@@ -480,6 +475,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
     <span>© 2026 mubiaolian.com · 目标链数学站</span>
     <div class="foot-links">
       <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span>弹窗内互动仿真由 <a href="https://phet.colorado.edu/zh_CN" target="_blank" rel="noopener">PhET Interactive Simulations</a>, University of Colorado Boulder 提供（CC BY / CC BY-NC 4.0 授权）；图形计算工具为 <a href="https://www.desmos.com/calculator" target="_blank" rel="noopener">Desmos</a></span>
       <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
       <a href="about.html">关于目标链</a>
     </div>
@@ -536,6 +532,11 @@ footer{padding:12px 0 36px;font-size:.88rem;}
         <div id="mPractice"></div>
       </div>
 
+      <div class="block" id="mSimBlock" hidden>
+        <h4>动手探索 · 互动仿真</h4>
+        <div id="mSimEmbed"></div>
+      </div>
+
       <div class="block">
         <h4>前置必备 · 跳到前置</h4>
         <div class="nav-rels" id="mPrev"></div>
@@ -563,6 +564,62 @@ footer{padding:12px 0 36px;font-size:.88rem;}
  * 均为真实可访问页面，无死链、无编造深链。
  * ===================================================================== */
 const STAGE_LABEL = { primary: '小学', junior: '初中', senior: '高中' };
+
+/* ============ 动手探索 · 互动仿真映射 ============
+ * PhET 仿真直接嵌入中文版（phet.colorado.edu 官方允许 iframe，无 x-frame-options 限制）；
+ * Desmos 只用「外链打开」按钮（API 嵌入按其条款属付费 Commercial Tier，不采用）。
+ * PhET 授权：2026-03-29 前发布 CC BY 4.0，之后 CC BY-NC 4.0；本站非商用，均可用。
+ * phet: [仿真id, 中文名, 语言]，desmos: [预填表达式, 提示语] */
+const SIMS = {
+  /* 小学 */
+  'compare':      { phet: ['number-compare', '数字比较'] },
+  'add-meaning':  { phet: ['make-a-ten', '凑十'] },
+  'add-sub':      { phet: ['number-line-operations', '数轴·加减运算'] },
+  'mul-div':      { phet: ['arithmetic', '算术·乘除练习'] },
+  'multi-mul-div':{ phet: ['area-model-multiplication', '面积模型·多位数乘法'] },
+  'decimal':      { phet: ['area-model-decimals', '面积模型·小数乘法'] },
+  'fraction':     { phet: ['fractions-intro', '分数入门'] },
+  'negative-prep':{ phet: ['number-line-integers', '数轴·正负数'] },
+  'ratio-proportion': { phet: ['ratio-and-proportion', '比与比例'] },
+  'equation-prep':{ phet: ['equality-explorer-basics', '等式探索·基础'] },
+  'quad-tri':     { phet: ['quadrilateral', '四边形', 'en'] },
+  'perimeter-area': { phet: ['area-builder', '面积构建师'] },
+  'average':      { phet: ['mean-share-and-balance', '平均·分享与平衡', 'en'] },
+  'possibility':  { phet: ['plinko-probability', '弹珠概率'] },
+  /* 初中 */
+  'rational':     { phet: ['number-line-integers', '数轴·正负数'] },
+  'integer':      { phet: ['expression-exchange', '表达式交换'] },
+  'polynomial':   { phet: ['area-model-algebra', '面积模型·代数（乘法公式）'] },
+  'factor':       { phet: ['expression-exchange', '表达式交换·因式分解'] },
+  'eq1':          { phet: ['equality-explorer', '等式探索·解方程'] },
+  'eq2':          { phet: ['graphing-quadratics', '二次函数绘图（看零点）'] },
+  'sys-eq':       { phet: ['equality-explorer-two-variables', '等式探索·双变量（方程组）'] },
+  'func-concept': { phet: ['function-builder', '函数机器'] },
+  'linear-fn':    { phet: ['graphing-slope-intercept', '一次函数·斜率与截距'] },
+  'inverse-fn':   { desmos: ['y=a/x', '拖动滑杆 a 看反比例函数图像如何变化'] },
+  'quad-fn':      { phet: ['graphing-quadratics', '二次函数绘图'] },
+  'trig-jr':      { phet: ['trig-tour', '三角之旅·锐角三角函数'] },
+  'stats-basic':  { phet: ['center-and-variability', '中心与变异性（均值/中位数）', 'en'] },
+  'prob-basic':   { phet: ['plinko-probability', '弹珠概率·古典概型'] },
+  /* 高中 */
+  'fun-prop':     { desmos: ['y=x^{3}-3x', '画出函数图像，拖动观察单调区间与极值'] },
+  'power-exp-log':{ desmos: ['y=a^{x}', '拖动滑杆 a，比较指数函数的增长方式（再试 y=\\log_{a}x）'] },
+  'trig-def':     { phet: ['trig-tour', '三角之旅·单位圆定义'] },
+  'trig':         { phet: ['trig-tour', '三角之旅·图象与性质'] },
+  'trig-trans':   { desmos: ['y=A\\sin\\left(Bx+C\\right)+D', '拖动 A/B/C/D 滑杆，看振幅、周期、相位与平移'] },
+  'vector':       { phet: ['vector-addition', '向量加法实验室'] },
+  'ineq2':        { desmos: ['y=x^{2}-4x+3', '看抛物线与 x 轴交点，即不等式 x²-4x+3 的解集边界'] },
+  'derivative':   { phet: ['calculus-grapher', '微积分绘图器·导数与切线', 'en'] },
+  'dapply':       { phet: ['calculus-grapher', '微积分绘图器·单调性与极值', 'en'] },
+  'func-limit':   { phet: ['calculus-grapher', '微积分绘图器·变化率', 'en'] },
+  'row-line':     { phet: ['graphing-lines', '直线绘图实验室'] },
+  'ellipse':      { desmos: ['x^{2}/a^{2}+y^{2}/b^{2}=1', '拖动滑杆 a、b，看椭圆长短轴与离心率变化'] },
+  'hyper-par':    { phet: ['graphing-quadratics', '抛物线绘图'], desmos: ['x^{2}/a^{2}-y^{2}/b^{2}=1', '双曲线：拖动 a、b 看渐近线变化'] },
+  'conic':        { desmos: ['x^{2}/4+y^{2}/9=1', '在 Desmos 里加上直线方程 y=mx+1，观察与圆锥曲线的交点'] },
+  'discrete-rv':  { phet: ['plinko-probability', '弹珠概率·二项分布'] },
+  'stats-adv':    { phet: ['least-squares-regression', '最小二乘回归·拟合'] },
+};
+const PHET_CREDIT = '仿真由 <a href="https://phet.colorado.edu/zh_CN" target="_blank" rel="noopener">PhET Interactive Simulations</a>, University of Colorado Boulder 制作 · 授权 CC BY / CC BY-NC 4.0（2026-03-29 后发布为 CC BY-NC）· 本站非商用';
 
 /* ============ 历年高考考情（新课标Ⅰ卷 · 2021-2025）============
  * 逐题考点 → 本站知识环的人工对应，来源：教育部教育考试院试卷评析、
@@ -2888,14 +2945,72 @@ const LINK = {
     mPractice.innerHTML = linkHTML(practice);
     mPrev.innerHTML = chips(n.prev);
     mNext.innerHTML = chips(n.next);
+    renderSim(id);
     overlay.classList.add('open');
     document.body.classList.add('modal-open');
     syncToggleButton();
   }
 
+  /* 动手探索：PhET 嵌入（懒加载，打开才载，关闭即停）+ Desmos 预填外链 */
+  function renderSim(id) {
+    const box = document.getElementById('mSimBlock');
+    const host = document.getElementById('mSimEmbed');
+    const sim = typeof SIMS !== 'undefined' && SIMS[id];
+    if (!sim) { box.hidden = true; host.innerHTML = ''; return; }
+    box.hidden = false;
+    let html = '';
+    if (sim.phet) {
+      const [sid, cname, lang] = sim.phet;
+      const src = 'https://phet.colorado.edu/sims/html/' + sid + '/latest/' + sid + '_' + (lang || 'zh_CN') + '.html';
+      html += `<div class="sim-embed">
+        <div class="sim-frame"><iframe data-phet-src="${src}" title="PhET 仿真 · ${cname}" loading="lazy" allowfullscreen></iframe></div>
+        <p class="sim-note">「${cname}」${lang === 'en' ? '（英文界面）' : ''} · 直接拖动 / 点击即可交互，动手试一试</p>
+        <p class="sim-credit">${PHET_CREDIT}</p>
+      </div>`;
+    }
+    if (sim.desmos) {
+      const [expr, hint] = sim.desmos;
+      html += `<button class="desmos-btn" data-expr="${expr}">
+        <span>📈 在 Desmos 中打开</span>
+        <span class="copied">表达式已复制 ✓</span>
+      </button>
+      <p class="desmos-hint">${hint} · Desmos 免费在线图形计算器，无需注册</p>`;
+    }
+    host.innerHTML = html;
+    const ifr = host.querySelector('iframe');
+    if (ifr && !IS_MOBILE) ifr.src = ifr.dataset.phetSrc; // 桌面端立即加载
+    if (ifr && IS_MOBILE) {
+      const io = new IntersectionObserver(es => {
+        es.forEach(en => { if (en.isIntersecting) { ifr.src = ifr.dataset.phetSrc; io.disconnect(); } });
+      });
+      io.observe(ifr); // 移动端滚动可视后再载，省流量
+    }
+  }
+
+  /* Desmos 按钮：复制预填表达式 + 打开绘图板（?expression= 参数若被忽略，粘贴即可） */
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.desmos-btn');
+    if (!btn) return;
+    const expr = btn.dataset.expr;
+    const url = 'https://www.desmos.com/calculator?expression=' + encodeURIComponent(expr);
+    window.open(url, IS_MOBILE ? '_self' : '_blank', 'noopener');
+    const tag = btn.querySelector('.copied');
+    const done = () => { tag.classList.add('show'); setTimeout(() => tag.classList.remove('show'), 2200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(expr).then(done, done);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = expr; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(ta); done();
+    }
+  });
+
   function closeModal() {
     overlay.classList.remove('open');
     document.body.classList.remove('modal-open');
+    const ifr = document.querySelector('#mSimEmbed iframe');
+    if (ifr) ifr.src = 'about:blank'; // 关闭弹窗即停止仿真加载
   }
 
   overlay.addEventListener('click', e => {

@@ -6,3 +6,6 @@
 backups/
 site-deploy/
 gaokao/
+
+# 第三方课件：铜匠实验室（CC BY-NC 4.0），体积大不入 git，仅部署到服务器
+labs/

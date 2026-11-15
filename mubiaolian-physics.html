@@ -46,13 +46,6 @@
   nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
   .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #9a7bc8); box-shadow: 0 3px 10px -2px rgba(109,74,156,.5); display: grid; place-items: center; }
-  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
-  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
-  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
-  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
-  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
-  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
   .status-note { font-size: .78rem; color: var(--ink-faint); }
 
   /* ---------- Intro ---------- */
@@ -296,9 +289,6 @@
 
   @media (max-width: 760px) {
     .status-note { display: none; }
-    .subj-ico { display: none; }
-    .subj-tab { padding: 5px 10px; }
-    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
     .stat-chip { font-size: .74rem; padding: 4px 10px; }
     .intro { padding: 28px 0 6px; }
     .intro p { font-size: .94rem; }
@@ -329,9 +319,7 @@
 <style>
 html{height:100%;}
 body{display:flex;flex-direction:column;min-height:100vh;}
-section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-inner{flex:1;height:auto;min-height:300px;}
+.canvas-inner{min-height:420px;}
 nav{height:50px;}
 .intro{padding:12px 0 6px;}
 .intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
@@ -350,41 +338,63 @@ footer{padding:12px 0 36px;font-size:.88rem;}
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </head>
 <body>
-<!-- 可拖动卡通学科浏览条 -->
-<div class="mbl-carousel">
-  <div class="mbl-carousel-track">
-    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
-  </div>
-</div>
+
 <style>
-  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .mbl-carousel::-webkit-scrollbar{display:none}
-  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track{display:flex;gap:8px;width:max-content;margin-inline:auto;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
   .mbl-carousel-track.dragging{cursor:grabbing}
-  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
-  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:4px 10px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:16px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
   .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
   .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
   .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
-  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
-  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card .ds{display:none;}
+  .mbl-card:hover{transform:translateY(-1px) scale(1.03);box-shadow:0 8px 18px -8px rgba(24,33,28,.28);border-color:var(--cc);}
   .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
-  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-left:2px;line-height:1.5;}
   .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
   .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
   .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  .c-lab{--cc:#0f766e;}
   @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
   @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
 </style>
+
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="mbl-carousel">
+      <div class="mbl-carousel-track">
+        <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-lab" href="labs/index.html"><span class="ic">🧪</span><span class="nm">3D 实验室</span><span class="ds">互动课件</span></a>
+        <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+      </div>
+    </div>
+
+    <span class="status-note">57 个主干环 · 228 个子考点</span>
+  </nav>
+</header>
+
 <script>
 (function(){
   var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
@@ -404,36 +414,6 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   });
 })();
 </script>
-
-<header>
-  <nav class="container">
-    <a class="brand" href="#">
-      <span class="brand-mark">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-      目标链
-    </a>
-    <div class="subject-row">
-      <div class="subject-switch" role="navigation" aria-label="学科切换">
-        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
-        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
-        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
-        <span class="subj-tab active" aria-current="page" title="当前：目标链物理站"><i class="subj-ico">P</i>物理</span>
-        <a class="subj-tab" href="mubiaolian-chem.html" title="前往目标链化学站"><i class="subj-ico">C</i>化学</a>
-        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
-        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
-        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
-        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
-      </div>
-    </div>
-    <span class="status-note">57 个主干环 · 228 个子考点</span>
-  </nav>
-</header>
 
 <section class="intro container">
   <h1>初高中物理知识<span class="accent">目标链</span></h1>
@@ -459,11 +439,121 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   </div>
 </section>
 
-<section class="container">
+<section class="canvas-sec container">
   <div class="canvas-wrap">
     <div class="canvas-inner" id="canvas">
       <svg class="links" id="linksSvg"></svg>
     </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- 3D 实验室 ---------- */
+  .labs-sec { padding: 34px 0 8px; }
+  .labs-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .labs-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+  .labs-count { font-size: .78rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 3px 12px; }
+  .labs-sec > p { color: var(--ink-soft); font-size: .92rem; max-width: 54rem; margin-bottom: 16px; }
+  .labs-sec > p a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); }
+  .labs-sec > p a:hover { border-bottom-color: var(--accent); }
+  .labs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+  .lab-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .lab-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); box-shadow: var(--shadow-lg); }
+  .lab-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--accent-soft); }
+  .lab-card .lc-body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .lab-card .lc-type { font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+  .lab-card b { font-size: .92rem; font-weight: 700; line-height: 1.35; }
+  .lab-card .lc-q { font-size: .78rem; color: var(--ink-faint); line-height: 1.5; }
+  @media (max-width: 560px) { .labs-grid { grid-template-columns: repeat(auto-fill, minmax(46%, 1fr)); gap: 10px; } }
+</style>
+
+<section class="labs-sec container" id="labs">
+  <div class="labs-head">
+    <h2>🧪 3D 实验室</h2>
+    <span class="labs-count">10 门互动课件</span>
+  </div>
+  <p>把课本里的抽象过程装进 3D 场景——拖动、拆开、逐层看清原理。以下课件来自开源项目<a href="https://github.com/sdvch/tongjiang-lab" target="_blank" rel="noopener">铜匠实验室</a>，按 CC BY-NC 4.0 授权署名使用，点击卡片直接进入。</p>
+  <div class="labs-grid">
+      <a class="lab-card" href="labs/courses/photoelectric-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/photoelectric-step.webp" alt="光电效应 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与实验</span>
+          <b>光电效应</b>
+          <span class="lc-q">同一束光，为什么换成另一种金属就一个电子都打不出来？光电子的能量到底由光的什么决定？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/capacitor-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/capacitor-step.webp" alt="观察电容器的充放电 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与实验</span>
+          <b>观察电容器的充放电</b>
+          <span class="lc-q">电容器里到底存了什么？能不能只用一个数把它的「肚量」量出来？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/accel-force-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/accel-force-step.webp" alt="实验：探究加速度与力、质量的关系 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>实验：探究加速度与力、质量的关系</b>
+          <span class="lc-q">不直接测力、也不直接测加速度——一张纸带加几个槽码，能不能把 a 与 F、m 的关系量出来？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/energy-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/energy-step.webp" alt="实验：验证机械能守恒定律 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>实验：验证机械能守恒定律</b>
+          <span class="lc-q">重物下落时，减少的重力势能是不是正好变成了增加的动能？一条纸带能不能把这件事量出来？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/projectile-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/projectile-step.webp" alt="实验：探究平抛运动的特点 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>实验：探究平抛运动的特点</b>
+          <span class="lc-q">只靠一只斜槽和一块挡板，能不能把平抛拆成两个分运动、量出初速度？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/centripetal-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/centripetal-step.webp" alt="探究向心力大小与半径、角速度、质量的关系 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>探究向心力大小与半径、角速度、质量的关系</b>
+          <span class="lc-q">这台手摇的演示器只给你两个标尺上的格数——能不能用它把 F 与 m、r、ω 的定量关系量出来？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/self-induction-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/self-induction-step.webp" alt="自感与涡流 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与实验</span>
+          <b>自感与涡流</b>
+          <span class="lc-q">线圈里只是多绕了几圈铜线，为什么两只灯泡亮得不一样？开关已经断开了，灯泡凭什么还能再亮一下？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/emf-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/emf-step.webp" alt="测电源电动势和内阻 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与实验</span>
+          <b>测电源电动势和内阻</b>
+          <span class="lc-q">一节旧干电池的电动势和内阻，怎么用一只电压表、一只电流表和一个滑动变阻器「测」出来？换一种接法，测出来的还一样吗？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/current-field-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/current-field-step.webp" alt="电流的磁场 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>电流的磁场</b>
+          <span class="lc-q">磁场看不见摸不着，怎么把它画出来、又怎么判断它的方向？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/brownian-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/brownian-step.webp" alt="布朗运动与扩散 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>布朗运动与扩散</b>
+          <span class="lc-q">看不见的分子，凭什么说它在乱动？</span>
+        </div>
+      </a>
   </div>
 </section>
 
@@ -472,6 +562,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
     <span>© 2026 mubiaolian.com · 目标链物理站</span>
     <div class="foot-links">
       <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span>3D 实验室课件来源：<a href="https://github.com/sdvch/tongjiang-lab" target="_blank" rel="noopener" style="color:inherit">铜匠实验室</a>（CC BY-NC 4.0）</span>
       <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
       <a href="about.html">关于目标链</a>
     </div>
@@ -2205,6 +2296,24 @@ const LINK = {};
   refit();
   window.addEventListener('load',refit);
   window.addEventListener('resize',refit);
+})();
+</script>
+<script>
+/* 一屏画布：高度=视口底部-画布顶部，3D 实验室排在首屏之后不挤占画布 */
+(function(){
+  var canvas=document.getElementById('canvas'); if(!canvas) return;
+  var last=0;
+  function fitScreen(){
+    var top=canvas.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
+    var h=Math.max(420,Math.round(window.innerHeight-top)-96);/* 底部留 96px，让 3D 实验室标题在首屏露头 */
+    if(Math.abs(h-last)<2) return;
+    last=h;
+    canvas.style.height=h+'px';
+    window.dispatchEvent(new Event('resize'));
+  }
+  fitScreen();
+  window.addEventListener('resize',fitScreen);
+  window.addEventListener('load',fitScreen);
 })();
 </script>
 

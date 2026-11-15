@@ -28,47 +28,59 @@
   .src a { color: var(--ink-soft); }
   .back { position: fixed; right: 18px; bottom: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 13px; color: var(--ink-soft); text-decoration: none; box-shadow: 0 4px 14px -6px rgba(24,33,28,.2); }
   .back:hover { color: var(--ac); border-color: var(--ac); }
-  .home-link { display: inline-flex; align-items: center; gap: 6px; margin-bottom: 10px; background: linear-gradient(135deg, #2f6b57, #3d8a70); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 700; padding: 8px 18px; border-radius: 999px; box-shadow: 0 4px 14px -6px rgba(47,107,87,.5); transition: transform .15s ease, box-shadow .15s ease; }
+  .home-link { display: inline-flex; align-items: center; gap: 6px; flex: 0 0 auto; background: linear-gradient(135deg, #2f6b57, #3d8a70); color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 999px; box-shadow: 0 4px 14px -6px rgba(47,107,87,.5); transition: transform .15s ease, box-shadow .15s ease; }
   .home-link:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -8px rgba(47,107,87,.6); }
 </style>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </head>
 <body>
-<!-- 可拖动卡通学科浏览条 -->
-<div class="mbl-carousel">
-  <div class="mbl-carousel-track">
-    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
-  </div>
-</div>
 <style>
-  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .topbar{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+  .mbl-carousel{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .mbl-carousel::-webkit-scrollbar{display:none}
-  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track{display:flex;gap:8px;width:max-content;justify-content:flex-start;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
   .mbl-carousel-track.dragging{cursor:grabbing}
-  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
-  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:4px 10px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:16px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
   .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
   .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
   .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
-  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
-  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card .ds{display:none;}
+  .mbl-card:hover{transform:translateY(-1px) scale(1.03);box-shadow:0 8px 18px -8px rgba(24,33,28,.28);border-color:var(--cc);}
   .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
-  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-left:2px;line-height:1.5;}
   .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
   .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
   .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  .c-lab{--cc:#0f766e;}
   @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
   @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
 </style>
+
+<div class="wrap">
+  <header>
+    <div class="topbar">
+      <a class="home-link" href="mubiaolian-math.html">🏠 ← 返回目标链主页</a>
+      <div class="mbl-carousel">
+        <div class="mbl-carousel-track">
+          <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+          <a class="mbl-card c-lab" href="labs/index.html"><span class="ic">🧪</span><span class="nm">3D 实验室</span><span class="ds">互动课件</span></a>
+          <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+        </div>
+      </div>
+    </div>
+    <h1>目标链 · 高考真题卷库</h1>
+    <p>本地自托管 · 试卷仅供学习交流 · 科目 → 年份 → 卷别 · 各站考点标注基于对应主卷</p>
+  </header>
+
 <script>
 (function(){
   var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
@@ -88,12 +100,6 @@
   });
 })();
 </script>
-<div class="wrap">
-  <header>
-    <a class="home-link" href="mubiaolian-math.html">🏠 ← 返回目标链主页</a>
-    <h1>目标链 · 高考真题卷库</h1>
-    <p>本地自托管 · 试卷仅供学习交流 · 科目 → 年份 → 卷别 · 各站考点标注基于对应主卷</p>
-  </header>
   <div class="tabs" id="tabs"></div>
   <div class="years" id="years"></div>
   <div class="variants" id="variants"><span class="lbl">卷别：</span></div>

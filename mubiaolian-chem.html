@@ -46,13 +46,6 @@
   nav { display: flex; align-items: center; justify-content: space-between; height: 62px; gap: 18px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: .01em; color: var(--ink); text-decoration: none; }
   .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), #c46a8a); box-shadow: 0 3px 10px -2px rgba(168,58,94,.5); display: grid; place-items: center; }
-  .subject-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .subject-switch { display: inline-flex; align-items: center; gap: 3px; padding: 3px; background: color-mix(in srgb, var(--ink) 4%, var(--surface)); border: 1px solid var(--line); border-radius: 999px; }
-  .subj-tab { display: inline-flex; align-items: center; gap: 6px; padding: 5px 13px 5px 8px; border-radius: 999px; font-size: .84rem; font-weight: 600; color: var(--ink-soft); text-decoration: none; transition: color .15s ease, background .15s ease; }
-  .subj-tab:hover { color: var(--accent); background: var(--accent-soft); }
-  .subj-ico { font-style: normal; font-size: .72rem; font-weight: 800; width: 18px; height: 18px; border-radius: 6px; display: inline-grid; place-items: center; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); color: var(--accent); }
-  .subj-tab.active { background: var(--accent); color: #fff; box-shadow: 0 3px 10px -3px color-mix(in srgb, var(--accent) 60%, transparent); }
-  .subj-tab.active .subj-ico { background: rgba(255,255,255,.22); color: #fff; }
   .status-note { font-size: .78rem; color: var(--ink-faint); }
 
   /* ---------- Intro ---------- */
@@ -296,9 +289,6 @@
 
   @media (max-width: 760px) {
     .status-note { display: none; }
-    .subj-ico { display: none; }
-    .subj-tab { padding: 5px 10px; }
-    .subject-switch { flex-wrap: wrap; justify-content: center; border-radius: 20px; max-width: 100%; }
     .stat-chip { font-size: .74rem; padding: 4px 10px; }
     .intro { padding: 28px 0 6px; }
     .intro p { font-size: .94rem; }
@@ -329,9 +319,7 @@
 <style>
 html{height:100%;}
 body{display:flex;flex-direction:column;min-height:100vh;}
-section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-inner{flex:1;height:auto;min-height:300px;}
+.canvas-inner{min-height:420px;}
 nav{height:50px;}
 .intro{padding:12px 0 6px;}
 .intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
@@ -350,41 +338,63 @@ footer{padding:12px 0 36px;font-size:.88rem;}
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </head>
 <body>
-<!-- 可拖动卡通学科浏览条 -->
-<div class="mbl-carousel">
-  <div class="mbl-carousel-track">
-    <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
-    <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
-  </div>
-</div>
+
 <style>
-  .mbl-carousel{position:relative;z-index:59;background:linear-gradient(180deg,#fffdf4,#fff);border-bottom:1px solid rgba(24,33,28,.06);box-shadow:0 4px 14px -10px rgba(24,33,28,.15);overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .mbl-carousel{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .mbl-carousel::-webkit-scrollbar{display:none}
-  .mbl-carousel-track{display:flex;gap:10px;width:max-content;margin-inline:auto;padding:6px 16px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track{display:flex;gap:8px;width:max-content;margin-inline:auto;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
   .mbl-carousel-track.dragging{cursor:grabbing}
-  .mbl-card{display:flex;flex-direction:column;align-items:center;gap:1px;width:86px;padding:5px 6px 4px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:16px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
-  .mbl-card .ic{font-size:20px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:4px 10px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:16px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
   .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
   .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
   .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
-  .mbl-card .ds{font-size:9px;color:var(--ink-faint,#828d86);}
-  .mbl-card:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 24px -10px rgba(24,33,28,.28);border-color:var(--cc);}
+  .mbl-card .ds{display:none;}
+  .mbl-card:hover{transform:translateY(-1px) scale(1.03);box-shadow:0 8px 18px -8px rgba(24,33,28,.28);border-color:var(--cc);}
   .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
-  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-top:3px;line-height:1.5;}
+  .mbl-card.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:var(--cc);border-radius:99px;padding:0 7px;margin-left:2px;line-height:1.5;}
   .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
   .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
   .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
+  .c-lab{--cc:#0f766e;}
   @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
   @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
 </style>
+
+
+<header>
+  <nav class="container">
+    <a class="brand" href="#">
+      <span class="brand-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
+          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      目标链
+    </a>
+    <div class="mbl-carousel">
+      <div class="mbl-carousel-track">
+        <a class="mbl-card c-math" href="mubiaolian-math.html"><span class="ic">🧮</span><span class="nm">数学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chinese" href="mubiaolian-chinese.html"><span class="ic">📖</span><span class="nm">语文</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-english" href="mubiaolian-english.html"><span class="ic">🔤</span><span class="nm">英语</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-physics" href="mubiaolian-physics.html"><span class="ic">⚛️</span><span class="nm">物理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-lab" href="labs/index.html"><span class="ic">🧪</span><span class="nm">3D 实验室</span><span class="ds">互动课件</span></a>
+        <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
+      </div>
+    </div>
+
+    <span class="status-note">56 个主干环 · 224 个子考点</span>
+  </nav>
+</header>
+
 <script>
 (function(){
   var el=document.querySelector('.mbl-carousel-track'); if(!el) return;
@@ -404,36 +414,6 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   });
 })();
 </script>
-
-<header>
-  <nav class="container">
-    <a class="brand" href="#">
-      <span class="brand-mark">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="4" r="2.6" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="4" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <circle cx="20" cy="18" r="2.2" stroke="#f6f7f4" stroke-width="1.8"/>
-          <path d="M12 6.6V12M11 12l-5.4 4.6M13 12l5.4 4.6" stroke="#f6f7f4" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-      目标链
-    </a>
-    <div class="subject-row">
-      <div class="subject-switch" role="navigation" aria-label="学科切换">
-        <a class="subj-tab" href="mubiaolian-math.html" title="前往目标链数学站"><i class="subj-ico">∑</i>数学</a>
-        <a class="subj-tab" href="mubiaolian-chinese.html" title="前往目标链语文站"><i class="subj-ico">文</i>语文</a>
-        <a class="subj-tab" href="mubiaolian-english.html" title="前往目标链英语站"><i class="subj-ico">A</i>英语</a>
-        <a class="subj-tab" href="mubiaolian-physics.html" title="前往目标链物理站"><i class="subj-ico">P</i>物理</a>
-        <span class="subj-tab active" aria-current="page" title="当前：目标链化学站"><i class="subj-ico">C</i>化学</span>
-        <a class="subj-tab" href="mubiaolian-bio.html" title="前往目标链生物站"><i class="subj-ico">B</i>生物</a>
-        <a class="subj-tab" href="mubiaolian-pol.html" title="前往目标链政治站"><i class="subj-ico">政</i>政治</a>
-        <a class="subj-tab" href="mubiaolian-hist.html" title="前往目标链历史站"><i class="subj-ico">史</i>历史</a>
-        <a class="subj-tab" href="mubiaolian-geo.html" title="前往目标链地理站"><i class="subj-ico">地</i>地理</a>
-      </div>
-    </div>
-    <span class="status-note">56 个主干环 · 224 个子考点</span>
-  </nav>
-</header>
 
 <section class="intro container">
   <h1>初高中化学知识<span class="accent">目标链</span></h1>
@@ -459,11 +439,241 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   </div>
 </section>
 
-<section class="container">
+<section class="canvas-sec container">
   <div class="canvas-wrap">
     <div class="canvas-inner" id="canvas">
       <svg class="links" id="linksSvg"></svg>
     </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- 3D 实验室 ---------- */
+  .labs-sec { padding: 34px 0 8px; }
+  .labs-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  .labs-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+  .labs-count { font-size: .78rem; font-weight: 700; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 3px 12px; }
+  .labs-sec > p { color: var(--ink-soft); font-size: .92rem; max-width: 54rem; margin-bottom: 16px; }
+  .labs-sec > p a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed color-mix(in srgb, var(--accent) 55%, transparent); }
+  .labs-sec > p a:hover { border-bottom-color: var(--accent); }
+  .labs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+  .lab-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; text-decoration: none; color: var(--ink); box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .lab-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); box-shadow: var(--shadow-lg); }
+  .lab-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: var(--accent-soft); }
+  .lab-card .lc-body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .lab-card .lc-type { font-size: .62rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+  .lab-card b { font-size: .92rem; font-weight: 700; line-height: 1.35; }
+  .lab-card .lc-q { font-size: .78rem; color: var(--ink-faint); line-height: 1.5; }
+  @media (max-width: 560px) { .labs-grid { grid-template-columns: repeat(auto-fill, minmax(46%, 1fr)); gap: 10px; } }
+</style>
+
+<section class="labs-sec container" id="labs">
+  <div class="labs-head">
+    <h2>🧪 3D 实验室</h2>
+    <span class="labs-count">25 门互动课件</span>
+  </div>
+  <p>把课本里的抽象过程装进 3D 场景——拖动、拆开、逐层看清原理。以下课件来自开源项目<a href="https://github.com/sdvch/tongjiang-lab" target="_blank" rel="noopener">铜匠实验室</a>，按 CC BY-NC 4.0 授权署名使用，点击卡片直接进入。</p>
+  <div class="labs-grid">
+      <a class="lab-card" href="labs/courses/haber-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/haber-step.webp" alt="合成氨工业 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>合成氨工业</b>
+          <span class="lc-q">怎样把空气里的氮又快、又多、又省地变成氨？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/rate-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/rate-step.webp" alt="化学反应速率的影响因素 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>化学反应速率的影响因素</b>
+          <span class="lc-q">同样两个反应，为什么有的几秒就完、有的等半天？快慢到底由什么决定？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/ball-stick-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/ball-stick-step.webp" alt="搭建球棍模型认识有机化合物分子结构 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象模拟</span>
+          <b>搭建球棍模型认识有机化合物分子结构</b>
+          <span class="lc-q">分子画在纸上是平的，真实的三维形状到底是什么样？搭一座球棍模型能看出什么？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/titration-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/titration-step.webp" alt="强酸与强碱的中和滴定 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>强酸与强碱的中和滴定</b>
+          <span class="lc-q">前面加了 20 多毫升几乎看不出变化，为什么最后半滴颜色就全变了？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/chlorine-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/chlorine-step.webp" alt="氯气的制备及性质 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>氯气的制备及性质</b>
+          <span class="lc-q">要一瓶干燥、纯净的氯气，装置里每一段各管什么？少一段会怎样？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/blast-furnace-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/blast-furnace-step.webp" alt="高炉炼铁 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>高炉炼铁</b>
+          <span class="lc-q">一堆矿石从炉顶倒下去，怎么几小时后就变成一股铁水，还越省越好？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/smelting-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/smelting-step.webp" alt="金属冶炼：电解熔融盐 + 铝热 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>金属冶炼：电解熔融盐 + 铝热</b>
+          <span class="lc-q">为什么铝只能靠电「拆」出来，而铁能被铝「换」出来？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/coal-gas-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/coal-gas-step.webp" alt="煤的综合利用：以煤的气化为主线 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>煤的综合利用：以煤的气化为主线</b>
+          <span class="lc-q">煤只能烧吗？怎么把煤变成能造化肥、造甲醇的气？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/sulfuric-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/sulfuric-step.webp" alt="接触法制硫酸 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>接触法制硫酸</b>
+          <span class="lc-q">怎样把矿石里的硫，又快、又多、又省、又干净地变成硫酸？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/hydrolysis-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/hydrolysis-step.webp" alt="盐类的水解及其应用 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>盐类的水解及其应用</b>
+          <span class="lc-q">盐电离出来的离子看上去「既不酸也不碱」，凭什么能让溶液显出酸碱性？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/cement-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/cement-step.webp" alt="工业制水泥 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>工业制水泥</b>
+          <span class="lc-q">一车石头和土，凭什么磨一磨、烧一烧、再磨一磨，就变成能撑起大坝的水泥？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/iron-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/iron-step.webp" alt="铁及其化合物：铁的价态转化 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>铁及其化合物：铁的价态转化</b>
+          <span class="lc-q">同一个铁元素，为什么在试管里一会儿是 +2 价、一会儿是 +3 价，我们凭什么知道它是哪一个？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/electrolysis-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/electrolysis-step.webp" alt="电解原理：电解氯化铜溶液与饱和食盐水 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>电解原理：电解氯化铜溶液与饱和食盐水</b>
+          <span class="lc-q">同一个直流电源，为什么电解氯化铜溶液得到铜和氯气，电解饱和食盐水却得到氢气、氯气和氢氧化钠？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/ammonia-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/ammonia-step.webp" alt="氨的制备与性质（含喷泉实验） 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>氨的制备与性质（含喷泉实验）</b>
+          <span class="lc-q">一瓶氨气，凭什么能把烧杯里的水自己「吸」到瓶子里去？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/equilibrium-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/equilibrium-step.webp" alt="探究影响化学平衡移动的因素 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与实验</span>
+          <b>探究影响化学平衡移动的因素</b>
+          <span class="lc-q">改变一个条件，凭什么说平衡「往哪边移」？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/flame-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/flame-step.webp" alt="焰色试验与原子光谱 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>焰色试验与原子光谱</b>
+          <span class="lc-q">金属在火焰里为什么各有各的颜色，这点颜色凭什么能当成「化验报告」？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/galvanic-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/galvanic-step.webp" alt="原电池：单液到双液 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>原电池：单液到双液</b>
+          <span class="lc-q">同一杯稀硫酸里已经有电流了，为什么还要换成两杯、再加一根盐桥？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/conductivity-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/conductivity-step.webp" alt="电解质的电离与溶液导电性、离子反应的实质 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>电解质的电离与溶液导电性、离子反应的实质</b>
+          <span class="lc-q">干手、湿手都是同一只手，为什么湿了反而容易触电？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/nitric-lab-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/nitric-lab-step.webp" alt="浓、稀硝酸的性质与氮氧化物的转化 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>浓、稀硝酸的性质与氮氧化物的转化</b>
+          <span class="lc-q">同样是铜和硝酸，为什么一瓶冒红棕色气体、另一瓶什么颜色都没有？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/bromine-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/bromine-step.webp" alt="海水提溴：空气吹出法 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>海水提溴：空气吹出法</b>
+          <span class="lc-q">海水里的溴只有 65 mg/L，怎么把它变成一瓶液溴？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/sodium-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/sodium-step.webp" alt="金属钠的性质（含钠着火扑救） 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>金属钠的性质（含钠着火扑救）</b>
+          <span class="lc-q">一块银白色的小金属，为什么必须泡在煤油里，着火时连水都不能浇？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/sulfur-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/sulfur-step.webp" alt="硫、二氧化硫、浓硫酸的性质与不同价态含硫物质的转化 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>硫、二氧化硫、浓硫酸的性质与不同价态含硫物质的转化</b>
+          <span class="lc-q">同样是硫，为什么有时它是黄色固体、有时让品红褪成无色、有时又跑进铁粉里？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/corrosion-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/corrosion-step.webp" alt="吸氧腐蚀与暖贴的设计 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">原理与现象</span>
+          <b>吸氧腐蚀与暖贴的设计</b>
+          <span class="lc-q">铁生锈这么慢的事，凭什么能做出一个 45 ℃ 以上的暖贴？又凭什么反过来用它保护铁不生锈？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/chlor-alkali-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/chlor-alkali-step.webp" alt="氯碱工业 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>氯碱工业</b>
+          <span class="lc-q">同样的电，怎样换来更多烧碱、更少电耗，又不出事故？</span>
+        </div>
+      </a>
+      <a class="lab-card" href="labs/courses/hou-soda-step.html" target="_blank" rel="noopener">
+        <img src="labs/covers/hou-soda-step.webp" alt="侯氏制碱 3D 课件封面" loading="lazy" />
+        <div class="lc-body">
+          <span class="lc-type">工业流程</span>
+          <b>侯氏制碱</b>
+          <span class="lc-q">怎样用食盐和氨造出纯碱，还顺手拿到氮肥？</span>
+        </div>
+      </a>
   </div>
 </section>
 
@@ -472,6 +682,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
     <span>© 2026 mubiaolian.com · 目标链化学站</span>
     <div class="foot-links">
       <span>本站内容仅供个人学习交流使用，请勿商用；如认为内容侵犯您的权益，请联系 <a href="mailto:contact@mubiaolian.com" style="color:inherit">contact@mubiaolian.com</a>，核实后 24 小时内下架</span>
+      <span>3D 实验室课件来源：<a href="https://github.com/sdvch/tongjiang-lab" target="_blank" rel="noopener" style="color:inherit">铜匠实验室</a>（CC BY-NC 4.0）</span>
       <span id="beian"><a href="https://beian.miit.gov.cn/" target="_blank" style="color:inherit;text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="color:inherit;text-decoration:none">京公网安备11011302008550号</a></span>
       <a href="about.html">关于目标链</a>
     </div>
@@ -2213,6 +2424,24 @@ const LINK = {};
   refit();
   window.addEventListener('load',refit);
   window.addEventListener('resize',refit);
+})();
+</script>
+<script>
+/* 一屏画布：高度=视口底部-画布顶部，3D 实验室排在首屏之后不挤占画布 */
+(function(){
+  var canvas=document.getElementById('canvas'); if(!canvas) return;
+  var last=0;
+  function fitScreen(){
+    var top=canvas.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
+    var h=Math.max(420,Math.round(window.innerHeight-top)-96);/* 底部留 96px，让 3D 实验室标题在首屏露头 */
+    if(Math.abs(h-last)<2) return;
+    last=h;
+    canvas.style.height=h+'px';
+    window.dispatchEvent(new Event('resize'));
+  }
+  fitScreen();
+  window.addEventListener('resize',fitScreen);
+  window.addEventListener('load',fitScreen);
 })();
 </script>
 
