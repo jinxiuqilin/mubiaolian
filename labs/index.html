@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学科 3D 实验室 · 目标链</title>
+<meta name="description" content="目标链学科 3D 实验室：54 门覆盖物理、化学、生物、地理的互动探究课件，点开即玩。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%2318211c'/><circle cx='12' cy='12' r='1.7' fill='%23f6f7f4'/><ellipse cx='12' cy='12' rx='8' ry='3.1' fill='none' stroke='%23f6f7f4' stroke-width='1.3' transform='rotate(30 12 12)'/><ellipse cx='12' cy='12' rx='8' ry='3.1' fill='none' stroke='%23f6f7f4' stroke-width='1.3' transform='rotate(-30 12 12)'/></svg>" />
+<style>
+  :root{--bg:#f5f3f8;--surface:#fff;--ink:#17211b;--ink-soft:#47554c;--ink-faint:#828d86;--line:#e2e7e1;--accent:#6d4a9c;--accent-soft:#efe9f7;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.5}
+  .topbar{display:flex;align-items:center;gap:10px;padding:10px 18px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}
+  .brand{flex:0 0 auto;font-weight:800;text-decoration:none;font-size:15px;background:#17211b;color:#fff;padding:6px 14px;border-radius:999px}
+  .pills{display:flex;gap:8px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;padding:2px}
+  .pills>.pill:first-child{margin-left:auto}
+  .pills>.pill:last-child{margin-right:auto}
+  .pills::-webkit-scrollbar{display:none}
+  .pill{flex:0 0 auto;font-size:13px;font-weight:700;color:var(--ink-soft);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:5px 12px;text-decoration:none;white-space:nowrap}
+  .pill.cur{background:color-mix(in srgb,#0f766e 8%,#fff);border-color:#0f766e;color:#0f766e;position:relative}
+  .pill.cur::after{content:'当前';font-size:9px;font-weight:800;color:#fff;background:#0f766e;border-radius:99px;padding:0 6px;margin-left:4px}
+  .wrap{max-width:1120px;margin:0 auto;padding:26px 18px 10px}
+  .hero h1{font-size:1.7rem}
+  .hero p{color:var(--ink-soft);margin-top:6px;font-size:.95rem}
+  .sec{margin-top:30px}
+  .sec h2{font-size:1.15rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .sec .more{font-size:.8rem;font-weight:700;color:#2f6b57;text-decoration:none;margin-left:auto}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:12px}
+  .lab-card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .15s ease,box-shadow .15s ease}
+  .lab-card:hover{transform:translateY(-3px);box-shadow:0 14px 28px -12px rgba(23,33,27,.25)}
+  .cover{aspect-ratio:16/9;background:#eef0ec}
+  .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .body{padding:10px 12px 12px}
+  .type{font-size:10px;font-weight:800;color:#6d4a9c;background:var(--accent-soft);border-radius:99px;padding:2px 8px}
+  .body h3{font-size:.95rem;margin-top:6px}
+  .body p{font-size:.8rem;color:var(--ink-faint);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  footer{border-top:1px solid var(--line);margin-top:40px;padding:18px;color:var(--ink-faint);font-size:.78rem;text-align:center}
+  footer a{color:inherit}
+  @media(max-width:640px){.hero h1{font-size:1.3rem}.sec .more{margin-left:0}}
+</style>
+</head>
+<body>
+<nav class="topbar">
+  <a class="brand" href="/">🧭 目标链</a>
+  <div class="pills">
+      <a class="pill" href="../mubiaolian-math.html">🧮 数学</a>
+      <a class="pill" href="../mubiaolian-chinese.html">📖 语文</a>
+      <a class="pill" href="../mubiaolian-english.html">🔤 英语</a>
+      <a class="pill" href="../mubiaolian-physics.html">⚡ 物理</a>
+      <a class="pill" href="../mubiaolian-chem.html">⚗️ 化学</a>
+      <a class="pill" href="../mubiaolian-bio.html">🧬 生物</a>
+      <a class="pill" href="../mubiaolian-pol.html">⚖️ 政治</a>
+      <a class="pill" href="../mubiaolian-hist.html">📜 历史</a>
+      <a class="pill" href="../mubiaolian-geo.html">🌍 地理</a>
+      <a class="pill cur" href="index.html">🔬 3D 实验室</a>
+      <a class="pill" href="../gaokao.html">🎯 高考真题</a>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="hero">
+    <h1>🔬 学科 3D 实验室</h1>
+    <p>共 54 门互动探究课件，覆盖高中物理、化学、生物、地理 —— 从「为什么」出发，一步一步动手做实验。课件来源：<a href="https://github.com/sdvch/tongjiang-lab" target="_blank" rel="noopener">铜匠实验室</a>（CC BY-NC 4.0）。</p>
+  </div>
+    <section class="sec" id="sec-phys">
+      <h2><span class="semo">⚛️</span> 物理 · 10 门 <a class="more" href="../mubiaolian-physics.html">↩ 返回物理站</a></h2>
+      <div class="grid">
+      <a class="lab-card" href="courses/photoelectric-step.html">
+        <div class="cover"><img src="covers/photoelectric-step.webp" alt="光电效应" loading="lazy"></div>
+        <div class="body"><span class="type">原理与实验</span><h3>光电效应</h3><p>同一束光，为什么换成另一种金属就一个电子都打不出来？光电子的能量到底由光的什么决定？</p></div>
+      </a>
+      <a class="lab-card" href="courses/capacitor-step.html">
+        <div class="cover"><img src="covers/capacitor-step.webp" alt="观察电容器的充放电" loading="lazy"></div>
+        <div class="body"><span class="type">原理与实验</span><h3>观察电容器的充放电</h3><p>电容器里到底存了什么？能不能只用一个数把它的「肚量」量出来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/accel-force-step.html">
+        <div class="cover"><img src="covers/accel-force-step.webp" alt="实验：探究加速度与力、质量的关系" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>实验：探究加速度与力、质量的关系</h3><p>不直接测力、也不直接测加速度——一张纸带加几个槽码，能不能把 a 与 F、m 的关系量出来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/energy-step.html">
+        <div class="cover"><img src="covers/energy-step.webp" alt="实验：验证机械能守恒定律" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>实验：验证机械能守恒定律</h3><p>重物下落时，减少的重力势能是不是正好变成了增加的动能？一条纸带能不能把这件事量出来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/projectile-step.html">
+        <div class="cover"><img src="covers/projectile-step.webp" alt="实验：探究平抛运动的特点" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>实验：探究平抛运动的特点</h3><p>只靠一只斜槽和一块挡板，能不能把平抛拆成两个分运动、量出初速度？</p></div>
+      </a>
+      <a class="lab-card" href="courses/centripetal-step.html">
+        <div class="cover"><img src="covers/centripetal-step.webp" alt="探究向心力大小与半径、角速度、质量的关系" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>探究向心力大小与半径、角速度、质量的关系</h3><p>这台手摇的演示器只给你两个标尺上的格数——能不能用它把 F 与 m、r、ω 的定量关系量出来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/self-induction-step.html">
+        <div class="cover"><img src="covers/self-induction-step.webp" alt="自感与涡流" loading="lazy"></div>
+        <div class="body"><span class="type">原理与实验</span><h3>自感与涡流</h3><p>线圈里只是多绕了几圈铜线，为什么两只灯泡亮得不一样？开关已经断开了，灯泡凭什么还能再亮一下？</p></div>
+      </a>
+      <a class="lab-card" href="courses/emf-step.html">
+        <div class="cover"><img src="covers/emf-step.webp" alt="测电源电动势和内阻" loading="lazy"></div>
+        <div class="body"><span class="type">原理与实验</span><h3>测电源电动势和内阻</h3><p>一节旧干电池的电动势和内阻，怎么用一只电压表、一只电流表和一个滑动变阻器「测」出来？换一种接法，测出来的还一样吗？</p></div>
+      </a>
+      <a class="lab-card" href="courses/current-field-step.html">
+        <div class="cover"><img src="covers/current-field-step.webp" alt="电流的磁场" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>电流的磁场</h3><p>磁场看不见摸不着，怎么把它画出来、又怎么判断它的方向？</p></div>
+      </a>
+      <a class="lab-card" href="courses/brownian-step.html">
+        <div class="cover"><img src="covers/brownian-step.webp" alt="布朗运动与扩散" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>布朗运动与扩散</h3><p>看不见的分子，凭什么说它在乱动？</p></div>
+      </a>
+      </div>
+    </section>
+    <section class="sec" id="sec-chem">
+      <h2><span class="semo">🧪</span> 化学 · 25 门 <a class="more" href="../mubiaolian-chem.html">↩ 返回化学站</a></h2>
+      <div class="grid">
+      <a class="lab-card" href="courses/haber-step.html">
+        <div class="cover"><img src="covers/haber-step.webp" alt="合成氨工业" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>合成氨工业</h3><p>怎样把空气里的氮又快、又多、又省地变成氨？</p></div>
+      </a>
+      <a class="lab-card" href="courses/rate-step.html">
+        <div class="cover"><img src="covers/rate-step.webp" alt="化学反应速率的影响因素" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>化学反应速率的影响因素</h3><p>同样两个反应，为什么有的几秒就完、有的等半天？快慢到底由什么决定？</p></div>
+      </a>
+      <a class="lab-card" href="courses/ball-stick-step.html">
+        <div class="cover"><img src="covers/ball-stick-step.webp" alt="搭建球棍模型认识有机化合物分子结构" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象模拟</span><h3>搭建球棍模型认识有机化合物分子结构</h3><p>分子画在纸上是平的，真实的三维形状到底是什么样？搭一座球棍模型能看出什么？</p></div>
+      </a>
+      <a class="lab-card" href="courses/titration-step.html">
+        <div class="cover"><img src="covers/titration-step.webp" alt="强酸与强碱的中和滴定" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>强酸与强碱的中和滴定</h3><p>前面加了 20 多毫升几乎看不出变化，为什么最后半滴颜色就全变了？</p></div>
+      </a>
+      <a class="lab-card" href="courses/chlorine-step.html">
+        <div class="cover"><img src="covers/chlorine-step.webp" alt="氯气的制备及性质" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>氯气的制备及性质</h3><p>要一瓶干燥、纯净的氯气，装置里每一段各管什么？少一段会怎样？</p></div>
+      </a>
+      <a class="lab-card" href="courses/blast-furnace-step.html">
+        <div class="cover"><img src="covers/blast-furnace-step.webp" alt="高炉炼铁" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>高炉炼铁</h3><p>一堆矿石从炉顶倒下去，怎么几小时后就变成一股铁水，还越省越好？</p></div>
+      </a>
+      <a class="lab-card" href="courses/smelting-step.html">
+        <div class="cover"><img src="covers/smelting-step.webp" alt="金属冶炼：电解熔融盐 + 铝热" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>金属冶炼：电解熔融盐 + 铝热</h3><p>为什么铝只能靠电「拆」出来，而铁能被铝「换」出来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/coal-gas-step.html">
+        <div class="cover"><img src="covers/coal-gas-step.webp" alt="煤的综合利用：以煤的气化为主线" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>煤的综合利用：以煤的气化为主线</h3><p>煤只能烧吗？怎么把煤变成能造化肥、造甲醇的气？</p></div>
+      </a>
+      <a class="lab-card" href="courses/sulfuric-step.html">
+        <div class="cover"><img src="covers/sulfuric-step.webp" alt="接触法制硫酸" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>接触法制硫酸</h3><p>怎样把矿石里的硫，又快、又多、又省、又干净地变成硫酸？</p></div>
+      </a>
+      <a class="lab-card" href="courses/hydrolysis-step.html">
+        <div class="cover"><img src="covers/hydrolysis-step.webp" alt="盐类的水解及其应用" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>盐类的水解及其应用</h3><p>盐电离出来的离子看上去「既不酸也不碱」，凭什么能让溶液显出酸碱性？</p></div>
+      </a>
+      <a class="lab-card" href="courses/cement-step.html">
+        <div class="cover"><img src="covers/cement-step.webp" alt="工业制水泥" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>工业制水泥</h3><p>一车石头和土，凭什么磨一磨、烧一烧、再磨一磨，就变成能撑起大坝的水泥？</p></div>
+      </a>
+      <a class="lab-card" href="courses/iron-step.html">
+        <div class="cover"><img src="covers/iron-step.webp" alt="铁及其化合物：铁的价态转化" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>铁及其化合物：铁的价态转化</h3><p>同一个铁元素，为什么在试管里一会儿是 +2 价、一会儿是 +3 价，我们凭什么知道它是哪一个？</p></div>
+      </a>
+      <a class="lab-card" href="courses/electrolysis-step.html">
+        <div class="cover"><img src="covers/electrolysis-step.webp" alt="电解原理：电解氯化铜溶液与饱和食盐水" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>电解原理：电解氯化铜溶液与饱和食盐水</h3><p>同一个直流电源，为什么电解氯化铜溶液得到铜和氯气，电解饱和食盐水却得到氢气、氯气和氢氧化钠？</p></div>
+      </a>
+      <a class="lab-card" href="courses/ammonia-step.html">
+        <div class="cover"><img src="covers/ammonia-step.webp" alt="氨的制备与性质（含喷泉实验）" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>氨的制备与性质（含喷泉实验）</h3><p>一瓶氨气，凭什么能把烧杯里的水自己「吸」到瓶子里去？</p></div>
+      </a>
+      <a class="lab-card" href="courses/equilibrium-step.html">
+        <div class="cover"><img src="covers/equilibrium-step.webp" alt="探究影响化学平衡移动的因素" loading="lazy"></div>
+        <div class="body"><span class="type">原理与实验</span><h3>探究影响化学平衡移动的因素</h3><p>改变一个条件，凭什么说平衡「往哪边移」？</p></div>
+      </a>
+      <a class="lab-card" href="courses/flame-step.html">
+        <div class="cover"><img src="covers/flame-step.webp" alt="焰色试验与原子光谱" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>焰色试验与原子光谱</h3><p>金属在火焰里为什么各有各的颜色，这点颜色凭什么能当成「化验报告」？</p></div>
+      </a>
+      <a class="lab-card" href="courses/galvanic-step.html">
+        <div class="cover"><img src="covers/galvanic-step.webp" alt="原电池：单液到双液" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>原电池：单液到双液</h3><p>同一杯稀硫酸里已经有电流了，为什么还要换成两杯、再加一根盐桥？</p></div>
+      </a>
+      <a class="lab-card" href="courses/conductivity-step.html">
+        <div class="cover"><img src="covers/conductivity-step.webp" alt="电解质的电离与溶液导电性、离子反应的实质" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>电解质的电离与溶液导电性、离子反应的实质</h3><p>干手、湿手都是同一只手，为什么湿了反而容易触电？</p></div>
+      </a>
+      <a class="lab-card" href="courses/nitric-lab-step.html">
+        <div class="cover"><img src="covers/nitric-lab-step.webp" alt="浓、稀硝酸的性质与氮氧化物的转化" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>浓、稀硝酸的性质与氮氧化物的转化</h3><p>同样是铜和硝酸，为什么一瓶冒红棕色气体、另一瓶什么颜色都没有？</p></div>
+      </a>
+      <a class="lab-card" href="courses/bromine-step.html">
+        <div class="cover"><img src="covers/bromine-step.webp" alt="海水提溴：空气吹出法" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>海水提溴：空气吹出法</h3><p>海水里的溴只有 65 mg/L，怎么把它变成一瓶液溴？</p></div>
+      </a>
+      <a class="lab-card" href="courses/sodium-step.html">
+        <div class="cover"><img src="covers/sodium-step.webp" alt="金属钠的性质（含钠着火扑救）" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>金属钠的性质（含钠着火扑救）</h3><p>一块银白色的小金属，为什么必须泡在煤油里，着火时连水都不能浇？</p></div>
+      </a>
+      <a class="lab-card" href="courses/sulfur-step.html">
+        <div class="cover"><img src="covers/sulfur-step.webp" alt="硫、二氧化硫、浓硫酸的性质与不同价态含硫物质的转化" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>硫、二氧化硫、浓硫酸的性质与不同价态含硫物质的转化</h3><p>同样是硫，为什么有时它是黄色固体、有时让品红褪成无色、有时又跑进铁粉里？</p></div>
+      </a>
+      <a class="lab-card" href="courses/corrosion-step.html">
+        <div class="cover"><img src="covers/corrosion-step.webp" alt="吸氧腐蚀与暖贴的设计" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>吸氧腐蚀与暖贴的设计</h3><p>铁生锈这么慢的事，凭什么能做出一个 45 ℃ 以上的暖贴？又凭什么反过来用它保护铁不生锈？</p></div>
+      </a>
+      <a class="lab-card" href="courses/chlor-alkali-step.html">
+        <div class="cover"><img src="covers/chlor-alkali-step.webp" alt="氯碱工业" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>氯碱工业</h3><p>同样的电，怎样换来更多烧碱、更少电耗，又不出事故？</p></div>
+      </a>
+      <a class="lab-card" href="courses/hou-soda-step.html">
+        <div class="cover"><img src="covers/hou-soda-step.webp" alt="侯氏制碱" loading="lazy"></div>
+        <div class="body"><span class="type">工业流程</span><h3>侯氏制碱</h3><p>怎样用食盐和氨造出纯碱，还顺手拿到氮肥？</p></div>
+      </a>
+      </div>
+    </section>
+    <section class="sec" id="sec-bio">
+      <h2><span class="semo">🧬</span> 生物 · 5 门 <a class="more" href="../mubiaolian-bio.html">↩ 返回生物站</a></h2>
+      <div class="grid">
+      <a class="lab-card" href="courses/plasmolysis-step.html">
+        <div class="cover"><img src="covers/plasmolysis-step.webp" alt="植物细胞的吸水和失水" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>植物细胞的吸水和失水</h3><p>菜叶泡在清水里会变硬挺，撒了盐会出水——植物细胞怎样吸水和失水？</p></div>
+      </a>
+      <a class="lab-card" href="courses/transport-step.html">
+        <div class="cover"><img src="covers/transport-step.webp" alt="物质跨膜运输" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>物质跨膜运输</h3><p>同一片细胞膜，为什么氧能自己穿过去、葡萄糖要好几个蛋白帮忙、K⁺ 还能逆着浓度往里走？</p></div>
+      </a>
+      <a class="lab-card" href="courses/impulse-step.html">
+        <div class="cover"><img src="covers/impulse-step.webp" alt="神经冲动的产生和传导" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>神经冲动的产生和传导</h3><p>发令枪响后 0.1 s 内起跑就算抢跑（教材 p.27）——兴奋在身体里怎样「跑」过去？</p></div>
+      </a>
+      <a class="lab-card" href="courses/mitosis-step.html">
+        <div class="cover"><img src="covers/mitosis-step.webp" alt="观察根尖分生区组织细胞的有丝分裂" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>观察根尖分生区组织细胞的有丝分裂</h3><p>一根洋葱根尖上，哪些细胞正在分裂？它们分裂一次各要多久？</p></div>
+      </a>
+      <a class="lab-card" href="courses/enzyme-step.html">
+        <div class="cover"><img src="covers/enzyme-step.webp" alt="影响酶活性的条件" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>影响酶活性的条件</h3><p>同一支酶，为什么放进沸水里就再也救不回来，放进冰水里却还能醒过来？</p></div>
+      </a>
+      </div>
+    </section>
+    <section class="sec" id="sec-geo">
+      <h2><span class="semo">🌍</span> 地理 · 14 门 <a class="more" href="../mubiaolian-geo.html">↩ 返回地理站</a></h2>
+      <div class="grid">
+      <a class="lab-card" href="courses/river-step.html">
+        <div class="cover"><img src="covers/river-step.webp" alt="河流地貌的发育" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>河流地貌的发育</h3><p>长江镇江段的岸线为什么持续向北推移？</p></div>
+      </a>
+      <a class="lab-card" href="courses/insolation-step.html">
+        <div class="cover"><img src="covers/insolation-step.webp" alt="太阳直射点的回归运动与四季、五带" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>太阳直射点的回归运动与四季、五带</h3><p>学校所在地的正午太阳高度和正午太阳方向，一年里为什么有规律地变化？</p></div>
+      </a>
+      <a class="lab-card" href="courses/currents-step.html">
+        <div class="cover"><img src="covers/currents-step.webp" alt="世界洋流的分布规律与影响" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>世界洋流的分布规律与影响</h3><p>数万只玩具鸭散落海面，为什么会漂到世界各地的海岸？</p></div>
+      </a>
+      <a class="lab-card" href="courses/enso-step.html">
+        <div class="cover"><img src="covers/enso-step.webp" alt="海—气相互作用与厄尔尼诺、拉尼娜" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>海—气相互作用与厄尔尼诺、拉尼娜</h3><p>秘鲁沿海常年干旱，为什么 2016 年底海水一暖，就下起了暴雨、还死了近百人？</p></div>
+      </a>
+      <a class="lab-card" href="courses/heating-step.html">
+        <div class="cover"><img src="covers/heating-step.webp" alt="大气受热过程" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>大气受热过程</h3><p>太阳晒了一整天的地面，为什么白天先热起来，夜里又凉得那么快——大气到底替地面留住了多少热？</p></div>
+      </a>
+      <a class="lab-card" href="courses/karst-step.html">
+        <div class="cover"><img src="covers/karst-step.webp" alt="喀斯特地貌的形成与识别" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>喀斯特地貌的形成与识别</h3><p>徐霞客写的「峭峰离立，分行竞颖」——这些像从地里长出来的尖峰，是怎么一块岩层变出来的？</p></div>
+      </a>
+      <a class="lab-card" href="courses/carbon-step.html">
+        <div class="cover"><img src="covers/carbon-step.webp" alt="全球气候变化与国家安全" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>全球气候变化与国家安全</h3><p>马尔代夫为什么要把内阁会议开到 6 米深的海底去？</p></div>
+      </a>
+      <a class="lab-card" href="courses/tectonic-step.html">
+        <div class="cover"><img src="covers/tectonic-step.webp" alt="构造地貌的形成" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>构造地貌的形成</h3><p>青藏高原上为什么会找到阔叶树的叶子化石 —— 什么力量把地表抬起来、又把它切开？</p></div>
+      </a>
+      <a class="lab-card" href="courses/earth-motion-step.html">
+        <div class="cover"><img src="covers/earth-motion-step.webp" alt="地球运动的地理意义" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>地球运动的地理意义</h3><p>同一时刻，为什么北京是中午、纽约是半夜，而夏天的白天又比冬天长？</p></div>
+      </a>
+      <a class="lab-card" href="courses/soil-step.html">
+        <div class="cover"><img src="covers/soil-step.webp" alt="土壤的主要形成因素与土壤剖面观察" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>土壤的主要形成因素与土壤剖面观察</h3><p>东北的土又黑又肥，南方的土为什么相对贫瘠？</p></div>
+      </a>
+      <a class="lab-card" href="courses/thermal-step.html">
+        <div class="cover"><img src="covers/thermal-step.webp" alt="大气热力环流" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>大气热力环流</h3><p>台湾海峡两岸的风向，为什么一天里会反过来？</p></div>
+      </a>
+      <a class="lab-card" href="courses/wind-step.html">
+        <div class="cover"><img src="covers/wind-step.webp" alt="大气的水平运动——风" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>大气的水平运动——风</h3><p>天气图上的风，为什么不是从高压直直吹向低压？</p></div>
+      </a>
+      <a class="lab-card" href="courses/water-cycle-step.html">
+        <div class="cover"><img src="covers/water-cycle-step.webp" alt="水循环的过程与地理意义" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>水循环的过程与地理意义</h3><p>江河不断注入大海，为什么大海的水没有增多？</p></div>
+      </a>
+      <a class="lab-card" href="courses/circulation-step.html">
+        <div class="cover"><img src="covers/circulation-step.webp" alt="气压带、风带与三圈环流" loading="lazy"></div>
+        <div class="body"><span class="type">原理与现象</span><h3>气压带、风带与三圈环流</h3><p>麦哲伦船队为什么有的航段逆风、有的顺风，到了 30°S 附近却寸步难行？</p></div>
+      </a>
+      </div>
+    </section>
+</div>
+<footer>© 2026 mubiaolian.com · 目标链 · 学科 3D 实验室 · 课件来源：铜匠实验室（CC BY-NC 4.0）<br>
+<a href="https://beian.miit.gov.cn/" target="_blank" style="text-decoration:none">京ICP备2026038365号-3</a> · <a href="https://beian.mps.gov.cn/#/query/webSearch?code=11011302008550" target="_blank" style="text-decoration:none">京公网安备11011302008550号</a></footer>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</body>
+</html>
