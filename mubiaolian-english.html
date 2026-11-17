@@ -352,13 +352,13 @@ footer{padding:12px 0 36px;font-size:.88rem;}
 <style>
   .mbl-carousel{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
   .mbl-carousel::-webkit-scrollbar{display:none}
-  .mbl-carousel-track{display:flex;gap:8px;width:max-content;margin-inline:auto;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
+  .mbl-carousel-track{display:flex;gap:6px;width:max-content;margin-inline:auto;padding:4px 2px;cursor:grab;user-select:none;-webkit-user-select:none;}
   .mbl-carousel-track.dragging{cursor:grabbing}
-  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:6px;width:auto;padding:4px 10px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
-  .mbl-card .ic{font-size:16px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
+  .mbl-card{display:flex;flex-direction:row;align-items:center;gap:5px;width:auto;padding:3px 8px;background:var(--surface,#fff);border:1.5px solid var(--line,#e2e7e1);border-radius:99px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .mbl-card .ic{font-size:14.5px;line-height:1;animation:mbl-wiggle 1.7s ease-in-out infinite alternate;}
   .mbl-card:nth-child(2n) .ic{animation-delay:.25s}
   .mbl-card:nth-child(3n) .ic{animation-delay:.5s}
-  .mbl-card .nm{font-size:13px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
+  .mbl-card .nm{font-size:12.5px;font-weight:700;color:var(--ink,#18211c);margin-top:0;}
   .mbl-card .ds{display:none;}
   .mbl-card:hover{transform:translateY(-1px) scale(1.03);box-shadow:0 8px 18px -8px rgba(24,33,28,.28);border-color:var(--cc);}
   .mbl-card.cur{border-color:var(--cc);background:color-mix(in srgb,var(--cc) 7%,#fff);}
@@ -366,7 +366,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   .c-math{--cc:#2f6b57}.c-chinese{--cc:#8c3a2f}.c-english{--cc:#2f5a8f}.c-physics{--cc:#6d4a9c}.c-chem{--cc:#a83a5e}
   .c-bio{--cc:#4e8a3c}.c-pol{--cc:#1f7a8c}.c-hist{--cc:#9a6215}.c-geo{--cc:#6b7d2f}
   .c-gk{--cc:#e0532f;background:linear-gradient(150deg,#fff4ec,#ffe9de);}
-  .c-lab{--cc:#0f766e;}
+  .c-lab{--cc:#0f766e;}.c-atlas{--cc:#9e3b2c;}
   @keyframes mbl-wiggle{from{transform:rotate(-8deg)}to{transform:rotate(8deg)}}
   @media (prefers-reduced-motion: reduce){.mbl-card .ic{animation:none;}}
 </style>
@@ -394,7 +394,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
         <a class="mbl-card c-chem" href="mubiaolian-chem.html"><span class="ic">🧪</span><span class="nm">化学</span><span class="ds">链式图谱</span></a>
         <a class="mbl-card c-bio" href="mubiaolian-bio.html"><span class="ic">🌱</span><span class="nm">生物</span><span class="ds">链式图谱</span></a>
         <a class="mbl-card c-pol" href="mubiaolian-pol.html"><span class="ic">🏛️</span><span class="nm">政治</span><span class="ds">链式图谱</span></a>
-        <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a>
+        <a class="mbl-card c-hist" href="mubiaolian-hist.html"><span class="ic">📜</span><span class="nm">历史</span><span class="ds">链式图谱</span></a><a class="mbl-card c-atlas" href="jiangshan/index.html"><span class="ic">🗺️</span><span class="nm">江山时序</span><span class="ds">历史舆图</span></a>
         <a class="mbl-card c-geo" href="mubiaolian-geo.html"><span class="ic">🌍</span><span class="nm">地理</span><span class="ds">链式图谱</span></a>
         <a class="mbl-card c-lab" href="labs/index.html"><span class="ic">🧪</span><span class="nm">3D 实验室</span><span class="ds">互动课件</span></a>
         <a class="mbl-card c-gk" href="gaokao.html"><span class="ic">📚</span><span class="nm">高考真题</span><span class="ds">历年卷库</span></a>
