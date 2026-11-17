@@ -449,6 +449,32 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   </div>
 </section>
 
+<style>
+/* ---------- 历史交互舆图（江山时序） ---------- */
+.atlas-sec { margin-top: 28px; }
+.atlas-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.atlas-head h2 { font-size: 20px; margin: 0; }
+.atlas-count { font-size: 12px; color: var(--ink-faint); }
+.atlas-sec > p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.8; margin: 8px 0 14px; }
+.atlas-frame-wrap { position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: #f7f2e7; }
+.atlas-frame-wrap iframe { display: block; width: 100%; height: min(82vh, 760px); min-height: 520px; border: 0; }
+.atlas-open { position: absolute; top: 10px; right: 10px; z-index: 3; background: rgba(60,44,28,.82); color: #f5ead6; border: 0; border-radius: 10px; padding: 8px 13px; font-size: 12.5px; cursor: pointer; text-decoration: none; backdrop-filter: blur(4px); }
+.atlas-open:hover { background: rgba(60,44,28,.95); }
+@media (max-width: 560px) { .atlas-frame-wrap iframe { height: 74vh; min-height: 440px; } }
+</style>
+
+<section class="atlas-sec container" id="atlas">
+  <div class="atlas-head">
+    <h2>🗺️ 历史交互舆图 · 江山时序</h2>
+    <span class="atlas-count">2400 年疆域 · 18 朝 · 104 位古人行迹</span>
+  </div>
+  <p>拖动底部时间轴，看战国至今的江山分合；点击古城雄关，查它两千年间的名称沿革与大事；搜索框输入苏轼、玄奘、霍去病……地图会一站一站放出他一生的行迹。地图来自开源项目 <a href="https://github.com/DeanChensj/jiangshan-map" target="_blank" rel="noopener">江山时序</a>（GPL-3.0，参考谭其骧《中国历史地图集》与 CHGIS 数据），已原样部署于本站服务器，也可<a href="jiangshan/index.html" target="_blank" rel="noopener">在新窗口全屏打开</a>。</p>
+  <div class="atlas-frame-wrap">
+    <a class="atlas-open" href="jiangshan/index.html" target="_blank" rel="noopener">⛶ 新窗口打开</a>
+    <iframe src="jiangshan/index.html" title="江山时序 · 中国历史交互地图" loading="lazy" referrerpolicy="no-referrer"></iframe>
+  </div>
+</section>
+
 <footer>
   <div class="container foot">
     <span>© 2026 mubiaolian.com · 目标链历史站</span>
