@@ -319,9 +319,7 @@
 <style>
 html{height:100%;}
 body{display:flex;flex-direction:column;min-height:100vh;}
-section.container:last-of-type{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-wrap{flex:1;display:flex;flex-direction:column;min-height:0;}
-.canvas-inner{flex:1;height:auto;min-height:300px;}
+.canvas-inner{min-height:420px;}
 nav{height:50px;}
 .intro{padding:12px 0 6px;}
 .intro h1{margin-bottom:4px;font-size:clamp(1.3rem,2.4vw,1.7rem);}
@@ -441,7 +439,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
   </div>
 </section>
 
-<section class="container">
+<section class="container canvas-sec">
   <div class="canvas-wrap">
     <div class="canvas-inner" id="canvas">
       <svg class="links" id="linksSvg"></svg>
@@ -2249,6 +2247,24 @@ const LINK = {};
   refit();
   window.addEventListener('load',refit);
   window.addEventListener('resize',refit);
+})();
+</script>
+<script>
+/* 一屏画布：高度=视口底部-画布顶部，历史交互舆图排在首屏之后不挤占画布 */
+(function(){
+  var canvas=document.getElementById('canvas'); if(!canvas) return;
+  var last=0;
+  function fitScreen(){
+    var top=canvas.getBoundingClientRect().top+(window.scrollY||window.pageYOffset||0);
+    var h=Math.max(420,Math.round(window.innerHeight-top)-96);/* 底部留 96px，让舆图标题在首屏露头 */
+    if(Math.abs(h-last)<2) return;
+    last=h;
+    canvas.style.height=h+'px';
+    window.dispatchEvent(new Event('resize'));
+  }
+  fitScreen();
+  window.addEventListener('resize',fitScreen);
+  window.addEventListener('load',fitScreen);
 })();
 </script>
 
