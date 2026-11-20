@@ -24,6 +24,7 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .tab .grade.g5{background:#e6f2eb;color:#2e7d5b}
 .tab .grade.g6{background:#fdf0e0;color:#b98a2f}
 .tab .grade.gk{background:#e7eef8;color:#3f6fb5}
+.tab .grade.g78{background:#ece6f5;color:#6a4fa3}
 .stage{display:flex;gap:16px;align-items:stretch}
 .figpanel{flex:1.35;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
 canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fcfdfb;touch-action:none}
@@ -71,7 +72,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十三题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋经典几何模型（一半模型 · 蝴蝶模型 · 拉窗帘模型）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十五题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋经典几何模型（一半模型 · 蝴蝶模型 · 拉窗帘模型）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -767,7 +768,122 @@ function drawM(){
   if(cur>=4){lab('等底等高 → 等积：歪三角形先「拉」到好算的位置再算',mx_(-0.8),my_(3.65),'#54655c');}
 }
 
-/* ================= 步骤数据 ================= */
+/* ================= 题 N：勾股定理（风车拼图·八下） ================= */
+// c=5 固定，滑块调直角边 a，b=√(25−a²)，风车图中 a²+b² 恒 = c²
+const N1={u:52,ox:130,oy:120};
+const nx_=x=>N1.ox+x*N1.u, ny_=y=>N1.oy+y*N1.u;   // 注意：y 向下为正（正方形布局用屏幕系）
+let pyA=3;
+function drawN(){
+  clearCanvas();
+  const a=pyA, b=Math.sqrt(25-a*a), s=a+b;
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=8;gx++){ctx.beginPath();ctx.moveTo(nx_(gx),0);ctx.lineTo(nx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=8;gy++){ctx.beginPath();ctx.moveTo(0,ny_(gy));ctx.lineTo(W,ny_(gy));ctx.stroke();}
+  // 风车：大正方形 (0,0)-(s,0)-(s,s)-(0,s)，边点 Fv(a,0) Gv(s,a) Hv(s-a,s) Iv(0,s-a)
+  const Pv=[[0,0],[s,0],[s,s],[0,s]], Fv=[a,0],Gv=[s,a],Hv=[s-a,s],Iv=[0,s-a];
+  const tri=(pts,fill,stroke,lw)=>{ctx.fillStyle=fill;ctx.strokeStyle=stroke;ctx.lineWidth=lw||1.8;
+    ctx.beginPath();pts.forEach(([X,Y],i)=>i?ctx.lineTo(nx_(X),ny_(Y)):ctx.moveTo(nx_(X),ny_(Y)));ctx.closePath();ctx.fill();ctx.stroke();};
+  tri([Pv[0],Fv,Iv],'rgba(46,125,91,.26)','#2e7d5b');      // 左下
+  tri([Pv[1],Gv,Fv],'rgba(63,111,181,.24)','#3f6fb5');     // 右下
+  tri([Pv[2],Hv,Gv],'rgba(185,138,47,.22)','#b98a2f');     // 右上
+  tri([Pv[3],Iv,Hv],'rgba(162,78,138,.20)','#a24e8a');     // 左上
+  tri([Fv,Gv,Hv,Iv],'rgba(194,86,74,.28)','#c2564a',2.2);   // 中央 c²
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2.4;
+  ctx.beginPath();Pv.forEach(([X,Y],i)=>i?ctx.lineTo(nx_(X),ny_(Y)):ctx.moveTo(nx_(X),ny_(Y)));ctx.closePath();ctx.stroke();
+  lab(`c² = 25`,nx_(s/2-0.7),ny_(s/2),'#c2564a');
+  // 右侧：直角三角形原图
+  const R={x:600,y:460};
+  ctx.fillStyle='rgba(46,125,91,.16)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.2;
+  ctx.beginPath();ctx.moveTo(R.x,R.y);ctx.lineTo(R.x+a*N1.u,R.y);ctx.lineTo(R.x,R.y-b*N1.u);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.strokeStyle='#54655c';ctx.lineWidth=1.4;
+  ctx.strokeRect(R.x,R.y-9,9,9);
+  lab('a',R.x+a*N1.u/2-4,R.y+18,'#2e7d5b');
+  lab('b',R.x-24,R.y-b*N1.u/2,'#2e7d5b');
+  lab('c',R.x+a*N1.u/2+14,R.y-b*N1.u/2-10,'#c2564a');
+  lab('直角三角形',R.x+10,R.y-b*N1.u-14,'#54655c');
+  // ≥第2步：高亮一个直角三角形并标三边
+  if(cur>=1){
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(nx_(0),ny_(0));ctx.lineTo(nx_(a),ny_(0));ctx.lineTo(nx_(0),ny_(b));ctx.closePath();ctx.stroke();
+    lab(`a = ${a.toFixed(1)}`,nx_(a/2-0.7),ny_(0)+24,'#2e7d5b');
+    lab(`b = ${b.toFixed(2)}`,nx_(0)-84,ny_(b/2),'#2e7d5b');
+    lab('c = 5（斜边）',nx_(a/2-1.9),ny_(b/2-0.25),'#c2564a');
+  }
+  // ≥第3步：大正方形边长
+  if(cur>=2){
+    lab(`边长 = a+b = ${s.toFixed(2)}`,nx_(s/2-1.5),ny_(0)+48,'#54655c');
+    lab(`面积 = (a+b)²`,nx_(s/2-1.5),ny_(0)+70,'#54655c');
+  }
+  // ≥第4步：右侧 a²、b² 小正方形
+  if(cur>=3){
+    const ax=560, ay=460;
+    ctx.fillStyle='rgba(46,125,91,.24)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2;
+    ctx.fillRect(ax,ay-a*N1.u,a*N1.u,a*N1.u);ctx.strokeRect(ax,ay-a*N1.u,a*N1.u,a*N1.u);
+    lab('a²',ax+a*N1.u/2-8,ay-a*N1.u/2,'#2e7d5b');
+    ctx.fillStyle='rgba(63,111,181,.24)';ctx.strokeStyle='#3f6fb5';
+    ctx.fillRect(ax+a*N1.u+16,ay-b*N1.u,b*N1.u,b*N1.u);ctx.strokeRect(ax+a*N1.u+16,ay-b*N1.u,b*N1.u,b*N1.u);
+    lab('b²',ax+a*N1.u+16+b*N1.u/2-8,ay-b*N1.u/2,'#3f6fb5');
+    lab('换一种摆法：同 4 个三角形',ax,ay+26,'#54655c');
+    lab('剩下 a² + b²',ax,ay+48,'#54655c');
+  }
+  // ≥第5步：结论
+  if(cur>=4){chip(140,548,`c² = a² + b² = ${(a*a).toFixed(2)} + ${(b*b).toFixed(2)} = 25 —— 怎么转都成立`,'#c2564a');}
+}
+
+/* ================= 题 O：相似与位似（九年级） ================= */
+// 位似中心 O(0,0)，滑块 k∈[1,2.4]，△ABC 按比例放大，周长比 k、面积比 k²
+const O1={u:60,ox:150,oy:540};
+const ox_=x=>O1.ox+x*O1.u, oy_=y=>O1.oy-y*O1.u;
+let simK=1.5;
+function drawO(){
+  clearCanvas();
+  const k=simK;
+  const A=[1,1],B=[3.5,1],C=[1.8,3];
+  const A2=[k,k],B2=[3.5*k,k],C2=[1.8*k,3*k];
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=9;gx++){ctx.beginPath();ctx.moveTo(ox_(gx),0);ctx.lineTo(ox_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=8;gy++){ctx.beginPath();ctx.moveTo(0,oy_(gy));ctx.lineTo(W,oy_(gy));ctx.stroke();}
+  // 射线（虚线）
+  ctx.setLineDash([5,5]);ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1.4;
+  [[A,A2],[B,B2],[C,C2]].forEach(([p,q])=>{ctx.beginPath();ctx.moveTo(ox_(0),oy_(0));ctx.lineTo(ox_(q[0]),oy_(q[1]));ctx.stroke();});
+  ctx.setLineDash([]);
+  // 大三角形（蓝）
+  ctx.fillStyle='rgba(63,111,181,.20)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.2;
+  ctx.beginPath();[A2,B2,C2].forEach(([X,Y],i)=>i?ctx.lineTo(ox_(X),oy_(Y)):ctx.moveTo(ox_(X),oy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  // 小三角形（绿）
+  ctx.fillStyle='rgba(46,125,91,.28)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.4;
+  ctx.beginPath();[A,B,C].forEach(([X,Y],i)=>i?ctx.lineTo(ox_(X),oy_(Y)):ctx.moveTo(ox_(X),oy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  // 点与标签
+  dot(ox_(0),oy_(0),'#c2564a',6);lab('O（位似中心）',ox_(0)+10,oy_(0)+4,'#c2564a');
+  dot(ox_(A[0]),oy_(A[1]),'#2e7d5b',4);lab('A',ox_(A[0])-22,oy_(A[1])-6,'#2e7d5b');
+  dot(ox_(B[0]),oy_(B[1]),'#2e7d5b',4);lab('B',ox_(B[0])+8,oy_(B[1])+14,'#2e7d5b');
+  dot(ox_(C[0]),oy_(C[1]),'#2e7d5b',4);lab('C',ox_(C[0])+8,oy_(C[1])-6,'#2e7d5b');
+  if(k>1.05){
+    dot(ox_(A2[0]),oy_(A2[1]),'#3f6fb5',4);lab('A′',ox_(A2[0])-28,oy_(A2[1])+14,'#3f6fb5');
+    dot(ox_(B2[0]),oy_(B2[1]),'#3f6fb5',4);lab('B′',ox_(B2[0])+10,oy_(B2[1])+14,'#3f6fb5');
+    dot(ox_(C2[0]),oy_(C2[1]),'#3f6fb5',4);lab('C′',ox_(C2[0])+10,oy_(C2[1])-8,'#3f6fb5');
+  }
+  // ≥第2步：对应点连线高亮
+  if(cur>=1){
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=2.2;
+    [[A2],[B2],[C2]].forEach(([q])=>{ctx.beginPath();ctx.moveTo(ox_(0),oy_(0));ctx.lineTo(ox_(q[0]),oy_(q[1]));ctx.stroke();});
+    lab('对应点连线都经过位似中心 O',ox_(2.6),oy_(7.3),'#c2564a');
+  }
+  // ≥第3步：对应边比 = k
+  if(cur>=2){
+    ctx.strokeStyle='#2e7d5b';ctx.lineWidth=3.4;
+    ctx.beginPath();ctx.moveTo(ox_(A[0]),oy_(A[1]));ctx.lineTo(ox_(B[0]),oy_(B[1]));ctx.stroke();
+    ctx.strokeStyle='#3f6fb5';
+    ctx.beginPath();ctx.moveTo(ox_(A2[0]),oy_(A2[1]));ctx.lineTo(ox_(B2[0]),oy_(B2[1]));ctx.stroke();
+    lab(`A′B′ / AB = ${k.toFixed(1)}`,ox_(k*1.3),oy_(k*1-0.5),'#3f6fb5');
+  }
+  // ≥第4步：面积比
+  if(cur>=3){
+    lab(`面积比 = k² = ${(k*k).toFixed(2)}`,ox_(4.6),oy_(6.4),'#a24e8a');
+  }
+  // ≥第5步：结论
+  if(cur>=4){chip(ox_(3.4),oy_(8.2),'周长比 = k，面积比 = k² —— 相似图形的两大规律','#a24e8a');}
+}
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',grade:'中考',draw:drawA,
   slider:{label:'P 点位置（x）',min:10,max:2900,val:1500,fmt:v=>(v/1000).toFixed(2)},
@@ -1034,6 +1150,49 @@ const PROBS=[
     q:'等积变形时，什么变了？',o:['面积','形状和位置','底和高'],a:1,hint:'形变积不变。'},
    {t:'结论：等底等高 → 等积',b:'拉窗帘模型（等积变形）是求阴影面积的常用武器：把复杂的图形拉正、拉齐，再套公式。',
     q:'拉窗帘模型的依据？',o:['等底等高 → 等积','周长相等 → 面积相等','像就行'],a:0,hint:'抓住不变的底和高。'}
+  ]},
+ {name:'N',tab:'题 N · 勾股定理（风车拼图）',grade:'八下',draw:drawN,
+  slider:{label:'直角边 a',min:1,max:4,step:0.5,val:3,fmt:v=>v.toFixed(1)+' cm'},
+  apply:v=>{pyA=Math.round(v*2)/2;},
+  readout:()=>{const b=Math.sqrt(25-pyA*pyA);
+    return [['直角边 a',pyA.toFixed(1)+' cm'],['直角边 b',b.toFixed(2)+' cm'],['斜边 c','5 cm（不变）'],['a²+b²',(pyA*pyA+b*b).toFixed(2)+' cm²'],['c²','25 cm²（恒定）']];},
+  formula:h=>h===4?'勾股定理：c² = a² + b²（大正方形两种分割法的面积相等）'
+    :h===3?'换个摆法：4 个三角形拼成两个 a×b 矩形 → 大正方形 = 4△ + a² + b²'
+    :h===2?'大正方形 = 4△ + c²（4 个全等直角三角形围出中间的斜正方形）'
+    :h===1?'大正方形边长 = a+b，里面恰好装 4 个全等的 a×b 直角三角形'
+    :'风车拼图：c² = a² + b² 的面积法证明，拖滑块改变直角边验证',
+  steps:[
+   {t:'勾股定理说的是什么',b:'直角三角形中，两直角边的平方和等于斜边的平方：a²+b²=c²。只对直角三角形成立！拖动滑块改变直角边 a，看右侧直角三角形怎么变。',
+    q:'勾股定理研究的是？',o:['任意三角形','直角三角形三边的关系','正方形面积'],a:1,hint:'只有直角三角形才能用。'},
+   {t:'风车拼图登场',b:'用 4 个全等的直角三角形（两直角边 a、b，斜边 c）围成一个边长 a+b 的大正方形——4 个三角形中间空出一个斜正方形，它的边恰好是斜边 c！',
+    q:'风车图中的 4 个三角形？',o:['形状大小都相同（全等）','各不相同','只有两个相同'],a:0,hint:'都是 a×b 的直角三角形。'},
+   {t:'大正方形的两种分割法',b:'摆法一（现在）：大正方形 = 4 个三角形 + 中间的 c²。摆法二（下一步）：同样 4 个三角形换成两个 a×b 矩形 → 大正方形 = 4 个三角形 + a² + b²。',
+    q:'摆法一里，大正方形 = ？',o:['4△ + c²','4△ + a² + b²','4△ + (a+b)²'],a:0,hint:'中间空出的斜正方形边长是 c。'},
+   {t:'面积相等 → 勾股定理',b:'同一个大正方形（(a+b)²），三角形都是那 4 个（4ab/2）→ 剩下的部分必须相等：c² = a² + b²。勾股定理证毕！',
+    q:'两种摆法面积相等，能得到？',o:['c² = a² + b²','c = a + b','c² = a + b'],a:0,hint:'4 个三角形消掉，剩下的相等。'},
+   {t:'勾三股四弦五',b:'滑块 a=3 时 b=4，c²=3²+4²=25 → c=5。这就是最著名的勾股数 3-4-5（勾三股四弦五）。同倍放大仍是勾股数：6-8-10、9-12-15……',
+    q:'a=3、b=4 时 c = ？',o:['5','6','7'],a:0,hint:'3²+4²=25=5²。'}
+  ]},
+ {name:'O',tab:'题 O · 相似与位似',grade:'九下',draw:drawO,
+  slider:{label:'位似比 k（放大倍数）',min:1,max:2.4,step:0.1,val:1.5,fmt:v=>v.toFixed(1)+' 倍'},
+  apply:v=>{simK=Math.round(v*10)/10;},
+  readout:()=>[['位似比 k',simK.toFixed(1)+' 倍'],['对应边比 A′B′/AB',simK.toFixed(1)],['周长比',simK.toFixed(1)],['面积比',(simK*simK).toFixed(2)]],
+  formula:h=>h===4?'位似（相似）两大规律：周长比 = k，面积比 = k²'
+    :h===3?'放大 k 倍 → 面积放大 k² 倍（两个方向都放大）'
+    :h===2?'对应边的比恒等于位似比 k（读数区实时验证）'
+    :h===1?'对应点 A 与 A′ 的连线都经过位似中心 O'
+    :'位似：按同一比例 k 放大或缩小，形状不变大小变',
+  steps:[
+   {t:'什么是位似',b:'位似是一种特殊的相似：把图形按同一比例 k 放大或缩小，形状不变、大小变。拖动滑块，看绿色三角形怎么长成蓝色三角形。',
+    q:'位似变换中，图形的形状？',o:['改变','不变','变复杂'],a:1,hint:'只有大小变，形状不变。'},
+   {t:'对应点连线过位似中心',b:'对应点 A 与 A′、B 与 B′、C 与 C′ 的连线全部经过位似中心 O——这是位似变换的标志。红色射线就是它们的"血缘线"。',
+    q:'对应点 A 与 A′ 的连线？',o:['都经过位似中心 O','互相平行','没有规律'],a:0,hint:'从 O 出发的同一条射线。'},
+   {t:'对应边的比 = k',b:'AB 与 A′B′ 是对应边：A′B′/AB = k（底边上的两段粗线）。所有的对应边之比都等于 k。读数区可以随时核对。',
+    q:'对应边的比 = ？',o:['k','k²','1'],a:0,hint:'放大 k 倍，边就长 k 倍。'},
+   {t:'面积比 = k²',b:'边放大 k 倍，高也放大 k 倍 → 面积 = ½×底×高，两个 k 相乘：面积比 = k²。这是最容易错的地方：放大 2 倍，面积是 4 倍不是 2 倍！',
+    q:'面积比 = ？',o:['k','k²','2k'],a:1,hint:'底和高各放大 k 倍，相乘。'},
+   {t:'两大规律记牢',b:'相似（位似）图形：周长比 = k，面积比 = k²。k=2 时周长 2 倍、面积 4 倍。这两条规律是中考相似计算题的核心工具。',
+    q:'k=2 时，面积变为原来的？',o:['2 倍','4 倍','8 倍'],a:1,hint:'2²=4。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -1072,20 +1231,20 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,7,8,9,10,11,12,0,1,2,3]; // 展示顺序：小学几何+经典模型九题在前
+const ORD=[4,5,6,7,8,9,10,11,12,13,14,0,1,2,3]; // 展示顺序：小学+经典模型+初中主线在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
     const b=document.createElement('button');
     b.className='tab'+(pi===prob?' on':'');
     const g=PROBS[pi].grade;
-    b.innerHTML=PROBS[pi].tab+(g?` <span class="grade ${g==='中考'?'gk':g.indexOf('六')>=0?'g6':'g5'}">${g}</span>`:'');
+    b.innerHTML=PROBS[pi].tab+(g?` <span class="grade ${g==='中考'?'gk':g.indexOf('六')>=0?'g6':(g.indexOf('八')>=0||g.indexOf('九')>=0)?'g78':'g5'}">${g}</span>`:'');
     b.onclick=()=>switchProb(pi);box.appendChild(b);
   });}
 function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
   buildTabs();
   const sl=document.getElementById('slider');
-  sl.min=P().slider.min;sl.max=P().slider.max;sl.value=P().slider.val;
+  sl.min=P().slider.min;sl.max=P().slider.max;sl.step=P().slider.step||1;sl.value=P().slider.val;
   P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);
   syncUI();}
 document.getElementById('slider').addEventListener('input',e=>{
