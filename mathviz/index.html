@@ -318,7 +318,8 @@ function canvasDrag(clientX){
   P().draw();}
 cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
 cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
-switchProb(0);
+const _qp = parseInt(new URLSearchParams(location.search).get('p'), 10);
+switchProb(_qp === 1 ? 1 : 0);
 </script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </body>

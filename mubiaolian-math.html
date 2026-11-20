@@ -510,6 +510,13 @@ footer{padding:12px 0 36px;font-size:.88rem;}
         <h4>错因诊断 · 常见卡点<span class="exam-src">先对照症状自查 → 按补救动作修正 · 点「补 xx」直达前置环</span></h4>
         <div class="pitfall" id="mPitfall"></div>
       </div>
+      <div class="block" id="mMvizBlock" hidden>
+        <a id="mMvizLink" href="/mathviz/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:rgba(46,125,91,.06)">
+          <span style="font-size:22px">📐</span>
+          <span style="flex:1;font-size:13.5px"><b style="color:#2e7d5b">去练 · 题型动态拆解</b><br><span id="mMvizName" style="opacity:.75"></span></span>
+          <span style="opacity:.6">→</span>
+        </a>
+      </div>
       <div class="case" id="mCase" hidden>
         <h4 id="mCaseTitle"></h4>
         <p id="mCaseText"></p>
@@ -2878,6 +2885,12 @@ const LINK = {
     mStage.className = 'stage-tag ' + n.stage;
     mTitle.textContent = n.title;
     mFact.textContent = n.fact;
+    const MVIZ = { 'quad-fn': {p:0, t:'二次函数动点求面积最值'},
+                   'eq2': {p:0, t:'二次函数动点求面积最值（含配方与方程思想）'},
+                   'trans-graph': {p:1, t:'正方形折叠求线段长'} };
+    const mv = MVIZ[id];
+    mMvizBlock.hidden = !mv;
+    if (mv) { mMvizLink.href = '/mathviz/?p=' + mv.p; mMvizName.textContent = mv.t; }
     const cur = CURRICULUM[id];
     if (cur) {
       mCurr.hidden = false;
