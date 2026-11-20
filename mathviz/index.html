@@ -67,7 +67,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。首批四题：二次函数动点、正方形折叠、方案比较、垂径定理，与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线七题：小学五年级几何（平行四边形割补 · 三角形倍拼 · 排水法求体积）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
   </div>
 
   <div class="tabs" id="tabs"></div>
@@ -321,6 +321,167 @@ function drawD(){
   lab('拖动滑块改变弦心距 d',30,H-18,'#6b7a70');
 }
 
+/* ================= 题 E：平行四边形面积（割补法·五上） ================= */
+// A(0,0) B(6,0) C(8,3) D(2,3)，沿高 x=2 剪下直角三角形，平移拼成长方形 6×3
+const A5={u:70,ox:150,oy:520};
+const ex_=x=>A5.ox+x*A5.u, ey_=y=>A5.oy-y*A5.u;
+let cutT=0; // 割补动画进度 0~100
+function drawE(){
+  clearCanvas();
+  const b=6,h=3,off=2;
+  const tri=[[0,0],[off,0],[off,h]];
+  const rest=[[off,0],[b,0],[b+off,h],[off,h]];
+  const dx=cutT/100*b, lift=Math.sin(Math.PI*cutT/100)*1.1;
+  const triT=tri.map(([X,Y])=>[X+dx,Y+lift]);
+  // 网格
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=9;gx++){ctx.beginPath();ctx.moveTo(ex_(gx),0);ctx.lineTo(ex_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=7;gy++){ctx.beginPath();ctx.moveTo(0,ey_(gy));ctx.lineTo(W,ey_(gy));ctx.stroke();}
+  // 底
+  ctx.strokeStyle='#8a9a8f';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(ex_(0),ey_(0));ctx.lineTo(ex_(b),ey_(0));ctx.stroke();
+  lab('底 a = 6 cm',ex_(1.4),ey_(0)+24,'#8a9a8f');
+  // 右侧剩余块
+  ctx.fillStyle='rgba(63,111,181,.16)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2;
+  ctx.beginPath();rest.forEach(([X,Y],i)=>i?ctx.lineTo(ex_(X),ey_(Y)):ctx.moveTo(ex_(X),ey_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  // 剪下的三角形（动画平移）
+  ctx.fillStyle='rgba(185,138,47,.30)';ctx.strokeStyle='#b98a2f';ctx.lineWidth=2;
+  ctx.beginPath();triT.forEach(([X,Y],i)=>i?ctx.lineTo(ex_(X),ey_(Y)):ctx.moveTo(ex_(X),ey_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  if(cutT>2&&cutT<99)lab('① 平移中…',ex_(triT[0][0]-0.4),ey_(h+lift)-12,'#b98a2f');
+  // 顶点标签（未拆开时）
+  if(cutT<2){
+    dot(ex_(0),ey_(0),'#54655c',4);lab('A',ex_(0)-16,ey_(0)+5,'#54655c');
+    dot(ex_(b),ey_(0),'#54655c',4);lab('B',ex_(b)+8,ey_(0)+5,'#54655c');
+    dot(ex_(b+off),ey_(h),'#54655c',4);lab('C',ex_(b+off)+8,ey_(h)-6,'#54655c');
+    dot(ex_(off),ey_(h),'#54655c',4);lab('D',ex_(off)-16,ey_(h)-6,'#54655c');
+  }
+  // 高（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.moveTo(ex_(off),ey_(h));ctx.lineTo(ex_(off),ey_(0));ctx.stroke();ctx.setLineDash([]);
+    lab('高 h = 3',ex_(off)+8,ey_(h/2),'#2e7d5b');
+  }
+  // 剪开线强调（≥第3步且未拆开）
+  if(cur>=2&&cutT<2){
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(ex_(off),ey_(h));ctx.lineTo(ex_(off),ey_(0));ctx.stroke();
+    lab('沿高剪开 ✂',ex_(off)+10,ey_(h)+18,'#c2564a');
+  }
+  // 拼成长方形（≥第4步且拼完）
+  if(cur>=3&&cutT>=99){
+    ctx.strokeStyle='#2e7d5b';ctx.lineWidth=3;
+    ctx.strokeRect(ex_(off),ey_(h),b*A5.u,h*A5.u);
+    lab('长 = 底 = 6',ex_(off+b/2)-46,ey_(0)+24,'#2e7d5b');
+    lab('宽 = 高 = 3',ex_(off)-70,ey_(h/2),'#2e7d5b');
+  }
+  // 公式（≥第5步）
+  if(cur>=4){chip(ex_(1.5),ey_(4.6),'S = 底 × 高 = 6 × 3 = 18 cm²（拼合前后面积不变）','#2e7d5b');}
+}
+
+/* ================= 题 F：三角形面积（倍拼法·五上） ================= */
+// 绿△(0,0)(6,0)(2,3)，蓝△绕 BC 中点(4,1.5)旋转180°拼成平行四边形
+const A6={u:80,ox:140,oy:520};
+const fx_=x=>A6.ox+x*A6.u, fy_=y=>A6.oy-y*A6.u;
+let rotT=0;
+function rotP(p,c,a){const s=Math.sin(a),co=Math.cos(a),dx=p[0]-c[0],dy=p[1]-c[1];
+  return [c[0]+dx*co-dy*s,c[1]+dx*s+dy*co];}
+function drawF(){
+  clearCanvas();
+  const T=[[0,0],[6,0],[2,3]], C=[4,1.5];
+  const th=rotT/100*Math.PI;
+  const T2=T.map(p=>rotP(p,C,th));
+  // 网格
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=8;gx++){ctx.beginPath();ctx.moveTo(fx_(gx),0);ctx.lineTo(fx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=5;gy++){ctx.beginPath();ctx.moveTo(0,fy_(gy));ctx.lineTo(W,fy_(gy));ctx.stroke();}
+  // 蓝三角形（旋转件）
+  ctx.fillStyle='rgba(63,111,181,.30)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.2;
+  ctx.beginPath();T2.forEach(([X,Y],i)=>i?ctx.lineTo(fx_(X),fy_(Y)):ctx.moveTo(fx_(X),fy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  // 绿三角形（原位）
+  ctx.fillStyle='rgba(46,125,91,.24)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.4;
+  ctx.beginPath();T.forEach(([X,Y],i)=>i?ctx.lineTo(fx_(X),fy_(Y)):ctx.moveTo(fx_(X),fy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  [['A',[0,0]],['B',[6,0]],['C',[2,3]]].forEach(([n,[X,Y]])=>{dot(fx_(X),fy_(Y),'#54655c',4);
+    lab(n,fx_(X)+(X<2?-16:X===6?8:10),fy_(Y)+(Y===0?20:-8),'#54655c');});
+  // 旋转中心与轨迹（≥第3步）
+  if(cur>=2){
+    dot(fx_(C[0]),fy_(C[1]),'#c2564a',6);lab('旋转中心 O（BC 中点）',fx_(C[0])+10,fy_(C[1])+20,'#c2564a');
+    if(rotT>2&&rotT<99){
+      ctx.setLineDash([3,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.4;
+      ctx.beginPath();ctx.arc(fx_(C[0]),fy_(C[1]),A6.u*1.4,0.64,0.64-th,true);ctx.stroke();ctx.setLineDash([]);
+    }
+  }
+  // 拼成平行四边形（≥第4步且拼完）：底与高标注
+  if(cur>=3&&rotT>=99){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(fx_(2),fy_(3));ctx.lineTo(fx_(2),fy_(0));ctx.stroke();ctx.setLineDash([]);
+    lab('高 = 3',fx_(2)-62,fy_(1.5),'#2e7d5b');
+    lab('底 = 6',fx_(3)-30,fy_(0)+22,'#2e7d5b');
+  }
+  // 公式（≥第5步）
+  if(cur>=4){chip(fx_(0.4),fy_(4.5),'S□ = 6×3 = 18 → S△ = 18÷2 = 9 cm²','#2e7d5b');}
+}
+
+/* ================= 题 G：排水法求体积（五下） ================= */
+// 水箱截面 20×10 cm（底面积 200 cm²），原水位 6 cm，石块 v → Δh=v/200
+const G1={u:32,tx:210,tyb:560};
+let stoneV=500;
+function drawG(){
+  clearCanvas();
+  const u=G1.u, X=x=>G1.tx+x*u, Y=y=>G1.tyb-y*u;
+  const h1=6, dh=stoneV/200, h2=Math.min(12,h1+dh);
+  // 左侧刻度
+  ctx.font='12px sans-serif';
+  for(let gy=0;gy<=12;gy+=2){
+    ctx.fillStyle='#6b7a70';ctx.fillText(String(gy),G1.tx-30,Y(gy)+4);
+    ctx.strokeStyle='#c9d3cb';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(G1.tx-6,Y(gy));ctx.lineTo(G1.tx,Y(gy));ctx.stroke();}
+  lab('cm',G1.tx-44,Y(12)-10,'#6b7a70');
+  // 水体
+  ctx.fillStyle='rgba(63,111,181,.22)';
+  ctx.fillRect(X(0),Y(h2),20*u,h2*u);
+  // 上升水层（≥第4步）
+  if(cur>=3&&h2>h1){
+    ctx.fillStyle='rgba(46,125,91,.18)';
+    ctx.fillRect(X(0),Y(h2),20*u,(h2-h1)*u);
+    lab('上升的水 = 石块体积',X(5.4),(Y(h1)+Y(h2))/2+4,'#2e7d5b');
+  }
+  // 石块
+  if(stoneV>0){
+    const r=Math.cbrt(stoneV/800)*46, cy0=G1.tyb-0.9*r;
+    const blob=[[0,-1.15],[0.62,-0.78],[1.0,-0.18],[0.86,0.52],[0.24,0.86],[-0.5,0.72],[-1.0,0.1],[-0.78,-0.62],[-0.3,-1.02]];
+    ctx.fillStyle='#8b979f';ctx.beginPath();
+    blob.forEach(([px,py],i)=>{const x=X(10)+px*r,y=cy0+py*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});
+    ctx.closePath();ctx.fill();
+    ctx.strokeStyle='#54655c';ctx.lineWidth=1.5;ctx.stroke();
+    lab('石块',X(10)-20,G1.tyb+20,'#54655c');
+  }
+  // 原水位虚线（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([6,5]);ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(X(0),Y(h1));ctx.lineTo(X(20),Y(h1));ctx.stroke();ctx.setLineDash([]);
+    lab('放入前 6 cm',X(0.4),Y(h1)-8,'#8a9a8f');
+  }
+  // 当前水面
+  ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.4;
+  ctx.beginPath();ctx.moveTo(X(0),Y(h2));ctx.lineTo(X(20),Y(h2));ctx.stroke();
+  lab(`当前水位 ${h2.toFixed(1)} cm`,X(20)-130,Y(h2)-10,'#3f6fb5');
+  // Δh 双箭头（≥第3步）
+  if(cur>=2&&h2>h1){
+    const xr=X(20)-24;
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.moveTo(xr,Y(h1));ctx.lineTo(xr,Y(h2));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(xr-5,Y(h1)+8);ctx.lineTo(xr,Y(h1));ctx.lineTo(xr+5,Y(h1)+8);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(xr-5,Y(h2)-8);ctx.lineTo(xr,Y(h2));ctx.lineTo(xr+5,Y(h2)-8);ctx.stroke();
+    lab(`Δh=${dh.toFixed(1)}`,xr-74,(Y(h1)+Y(h2))/2,'#c2564a');
+  }
+  // 水箱轮廓
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2.5;
+  ctx.beginPath();ctx.moveTo(X(0),Y(0));ctx.lineTo(X(0),Y(12));ctx.lineTo(X(20),Y(12));ctx.lineTo(X(20),Y(0));ctx.stroke();
+  lab('水箱底面积 200 cm²（截面 20 × 10 cm）',X(1.2),Y(0)+26,'#54655c');
+  // 结论（≥第5步）
+  if(cur>=4){chip(X(0.6),Y(11.3),`V石 = 200 × ${dh.toFixed(1)} = ${Math.round(stoneV)} cm³`,'#2e7d5b');}
+}
+
 /* ================= 步骤数据 ================= */
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',draw:drawA,
@@ -403,6 +564,66 @@ const PROBS=[
     q:'AB = ？',o:['√(25−d²)','2√(25−d²)','25−d²'],a:1,hint:'M 是中点，AB=2AM。'},
    {t:'套用：知二求一',b:'「半径、弦心距、半弦」勾股三兄弟知二求一。d=3 时 AM=√(25−9)=4，AB=8。',
     q:'若 d=3，则 AB = ？',o:['6','8','10'],a:1,hint:'AM=√(25−9)=4，再乘 2。'}
+  ]},
+ {name:'E',tab:'题 E · 平行四边形面积（五上·割补法）',draw:drawE,
+  slider:{label:'割补动画进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{cutT=Math.round(v);},
+  readout:()=>[['底 a','6 cm'],['高 h','3 cm'],['拼成图形',cutT>=99?'长方形 6×3':'平行四边形'],['面积','18 cm²（不变）']],
+  formula:h=>h===4?'S = 底×高 = 6×3 = 18 cm²（割补只是变形状，不变面积）'
+    :h===3?'拼成的长方形：长=底=6，宽=高=3 → 面积 6×3=18'
+    :h===2?'沿高剪下的①是直角三角形，平移到右侧恰好补成长方形'
+    :'平行四边形 ABCD：底 a=6 cm，高 h=3 cm（底边到对边的垂线段）',
+  steps:[
+   {t:'认识底和高',b:'平行四边形 ABCD：底 a=6 cm，从顶点向对边作垂线，垂线段的长就是高 h=3 cm。拖动滑块开始割补。',
+    q:'平行四边形的「高」指的是？',o:['斜边的长','底边到对边的垂线段','两条邻边的和'],a:1,hint:'高必须和底垂直，是垂线段不是斜边。'},
+   {t:'沿高剪开',b:'沿高从顶点剪下去，把平行四边形分成一个直角三角形（①）和一个直角梯形（②）。',
+    q:'剪下来的①号图形是？',o:['直角三角形','等边三角形','长方形'],a:0,hint:'有一条边是高，和底垂直。'},
+   {t:'平移拼成长方形',b:'把①号直角三角形平移到右边，拼成一个长方形：长=底=6 cm，宽=高=3 cm。',
+    q:'拼成的长方形的长是？',o:['6 cm','8 cm','3 cm'],a:0,hint:'长方形的「长」来自平行四边形的底。'},
+   {t:'用长方形面积过渡',b:'长方形面积=长×宽=6×3=18 cm²。割补过程只是把三角形挪了个位置，图形的面积没有变。',
+    q:'拼合前后，面积？',o:['变大了','变小了','不变'],a:2,hint:'割补不增不减，只是变形。'},
+   {t:'得出公式',b:'长方形的长=底、宽=高，所以平行四边形面积=底×高=6×3=18 cm²。后面的梯形、三角形面积公式都由它推出。',
+    q:'平行四边形面积 = ？',o:['底×高','底+高','(底+高)×2'],a:0,hint:'S = a×h。'}
+  ]},
+ {name:'F',tab:'题 F · 三角形面积（五上·倍拼法）',draw:drawF,
+  slider:{label:'旋转拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{rotT=Math.round(v);},
+  readout:()=>[['底 a','6 cm'],['高 h','3 cm'],['平行四边形面积','6×3=18 cm²'],['三角形面积','18÷2=9 cm²']],
+  formula:h=>h===4?'S△ = 底×高÷2 = 6×3÷2 = 9 cm²（÷2 因为两个拼一个）'
+    :h===3?'拼成的平行四边形：底=三角形的底，高=三角形的高'
+    :h===2?'绕 BC 中点 O 旋转 180°，两个全等三角形拼成平行四边形'
+    :'转化：把三角形面积转化成学过的平行四边形面积',
+  steps:[
+   {t:'回忆已学的面积公式',b:'我们已经会用「底×高」求平行四边形面积。三角形能不能也转化成学过的图形？',
+    q:'平行四边形的面积公式是？',o:['底×高÷2','底×高','(上底+下底)×高÷2'],a:1,hint:'三角形才要除以 2，平行四边形不用。'},
+   {t:'准备两个完全一样的三角形',b:'再拿一个完全一样的三角形（蓝），和原来的（绿）拼一拼。拖动滑块旋转蓝三角形。',
+    q:'「完全一样」指的是？',o:['形状相同即可','大小相同即可','形状大小都相同（全等）'],a:2,hint:'必须全等才能严丝合缝地拼。'},
+   {t:'绕中点旋转 180°',b:'以 BC 边的中点 O 为旋转中心，把蓝三角形旋转 180°，两个三角形拼成一个平行四边形。',
+    q:'两个三角形拼成了？',o:['长方形','正方形','平行四边形'],a:2,hint:'滑块拉到 100% 看形状。'},
+   {t:'一半关系',b:'平行四边形面积=底×高=6×3=18 cm²，它由两个全等三角形拼成，所以三角形面积=18÷2=9 cm²。',
+    q:'平行四边形面积是三角形面积的？',o:['2 倍','3 倍','1/2'],a:0,hint:'两个完全一样的三角形拼成。'},
+   {t:'得出公式',b:'三角形面积=底×高÷2=6×3÷2=9 cm²。记住：÷2 的原因就是「两个拼一个」。',
+    q:'底 6、高 3 的三角形面积 = ？',o:['18','9','36'],a:1,hint:'6×3 再除以 2。'}
+  ]},
+ {name:'G',tab:'题 G · 排水法求体积（五下）',draw:drawG,
+  slider:{label:'石块体积',min:0,max:800,val:500,fmt:v=>Math.round(v)+' cm³'},
+  apply:v=>{stoneV=Math.round(v);},
+  readout:()=>[['放入前水位','6 cm'],['水位上升',(stoneV/200).toFixed(1)+' cm'],['当前水位',(6+stoneV/200).toFixed(1)+' cm'],['底面积','200 cm²']],
+  formula:h=>h===4?'V石 = 底面积×Δh = 200×2.5 = 500 cm³'
+    :h===3?'上升部分的水也是长方体：V = 底面积 × Δh'
+    :h===2?'Δh = 放入后水位 − 放入前水位（看刻度差）'
+    :'排水法：石块入水占据空间 → 水面上升，上升的水体积 = 石块体积',
+  steps:[
+   {t:'不规则物体的体积难题',b:'石块形状不规则，没法套公式。想想曹冲称象——石块入水，水面上升，上升部分的水和石块体积一样大。',
+    q:'石块放进水里，水面？',o:['下降','不变','上升'],a:2,hint:'石块占了水的空间，把水「顶」上去了。'},
+   {t:'放入前先记水位',b:'量得水箱底面积 200 cm²（截面 20 cm × 10 cm），放入前水位 6 cm。拖滑块换不同大小的石块。',
+    q:'放入前水位 = ？',o:['6 cm','8.5 cm','10 cm'],a:0,hint:'看左侧刻度和灰色虚线。'},
+   {t:'放入后水位上升',b:'放入石块后水位升到 6+Δh。例如升到 8.5 cm，则 Δh=8.5−6=2.5 cm。',
+    q:'水位从 6 cm 升到 8.5 cm，上升了？',o:['1.5 cm','2 cm','2.5 cm'],a:2,hint:'8.5−6=2.5。'},
+   {t:'上升的水=石块体积',b:'上升那一段水也是长方体：体积=底面积×高=200×Δh。它恰好被石块「顶」上来，等于石块体积。',
+    q:'上升部分水的体积 = ？',o:['200×Δh','200÷Δh','6×Δh'],a:0,hint:'柱体体积统一是「底面积×高」。'},
+   {t:'算出石块体积',b:'V石=200×2.5=500 cm³。排水法把「不规则」转化成「规则的长方体」——转化思想再次立功。',
+    q:'石块体积 = ？',o:['300 cm³','500 cm³','1200 cm³'],a:1,hint:'200×2.5。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -441,12 +662,13 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
+const ORD=[4,5,6,0,1,2,3]; // 展示顺序：五年级几何三题在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
-  PROBS.forEach((p,i)=>{
+  ORD.forEach(pi=>{
     const b=document.createElement('button');
-    b.className='tab'+(i===prob?' on':'');b.textContent=p.tab;
-    b.onclick=()=>switchProb(i);box.appendChild(b);
+    b.className='tab'+(pi===prob?' on':'');b.textContent=PROBS[pi].tab;
+    b.onclick=()=>switchProb(pi);box.appendChild(b);
   });}
 function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
   buildTabs();
@@ -469,7 +691,7 @@ function canvasDrag(clientX){
 cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
 cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
 const _qp = parseInt(new URLSearchParams(location.search).get('p'), 10);
-switchProb(_qp >= 0 && _qp < PROBS.length ? _qp : 0);
+switchProb(_qp >= 0 && _qp < PROBS.length ? _qp : 4);
 </script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </body>
