@@ -81,7 +81,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十五题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋经典几何模型（一半模型 · 蝴蝶模型 · 拉窗帘模型）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十八题：小学几何与经典模型（割补 · 倍拼 · 转化 · 排水法 · 展开图 · 圆面积 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -895,6 +895,93 @@ function drawO(){
   // ≥第5步：结论
   if(cur>=4){chip(ox_(3.4),oy_(8.2),'周长比 = k，面积比 = k² —— 相似图形的两大规律','#a24e8a');}
 }
+
+/* ================= 题 P：分数通分（五下） ================= */
+// 1/2 + 1/3，滑块尝试公分母 k=3..12，涂色面积恒定（分数大小不变），只有 k 是公倍数时能整分
+const XP={ox:100,w:760};
+let fenM=5;
+function drawP(){
+  clearCanvas();
+  const k=fenM;
+  const band=(y,fill,frac)=>{const w=XP.w*frac;
+    ctx.fillStyle=fill;ctx.fillRect(XP.ox,y,w,46);
+    ctx.strokeStyle='#54655c';ctx.lineWidth=2;ctx.strokeRect(XP.ox,y,XP.w,46);
+    ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1;
+    for(let i=1;i<k;i++){const gx=XP.ox+XP.w*i/k;ctx.beginPath();ctx.moveTo(gx,y);ctx.lineTo(gx,y+46);ctx.stroke();}};
+  band(170,'rgba(46,125,91,.28)',0.5);
+  band(290,'rgba(63,111,181,.28)',1/3);
+  band(410,'rgba(162,78,138,.25)',5/6);
+  lab('1/2',XP.ox-44,193,'#2e7d5b');
+  lab('1/3',XP.ox-44,313,'#3f6fb5');
+  lab('和',XP.ox-40,433,'#a24e8a');
+  lab(`公分母 k = ${k}`,XP.ox,120,'#54655c');
+  const ok2=k%2===0, ok3=k%3===0;
+  lab(ok2?`1/2 = ${k/2}/${k} ✓`:`1/2 不能分成 ${k} 等份 ✗`,XP.ox+XP.w+14,193,ok2?'#2e7d5b':'#c2564a');
+  lab(ok3?`1/3 = ${k/3}/${k} ✓`:`1/3 不能分成 ${k} 等份 ✗`,XP.ox+XP.w+14,313,ok3?'#3f6fb5':'#c2564a');
+  lab(ok2&&ok3?`${k/2}/${k} + ${k/3}/${k} = ${5*k/6}/${k} = 5/6 ✓`:'这个分母行不通 ✗',XP.ox+XP.w+14,433,ok2&&ok3?'#a24e8a':'#c2564a');
+  if(cur>=1)lab('涂色面积一直没变 —— 通分不改变分数大小，只换「计数单位」',XP.ox,150,'#54655c');
+  if(cur>=3)lab('分母相同了 → 分子直接相加',XP.ox,390,'#54655c');
+  if(cur>=4)chip(XP.ox,545,k%6===0?'通分：3/6 + 2/6 = 5/6 —— 同分母，分子相加（k=12 也行：10/12，记得约分）':'公分母必须是 2 和 3 的公倍数 —— 拖滑块找找看',k%6===0?'#2e7d5b':'#c2564a');
+}
+
+/* ================= 题 Q：鸡兔同笼（假设法·四年级） ================= */
+// 共 10 只、28 条腿；滑块 = 换成兔的数量 t，腿数 = 20+2t，t=4 时正好 28
+const XQ={ox:130,oy:430,sp:72};
+let chiT=0;
+function drawQ(){
+  clearCanvas();
+  const t=chiT;
+  lab('笼中鸡兔共 10 只，腿共 28 条 —— 假设全是鸡试试',130,130,'#54655c');
+  for(let i=0;i<10;i++){
+    const x=XQ.ox+30+i*XQ.sp, rb=i<t;
+    ctx.fillStyle=rb?'rgba(162,78,138,.35)':'rgba(185,138,47,.35)';
+    ctx.strokeStyle=rb?'#a24e8a':'#b98a2f';ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.ellipse(x,XQ.oy-18,20,16,0,0,7);ctx.fill();ctx.stroke();
+    ctx.beginPath();ctx.arc(x,XQ.oy-44,11,0,7);ctx.fill();ctx.stroke();
+    if(rb){ctx.beginPath();ctx.moveTo(x-4,XQ.oy-54);ctx.lineTo(x-7,XQ.oy-72);ctx.moveTo(x+4,XQ.oy-54);ctx.lineTo(x+7,XQ.oy-72);ctx.stroke();}
+    ctx.lineWidth=2.4;
+    const dxs=rb?[-12,-4,4,12]:[-6,6];
+    dxs.forEach(dx=>{ctx.beginPath();ctx.moveTo(x+dx,XQ.oy-4);ctx.lineTo(x+dx,XQ.oy+18);ctx.stroke();});
+    lab(rb?'兔':'鸡',x,XQ.oy+40,rb?'#a24e8a':'#b98a2f');
+  }
+  const legs=20+2*t;
+  chip(XQ.ox+60,535,`腿数 = 20 + 2×${t} = ${legs} 条`+(legs===28?' ✓ 正好！':legs<28?`（还差 ${28-legs} 条）`:`（多了 ${legs-28} 条）`),legs===28?'#2e7d5b':'#54655c');
+  if(cur>=1)lab('假设全是鸡：10×2 = 20 条腿，比 28 少 8 条',130,180,'#54655c');
+  if(cur>=2)lab('每把 1 只鸡换成兔：腿数 +2（兔 4 条，鸡 2 条）',130,210,'#a24e8a');
+  if(cur>=3)lab('补齐 8 条 ÷ 每只 +2 = 换 4 只：20 + 2×4 = 28 ✓',130,240,'#c2564a');
+  if(cur>=4)chip(560,180,'兔 4 只 · 鸡 6 只 —— 验证：4×4 + 6×2 = 28 ✓','#2e7d5b');
+}
+
+/* ================= 题 R：相遇问题（五年级） ================= */
+// 全程 180 km，甲 40 乙 50 相向；滑块 = 时间 t，t=2 相遇
+const XR={ox:100,oy:400,len:760};
+let meetT=0;
+function drawR(){
+  clearCanvas();
+  const t=meetT;
+  ctx.strokeStyle='#54655c';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(XR.ox,XR.oy);ctx.lineTo(XR.ox+XR.len,XR.oy);ctx.stroke();
+  for(let km=0;km<=180;km+=45){const gx=XR.ox+XR.len*km/180;
+    ctx.beginPath();ctx.moveTo(gx,XR.oy-6);ctx.lineTo(gx,XR.oy+6);ctx.stroke();
+    lab(km+' km',gx-14,XR.oy+26,'#828d86');}
+  lab('甲 40 km/h →',XR.ox,XR.oy-30,'#3f6fb5');
+  lab('← 乙 50 km/h',XR.ox+XR.len-70,XR.oy-30,'#c2564a');
+  const px1=XR.ox+XR.len*(40*t)/180, px2=XR.ox+XR.len*(1-50*t/180);
+  const car=(x,col)=>{ctx.fillStyle=col;
+    ctx.fillRect(x-18,XR.oy-44,36,14);
+    ctx.beginPath();ctx.arc(x-9,XR.oy-26,5,0,7);ctx.fill();
+    ctx.beginPath();ctx.arc(x+9,XR.oy-26,5,0,7);ctx.fill();};
+  car(px1,'#3f6fb5');car(px2,'#c2564a');
+  if(Math.abs(90*t-180)<0.05)lab('★ 相遇！',XR.ox+XR.len/2-20,XR.oy-70,'#2e7d5b');
+  if(cur>=1){ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(XR.ox,XR.oy+46);ctx.lineTo(px1,XR.oy+46);ctx.stroke();
+    lab(`甲：40×${t.toFixed(1)} = ${(40*t).toFixed(0)} km`,(XR.ox+px1)/2-50,XR.oy+64,'#3f6fb5');}
+  if(cur>=2){ctx.strokeStyle='#c2564a';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(px2,XR.oy+92);ctx.lineTo(XR.ox+XR.len,XR.oy+92);ctx.stroke();
+    lab(`乙：50×${t.toFixed(1)} = ${(50*t).toFixed(0)} km`,(px2+XR.ox+XR.len)/2-50,XR.oy+110,'#c2564a');}
+  if(cur>=3)lab('两车合计：速度和 × 时间 = (40+50)×t = 90×t，走满 180 km 就相遇',XR.ox,XR.oy-70,'#54655c');
+  if(cur>=4)chip(XR.ox,180,'相遇时间 = 总路程 ÷ 速度和 = 180 ÷ 90 = 2 小时','#2e7d5b');
+}
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',grade:'中考',draw:drawA,
   ex:[['抛物线 y = x² − 4x + 3 与 x 轴的交点坐标是？','(1,0) 和 (3,0)','令 y=0：x²−4x+3=0 → (x−1)(x−3)=0，交点横坐标就是两个根'],
@@ -1234,6 +1321,75 @@ const PROBS=[
     q:'面积比 = ？',o:['k','k²','2k'],a:1,hint:'底和高各放大 k 倍，相乘。'},
    {t:'两大规律记牢',b:'相似（位似）图形：周长比 = k，面积比 = k²。k=2 时周长 2 倍、面积 4 倍。这两条规律是中考相似计算题的核心工具。',
     q:'k=2 时，面积变为原来的？',o:['2 倍','4 倍','8 倍'],a:1,hint:'2²=4。'}
+  ]},
+ {name:'P',tab:'题 P · 分数通分',grade:'五下',draw:drawP,
+  slider:{label:'公分母 k（试试不同的分母）',min:3,max:12,val:5,fmt:v=>Math.round(v)+' 等份'},
+  apply:v=>{fenM=Math.round(v);},
+  readout:()=>[['公分母 k',fenM+'（须是 2 和 3 的公倍数）'],['1/2 →',fenM%2===0?`${fenM/2}/${fenM} ✓`:'不能整分 ✗'],['1/3 →',fenM%3===0?`${fenM/3}/${fenM} ✓`:'不能整分 ✗'],['和',fenM%6===0?`${5*fenM/6}/${fenM} = 5/6 ✓`:'—（还没通分成功）']],
+  ex:[['1/2 + 1/4 = ？','3/4','通分成同分母 4：2/4 + 1/4 = 3/4'],
+     ['2/5 + 1/10 = ？','1/2','通分：4/10 + 1/10 = 5/10，约分 → 1/2']],
+  formula:h=>h===4?'异分母分数加减：通分 → 同分母 → 分子相加 → 约分'
+    :h===3?'3/6 + 2/6 = 5/6（分母不变，分子相加）'
+    :h===2?'公分母必须是 2 和 3 的公倍数：6、12、18……最小的是 6'
+    :h===1?'通分不改变分数大小——涂色面积始终没变，只是「1 份」变小了'
+    :'分数单位不同不能直接加：1/2 的 1 份 ≠ 1/3 的 1 份',
+  steps:[
+   {t:'分数单位不同，不能直接加',b:'1/2 + 1/3：一个是把整体 2 等份取 1 份，一个是 3 等份取 1 份——"块"的大小不一样，不能直接把分子相加。',
+    q:'1/2 + 1/3 能直接写成 2/5 吗？',o:['能','不能，分数单位不同','能，约分就行'],a:1,hint:'2 等份的 1 块和 3 等份的 1 块不一样大。'},
+   {t:'通分：换统一的"块"',b:'把两个分数换成同分母的分数——计数单位统一了才能相加。这就是通分。拖动滑块，试试不同的分母。',
+    q:'通分是把什么变相同？',o:['分子','分母（分数单位）','符号'],a:1,hint:'统一"1 份"的大小。'},
+   {t:'公分母要找公倍数',b:'滑块 k=4：1/2 = 2/4 ✓，但 1/3 切不出 4 等份 ✗。k=5：两个都不行。k=6：1/2 = 3/6 ✓，1/3 = 2/6 ✓ —— 6 是 2 和 3 的公倍数！',
+    q:'k=4 时为什么不行？',o:['1/3 不能分成 4 等份','4 太小','1/2 不能分'],a:0,hint:'3 的倍数才是 3、6、9、12……'},
+   {t:'通分后直接相加',b:'3/6 + 2/6：分母相同 → 分子直接相加 = 5/6。k=12 也可以：6/12 + 4/12 = 10/12（记得约分回 5/6）。',
+    q:'3/6 + 2/6 = ？',o:['5/6','5/12','1'],a:0,hint:'同分母：分子相加，分母不变。'},
+   {t:'口诀收尾',b:'异分母分数加减：先通分 → 变同分母 → 分子相加（减）→ 结果约分。通分只是换计数单位，分数大小不变（图中涂色面积始终没变）。',
+    q:'通分会改变分数的大小吗？',o:['会变大','不会，只是计数单位变了','会变小'],a:1,hint:'涂色面积一直没变。'}
+  ]},
+ {name:'Q',tab:'题 Q · 鸡兔同笼（假设法）',grade:'四年级',draw:drawQ,
+  slider:{label:'把几只鸡换成兔',min:0,max:10,val:0,fmt:v=>Math.round(v)+' 只'},
+  apply:v=>{chiT=Math.round(v);},
+  readout:()=>[['兔',chiT+' 只'],['鸡',(10-chiT)+' 只'],['腿数',(20+2*chiT)+' 条'],['目标','28 条'],['差',(20+2*chiT-28>=0?'+':'')+(20+2*chiT-28)+' 条']],
+  ex:[['《孙子算经》原题：鸡兔 35 个头、94 条腿，各几只？','兔 12 只、鸡 23 只','94−35×2=24，24÷2=12 只兔'],
+     ['20 枚硬币共 16 元，1 元和 5 角各几枚？','1 元 12 枚、5 角 8 枚','假设全是 5 角：10 元，差 6 元；每换 1 枚 1 元 +0.5 → 6÷0.5=12']],
+  formula:h=>h===4?'鸡兔同笼：兔数 = (总腿数 − 2×总头数) ÷ 2'
+    :h===3?'20 + 2×4 = 28 ✓ —— 换 4 只兔，鸡剩 6 只'
+    :h===2?'每把 1 只鸡换成兔：腿 +2（兔 4 条，鸡 2 条）'
+    :h===1?'假设全是鸡：10×2 = 20 条，比 28 少 8 条'
+    :'鸡兔同笼：先假设，再调整——假设法的经典',
+  steps:[
+   {t:'题目与假设',b:'笼子里鸡兔共 10 只、腿共 28 条。先假设全是鸡：10×2 = 20 条腿。拖滑块开始"换"。',
+    q:'假设全是鸡，腿有多少条？',o:['20','28','40'],a:0,hint:'10 只 × 每只 2 条。'},
+   {t:'找差距',b:'实际 28 条，比假设多 28−20 = 8 条——这 8 条腿就是兔子贡献的"超额"。',
+    q:'假设的腿数比实际少几条？',o:['8','10','6'],a:0,hint:'28−20。'},
+   {t:'每换一只 +2',b:'把一只鸡换成兔：腿数 +2（兔 4 条 vs 鸡 2 条）。滑块每 +1，腿数涨 2。',
+    q:'每换一只鸡为兔，腿数？',o:['+2','+4','−2'],a:0,hint:'4−2=2。'},
+   {t:'换几只补齐',b:'补齐 8 条 ÷ 每只 +2 = 换 4 只兔。此时 20+2×4 = 28 ✓ 腿数正好！',
+    q:'要换几只兔？',o:['4','6','8'],a:0,hint:'8÷2=4。'},
+   {t:'结论与公式',b:'兔 4 只、鸡 6 只：4×4+6×2 = 16+12 = 28 ✓。公式：兔数 = (总腿数 − 2×总头数)÷2 = (28−20)÷2 = 4。',
+    q:'鸡兔各几只？',o:['兔 4 鸡 6','兔 6 鸡 4','兔 5 鸡 5'],a:0,hint:'换掉的 4 只是兔。'}
+  ]},
+ {name:'R',tab:'题 R · 相遇问题',grade:'五年级',draw:drawR,
+  slider:{label:'出发后时间 t',min:0,max:2.5,step:0.1,val:0,fmt:v=>v.toFixed(1)+' 小时'},
+  apply:v=>{meetT=Math.round(v*10)/10;},
+  readout:()=>[['已行时间',meetT.toFixed(1)+' 小时'],['甲走了',(40*meetT).toFixed(0)+' km'],['乙走了',(50*meetT).toFixed(0)+' km'],['两车合计',(90*meetT).toFixed(0)+' km'],['距相遇还差',Math.max(0,180-90*meetT).toFixed(0)+' km']],
+  ex:[['两城相距 300 km，甲车 60 km/h、乙车 40 km/h 同时相向开出，几小时相遇？','3 小时','300÷(60+40)=3'],
+     ['甲乙同时同地反向出发，甲 55 米/分、乙 45 米/分，5 分钟后相距多远？','500 米','背离：(55+45)×5=500，速度和×时间']],
+  formula:h=>h===4?'相遇问题核心公式：相遇时间 = 总路程 ÷ 速度和'
+    :h===3?'(40+50)×t = 180 → t = 2 小时（甲 80 km + 乙 100 km = 180）'
+    :h===2?'两车合计每 1 小时走 40+50 = 90 km（速度和）'
+    :h===1?'甲走的路 = 速度 × 时间 = 40×t km'
+    :'相遇问题：两车相向而行，走满全程时相遇',
+  steps:[
+   {t:'认识相遇问题',b:'两地相距 180 km：甲车 40 km/h 从左出发，乙车 50 km/h 从右出发，同时相向而行。拖动滑块让时间流动。',
+    q:'两车的行驶方向？',o:['相同','相反（相向）','任意'],a:1,hint:'面对面开。'},
+   {t:'甲走的路',b:'相遇前甲走了 40×t km——速度 × 时间。',
+    q:'甲 1 小时走多远？',o:['40 km','50 km','90 km'],a:0,hint:'甲的速度 40。'},
+   {t:'乙走的路 + 合计',b:'乙走了 50×t。两车每小时一共走近 40+50 = 90 km（速度和）——相遇问题的灵魂。',
+    q:'两车合计每小时走多远？',o:['90 km','10 km','180 km'],a:0,hint:'40+50。'},
+   {t:'相遇条件',b:'当 90×t 走满全程 180 km 时相遇：t = 180÷90 = 2 小时。滑块拖到 2.0 看两车碰头！',
+    q:'相遇时间是？',o:['2 小时','4 小时','1 小时'],a:0,hint:'180÷90。'},
+   {t:'公式与验证',b:'相遇时间 = 总路程 ÷ 速度和。相遇时甲走 40×2 = 80 km，乙走 50×2 = 100 km，合计 180 ✓（读数区随时核对）',
+    q:'相遇公式的核心是？',o:['速度差','速度和','路程差'],a:1,hint:'两车一起"吃掉"全程。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -1272,7 +1428,7 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,7,8,9,10,11,12,13,14,0,1,2,3]; // 展示顺序：小学+经典模型+初中主线在前
+const ORD=[4,5,6,7,8,9,10,11,12,15,16,17,13,14,0,1,2,3]; // 展示顺序：小学+经典模型+数与代数在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
