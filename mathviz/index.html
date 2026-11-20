@@ -67,13 +67,10 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。先把两类最高频的压轴题型做出来试手感。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。首批四题：二次函数动点、正方形折叠、方案比较、垂径定理，与数学站知识链弹窗互通直达。</p>
   </div>
 
-  <div class="tabs">
-    <button class="tab on" id="tabA" onclick="switchProb(0)">题 A · 二次函数动点求面积最值</button>
-    <button class="tab" id="tabB" onclick="switchProb(1)">题 B · 正方形折叠求线段长</button>
-  </div>
+  <div class="tabs" id="tabs"></div>
 
   <div class="stage">
     <div class="figpanel">
@@ -92,7 +89,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
     </div>
   </div>
 
-  <p class="footnote">Beta 试点：本页面由目标链自制，动态拆解思路受「数学说」等可视化题库启发；与数学站知识链、错因诊断卡的联动正在规划中。题目为经典中考题型改编，解析原创。</p>
+  <p class="footnote">Beta 试点：本页面由目标链自制，动态拆解思路受「数学说」等可视化题库启发；已与数学站知识链打通（知识点弹窗直达对应题型）。题目为经典中考题型改编，解析原创，持续上新中。</p>
 </div>
 
 <script>
@@ -217,10 +214,117 @@ function drawB(){
   lab('x = DG 的长',bx(0.1),byy(2.2),'#6b7a70');
 }
 
+/* ================= 题 C：两种方案比较（一次函数与不等式） ================= */
+// A 方案 y=80x；B 方案 y=40x+400；x=10 时相等（800 元）
+const A3={scx:28,scy:0.21,ox:70,oy:560};
+const cx_=x=>A3.ox+x*A3.scx, cy_=y=>A3.oy-y*A3.scy;
+let nx=12; // 人数
+function drawC(){
+  clearCanvas();
+  // 网格与坐标轴
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=22;gx+=2){ctx.beginPath();ctx.moveTo(cx_(gx),0);ctx.lineTo(cx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=1200;gy+=200){ctx.beginPath();ctx.moveTo(0,cy_(gy));ctx.lineTo(W,cy_(gy));ctx.stroke();}
+  ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(cx_(0),cy_(0));ctx.lineTo(cx_(22),cy_(0));ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx_(0),cy_(0));ctx.lineTo(cx_(0),cy_(1350));ctx.stroke();
+  ctx.fillStyle='#6b7a70';ctx.font='13px sans-serif';
+  ctx.fillText('人数 x',cx_(20.5),cy_(0)+24);
+  ctx.fillText('费用 y',cx_(0.3),cy_(1330));
+  for(let gy=0;gy<=1200;gy+=400){ctx.fillText(String(gy),cx_(0)-36,cy_(gy)+4);}
+  for(let gx=5;gx<=20;gx+=5){ctx.fillText(String(gx),cx_(gx)-6,cy_(0)+20);}
+  // 更省区域着色（≥第4步）：x<10 时 A 线更低；x>10 时 B 线更低
+  if(cur>=3){
+    ctx.fillStyle='rgba(46,125,91,.09)';
+    ctx.fillRect(cx_(0),cy_(1300),cx_(10)-cx_(0),cy_(0)-cy_(1300));
+    ctx.fillStyle='rgba(63,111,181,.09)';
+    ctx.fillRect(cx_(10),cy_(1300),cx_(22)-cx_(10),cy_(0)-cy_(1300));
+    lab('A 更省',cx_(3.6),cy_(1180),'#2e7d5b');
+    lab('B 更省',cx_(15),cy_(1180),'#3f6fb5');
+  }
+  // A 方案射线
+  ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.5;ctx.beginPath();
+  ctx.moveTo(cx_(0),cy_(0));ctx.lineTo(cx_(16),cy_(80*16));ctx.stroke();
+  lab('A：y=80x',cx_(8.4),cy_(80*8.4+40),'#2e7d5b');
+  // B 方案射线（≥第2步）
+  if(cur>=1){
+    ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.5;ctx.beginPath();
+    ctx.moveTo(cx_(0),cy_(400));ctx.lineTo(cx_(22),cy_(40*22+400));ctx.stroke();
+    dot(cx_(0),cy_(400),'#3f6fb5');lab('(0, 400) 起步价',cx_(0.5),cy_(400)-12,'#3f6fb5');
+    lab('B：y=40x+400',cx_(13.2),cy_(40*13.2+400)-16,'#3f6fb5');
+  }
+  // 交点（≥第3步）
+  if(cur>=2){
+    ctx.setLineDash([4,4]);ctx.strokeStyle='#b98a2f';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(cx_(10),cy_(0));ctx.lineTo(cx_(10),cy_(800));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(cx_(0),cy_(800));ctx.lineTo(cx_(10),cy_(800));ctx.stroke();
+    ctx.setLineDash([]);
+    dot(cx_(10),cy_(800),'#b98a2f',7);lab('(10, 800)',cx_(10.4),cy_(800)-14,'#b98a2f');
+  }
+  // 当前人数竖线与两方案取值点
+  ctx.setLineDash([5,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.8;
+  ctx.beginPath();ctx.moveTo(cx_(nx),cy_(0));ctx.lineTo(cx_(nx),cy_(80*nx));ctx.stroke();
+  ctx.setLineDash([]);
+  dot(cx_(nx),cy_(80*nx),'#2e7d5b',6);dot(cx_(nx),cy_(40*nx+400),'#3f6fb5',6);
+  lab(`x=${nx}`,cx_(nx)-16,cy_(0)+22,'#c2564a');
+  // 结论（≥第5步）
+  if(cur>=4){
+    const t=nx<10?'x<10：A 方案更省':nx>10?'x>10：B 方案更省':'x=10：两方案一样省';
+    chip(Math.max(8,cx_(nx)-140),cy_(80*nx)-44,t,nx<10?'#2e7d5b':nx>10?'#3f6fb5':'#b98a2f');
+  }
+}
+
+/* ================= 题 D：垂径定理 ================= */
+// ⊙O 半径 5，弦 AB，弦心距 OM=d，AM=√(25−d²)，AB=2√(25−d²)
+const A4={cx:480,cy:330,r:190};
+const u4=A4.r/5; // px/单位
+let dd=3; // 弦心距
+function drawD(){
+  clearCanvas();
+  // 圆与圆心
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2.2;ctx.beginPath();
+  ctx.arc(A4.cx,A4.cy,A4.r,0,7);ctx.stroke();
+  dot(A4.cx,A4.cy,'#54655c',5);lab('O',A4.cx+10,A4.cy+5,'#54655c');
+  // 弦 AB（M 为中点，位于圆心正下方 d 处）
+  const am=Math.sqrt(25-dd*dd), half=am*u4;
+  const Mx=A4.cx, My=A4.cy+dd*u4;
+  const Bx=Mx-half, By=My, Ex2=Mx+half, Ey2=My;
+  ctx.strokeStyle='#c2564a';ctx.lineWidth=2.4;
+  ctx.beginPath();ctx.moveTo(Bx,By);ctx.lineTo(Ex2,Ey2);ctx.stroke();
+  lab('A',Bx-20,By+5,'#c2564a');lab('B',Ex2+12,By+5,'#c2564a');
+  // OM 与直角标记（≥第2步）
+  if(cur>=1){
+    ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(A4.cx,A4.cy);ctx.lineTo(Mx,My);ctx.stroke();
+    ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.4;
+    ctx.strokeRect(Mx-9,My-9,9,9);
+    dot(Mx,My,'#2e7d5b',6);lab('M',Mx+14,My+16,'#2e7d5b');
+    lab('OM⊥AB',Mx+22,My+34,'#2e7d5b');
+  }
+  // 半径 OA（≥第3步）
+  if(cur>=2){
+    ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.2;
+    ctx.beginPath();ctx.moveTo(A4.cx,A4.cy);ctx.lineTo(Bx,By);ctx.stroke();
+    lab('OA=r=5',A4.cx-98,A4.cy-30,'#3f6fb5');
+  }
+  // Rt△OAM 填充与标注（≥第4步）
+  if(cur>=3){
+    ctx.fillStyle='rgba(63,111,181,.13)';
+    ctx.beginPath();ctx.moveTo(A4.cx,A4.cy);ctx.lineTo(Bx,By);ctx.lineTo(Mx,My);ctx.closePath();ctx.fill();
+    lab(`AM=${am.toFixed(2)}=√(25−d²)`,Mx-half/2-70,My-14,'#3f6fb5');
+    lab(`d=${dd.toFixed(1)}`,Mx+14,(A4.cy+My)/2,'#2e7d5b');
+  }
+  // 结论（≥第5步）
+  if(cur>=4){
+    chip(Math.min(W-220,A4.cx-90),My+44,`AB = 2AM = ${(2*am).toFixed(2)}（d=${dd.toFixed(1)}）`,'#2e7d5b');
+  }
+  lab('拖动滑块改变弦心距 d',30,H-18,'#6b7a70');
+}
+
 /* ================= 步骤数据 ================= */
 const PROBS=[
- {name:'A',draw:drawA,
-  slider:{label:'P 点位置（x）',min:10,max:2900,fmt:v=>(v/1000).toFixed(2)},
+ {name:'A',tab:'题 A · 二次函数动点求最值',draw:drawA,
+  slider:{label:'P 点位置（x）',min:10,max:2900,val:1500,fmt:v=>(v/1000).toFixed(2)},
   apply:v=>{px=v/1000;},
   readout:()=>[
     ['x_P',px.toFixed(2)],['y_P',fA(px).toFixed(2)],['S△PBC',SA(px).toFixed(3)]],
@@ -240,8 +344,8 @@ const PROBS=[
    {t:'写结论（含检验）',b:'x=1.5 在范围 (0,3) 内，S_max=27/8。作答时说明取值范围与单位。',
     q:'S 的最大值 = ？',o:['27/8','9/2','27/4'],a:0,hint:'顶点纵坐标 27/8 = 3.375。'}
   ]},
- {name:'B',draw:drawB,
-  slider:{label:'折叠角度',min:0,max:180,fmt:v=>Math.round(v)+'°'},
+ {name:'B',tab:'题 B · 正方形折叠求线段',draw:drawB,
+  slider:{label:'折叠角度',min:0,max:180,val:180,fmt:v=>Math.round(v)+'°'},
   apply:v=>{fold=v;},
   readout:()=>[['折叠角',Math.round(fold)+'°'],['DG（答案区，解完看）',cur>=4?'4.5':'待解']],
   formula:h=>h===4?'(12−x)² = 6² + x² ⇒ 144−24x = 36 ⇒ x = 4.5，即 DG = 4.5'
@@ -259,6 +363,46 @@ const PROBS=[
     q:'FG = ？',o:['x','6−x','6+x'],a:1,hint:'勾股减：斜边 GE、直角边 EF=3。'},
    {t:'AG 列方程，解出 DG',b:'AG=AF+FG=12−x；Rt△ADG 中 AG²=AD²+DG²=36+x²。解 (12−x)²=36+x² 得 x=4.5。',
     q:'DG = ？',o:['3','4.5','5'],a:1,hint:'展开 (12−x)²，消去 x² 项。'}
+  ]},
+ {name:'C',tab:'题 C · 方案比较（一次函数与不等式）',draw:drawC,
+  slider:{label:'人数 x',min:1,max:20,val:12,fmt:v=>Math.round(v)+' 人'},
+  apply:v=>{nx=Math.round(v);},
+  readout:()=>[['人数 x',nx+' 人'],['A 方案',(nx*80)+' 元'],['B 方案',(40*nx+400)+' 元'],['当前更省',nx<10?'A 方案':nx>10?'B 方案':'一样省']],
+  formula:h=>h===4?'x<10：80x<40x+400 选 A；x>10：选 B；x=10：两者都是 800 元'
+    :h===3?'交点右侧 B 线更低 ⇒ B 更省；交点左侧 A 线更低 ⇒ A 更省'
+    :h===2?'80x=40x+400 ⇒ 40x=400 ⇒ x=10，交点 (10, 800)'
+    :'A 方案 y=80x；B 方案 y=40x+400（40 元/人 + 400 元固定费用）',
+  steps:[
+   {t:'把两种方案写成函数',b:'研学 x 人：A 方案每人 80 元，y_A=80x；B 方案每人 40 元、另收 400 元费用，y_B=40x+400。拖滑块看两条射线的高低变化。',
+    q:'B 方案的费用函数是？',o:['y=40x','y=40x+400','y=80x+400'],a:1,hint:'单价 40 乘人数，再加固定费用 400。'},
+   {t:'找两方案费用的相等点',b:'令 80x=40x+400，得 40x=400，x=10。图中两线交于 (10, 800)，交点是省钱分界线。',
+    q:'x = ？时两方案费用相等',o:['x=8','x=10','x=12'],a:1,hint:'移项解 80x=40x+400。'},
+   {t:'交点左侧比高低',b:'x<10 时 A 线在 B 线下方：80x<40x+400 ⇒ A 方案更省（图中绿色区域）。',
+    q:'x=8 时哪个方案更省？',o:['A 方案','B 方案','一样'],a:0,hint:'x=8：A=640 元，B=720 元。'},
+   {t:'交点右侧比高低',b:'x>10 时 B 线在下方：80x>40x+400 ⇒ B 方案更省（图中蓝色区域）。方案比较=看交点两侧谁更低。',
+    q:'x>10 时更省的是？',o:['A 方案','B 方案','无法确定'],a:1,hint:'看交点右边哪条线在下面。'},
+   {t:'按人数做决策',b:'若 24 人参加：24>10 选 B，费用 40×24+400=1360 元（A 方案要 1920 元）。方案比较题最后要给出选择建议。',
+    q:'24 人参加，最少费用 = ？',o:['1920 元','1360 元','1000 元'],a:1,hint:'24>10 选 B：40×24+400。'}
+  ]},
+ {name:'D',tab:'题 D · 垂径定理',draw:drawD,
+  slider:{label:'弦心距 d',min:0,max:490,val:300,fmt:v=>(v/100).toFixed(1)},
+  apply:v=>{dd=v/100;},
+  readout:()=>[['弦心距 d',dd.toFixed(1)],['AM=√(25−d²)',Math.sqrt(25-dd*dd).toFixed(2)],['AB=2AM',(2*Math.sqrt(25-dd*dd)).toFixed(2)]],
+  formula:h=>h===4?'d=3 时：AM=√(25−9)=4，AB=2×4=8'
+    :h===3?'AB=2AM=2√(r²−d²)（d=0 时弦最长，即直径）'
+    :h===2?'勾股：AM²=OA²−OM²=r²−d² ⇒ AM=√(25−d²)'
+    :'垂径定理：OM⊥AB 于 M ⇒ AM=MB，且平分弦所对的弧',
+  steps:[
+   {t:'认识图形，背出定理',b:'⊙O 半径 r=5，弦 AB，OM⊥AB 垂足为 M。垂径定理：垂直于弦的直径平分这条弦，并且平分弦所对的两条弧。',
+    q:'OM⊥AB 且 O 是圆心，则 M 是 AB 的？',o:['端点','中点','三等分点'],a:1,hint:'「垂直于弦的直径平分弦」。'},
+   {t:'连半径，构造直角三角形',b:'连接 OA。Rt△OAM 中：斜边 OA=r=5，两条直角边是弦心距 OM=d 和半弦 AM。',
+    q:'Rt△OAM 的斜边是？',o:['OM','AM','OA'],a:2,hint:'O 到圆上一点 A 的连线段是半径。'},
+   {t:'勾股定理表达半弦',b:'AM²=OA²−OM²=r²−d²=25−d²，∴ AM=√(25−d²)。拖滑块：d 变大 ⇒ AM 变小，弦变短。',
+    q:'AM² = ？',o:['r²−d²','r²+d²','d²−r²'],a:0,hint:'斜边的平方减去直角边 OM 的平方。'},
+   {t:'由半弦到整弦',b:'垂径定理保证 AM=MB，∴ AB=2√(r²−d²)。d=0 时弦最长——就是直径 10。',
+    q:'AB = ？',o:['√(25−d²)','2√(25−d²)','25−d²'],a:1,hint:'M 是中点，AB=2AM。'},
+   {t:'套用：知二求一',b:'「半径、弦心距、半弦」勾股三兄弟知二求一。d=3 时 AM=√(25−9)=4，AB=8。',
+    q:'若 d=3，则 AB = ？',o:['6','8','10'],a:1,hint:'AM=√(25−9)=4，再乘 2。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -297,11 +441,17 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
+function buildTabs(){
+  const box=document.getElementById('tabs');box.innerHTML='';
+  PROBS.forEach((p,i)=>{
+    const b=document.createElement('button');
+    b.className='tab'+(i===prob?' on':'');b.textContent=p.tab;
+    b.onclick=()=>switchProb(i);box.appendChild(b);
+  });}
 function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
-  document.getElementById('tabA').classList.toggle('on',i===0);
-  document.getElementById('tabB').classList.toggle('on',i===1);
+  buildTabs();
   const sl=document.getElementById('slider');
-  sl.min=P().slider.min;sl.max=P().slider.max;sl.value=P().name==='A'?1500:180;
+  sl.min=P().slider.min;sl.max=P().slider.max;sl.value=P().slider.val;
   P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);
   syncUI();}
 document.getElementById('slider').addEventListener('input',e=>{
@@ -319,7 +469,7 @@ function canvasDrag(clientX){
 cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
 cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
 const _qp = parseInt(new URLSearchParams(location.search).get('p'), 10);
-switchProb(_qp === 1 ? 1 : 0);
+switchProb(_qp >= 0 && _qp < PROBS.length ? _qp : 0);
 </script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
 </body>

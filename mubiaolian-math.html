@@ -476,7 +476,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
     <span style="font-size:28px">📐</span>
     <span style="flex:1">
       <b>题型动态拆解实验室（Beta）</b><br>
-      <span style="opacity:.72;font-size:13px">中考高频压轴题的动态拆解：拖动图形、改变参数，图形变化与解题步骤同步出现——关键步骤自己点选，答错不放行。首批上线：二次函数动点求面积最值 · 正方形折叠求线段长</span>
+      <span style="opacity:.72;font-size:13px">中考高频压轴题的动态拆解：拖动图形、改变参数，图形变化与解题步骤同步出现——关键步骤自己点选，答错不放行。首批四题：二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理</span>
     </span>
     <span style="opacity:.6;font-size:20px">→</span>
   </a>
@@ -2887,7 +2887,10 @@ const LINK = {
     mFact.textContent = n.fact;
     const MVIZ = { 'quad-fn': {p:0, t:'二次函数动点求面积最值'},
                    'eq2': {p:0, t:'二次函数动点求面积最值（含配方与方程思想）'},
-                   'trans-graph': {p:1, t:'正方形折叠求线段长'} };
+                   'trans-graph': {p:1, t:'正方形折叠求线段长'},
+                   'linear-fn': {p:2, t:'两种方案费用比较（一次函数与不等式）'},
+                   'ineq': {p:2, t:'两种方案费用比较（看交点比高低）'},
+                   'circle': {p:3, t:'垂径定理：弦心距与半弦的勾股'} };
     const mv = MVIZ[id];
     mMvizBlock.hidden = !mv;
     if (mv) { mMvizLink.href = '/mathviz/?p=' + mv.p; mMvizName.textContent = mv.t; }
