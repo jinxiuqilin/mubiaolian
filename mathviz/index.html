@@ -60,6 +60,15 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .footnote{margin-top:18px;font-size:12.5px;color:var(--dim)}
 @media(max-width:760px){.stage{flex-direction:column}.steps{min-width:0}}
+.exbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px;margin-top:16px;box-shadow:0 1px 3px rgba(34,48,42,.05)}
+.exbox h3{font-size:14.5px;font-weight:700;color:var(--acc);margin:0 0 4px}
+.exitem{padding:12px 0;border-top:1px dashed var(--line)}
+.exitem:first-of-type{border-top:none}
+.exq{font-size:13.5px;color:var(--ink);line-height:1.65}
+.exitem details{margin-top:8px}
+.exitem summary{font-size:12.5px;color:var(--acc);cursor:pointer;font-weight:600;user-select:none}
+.exa{font-size:13px;color:var(--dim);margin-top:8px;background:rgba(46,125,91,.06);border-radius:10px;padding:10px 14px;line-height:1.7}
+.exa b{color:var(--ink)}
 </style>
 </head>
 <body>
@@ -94,6 +103,8 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
       </div>
     </div>
   </div>
+
+  <div class="exbox" id="exbox"></div>
 
   <p class="footnote">Beta 试点：本页面由目标链自制，动态拆解思路受「<a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">数学说</a>」等可视化题库启发；已与数学站知识链打通（知识点弹窗直达对应题型）。题目为经典中考题型改编，解析原创，持续上新中。</p>
 </div>
@@ -886,6 +897,8 @@ function drawO(){
 }
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',grade:'中考',draw:drawA,
+  ex:[['抛物线 y = x² − 4x + 3 与 x 轴的交点坐标是？','(1,0) 和 (3,0)','令 y=0：x²−4x+3=0 → (x−1)(x−3)=0，交点横坐标就是两个根'],
+     ['y = −x² + 2x + 3 的最大值是多少？','4（当 x=1 时）','配方 y = −(x−1)² + 4，开口向下 → 顶点处取最大']],
   slider:{label:'P 点位置（x）',min:10,max:2900,val:1500,fmt:v=>(v/1000).toFixed(2)},
   apply:v=>{px=v/1000;},
   readout:()=>[
@@ -907,6 +920,8 @@ const PROBS=[
     q:'S 的最大值 = ？',o:['27/8','9/2','27/4'],a:0,hint:'顶点纵坐标 27/8 = 3.375。'}
   ]},
  {name:'B',tab:'题 B · 正方形折叠求线段',grade:'中考',draw:drawB,
+  ex:[['矩形 ABCD，AB=8，AD=10，把 △ADE 沿 AE 折叠使 D 恰好落在 BC 上的 F 处，求 BF。','BF = 6','折叠不变长 → AF=AD=10；Rt△ABF 中 AB=8 → BF=√(10²−8²)=6'],
+     ['矩形 ABCD，AB=4，BC=8，沿对角线 AC 折叠，B 落在 B′，B′C 交 AD 于 E，求 △DEC 的面积。','6','AD∥BC → ∠EAC=∠ECA → AE=CE；设 AE=x 解得 x=5 → DE=3，S=½×3×4=6']],
   slider:{label:'折叠角度',min:0,max:180,val:180,fmt:v=>Math.round(v)+'°'},
   apply:v=>{fold=v;},
   readout:()=>[['折叠角',Math.round(fold)+'°'],['DG（答案区，解完看）',cur>=4?'4.5':'待解']],
@@ -927,6 +942,8 @@ const PROBS=[
     q:'DG = ？',o:['3','4.5','5'],a:1,hint:'展开 (12−x)²，消去 x² 项。'}
   ]},
  {name:'C',tab:'题 C · 方案比较（一次函数与不等式）',grade:'中考',draw:drawC,
+  ex:[['甲店笔 3 元/支，乙店 2 元/支但需先付 12 元会员费，买几支时两店同价？','12 支','3x = 2x+12 → x=12；少于 12 支选甲，多于 12 支选乙'],
+     ['话费 A：月租 18 元 + 0.1 元/分；B：无月租 0.25 元/分。通话超过多少分钟 A 更划算？','超过 120 分钟','18+0.1x < 0.25x → x>120']],
   slider:{label:'人数 x',min:1,max:20,val:12,fmt:v=>Math.round(v)+' 人'},
   apply:v=>{nx=Math.round(v);},
   readout:()=>[['人数 x',nx+' 人'],['A 方案',(nx*80)+' 元'],['B 方案',(40*nx+400)+' 元'],['当前更省',nx<10?'A 方案':nx>10?'B 方案':'一样省']],
@@ -947,6 +964,8 @@ const PROBS=[
     q:'24 人参加，最少费用 = ？',o:['1920 元','1360 元','1000 元'],a:1,hint:'24>10 选 B：40×24+400。'}
   ]},
  {name:'D',tab:'题 D · 垂径定理',grade:'中考',draw:drawD,
+  ex:[['⊙O 半径 10，弦 AB=16，求圆心 O 到弦 AB 的距离。','6','作弦心距 OM → AM=8，OM=√(10²−8²)=6'],
+     ['拱桥跨度 AB=16，拱高 4，求弧所在圆的半径。','10','设半径 r：r² = (r−4)² + 8² → 8r=80 → r=10']],
   slider:{label:'弦心距 d',min:0,max:490,val:300,fmt:v=>(v/100).toFixed(1)},
   apply:v=>{dd=v/100;},
   readout:()=>[['弦心距 d',dd.toFixed(1)],['AM=√(25−d²)',Math.sqrt(25-dd*dd).toFixed(2)],['AB=2AM',(2*Math.sqrt(25-dd*dd)).toFixed(2)]],
@@ -967,6 +986,8 @@ const PROBS=[
     q:'若 d=3，则 AB = ？',o:['6','8','10'],a:1,hint:'AM=√(25−9)=4，再乘 2。'}
   ]},
  {name:'E',tab:'题 E · 平行四边形面积（割补法）',grade:'五上',draw:drawE,
+  ex:[['平行四边形底 12、高 7，面积是多少？','84','S = 底×高 = 12×7'],
+     ['平行四边形面积 96，底 12，高是多少？','8','h = 96÷12 = 8']],
   slider:{label:'割补动画进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
   apply:v=>{cutT=Math.round(v);},
   readout:()=>[['底 a','6 cm'],['高 h','3 cm'],['拼成图形',cutT>=99?'长方形 6×3':'平行四边形'],['面积','18 cm²（不变）']],
@@ -987,6 +1008,8 @@ const PROBS=[
     q:'平行四边形面积 = ？',o:['底×高','底+高','(底+高)×2'],a:0,hint:'S = a×h。'}
   ]},
  {name:'F',tab:'题 F · 三角形面积（倍拼法）',grade:'五上',draw:drawF,
+  ex:[['三角形底 8、高 6，面积是多少？','24','S = 底×高÷2 = 8×6÷2'],
+     ['三角形面积 30，底 10，高是多少？','6','h = 30×2÷10 = 6']],
   slider:{label:'旋转拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
   apply:v=>{rotT=Math.round(v);},
   readout:()=>[['底 a','6 cm'],['高 h','3 cm'],['平行四边形面积','6×3=18 cm²'],['三角形面积','18÷2=9 cm²']],
@@ -1007,6 +1030,8 @@ const PROBS=[
     q:'底 6、高 3 的三角形面积 = ？',o:['18','9','36'],a:1,hint:'6×3 再除以 2。'}
   ]},
  {name:'G',tab:'题 G · 排水法求体积',grade:'五下',draw:drawG,
+  ex:[['水槽底面积 60 cm²，放入石块后水面从 5 cm 升到 8 cm，石块体积是多少？','180 cm³','V = 底面积×水面上升高度 = 60×3'],
+     ['石块体积 120 cm³，放入底面积 40 cm² 的水槽，水面上升多少？','3 cm','Δh = 120÷40 = 3']],
   slider:{label:'石块体积',min:0,max:800,val:500,fmt:v=>Math.round(v)+' cm³'},
   apply:v=>{stoneV=Math.round(v);},
   readout:()=>[['放入前水位','6 cm'],['水位上升',(stoneV/200).toFixed(1)+' cm'],['当前水位',(6+stoneV/200).toFixed(1)+' cm'],['底面积','200 cm²']],
@@ -1027,6 +1052,8 @@ const PROBS=[
     q:'石块体积 = ？',o:['300 cm³','500 cm³','1200 cm³'],a:1,hint:'200×2.5。'}
   ]},
  {name:'H',tab:'题 H · 梯形面积（转化法）',grade:'五上',draw:drawH,
+  ex:[['梯形上底 4、下底 10、高 6，面积是多少？','42','S = (4+10)×6÷2'],
+     ['梯形面积 60，上底 5、下底 10，高是多少？','8','h = 60×2÷(5+10) = 8']],
   slider:{label:'旋转拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
   apply:v=>{traT=Math.round(v);},
   readout:()=>[['上底 a','4 cm'],['下底 b','6 cm'],['高 h','3 cm'],['平行四边形面积','(4+6)×3=30 cm²'],['梯形面积','30÷2=15 cm²']],
@@ -1047,6 +1074,8 @@ const PROBS=[
     q:'梯形面积 = ？',o:['(4+6)×3÷2','(4+6)×3','4×6×3'],a:0,hint:'先算整体，再除以 2。'}
   ]},
  {name:'I',tab:'题 I · 圆的面积（切拼法）',grade:'六上',draw:drawI,
+  ex:[['圆的半径是 5，面积是多少？（π 取 3.14）','78.5','S = πr² = 3.14×5² = 3.14×25'],
+     ['一个圆的直径是 12，它的面积是多少？','36π ≈ 113.04','r = 6，S = π×6² = 36π']],
   slider:{label:'拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
   apply:v=>{joinT=Math.round(v);},
   readout:()=>[['等分份数','16 份'],['拼出的图形',joinT>=98?'近似长方形':'圆形（16 个扇形）'],['近似的长','πr ≈ 9.42'],['近似的宽','r = 3'],['圆的面积','3.14×3² = 28.26 cm²']],
@@ -1067,6 +1096,8 @@ const PROBS=[
     q:'圆的面积公式 = ？',o:['πr','πr²','2πr'],a:1,hint:'长×宽 = πr × r。'}
   ]},
  {name:'J',tab:'题 J · 展开图与表面积',grade:'五下',draw:drawJ,
+  ex:[['长方体长 5、宽 4、高 3，表面积是多少？','94','2×(5×4 + 5×3 + 4×3) = 2×47'],
+     ['长方体表面积 148，长 6、宽 4，高是多少？','5','2×(24 + 6h + 4h) = 148 → 10h = 50']],
   slider:{label:'展开进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
   apply:v=>{unfoldT=Math.round(v);},
   readout:()=>[['长×宽×高','6 × 4 × 3 cm'],['展开状态',unfoldT>=98?'十字展开图':'折叠的长方体'],['三组面','上下24 · 前后18 · 左右12'],['表面积','2×(24+18+12)=108 cm²']],
@@ -1087,6 +1118,8 @@ const PROBS=[
     q:'表面积 = ？',o:['54 cm²','108 cm²','216 cm²'],a:1,hint:'2×(24+18+12)。'}
   ]},
  {name:'K',tab:'题 K · 一半模型（平行四边形）',grade:'五上+',draw:drawK,
+  ex:[['平行四边形面积 40，P 是内部任意一点，S△PAB + S△PCD = ？','20','对边两块三角形面积之和 = 面积的一半，与 P 位置无关'],
+     ['平行四边形底 10、高 8，P 是内部一点，上下两个三角形的面积之和是多少？','40','½×10×8 = 40（一半模型）']],
   slider:{label:'P 点位置（沿路径滑动）',min:0,max:100,val:40,fmt:v=>Math.round(v)+'%'},
   apply:v=>{halfT=Math.round(v);},
   readout:()=>{const t=halfT/100,y=0.6+1.8*t;
@@ -1109,6 +1142,8 @@ const PROBS=[
     q:'一半模型的结论是？',o:['四块面积都相等','对边两块之和 = 一半','面积越来越大'],a:1,hint:'P 在动，和不动。'}
   ]},
  {name:'L',tab:'题 L · 蝴蝶模型（梯形蝴蝶定理）',grade:'五下+',draw:drawL,
+  ex:[['梯形上底 4、下底 8，对角线分出的上△与下△的面积比是多少？','1:4','面积比 = a²:b² = 16:64 = 1:4'],
+     ['蝴蝶模型中 S上=2、S下=8，每个翅膀（翼）的面积是多少？','4','S翼 = √(S上×S下) = √16 = 4']],
   slider:{label:'下底 b',min:2,max:6,val:4,fmt:v=>v.toFixed(0)+' cm'},
   apply:v=>{flyB=Math.round(v);},
   readout:()=>{const h1=3-3*flyB/(2+flyB),h2=3-h1,sU=h1,sD=flyB*h2/2;
@@ -1131,6 +1166,8 @@ const PROBS=[
     q:'b=4 时（S上=1，S下=4），S翼 = ？',o:['√5','2','4'],a:1,hint:'√(S上×S下) = √4 = 2。'}
   ]},
  {name:'M',tab:'题 M · 拉窗帘模型（等积变形）',grade:'五上+',draw:drawM,
+  ex:[['三角形底 10、高 6，顶点沿平行于底边的直线滑动，面积会变吗？','不变，恒为 30','等底等高 → 等积，S = ½×10×6'],
+     ['两个三角形同底（8）、等高（5），面积分别是多少？','都是 20','S = ½×8×5 = 20，与顶点位置无关']],
   slider:{label:'顶点 A′ 位置',min:0,max:100,val:50,fmt:v=>Math.round(v)+'%'},
   apply:v=>{curt=Math.round(v);},
   readout:()=>[['A′ 横坐标',(-1+8*curt/100).toFixed(1)],['底 BC','6 cm（不变）'],['高 h','3 cm（不变）'],['面积','9 cm²（恒定）']],
@@ -1152,6 +1189,8 @@ const PROBS=[
     q:'拉窗帘模型的依据？',o:['等底等高 → 等积','周长相等 → 面积相等','像就行'],a:0,hint:'抓住不变的底和高。'}
   ]},
  {name:'N',tab:'题 N · 勾股定理（风车拼图）',grade:'八下',draw:drawN,
+  ex:[['直角三角形两直角边为 6 和 8，斜边长是多少？','10','c = √(6²+8²) = √100 = 10'],
+     ['梯子长 13 米斜靠墙，底端离墙 5 米，顶端离地多高？','12 米','√(13²−5²) = √144 = 12']],
   slider:{label:'直角边 a',min:1,max:4,step:0.5,val:3,fmt:v=>v.toFixed(1)+' cm'},
   apply:v=>{pyA=Math.round(v*2)/2;},
   readout:()=>{const b=Math.sqrt(25-pyA*pyA);
@@ -1174,6 +1213,8 @@ const PROBS=[
     q:'a=3、b=4 时 c = ？',o:['5','6','7'],a:0,hint:'3²+4²=25=5²。'}
   ]},
  {name:'O',tab:'题 O · 相似与位似',grade:'九下',draw:drawO,
+  ex:[['△ABC∽△DEF，相似比 1:3，周长比是多少？','1:3','周长比 = 相似比'],
+     ['两个相似三角形的面积比是 4:9，相似比是多少？','2:3','相似比 = √(面积比) = √(4/9) = 2:3']],
   slider:{label:'位似比 k（放大倍数）',min:1,max:2.4,step:0.1,val:1.5,fmt:v=>v.toFixed(1)+' 倍'},
   apply:v=>{simK=Math.round(v*10)/10;},
   readout:()=>[['位似比 k',simK.toFixed(1)+' 倍'],['对应边比 A′B′/AB',simK.toFixed(1)],['周长比',simK.toFixed(1)],['面积比',(simK*simK).toFixed(2)]],
@@ -1246,7 +1287,12 @@ function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
   const sl=document.getElementById('slider');
   sl.min=P().slider.min;sl.max=P().slider.max;sl.step=P().slider.step||1;sl.value=P().slider.val;
   P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);
-  syncUI();}
+  renderEx();syncUI();}
+function renderEx(){
+  const box=document.getElementById('exbox'),ex=P().ex||[];
+  box.innerHTML='<h3>📖 同类典型例题（点「看答案」展开）</h3>'+
+    ex.map((e,i)=>`<div class="exitem"><div class="exq">${i+1}. ${e[0]}</div><details><summary>看答案</summary><div class="exa"><b>答案：</b>${e[1]}<br><b>思路：</b>${e[2]}</div></details></div>`).join('');
+}
 document.getElementById('slider').addEventListener('input',e=>{
   P().apply(+e.target.value);
   document.getElementById('sliderVal').textContent=P().slider.fmt(+e.target.value);
