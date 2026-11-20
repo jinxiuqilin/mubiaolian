@@ -67,7 +67,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线七题：小学五年级几何（平行四边形割补 · 三角形倍拼 · 排水法求体积）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -483,6 +483,152 @@ function drawG(){
   if(cur>=4){chip(X(0.6),Y(11.3),`V石 = 200 × ${dh.toFixed(1)} = ${Math.round(stoneV)} cm³`,'#2e7d5b');}
 }
 
+/* ================= 题 H：梯形面积（转化法·五上） ================= */
+// 梯形 A(0,0) B(6,0) C(5,3) D(1,3)，复制件绕 BC 中点 M(5.5,1.5) 旋转180°拼成平行四边形
+const A7={u:70,ox:120,oy:520};
+const hx_=x=>A7.ox+x*A7.u, hy_=y=>A7.oy-y*A7.u;
+let traT=0;
+function drawH(){
+  clearCanvas();
+  const T=[[0,0],[6,0],[5,3],[1,3]], M=[5.5,1.5];
+  const th=traT/100*Math.PI;
+  const T2=T.map(p=>rotP(p,M,th));
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=11;gx++){ctx.beginPath();ctx.moveTo(hx_(gx),0);ctx.lineTo(hx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=5;gy++){ctx.beginPath();ctx.moveTo(0,hy_(gy));ctx.lineTo(W,hy_(gy));ctx.stroke();}
+  // 蓝（旋转件）
+  ctx.fillStyle='rgba(63,111,181,.30)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.2;
+  ctx.beginPath();T2.forEach(([X,Y],i)=>i?ctx.lineTo(hx_(X),hy_(Y)):ctx.moveTo(hx_(X),hy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  // 绿（原位梯形）
+  ctx.fillStyle='rgba(46,125,91,.24)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.4;
+  ctx.beginPath();T.forEach(([X,Y],i)=>i?ctx.lineTo(hx_(X),hy_(Y)):ctx.moveTo(hx_(X),hy_(Y)));ctx.closePath();ctx.fill();ctx.stroke();
+  if(traT<2){
+    [['A',[0,0]],['B',[6,0]],['C',[5,3]],['D',[1,3]]].forEach(([n,[X,Y]])=>{dot(hx_(X),hy_(Y),'#54655c',4);
+      lab(n,hx_(X)+(X<1.5?-16:X>5.5?8:0),hy_(Y)+(Y===0?20:-10),'#54655c');});
+  }
+  lab('下底 b = 6',hx_(2.0),hy_(0)+24,'#54655c');
+  lab('上底 a = 4',hx_(2.0),hy_(3)-12,'#54655c');
+  // 高（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.8;
+    ctx.beginPath();ctx.moveTo(hx_(1),hy_(3));ctx.lineTo(hx_(1),hy_(0));ctx.stroke();ctx.setLineDash([]);
+    lab('高 h = 3',hx_(1)-74,hy_(1.5),'#2e7d5b');
+  }
+  // 旋转中心与轨迹（≥第3步）
+  if(cur>=2){
+    dot(hx_(M[0]),hy_(M[1]),'#c2564a',6);lab('旋转中心 O（BC 中点）',hx_(M[0])+10,hy_(M[1])+22,'#c2564a');
+    if(traT>2&&traT<99){
+      ctx.setLineDash([3,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.4;
+      ctx.beginPath();ctx.arc(hx_(M[0]),hy_(M[1]),A7.u*1.58,-1.893,-1.893+th);ctx.stroke();ctx.setLineDash([]);
+    }
+  }
+  // 拼成平行四边形（≥第4步且拼完）
+  if(cur>=3&&traT>=99){
+    lab('底 = 上底 + 下底 = 10',hx_(2.0),hy_(0)+24,'#2e7d5b');
+  }
+  // 公式（≥第5步）
+  if(cur>=4){chip(hx_(0.6),hy_(4.6),'S□ = (4+6)×3 = 30 → S梯 = 30÷2 = 15 cm²','#2e7d5b');}
+}
+
+/* ================= 题 I：圆的面积（切拼法·六上） ================= */
+// 圆 r=3 切 16 等份扇形，交错拼成近似长方形：长≈πr、宽≈r
+const I1={u:52,ox:480,oy:480};
+const ix_=x=>I1.ox+x*I1.u, iy_=y=>I1.oy-y*I1.u;
+let joinT=0;
+function arrowH(x1,x2,y,c){ctx.strokeStyle=c;ctx.lineWidth=1.8;
+  ctx.beginPath();ctx.moveTo(x1,y);ctx.lineTo(x2,y);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x1+8,y-5);ctx.lineTo(x1,y);ctx.lineTo(x1+8,y+5);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x2-8,y-5);ctx.lineTo(x2,y);ctx.lineTo(x2-8,y+5);ctx.stroke();}
+function arrowV(x,y1,y2,c){ctx.strokeStyle=c;ctx.lineWidth=1.8;
+  ctx.beginPath();ctx.moveTo(x,y1);ctx.lineTo(x,y2);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x-5,y1+8);ctx.lineTo(x,y1);ctx.lineTo(x+5,y1+8);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(x-5,y2-8);ctx.lineTo(x,y2);ctx.lineTo(x+5,y2-8);ctx.stroke();}
+function drawI(){
+  clearCanvas();
+  const n=16, r=3, DEL=Math.PI*2/n, half=2*Math.PI*r/n/2;
+  const t=joinT/100;
+  for(let i=0;i<n;i++){
+    const even=i%2===0, mu=(i+0.5)*DEL;
+    const ang=((even?Math.PI/2:-Math.PI/2)-mu)*t;      // 目标朝向插值
+    const tx=(even?((i/2)-3.5)*2*half:(((i-1)/2)-3.5)*2*half+half)*t;
+    const ty=(even?0:r)*t;
+    const co=Math.cos(ang),si=Math.sin(ang);
+    ctx.fillStyle=even?'rgba(63,111,181,.30)':'rgba(185,138,47,.30)';
+    ctx.strokeStyle=even?'#3f6fb5':'#b98a2f';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(ix_(tx),iy_(ty));
+    for(let k=0;k<=10;k++){
+      const a=i*DEL+DEL*k/10;
+      const px=r*Math.cos(a),py=r*Math.sin(a);
+      ctx.lineTo(ix_(tx+px*co-py*si),iy_(ty+px*si+py*co));
+    }
+    ctx.closePath();ctx.fill();ctx.stroke();
+  }
+  lab('16 个扇形',ix_(1.2),iy_(3.35),'#6b7a70');
+  if(cur>=2&&joinT<98)lab('拖动滑块，把扇形交错拼起来 →',ix_(-4.6),iy_(-0.5),'#c2564a');
+  // 长（≥第3步且拼完）
+  if(cur>=2&&joinT>=98){
+    arrowH(ix_(-4.72),ix_(5.35),iy_(-0.55),'#c2564a');
+    lab('长 ≈ 周长的一半 = πr = 9.42',ix_(-1.4),iy_(-1.0),'#c2564a');
+  }
+  // 宽（≥第4步且拼完）
+  if(cur>=3&&joinT>=98){
+    arrowV(ix_(-5.15),iy_(0),iy_(3),'#2e7d5b');
+    lab('宽 ≈ r = 3',ix_(-5.9),iy_(1.5),'#2e7d5b');
+  }
+  // 公式（≥第5步）
+  if(cur>=4){chip(ix_(-5.0),iy_(4.1),'S = 长×宽 = πr × r = 3.14×3×3 = 28.26 cm²','#2e7d5b');}
+}
+
+/* ================= 题 J：长方体展开图与表面积（五下） ================= */
+// 长6 宽4 高3，十字展开图动态铺开，S=2(ab+ah+bh)=108
+const J1={u:30,fx:270,fy:150};
+let unfoldT=0;
+function drawJ(){
+  clearCanvas();
+  const u=J1.u, fx=J1.fx, fy=J1.fy;
+  const fw=6*u, fh=3*u, fb=4*u;
+  const e=unfoldT/100;
+  const L=(t1,t2)=>t1+(t2-t1)*e;
+  // 六个面：[名, 目标x, 目标y, 目标宽, 目标高, 填充, 描边]
+  const faces=[
+    {n:'后 · 6×3', x:fx,      y:fy+fh+fb, w:fw, h:fh, f:'rgba(63,111,181,.14)', s:'#8aa6c8'},
+    {n:'下 · 6×4', x:fx,      y:fy+fh,    w:fw, h:fb, f:'rgba(185,138,47,.20)', s:'#b98a2f'},
+    {n:'上 · 6×4', x:fx,      y:fy-fb,    w:fw, h:fb, f:'rgba(185,138,47,.20)', s:'#b98a2f'},
+    {n:'左 · 4×3', x:fx-fb,   y:fy,       w:fb, h:fh, f:'rgba(46,125,91,.18)',  s:'#2e7d5b'},
+    {n:'右 · 4×3', x:fx+fw,   y:fy,       w:fb, h:fh, f:'rgba(46,125,91,.18)',  s:'#2e7d5b'},
+  ];
+  // 前（最后画，置顶）
+  faces.forEach(o=>{
+    const rx=L(fx,o.x),ry=L(fy,o.y),rw=L(fw,o.w),rh=L(fh,o.h);
+    ctx.fillStyle=o.f;ctx.strokeStyle=o.s;ctx.lineWidth=1.8;
+    ctx.fillRect(rx,ry,rw,rh);ctx.strokeRect(rx,ry,rw,rh);
+    if(e>0.92)lab(o.n,rx+8,ry+rh/2+4,o.s);
+  });
+  ctx.fillStyle='rgba(63,111,181,.26)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.2;
+  ctx.fillRect(fx,fy,fw,fh);ctx.strokeRect(fx,fy,fw,fh);
+  if(e>0.92)lab('前 · 6×3',fx+8,fy+fh/2+4,'#3f6fb5');
+  // 折痕（前面四条边加粗）
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2.4;
+  ctx.strokeRect(fx,fy,fw,fh);
+  // 外部尺寸（铺开后）
+  if(e>0.92){
+    lab('长 6 cm',fx+60,fy-fb-10,'#6b7a70');
+    lab('宽 4 cm',fx+fw+fb+12,fy+fb/2+4,'#6b7a70');
+    lab('高 3 cm',fx-fb-64,fy+fh/2+4,'#6b7a70');
+  }
+  if(cur>=1&&e<0.92)lab('拖动滑块，沿棱剪开铺平 →',fx+10,fy+fh+fb+fb+60,'#c2564a');
+  // 三组面（≥第3步）
+  if(cur>=2){
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=2.6;
+    ctx.strokeRect(L(fx,fx),L(fy,fy-fb),L(fw,fw),L(fh,fb));
+    ctx.strokeRect(L(fx,fx),L(fy,fy+fh),L(fw,fw),L(fh,fb));
+    lab('上下是一对（全等）',fx,fy-fb-34,'#c2564a');
+  }
+  if(cur>=3)lab('三组面：上下 6×4=24 · 前后 6×3=18 · 左右 4×3=12',fx,fy+fh+fb+fb+56,'#54655c');
+  // 公式（≥第5步）
+  if(cur>=4){chip(fx-10,fy+fh+fb+fb+78,'S = 2×(24+18+12) = 2×54 = 108 cm²','#2e7d5b');}
+}
+
 /* ================= 步骤数据 ================= */
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',draw:drawA,
@@ -625,6 +771,66 @@ const PROBS=[
     q:'上升部分水的体积 = ？',o:['200×Δh','200÷Δh','6×Δh'],a:0,hint:'柱体体积统一是「底面积×高」。'},
    {t:'算出石块体积',b:'V石=200×2.5=500 cm³。排水法把「不规则」转化成「规则的长方体」——转化思想再次立功。',
     q:'石块体积 = ？',o:['300 cm³','500 cm³','1200 cm³'],a:1,hint:'200×2.5。'}
+  ]},
+ {name:'H',tab:'题 H · 梯形面积（五上·转化法）',draw:drawH,
+  slider:{label:'旋转拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{traT=Math.round(v);},
+  readout:()=>[['上底 a','4 cm'],['下底 b','6 cm'],['高 h','3 cm'],['平行四边形面积','(4+6)×3=30 cm²'],['梯形面积','30÷2=15 cm²']],
+  formula:h=>h===4?'S梯 = (a+b)×h÷2 = (4+6)×3÷2 = 15 cm²（÷2 因为两个拼一个）'
+    :h===3?'拼成的平行四边形：底=上底+下底=10，高不变=3 → 10×3=30'
+    :h===2?'绕 BC 中点 O 旋转 180°，两个全等梯形拼成平行四边形'
+    :'转化：两个完全一样的梯形，拼成学过的平行四边形',
+  steps:[
+   {t:'回忆转化思路',b:'平行四边形、三角形的面积都是「转化」成学过的图形求出来的。梯形能不能也拼一拼？再拿一个完全一样的梯形试试。拖动滑块看旋转拼合。',
+    q:'推导梯形面积公式的思路是？',o:['直接量出来','转化成学过的图形','数格子'],a:1,hint:'前面平行四边形、三角形都是这么干的。'},
+   {t:'认识上底、下底和高',b:'梯形 ABCD：互相平行的一组对边中，短的叫上底 a=4 cm，长的叫下底 b=6 cm；两底之间的垂线段是高 h=3 cm。',
+    q:'梯形的「高」是？',o:['腰的长度','两底之间的垂线段','上底+下底'],a:1,hint:'高与两底垂直，是垂线段。'},
+   {t:'绕中点旋转 180°',b:'以 BC 边中点 O 为旋转中心，把蓝色梯形旋转 180°，两个完全一样的梯形拼成一个平行四边形。',
+    q:'两个全等梯形拼成了？',o:['长方形','平行四边形','正方形'],a:1,hint:'滑块拉到 100% 看形状。'},
+   {t:'找拼出图形的底和高',b:'拼成的平行四边形：底 = 上底 + 下底 = 4+6 = 10，高不变 h=3。面积 = 10×3 = 30 cm²。',
+    q:'平行四边形的底 = ？',o:['4 cm','6 cm','10 cm'],a:2,hint:'上底和下底接在一起。'},
+   {t:'一半关系，得出公式',b:'平行四边形由两个全等梯形拼成 → 梯形面积 = 30÷2 = 15 cm²。公式：S梯 = (a+b)×h÷2。',
+    q:'梯形面积 = ？',o:['(4+6)×3÷2','(4+6)×3','4×6×3'],a:0,hint:'先算整体，再除以 2。'}
+  ]},
+ {name:'I',tab:'题 I · 圆的面积（六上·切拼法）',draw:drawI,
+  slider:{label:'拼合进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{joinT=Math.round(v);},
+  readout:()=>[['等分份数','16 份'],['拼出的图形',joinT>=98?'近似长方形':'圆形（16 个扇形）'],['近似的长','πr ≈ 9.42'],['近似的宽','r = 3'],['圆的面积','3.14×3² = 28.26 cm²']],
+  formula:h=>h===4?'S = 长×宽 = πr × r = πr² = 3.14×3×3 = 28.26 cm²'
+    :h===3?'宽 ≈ 扇形的半径 r（扇形「立」起来的高度就是半径）'
+    :h===2?'长 ≈ 圆周长的一半：上排 8 份弧 + 下排 8 份弧 = 整个圆周 → 2πr÷2 = πr'
+    :'把圆等分成 16 个扇形，交错拼成近似长方形——分得越细越像',
+  steps:[
+   {t:'把圆等分',b:'把圆平均切成 16 个小扇形。每一份都带一条弧边——是扇形，不是三角形。拖动滑块开始拼。',
+    q:'切出来的每一份是？',o:['三角形','扇形','梯形'],a:1,hint:'有一条边是弧。'},
+   {t:'交错拼成近似长方形',b:'把这些扇形上下交错排开，拼成一个近似的长方形。分得越细，越接近长方形。',
+    q:'拼出的图形近似？',o:['长方形','正方形','三角形'],a:0,hint:'滑块拉到 100% 看形状。'},
+   {t:'长 = 圆周长的一半',b:'长方形的长由所有扇形的弧边组成：上排 8 份 + 下排 8 份 = 整个圆周 → 长 ≈ 2πr÷2 = πr = 9.42。',
+    q:'近似长方形的长 ≈ ？',o:['半径 r','直径 2r','周长的一半 πr'],a:2,hint:'所有弧边拼起来正好是半个周长。'},
+   {t:'宽 = 半径',b:'扇形的两条半径边排在一起，正好是长方形的宽：宽 ≈ r = 3。',
+    q:'近似长方形的宽 ≈ ？',o:['半径 r','直径 2r','周长'],a:0,hint:'扇形「立起来」的高度就是半径。'},
+   {t:'得出面积公式',b:'长×宽 = πr × r = πr²。圆的面积 = πr² = 3.14×3×3 = 28.26 cm²。',
+    q:'圆的面积公式 = ？',o:['πr','πr²','2πr'],a:1,hint:'长×宽 = πr × r。'}
+  ]},
+ {name:'J',tab:'题 J · 展开图与表面积（五下）',draw:drawJ,
+  slider:{label:'展开进度',min:0,max:100,val:0,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{unfoldT=Math.round(v);},
+  readout:()=>[['长×宽×高','6 × 4 × 3 cm'],['展开状态',unfoldT>=98?'十字展开图':'折叠的长方体'],['三组面','上下24 · 前后18 · 左右12'],['表面积','2×(24+18+12)=108 cm²']],
+  formula:h=>h===4?'S = 2×(6×4 + 6×3 + 4×3) = 2×54 = 108 cm²'
+    :h===3?'表面积 = 上下 + 前后 + 左右 = 2ab + 2ah + 2bh'
+    :h===2?'相对的面全等：上=下（长×宽），前=后（长×高），左=右（宽×高）'
+    :'沿棱剪开铺平 → 十字展开图，六个面一目了然',
+  steps:[
+   {t:'认识长方体的面',b:'长方体有 6 个面：上、下、前、后、左、右，三三成对。拖动滑块把它沿棱剪开铺平，看展开图。',
+    q:'长方体有几个面？',o:['4 个','6 个','8 个'],a:1,hint:'三组「对面」，一组两个。'},
+   {t:'沿棱剪开，铺成展开图',b:'沿棱剪开铺平，得到十字形展开图。剪的过程面积没有增减——展开图的面积就是表面积。',
+    q:'展开图的面积 = ？',o:['表面积','体积','棱长和'],a:0,hint:'铺平只是变形状，面积不变。'},
+   {t:'相对的面全等',b:'上面=下面（长×宽=6×4=24）；前面=后面（6×3=18）；左面=右面（4×3=12）。三组面两两全等，图中红色圈出的一对就是「上、下」。',
+    q:'「上」和「下」两个面的面积各是？',o:['6×4=24','6×3=18','4×3=12'],a:0,hint:'上下两面由长和宽围成。'},
+   {t:'表面积 = 三组面之和',b:'每组出现两次：S = 上下 + 上下 + 前后 + 前后 + 左右 + 左右 = 2×(24+18+12)。',
+    q:'表面积的算式 = ？',o:['2×(24+18+12)','24+18+12','2×24×18×12'],a:0,hint:'三组面各乘 2 再相加。'},
+   {t:'算出结果',b:'2×54 = 108 cm²。有了展开图，表面积不漏面、不重面——「展开」也是转化思想。',
+    q:'表面积 = ？',o:['54 cm²','108 cm²','216 cm²'],a:1,hint:'2×(24+18+12)。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -663,7 +869,7 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,0,1,2,3]; // 展示顺序：五年级几何三题在前
+const ORD=[4,5,6,7,8,9,0,1,2,3]; // 展示顺序：小学几何六题在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
