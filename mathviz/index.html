@@ -67,7 +67,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十三题：小学几何（平行四边形割补 · 三角形倍拼 · 梯形转化 · 排水法求体积 · 展开图与表面积 · 圆的面积切拼）＋经典几何模型（一半模型 · 蝴蝶模型 · 拉窗帘模型）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -629,6 +629,140 @@ function drawJ(){
   if(cur>=4){chip(fx-10,fy+fh+fb+fb+78,'S = 2×(24+18+12) = 2×54 = 108 cm²','#2e7d5b');}
 }
 
+/* ================= 题 K：一半模型（平行四边形） ================= */
+// 平行四边形 A(0,0) B(6,0) C(7,3) D(1,3)，P 在形内滑动，S△PAB+S△PCD≡9
+const A8={u:80,ox:100,oy:520};
+const kx_=x=>A8.ox+x*A8.u, ky_=y=>A8.oy-y*A8.u;
+let halfT=40;
+function drawK(){
+  clearCanvas();
+  const t=halfT/100;
+  const P=[1+5*t,0.6+1.8*t];
+  const Q=[[0,0],[6,0],[7,3],[1,3]];
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=8;gx++){ctx.beginPath();ctx.moveTo(kx_(gx),0);ctx.lineTo(kx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=4;gy++){ctx.beginPath();ctx.moveTo(0,ky_(gy));ctx.lineTo(W,ky_(gy));ctx.stroke();}
+  const tri=(pts,fill,stroke)=>{ctx.fillStyle=fill;ctx.strokeStyle=stroke;ctx.lineWidth=1.8;
+    ctx.beginPath();pts.forEach(([X,Y],i)=>i?ctx.lineTo(kx_(X),ky_(Y)):ctx.moveTo(kx_(X),ky_(Y)));ctx.closePath();ctx.fill();ctx.stroke();};
+  tri([P,Q[1],Q[2]],'rgba(185,138,47,.20)','#b98a2f');   // △PBC 右
+  tri([P,Q[3],Q[0]],'rgba(162,78,138,.18)','#a24e8a');   // △PAD 左
+  tri([P,Q[0],Q[1]],'rgba(46,125,91,.26)','#2e7d5b');    // △PAB 下
+  tri([P,Q[2],Q[3]],'rgba(63,111,181,.26)','#3f6fb5');   // △PCD 上
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2.4;
+  ctx.beginPath();Q.forEach(([X,Y],i)=>i?ctx.lineTo(kx_(X),ky_(Y)):ctx.moveTo(kx_(X),ky_(Y)));ctx.closePath();ctx.stroke();
+  [['A',0,0,-16,20],['B',6,0,8,20],['C',7,3,8,-8],['D',1,3,-16,-8]].forEach(([n,X,Y,dx,dy])=>{dot(kx_(X),ky_(Y),'#54655c',4);lab(n,kx_(X)+dx,ky_(Y)+dy,'#54655c');});
+  dot(kx_(P[0]),ky_(P[1]),'#c2564a',6);lab('P',kx_(P[0])+10,ky_(P[1])+4,'#c2564a');
+  lab('底 a = 6',kx_(2.6),ky_(0)+24,'#54655c');
+  // 高之和（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(kx_(P[0]),ky_(P[1]));ctx.lineTo(kx_(P[0]),ky_(0));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(kx_(P[0]),ky_(P[1]));ctx.lineTo(kx_(P[0]),ky_(3));ctx.stroke();ctx.setLineDash([]);
+    lab('h₁',kx_(P[0])+8,ky_(P[1]/2),'#2e7d5b');
+    lab('h₂',kx_(P[0])+8,ky_((P[1]+3)/2),'#3f6fb5');
+    lab(`h₁+h₂ = ${P[1].toFixed(1)}+${(3-P[1]).toFixed(1)} = 3`,kx_(P[0])+16,ky_(3.35),'#2e7d5b');
+  }
+  // 上下面积（≥第3步）
+  if(cur>=2){
+    lab(`S△PAB = ${(3*P[1]).toFixed(2)}`,kx_(P[0]-1.6),ky_(P[1]/2),'#2e7d5b');
+    lab(`S△PCD = ${(9-3*P[1]).toFixed(2)}`,kx_(P[0]-1.6),ky_((P[1]+3)/2),'#3f6fb5');
+  }
+  // 和恒为一半（≥第4步）
+  if(cur>=3){chip(kx_(0.3),ky_(4.35),'S△PAB + S△PCD = ½×6×(h₁+h₂) = ½×6×3 = 9 = 18÷2','#2e7d5b');}
+  // 左右对（≥第5步）
+  if(cur>=4){chip(kx_(0.3),ky_(3.8),'左右一对 S△PAD + S△PBC = 另一半 = 9（P 随便动，两对恒各占一半）','#a24e8a');}
+}
+
+/* ================= 题 L：蝴蝶模型（梯形蝴蝶定理） ================= */
+// 梯形上底 a=2 下底 b 高 h=3，对角线交 O，S上:S下=a²:b²，S翼=√(S上·S下)
+const L1={u:64,ox:150,oy:500};
+const lx_=x=>L1.ox+x*L1.u, ly_=y=>L1.oy-y*L1.u;
+let flyB=4;
+function drawL(){
+  clearCanvas();
+  const a=2,b=flyB,h=3;
+  const A=[0,0],B=[b,0],C=[(b+a)/2,h],D=[(b-a)/2,h];
+  const o1=b/(a+b);
+  const O=[o1*(b+a)/2,o1*h];
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=7;gx++){ctx.beginPath();ctx.moveTo(lx_(gx),0);ctx.lineTo(lx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=4;gy++){ctx.beginPath();ctx.moveTo(0,ly_(gy));ctx.lineTo(W,ly_(gy));ctx.stroke();}
+  const tri=(pts,fill,stroke)=>{ctx.fillStyle=fill;ctx.strokeStyle=stroke;ctx.lineWidth=1.8;
+    ctx.beginPath();pts.forEach(([X,Y],i)=>i?ctx.lineTo(lx_(X),ly_(Y)):ctx.moveTo(lx_(X),ly_(Y)));ctx.closePath();ctx.fill();ctx.stroke();};
+  tri([A,B,O],'rgba(46,125,91,.26)','#2e7d5b');   // 下△
+  tri([C,D,O],'rgba(63,111,181,.28)','#3f6fb5');  // 上△
+  tri([A,O,D],'rgba(185,138,47,.24)','#b98a2f');  // 左翼
+  tri([B,O,C],'rgba(162,78,138,.22)','#a24e8a');  // 右翼
+  ctx.strokeStyle='#54655c';ctx.lineWidth=1.4;
+  ctx.beginPath();ctx.moveTo(lx_(A[0]),ly_(A[1]));ctx.lineTo(lx_(C[0]),ly_(C[1]));
+  ctx.moveTo(lx_(B[0]),ly_(B[1]));ctx.lineTo(lx_(D[0]),ly_(D[1]));ctx.stroke();
+  ctx.lineWidth=2.4;
+  ctx.beginPath();[A,B,C,D].forEach(([X,Y],i)=>i?ctx.lineTo(lx_(X),ly_(Y)):ctx.moveTo(lx_(X),ly_(Y)));ctx.closePath();ctx.stroke();
+  [['A',0,0,-16,20],['B',b,0,8,20],['C',(b+a)/2,3,8,-8],['D',(b-a)/2,3,-16,-8]].forEach(([n,X,Y,dx,dy])=>{dot(lx_(X),ly_(Y),'#54655c',4);lab(n,lx_(X)+dx,ly_(Y)+dy,'#54655c');});
+  dot(lx_(O[0]),ly_(O[1]),'#c2564a',6);lab('O',lx_(O[0])+10,ly_(O[1])+4,'#c2564a');
+  lab(`上底 a = ${a}`,lx_(b/2)-36,ly_(3)-12,'#54655c');
+  lab(`下底 b = ${b}`,lx_(b/2)-36,ly_(0)+24,'#54655c');
+  const h1=3-3*b/(a+b), h2=3-h1;
+  const sU=a*h1/2, sD=b*h2/2, sj=Math.sqrt(sU*sD);
+  // h₁ h₂（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(lx_(O[0]),ly_(O[1]));ctx.lineTo(lx_(O[0]),ly_(3));ctx.stroke();
+    ctx.beginPath();ctx.moveTo(lx_(O[0]),ly_(O[1]));ctx.lineTo(lx_(O[0]),ly_(0));ctx.stroke();ctx.setLineDash([]);
+    lab(`h₁`,lx_(O[0])+8,ly_((O[1]+3)/2),'#3f6fb5');
+    lab(`h₂`,lx_(O[0])+8,ly_(O[1]/2),'#2e7d5b');
+  }
+  // 面积数值（≥第3步）
+  if(cur>=2){
+    lab(`S上 = ${sU.toFixed(2)}`,lx_(O[0])+16,ly_(O[1])+30,'#3f6fb5');
+    lab(`S下 = ${sD.toFixed(2)}`,lx_(O[0])+16,ly_(O[1])+50,'#2e7d5b');
+  }
+  // 两翼（≥第4步）
+  if(cur>=3){
+    lab(`S左 = S右 = ${sj.toFixed(2)}`,lx_(O[0])+16,ly_(O[1])+10,'#b98a2f');
+  }
+  // 蝴蝶定理（≥第5步）
+  if(cur>=4){chip(lx_(0.1),ly_(4.3),`S翼 = √(S上×S下) = √(${sU.toFixed(1)}×${sD.toFixed(1)}) = ${sj.toFixed(2)}（翅膀乘积 = 上下乘积）`,'#2e7d5b');}
+}
+
+/* ================= 题 M：拉窗帘模型（等积变形） ================= */
+// △底 BC=6 高 3，顶点沿 y=3 平行线滑动，S 恒=9
+const M1={u:70,ox:180,oy:500};
+const mx_=x=>M1.ox+x*M1.u, my_=y=>M1.oy-y*M1.u;
+let curt=50;
+function drawM(){
+  clearCanvas();
+  const Ax=-1+8*curt/100;
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=0;gx<=8;gx++){ctx.beginPath();ctx.moveTo(mx_(gx),0);ctx.lineTo(mx_(gx),H);ctx.stroke();}
+  for(let gy=0;gy<=4;gy++){ctx.beginPath();ctx.moveTo(0,my_(gy));ctx.lineTo(W,my_(gy));ctx.stroke();}
+  // 窗帘轨道
+  ctx.setLineDash([7,5]);ctx.strokeStyle='#a24e8a';ctx.lineWidth=1.8;
+  ctx.beginPath();ctx.moveTo(mx_(-1.2),my_(3));ctx.lineTo(mx_(7.6),my_(3));ctx.stroke();ctx.setLineDash([]);
+  if(cur>=1)lab('窗帘轨道：平行于底边',mx_(-1.0),my_(3)-10,'#a24e8a');
+  // 原位置参考
+  ctx.setLineDash([4,4]);ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1.4;
+  ctx.beginPath();ctx.moveTo(mx_(2),my_(3));ctx.lineTo(mx_(0),my_(0));ctx.lineTo(mx_(6),my_(0));ctx.closePath();ctx.stroke();ctx.setLineDash([]);
+  // 当前三角形
+  ctx.fillStyle='rgba(46,125,91,.24)';ctx.strokeStyle='#2e7d5b';ctx.lineWidth=2.4;
+  ctx.beginPath();ctx.moveTo(mx_(Ax),my_(3));ctx.lineTo(mx_(0),my_(0));ctx.lineTo(mx_(6),my_(0));ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.strokeStyle='#54655c';ctx.lineWidth=3;
+  ctx.beginPath();ctx.moveTo(mx_(0),my_(0));ctx.lineTo(mx_(6),my_(0));ctx.stroke();
+  lab('底 BC = 6',mx_(2.2),my_(0)+24,'#54655c');
+  dot(mx_(0),my_(0),'#54655c',4);lab('B',mx_(0)-16,my_(0)+5,'#54655c');
+  dot(mx_(6),my_(0),'#54655c',4);lab('C',mx_(6)+8,my_(0)+5,'#54655c');
+  dot(mx_(Ax),my_(3),'#c2564a',6);lab('A′',mx_(Ax)+10,my_(3)-6,'#c2564a');
+  // 高（≥第2步）
+  if(cur>=1){
+    ctx.setLineDash([5,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(mx_(Ax),my_(3));ctx.lineTo(mx_(Ax),my_(0));ctx.stroke();ctx.setLineDash([]);
+    if(Ax<4.4)lab('高 h = 3（平行线间距离处处相等）',mx_(Ax)+12,my_(1.5),'#c2564a');
+  }
+  // 面积（≥第4步）
+  if(cur>=3){chip(mx_(-0.8),my_(4.2),'S = ½×底×高 = ½×6×3 = 9 cm²（怎么滑都不变）','#2e7d5b');}
+  if(cur>=4){lab('等底等高 → 等积：歪三角形先「拉」到好算的位置再算',mx_(-0.8),my_(3.65),'#54655c');}
+}
+
 /* ================= 步骤数据 ================= */
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',draw:drawA,
@@ -831,6 +965,71 @@ const PROBS=[
     q:'表面积的算式 = ？',o:['2×(24+18+12)','24+18+12','2×24×18×12'],a:0,hint:'三组面各乘 2 再相加。'},
    {t:'算出结果',b:'2×54 = 108 cm²。有了展开图，表面积不漏面、不重面——「展开」也是转化思想。',
     q:'表面积 = ？',o:['54 cm²','108 cm²','216 cm²'],a:1,hint:'2×(24+18+12)。'}
+  ]},
+ {name:'K',tab:'题 K · 一半模型（平行四边形）',draw:drawK,
+  slider:{label:'P 点位置（沿路径滑动）',min:0,max:100,val:40,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{halfT=Math.round(v);},
+  readout:()=>{const t=halfT/100,y=0.6+1.8*t;
+    return [['P 点',`(${(1+5*t).toFixed(1)}, ${y.toFixed(1)})`],['S△PAB',(3*y).toFixed(2)+' cm²'],['S△PCD',(9-3*y).toFixed(2)+' cm²'],['上下之和','9 cm²（恒定）'],['左右之和','9 cm²（恒定）']];},
+  formula:h=>h===4?'一半模型：任一点 P，对边两块之和恒 = S□÷2 —— 「变中不变」'
+    :h===3?'S△PAD + S△PBC = S□ − 9 = 另一半 = 9（四块拼满整个图形）'
+    :h===2?'S△PAB + S△PCD = ½·a·h₁ + ½·a·h₂ = ½·a·(h₁+h₂) = ½×6×3 = 9'
+    :h===1?'两条对边平行 → P 到两对边的距离之和恒等于 h（平行线间距离处处相等）'
+    :'一半模型：平行四边形内任取一点 P，连四个顶点分成四个三角形',
+  steps:[
+   {t:'认识一半模型',b:'在平行四边形 ABCD 内任取一点 P，连接 P 与四个顶点，把平行四边形分成四个三角形。拖动滑块让 P 动起来，盯着面积读数看。',
+    q:'P 点移动时，四个三角形的形状？',o:['不变','一直在变','只有两个变'],a:1,hint:'P 动，四个三角形都跟着变。'},
+   {t:'看上下这一对',b:'△PAB 与 △PCD：底都是 a=6（对边平行相等），高分别是 P 到两条对边的距离 h₁、h₂。两条对边平行 → h₁ + h₂ 恒等于 h=3。',
+    q:'h₁ + h₂ = ？',o:['随 P 变化','恒等于 h','恒等于 2h'],a:1,hint:'平行线之间的距离处处相等。'},
+   {t:'上下之和恒为一半',b:'S△PAB + S△PCD = ½·a·(h₁+h₂) = ½×6×3 = 9，正好是平行四边形面积（6×3=18）的一半，与 P 的位置无关！',
+    q:'S△PAB + S△PCD = ？',o:['18','9','随 P 变化'],a:1,hint:'½·a·(h₁+h₂)，h₁+h₂=3。'},
+   {t:'左右这一对也一样',b:'四个三角形拼满整个平行四边形 → S△PAD + S△PBC = 18 − 9 = 另一半 = 9。两对三角形各占一半。',
+    q:'左右一对三角形面积之和 = ？',o:['9 cm²','18 cm²','不确定'],a:0,hint:'四块拼满，上下对占一半，左右对占另一半。'},
+   {t:'变中不变，秒杀阴影题',b:'P 随便动，两对三角形之和恒为 18÷2 = 9。「一半模型」是很多阴影面积题的秒杀工具：看到平行四边形里的任意点，先想一半。',
+    q:'一半模型的结论是？',o:['四块面积都相等','对边两块之和 = 一半','面积越来越大'],a:1,hint:'P 在动，和不动。'}
+  ]},
+ {name:'L',tab:'题 L · 蝴蝶模型（梯形蝴蝶定理）',draw:drawL,
+  slider:{label:'下底 b',min:2,max:6,val:4,fmt:v=>v.toFixed(0)+' cm'},
+  apply:v=>{flyB=Math.round(v);},
+  readout:()=>{const h1=3-3*flyB/(2+flyB),h2=3-h1,sU=h1,sD=flyB*h2/2;
+    return [['上底 a','2 cm'],['下底 b',flyB+' cm'],['S上',sU.toFixed(2)+' cm²'],['S下',sD.toFixed(2)+' cm²'],['两翼 S左=S右',Math.sqrt(sU*sD).toFixed(2)+' cm²'],['S上×S下',(sU*sD).toFixed(2)+' cm⁴']];},
+  formula:h=>h===4?'蝴蝶定理：S翼 = √(S上×S下)，且 S上×S下 = S左×S右'
+    :h===3?'S翼 = (S梯 − S上 − S下)÷2 = (9−1−4)÷2 = 2，左右翼对称相等'
+    :h===2?'S上:S下 = a²:b² = 4:16 = 1:4（相似图形的面积比 = 相似比的平方）'
+    :h===1?'△COD ∽ △AOB（CD∥AB → 同位角相等），相似比 = a:b'
+    :'蝴蝶模型：梯形对角线交于 O，分成四个三角形，形似蝴蝶',
+  steps:[
+   {t:'蝴蝶登场',b:'梯形 ABCD（上底 a=2、下底 b、高 h=3），连接两条对角线 AC、BD，交于点 O——把梯形分成四个三角形，形似蝴蝶。拖滑块改变下底长短，看四个面积怎么变。',
+    q:'「蝴蝶」的四个翅膀是？',o:['对角线交点 O 分出的四个三角形','两条腰','上底和下底'],a:0,hint:'两条对角线交叉出四个区域。'},
+   {t:'上下两个三角形相似',b:'△COD（上△）与 △AOB（下△）：CD∥AB → 同位角相等 → 相似，相似比 = a:b = 2:b。',
+    q:'上△与下△的关系？',o:['全等','相似（比 a:b）','没有关系'],a:1,hint:'两组同位角相等 → 相似。'},
+   {t:'面积比 = 相似比的平方',b:'相似图形的面积比 = 相似比的平方 → S上:S下 = a²:b²。b=4 时 = 4:16 = 1:4。同时高也被 O 点按 a:b 分割：h₁:h₂ = a:b。',
+    q:'S上 : S下 = ？',o:['a:b','a²:b²','a:b 的相反'],a:1,hint:'面积比 = 相似比平方。'},
+   {t:'两翼面积相等',b:'两个翅膀拼在中间：S左 = S梯 − S上 − S下 − S右，左右对称 → S左 = S右。b=4 时 = (9−1−4)÷2 = 2。',
+    q:'两翼 S左 与 S右？',o:['相等','左翼大','右翼大'],a:0,hint:'S左 = S右 = (S梯−S上−S下)÷2。'},
+   {t:'蝴蝶定理',b:'S上×S下 = S左×S右（上下乘积 = 翅膀乘积）→ S翼 = √(S上×S下)。b=4 时 = √(1×4) = 2。读数区随时验证。',
+    q:'b=4 时（S上=1，S下=4），S翼 = ？',o:['√5','2','4'],a:1,hint:'√(S上×S下) = √4 = 2。'}
+  ]},
+ {name:'M',tab:'题 M · 拉窗帘模型（等积变形）',draw:drawM,
+  slider:{label:'顶点 A′ 位置',min:0,max:100,val:50,fmt:v=>Math.round(v)+'%'},
+  apply:v=>{curt=Math.round(v);},
+  readout:()=>[['A′ 横坐标',(-1+8*curt/100).toFixed(1)],['底 BC','6 cm（不变）'],['高 h','3 cm（不变）'],['面积','9 cm²（恒定）']],
+  formula:h=>h===4?'拉窗帘模型：等底等高 → 等积，歪三角形先拉到好算的位置再算'
+    :h===3?'S = ½×底×高 = ½×6×3 = 9 cm²，与顶点位置无关'
+    :h===2?'高 = 平行线之间的距离，处处相等 = 3'
+    :h===1?'底边 BC 固定不动，顶点沿平行线滑动'
+    :'拉窗帘模型：顶点沿平行于底边的直线滑动，面积不变（等积变形）',
+  steps:[
+   {t:'同底等高',b:'△ABC：底 BC=6，顶点 A 在上方，高 h=3，面积 = ½×底×高。拖动滑块，让顶点沿虚线轨道滑动——像拉窗帘。',
+    q:'A′ 沿轨道滑动时，底边 BC？',o:['变长','固定不变','变短'],a:1,hint:'轨道只动顶点，底边钉死。'},
+   {t:'顶点沿平行线滑动',b:'「窗帘轨道」平行于底边。顶点滑到哪，都是一个以 BC 为底、第三个顶点在轨道上的三角形。',
+    q:'轨道与底边的关系？',o:['垂直','平行','相交'],a:1,hint:'拉窗帘：轨道和底边平行。'},
+   {t:'面积不变',b:'底没变（BC=6），高也没变——平行线之间的距离处处相等（=3）→ 面积恒 = ½×6×3 = 9。形状变了，面积不变！',
+    q:'A′ 滑动时，三角形面积？',o:['随位置变化','恒为 9','恒为 18'],a:1,hint:'底和高都没变。'},
+   {t:'等积变形的应用',b:'遇到「歪」三角形，先把顶点沿平行线「拉」到好算的位置（如正上方），面积不变，计算变简单。这就是等积变形。',
+    q:'等积变形时，什么变了？',o:['面积','形状和位置','底和高'],a:1,hint:'形变积不变。'},
+   {t:'结论：等底等高 → 等积',b:'拉窗帘模型（等积变形）是求阴影面积的常用武器：把复杂的图形拉正、拉齐，再套公式。',
+    q:'拉窗帘模型的依据？',o:['等底等高 → 等积','周长相等 → 面积相等','像就行'],a:0,hint:'抓住不变的底和高。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -869,7 +1068,7 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,7,8,9,0,1,2,3]; // 展示顺序：小学几何六题在前
+const ORD=[4,5,6,7,8,9,10,11,12,0,1,2,3]; // 展示顺序：小学几何+经典模型九题在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
