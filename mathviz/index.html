@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>题型动态拆解 · 目标链数学实验室（Beta）</title>
+<meta name="description" content="中考高频压轴题的动态拆解：拖动图形、改变参数，图形变化与解题步骤同步出现，关键步骤自己点选、答错不放行。">
+<style>
+:root{--bg:#f6f7f4;--card:#fff;--line:#dfe4dc;--ink:#22302a;--dim:#6b7a70;--acc:#2e7d5b;--acc2:#3f6fb5;--warn:#c2564a;--gold:#b98a2f;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(246,247,244,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.topbar .row{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 16px;overflow-x:auto;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:14px;text-decoration:none;color:var(--ink);flex:none}
+.pill.cur{border-color:var(--acc);color:var(--acc);font-weight:600}
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 60px}
+.hero h1{font-size:26px;margin:8px 0 4px}
+.hero .beta{display:inline-block;font-size:11px;background:var(--gold);color:#fff;border-radius:6px;padding:1px 7px;vertical-align:3px;margin-left:6px}
+.hero p{color:var(--dim);font-size:14.5px;max-width:760px}
+.tabs{display:flex;gap:10px;margin:16px 0 12px;flex-wrap:wrap}
+.tab{padding:9px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;font-size:14.5px}
+.tab.on{border-color:var(--acc);color:var(--acc);font-weight:600;box-shadow:0 1px 4px rgba(46,125,91,.14)}
+.stage{display:flex;gap:16px;align-items:stretch}
+.figpanel{flex:1.35;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fcfdfb;touch-action:none}
+.readout{display:flex;gap:8px;flex-wrap:wrap;font-size:13px}
+.chip{border:1px solid var(--line);border-radius:9px;padding:4px 10px;background:#f7f9f6}
+.chip b{color:var(--acc2)}
+.slider{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--dim)}
+.slider input{flex:1;accent-color:var(--acc)}
+.formula{font-size:14px;background:#f2f6f3;border:1px dashed var(--line);border-radius:10px;padding:8px 12px;color:#31423a}
+.steps{flex:1;min-width:280px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.steps h3{font-size:15px;color:var(--dim);font-weight:600}
+.step{border:1px solid var(--line);border-radius:12px;padding:10px 12px;cursor:default;transition:.2s}
+.step.on{border-color:var(--acc);background:#f0f7f3}
+.step.locked{opacity:.55}
+.step .no{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;align-items:center;justify-content:center;font-size:12px;margin-right:8px;flex:none}
+.step.locked .no{background:#b9c4bc}
+.step h4{font-size:14.5px;display:inline}
+.step .body{font-size:13.5px;color:#3a4a42;margin-top:6px;display:none}
+.step.on .body{display:block}
+.quiz{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.quiz .q{font-size:13.5px;font-weight:600;color:var(--acc2)}
+.opts{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.opt{border:1px solid var(--line);border-radius:9px;padding:6px 10px;font-size:13.5px;background:#fbfcfa;cursor:pointer;text-align:left}
+.opt:hover{border-color:var(--acc2)}
+.opt.bad{border-color:var(--warn);background:#fbf1ef;color:var(--warn);animation:shake .3s}
+.opt.good{border-color:var(--acc);background:#eef6f1;color:var(--acc);font-weight:600}
+@keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+.hint{font-size:12.5px;color:var(--warn);margin-top:6px;display:none}
+.done{font-size:12.5px;color:var(--acc);margin-top:6px}
+.navbtns{display:flex;gap:10px;margin-top:4px}
+.btn{flex:1;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:14px}
+.btn.primary{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.footnote{margin-top:18px;font-size:12.5px;color:var(--dim)}
+@media(max-width:760px){.stage{flex-direction:column}.steps{min-width:0}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="pill" href="/">🏠 返回目标链主页</a>
+  <a class="pill" href="/mubiaolian-math.html">📘 数学站</a>
+  <a class="pill cur">📐 题型动态拆解</a>
+</div></div>
+
+<div class="wrap">
+  <div class="hero">
+    <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。先把两类最高频的压轴题型做出来试手感。</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" id="tabA" onclick="switchProb(0)">题 A · 二次函数动点求面积最值</button>
+    <button class="tab" id="tabB" onclick="switchProb(1)">题 B · 正方形折叠求线段长</button>
+  </div>
+
+  <div class="stage">
+    <div class="figpanel">
+      <canvas id="cv" width="960" height="640"></canvas>
+      <div class="readout" id="readout"></div>
+      <div class="slider" id="sliderRow"><span id="sliderLabel">参数</span><input type="range" id="slider" min="0" max="1000" value="600"><span id="sliderVal"></span></div>
+      <div class="formula" id="formula"></div>
+    </div>
+    <div class="steps">
+      <h3>解题步骤 · 点选关键步（答错不放行）</h3>
+      <div id="stepList"></div>
+      <div class="navbtns">
+        <button class="btn" id="prevBtn" onclick="nav(-1)">← 上一步</button>
+        <button class="btn primary" id="nextBtn" onclick="nav(1)">下一步 →</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="footnote">Beta 试点：本页面由目标链自制，动态拆解思路受「数学说」等可视化题库启发；与数学站知识链、错因诊断卡的联动正在规划中。题目为经典中考题型改编，解析原创。</p>
+</div>
+
+<script>
+/* ================= 通用 ================= */
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');
+let prob=0,cur=0; // cur: 当前展示到的步骤(0-based)
+const W=cv.width,H=cv.height;
+
+function clearCanvas(bg){ctx.clearRect(0,0,W,H);ctx.fillStyle=bg||'#fcfdfb';ctx.fillRect(0,0,W,H);}
+
+/* ================= 题 A：二次函数动点 ================= */
+// y=-x²+2x+3, A(-1,0) B(3,0) C(0,3), P(x,-x²+2x+3), D(x,0), S△PBC=(3/2)x(3-x)
+const A1={m:-1,sc:118,ox:300,oy:480}; // 数学坐标→屏幕
+const ax=x=>A1.ox+x*A1.sc, ay=y=>A1.oy-y*A1.sc;
+let px=1.5; // P 横坐标
+const fA=x=>-x*x+2*x+3, SA=x=>1.5*x*(3-x);
+
+function drawA(){
+  clearCanvas();
+  // 网格与坐标轴
+  ctx.strokeStyle='#eef1ec';ctx.lineWidth=1;
+  for(let gx=-1;gx<=4;gx++){ctx.beginPath();ctx.moveTo(ax(gx),0);ctx.lineTo(ax(gx),H);ctx.stroke();}
+  for(let gy=-1;gy<=4;gy++){ctx.beginPath();ctx.moveTo(0,ay(gy));ctx.lineTo(W,ay(gy));ctx.stroke();}
+  ctx.strokeStyle='#8a9a8f';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(ax(-1.3),ay(0));ctx.lineTo(ax(4.1),ay(0));ctx.stroke();
+  ctx.beginPath();ctx.moveTo(ax(0),ay(-1.1));ctx.lineTo(ax(0),ay(4.1));ctx.stroke();
+  ctx.fillStyle='#6b7a70';ctx.font='13px sans-serif';ctx.fillText('x',ax(4.05),ay(0)-6);ctx.fillText('y',ax(0)+8,ay(4.05));
+  // 抛物线
+  ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.5;ctx.beginPath();
+  for(let t=-1.15;t<=3.15;t+=0.02){const X=ax(t),Y=ay(fA(t));t===-1.15?ctx.moveTo(X,Y):ctx.lineTo(X,Y);}
+  ctx.stroke();
+  // 定点 A B C
+  const pts=[[-1,0,'A'],[3,0,'B'],[0,3,'C']];
+  pts.forEach(([X,Y,n])=>{dot(ax(X),ay(Y),'#c2564a');lab(n,ax(X)+10,ay(Y)-8,'#c2564a');});
+  // P 与 D
+  const py=fA(px);
+  // 线段 BC（≥第2步）
+  if(cur>=1){ctx.setLineDash([7,5]);ctx.strokeStyle='#b98a2f';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(ax(3),ay(0));ctx.lineTo(ax(0),ay(3));ctx.stroke();ctx.setLineDash([]);
+    lab('BC: x+y=3',ax(1.1),ay(1.55),'#b98a2f');}
+  // △PBC 填充（≥第3步）
+  if(cur>=2){ctx.fillStyle='rgba(63,111,181,.16)';ctx.beginPath();
+    ctx.moveTo(ax(px),ay(py));ctx.lineTo(ax(3),ay(0));ctx.lineTo(ax(0),ay(3));ctx.closePath();ctx.fill();}
+  // PD 铅垂线
+  ctx.setLineDash([4,4]);ctx.strokeStyle='#8a9a8f';ctx.beginPath();
+  ctx.moveTo(ax(px),ay(py));ctx.lineTo(ax(px),ay(0));ctx.stroke();ctx.setLineDash([]);
+  dot(ax(px),ay(py),'#2e7d5b',7);lab('P',ax(px)+12,ay(py)-6,'#2e7d5b');
+  dot(ax(px),ay(0),'#8a9a8f');lab('D',ax(px)+6,ay(0)+18,'#8a9a8f');
+  // S(x) 内嵌小图（≥第4步）
+  if(cur>=3){
+    const bx=640,by=70,bw=270,bh=150;
+    ctx.fillStyle='rgba(255,255,255,.92)';ctx.strokeStyle='#dfe4dc';
+    ctx.beginPath();ctx.roundRect(bx,by,bw,bh,10);ctx.fill();ctx.stroke();
+    ctx.fillStyle='#6b7a70';ctx.font='12px sans-serif';ctx.fillText('S(x)=1.5x(3-x)',bx+12,by+20);
+    ctx.strokeStyle='#c2564a';ctx.lineWidth=2;ctx.beginPath();
+    for(let t=0;t<=3;t+=0.02){const X=bx+12+(t/3)*(bw-24),Y=by+bh-14-(SA(t)/3.4)*(bh-30);t===0?ctx.moveTo(X,Y):ctx.lineTo(X,Y);}
+    ctx.stroke();
+    const mx=1.5,dotX=bx+12+(px/3)*(bw-24),dotY=by+bh-14-(SA(px)/3.4)*(bh-30);
+    dot(dotX,dotY,'#3f6fb5',5);
+    dot(bx+12+(mx/3)*(bw-24),by+bh-14-(SA(mx)/3.4)*(bh-30),'#b98a2f',6);
+    ctx.fillStyle='#b98a2f';ctx.fillText('x=1.5 最值点',bx+150,by+bh-30);
+  }
+  // 结论（≥第5步）
+  if(cur>=4){chip(ax(px)-150,ay(py)+30,'S 最大 = 27/8（x=1.5 时）','#2e7d5b');}
+}
+function chip(x,y,t,c){ctx.font='13px sans-serif';const w=ctx.measureText(t).width+18;
+  ctx.fillStyle='rgba(46,125,91,.12)';ctx.strokeStyle=c;
+  ctx.beginPath();ctx.roundRect(x,y,w,26,8);ctx.fill();ctx.stroke();
+  ctx.fillStyle=c;ctx.fillText(t,x+9,y+18);}
+function dot(x,y,c,r){ctx.fillStyle=c||'#c2564a';ctx.beginPath();ctx.arc(x,y,r||5.5,0,7);ctx.fill();}
+function lab(t,x,y,c){ctx.fillStyle=c||'#6b7a70';ctx.font='13px sans-serif';ctx.fillText(t,x,y);}
+
+/* ================= 题 B：正方形折叠 ================= */
+// 正方形边长6, A(0,0) B(6,0) C(6,6) D(0,6), E(6,3), F=(3.6,4.8), G=(4.5,6), DG=4.5
+const A2={m:88,ox:200,oy:520};
+const bx=x=>A2.ox+x*A2.m, byy=y=>A2.oy-y*A2.m;
+let fold=180; // 折叠角度 0~180（slider 控制）
+function reflect(t){ // B 沿 AE 折到 F 的过程：垂直分量 cosφ 缩放
+  const Ax=0,Ay=0,Ex=6,Ey=3, Bx=6,By=0;
+  const dx=Ex-Ax,dy=Ey-Ay,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L;
+  const rx=Bx-Ax,ry=By-Ay, dotP=rx*ux+ry*uy; // 沿轴分量
+  const px_=rx-dotP*ux, py_=ry-dotP*uy;       // 垂直分量
+  const c=Math.cos(fold*Math.PI/180);
+  return {x:Ax+dotP*ux+px_*c, y:Ay+dotP*uy+py_*c};
+}
+const FPT=reflect(180); // (3.6,4.8)
+function drawB(){
+  clearCanvas();
+  const S=[[0,0],[6,0],[6,6],[0,6]];
+  ctx.strokeStyle='#54655c';ctx.lineWidth=2;ctx.beginPath();
+  S.forEach(([X,Y],i)=>i?ctx.lineTo(bx(X),byy(Y)):ctx.moveTo(bx(X),byy(Y)));ctx.closePath();ctx.stroke();
+  const names=['A','B','C','D'];S.forEach(([X,Y],i)=>{dot(bx(X),byy(Y),'#54655c');lab(names[i],bx(X)-14,byy(Y)+(i===1?22:i===2?-8:i===0?22:-8),'#54655c');});
+  const Ex=6,Ey=3;dot(bx(Ex),byy(Ey),'#c2564a');lab('E',bx(Ex)+10,byy(Ey)+5,'#c2564a');
+  // 折痕 AE
+  ctx.strokeStyle='#b98a2f';ctx.setLineDash([7,5]);ctx.lineWidth=1.8;
+  ctx.beginPath();ctx.moveTo(bx(0),byy(0));ctx.lineTo(bx(Ex),byy(Ey));ctx.stroke();ctx.setLineDash([]);
+  // 折叠中的 △ABE
+  const f=reflect(); const Bp={x:f.x,y:f.y};
+  ctx.fillStyle='rgba(63,111,181,.14)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(bx(0),byy(0));ctx.lineTo(bx(Bp.x),byy(Bp.y));ctx.lineTo(bx(Ex),byy(Ey));ctx.closePath();ctx.fill();ctx.stroke();
+  dot(bx(Bp.x),byy(Bp.y),'#3f6fb5');lab(fold>=179.5?'F':`B′`,bx(Bp.x)+12,byy(Bp.y)-8,'#3f6fb5');
+  // F 处直角标记（≥第2步）
+  if(cur>=1){ctx.strokeStyle='#2e7d5b';ctx.lineWidth=1.4;
+    ctx.strokeRect(bx(Bp.x)-9,byy(Bp.y),9,9);
+    lab('AF=6  EF=3  ∠AFE=90°',bx(0)+16,byy(1.15),'#2e7d5b');}
+  // G 与射线 AG（≥第3步显示 G；第4步标 FG；第5步标 AG）
+  const G={x:4.5,y:6};
+  if(cur>=2){
+    ctx.setLineDash([4,4]);ctx.strokeStyle='#c2564a';ctx.lineWidth=1.6;
+    ctx.beginPath();ctx.moveTo(bx(0),byy(0));ctx.lineTo(bx(7.2),byy(9.6));ctx.stroke();ctx.setLineDash([]);
+    dot(bx(G.x),byy(G.y),'#c2564a',6);lab('G',bx(G.x)-18,byy(G.y)-8,'#c2564a');
+    ctx.strokeStyle='#c2564a';ctx.beginPath();ctx.moveTo(bx(0),byy(6));ctx.lineTo(bx(G.x),byy(6));ctx.stroke();
+    lab('DG',bx(G.x/2),byy(6)+20,'#c2564a');
+  }
+  if(cur>=3){ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2.4;ctx.beginPath();
+    ctx.moveTo(bx(FPT.x),byy(FPT.y));ctx.lineTo(bx(G.x),byy(G.y));ctx.stroke();
+    lab('FG=6−x',bx(4.15),byy(5.55),'#3f6fb5');}
+  if(cur>=4){ctx.strokeStyle='#b98a2f';ctx.lineWidth=2.4;ctx.beginPath();
+    ctx.moveTo(bx(0),byy(0));ctx.lineTo(bx(G.x),byy(G.y));ctx.stroke();
+    lab('AG=6+FG=12−x',bx(1.1),byy(3.4),'#b98a2f');
+    chip(bx(3.4),byy(1.4),'(12−x)²=36+x² ⇒ DG=4.5','#2e7d5b');}
+  lab('x = DG 的长',bx(0.1),byy(2.2),'#6b7a70');
+}
+
+/* ================= 步骤数据 ================= */
+const PROBS=[
+ {name:'A',draw:drawA,
+  slider:{label:'P 点位置（x）',min:10,max:2900,fmt:v=>(v/1000).toFixed(2)},
+  apply:v=>{px=v/1000;},
+  readout:()=>[
+    ['x_P',px.toFixed(2)],['y_P',fA(px).toFixed(2)],['S△PBC',SA(px).toFixed(3)]],
+  formula:h=>h===4?'S=1.5·x·(3−x)=1.5(−x²+3x)=−1.5(x−1.5)²+27/8'
+    :h===2?'S△PBC = ½·BC·d = (3/2)(x_P + y_P − 3)'
+    :h===3?'S(x)=1.5x(3−x)，抛物线开口向下，x=1.5 时最大':'y = −x²+2x+3（A、B 为与 x 轴交点，C 为 y 轴交点）',
+  steps:[
+   {t:'设 P 的坐标',b:'P 在抛物线上第一象限段（0<x<3），设 P(x, −x²+2x+3)。拖动滑块观察 P 移动。',
+    q:'抛物线的解析式是？',o:['y=−x²+2x+3','y=x²−2x−3','y=−x²+2x−3'],a:0,
+    hint:'开口向下、过 (0,3)、与 x 轴交于 −1 和 3。'},
+   {t:'找直线 BC，准备“铅垂法/距离法”',b:'B(3,0)、C(0,3) ⇒ 直线 BC：x+y=3。P 在 BC 上方，用点到直线距离或铅垂高表达面积。',
+    q:'直线 BC 的解析式是？',o:['y=x−3','x+y=3','y=x+3'],a:1,hint:'把 (3,0)、(0,3) 代入验证。'},
+   {t:'把面积写成 x 的函数',b:'S△PBC = ½·|BC|·d，其中 d 为 P 到 BC 的距离。化简后 S=(3/2)(x+y−3)，代入 y 得 S=1.5x(3−x)。',
+    q:'S 用 x 表示为？',o:['S=3x²','S=1.5x(x+3)','S=1.5x(3−x)'],a:2,hint:'展开 (3/2)(x + (−x²+2x+3) − 3)。'},
+   {t:'求最大值',b:'S=−1.5(x−1.5)²+27/8，开口向下，x=1.5 时取最大。看右上图，红线顶点即最值点。',
+    q:'S 取最大值时 x = ？',o:['x=1','x=1.5','x=2.25'],a:1,hint:'配方后找顶点横坐标。'},
+   {t:'写结论（含检验）',b:'x=1.5 在范围 (0,3) 内，S_max=27/8。作答时说明取值范围与单位。',
+    q:'S 的最大值 = ？',o:['27/8','9/2','27/4'],a:0,hint:'顶点纵坐标 27/8 = 3.375。'}
+  ]},
+ {name:'B',draw:drawB,
+  slider:{label:'折叠角度',min:0,max:180,fmt:v=>Math.round(v)+'°'},
+  apply:v=>{fold=v;},
+  readout:()=>[['折叠角',Math.round(fold)+'°'],['DG（答案区，解完看）',cur>=4?'4.5':'待解']],
+  formula:h=>h===4?'(12−x)² = 6² + x² ⇒ 144−24x = 36 ⇒ x = 4.5，即 DG = 4.5'
+    :h===3?'FG² = GE² − EF² = [9+(6−x)²] − 9 = (6−x)² ⇒ FG = 6−x'
+    :h===2?'GE² = EC² + CG² = 3² + (6−x)²（Rt△ECG，EC=3）'
+    :'折叠：AF=AB=6，EF=EB=3，∠AFE=∠ABE=90°，F 落在 AG 上',
+  steps:[
+   {t:'建系标点，认识折痕',b:'正方形边长 6：A(0,0) B(6,0) C(6,6) D(0,6)，E 为 BC 中点 (6,3)。拖动滑块看 △ABE 绕折痕 AE 翻折到 △AFE。',
+    q:'折叠后 B 落到哪个点？',o:['CD 上一点','AD 上一点','形内一点 F'],a:2,hint:'拖滑块到 180° 观察 F 的位置。'},
+   {t:'折叠的三大等量关系',b:'AF=AB=6；EF=EB=3；∠AFE=90°。F 恰在射线 AG 上，∴ ∠EFG=90°。',
+    q:'折叠后 ∠AFE = ？',o:['45°','60°','90°'],a:2,hint:'∠AFE 由 ∠ABE 折叠而来。'},
+   {t:'设未知数，用 Rt△ECG 表达 GE',b:'设 DG=x ⇒ CG=6−x。Rt△ECG 中 EC=3，GE²=3²+(6−x)²。',
+    q:'GE² 等于？',o:['(6−x)²','9+(6+x)²','9+(6−x)²'],a:2,hint:'勾股：直角边 EC 与 CG。'},
+   {t:'用 Rt△EFG 表达 FG',b:'∠EFG=90°，FG²=GE²−EF²=[9+(6−x)²]−9=(6−x)²，∴ FG=6−x。',
+    q:'FG = ？',o:['x','6−x','6+x'],a:1,hint:'勾股减：斜边 GE、直角边 EF=3。'},
+   {t:'AG 列方程，解出 DG',b:'AG=AF+FG=12−x；Rt△ADG 中 AG²=AD²+DG²=36+x²。解 (12−x)²=36+x² 得 x=4.5。',
+    q:'DG = ？',o:['3','4.5','5'],a:1,hint:'展开 (12−x)²，消去 x² 项。'}
+  ]}
+];
+const P=()=>PROBS[prob];
+function renderSteps(){
+  const box=document.getElementById('stepList');box.innerHTML='';
+  P().steps.forEach((s,i)=>{
+    const locked=i>cur;
+    const div=document.createElement('div');div.className='step'+(i===cur?' on':'')+(locked?' locked':'');
+    let inner=`<span class="no">${i+1}</span><h4>${s.t}</h4>`;
+    if(!locked){
+      inner+=`<div class="body">${s.b}`;
+      if(i===cur&&!s.passed){ // 当前步未过关：显示点选关
+        inner+=`<div class="quiz"><div class="q">〔过关点选〕${s.q}</div><div class="opts">`+
+          s.o.map((o,j)=>`<button class="opt" onclick="pick(${i},${j},this)">${'ABC'[j]}. ${o}</button>`).join('')+
+          `</div><div class="hint">✗ ${s.hint} 再试一次。</div></div>`;
+      }else if(s.passed){inner+=`<div class="done">✓ 已过关</div>`;}
+      inner+=`</div>`;
+    }
+    div.innerHTML=inner;box.appendChild(div);
+  });
+  document.getElementById('prevBtn').disabled=cur===0;
+  document.getElementById('nextBtn').disabled=cur>=P().steps.length-1||!P().steps[cur].passed;
+  document.getElementById('formula').textContent='【核心式】'+P().formula(cur);
+  // 读数
+  const ro=document.getElementById('readout');
+  ro.innerHTML=P().readout().map(([k,v])=>`<span class="chip">${k}：<b>${v}</b></span>`).join('');
+}
+function pick(si,oi,btn){
+  const s=P().steps[si];
+  if(oi===s.a){s.passed=true;btn.classList.add('good');
+    setTimeout(()=>{if(cur===si)cur=Math.min(cur+1,P().steps.length-1);syncUI();},420);}
+  else{btn.classList.add('bad');const h=btn.closest('.quiz').querySelector('.hint');h.style.display='block';
+    setTimeout(()=>btn.classList.remove('bad'),350);}
+}
+function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
+  if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
+function syncUI(){renderSteps();P().draw();
+  document.getElementById('sliderLabel').textContent=P().slider.label;}
+function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
+  document.getElementById('tabA').classList.toggle('on',i===0);
+  document.getElementById('tabB').classList.toggle('on',i===1);
+  const sl=document.getElementById('slider');
+  sl.min=P().slider.min;sl.max=P().slider.max;sl.value=P().name==='A'?1500:180;
+  P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);
+  syncUI();}
+document.getElementById('slider').addEventListener('input',e=>{
+  P().apply(+e.target.value);
+  document.getElementById('sliderVal').textContent=P().slider.fmt(+e.target.value);
+  P().draw();});
+/* 画布拖动（题A 直接拖 P） */
+function canvasDrag(clientX){
+  const r=cv.getBoundingClientRect(),mx=(clientX-r.left)*(W/r.width),my=(clientY-r.top)*(H/r.height);
+  if(P().name!=='A')return;
+  const x=Math.min(2.9,Math.max(0.1,(mx-A1.ox)/A1.sc));
+  px=x;const sl=document.getElementById('slider');
+  sl.value=Math.round(x*1000);document.getElementById('sliderVal').textContent=P().slider.fmt(x*1000);
+  P().draw();}
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
+cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
+switchProb(0);
+</script>
+<script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
+</body>
+</html>
