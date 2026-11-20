@@ -11,5 +11,6 @@
   <url><loc>https://mubiaolian.com/mubiaolian-geo.html</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://mubiaolian.com/gaokao.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://mubiaolian.com/about.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://mubiaolian.com/typewords/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://mubiaolian.com/labs/index.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
