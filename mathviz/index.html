@@ -90,7 +90,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十九题：小学几何与经典模型（割补 · 倍拼 · 转化 · 排水法 · 展开图 · 圆面积 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋博弈对策（抢 30 报数博弈，可与 AI 实战）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线廿一题：小学几何与经典模型（割补 · 倍拼 · 转化 · 排水法 · 展开图 · 圆面积 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋博弈对策系列（抢 30 报数 · Nim 取火柴 · 田忌赛马，均可实战或交互）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -115,12 +115,16 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 
   <div class="gamebar" id="gamebar" style="display:none">
     <div class="gb-status" id="gbStatus"></div>
-    <div class="gb-btns">
+    <div class="gb-btns" id="gbS">
       <button class="gbtn" id="gb1">报 1 个</button>
       <button class="gbtn" id="gb2">报 2 个</button>
       <button class="gbtn" id="gb3">报 3 个</button>
       <label class="gb-ai"><input type="checkbox" id="gbAiFirst"> AI 先手</label>
       <button class="gbtn gb-re" id="gbReset">↺ 重开一局</button>
+    </div>
+    <div class="gb-btns" id="gbT" style="display:none">
+      <span class="gb-status" style="margin:0" id="gbTinfo"></span>
+      <button class="gbtn gb-re" id="gbReT">↺ 重开一局</button>
     </div>
   </div>
 
@@ -1020,6 +1024,9 @@ function aiTurn(){if(GS.over||GS.turn!=='ai')return;
   pushSeq('ai',Math.min(k,d));renderGame();P().draw();}
 function renderGame(){
   const st=document.getElementById('gbStatus');
+  if(P().name==='T'){
+    st.textContent=`三堆火柴 ${NGS.heaps.join(' / ')} —— ${NGS.over?(NGS.winner==='you'?'🎉 你先取到最后一根，你赢了！':'AI 先取到最后一根，AI 赢了'):(NGS.turn==='you'?'轮到你：点击画布上的火柴取走它及上方':'轮到 AI……')}`;
+    return;}
   if(GS.over)st.textContent=GS.winner==='you'?'🎉 你先报到 30，你赢了！点「重开一局」换 AI 先手试试——它会用同样的策略赢你。':'AI 先报到 30，AI 赢了——想想是哪一步让它抢到了必胜点？点「重开一局」再战。';
   else st.textContent=`当前报到 ${GS.v} —— 轮到${GS.turn==='you'?'你':'AI'}报数（每次接着报 1~3 个数）`;
   [1,2,3].forEach(k=>{document.getElementById('gb'+k).disabled=GS.over||GS.turn!=='you'||GS.v+k>30;});}
@@ -1046,6 +1053,81 @@ function drawS(){
     if(GS.winner==='you')chip(XS.ox,300,'🎉 你赢了——你抢到了必胜点 2，之后每轮凑 4，AI 被彻底锁死','#2e7d5b');
     else chip(XS.ox,300,'AI 赢了——它占住了必胜点。找找是哪一步让 AI 抢到 2 或 26 的','#c2564a');}
   if(cur>=4)lab('举一反三：目标数 ÷ (最小+最大报数) 的余数决定先手必胜开局',XS.ox,300,'#54655c');
+}
+
+/* ================= 题 T：Nim 取火柴（四年级+·可对战 AI） ================= */
+// 三堆 (3,5,7) 轮流从一堆取任意根，取到最后一根的赢；必胜策略：取完让三堆异或=0
+const NIM={ox:200,oy:470};
+let NGS={heaps:[3,5,7],turn:'you',over:false,winner:''};
+function nimClick(mx,my){
+  if(NGS.over||NGS.turn!=='you')return;
+  const d=Math.max(0,Math.min(2,Math.round((mx-NIM.ox)/260)));
+  const cx=NIM.ox+d*260;
+  if(Math.abs(mx-cx)>110||my>NIM.oy||my<NIM.oy-7*44)return;
+  const root=Math.floor((NIM.oy-my)/44);
+  if(root<0||root>=NGS.heaps[d])return;
+  NGS.heaps[d]=root;
+  nimAfter('you');}
+function nimAfter(who){
+  const total=NGS.heaps[0]+NGS.heaps[1]+NGS.heaps[2];
+  if(total===0){NGS.over=true;NGS.winner=who;renderGame();P().draw();return;}
+  NGS.turn=who==='you'?'ai':'you';renderGame();P().draw();
+  if(NGS.turn==='ai')setTimeout(aiNim,500);}
+function aiNim(){
+  if(NGS.over||NGS.turn!=='ai')return;
+  const h=NGS.heaps,x=h[0]^h[1]^h[2];
+  let d,take;
+  if(x!==0){d=0;while(!((h[d]^x)<h[d]))d++;take=h[d]-(h[d]^x);}
+  else{d=h[0]>0?0:(h[1]>0?1:2);take=1;}
+  h[d]-=take;nimAfter('ai');}
+function resetNim(){
+  NGS={heaps:[3,5,7],turn:'you',over:false,winner:''};
+  renderGame();P().draw();}
+function drawT(){
+  clearCanvas();
+  NGS.heaps.forEach((n,d)=>{
+    const cx=NIM.ox+d*260;
+    for(let j=0;j<n;j++){
+      const x=cx+(j-2)*16,y=NIM.oy-j*44;
+      ctx.strokeStyle='#b98a2f';ctx.lineWidth=4;
+      ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,y-34);ctx.stroke();
+      ctx.fillStyle='#c2564a';ctx.beginPath();ctx.arc(x,y-38,4.5,0,7);ctx.fill();}
+    lab(['A 堆','B 堆','C 堆'][d]+`（${n} 根）`,cx-34,NIM.oy+26,'#54655c');});
+  if(!NGS.over)lab('👆 点画布上的火柴：从点中的那根往上全取走（每回合只能动一堆）',200,65,'#54655c');
+  if(cur>=2)lab('两堆相等 = 必败位（对方永远镜像你）',200,95,'#54655c');
+  if(cur>=3){const x=NGS.heaps[0]^NGS.heaps[1]^NGS.heaps[2];
+    lab(`当前异或 XOR = ${x} —— ${x===0?'0 是必败位，保持它你就立于不败':'≠0 可以压回 0'}`,200,125,x===0?'#c2564a':'#2e7d5b');}
+  if(cur>=4)lab('必胜第一步示例：3^5^7=1 → 从 7 堆取 1 根变 (3,5,6)，异或归 0',200,155,'#2e7d5b');
+  if(NGS.over){
+    if(NGS.winner==='you')chip(200,300,'🎉 你赢下 Nim！每次把异或压回 0，AI 彻底无解','#2e7d5b');
+    else chip(200,300,'AI 赢了——它把异或压回了 0。重开一局，用 XOR 策略复仇','#c2564a');}
+}
+
+/* ================= 题 U：田忌赛马（四年级+·对策经典） ================= */
+// 齐王固定上中下出场（速度 95/90/85），滑块枚举田忌 6 种出场顺序，找唯一的 2:1 必胜排列
+const PERMS=[[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
+const QW=[95,90,85],TJ=[92,87,82];
+let tjPerm=0;
+function drawU(){
+  clearCanvas();
+  const perm=PERMS[tjPerm],names=['上','中','下'];
+  lab(`齐王固定出「上 → 中 → 下」（95 / 90 / 85）—— 田忌当前第 ${tjPerm+1}/6 种顺序：${perm.map(i=>names[i]).join(' → ')}`,200,140,'#54655c');
+  let win=0,lose=0;
+  for(let r=0;r<3;r++){
+    const y=210+r*92,ti=perm[r],tw=TJ[ti]>QW[r];
+    ctx.fillStyle='rgba(63,111,181,.18)';ctx.strokeStyle='#3f6fb5';ctx.lineWidth=2;
+    ctx.fillRect(120,y,240,62);ctx.strokeRect(120,y,240,62);
+    lab(`齐王 · ${names[r]}等马  ${QW[r]}`,142,y+37,'#3f6fb5');
+    ctx.fillStyle='rgba(46,125,91,.18)';ctx.strokeStyle='#2e7d5b';
+    ctx.fillRect(600,y,240,62);ctx.strokeRect(600,y,240,62);
+    lab(`田忌 · ${names[ti]}等马  ${TJ[ti]}`,622,y+37,'#2e7d5b');
+    lab('vs',483,y+37,'#828d86');
+    lab(tw?'✓ 胜':'✗ 负',470,y-8,tw?'#2e7d5b':'#c2564a');
+    tw?win++:lose++;}
+  lab(`比分  田忌 ${win} : ${lose} 齐王（三局两胜）`,420,500,win>lose?'#2e7d5b':'#c2564a');
+  if(cur>=3&&win<2)lab('关键：让上等马(92)对中等马(90)、中等马(87)对下等马(85)——错位赢两场',200,175,'#2e7d5b');
+  if(win>lose)chip(240,545,'🏆 2:1 田忌胜！下等马"兑掉"齐王上等马——牺牲一局，赢下全局','#2e7d5b');
+  else if(cur>=1)chip(240,545,lose===3?'硬碰硬全输：每匹都比同级慢一点 → 0:3':'还差一步——继续拖滑块找 2:1','#c2564a');
 }
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',grade:'中考',draw:drawA,
@@ -1478,6 +1560,60 @@ const PROBS=[
     q:'先手的必胜开局是？',o:['先报 1,2','先报 1,2,3','随便报'],a:0,hint:'占住最小的必胜点。'},
    {t:'举一反三',b:'一切报数博弈一个公式：看 目标数 ÷ (最小+最大报数) 的余数——抢 50（报 1~7）：50÷8 余 2 → 先手报 2 必胜；整除则先手必败，只能祈祷对方失误。数学把"斗智"变成了计算！',
     q:'抢 50（每次报 1~7 个数）先手报几个必胜？',o:['2','7','5'],a:0,hint:'50=6×8+2，余 2。'}
+  ]},
+ {name:'T',tab:'题 T · Nim 取火柴',grade:'四年级+',draw:drawT,
+  slider:null,
+  apply:()=>{},
+  readout:()=>{const h=NGS.heaps,x=h[0]^h[1]^h[2];return [
+    ['三堆火柴',h.join(' / ')],
+    ['异或 XOR',x+''],
+    ['当前局面',x===0?'先手必败（对方已控制节奏）':'先手必胜（可压回 0）'],
+    ['你的回合',NGS.over?(NGS.winner==='you'?'——🎉 你赢了':'——AI 赢了'):NGS.turn==='you'?'是（点画布火柴）':'不是（AI 思考中）'],
+    ['策略','取完后让三堆的 XOR = 0']];},
+  ex:[['两堆火柴 (5,5)，取到最后一根的赢，先手局势如何？','先手必败','对方永远镜像你的取法，两堆始终相等，最后一根必被对方拿走'],
+     ['局面 (2,3,4)，先手必胜的第一步？','从 4 取 3 根 → (2,3,1)','2^3^4=5≠0 先手胜；4^5=1<4 → 从 4 堆取 3 根，异或归 0']],
+  formula:h=>h===4?'Nim 通杀定理：异或为 0 的局面是必败位（Bouton 定理，1901）'
+    :h===3?'3^5^7=1≠0 → 从 7 取 1 → (3,5,6)，异或 0，AI 无解'
+    :h===2?'两堆相等 = 必败位：对方取 k 你也取 k，镜像到底'
+    :h===1?'规则：轮流从某一堆取任意根（至少 1），取到最后一根的赢'
+    :'Nim 博弈：三堆火柴 (3,5,7)——点画布火柴实战，必胜武器是二进制异或',
+  steps:[
+   {t:'规则与实战',b:'三堆火柴 3、5、7 根。两人轮流从某一堆取走任意根（至少 1 根），取到最后一根的赢。到实战区点画布火柴试一局——AI 不弱！',
+    q:'一次操作能从几堆里取火柴？',o:['只能一堆','可以两堆','随便几堆'],a:0,hint:'Nim 规则的核心约束。'},
+   {t:'两堆相等的秘密',b:'两堆 (5,5)：对方从一堆取 k 根，你就从另一堆取 k 根——永远镜像，最后一根必是你拿走。所以"两堆相等"是留给对手的必败位。',
+    q:'两堆 (5,5)，先手的结局？',o:['必败','必胜','五五开'],a:0,hint:'镜像策略锁死先手。'},
+   {t:'异或：三堆的判胜尺',b:'把三堆数写成二进制、按位"不进位相加"（异或 ⊕）：3⊕5⊕7 = 011⊕101⊕111 = 001 = 1 ≠ 0。结论：异或 ≠ 0，先手必胜；异或 = 0，先手必败。两堆相等就是异或 0 的特例！',
+    q:'3⊕5⊕7 = ？',o:['1','0','3'],a:0,hint:'只有最低位是 1。'},
+   {t:'必胜第一步',b:'从 7 堆取 1 根 → (3,5,6)：3⊕5⊕6 = 011⊕101⊕110 = 000！把异或 0 扔回给对手——对手无论怎么取都会破坏 0，你再把异或压回 0，直到取到最后一根。',
+    q:'必胜第一步怎么走？',o:['从 7 取 1','从 5 取 2','从 3 取 3'],a:0,hint:'让 XOR 归 0。'},
+   {t:'总结：Bouton 定理',b:'1901 年 Bouton 证明：Nim 博弈中异或为 0 是必败位。所有"轮流取物"博弈都能这样算——数学把"斗智"彻底变成了计算。实战区用 XOR 策略打 AI 复仇！',
+    q:'Nim 必胜策略的核心是？',o:['保持异或为 0','每次取最多','先取光一堆'],a:0,hint:'把必败位留给对手。'}
+  ]},
+ {name:'U',tab:'题 U · 田忌赛马',grade:'四年级+',draw:drawU,
+  slider:{label:'田忌出场顺序（6 种排列逐个试）',min:0,max:5,val:0,fmt:v=>{const p=PERMS[Math.round(v)],n=['上','中','下'];return `${p.map(i=>n[i]).join('→')}（第 ${Math.round(v)+1} 种）`;}},
+  apply:v=>{tjPerm=Math.round(v);},
+  readout:()=>{const p=PERMS[tjPerm],n=['上','中','下'];let win=0,lose=0;
+    p.forEach((ti,r)=>{TJ[ti]>QW[r]?win++:lose++;});
+    return [['田忌出场顺序',p.map(i=>n[i]).join(' → ')],['对阵','92/87/82 vs 95/90/85'],['比分',`${win} : ${lose}`],['结果',win>lose?'🏆 田忌胜！':lose>win?'田忌败':'平局'],
+    ['胜负统计','6 种排列里只有 1 种能赢']];},
+  ex:[['如果齐王随机出马（不固定上中下），孙膑的策略还稳赢吗？','不能稳赢','孙膑赢的关键是"知道齐王顺序"——信息优势也是实力；齐王出马随机时变成博弈论"猜拳"问题'],
+     ['6 种出场顺序里能赢的有几种？','只有 1 种（下→上→中）','错位赢两场的前提是下马精准兑掉上等马——策略唯一且精妙']],
+  formula:h=>h===4?'田忌赛马核心：牺牲局部、换取全局——胜负取决于出牌顺序而非绝对实力'
+    :h===3?'下→上→中：82 兑 95（输），92 赢 90，87 赢 85 → 2:1'
+    :h===2?'错位竞争：上马对中马 92>90 赢，中马对下马 87>85 赢'
+    :h===1?'硬碰硬：92<95、87<90、82<85，每场都输 → 0:3'
+    :'田忌赛马：三局两胜，孙膑的对策是中国最早的博弈论记载（《史记》）',
+  steps:[
+   {t:'赛制与实力对比',b:'齐王三匹马（95/90/85）每匹都略快于田忌（92/87/82）。三局两胜，双方各出三匹、每场一对一。齐王固定按"上→中→下"出场。',
+    q:'硬碰硬同等级对垒，田忌能赢几场？',o:['0 场','1 场','2 场'],a:0,hint:'每匹都差一点。'},
+   {t:'硬碰硬 = 0:3',b:'滑块第 1 种排列（上→中→下）：92<95、87<90、82<85——每场都差一点点，全输。绝对实力不够，就要靠"出牌顺序"。',
+    q:'同等级对垒的比分是？',o:['0:3','1:2','2:1'],a:0,hint:'三场全败。'},
+   {t:'错位竞争的洞察',b:'田忌的上等马虽输齐王上等马，但赢得过齐王的【中等】马（92>90）；中等马赢得过齐王【下等】马（87>85）。两场错位胜利 + 一场弃权 = 可能的 2:1！',
+    q:'田忌上等马对齐王中等马？',o:['赢（92>90）','输','平局'],a:0,hint:'降维打击。'},
+   {t:'孙膑的最优排列',b:'拖滑块到"下→上→中"：下等马 82 对齐王上等马 95——必输的一局故意输，"兑掉"对方最强战力；上马赢中马、中马赢下马 → 2:1！',
+    q:'田忌的必胜出场顺序？',o:['下→上→中','上→中→下','中→下→上'],a:0,hint:'弃卒保车。'},
+   {t:'博弈论思想',b:'《史记》记载的孙膑是中国最早的博弈论案例：胜负不取决于绝对实力，而取决于策略选择；用最便宜的代价（最差的马）消耗对方最贵的资源。现代版本：资源调度、竞争策略、拍卖设计——全是它的后代。',
+    q:'田忌赛马的核心思想？',o:['牺牲局部换取全局','实力碾压','运气'],a:0,hint:'用下马当"炮灰"。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -1516,7 +1652,7 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,7,8,9,10,11,12,15,16,17,18,13,14,0,1,2,3]; // 展示顺序：小学+模型+数与代数+博弈在前
+const ORD=[4,5,6,7,8,9,10,11,12,15,16,17,18,19,20,13,14,0,1,2,3]; // 展示顺序：小学+模型+数与代数+博弈系列在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
@@ -1533,8 +1669,12 @@ function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
     sl.min=P().slider.min;sl.max=P().slider.max;sl.step=P().slider.step||1;sl.value=P().slider.val;
     P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);}
   else{srow.style.display='none';P().apply();}
-  document.getElementById('gamebar').style.display=P().name==='S'?'':'none';
-  if(P().name==='S'){resetGame();}
+  const nm=P().name,gb=document.getElementById('gamebar');
+  gb.style.display=(nm==='S'||nm==='T')?'':'none';
+  document.getElementById('gbS').style.display=nm==='S'?'':'none';
+  document.getElementById('gbT').style.display=nm==='T'?'':'none';
+  if(nm==='S')resetGame();
+  if(nm==='T')resetNim();
   renderEx();syncUI();}
 function renderEx(){
   const box=document.getElementById('exbox'),ex=P().ex||[];
@@ -1546,19 +1686,20 @@ document.getElementById('slider').addEventListener('input',e=>{
   document.getElementById('sliderVal').textContent=P().slider.fmt(+e.target.value);
   P().draw();});
 /* 画布拖动（题A 直接拖 P） */
-function canvasDrag(clientX){
+function canvasDrag(clientX,clientY){
   const r=cv.getBoundingClientRect(),mx=(clientX-r.left)*(W/r.width),my=(clientY-r.top)*(H/r.height);
+  if(P().name==='T'){nimClick(mx,my);return;}
   if(P().name!=='A')return;
-  const x=Math.min(2.9,Math.max(0.1,(mx-A1.ox)/A1.sc));
   px=x;const sl=document.getElementById('slider');
   sl.value=Math.round(x*1000);document.getElementById('sliderVal').textContent=P().slider.fmt(x*1000);
   P().draw();}
-cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
-cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
+cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX,e.clientY);});
+cv.addEventListener('pointermove',e=>{if(e.buttons&&P().name==='A')canvasDrag(e.clientX,e.clientY);});
 const _qp = parseInt(new URLSearchParams(location.search).get('p'), 10);
 [1,2,3].forEach(k=>{document.getElementById('gb'+k).onclick=()=>playerSay(k);});
 document.getElementById('gbReset').onclick=()=>resetGame();
 document.getElementById('gbAiFirst').onchange=()=>resetGame();
+document.getElementById('gbReT').onclick=()=>resetNim();
 switchProb(_qp >= 0 && _qp < PROBS.length ? _qp : 4);
 </script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
