@@ -476,7 +476,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
     <span style="font-size:28px">📐</span>
     <span style="flex:1">
       <b>题型动态拆解实验室（Beta）</b><br>
-      <span style="opacity:.72;font-size:13px">中考高频压轴题的动态拆解：拖动图形、改变参数，图形变化与解题步骤同步出现——关键步骤自己点选，答错不放行。小学几何＋经典模型＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋博弈对策系列（抢 30 · Nim 取火柴 · 田忌赛马）＋初中主线（勾股定理 · 相似位似）+ 中考高频（二次函数 · 折叠 · 方案比较 · 垂径定理），共 21 题</span>
+      <span style="opacity:.72;font-size:13px">中考高频压轴题的动态拆解：拖动图形、改变参数，图形变化与解题步骤同步出现——关键步骤自己点选，答错不放行。度量公式推导族（圆周长/面积 · 长方体/圆柱体积 · 排水法）＋小学几何模型（割补 · 倍拼 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇）＋博弈系列（抢 30 · Nim · 田忌赛马）＋初中与中考（勾股 · 相似 · 二次函数 · 折叠 · 垂径），共 24 题</span>
     </span>
     <span style="opacity:.6;font-size:20px">→</span>
   </a>
@@ -511,11 +511,7 @@ footer{padding:12px 0 36px;font-size:.88rem;}
         <div class="pitfall" id="mPitfall"></div>
       </div>
       <div class="block" id="mMvizBlock" hidden>
-        <a id="mMvizLink" href="/mathviz/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:rgba(46,125,91,.06)">
-          <span style="font-size:22px">📐</span>
-          <span style="flex:1;font-size:13.5px"><b style="color:#2e7d5b">去练 · 题型动态拆解</b><br><span id="mMvizName" style="opacity:.75"></span></span>
-          <span style="opacity:.6">→</span>
-        </a>
+        <div id="mMvizCards"></div>
         <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:block;margin-top:6px;padding-right:4px;font-size:12.5px;color:#6b7a70;text-decoration:none;text-align:right">还想多练同类题？去「数学说」↗</a>
       </div>
       <div class="case" id="mCase" hidden>
@@ -2888,8 +2884,11 @@ const LINK = {
     mFact.textContent = n.fact;
     const MVIZ = { 'perimeter-area': {p:4, t:'平行四边形面积推导（割补法动画）'},
                    'quad-tri': {p:5, t:'三角形面积推导（两个全等三角形倍拼）'},
-                   'volume': {p:6, t:'排水法求不规则物体体积'},
-                   'circle-pri': {p:8, t:'圆的面积：切拼成近似长方形（πr² 推导）'},
+                   'volume': [{p:6, t:'排水法求不规则物体体积'},
+                              {p:22, t:'长方体体积：1cm³ 方块逐层堆叠（V = 长×宽×高）'},
+                              {p:23, t:'圆柱的体积：底面切拼成长方体（V = πr²h）'}],
+                   'circle-pri': [{p:8, t:'圆的面积：切拼成近似长方形（πr² 推导）'},
+                                  {p:21, t:'圆的周长：圆在直尺上滚一圈（C = πd）'}],
                    'plane-shape': {p:12, t:'拉窗帘模型：等积变形（等底等高）'},
                    'pytha': {p:13, t:'勾股定理：风车拼图证明（a²+b²=c²）'},
                    'similar': {p:14, t:'相似与位似：按比例放大缩小（k 与 k²）'},
@@ -2901,9 +2900,15 @@ const LINK = {
                    'linear-fn': {p:2, t:'两种方案费用比较（一次函数与不等式）'},
                    'ineq': {p:2, t:'两种方案费用比较（看交点比高低）'},
                    'circle': {p:3, t:'垂径定理：弦心距与半弦的勾股'} };
-    const mv = MVIZ[id];
+    const mv = MVIZ[id], mvList = Array.isArray(mv) ? mv : (mv ? [mv] : []);
     mMvizBlock.hidden = !mv;
-    if (mv) { mMvizLink.href = '/mathviz/?p=' + mv.p; mMvizName.textContent = mv.t; }
+    if (mv) {
+      document.getElementById('mMvizCards').innerHTML = mvList.map(m =>
+        '<a href="/mathviz/?p=' + m.p + '" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:rgba(46,125,91,.06)">' +
+        '<span style="font-size:22px">📐</span>' +
+        '<span style="flex:1;font-size:13.5px"><b style="color:#2e7d5b">去练 · 题型动态拆解</b><br><span style="opacity:.75">' + m.t + '</span></span>' +
+        '<span style="opacity:.6">→</span></a>').join('<div style="height:8px"></div>');
+    }
     const cur = CURRICULUM[id];
     if (cur) {
       mCurr.hidden = false;
