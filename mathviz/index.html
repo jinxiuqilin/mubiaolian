@@ -25,6 +25,15 @@ body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;backgr
 .tab .grade.g6{background:#fdf0e0;color:#b98a2f}
 .tab .grade.gk{background:#e7eef8;color:#3f6fb5}
 .tab .grade.g78{background:#ece6f5;color:#6a4fa3}
+.gamebar{background:var(--card);border:1.5px solid var(--acc);border-radius:16px;padding:14px 18px;margin-top:16px;box-shadow:0 1px 3px rgba(34,48,42,.05)}
+.gb-status{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.gb-btns{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.gbtn{padding:8px 18px;border-radius:10px;border:1.5px solid var(--acc);background:#fff;color:var(--acc);font-weight:600;font-size:14px;cursor:pointer;transition:all .15s}
+.gbtn:hover:not(:disabled){background:var(--acc);color:#fff}
+.gbtn:disabled{opacity:.35;cursor:not-allowed}
+.gbtn.gb-re{border-color:#c2564a;color:#c2564a;margin-left:auto}
+.gbtn.gb-re:hover{background:#c2564a;color:#fff}
+.gb-ai{font-size:13px;color:var(--dim);display:flex;gap:5px;align-items:center;cursor:pointer}
 .stage{display:flex;gap:16px;align-items:stretch}
 .figpanel{flex:1.35;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
 canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fcfdfb;touch-action:none}
@@ -81,7 +90,7 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
 <div class="wrap">
   <div class="hero">
     <h1>📐 题型动态拆解<span class="beta">Beta 内测</span></h1>
-    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十八题：小学几何与经典模型（割补 · 倍拼 · 转化 · 排水法 · 展开图 · 圆面积 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
+    <p>拖动图形、改变参数——图形变化与解题步骤同步出现。关键步骤自己点选，答错不放行；卡住时每一步都有关键提示。已上线十九题：小学几何与经典模型（割补 · 倍拼 · 转化 · 排水法 · 展开图 · 圆面积 · 一半 · 蝴蝶 · 拉窗帘）＋数与代数（分数通分 · 鸡兔同笼 · 相遇问题）＋博弈对策（抢 30 报数博弈，可与 AI 实战）＋初中主线（勾股定理拼图 · 相似与位似）＋中考高频（二次函数动点 · 正方形折叠 · 方案比较 · 垂径定理），与数学站知识链弹窗互通直达。</p>
     <a href="https://www.shuxueshuo.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 18px;border:1px solid #bcd2c4;border-radius:999px;background:#e9f2ec;text-decoration:none;color:#2e5c46;font-size:13.5px;font-weight:700">🌐 举一反三 · 想刷更多可视化动态题？去「数学说」↗<span style="font-weight:400;opacity:.72">（外部题库网站，与本站独立运营）</span></a>
   </div>
 
@@ -101,6 +110,17 @@ canvas#cv{width:100%;height:auto;display:block;border-radius:10px;background:#fc
         <button class="btn" id="prevBtn" onclick="nav(-1)">← 上一步</button>
         <button class="btn primary" id="nextBtn" onclick="nav(1)">下一步 →</button>
       </div>
+    </div>
+  </div>
+
+  <div class="gamebar" id="gamebar" style="display:none">
+    <div class="gb-status" id="gbStatus"></div>
+    <div class="gb-btns">
+      <button class="gbtn" id="gb1">报 1 个</button>
+      <button class="gbtn" id="gb2">报 2 个</button>
+      <button class="gbtn" id="gb3">报 3 个</button>
+      <label class="gb-ai"><input type="checkbox" id="gbAiFirst"> AI 先手</label>
+      <button class="gbtn gb-re" id="gbReset">↺ 重开一局</button>
     </div>
   </div>
 
@@ -982,6 +1002,51 @@ function drawR(){
   if(cur>=3)lab('两车合计：速度和 × 时间 = (40+50)×t = 90×t，走满 180 km 就相遇',XR.ox,XR.oy-70,'#54655c');
   if(cur>=4)chip(XR.ox,180,'相遇时间 = 总路程 ÷ 速度和 = 180 ÷ 90 = 2 小时','#2e7d5b');
 }
+
+/* ================= 题 S：抢 30 报数博弈（四年级+·可对战 AI） ================= */
+// 两人轮流报 1~3 个数，先报到 30 者胜；必胜点 2,6,10,...,26（相邻差 4），先手报 1,2 必胜
+const XS={ox:105,oy:430,u:25};
+let GS={v:0,over:false,winner:'',turn:'you',seq:[]};
+function pushSeq(who,k){GS.seq.push({who,from:GS.v,to:GS.v+k});GS.v+=k;
+  if(GS.v>=30){GS.over=true;GS.winner=who;}else GS.turn=who==='you'?'ai':'you';}
+function playerSay(k){if(GS.over||GS.turn!=='you')return;
+  pushSeq('you',k);renderGame();P().draw();
+  if(!GS.over)setTimeout(aiTurn,450);}
+function aiTurn(){if(GS.over||GS.turn!=='ai')return;
+  const d=30-GS.v;let k=1;
+  if(d<=3)k=d;
+  else{const crit=[26,22,18,14,10,6,2];const t=crit.find(c=>c>GS.v);
+    k=(t!==undefined&&t-GS.v<=3)?t-GS.v:1;}
+  pushSeq('ai',Math.min(k,d));renderGame();P().draw();}
+function renderGame(){
+  const st=document.getElementById('gbStatus');
+  if(GS.over)st.textContent=GS.winner==='you'?'🎉 你先报到 30，你赢了！点「重开一局」换 AI 先手试试——它会用同样的策略赢你。':'AI 先报到 30，AI 赢了——想想是哪一步让它抢到了必胜点？点「重开一局」再战。';
+  else st.textContent=`当前报到 ${GS.v} —— 轮到${GS.turn==='you'?'你':'AI'}报数（每次接着报 1~3 个数）`;
+  [1,2,3].forEach(k=>{document.getElementById('gb'+k).disabled=GS.over||GS.turn!=='you'||GS.v+k>30;});}
+function resetGame(){
+  GS={v:0,over:false,winner:'',turn:document.getElementById('gbAiFirst').checked?'ai':'you',seq:[]};
+  renderGame();P().draw();
+  if(GS.turn==='ai')setTimeout(aiTurn,600);}
+function drawS(){
+  clearCanvas();
+  const owner=new Array(31).fill(0);
+  GS.seq.forEach(s=>{for(let i=s.from+1;i<=s.to;i++)owner[i]=s.who==='you'?1:2;});
+  for(let i=1;i<=30;i++){
+    const gx=XS.ox+(i-1)*XS.u;
+    ctx.fillStyle=owner[i]===1?'rgba(63,111,181,.42)':owner[i]===2?'rgba(194,86,74,.36)':'rgba(46,125,91,.10)';
+    ctx.fillRect(gx,XS.oy,XS.u-3,34);
+    ctx.strokeStyle='#54655c';ctx.lineWidth=1;ctx.strokeRect(gx,XS.oy,XS.u-3,34);
+    ctx.fillStyle='#54655c';ctx.font='11px sans-serif';ctx.textAlign='center';
+    ctx.fillText(i,gx+(XS.u-3)/2,XS.oy+21);ctx.textAlign='left';}
+  if(cur>=2){[2,6,10,14,18,22,26].forEach(i=>{const gx=XS.ox+(i-1)*XS.u+(XS.u-3)/2;lab('★',gx-6,XS.oy-8,'#b98a2f');});
+    lab('★ 必胜点（相邻差 4）',XS.ox+9*XS.u+30,XS.oy-8,'#b98a2f');}
+  lab('数轴 1 → 30（蓝 = 你报的，红 = AI 报的）',XS.ox,XS.oy+54,'#54655c');
+  GS.seq.slice(-4).forEach((s,idx)=>{lab((s.who==='you'?'你':'AI')+` 报了 ${s.to-s.from} 个 → 到 ${s.to}`,XS.ox,XS.oy+82+idx*22,s.who==='you'?'#3f6fb5':'#c2564a');});
+  if(GS.over){
+    if(GS.winner==='you')chip(XS.ox,300,'🎉 你赢了——你抢到了必胜点 2，之后每轮凑 4，AI 被彻底锁死','#2e7d5b');
+    else chip(XS.ox,300,'AI 赢了——它占住了必胜点。找找是哪一步让 AI 抢到 2 或 26 的','#c2564a');}
+  if(cur>=4)lab('举一反三：目标数 ÷ (最小+最大报数) 的余数决定先手必胜开局',XS.ox,300,'#54655c');
+}
 const PROBS=[
  {name:'A',tab:'题 A · 二次函数动点求最值',grade:'中考',draw:drawA,
   ex:[['抛物线 y = x² − 4x + 3 与 x 轴的交点坐标是？','(1,0) 和 (3,0)','令 y=0：x²−4x+3=0 → (x−1)(x−3)=0，交点横坐标就是两个根'],
@@ -1390,6 +1455,29 @@ const PROBS=[
     q:'相遇时间是？',o:['2 小时','4 小时','1 小时'],a:0,hint:'180÷90。'},
    {t:'公式与验证',b:'相遇时间 = 总路程 ÷ 速度和。相遇时甲走 40×2 = 80 km，乙走 50×2 = 100 km，合计 180 ✓（读数区随时核对）',
     q:'相遇公式的核心是？',o:['速度差','速度和','路程差'],a:1,hint:'两车一起"吃掉"全程。'}
+  ]},
+ {name:'S',tab:'题 S · 抢 30 报数博弈',grade:'四年级+',draw:drawS,
+  slider:null,
+  apply:()=>{},
+  readout:()=>[['当前报到',GS.v+''],['轮到',GS.over?'——（本局结束）':GS.turn==='you'?'你':'AI'],['必胜点','2, 6, 10, 14, 18, 22, 26, 30'],['制胜口诀','先手占 2，之后每轮凑 4']],
+  ex:[['抢 50 报数游戏（每次报 1~7 个数），先手必胜开局是报几个？','先报 2 个，占住 2','倒推：50 → 42 → 34 → 26 → 18 → 10 → 2，相邻差 8（1+7）'],
+     ['20 根火柴轮流取，每次取 1~3 根，取到最后一根的输。先手必胜策略？','先取 3 根，之后每轮与对方凑 4','把 17、13、9、5、1 这些"毒数"留给对方——对方拿最后一根']],
+  formula:h=>h===4?'通杀公式：目标数 ÷ (最小+最大报数) 的余数 = 先手必报的个数'
+    :h===3?'先手必胜：先报 1,2 占住 2，之后对方报 k 个你就报 4−k 个'
+    :h===2?'必胜点：2, 6, 10, 14, 18, 22, 26 —— 相邻差恒为 4'
+    :h===1?'倒推：想报 30，必须抢到 26（对方报 27~29 之间任何个数，你都能补到 30）'
+    :'抢 30 报数博弈：轮流报 1~3 个数，先报到 30 者胜——下面实战区可以和 AI 真打',
+  steps:[
+   {t:'规则与直觉',b:'两人从 1 开始轮流报数，每人每次接着报 1~3 个数，谁先报到 30 谁赢。到下方实战区和 AI 玩一局，先试试凭感觉能不能赢！',
+    q:'每人每次最多报几个数？',o:['3 个','5 个','7 个'],a:0,hint:'1~3 个。'},
+   {t:'倒推：必须抢 26',b:'想报到 30，就让对方在 27~29 处卡住：对方报 27（1 个）你报 28,29,30；对方报 27,28 你报 29,30；对方报 27,28,29 你报 30。抢到 26 就稳赢！',
+    q:'必须抢到哪个数？',o:['26','28','29'],a:0,hint:'距离 30 是 4——对方一步填不满。'},
+   {t:'必胜点链',b:'继续倒推：26 前面抢 22、18、14、10、6、2——相邻差都是 4（因为对方报 k 个你能补 4−k 个，凑成 4）。所以先手必胜开局：先报 1,2 占住 2！',
+    q:'必胜点 2,6,10…26 的相邻差是？',o:['4','3','5'],a:0,hint:'对方报 k，你补 4−k。'},
+   {t:'实战检验',b:'去实战区验证：先手报 2，之后对方报 k 个你报 4−k 个——AI 被你锁死！然后勾选"AI 先手"，AI 会用同样的必胜开局赢你（它先报 2）。',
+    q:'先手的必胜开局是？',o:['先报 1,2','先报 1,2,3','随便报'],a:0,hint:'占住最小的必胜点。'},
+   {t:'举一反三',b:'一切报数博弈一个公式：看 目标数 ÷ (最小+最大报数) 的余数——抢 50（报 1~7）：50÷8 余 2 → 先手报 2 必胜；整除则先手必败，只能祈祷对方失误。数学把"斗智"变成了计算！',
+    q:'抢 50（每次报 1~7 个数）先手报几个必胜？',o:['2','7','5'],a:0,hint:'50=6×8+2，余 2。'}
   ]}
 ];
 const P=()=>PROBS[prob];
@@ -1428,7 +1516,7 @@ function nav(d){const n=cur+d;if(n<0||n>=P().steps.length)return;
   if(d>0&&!P().steps[cur].passed)return;cur=n;syncUI();}
 function syncUI(){renderSteps();P().draw();
   document.getElementById('sliderLabel').textContent=P().slider.label;}
-const ORD=[4,5,6,7,8,9,10,11,12,15,16,17,13,14,0,1,2,3]; // 展示顺序：小学+经典模型+数与代数在前
+const ORD=[4,5,6,7,8,9,10,11,12,15,16,17,18,13,14,0,1,2,3]; // 展示顺序：小学+模型+数与代数+博弈在前
 function buildTabs(){
   const box=document.getElementById('tabs');box.innerHTML='';
   ORD.forEach(pi=>{
@@ -1440,9 +1528,13 @@ function buildTabs(){
   });}
 function switchProb(i){prob=i;cur=0;P().steps.forEach(s=>s.passed=false);
   buildTabs();
-  const sl=document.getElementById('slider');
-  sl.min=P().slider.min;sl.max=P().slider.max;sl.step=P().slider.step||1;sl.value=P().slider.val;
-  P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);
+  const sl=document.getElementById('slider'),srow=document.getElementById('sliderRow');
+  if(P().slider){srow.style.display='';
+    sl.min=P().slider.min;sl.max=P().slider.max;sl.step=P().slider.step||1;sl.value=P().slider.val;
+    P().apply(+sl.value);document.getElementById('sliderVal').textContent=P().slider.fmt(+sl.value);}
+  else{srow.style.display='none';P().apply();}
+  document.getElementById('gamebar').style.display=P().name==='S'?'':'none';
+  if(P().name==='S'){resetGame();}
   renderEx();syncUI();}
 function renderEx(){
   const box=document.getElementById('exbox'),ex=P().ex||[];
@@ -1464,6 +1556,9 @@ function canvasDrag(clientX){
 cv.addEventListener('pointerdown',e=>{cv.setPointerCapture(e.pointerId);canvasDrag(e.clientX);});
 cv.addEventListener('pointermove',e=>{if(e.buttons)canvasDrag(e.clientX);});
 const _qp = parseInt(new URLSearchParams(location.search).get('p'), 10);
+[1,2,3].forEach(k=>{document.getElementById('gb'+k).onclick=()=>playerSay(k);});
+document.getElementById('gbReset').onclick=()=>resetGame();
+document.getElementById('gbAiFirst').onchange=()=>resetGame();
 switchProb(_qp >= 0 && _qp < PROBS.length ? _qp : 4);
 </script>
 <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?bf05b8da5adc427a4f07afb709816f39";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s);})();</script>
